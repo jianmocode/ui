@@ -1,0 +1,52 @@
+<header>
+	<div class="topbar">
+		<ul class="tb-list left">
+			<li><a href="/landing/download"> 下载APP </a></li>
+			<li>
+				<a  href="#" 
+					data-html="true"
+					data-toggle="popover" 
+				 	data-placement="bottom"
+					data-container="body" 
+					data-content="<img width='150' onclick=$('[data-toggle=popover]').popover('hide') src='{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/qr-wxapp-index.jpg' />"  > 
+					小程序 <span class="m-left-5"><i class="fa fa-angle-down"></i> </span></a>
+			</li>
+			<li>
+				<a  href="#" 
+					data-html="true"
+					data-toggle="popover" 
+				 	data-placement="bottom"
+					data-container="body" 
+					data-content="<img width='150' onclick=$('[data-toggle=popover]').popover('hide') src='{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/qr-m-index.png' />"  > 
+					手机版 <span class="m-left-5"><i class="fa fa-angle-down"></i> </span></a>
+			</li>
+		</ul>
+		<ul class="tb-list right">
+			<li mp:if="{{user.user_id}}" >
+				{{user.nickname}}  <a href="/user/signout"> 退出 </a> 
+			</li>
+			<li><a href="/article"> 首页 </a></li>
+			<li mp:if="{{user.user_id === null}}" ><a href="/user/signup"> 注册 </a></li>
+			<li mp:if="{{user.user_id === null}}" ><a href="/user/signin/mobile"> 登录 </a></li>
+			<li><a href="/landing/mp"> 内容平台</a></li>
+			<li><a href="https://www.xpmsns.com/"> 联系购买 </a></li>
+		</ul>
+	</div>
+	<div class="clear"></div>
+
+	<div class="crumb" mp:if="{{crumbs}}">
+		<div class="container">
+			<div class="logo">
+				<a href="/article"><img src="{{site.site_logo.url}}" alt=""  class="title_block"></a>
+			</div>
+			<ul>
+				<li mp:for="{{crumbs}}" mp:for-item="{{crumb}}" >
+					<a mp:if="{{crumb.link}}" href="{{crumb.link}}" >{{crumb.name}}</a>
+					<span  mp:else>{{crumb.name}}</span>
+				</li>
+			</ul>
+			<div class="clear"></div>
+		</div> <!-- END  container -->
+	</div> <!-- END crumb -->
+	
+</header>

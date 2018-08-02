@@ -1,0 +1,21 @@
+<!-- 关于我们 -->
+<section class="about block">
+	<div class="block-content">
+		<ul>
+			<li> © 2018 {{site.site_name}} </li>
+			<li> {{site.site_no}}</li>
+			<li> 公司: {{site.company}}</li>
+			<li> 电话: {{site.tel}}</li>
+			<li> 地址: {{site.address}}</li>
+			
+			<li class="image" mp:if="{{site.qr_wxapp.url}}">
+				<span> 微信小程序 </span>
+				<img width='150'  src='{{site.qr_wxapp.url}}' />
+			</li>
+			<li class="image" mp:if="{{site.qr_wxpub.url}}">
+				<span> 官方微信 </span>
+				<img width='150'  src='{{site.qr_wxpub.url}}' />
+			</li>
+		</ul>
+	</div>
+</section> <!-- 关于我们 END -->

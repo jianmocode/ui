@@ -1,0 +1,89 @@
+<include src="__WEB_ROOT__/mobile/common/head.page"  />
+<include src="__WEB_ROOT__/mobile/common/header.page"  />
+<div class="wrapper">
+	<div class="item" mp:for="{{articles.data}}" mp:for-item="{{rs}}" onclick="window.location='/m/article/{{rs.article_id}}'">
+		<div class="content">
+			<div class="title">{{rs.title}}</div>
+			<div class="sub">
+				<span>{{rs.publish_date}}</span>
+			</div>
+		</div>
+		<div 
+			class="cover" 
+			mp:if="{{rs.cover.url}}"   >
+			<img
+			    data-sizes="120x90"
+			    data-src="{{rs.cover.url}}"
+			  	class="lazyload" />
+		</div>
+	</div>
+</div>
+
+<div class="xpmsns">
+	<div><img src="{{site.site_logo.url}}"  mode="aspectFit" style="width:150px;" /></div>
+</div>
+
+
+<script type="text/javascript" mp:if="{{__var.__browser == 'wechat' }}">
+	// 微信分享
+	var code = '{{wechat.code}}'
+	if ( code == '') {
+
+		var imgUrl = "{{__STOR__::/__PROJECT_NAME/mobile/assets}}/icons/xpmsns.png";
+		var home = window.location.origin;
+		
+		if ( imgUrl[0] == '/') {
+			imgUrl = home + imgUrl;
+		}
+
+
+		// console.log('weixin', '{{__var.__browser}}', '===');
+		try {
+			wx.config({
+				debug: false, 
+				appId:"{{wechat.appid}}", // 必填，公众号的唯一标识
+				timestamp:"{{wechat.timestamp}}" , // 必填，生成签名的时间戳
+				nonceStr:"{{wechat.noncestr}}", // 必填，生成签名的随机串
+				signature:"{{wechat.signature}}",// 必填，签名，见附录1
+				jsApiList:  ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareWeibo','onMenuShareQZone','startRecord','stopRecord','onVoiceRecordEnd','playVoice','pauseVoice','stopVoice','onVoicePlayEnd','uploadVoice','downloadVoice','chooseImage','previewImage','uploadImage','downloadImage','translateVoice','getNetworkType','openLocation','getLocation','hideOptionMenu','showOptionMenu','hideMenuItems','showMenuItems','hideAllNonBaseMenuItem','showAllNonBaseMenuItem','closeWindow','scanQRCode','chooseWXPay','openProductSpecificView','addCard','chooseCard','openCard'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+			});  
+			wx.ready(function(){
+
+				wx.onMenuShareTimeline({
+					title:"{{TRIM(current.name)}}|XpmSNS/头条", // 分享标题
+					link: "{{wechat.url}}", // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+					imgUrl:imgUrl, // 分享图标
+					success: function () { 
+						// 用户确认分享后执行的回调函数
+						alert('分享成功');
+
+					},
+					cancel: function () { 
+						// 用户取消分享后执行的回调函数
+						alert('分享失败');
+					}
+				});
+
+				wx.onMenuShareAppMessage({
+					title: "{{TRIM(current.name)}}|XpmSNS/头条", // 分享标题
+					desc: "汇聚最有价值文章资讯！", // 分享描述
+					link: "{{wechat.url}}", 
+					imgUrl:imgUrl, // 分享图标
+					success: function () { 
+						// 用户确认分享后执行的回调函数
+						alert('分享成功');
+					},
+					cancel: function () { 
+						// 用户取消分享后执行的回调函数
+						alert('分享失败');
+					}
+				});
+
+			});
+		} catch( e ) {
+			console.log('someting error');
+		}
+	}
+</script>
+
+<include src="__WEB_ROOT__/mobile/common/foot.page"  />

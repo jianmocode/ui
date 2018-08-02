@@ -1,0 +1,37 @@
+{
+	"cname":"XpmSNS默认主题",
+	"pages":[
+		"/desktop/article/index"
+		"/mobile/article/index"
+	],
+	"common":[
+		"/mobile/common",
+		"/desktop/common"
+	],
+	"storage": {
+		"engine":"minapages",
+		"options":{
+			"debug":true
+		},
+		"pages":{
+			"remote": "/{PROJECT_NAME}/pages",
+			"url": "/static-file/{PROJECT_NAME}/pages",
+			"origin": "/static-file/{PROJECT_NAME}/pages"
+		},
+		"binds": [
+			{
+				"local": "/web/desktop/assets",
+				"remote": "/{PROJECT_NAME}/desktop/assets",
+				"url": "/static-file/{PROJECT_NAME}/desktop/assets",
+				"origin": "/static-file/{PROJECT_NAME}/desktop/assets"
+			},
+			{
+				"local": "/web/mobile/assets",
+				"remote": "/{PROJECT_NAME}/mobile/assets",
+				"url": "/static-file/{PROJECT_NAME}/mobile/assets",
+				"origin": "/static-file/{PROJECT_NAME}/mobile/assets"
+			}
+		]
+	},
+	"debug":true
+}

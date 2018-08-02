@@ -1,0 +1,13 @@
+<header>
+	<div class="titleBar">
+		<span>{{site.site_name}}/{{current.name}}</span>
+	</div>
+	<nav>
+		<a href="#"><img src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/icons/show_menu.svg" /></a>
+		<ul>
+			<li mp:for="{{categories.data}}" mp:for-item="{{ca}}" onclick="window.location='/m/article/list/{{ca.category_id}}'">
+				<a href="/m/article/list/{{ca.category_id}}" class="{{(ca.category_id == current.category_id) ? 'current'}}"> {{ca.name}} </a>
+			</li>
+		</ul>
+	</nav>
+</header>

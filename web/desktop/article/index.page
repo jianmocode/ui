@@ -1,0 +1,150 @@
+<include src="__WEB_ROOT__/desktop/common/head.page"  />
+<include src="__WEB_ROOT__/desktop/common/header.page"  />
+
+<div class="container"><div class="row">
+
+
+	<!-- 左侧菜单导航 -->
+	<div class="col-xs-2">
+		<div class="nav" >
+			<div class="logo">
+				<a href="/article"><img src="{{site.site_logo.url}}" width="300" height="75" alt=""  class="title_block"></a>
+			</div>
+			<ul class="nav-list">
+				<li mp:for="{{categories.data}}" 
+					mp:for-item="{{ca}}" 
+					class="{{ (ca.category_id == current.category_id) ? 'active'}}" 
+				>
+					<a href="/article/list/{{ca.category_id}}">{{ca.name}}</a>
+				</li>
+			</ul>
+		</div>
+	</div> <!-- END 左侧菜单导航 -->
+
+	<!-- 内容区 -->
+	<div class="col-xs-7">
+
+		<!-- 焦点图 -->
+		<section class="focus" mp:if="{{focus.contents.total > 0}}">
+			<div class="slide">
+				<ul class="items">
+					<li data-id="{{rs.article_id}}" mp:for="{{focus.contents.data}}" mp:for-from="0" mp:for-to="7"  mp:for-index="{{idx}}"  mp:for-item="{{rs}}">
+						
+						<a href="/article/{{rs.article_id}}" ><img src="{{rs.cover.url}}"></a>
+						<h5>{{rs.title}}</h5>
+					</li>
+				</ul>
+				<ul class="tags" >
+					<li data-id="{{rs.article_id}}" class="{{ (idx == 0) ? 'active'}}" 
+						mp:for="{{focus.contents.data}}" mp:for-from="0" mp:for-to="7"  mp:for-index="{{idx}}"  mp:for-item="{{rs}}" > 
+						{{rs.category_last.name}}
+					</li>
+				</ul>
+			</div>
+		</section><!-- END 焦点图 -->
+	
+		<!-- 文章列表-->
+		<section class="articles">
+			<!-- 文章列表项 -->
+			<div mp:for="{{articles.data}}" mp:for-item="{{rs}}" mp:for-index="{{idx}}"  >
+
+				<div  mp:if="{{idx == 1}}">
+					<div class="article-item-ad-1" mp:for="{{advs.data}}" mp:if="{{item.position_no == 'A-M-001'}}">
+						<div class="image"   > 
+							<a href="{{item.link}}"><img
+								width="100%"
+							    data-sizes="150X100"
+							    data-src="{{item.images.0.url}}"
+							  	class="lazyload" /></a>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+
+
+				<div  mp:if="{{idx == 6}}">
+					<div class="article-item-ad-3"  mp:for="{{advs.data}}" mp:if="{{item.position_no == 'A-M-002'}}" >
+						<div class="image" mp:for="{{item.images}}" mp:for-item="{{img}}" mp:for-index="{{idx}}" mp:if="{{idx < 3}}" > 
+							<a href="/article/{{rs.article_id}}"><img
+								width="100%"
+							    data-sizes="150X100"
+							    data-src="{{img.url}}"
+							  	class="lazyload" /></a>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+
+
+				<div class="article-item-1">
+					<div class="image" mp:if="{{rs.cover.url}}"> 
+						<a href="/article/{{rs.article_id}}"><img
+							width="150"
+						    data-sizes="150X100"
+						    data-src="{{rs.cover.url}}"
+						  	class="lazyload" /></a>
+					</div>
+					<div class="content">
+						<h5><a href="/article/{{rs.article_id}}" >{{rs.title}}</a></h5>
+						<p>
+							<a class="category" href="/article/list/{{rs.category_last.category_id}}">{{rs.category_last.name}}</a>
+							<span class="author">{{rs.author}}</span>
+							<span class="pubtime">{{rs.publish_date}}</span>
+						</p>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div> <!-- END 文章列表项 -->
+
+		</section><!-- END 文章列表-->
+
+	</div> <!-- END 内容区 -->
+
+	<!-- 右侧推荐内容区 -->
+	<div class="col-xs-3">
+	
+		
+		<!-- 24小时热文 -->
+		<section class="hot block">
+			<div class="block-title">24小时热文</div>
+			<div class="block-content"  >
+				<div class="item-1" mp:for="{{hot.contents.data}}" mp:for-from="0" mp:for-to="6"  mp:for-index="{{idx}}"  mp:for-item="{{rs}}">
+					<div class="image">
+						<a href="/article/{{rs.article_id}}">
+							<img
+								wdith="60"
+								height="60"
+						    	data-sizes="60X60"
+						    	data-src="{{rs.cover.url}}"
+						  		class="lazyload" />
+					  	</a>
+					</div>
+					<div class="title"> <a href="/article/{{rs.article_id}}">{{rs.title}}</a> </div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</section> <!-- 24小时热文END  -->
+
+		<!-- A-R-002 广告 -->
+		<section class="block block-full" mp:for="{{advs.data}}" mp:if="{{item.position_no == 'A-R-002'}}">
+			<div class="block-content" class="A-R-002">
+				<a mp:for="{{item.images}}"  mp:for-index="{{idx}}"  mp:for-item="{{img}}" href="{{item.link}}" target="_blank"  class="{{ (idx != 0) ? 'hidden' }}">
+					<img  width="100%" src="{{img.url}}">
+				</a>
+			</div>
+		</section> <!-- END A-R-001 -->
+
+		<!-- 关于我们 -->
+		<include src="__WEB_ROOT__/desktop/common/aboutus.page" />
+
+	</div><!-- END 右侧推荐内容区 -->
+	
+	<!-- 返回到顶部等工具 -->
+	<ul class="float-tooltip hidden">
+		<li><a href="javascript:$('html,body').animate({scrollTop: '0px'}, 300);"><i class="fa fa-rocket"></i></a> </li>
+		<li><a href="javascript:window.location.reload();"><i class="fa fa-sync"></i> </a> </li>
+	</ul><!-- END 返回到顶部等工具 -->
+
+</div></div><!-- END row END container -->
+
+<include src="__WEB_ROOT__/desktop/common/foot.page" />

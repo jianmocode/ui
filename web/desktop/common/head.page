@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="{{seo.description}}" />
+	<meta name="keywords" content="{{seo.keywords}}" />
+	<link href="{{site.icon.url}}" rel="shortcut icon" type="image/x-icon" />
+
+	<title>{{page.title}}-{{site.site_name}}</title>
+	<link href="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/fonts/fontawesome/css/fontawesome-all.min.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/js/lazysizes.min.js"></script>
+</head>
+<body>
