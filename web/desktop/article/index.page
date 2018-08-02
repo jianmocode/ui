@@ -23,6 +23,7 @@
 
 	<!-- 内容区 -->
 	<div class="col-xs-7">
+		HELLO
 
 		<!-- 焦点图 -->
 		<section class="focus" mp:if="{{focus.contents.total > 0}}">

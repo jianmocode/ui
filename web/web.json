@@ -1,7 +1,7 @@
 {
 	"cname":"XpmSNS默认主题",
 	"pages":[
-		"/desktop/article/index"
+		"/desktop/article/index",
 		"/mobile/article/index"
 	],
 	"common":[
