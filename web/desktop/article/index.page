@@ -34,26 +34,26 @@
 	<div class="uk-container">
 
 
-	<div class="uk-position-relative uk-visible-toggle uk-light" uk-po  uk-slideshow>
+		<div class="uk-position-relative uk-visible-toggle uk-light" uk-po  uk-slideshow>
 
-	    <ul class="uk-slideshow-items">
-	        <li>
-	            <img data-src="https://getuikit.com/docs/images/photo.jpg" width="1800" height="1200" alt="" uk-cover uk-img="target: !.uk-slideshow-items">
-	        </li>
-	        <li>
-	            <img data-src="https://getuikit.com/docs/images/dark.jpg" width="1800" height="1200" alt="" uk-cover uk-img="target: !.uk-slideshow-items">
-	        </li>
-	        <li>
-	            <img data-src="https://getuikit.com/docs/images/light.jpg" width="1800" height="1200" alt="" uk-cover uk-img="target: !.uk-slideshow-items">
-	        </li>
-	    </ul>
+		    <ul class="uk-slideshow-items">
+		        <li>
+		            <img data-src="https://getuikit.com/docs/images/photo.jpg" width="1800" height="1200" alt="" uk-cover uk-img="target: !.uk-slideshow-items">
+		        </li>
+		        <li>
+		            <img data-src="https://getuikit.com/docs/images/dark.jpg" width="1800" height="1200" alt="" uk-cover uk-img="target: !.uk-slideshow-items">
+		        </li>
+		        <li>
+		            <img data-src="https://getuikit.com/docs/images/light.jpg" width="1800" height="1200" alt="" uk-cover uk-img="target: !.uk-slideshow-items">
+		        </li>
+		    </ul>
 
-	    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-	    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+		    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+		    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+
+		</div>
 
 	</div>
-
-</div>
 	
 </section>
 
