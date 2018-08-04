@@ -86,7 +86,28 @@
 			
 		</div> <!-- END jm-focus-left -->
 
-		<div class="jm-focus-right uk-width-1-4">Item 2</div>
+		<div class="jm-focus-right uk-width-1-4"> 
+
+			<div class="jm-card-s1 uk-card">
+				<div class="uk-card-header">
+				    <h3 class="uk-card-title"> 最新快讯 </h3>
+				</div>
+				<div class="uk-card-body uk-panel uk-panel-scrollable"  style="height:413px;">
+					<ul class="jm-list-s1 uk-list">
+						<li mp:for-from="0" mp:for-to="8" >
+							<div class="jm-item uk-flex">
+								<div class="icon" uk-icon="icon:triangle-right"></div>
+								<div>
+									<div class="title"> <a href="#">马云之后阿里巴巴三度换法人代表，由张勇换为戴珊 {{index}} </a> </div>
+									<div class="published_at uk-text-muted">4分钟前</div>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div> <!-- END jm-focus-right -->
 	</div>
 </div></section>  <!-- END jm-focus -->
 

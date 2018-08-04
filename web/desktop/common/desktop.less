@@ -14,7 +14,7 @@ body,html {
 }
 
 a { color: @linkColor; text-decoration: none; }
-a:hover { color: @linkHoverColor; }
+.uk-link:hover, a:hover { color: @linkHoverColor; text-decoration: none; }
 .uk-active>a { color: @linkActiveColor; }
 
 /* 通用定义 */
@@ -48,6 +48,45 @@ a:hover { color: @linkHoverColor; }
 	background-color: #ffffff;
 }
 
+.jm-card-s1 {
+	padding: 0px;
+	margin: 0px;
+	background: #ffffff;
+
+	.uk-card-title {
+		font-size: 1rem;
+		font-weight: 500;
+	}
+	.uk-card-header {
+		margin: 0px; 
+		border-top: 2px solid @primaryColor;
+		padding: .6em 1em .6em 1em;
+	}
+
+	.uk-card-body {
+		margin: 0px;
+		padding: 0em 1em 1em 1em;
+		font-size: 14px;
+	}
+
+	.uk-panel {
+		border: none;
+	}
+
+	.uk-panel-scrollable {
+		resize: none;
+	}
+}
+
+
+.jm-list-s1 {
+	.jm-item {padding-bottom: .5em;}
+	.icon { color: @linkHoverColor; }
+	.published_at { margin-top:.2em; }
+}
+
+
+/* 兼容其他页面 */
 
 * {-webkit-box-sizing: border-box;-moz-box-sizing: border-box; box-sizing: border-box; margin:0; padding:0;}
 input{outline:none;}
