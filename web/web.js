@@ -6,7 +6,9 @@ Web({
 
 		// 所有页面都运行的
 		$(() => {
-			$("[data-toggle='popover']").popover({trigger:'hover'});
+			try {
+				$("[data-toggle='popover']").popover({trigger:'hover'});
+			} catch (e) {}
 			this.fixTooltip();
 		});
 	},
