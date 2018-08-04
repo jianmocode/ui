@@ -20,6 +20,7 @@
 			<ul class="uk-navbar-nav uk-margin-left">
 				<li class="uk-active"><a href="">首页</a></li>
 				<li><a href="">新闻</a></li>
+				<li><a class="uk-text-danger" href="">直播</a></li>
 				<li><a href="">视频</a></li>
 				<li><a href="">教程</a></li>
 				<li><a href="">下载</a></li>
@@ -31,14 +32,14 @@
 		<div class="uk-navbar-right">
 			<ul class="uk-navbar-nav">
 				<li>
-					<a href="javascript:void(0)">小程序</a>
-					<div class="uk-navbar-dropdown">
+					<a href="javascript:void(0)" >小程序</a>
+					<div uk-dropdown="offset:-20; pos:bottom-justify">
 						<img data-src="{{site.site_logo.url}}"  alt="{{site.site_name}}" uk-img>
 					</div>
 				</li>
 				<li>
 					<a href="javascript:void(0)">公众号</a>
-					<div class="uk-navbar-dropdown">
+					<div uk-dropdown="offset:-20; pos:bottom-justify">
 						<img data-src="{{site.site_logo.url}}"  alt="{{site.site_name}}" width="200" uk-img>
 						<div class="uk-text-center uk-margin-small-top uk-text-bold">公众号名称</div>
 					</div>
@@ -128,10 +129,16 @@
 					</ul>
 				</div> <!-- END uk-card-body -->
 			</div> <!-- END jm-card-s1 -->
-			
+
 		</div> <!-- END jm-focus-right -->
 	</div>
 </div></section>  <!-- END jm-focus -->
+
+
+<section class="jm-recommends uk-section"><div class="uk-container" >
+
+	XXX
+</div></section> <!-- END jm-recommends -->
 
 
 <include src="__WEB_ROOT__/desktop/common/foot.page"  />
