@@ -123,12 +123,12 @@
 									<div class="title"> <a href="#">马云之后阿里巴巴三度换法人代表，由张勇换为戴珊 {{index}} </a> </div>
 									<div class="published_at uk-text-muted">4分钟前</div>
 								</div>
-							</a>
+							</div>
 						</li>
 					</ul>
-				</div>
+				</div> <!-- END uk-card-body -->
 			</div> <!-- END jm-card-s1 -->
-
+			
 		</div> <!-- END jm-focus-right -->
 	</div>
 </div></section>  <!-- END jm-focus -->
