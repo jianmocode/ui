@@ -2,15 +2,16 @@
 
 <section class="jm-topnav  uk-background-muted " ><div class="uk-container uk-clearfix">
 	<div class="uk-float-right"> 
-		<a class="uk-link-muted" href="#投稿">投稿</a> 
-		<a class="uk-link-muted uk-margin-small-left" href="#投稿">合作</a> 
+		<a class="uk-link-muted" href="#投稿">我要投稿</a> 
+		<a class="uk-link-muted uk-margin-small-left" href="#投稿">联系我们</a> 
+		<a class="uk-link-muted uk-margin-small-left" href="#投稿">常见问题</a> 
 	</div>
 	<div class="uk-float-left">
 	    信息形於简墨
 	</div>
 </div></section> <!-- END jm-topnav -->
 
-<section class="jm-navbar" style="z-index: 980;" uk-sticky="bottom: #offset"><div class="uk-container">
+<section class="jm-navbar" style="z-index: 980;"  uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky"><div class="uk-container">
 	<nav class="uk-navbar-container  uk-navbar-transparent uk-dark" uk-navbar  >
 		<div class="uk-navbar-left">
 			<a class="uk-navbar-item uk-logo uk-padding-remove-horizontal" href="#">
@@ -20,9 +21,30 @@
 				<li class="uk-active"><a href="">首页</a></li>
 				<li><a href="">新闻</a></li>
 				<li><a href="">视频</a></li>
-				<li><a href="">公开课</a></li>
-				<li><a href="">资源</a></li>
+				<li><a href="">教程</a></li>
+				<li><a href="">下载</a></li>
+				<li><a href="">活动</a></li>
 				<li><a href="">酷站</a></li>
+			</ul> 
+		</div><!-- END uk-navbar-left -->
+
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav">
+				<li>
+					<a href="javascript:void(0)">小程序</a>
+					<div class="uk-navbar-dropdown">
+						<img data-src="{{site.site_logo.url}}"  alt="{{site.site_name}}" uk-img>
+					</div>
+				</li>
+				<li>
+					<a href="javascript:void(0)">公众号</a>
+					<div class="uk-navbar-dropdown">
+						<img data-src="{{site.site_logo.url}}"  alt="{{site.site_name}}" width="200" uk-img>
+						<div class="uk-text-center uk-margin-small-top uk-text-bold">公众号名称</div>
+					</div>
+				</li>
+				<li><a href="">注册</a></li>
+				<li><a href="">登录</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -92,7 +114,7 @@
 				<div class="uk-card-header">
 				    <h3 class="uk-card-title"> 最近更新 </h3>
 				</div>
-				<div class="uk-card-body uk-panel uk-panel-scrollable"  style="height:413px;">
+				<div class="uk-card-body uk-panel uk-panel-scrollable"  style="height:402px;">
 					<ul class="jm-list-s1 uk-list">
 						<li mp:for-from="0" mp:for-to="8" >
 							<div class="jm-item uk-flex">
@@ -105,7 +127,7 @@
 						</li>
 					</ul>
 				</div>
-			</div>
+			</div> <!-- END jm-card-s1 -->
 
 		</div> <!-- END jm-focus-right -->
 	</div>
