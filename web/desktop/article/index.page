@@ -13,7 +13,7 @@
 <section class="jm-navbar" style="z-index: 980;" uk-sticky="bottom: #offset"><div class="uk-container">
 	<nav class="uk-navbar-container  uk-navbar-transparent uk-dark" uk-navbar  >
 		<div class="uk-navbar-left">
-			<a class="uk-navbar-item uk-logo" href="#">
+			<a class="uk-navbar-item uk-logo uk-padding-remove-horizontal" href="#">
 				<img data-src="{{site.site_logo.url}}"  alt="{{site.site_name}}" uk-img>
 			</a>
 			<ul class="uk-navbar-nav uk-margin-left">
@@ -31,7 +31,9 @@
 <section class="jm-focus uk-section uk-background-muted"><div class="uk-container" >
 	<div class="uk-flex">
 		<div class="jm-focus-left uk-width-3-4">
-			<div class="uk-flex">
+
+			<div class="jm-focus-left-top uk-flex">
+
 				<div class="jm-focus-slideshow uk-width-2-3" >
 					<div class="uk-position-relative uk-visible-toggle" uk-slideshow="animation: push">
 						<ul class="uk-slideshow-items" >
@@ -75,7 +77,8 @@
 					    </div>
 					</a>
 				</div> <!-- END jm-focus-topics -->
-			</div>
+
+			</div> <!-- END jm-focus-left-top --> 
 
 			<a class="jm-focus-advs uk-display-block uk-width-1-1 uk-margin-small-top" href="#3" > 
 				<img src="https://hx24.huoxing24.com/image/news/2018/07/23/1532313546036705.gif" width="868"  alt="" >
@@ -85,63 +88,7 @@
 
 		<div class="jm-focus-right uk-width-1-4">Item 2</div>
 	</div>
-</div></section>
+</div></section>  <!-- END jm-focus -->
 
-
-<section class="jm-focus  uk-background-muted uk-hidden"><div class="uk-container" >
-
-	<div class="uk-margin-medium-top uk-margin-medium-bottom" uk-grid>
-		<div class="uk-width-3-4" uk-grid> 
-			<!-- jm-focus-slideshow --> 
-			<div class="jm-focus-slideshow uk-width-2-3" >
-				<div class="uk-position-relative uk-visible-toggle" uk-slideshow="animation: push">
-					<ul class="uk-slideshow-items" >
-						<li>
-							<img src="https://hx24.huoxing24.com/image/news/2018/08/03/1533285956540068.jpg"  alt="" uk-cover>
-							<div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-left uk-padding-small">
-								<p class="uk-margin-remove">BM发文：EOS资源租赁及租金分配提案</p>
-							</div>
-						</li>
-						<li>
-							<img src="https://hx24.huoxing24.com/image/news/2018/08/03/1533267459437198.jpg" alt="" uk-cover>
-							<div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-left uk-padding-small">
-								<p class="uk-margin-remove">梭哈、套牢与不死的暴富梦：抵押房产炒币和被套牢的学区房首付</p>
-							</div>
-						</li>
-					</ul>
-					<div class="uk-light">
-						<a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-						<a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
-					</div>
-				</div>
-			</div><!-- END jm-focus-slideshow -->
-
-			<div class="jm-focus-topic uk-width-1-3 uk-padding-small uk-padding-remove-vertical" style="padding-left: 12px;" > 
-				<div class="uk-inline">
-				    <img src="https://hx24.huoxing24.com/image/news/2018/08/03/1533268449565613.jpg"  width="235" alt="" >
-				    <div class="uk-overlay uk-light uk-position-bottom uk-text-left uk-padding-small">
-				        <p></p>
-				    </div>
-				</div>
-				<div class="uk-inline uk-margin-small-top">
-				    <img src="https://hx24.huoxing24.com/image/news/2018/08/03/1533290394343853.jpg" width="235" alt="" >
-				    <div class="uk-overlay uk-light uk-position-bottom uk-text-left uk-padding-small">
-				        <p>比特币6连跌，8月的行情会怎么走？ </p>
-				    </div>
-				</div>
-			</div> <!-- END jm-focus-topic -->
-
-			<div class="jm-focus-advs uk-width-1-1 uk-margin-small-top" > 
-				<img src="https://hx24.huoxing24.com/image/news/2018/07/23/1532313546036705.gif" width="800"  alt="" >
-			</div>
-		</div>
-		<div class="jm-focus-sidebar uk-width-1-4 uk-padding-remove-horizontal">
-			<ul class="uk-tab-bottom uk-child-width-expand" uk-tab >
-			    <li class="uk-active " ><a href="#" style="border-width:2px;">Left</a></li>
-			</ul>
-		</div>
-	</div>
-
-</div></section> <!-- END jm-focus -->
 
 <include src="__WEB_ROOT__/desktop/common/foot.page"  />
