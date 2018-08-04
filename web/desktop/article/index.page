@@ -147,6 +147,8 @@
 		</div> <!-- END jm-recommends-header -->
 
 		<div  class="jm-recommends-body" >
+
+			<!-- Todo: 作为组件引用 -->
 			<include src="__WEB_ROOT__/desktop/widget/recommend/list.page" /> 
 		</div>
 	</div>
