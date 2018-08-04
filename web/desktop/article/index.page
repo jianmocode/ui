@@ -1,60 +1,147 @@
 <include src="__WEB_ROOT__/desktop/common/head.page"  />
-<section class="uk-background-muted" >
-	<div class="uk-container uk-clearfix uk-text-small uk-padding-small">
-		<div class="uk-float-right"> 
-			<a class="uk-link-muted" href="#投稿">投稿</a> 
-			<a class="uk-link-muted uk-margin-small-left" href="#投稿">合作</a> 
-		</div>
-		<div class="uk-float-left">
-	        信息形简墨
-	    </div>
-	</div>	
-</section>
 
-<section>
-	<div class="uk-container">
-		<nav class="uk-navbar-container  uk-navbar-transparent uk-dark" uk-navbar >
-			<div class="uk-navbar-left">
-				<a class="uk-navbar-item uk-logo" href="#"><img data-src="{{site.site_logo.url}}"   width="100"  alt="" uk-img></a>
-				<ul class="uk-navbar-nav">
-					<li class="uk-active"><a href="">首页</a></li>
-					<li><a class="uk-text-large" href="">新闻</a></li>
-					<li><a  href="">视频</a></li>
-					<li><a href="">公开课</a></li>
-					<li><a href="">资源</a></li>
-					<li><a href="">酷站</a></li>
-				</ul>
+<section class="jm-topnav  uk-background-muted " ><div class="uk-container uk-clearfix">
+	<div class="uk-float-right"> 
+		<a class="uk-link-muted" href="#投稿">投稿</a> 
+		<a class="uk-link-muted uk-margin-small-left" href="#投稿">合作</a> 
+	</div>
+	<div class="uk-float-left">
+	    信息形於简墨
+	</div>
+</div></section> <!-- END jm-topnav -->
+
+<section class="jm-navbar" style="z-index: 980;" uk-sticky="bottom: #offset"><div class="uk-container">
+	<nav class="uk-navbar-container  uk-navbar-transparent uk-dark" uk-navbar  >
+		<div class="uk-navbar-left">
+			<a class="uk-navbar-item uk-logo" href="#">
+				<img data-src="{{site.site_logo.url}}"  alt="{{site.site_name}}" uk-img>
+			</a>
+			<ul class="uk-navbar-nav uk-margin-left">
+				<li class="uk-active"><a href="">首页</a></li>
+				<li><a href="">新闻</a></li>
+				<li><a href="">视频</a></li>
+				<li><a href="">公开课</a></li>
+				<li><a href="">资源</a></li>
+				<li><a href="">酷站</a></li>
+			</ul>
+		</div>
+	</nav>
+</div></section> <!-- END jm-navbar -->
+
+<section class="jm-focus uk-section uk-background-muted"><div class="uk-container" >
+	<div class="uk-flex">
+		<div class="jm-focus-left uk-width-3-4">
+			<div class="uk-flex">
+				<div class="jm-focus-slideshow uk-width-2-3" >
+					<div class="uk-position-relative uk-visible-toggle" uk-slideshow="animation: push">
+						<ul class="uk-slideshow-items" >
+							<a  href="#11" >
+								<img src="https://hx24.huoxing24.com/image/news/2018/08/03/1533285956540068.jpg" width="600"  alt="" uk-cover>
+								<div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-left uk-padding-small">
+									<p class="uk-margin-remove">BM发文：EOS资源租赁及租金分配提案</p>
+								</div>
+							</a>
+							<a  href="#12" >
+								<img src="https://hx24.huoxing24.com/image/news/2018/08/03/1533267459437198.jpg"  width="600"  alt="" uk-cover>
+								<div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-left uk-padding-small">
+									<p class="uk-margin-remove">梭哈、套牢与不死的暴富梦：抵押房产炒币和被套牢的学区房首付</p>
+								</div>
+							</a>
+							<a  href="#13" >
+								<img src="http://img1.imgtn.bdimg.com/it/u=3228255486,1061662405&fm=11&gp=0.jpg"  width="600"  alt="" uk-cover>
+								<div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-left uk-padding-small">
+									<p class="uk-margin-remove">区块链黑科技</p>
+								</div>
+							</a>
+						</ul>
+						<div class="uk-light">
+							<a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+							<a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+						</div>
+					</div>
+				</div> <!-- END jm-focus-slideshow -->
+
+				<div class="jm-focus-topics uk-width-1-3 uk-padding-small uk-padding-remove-vertical" style="padding-left: 12px;" > 
+					<a class="uk-inline" href="#1">
+					    <img src="https://hx24.huoxing24.com/image/news/2018/08/03/1533268449565613.jpg"  width="255" alt="" >
+					    <div class="uk-overlay uk-light uk-position-bottom uk-text-left uk-padding-small">
+					        <p></p>
+					    </div>
+					</a>
+					<a class="uk-inline uk-margin-small-top" href="#2">
+					    <img src="https://hx24.huoxing24.com/image/news/2018/08/03/1533290394343853.jpg" width="255" alt="" >
+					    <div class="uk-overlay uk-light uk-position-bottom uk-text-left uk-padding-small">
+					        <p>比特币6连跌，8月的行情会怎么走？ </p>
+					    </div>
+					</a>
+				</div> <!-- END jm-focus-topics -->
 			</div>
-		</nav>
+
+			<a class="jm-focus-advs uk-display-block uk-width-1-1 uk-margin-small-top" href="#3" > 
+				<img src="https://hx24.huoxing24.com/image/news/2018/07/23/1532313546036705.gif" width="868"  alt="" >
+			</a> <!-- END jm-focus-advs -->
+			
+		</div> <!-- END jm-focus-left -->
+
+		<div class="jm-focus-right uk-width-1-4">Item 2</div>
 	</div>
-</section>
-
-<section>
-
-	<div class="uk-container">
+</div></section>
 
 
-		<div class="uk-position-relative uk-visible-toggle uk-light" uk-po  uk-slideshow>
+<section class="jm-focus  uk-background-muted uk-hidden"><div class="uk-container" >
 
-		    <ul class="uk-slideshow-items">
-		        <li>
-		            <img data-src="https://getuikit.com/docs/images/photo.jpg" width="1800" height="1200" alt="" uk-cover uk-img="target: !.uk-slideshow-items">
-		        </li>
-		        <li>
-		            <img data-src="https://getuikit.com/docs/images/dark.jpg" width="1800" height="1200" alt="" uk-cover uk-img="target: !.uk-slideshow-items">
-		        </li>
-		        <li>
-		            <img data-src="https://getuikit.com/docs/images/light.jpg" width="1800" height="1200" alt="" uk-cover uk-img="target: !.uk-slideshow-items">
-		        </li>
-		    </ul>
+	<div class="uk-margin-medium-top uk-margin-medium-bottom" uk-grid>
+		<div class="uk-width-3-4" uk-grid> 
+			<!-- jm-focus-slideshow --> 
+			<div class="jm-focus-slideshow uk-width-2-3" >
+				<div class="uk-position-relative uk-visible-toggle" uk-slideshow="animation: push">
+					<ul class="uk-slideshow-items" >
+						<li>
+							<img src="https://hx24.huoxing24.com/image/news/2018/08/03/1533285956540068.jpg"  alt="" uk-cover>
+							<div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-left uk-padding-small">
+								<p class="uk-margin-remove">BM发文：EOS资源租赁及租金分配提案</p>
+							</div>
+						</li>
+						<li>
+							<img src="https://hx24.huoxing24.com/image/news/2018/08/03/1533267459437198.jpg" alt="" uk-cover>
+							<div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-left uk-padding-small">
+								<p class="uk-margin-remove">梭哈、套牢与不死的暴富梦：抵押房产炒币和被套牢的学区房首付</p>
+							</div>
+						</li>
+					</ul>
+					<div class="uk-light">
+						<a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+						<a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+					</div>
+				</div>
+			</div><!-- END jm-focus-slideshow -->
 
-		    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-		    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+			<div class="jm-focus-topic uk-width-1-3 uk-padding-small uk-padding-remove-vertical" style="padding-left: 12px;" > 
+				<div class="uk-inline">
+				    <img src="https://hx24.huoxing24.com/image/news/2018/08/03/1533268449565613.jpg"  width="235" alt="" >
+				    <div class="uk-overlay uk-light uk-position-bottom uk-text-left uk-padding-small">
+				        <p></p>
+				    </div>
+				</div>
+				<div class="uk-inline uk-margin-small-top">
+				    <img src="https://hx24.huoxing24.com/image/news/2018/08/03/1533290394343853.jpg" width="235" alt="" >
+				    <div class="uk-overlay uk-light uk-position-bottom uk-text-left uk-padding-small">
+				        <p>比特币6连跌，8月的行情会怎么走？ </p>
+				    </div>
+				</div>
+			</div> <!-- END jm-focus-topic -->
 
+			<div class="jm-focus-advs uk-width-1-1 uk-margin-small-top" > 
+				<img src="https://hx24.huoxing24.com/image/news/2018/07/23/1532313546036705.gif" width="800"  alt="" >
+			</div>
 		</div>
-
+		<div class="jm-focus-sidebar uk-width-1-4 uk-padding-remove-horizontal">
+			<ul class="uk-tab-bottom uk-child-width-expand" uk-tab >
+			    <li class="uk-active " ><a href="#" style="border-width:2px;">Left</a></li>
+			</ul>
+		</div>
 	</div>
-	
-</section>
+
+</div></section> <!-- END jm-focus -->
 
 <include src="__WEB_ROOT__/desktop/common/foot.page"  />

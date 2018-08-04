@@ -1,7 +1,54 @@
 @charset "utf-8";
 @import '/desktop/common/vars.less';
 
-html { font-size: 16px; width: 100%;  font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","ED1F53", Arial,sans-serif, 'Apple Color Emoji';  -ms-text-size-adjust: 100%;  -webkit-text-size-adjust: 100%;  }
+body,html {
+	font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
+	-ms-text-size-adjust: 100%;  -webkit-text-size-adjust: 100%; 
+	font-size: 16px; width: 100%; 
+}
+
+/* ui-kit over */
+.uk-background-muted {
+	background-color: @backgroundMutedColor;
+	color:@textMutedColor;
+}
+
+a { color: @linkColor; text-decoration: none; }
+a:hover { color: @linkHoverColor; }
+.uk-active>a { color: @linkActiveColor; }
+
+/* 通用定义 */
+.jm-topnav {  
+	padding-top: 8px;
+	padding-bottom: 8px;
+	font-size: 14px;
+}
+
+.jm-navbar {
+
+	.uk-navbar-nav>li>a {
+		font-size: 1rem;
+		color: @linkColor;
+	}
+
+	.uk-navbar-nav>li>a:hover {
+		color: @linkHoverColor;
+	}
+
+	.uk-navbar-nav>li.uk-active>a{
+		color: @linkActiveColor;
+		font-weight: 500;
+	}
+
+	.uk-logo img {
+		height: 36px;
+	}
+
+	border-bottom: 1px solid @dividerColor;
+	background-color: #ffffff;
+}
+
+
 * {-webkit-box-sizing: border-box;-moz-box-sizing: border-box; box-sizing: border-box; margin:0; padding:0;}
 input{outline:none;}
 ul,li{
