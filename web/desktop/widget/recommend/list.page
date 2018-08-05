@@ -10,7 +10,7 @@
 		</div>
 		<div class="uk-margin-left uk-flex uk-flex-column uk-flex-between">
 			<div class="article">
-				<h4  class="title">70城房价涨跌排行榜：这几个城市跌最狠，有你家乡吗？</h4>
+				<h4  class="title">70城房价涨跌排行榜：这几个城市跌最狠，有你家乡吗？ {{__get.page}}</h4>
 				<p class="summary uk-text-muted">
 					国家统计局公布了6月份全国70个城市房价情况，看看你所在城市的房价现在到底多少钱了，是涨了还是跌了？
 				</p>
