@@ -1,8 +1,16 @@
 @charset "utf-8";
 @import '/desktop/common/desktop.less';
 
-.articles {
+.pagination {
+	.more {
+		width: 95%;	
+		margin-top: 40px;
+		margin-bottom: 40px;
+	}
+}
 
+.articles {
+	
 	.item {
 
 		.uk-label {
@@ -14,6 +22,7 @@
 		width: 95%;
 		padding: 1.2em 0 1.2em 0;
 		border-bottom: 1px solid @dividerColor;
+		
 
 		.title {
 			padding: 0px;
@@ -36,5 +45,9 @@
 
 	.item:hover {
 		background-color: @backgroundMutedColor;
+	};
+
+	.item:last-child {
+		border: none;
 	};
 }

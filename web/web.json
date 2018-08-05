@@ -7,7 +7,8 @@
 	],
 	"common":[
 		"/mobile/common",
-		"/desktop/common"
+		"/desktop/common",
+		"/desktop/widget/recommend"
 	],
 	"storage": {
 		"engine":"minapages",

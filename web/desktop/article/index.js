@@ -1,9 +1,15 @@
 let web = getWeb();
+import articles from '../widget/recommend/list';  // 下一版应该可以引用组件
+
 Page({
 	data:{},
 	onReady: function( params ) {
 		try { this.initRecommendsNavbar(); } catch(e){
 			console.log( 'Error @initRecommendsNavbar', e);
+		}
+
+		try { articles.$load(params, this.data); } catch(e){
+			console.log( 'Error @articles.$load', e);
 		}
 	},
 
