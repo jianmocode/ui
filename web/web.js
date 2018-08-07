@@ -41,8 +41,11 @@ Web({
 				$('.nav').css('top', '0px');
 				$('.nav').addClass('fixed');
 
+				$('.totop').removeClass('uk-hidden');
+
 			} else if ( top < offsetTop ) {
 				$('.nav').removeClass('fixed');
+				$('.totop').addClass('uk-hidden');
 			}
 		});
 	},

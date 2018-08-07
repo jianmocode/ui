@@ -122,7 +122,7 @@
 							<div class="icon" uk-icon="icon:triangle-right"></div>
 							<div>
 								<div class="title"> <a href="#">马云之后阿里巴巴三度换法人代表，由张勇换为戴珊 {{index}} </a> </div>
-								<div class="published_at uk-text-muted">4分钟前</div>
+								<div class="summary">4分钟前</div>
 							</div>
 						</div>
 					</li>
@@ -308,7 +308,7 @@
 		</div>
 	</div>
 	<div class="uk-width-1-2"> 
-		<div class="jm-footer-service uk-card">
+		<div class="jm-footer-service uk-card "> 
 			<div class="uk-card-header">
 				<h3 class="uk-card-title"> 友情链接 </h3>
 			</div>
@@ -346,5 +346,24 @@
 	</div>
 
 </div></div></section> <!-- END jm-footer -->
+
+
+<ul class="jm-quickbar uk-list uk-position-center-right uk-position-fixed uk-iconnav uk-iconnav-vertical">
+	<li>
+		<a href="#" uk-icon="icon: star"></a>
+		<div uk-dropdown="pos:left-center;offset:65">
+			<img data-src="{{site.site_logo.url}}"  alt="{{site.site_name}}" width="200" uk-img>
+			<div class="uk-text-center uk-margin-small-top uk-text-bold">关注简墨, 获取一手资讯</div>
+		</div>
+	</li>
+	<li>
+		<a href="#" uk-icon="icon: phone"></a>
+		<div uk-dropdown="pos:left-center;offset:65" >
+			<img data-src="{{site.site_logo.url}}"  alt="{{site.site_name}}" width="200" uk-img>
+			<div class="uk-text-center uk-margin-small-top uk-text-bold">用手机阅读本页</div>
+		</div>
+	</li>
+	<li class="totop uk-hidden"><a  href="#" uk-icon="icon: chevron-up" uk-scroll="duration:200"  uk-tooltip="title:返回顶部; pos:left; delay: 100" ></a></li>
+</ul>
 
 <include src="__WEB_ROOT__/desktop/common/foot.page"  />

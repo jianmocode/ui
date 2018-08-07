@@ -32,7 +32,7 @@ a { color: @linkColor; text-decoration: none; }
 .jm-topnav {  
 	padding-top: 8px;
 	padding-bottom: 8px;
-	font-size: 14px;
+	font-size: 0.875rem;
 }
 
 .jm-navbar {
@@ -59,6 +59,26 @@ a { color: @linkColor; text-decoration: none; }
 	background-color: #ffffff;
 }
 
+
+.jm-quickbar {
+	li {
+		margin: -1px 0px 0px 0px !important;
+		padding: 0px!important;
+		border: 1px solid @dividerColor;
+	}
+	a {
+		background: @lightColor;
+		padding: 12px;
+		margin:0px 0px 0px 0px !important;
+		cursor: pointer;
+	}
+
+	a:hover {
+		background: @primaryColor;
+		color: @lightColor;
+	}
+}
+
 .jm-card-s1 {
 	padding: 0px;
 	margin: 0px;
@@ -78,7 +98,7 @@ a { color: @linkColor; text-decoration: none; }
 		margin: 0px;
 		padding: 0em 1em 1em 1em;
 		overflow: hidden;
-		font-size:14px;
+		font-size:0.875rem;
 	}
 
 	.uk-panel {
@@ -93,7 +113,7 @@ a { color: @linkColor; text-decoration: none; }
 .jm-list-s1 {
 	.jm-item {padding-bottom: .5em;}
 	.icon { color: @linkHoverColor; }
-	.published_at { margin-top:.2em; }
+	.summary { margin-top:.125em; color: @textMutedColor; font-size: 0.8125rem; }
 }
 
 .jm-card-s2 {
@@ -117,7 +137,7 @@ a { color: @linkColor; text-decoration: none; }
 	.uk-card-body {
 		margin: 0px;
 		padding: 0px 1em 1em 1em;
-		font-size: 14px;
+		font-size: 0.875rem;
 	}
 }
 
@@ -140,7 +160,7 @@ a { color: @linkColor; text-decoration: none; }
 
 	img { height: 100%; }
 	.jm-item {padding-bottom: .5em;}
-	.summary { margin-top:.2em; }
+	.summary { margin-top:.2em; color: @textMutedColor; font-size: 0.8125rem; }
 	.title { font-size: 1rem; }
 }
 
@@ -166,7 +186,7 @@ a { color: @linkColor; text-decoration: none; }
 	.uk-card-body {
 		margin: 0px;
 		padding: 0px 1em 1em 1em;
-		font-size: 14px;
+		font-size: 0.875rem;
 	}
 }
 
@@ -205,7 +225,7 @@ a { color: @linkColor; text-decoration: none; }
 	.uk-card-body {
 		margin: 0px;
 		padding: 0px 1em 0em 1em;
-		font-size: 14px;
+		font-size: 0.875rem;
 	}
 }
 
@@ -221,7 +241,7 @@ a { color: @linkColor; text-decoration: none; }
 		.summary { .setAlpha(1); }
 	}
 	.summary {
-		font-size: 0.85rem;
+		font-size: 0.875rem;
 		padding:.5em .5em;
 		background: rgba(0,0,0,.6);
 		color: #ffffff;
@@ -272,7 +292,7 @@ a { color: @linkColor; text-decoration: none; }
 	.uk-card-body {
 		margin: 0px;
 		padding: 0px 1em 0em 1em;
-		font-size: 14px;
+		font-size: 0.875rem;
 	}
 }
 
@@ -294,7 +314,7 @@ a { color: @linkColor; text-decoration: none; }
 	}
 
 	img { height: 100%; }
-	.summary { margin-top:.2em; font-size: 0.8rem; }
+	.summary { margin-top:.2em; font-size: 0.8125rem; color:@textMutedColor; }
 	.title { font-size: 0.9rem; }
 }
 
@@ -305,7 +325,7 @@ a { color: @linkColor; text-decoration: none; }
 	color: @textMutedColor;
 	height: 400px;
 	.jm-footer-company {
-		font-size: 0.85rem;
+		font-size: 0.8125rem;
 	}
 
 
@@ -334,7 +354,7 @@ a { color: @linkColor; text-decoration: none; }
 
 	.jm-footer-contact {
 		.uk-card-body {
-			font-size: 0.85rem;
+			font-size: 0.8125rem;
 		}
 	}
 }
