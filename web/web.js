@@ -9,6 +9,19 @@ Web({
 			try {
 				$("[data-toggle='popover']").popover({trigger:'hover'});
 			} catch (e) {}
+
+			try {
+				$("[data-toggle='slimscroll']").each( (idx,eml )=>{
+					var h = $(eml).outerHeight() ;
+					var size= $(eml).attr('data-size') || 4;
+					try { $(eml).slimscroll({
+						height: h + 'px',
+						size: size + 'px',
+						color: '#0c7ff2'
+					}); } catch( e) {}
+				})
+			} catch(e) {}
+
 			this.fixTooltip();
 		});
 	},

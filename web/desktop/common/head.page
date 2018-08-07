@@ -13,5 +13,6 @@
 		<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/js/uikit.min.js"></script>
 		<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/js/uikit-icons.min.js"></script>
 		<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/js/jquery.slimscroll.min.js"></script>
 	</head>
 	<body>
