@@ -172,7 +172,7 @@
 					</li>
 				</ul>
 			</div> <!-- END uk-card-body -->
-		</div> <!-- END jm-card-s2 今日酷站 -->
+		</div> <!-- END jm-card-s2  -->
 		
 
 		<div class="jm-card-s3 uk-card uk-margin-top">
@@ -185,7 +185,7 @@
 						<a>
 							<div class="uk-card uk-card-hover">
 								<div class="uk-card-media-top">
-									<img src="https://hx24.huoxing24.com/image/news/2018/08/07/1533626155173781.png" alt="">
+									<img src="https://hx24.huoxing24.com/image/news/2018/08/07/1533626155173781.png" width="100%" alt="" uk-img>
 								</div>
 								<div class="uk-card-body">
 									<h3 class="uk-card-title">2018共享未来区块链峰会</h3>
@@ -194,23 +194,59 @@
 								</div>
 							</div>
 						</a>
-						<li>
+						<a>
 							<div class="uk-card  uk-card-hover ">
 								<div class="uk-card-media-top">
-									<img src="https://hx24.huoxing24.com/image/news/2018/07/31/1533025959039326.jpg" alt="">
+									<img src="https://hx24.huoxing24.com/image/news/2018/07/31/1533025959039326.jpg" width="100%" alt="" uk-img>
 								</div>
 								<div class="uk-card-body">
 									<h3 class="uk-card-title">区块链稳定经济模型设计大赛 </h3>
 									<p class="uk-text-muted">2018年8月25日 @北京 皂君庙</p>
 								</div>
 							</div>
-						</li>
+						</a>
 					</ul>
 				</div>
 				<ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
 			</div> <!-- END uk-card-body -->
-		</div> <!-- END jm-card-s2 今日酷站 -->
+		</div> <!-- END jm-card-s3 -->
 
+
+		<div class="jm-card-s4 uk-card uk-margin-top">
+			<div class="uk-card-header">
+				<h3 class="uk-card-title"> 视频教程 </h3>
+			</div>
+			<div class="uk-card-body uk-panel" >
+				<ul class="jm-list-s4 uk-child-width-1@s uk-grid">
+					<a>
+						<div class="uk-card">
+							
+							<div class="uk-cover-container">
+								<canvas width="100%" height=""></canvas>
+								<img src="https://hx24.huoxing24.com/image/news/2018/07/28/1532768230938607.jpg" alt="" uk-cover>
+							</div>
+							
+							<div class="summary uk-overlay  uk-position-bottom">
+								链对链 | 楼霁月：看好数字货币二级市场，专注熟悉领域享受红利
+							</div>
+							<div class="uk-overlay player uk-position-center"><span uk-icon="icon:play-circle;ratio:2"></span></div>
+						</div>
+					</a>
+					<a>
+						<div class="uk-card">
+							<div class="uk-cover-container">
+								<canvas width="100%" height=""></canvas>
+								<img src="https://hx24.huoxing24.com/image/news/2018/07/24/1532419764262988.jpg" alt="" uk-cover>
+							</div>
+							<div class="uk-overlay summary uk-position-bottom">
+								深度解析Filecoin，小白秒懂
+							</div>
+							<div class="uk-overlay player uk-position-center"><span uk-icon="icon:play-circle;ratio:2"></span></div>
+						</div>
+					</a>
+				</ul>
+			</div> <!-- END uk-card-body -->
+		</div> <!-- END jm-card-s2  -->
 
 
 	</div> <!-- END jm-recommends-right  -->

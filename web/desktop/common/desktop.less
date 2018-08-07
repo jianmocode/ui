@@ -100,7 +100,7 @@ a { color: @linkColor; text-decoration: none; }
 	.uk-card-header {
 		margin: 0px; 
 		border-top: 2px solid @primaryColor;
-		padding: 1em 1em 1em 1em;
+		padding: 1em 1em 0em 1em;
 	}
 
 	.uk-card-body {
@@ -118,9 +118,6 @@ a { color: @linkColor; text-decoration: none; }
 		border-bottom: 1px solid @dividerColor;
 	}
 
-	a:first-child {
-		padding-top: 0em;
-	}
 
 	a:last-child {
 		border-bottom: none;
@@ -174,6 +171,69 @@ a { color: @linkColor; text-decoration: none; }
 	}
 
 }
+
+
+.jm-card-s4 {
+	
+	padding: 0px;
+	margin: 0px;
+	background: #ffffff;
+	border: 1px solid @dividerColor;
+	
+
+	.uk-card-title {
+		font-size: 1rem;
+		font-weight: 500;
+	}
+	.uk-card-header {
+		margin: 0px; 
+		border-top: 2px solid @primaryColor;
+		padding: 1em 1em 1em 1em;
+	}
+
+	.uk-card-body {
+		margin: 0px;
+		padding: 0px 1em 1em 1em;
+		font-size: 14px;
+	}
+}
+
+.jm-list-s4 {
+	
+	a {
+		margin-bottom: 1em;
+	}
+
+
+	a:hover {
+		.player { opacity: 1; filter: Alpha(opacity=100); }
+		.summary { opacity: 1; filter: Alpha(opacity=100); }
+	}
+	.summary {
+		font-size: 0.85rem;
+		padding:.5em .5em;
+		background: rgba(0,0,0,.6);
+		color: #ffffff;
+		opacity: 0.8;
+		filter: Alpha(opacity=80);
+	}
+
+	.player {
+		color: #ffffff;
+		opacity: 0.7;
+		filter: Alpha(opacity=70);
+	}
+
+	.uk-card-body {
+		padding: 1em .5em;
+	}
+
+	.uk-card-title {
+		margin-bottom:.5em;
+	}
+
+}
+
 
 
 .jm-footer {
