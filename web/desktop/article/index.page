@@ -219,6 +219,20 @@
 			<div class="uk-card-body uk-panel" >
 				<ul class="jm-list-s4 uk-child-width-1@s uk-grid">
 					<a>
+						<div class="uk-card uk-text-danger">
+							
+							<div class="uk-cover-container">
+								<canvas width="100%" height=""></canvas>
+								<img src="https://rpic.douyucdn.cn/live-cover/roomCover/2018/08/07/b09fa770b9e6db6b1c002443891886fe.jpg" alt="" uk-cover>
+							</div>
+							
+							<div class="summary uk-overlay  uk-position-bottom ">
+								直播 | 荷尔蒙爵醒 探秘名爵HS静态品鉴会
+							</div>
+							<div class="uk-overlay player uk-position-center"><span uk-icon="icon:play-circle;ratio:2"></span></div>
+						</div>
+					</a>
+					<a>
 						<div class="uk-card">
 							
 							<div class="uk-cover-container">
@@ -227,7 +241,7 @@
 							</div>
 							
 							<div class="summary uk-overlay  uk-position-bottom">
-								链对链 | 楼霁月：看好数字货币二级市场，专注熟悉领域享受红利
+								教程 | 楼霁月：看好数字货币二级市场，专注熟悉领域享受红利
 							</div>
 							<div class="uk-overlay player uk-position-center"><span uk-icon="icon:play-circle;ratio:2"></span></div>
 						</div>
@@ -239,7 +253,7 @@
 								<img src="https://hx24.huoxing24.com/image/news/2018/07/24/1532419764262988.jpg" alt="" uk-cover>
 							</div>
 							<div class="uk-overlay summary uk-position-bottom">
-								深度解析Filecoin，小白秒懂
+								教程 | 深度解析Filecoin，小白秒懂
 							</div>
 							<div class="uk-overlay player uk-position-center"><span uk-icon="icon:play-circle;ratio:2"></span></div>
 						</div>

@@ -206,22 +206,20 @@ a { color: @linkColor; text-decoration: none; }
 
 
 	a:hover {
-		.player { opacity: 1; filter: Alpha(opacity=100); }
-		.summary { opacity: 1; filter: Alpha(opacity=100); }
+		.player { .setAlpha(1);}
+		.summary { .setAlpha(1); }
 	}
 	.summary {
 		font-size: 0.85rem;
 		padding:.5em .5em;
 		background: rgba(0,0,0,.6);
 		color: #ffffff;
-		opacity: 0.8;
-		filter: Alpha(opacity=80);
+		.setAlpha( 0.8 );
 	}
 
 	.player {
 		color: #ffffff;
-		opacity: 0.7;
-		filter: Alpha(opacity=70);
+		.setAlpha( 0.7 );
 	}
 
 	.uk-card-body {
@@ -232,6 +230,13 @@ a { color: @linkColor; text-decoration: none; }
 		margin-bottom:.5em;
 	}
 
+	.uk-text-danger .summary {
+		color: @textDangerColor;
+		background: rgba(0,0,0,1);
+	}
+	.uk-text-danger .player {
+		color: @textDangerColor;
+	}
 }
 
 
@@ -277,7 +282,11 @@ a { color: @linkColor; text-decoration: none; }
 
 
 
-
+.setAlpha(@alpha) {
+	@_a: @alpha * 100;
+	opacity: @alpha;
+	filter: Alpha(opacity=@_a);
+}
 
 
 /* 兼容其他页面 */
