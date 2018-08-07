@@ -137,16 +137,16 @@
 
 		<div class="jm-card-s2 uk-card">
 			<div class="uk-card-header">
-				<h3 class="uk-card-title"> 推荐酷站 </h3>
+				<h3 class="uk-card-title"> {{s.sidebar_section_1.title}} </h3>
 			</div>
 			<div class="uk-card-body uk-panel" >
 				<ul class="jm-list-s2 uk-list">
-					<a class="jm-item" href="#" mp:for-from="0" mp:for-to="6" >
+					<a class="jm-item" href="/article/{{item.article_id}}" mp:for="{{s.sidebar_section_1.contents.data}}" mp:for-from="0" mp:for-to="6" >
 						<div class="uk-flex">
-							<img data-src="https://hx24.huoxing24.com/image/news/2018/08/01/1533091310782867.png"  alt="" width="48" uk-img>
+							<img data-src="{{item.cover.url}}"  alt="" width="48" uk-img>
 							<div class="uk-margin-small-left">
-								<div class="title"> 云之家 {{index}} </div>
-								<div class="summary uk-text-muted">全球最大的去中心化价值网络生态 </div>
+								<div class="title"> {{item.title}} </div>
+								<div class="summary uk-text-muted">{{item.summary}} </div>
 							</div>
 						</div>
 					</li>
@@ -157,31 +157,20 @@
 
 		<div class="jm-card-s3 uk-card uk-margin-top">
 			<div class="uk-card-header">
-				<h3 class="uk-card-title"> 近期活动 </h3>
+				<h3 class="uk-card-title"> {{s.sidebar_section_2.title}} </h3>
 			</div>
 			<div class="uk-card-body" uk-slider="center: true">
 				<div class="uk-position-relative uk-visible-toggle">
 					<ul class="jm-list-s3 uk-slider-items uk-child-width-1@s uk-grid">
-						<a>
+						<a href="/article/{{item.article_id}}" mp:for="{{s.sidebar_section_2.contents.data}}" mp:for-from="0" mp:for-to="6" >
 							<div class="uk-card uk-card-hover">
 								<div class="uk-card-media-top">
-									<img src="https://hx24.huoxing24.com/image/news/2018/08/07/1533626155173781.png" width="100%" alt="" uk-img>
+									<img src="{{item.cover.url}}" width="100%" alt="" uk-img>
 								</div>
 								<div class="uk-card-body">
-									<h3 class="uk-card-title">2018共享未来区块链峰会</h3>
-									<p class="uk-text-muted">2018年8月16日 ～ 2018年8月17日 </p>
-									<p class="uk-text-muted">成都世纪城新国际会展中心 </p>
-								</div>
-							</div>
-						</a>
-						<a>
-							<div class="uk-card  uk-card-hover ">
-								<div class="uk-card-media-top">
-									<img src="https://hx24.huoxing24.com/image/news/2018/07/31/1533025959039326.jpg" width="100%" alt="" uk-img>
-								</div>
-								<div class="uk-card-body">
-									<h3 class="uk-card-title">区块链稳定经济模型设计大赛 </h3>
-									<p class="uk-text-muted">2018年8月25日 @北京 皂君庙</p>
+									<h3 class="uk-card-title">{{item.title}}</h3>
+									<p class="uk-text-muted">{{item.summary}} </p>
+									<!-- <p class="uk-text-muted">成都世纪城新国际会展中心 </p> -->
 								</div>
 							</div>
 						</a>
@@ -194,46 +183,20 @@
 
 		<div class="jm-card-s4 uk-card uk-margin-top">
 			<div class="uk-card-header">
-				<h3 class="uk-card-title"> 视频教程 </h3>
+				<h3 class="uk-card-title"> {{s.sidebar_section_3.title}} </h3>
 			</div>
 			<div class="uk-card-body uk-panel" >
 				<ul class="jm-list-s4 uk-child-width-1@s uk-grid">
-					<a>
-						<div class="uk-card uk-text-danger">
+					<a href="/article/{{item.article_id}}" mp:for="{{s.sidebar_section_3.contents.data}}" mp:for-from="0" mp:for-to="3" >
+						<div class="uk-card ">
 							
 							<div class="uk-cover-container">
 								<canvas width="100%" height=""></canvas>
-								<img src="https://rpic.douyucdn.cn/live-cover/roomCover/2018/08/07/b09fa770b9e6db6b1c002443891886fe.jpg" alt="" uk-cover>
+								<img src="{{item.cover.url}}" alt="" uk-cover>
 							</div>
 							
 							<div class="summary uk-overlay  uk-position-bottom ">
-								直播 | 荷尔蒙爵醒 探秘名爵HS静态品鉴会
-							</div>
-							<div class="uk-overlay player uk-position-center"><span uk-icon="icon:play-circle;ratio:2"></span></div>
-						</div>
-					</a>
-					<a>
-						<div class="uk-card">
-							
-							<div class="uk-cover-container">
-								<canvas width="100%" height=""></canvas>
-								<img src="https://hx24.huoxing24.com/image/news/2018/07/28/1532768230938607.jpg" alt="" uk-cover>
-							</div>
-							
-							<div class="summary uk-overlay  uk-position-bottom">
-								教程 | 楼霁月：看好数字货币二级市场，专注熟悉领域享受红利
-							</div>
-							<div class="uk-overlay player uk-position-center"><span uk-icon="icon:play-circle;ratio:2"></span></div>
-						</div>
-					</a>
-					<a>
-						<div class="uk-card">
-							<div class="uk-cover-container">
-								<canvas width="100%" height=""></canvas>
-								<img src="https://hx24.huoxing24.com/image/news/2018/07/24/1532419764262988.jpg" alt="" uk-cover>
-							</div>
-							<div class="uk-overlay summary uk-position-bottom">
-								教程 | 深度解析Filecoin，小白秒懂
+								{{item.title}}
 							</div>
 							<div class="uk-overlay player uk-position-center"><span uk-icon="icon:play-circle;ratio:2"></span></div>
 						</div>
@@ -249,15 +212,15 @@
 			</div>
 			<div class="uk-card-body uk-panel" >
 				<ul class="jm-list-s5 uk-list">
-					<a class="jm-item" href="#" mp:for-from="0" mp:for-to="6" >
+					<a class="jm-item" href="/article/{{item.article_id}}" mp:for="{{s.sidebar_section_4.contents.data}}" mp:for-from="0" mp:for-to="6" >
 						<div class="uk-flex">
 							<div class="uk-cover-container">
-								<canvas width="210"></canvas>
-								<img src="https://pic.36krcnd.com/201807/31032612/hinvneuko88og8ku!heading" alt="" uk-cover>
+								<canvas width="210" ></canvas>
+								<img src="{{item.cover.url}}" alt="" uk-cover>
 							</div>
 							<div class="uk-margin-small-left uk-flex uk-flex-column uk-flex-between">
-								<div class="title"> 大咖 | 道门网发起人老柯道长 人老柯道长人老柯道长 {{index}} </div>
-								<div class="summary uk-text-muted">2018年4月28日 </div>
+								<div class="title"> {{item.title}}  </div>
+								<div class="summary uk-text-muted">{{HMDATETIME(item.publish_datetime)}}</div>
 							</div>
 						</div>
 					</li>
@@ -278,11 +241,9 @@
 				<h3 class="uk-card-title"> 产品服务 </h3>
 			</div>
 			<div class="uk-card-body" >
-				<ul class="uk-list">
-					<li><a href="#">简墨引擎</a></li>
-					<li><a href="#">简墨外包</a></li>
-					<li><a href="#">简墨CMS</a></li>
-					<li><a href="#">简墨采集</a></li>
+				<ul class="uk-list" mp:for="{{navs}}" mp:for-item="{{nav}}" >
+					<a mp:if="{{nav.link}}" href="{{nav.link}}" target="_blank"  class="{{ (nav.highlight) ? 'uk-text-danger'}}">{{nav.name}}</a>
+					<a mp:else href="/article/list/{{nav.category_id}}"  class="{{nav.highlight ? 'uk-text-danger'}}">{{nav.name}}</a>
 				</ul>
 			</div>
 		</div>
@@ -293,8 +254,8 @@
 				<h3 class="uk-card-title"> 友情链接 </h3>
 			</div>
 			<div class="uk-card-body" >
-				<div class="uk-column-1-6@l">
-					<p mp:for-from="0" mp:for-to="17"> <a href="#">新财经</a></p>
+				<div class="uk-column-1-5@l">
+					<p mp:for="{{links.data}}" > <a href="{{item.link}}" target="_blank">{{item.name}}</a></p>
 				</div>
 			</div>
 		</div>
@@ -302,16 +263,15 @@
 	<div class="uk-width-1-3"> 
 		<div class="jm-footer-contact uk-card">
 			<div class="uk-card-body uk-text-center uk-flex" >
-				<div class="uk-text-center">
-					<img data-src="{{site.site_logo.url}}"  alt="{{site.site_name}}" width="150" uk-img>
-					<div class="uk-text-center uk-margin-small-top">公众号名称</div>
+				<div class="uk-text-center" mp:if="{{site.qr_wxpub.url}}">
+					<img data-src="{{site.qr_wxpub.url}}"  alt="{{site.site_name}}" width="120" uk-img>
+					<div class="uk-text-center uk-margin-small-top">{{site.name_wxpub}}</div>
 				</div>
-
-				<div class="uk-text-left uk-margin-small-left">
-					<div> 客服电话: 400-617-9608 </div>
-					<div> ( 周一至周五 10:00 - 19:00 )</div>
-					<div class="uk-margin-small-top"> 顾问邮箱: jianmo@diancloud.com </div>
-					<div>  顾问微信: jianmo_sup </div>
+				<div class="uk-text-left uk-margin-medium-left">
+					<div mp:if="{{site.tel}}"> 客服电话: {{site.tel}} </div>
+					<div mp:if="{{site.se_time}}"> ( {{site.se_time}} )</div>
+					<div mp:if="{{site.email}}"  class="uk-margin-small-top"> 邮箱: {{site.email}} </div>
+					<div mp:if="{{site.qq}}">  QQ: {{site.qq}} </div>
 				</div>
 			</div>
 		</div>
@@ -321,7 +281,7 @@
 
 	<div class="uk-width-1-1">
 		<div class="jm-footer-company">
-			© 2018 北京云道天成科技有限公司 | 京ICP备12031756号 | 京公网安备11010502036099号
+			<p>© 2018 {{site.company}} | {{site.site_no}}  地址: 北京市海淀区{{site.address}} </p>
 		</div>
 	</div>
 
@@ -332,14 +292,14 @@
 	<li>
 		<a href="#" uk-icon="icon: star"></a>
 		<div uk-dropdown="pos:left-center;offset:65">
-			<img data-src="{{site.site_logo.url}}"  alt="{{site.site_name}}" width="200" uk-img>
-			<div class="uk-text-center uk-margin-small-top uk-text-bold">关注简墨, 获取一手资讯</div>
+			<img data-src="{{site.qr_wxpub.url}}"  alt="{{site.site_name}}" width="200" uk-img>
+			<div class="uk-text-center uk-margin-small-top uk-text-bold">关注{{site.name_wxpub}}</div>
 		</div>
 	</li>
 	<li>
 		<a href="#" uk-icon="icon: phone"></a>
 		<div uk-dropdown="pos:left-center;offset:65" >
-			<img data-src="{{site.site_logo.url}}"  alt="{{site.site_name}}" width="200" uk-img>
+			<img data-src="/_api/xpmsns/pages/article/qrcode?width=200&text={{__sys.location}}" alt="{{site.site_name}}" width="200" uk-img>
 			<div class="uk-text-center uk-margin-small-top uk-text-bold">用手机阅读本页</div>
 		</div>
 	</li>

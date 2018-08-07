@@ -24,6 +24,13 @@
 				"slugs":"focus,latest,section_1"
 			}
 		},
+		"s":{
+			"api":"/xpmsns/pages/recommend/getContents",
+			"query":{
+				"api":"/xpmsns/pages/recommend/getContents",
+				"slugs":"sidebar_section_1,sidebar_section_2,sidebar_section_3,sidebar_section_4"
+			}
+		},
 		"adv_001": {
 			"api":"/xpmsns/pages/adv/get",
 			"query":{
@@ -35,6 +42,12 @@
 			"query":{
 				"select":"title,slug",
 				"slug":"section_1,section_2,section_3,section_4,section_5,section_6"
+			}
+		},
+		"links":{
+			"api":"/xpmsns/pages/links/search",
+			"query":{
+				"select":"name,link"
 			}
 		},
 		"section":"{{r.section_1}}",
