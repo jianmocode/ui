@@ -173,6 +173,45 @@
 				</ul>
 			</div> <!-- END uk-card-body -->
 		</div> <!-- END jm-card-s2 今日酷站 -->
+		
+
+		<div class="jm-card-s3 uk-card uk-margin-top">
+			<div class="uk-card-header">
+				<h3 class="uk-card-title"> 热门活动 </h3>
+			</div>
+			<div class="uk-card-body" uk-slider="center: true">
+				<div class="uk-position-relative uk-visible-toggle">
+					<ul class="jm-list-s3 uk-slider-items uk-child-width-1@s uk-grid">
+						<a>
+							<div class="uk-card uk-card-hover">
+								<div class="uk-card-media-top">
+									<img src="https://hx24.huoxing24.com/image/news/2018/08/07/1533626155173781.png" alt="">
+								</div>
+								<div class="uk-card-body">
+									<h3 class="uk-card-title">2018共享未来区块链峰会</h3>
+									<p class="uk-text-muted">2018年8月16日 ～ 2018年8月17日 </p>
+									<p class="uk-text-muted">成都世纪城新国际会展中心 </p>
+								</div>
+							</div>
+						</a>
+						<li>
+							<div class="uk-card  uk-card-hover ">
+								<div class="uk-card-media-top">
+									<img src="https://hx24.huoxing24.com/image/news/2018/07/31/1533025959039326.jpg" alt="">
+								</div>
+								<div class="uk-card-body">
+									<h3 class="uk-card-title">区块链稳定经济模型设计大赛 </h3>
+									<p>2018年8月25日 @北京 皂君庙</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+			</div> <!-- END uk-card-body -->
+		</div> <!-- END jm-card-s2 今日酷站 -->
+
+
 
 	</div> <!-- END jm-recommends-right  -->
 

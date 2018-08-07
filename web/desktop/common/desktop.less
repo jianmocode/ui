@@ -79,6 +79,12 @@ a { color: @linkColor; text-decoration: none; }
 	}
 }
 
+.jm-list-s1 {
+	.jm-item {padding-bottom: .5em;}
+	.icon { color: @linkHoverColor; }
+	.published_at { margin-top:.2em; }
+}
+
 .jm-card-s2 {
 	
 	padding: 0px;
@@ -102,13 +108,6 @@ a { color: @linkColor; text-decoration: none; }
 		padding: 0px 1em 1em 1em;
 		font-size: 14px;
 	}
-}
-
-
-.jm-list-s1 {
-	.jm-item {padding-bottom: .5em;}
-	.icon { color: @linkHoverColor; }
-	.published_at { margin-top:.2em; }
 }
 
 .jm-list-s2 {
@@ -138,6 +137,43 @@ a { color: @linkColor; text-decoration: none; }
 }
 
 
+.jm-card-s3 {
+	
+	padding: 0px;
+	margin: 0px;
+	background: #ffffff;
+	border: 1px solid @dividerColor;
+	
+
+	.uk-card-title {
+		font-size: 1rem;
+		font-weight: 500;
+	}
+	.uk-card-header {
+		margin: 0px; 
+		border-top: 2px solid @primaryColor;
+		padding: 1em 1em 1em 1em;
+	}
+
+	.uk-card-body {
+		margin: 0px;
+		padding: 0px 1em 1em 1em;
+		font-size: 14px;
+	}
+}
+
+.jm-list-s3 {
+
+	.uk-card-body {
+		padding: 1em .5em;
+		p { margin: .5em 0em; }
+	}
+
+	.uk-card-title {
+		margin-bottom:.2em;
+	}
+
+}
 
 
 .jm-footer {
