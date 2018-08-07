@@ -281,7 +281,7 @@
 
 	<div class="uk-width-1-1">
 		<div class="jm-footer-company">
-			<p>© 2018 {{site.company}} | {{site.site_no}}  地址: 北京市海淀区{{site.address}} </p>
+			<p>© 2018 {{site.company}} | {{site.site_no}}  地址:{{site.address}} </p>
 		</div>
 	</div>
 
