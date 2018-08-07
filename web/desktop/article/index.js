@@ -8,7 +8,8 @@ Page({
 			console.log( 'Error @initRecommendsNavbar', e);
 		}
 
-		try { articles.$load(params, this.data); } catch(e){
+		params['var']['slug'] = 'section_1';
+		try { articles.$load(params, { section:this.data.r.section_1}); } catch(e){
 			console.log( 'Error @articles.$load', e);
 		}
 	},

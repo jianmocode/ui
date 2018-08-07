@@ -2,36 +2,16 @@
 	"cname":"页面部件-推荐列表",
 	"type":"component",
 	"data": {
-		"categories":{
-			"api":"/xpmsns/pages/category/search",
+		"section":{
+			"api":"/xpmsns/pages/recommend/getContents",
 			"query":{
-				"select":"category_id,name",
-				"order":"priority asc",
-				"children":false,
-				"isnav":1
-			}
-		},
-		"site":{
-			"api":"/xpmsns/pages/siteconf/get",
-			"query":{
-				"site_slug":"global",
-				"select":"*"
-			}
-		},
-		"articles":{
-			"api":"/xpmsns/pages/article/search",
-			"query":{
-				"perpage":15,
-				"order":"publish_time desc",
-				"categoryId":"{{current.category_id}}",
+				"slug":"{{__var.slug}}",
 				"page":"{{__get.page}}"
 			}
-		},
-		
-		"loop":[0,1,2,3,4,5,6,7,8,9,10,11,12]
+		}
 	},
 	"entries":[
-		{"method":"GET", "router":"/widget/recommend/list/{slug:[0-9a-zA-Z]+}", "ttl":0}
+		{"method":"GET", "router":"/widget/recommend/list/{slug:[0-9a-zA-Z_]+}", "ttl":0}
 	],
 	"alias": {
 		"mobile":"/mobile/widget/recommend/list",

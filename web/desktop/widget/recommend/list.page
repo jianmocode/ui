@@ -1,31 +1,31 @@
 <div class="articles">
-	<a class="uk-flex item" href="#" mp:for-from="0" mp:for-to="20" >
-		<div class="uk-panel">
-			<img 
-				src="https://pic.36krcnd.com/201808/04125541/zxjot3bg1cx6wdp6!heading?&.png" 
+	<a class="uk-flex item" href="/article/{{item.article_id}}" mp:for="{{section.contents.data}}" >
+		<div class="uk-panel" mp:if="{{item.cover}}" >
+			<img
+				src="{{item.cover.url}}" 
 				width="260" height="150" alt=""   >
-			<div class="uk-position-left uk-text-left uk-margin-small-top uk-margin-small-left" >
+			<div class="uk-position-left uk-text-left uk-margin-small-top uk-margin-small-left uk-hidden" >
 				<span class="uk-label">时尚都市</span>
 			</div>
 		</div>
 		<div class="uk-margin-left uk-flex uk-flex-column uk-flex-between">
 			<div class="article">
-				<h4  class="title">70城房价涨跌排行榜：这几个城市跌最狠，有你家乡吗？ {{__get.page}}</h4>
+				<h4  class="title">{{item.title}}</h4>
 				<p class="summary uk-text-muted">
-					国家统计局公布了6月份全国70个城市房价情况，看看你所在城市的房价现在到底多少钱了，是涨了还是跌了？
+					{{item.summary}}
 				</p>
 			</div>
 			<div class="attrs ">
-				<span class="attr uk-text-muted">财妈说 · 4小时前 </span>
+				<span class="attr uk-text-muted">{{ (item.author) ? item.author : '匿名'}} · {{HMDATETIME(item.publish_datetime)}} </span>
 				<span class="attr uk-text-muted"> 
 					<span uk-icon="tag"></span> 
-					<span href="#">大公司</span>
-					<span href="#">大公司</span>
+					<span mp:for="{{item.category}}" mp:for-item="{{citem}}" class="uk-margin-small-left">{{citem.name}} </span>
 				</span>
 			</div>
 		</div>
 	</a>
 </div>
 <div class="pagination">
-	<button class="more uk-button uk-button-default uk-width-1-1">加载更多</button>
+	<button mp:if="{{section.contents.next}}"
+		class="more uk-button uk-button-default uk-width-1-1" data-next="{{section.contents.next}}" >加载更多 </button>
 </div>

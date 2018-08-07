@@ -2,50 +2,49 @@
 
 <section class="jm-topnav  uk-background-muted " ><div class="uk-container uk-clearfix">
 	<div class="uk-float-right"> 
-		<a class="uk-link-muted" href="#投稿">我要投稿</a> 
-		<a class="uk-link-muted uk-margin-small-left" href="#投稿">联系我们</a> 
-		<a class="uk-link-muted uk-margin-small-left" href="#投稿">常见问题</a> 
+		<a class="uk-link-muted uk-hidden" href="#投稿">我要投稿</a> 
+		<a class="uk-link-muted uk-margin-small-left" href="/article/contact">联系我们</a> 
+		<a class="uk-link-muted uk-margin-small-left" href="/article/faq">常见问题</a> 
 	</div>
 	<div class="uk-float-left">
-		信息形於简墨
+		{{site.site_slogen}}
 	</div>
 </div></section> <!-- END jm-topnav -->
 
 <section class="jm-navbar"  ><div class="uk-container">
 	<nav class="uk-navbar-container  uk-navbar-transparent uk-dark" uk-navbar  >
 		<div class="uk-navbar-left">
-			<a class="uk-navbar-item uk-logo uk-padding-remove-horizontal" href="#">
+			<a class="uk-navbar-item uk-logo uk-padding-remove-horizontal" href="/">
 				<img data-src="{{site.site_logo.url}}"  alt="{{site.site_name}}" uk-img>
 			</a>
 			<ul class="uk-navbar-nav uk-margin-left">
-				<li class="uk-active"><a href="">首页</a></li>
-				<li><a href="">新闻</a></li>
-				<li><a class="uk-text-danger" href="">直播</a></li>
-				<li><a href="">视频</a></li>
-				<li><a href="">教程</a></li>
-				<li><a href="">下载</a></li>
-				<li><a href="">活动</a></li>
-				<li><a href="">酷站</a></li>
+				<li class="uk-active"><a href="/">首页</a></li>
+				<li mp:for="{{navs}}" mp:for-item="{{nav}}" >
+					<a mp:if="{{nav.link}}" href="{{nav.link}}" target="_blank"  class="{{ (nav.highlight) ? 'uk-text-danger'}}">{{nav.name}}</a>
+					<a mp:else href="/article/list/{{nav.category_id}}"  class="{{nav.highlight ? 'uk-text-danger'}}">{{nav.name}}</a>
+				</li>
 			</ul> 
 		</div><!-- END uk-navbar-left -->
 
 		<div class="uk-navbar-right">
 			<ul class="uk-navbar-nav">
-				<li>
+				<li mp:if="{{site.qr_wxapp}}">
 					<a href="javascript:void(0)" >小程序</a>
 					<div uk-dropdown="offset:-20; pos:bottom-justify">
-						<img data-src="{{site.site_logo.url}}"  alt="{{site.site_name}}" uk-img>
+						<img data-src="{{site.qr_wxapp.url}}"  alt="{{site.site_name}}" uk-img>
 					</div>
 				</li>
-				<li>
+				<li mp:if="{{site.qr_wxpub}}">
 					<a href="javascript:void(0)">公众号</a>
 					<div uk-dropdown="offset:-20; pos:bottom-justify">
-						<img data-src="{{site.site_logo.url}}"  alt="{{site.site_name}}" width="200" uk-img>
-						<div class="uk-text-center uk-margin-small-top uk-text-bold">公众号名称</div>
+						<img data-src="{{site.qr_wxpub.url}}"  alt="{{site.site_name}}" width="200" uk-img>
+						<div mp:if="{{site.name_wxpub}}" class="uk-text-center uk-margin-small-top uk-text-bold">
+							{{site.name_wxpub}}
+						</div>
 					</div>
 				</li>
-				<li><a href="">注册</a></li>
-				<li><a href="">登录</a></li>
+				<li><a href="/user/signup">注册</a></li>
+				<li><a href="/user/signin/mobile">登录</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -60,22 +59,10 @@
 			<div class="jm-focus-slideshow uk-width-2-3" >
 				<div class="uk-position-relative uk-visible-toggle" uk-slideshow="animation: push">
 					<ul class="uk-slideshow-items" >
-						<a  href="#11" >
-							<img src="https://hx24.huoxing24.com/image/news/2018/08/03/1533285956540068.jpg" width="600"  alt="" uk-cover>
+						<a  href="/article/{{item.article_id}}" mp:for="{{r.focus.contents.data}}" mp:for-from="0" mp:for-to="3" >
+							<img src="{{item.cover.url}}" width="600"  alt="" uk-cover>
 							<div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-left uk-padding-small">
-								<p class="uk-margin-remove">BM发文：EOS资源租赁及租金分配提案</p>
-							</div>
-						</a>
-						<a  href="#12" >
-							<img src="https://hx24.huoxing24.com/image/news/2018/08/03/1533267459437198.jpg"  width="600"  alt="" uk-cover>
-							<div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-left uk-padding-small">
-								<p class="uk-margin-remove">梭哈、套牢与不死的暴富梦：抵押房产炒币和被套牢的学区房首付</p>
-							</div>
-						</a>
-						<a  href="#13" >
-							<img src="http://img1.imgtn.bdimg.com/it/u=3228255486,1061662405&fm=11&gp=0.jpg"  width="600"  alt="" uk-cover>
-							<div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-left uk-padding-small">
-								<p class="uk-margin-remove">区块链黑科技</p>
+								<p class="uk-margin-remove">{{item.title}}</p>
 							</div>
 						</a>
 					</ul>
@@ -86,25 +73,19 @@
 				</div>
 			</div> <!-- END jm-focus-slideshow -->
 
-			<div class="jm-focus-topics uk-width-1-3 uk-padding-small uk-padding-remove-vertical" style="padding-left: 12px;" > 
-				<a class="uk-inline" href="#1">
-					<img src="https://hx24.huoxing24.com/image/news/2018/08/03/1533268449565613.jpg"  width="255" alt="" >
+			<div class="jm-focus-topics uk-width-1-3 uk-padding-small uk-padding-remove-vertical uk-flex uk-flex-column uk-flex-between" style="padding-left: 12px;" > 
+				<a class="uk-inline" href="/article/{{item.article_id}}" mp:for="{{r.focus.contents.data}}" mp:for-from="4" mp:for-to="6">
+					<img src="{{item.cover.url}}"  width="255" alt="" >
 					<div class="uk-overlay uk-light uk-position-bottom uk-text-left uk-padding-small">
-						<p></p>
-					</div>
-				</a>
-				<a class="uk-inline uk-margin-small-top" href="#2">
-					<img src="https://hx24.huoxing24.com/image/news/2018/08/03/1533290394343853.jpg" width="255" alt="" >
-					<div class="uk-overlay uk-light uk-position-bottom uk-text-left uk-padding-small">
-						<p>比特币6连跌，8月的行情会怎么走？ </p>
+						<p>{{item.title}}</p>
 					</div>
 				</a>
 			</div> <!-- END jm-focus-topics -->
 
 		</div> <!-- END jm-focus-left-top --> 
 
-		<a class="jm-focus-advs uk-display-block uk-width-1-1 uk-margin-small-top" href="#3" > 
-			<img src="https://hx24.huoxing24.com/image/news/2018/07/23/1532313546036705.gif" width="868"  alt="" >
+		<a class="jm-focus-advs uk-display-block uk-width-1-1 uk-margin-small-top" href="{{adv_001.link}}" > 
+			<img src="{{adv_001.images.0.url}}" width="868"  alt="" >
 		</a> <!-- END jm-focus-advs -->
 		
 	</div> <!-- END jm-focus-left -->
@@ -117,12 +98,12 @@
 			</div>
 			<div class="uk-card-body uk-panel uk-text-primary" data-toggle="slimscroll"  style="height:402px;">
 				<ul class="jm-list-s1 uk-list">
-					<li mp:for-from="0" mp:for-to="10" >
+					<li mp:for="{{r.latest.contents.data}}"  >
 						<div class="jm-item uk-flex">
 							<div class="icon" uk-icon="icon:triangle-right"></div>
 							<div>
-								<div class="title"> <a href="#">马云之后阿里巴巴三度换法人代表，由张勇换为戴珊 {{index}} </a> </div>
-								<div class="summary">4分钟前</div>
+								<div class="title"> <a href="/article/{{item.article_id}}">{{item.title}}</a> </div>
+								<div class="summary">{{HMDATETIME(item.publish_datetime)}}</div>
 							</div>
 						</div>
 					</li>
@@ -139,10 +120,9 @@
 	<div class="jm-recommends-left uk-width-3-4" >
 		<div class="jm-recommends-header" uk-sticky="cls-active:jm-recommends-header-active"  >
 			<ul class="jm-recommends-navbar uk-subnav uk-subnav-pill" >
-				<li class="{{ (index == 0) ? 'uk-active'}}"  mp:for-from="0" mp:for-to="9">
-					<a href="#jm-recommends-section" data-remote="/widget/recommend/list/{{index}}" uk-scroll="duration:200"> 栏目 {{index}} </a>
+				<li class="{{ (index == 0) ? 'uk-active'}}" mp:for="{{sections.data}}">
+					<a href="#jm-recommends-section" data-remote="/widget/recommend/list/{{item.slug}}" uk-scroll="duration:200"> {{item.title}} </a>
 				</li>
-				<li> <a href="http://www.baidu.com" class="uk-text-danger" target="_blank">百度</a> </li>
 			</ul>
 		</div> <!-- END jm-recommends-header -->
 
