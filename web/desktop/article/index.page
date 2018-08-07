@@ -115,7 +115,7 @@
 			<div class="uk-card-header">
 				<h3 class="uk-card-title"> 最近更新 </h3>
 			</div>
-			<div class="uk-card-body uk-panel" data-toggle="slimscroll"   style="height:402px;">
+			<div class="uk-card-body uk-panel uk-text-primary" data-toggle="slimscroll"  style="height:402px;">
 				<ul class="jm-list-s1 uk-list">
 					<li mp:for-from="0" mp:for-to="10" >
 						<div class="jm-item uk-flex">

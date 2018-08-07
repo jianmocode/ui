@@ -14,16 +14,23 @@ Web({
 				$("[data-toggle='slimscroll']").each( (idx,eml )=>{
 					var h = $(eml).outerHeight() ;
 					var size= $(eml).attr('data-size') || 4;
+					var color = this.getColor($(eml).css('color'));
 					try { $(eml).slimscroll({
 						height: h + 'px',
 						size: size + 'px',
-						color: '#0c7ff2'
+						color: color
 					}); } catch( e) {}
 				})
 			} catch(e) {}
-
 			this.fixTooltip();
 		});
+	},
+
+
+	getColor: function( rgb ){
+		rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+		function hex(x) {return ("0" + parseInt(x).toString(16)).slice(-2);} 
+		return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]); 
 	},
 
 	fixNav: function() {
