@@ -147,33 +147,36 @@
 		</div> <!-- END jm-recommends-header -->
 
 		<div  class="jm-recommends-body" >
-
 			<!-- Todo: 作为组件引用 -->
 			<include src="__WEB_ROOT__/desktop/widget/recommend/list.page" /> 
 		</div>
-	</div>
+	</div> <!-- END jm-recommends-left -->
+
+
 	<div class="jm-recommends-right uk-width-1-4">
 
-		<div class="jm-card-s1 uk-card">
+		<div class="jm-card-s2 uk-card">
 			<div class="uk-card-header">
-				<h3 class="uk-card-title"> 最近更新 </h3>
+				<h3 class="uk-card-title"> 今日酷站 </h3>
 			</div>
 			<div class="uk-card-body uk-panel" >
-				<ul class="jm-list-s1 uk-list">
-					<li mp:for-from="0" mp:for-to="28" >
-						<div class="jm-item uk-flex">
-							<div class="icon" uk-icon="icon:triangle-right"></div>
-							<div>
-								<div class="title"> <a href="#">马云之后阿里巴巴三度换法人代表，由张勇换为戴珊 {{index}} </a> </div>
-								<div class="published_at uk-text-muted">4分钟前</div>
+				<ul class="jm-list-s2 uk-list">
+					<a class="jm-item" href="#" mp:for-from="0" mp:for-to="6" >
+						<div class="uk-flex">
+							<img data-src="https://hx24.huoxing24.com/image/news/2018/08/01/1533091310782867.png"  alt="" width="48" uk-img>
+							<div class="uk-margin-small-left">
+								<div class="title"> 云之家 {{index}} </div>
+								<div class="summary uk-text-muted">全球最大的去中心化价值网络生态 </div>
 							</div>
 						</div>
 					</li>
 				</ul>
 			</div> <!-- END uk-card-body -->
-		</div> <!-- END jm-card-s1 -->
+		</div> <!-- END jm-card-s2 今日酷站 -->
 
-	</div>
+	</div> <!-- END jm-recommends-right  -->
+
+
 </div></div></section> <!-- END jm-recommends -->
 
 <section class="jm-footer uk-background-secondary uk-light" ><div class="uk-container uk-padding uk-padding-remove-horizontal "><div class="" uk-grid>
