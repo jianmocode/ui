@@ -177,7 +177,7 @@
 
 		<div class="jm-card-s3 uk-card uk-margin-top">
 			<div class="uk-card-header">
-				<h3 class="uk-card-title"> 热门活动 </h3>
+				<h3 class="uk-card-title"> 近期活动 </h3>
 			</div>
 			<div class="uk-card-body" uk-slider="center: true">
 				<div class="uk-position-relative uk-visible-toggle">
@@ -201,7 +201,7 @@
 								</div>
 								<div class="uk-card-body">
 									<h3 class="uk-card-title">区块链稳定经济模型设计大赛 </h3>
-									<p>2018年8月25日 @北京 皂君庙</p>
+									<p class="uk-text-muted">2018年8月25日 @北京 皂君庙</p>
 								</div>
 							</div>
 						</li>
