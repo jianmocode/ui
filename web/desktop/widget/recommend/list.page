@@ -1,9 +1,12 @@
 <div class="articles">
 	<a class="uk-flex item" href="/article/{{item.article_id}}" mp:for="{{section.contents.data}}" >
 		<div class="uk-panel" mp:if="{{item.cover}}" >
-			<img
-				src="{{item.cover.url}}" 
-				width="260" height="150" alt=""   >
+			<div style="min-width:260px;min-height:150px; width:260px; height:150px;overflow: hidden;" >
+				<div class="uk-cover-container">
+					<canvas width="100%" height=""></canvas>
+					<img src="{{item.cover.url}}" alt="" uk-cover>
+				</div>
+			</div>
 			<div class="uk-position-left uk-text-left uk-margin-small-top uk-margin-small-left uk-hidden" >
 				<span class="uk-label">时尚都市</span>
 			</div>

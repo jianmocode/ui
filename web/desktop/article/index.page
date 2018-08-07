@@ -60,7 +60,7 @@
 				<div class="uk-position-relative uk-visible-toggle" uk-slideshow="animation: push">
 					<ul class="uk-slideshow-items" >
 						<a  href="/article/{{item.article_id}}" mp:for="{{r.focus.contents.data}}" mp:for-from="0" mp:for-to="3" >
-							<img src="{{item.cover.url}}" width="600"  alt="" uk-cover>
+							<img src="{{item.cover.url}}"  alt="" uk-cover>
 							<div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-left uk-padding-small">
 								<p class="uk-margin-remove">{{item.title}}</p>
 							</div>
@@ -73,11 +73,14 @@
 				</div>
 			</div> <!-- END jm-focus-slideshow -->
 
-			<div class="jm-focus-topics uk-width-1-3 uk-padding-small uk-padding-remove-vertical uk-flex uk-flex-column uk-flex-between" style="padding-left: 12px;" > 
-				<a class="uk-inline" href="/article/{{item.article_id}}" mp:for="{{r.focus.contents.data}}" mp:for-from="4" mp:for-to="6">
-					<img src="{{item.cover.url}}"  width="255" alt="" >
-					<div class="uk-overlay uk-light uk-position-bottom uk-text-left uk-padding-small">
-						<p>{{item.title}}</p>
+			<div class="jm-focus-topics uk-width-1-3 uk-padding-small uk-padding-remove-vertical" style="padding-left: 12px;" > 
+				<a class="uk-inline uk-margin-small-bottom" href="/article/{{item.article_id}}" mp:for="{{r.focus.contents.data}}" mp:for-from="4" mp:for-to="6">
+					<div class="uk-cover-container" style="min-width:255px;min-height:163px; width:255px; height:163px;overflow: hidden;" >
+						<canvas width="100%" height=""></canvas>
+						<img src="{{item.cover.url}}" style="min-width:255px" alt="" uk-cover>
+						<div class="uk-overlay uk-light uk-position-bottom uk-text-left uk-padding-small">
+							<p>{{item.title}}</p>
+						</div>
 					</div>
 				</a>
 			</div> <!-- END jm-focus-topics -->
@@ -96,7 +99,7 @@
 			<div class="uk-card-header">
 				<h3 class="uk-card-title"> 最近更新 </h3>
 			</div>
-			<div class="uk-card-body uk-panel uk-text-primary" data-toggle="slimscroll"  style="height:402px;">
+			<div class="uk-card-body uk-panel uk-text-primary" data-toggle="slimscroll"  style="height:406px;">
 				<ul class="jm-list-s1 uk-list">
 					<li mp:for="{{r.latest.contents.data}}"  >
 						<div class="jm-item uk-flex">
@@ -214,9 +217,11 @@
 				<ul class="jm-list-s5 uk-list">
 					<a class="jm-item" href="/article/{{item.article_id}}" mp:for="{{s.sidebar_section_4.contents.data}}" mp:for-from="0" mp:for-to="6" >
 						<div class="uk-flex">
-							<div class="uk-cover-container">
-								<canvas width="210" ></canvas>
-								<img src="{{item.cover.url}}" alt="" uk-cover>
+							<div style="min-width:100px;min-height:70px; width:100px; height:70px; overflow: hidden;" >
+								<div class="uk-cover-container">
+									<canvas width="100%" height=""></canvas>
+									<img src="{{item.cover.url}}" alt="" uk-cover>
+								</div>
 							</div>
 							<div class="uk-margin-small-left uk-flex uk-flex-column uk-flex-between">
 								<div class="title"> {{item.title}}  </div>
