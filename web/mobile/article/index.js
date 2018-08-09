@@ -27,7 +27,8 @@ Page({
 				$('.jm-recommends-body').html('<div uk-spinner class="uk-padding-small"></div>');
 				$('.jm-recommends-body').load( link );
 			}
-			return true;
+			// return true;
+			return false;
 		})
 	}
 })
