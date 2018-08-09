@@ -21,6 +21,7 @@ a, a:hover{ text-decoration:none; }
 .jm-subnav {
 	
 	background: @lightColor;
+	border-bottom: 1px solid @dividerColor;
 	a {
 		padding: .5em .5em .5em .5em;
 		color: @linkColor;
@@ -46,4 +47,14 @@ a, a:hover{ text-decoration:none; }
 			margin-top: .2em;
 		}
 	}
+}
+
+
+.logo-light {
+	-webkit-filter: invert(1);
+	filter:invert(1);
+
+	-webkit-filter: brightness(100);
+	filter:brightness(100);
+	
 }

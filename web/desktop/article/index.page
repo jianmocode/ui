@@ -2,9 +2,9 @@
 
 <section class="jm-topnav  uk-background-muted " ><div class="uk-container uk-clearfix">
 	<div class="uk-float-right"> 
-		<a class="uk-link-muted uk-hidden" href="#投稿">我要投稿</a> 
-		<a class="uk-link-muted uk-margin-small-left" href="/article/contact">联系我们</a> 
-		<a class="uk-link-muted uk-margin-small-left" href="/article/faq">常见问题</a> 
+		<a class="uk-link-muted" href="mailto:{{site.email}}?subject=投稿:&lt;请填写文章标题-作者&gt;&body=此处填写文章正文和你的联系方式">我要投稿</a> 
+		<a class="uk-link-muted uk-hidden uk-margin-small-left" href="/article/contact">联系我们</a> 
+		<a class="uk-link-muted uk-hidden uk-margin-small-left" href="/article/faq">常见问题</a> 
 	</div>
 	<div class="uk-float-left">
 		{{site.site_slogen}}
@@ -258,7 +258,7 @@
 			<div class="uk-card-header">
 				<h3 class="uk-card-title"> 友情链接 </h3>
 			</div>
-			<div class="uk-card-body" >
+			<div class="uk-card-body links" >
 				<div class="uk-column-1-4@l">
 					<p mp:for="{{links.data}}" > <a href="{{item.link}}" target="_blank">{{item.name}}</a></p>
 				</div>
