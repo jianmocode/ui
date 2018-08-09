@@ -69,7 +69,7 @@
 		</ul>
 	</div>
 
-	<div  class="jm-recommends-body" >
+	<div  class="jm-recommends-body" style="min-height: 800px;" >
 		<!-- Todo: 作为组件引用 -->
 		<include src="__WEB_ROOT__/mobile/widget/recommend/list.page" /> 
 	</div>

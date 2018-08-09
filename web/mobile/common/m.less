@@ -18,20 +18,28 @@ a, a:hover{ text-decoration:none; }
 	}
 }
 
+
 .jm-subnav {
 	
 	background: @lightColor;
-	border-bottom: 1px solid @dividerColor;
+
+	.jm-slider-w {
+		border-bottom: 1px solid @dividerColor;
+	}
+
 	a {
-		padding: .5em .5em .5em .5em;
+		padding: .5em .8em .5em .8em;
 		color: @linkColor;
 		border-bottom: 1px solid @dividerColor;
 		background: @lightColor;
+		width: auto;
+	
 	}
 
 	a:hover {
 		text-decoration: none;
 	}
+
 
 	.nav-active {
 		color: @primaryColor;
