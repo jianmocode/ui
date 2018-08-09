@@ -12,8 +12,9 @@
 	<!-- 微信 JS SDK -->
 	<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js" mp:if="{{__var.__browser == 'wechat'}}"></script>
 
-	<!-- Image Load Lazysizes @see 	https://github.com/aFarkas/lazysizes -->
-	<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/js/lazysizes.min.js"></script>
-
+	<link rel="stylesheet" href="{{__STOR__::/__PROJECT_NAME/moible/assets}}/css/uikit.min.css" />
+	<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/moible/assets}}/js/uikit.min.js"></script>
+	<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/moible/assets}}/js/uikit-icons.min.js"></script>
+	
 </head>
 <body>
