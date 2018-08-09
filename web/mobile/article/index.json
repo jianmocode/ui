@@ -10,6 +10,11 @@
 				"isnav":1
 			}
 		},
+		
+		"wechat":{
+			"api":"/xpmsns/pages/article/wechat",
+			"query":{}
+		},
 		"site":{
 			"api":"/xpmsns/pages/siteconf/get",
 			"query":{
@@ -42,10 +47,6 @@
 			"title":"{{site.site_name}}",
 			"keywords":"{{site.site_name}}",
 			"description":"{{site.site_intro}}"
-		},
-		"wechat":{
-			"api":"/xpmsns/pages/article/wechat",
-			"query":{}
 		},
 		"page":{
 			"title":"首页"

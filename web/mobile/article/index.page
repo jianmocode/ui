@@ -82,13 +82,12 @@
 	var code = '{{wechat.code}}'
 	if ( code == '') {
 
-		var imgUrl = "{{__STOR__::/__PROJECT_NAME/mobile/assets}}/icons/xpmsns.png";
+		var imgUrl = "{{site.site_logo.url}}";
 		var home = window.location.origin;
 		
 		if ( imgUrl[0] == '/') {
 			imgUrl = home + imgUrl;
 		}
-
 
 		// console.log('weixin', '{{__var.__browser}}', '===');
 		try {
@@ -103,7 +102,7 @@
 			wx.ready(function(){
 
 				wx.onMenuShareTimeline({
-					title:"{{TRIM(current.name)}}|XpmSNS/头条", // 分享标题
+					title:"{{TRIM(current.name)}}|{{site.site_name}}", // 分享标题
 					link: "{{wechat.url}}", // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
 					imgUrl:imgUrl, // 分享图标
 					success: function () { 
@@ -118,8 +117,8 @@
 				});
 
 				wx.onMenuShareAppMessage({
-					title: "{{TRIM(current.name)}}|XpmSNS/头条", // 分享标题
-					desc: "汇聚最有价值文章资讯！", // 分享描述
+					title: "{{TRIM(current.name)}}|{{site.site_name}}", // 分享标题
+					desc: "{{site.site_slogen}}", // 分享描述
 					link: "{{wechat.url}}", 
 					imgUrl:imgUrl, // 分享图标
 					success: function () { 
