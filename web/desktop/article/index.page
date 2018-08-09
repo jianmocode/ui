@@ -243,7 +243,7 @@
 	<div class="uk-width-1-6">  
 		<div class="jm-footer-service uk-card">
 			<div class="uk-card-header">
-				<h3 class="uk-card-title"> 产品服务 </h3>
+				<h3 class="uk-card-title"> {{site.site_name}} </h3>
 			</div>
 			<div class="uk-card-body" >
 				<ul class="uk-list" mp:for="{{navs}}" mp:for-item="{{nav}}" >
@@ -259,7 +259,7 @@
 				<h3 class="uk-card-title"> 友情链接 </h3>
 			</div>
 			<div class="uk-card-body" >
-				<div class="uk-column-1-5@l">
+				<div class="uk-column-1-4@l">
 					<p mp:for="{{links.data}}" > <a href="{{item.link}}" target="_blank">{{item.name}}</a></p>
 				</div>
 			</div>
