@@ -1,7 +1,7 @@
 {
-	"name": "mina-project-kexinyun",
-	"version": "2.0.0",
-	"description": "one mina pages theme",
+	"name": "jm-themes-tech",
+	"version": "1.0.0",
+	"description": "Jianmo CMS Tech themes",
 	"repository": "https://github.com/xpmjs/mina",
 	"dependencies": {
 		"babel-core": "^6.24.1",

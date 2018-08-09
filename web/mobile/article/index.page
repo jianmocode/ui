@@ -1,27 +1,57 @@
 <include src="__WEB_ROOT__/mobile/common/head.page"  />
-<include src="__WEB_ROOT__/mobile/common/header.page"  />
-<div class="wrapper">
-	<div class="item" mp:for="{{articles.data}}" mp:for-item="{{rs}}" onclick="window.location='/m/article/{{rs.article_id}}'">
-		<div class="content">
-			<div class="title">{{rs.title}}</div>
-			<div class="sub">
-				<span>{{rs.publish_date}}</span>
-			</div>
+
+<section class="jm-navbar uk-background-primary uk-light">
+	<nav class="uk-navbar uk-navbar-container uk-navbar-transparent ">
+		<div class="uk-navbar-left">
+			<a class="uk-navbar-item uk-logo uk-padding-remove-horizontal uk-margin-left" href="#">
+				<img src="{{site.site_logo.url}}" style="height:24px;" alt="" uk-img>
+			</a>
 		</div>
-		<div 
-			class="cover" 
-			mp:if="{{rs.cover.url}}"   >
-			<img
-			    data-sizes="120x90"
-			    data-src="{{rs.cover.url}}"
-			  	class="lazyload" />
+	    <div class="uk-navbar-right">
+	        <a class="uk-navbar-toggle" uk-toggle="target: #side-menu" type="button" >
+	            <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left"></span>
+	        </a>
+	    </div>
+	</nav>
+	<div id="side-menu" uk-offcanvas="mode:reveal;overlay:true;flip:true">
+		<div class="uk-offcanvas-bar">
+			<button class="uk-offcanvas-close" type="button" uk-close></button>
+			 <h3>Title</h3>
+			 <p> Someting </p>
 		</div>
 	</div>
-</div>
+</section> <!-- END jm-navbar -->
 
-<div class="xpmsns">
-	<div><img src="{{site.site_logo.url}}"  mode="aspectFit" style="width:150px;" /></div>
-</div>
+<section class="jm-focus">
+	<div class="uk-position-relative uk-visible-toggle" uk-slideshow="animation: push">
+		<ul class="uk-slideshow-items" >
+			<a  href="/article/{{item.article_id}}" mp:for="{{r.focus.contents.data}}" mp:for-from="0" mp:for-to="6" >
+				<img src="{{item.cover.url}}"  alt="" uk-cover>
+				<div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-left uk-padding-small">
+					<p class="uk-margin-remove">{{item.title}}</p>
+				</div>
+			</a>
+		</ul>
+	</div>
+</section> <!-- END jm-focus -->
+
+
+<section id="jm-recommends" class="jm-recommends uk-margin-small-top">
+	<div class="jm-recommends-header" uk-sticky="cls-active:jm-recommends-header-active"  uk-slider="finite: true">
+		<ul class="uk-slider-items jm-subnav  jm-recommends-navbar" >
+			<a href="#jm-recommends" mp:for="{{sections.data}}" class="{{ (index == 0) ? 'nav-active'}}" 
+				data-remote="/m/widget/recommend/list/{{item.slug}}" uk-scroll="duration:200">
+				{{item.title}}
+			</a>
+		</ul>
+	</div>
+
+	<div  class="jm-recommends-body" >
+		<!-- Todo: 作为组件引用 -->
+		<include src="__WEB_ROOT__/mobile/widget/recommend/list.page" /> 
+	</div>
+
+</section>
 
 
 <script type="text/javascript" mp:if="{{__var.__browser == 'wechat' }}">

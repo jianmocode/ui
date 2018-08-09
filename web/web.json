@@ -1,12 +1,14 @@
 {
-	"cname":"XpmSNS默认主题",
+	"cname":"简墨科技主题",
 	"pages":[
 		"/desktop/article/index",
 		"/mobile/article/index",
-		"/desktop/widget/recommend/list"
+		"/desktop/widget/recommend/list",
+		"/mobile/widget/recommend/list"
 	],
 	"common":[
 		"/mobile/common",
+		"/mobile/widget/recommend",
 		"/desktop/common",
 		"/desktop/widget/recommend"
 	],

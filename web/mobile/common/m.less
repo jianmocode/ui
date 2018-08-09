@@ -1,4 +1,39 @@
 @charset "utf-8";
 @import '/vars.less';
-html { font-size: 20px; width: 100%;  font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","ED1F53", Arial,sans-serif, 'Apple Color Emoji';  -ms-text-size-adjust: 100%;  -webkit-text-size-adjust: 100%;  }
+html { font-size: 16px; width: 100%;  font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","ED1F53", Arial,sans-serif, 'Apple Color Emoji';  -ms-text-size-adjust: 100%;  -webkit-text-size-adjust: 100%;  }
 * {-webkit-box-sizing: border-box;-moz-box-sizing: border-box; box-sizing: border-box; margin:0; padding:0;}
+a, a:hover{ text-decoration:none; }
+
+/* overload uikit */
+.uk-padding-small {
+	padding:0.65rem;
+}
+.uk-background-primary {
+	background-color: @primaryColor;
+}
+
+.jm-navbar {
+	nav {
+		height: 52px;
+	}
+}
+
+.jm-subnav {
+	
+	background: @lightColor;
+	a {
+		padding: .5em .5em .5em .5em;
+		color: @linkColor;
+		border-bottom: 1px solid @dividerColor;
+		background: @lightColor;
+	}
+
+	a:hover {
+		text-decoration: none;
+	}
+
+	.nav-active {
+		color: @primaryColor;
+		border-bottom: 2px solid @primaryColor;
+	}
+}

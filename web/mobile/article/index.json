@@ -4,7 +4,7 @@
 		"categories":{
 			"api":"/xpmsns/pages/category/search",
 			"query":{
-				"select":"category_id,name",
+				"select":"category_id,name,highlight,link,slug",
 				"order":"priority asc",
 				"children":false,
 				"isnav":1
@@ -17,27 +17,42 @@
 				"select":"*"
 			}
 		},
-		"current":"{{categories.data.0}}",
-
+		"navs":"{{categories.data}}",
+		"r": {
+			"api":"/xpmsns/pages/recommend/getContents",
+			"query":{
+				"slugs":"focus,latest,section_1"
+			}
+		},
+		"sections":{
+			"api":"/xpmsns/pages/recommend/search",
+			"query":{
+				"select":"title,slug",
+				"slug":"section_1,section_2,section_3,section_4,section_5,section_6"
+			}
+		},
+		"links":{
+			"api":"/xpmsns/pages/links/search",
+			"query":{
+				"select":"name,link"
+			}
+		},
+		"section":"{{r.section_1}}",
+		"seo": {
+			"title":"{{site.site_name}}",
+			"keywords":"{{site.site_name}}",
+			"description":"{{site.site_intro}}"
+		},
 		"wechat":{
 			"api":"/xpmsns/pages/article/wechat",
 			"query":{}
 		},
-		
-		"articles":{
-			"api":"/xpmsns/pages/article/search",
-			"query":{
-				"perpage":15,
-				"order":"publish_time desc",
-				"categoryId":"{{current.category_id}}",
-				"page":"{{__get.page}}"
-			}
-		},
 		"page":{
-			"title":"{{current.name}}"
+			"title":"首页"
 		}
 	},
 	"entries":[
+		{"method":"GET", "router":"/m", "ttl":0},
 		{"method":"GET", "router":"/m/article", "ttl":0}
 	],
 	
