@@ -6,10 +6,23 @@
 			"query":{
 				"select":"category_id,name,highlight,link,slug",
 				"order":"priority asc",
+				"noParentId":"1",
 				"children":false,
 				"isnav":1
 			}
 		},
+		"cate":"{{categories.map.__var.cid}}",
+		"subcates": {
+			"api":"/xpmsns/pages/category/search",
+			"query":{
+				"select":"category_id,name,highlight,link,slug",
+				"order":"priority asc",
+				"children":false,
+				"parentId": "{{ __var.cid}}",
+				"isnav":1
+			}
+		},
+		"subcate":"{{subcates.map.__get.subcate}}",
 		"site":{
 			"api":"/xpmsns/pages/siteconf/get",
 			"query":{
@@ -21,21 +34,14 @@
 		"r": {
 			"api":"/xpmsns/pages/recommend/getContents",
 			"query":{
-				"slugs":"focus,latest,section_1"
+				"slugs":"section_2"
 			}
 		},
 		"s":{
 			"api":"/xpmsns/pages/recommend/getContents",
 			"query":{
 				"api":"/xpmsns/pages/recommend/getContents",
-				"slugs":"sidebar_section_1,sidebar_section_2,sidebar_section_3,sidebar_section_4"
-			}
-		},
-		"sections":{
-			"api":"/xpmsns/pages/recommend/search",
-			"query":{
-				"select":"title,slug",
-				"slug":"section_1,section_2,section_3,section_4,section_5,section_6"
+				"slugs":"sidebar_section_4"
 			}
 		},
 		"links":{
@@ -44,7 +50,7 @@
 				"select":"name,link"
 			}
 		},
-		"section":"{{r.section_1}}",
+		"section":"{{r.section_2}}",
 		"page":{
 			"title":"首页",
 			"logo":"{{site.site_logo}}"

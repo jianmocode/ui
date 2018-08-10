@@ -6,6 +6,7 @@
 			"query":{
 				"select":"category_id,name,highlight,link,slug",
 				"order":"priority asc",
+				"noParentId":"1",
 				"children":false,
 				"isnav":1
 			}

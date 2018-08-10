@@ -19,7 +19,7 @@
 				<li class="{{ (active.nav == '') ? 'uk-active' }}" ><a href="/">首页</a></li>
 				<li class="{{ (active.nav == nav.category_id) ? 'uk-active' }}" mp:for="{{navs}}" mp:for-item="{{nav}}" >
 					<a mp:if="{{nav.link}}" href="{{nav.link}}" target="_blank"  class="{{ (nav.highlight) ? 'uk-text-danger'}}">{{nav.name}}</a>
-					<a mp:else href="/article/list/{{nav.category_id}}"  class="{{nav.highlight ? 'uk-text-danger'}}">{{nav.name}}</a>
+					<a mp:else href="/article/list/{{nav.category_id}}.html"  class="{{nav.highlight ? 'uk-text-danger'}}">{{nav.name}}</a>
 				</li>
 			</ul> 
 		</div><!-- END uk-navbar-left -->
