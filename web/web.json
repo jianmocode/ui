@@ -2,6 +2,7 @@
 	"cname":"简墨科技主题",
 	"pages":[
 		"/desktop/article/index",
+		"/desktop/article/list",
 		"/mobile/article/index",
 		"/desktop/widget/recommend/list",
 		"/mobile/widget/recommend/list"

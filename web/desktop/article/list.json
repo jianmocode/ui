@@ -1,5 +1,5 @@
 {	
-	"cname":"首页",
+	"cname":"图文列表页(二级)",
 	"data": {
 		"categories":{
 			"api":"/xpmsns/pages/category/search",
@@ -31,12 +31,6 @@
 				"slugs":"sidebar_section_1,sidebar_section_2,sidebar_section_3,sidebar_section_4"
 			}
 		},
-		"adv_001": {
-			"api":"/xpmsns/pages/adv/get",
-			"query":{
-				"adv_slug":"index-001"
-			}
-		},
 		"sections":{
 			"api":"/xpmsns/pages/recommend/search",
 			"query":{
@@ -59,14 +53,15 @@
 			"title":"{{site.site_name}}",
 			"keywords":"{{site.site_name}}",
 			"description":"{{site.site_intro}}"
+		},
+		"active": {
+			"nav": "{{__var.cid}}",
+			"subnav": "{{__get.subcid}}"
 		}
 	},
 	"entries":[
-		{"method":"GET", "router":"/", "ttl":0},
-		{"method":"GET", "router":"/index", "ttl":0},
-		{"method":"GET", "router":"/index.html", "ttl":0},
-		{"method":"GET", "router":"/article", "ttl":0},
-		{"method":"GET", "router":"/article.html", "ttl":0}
+		{"method":"GET", "router":"/article/list/{cid:.+}.html", "ttl":0},
+		{"method":"GET", "router":"/article/list/{cid:.+}", "ttl":0}
 	],
 	
 	"alias": {

@@ -16,8 +16,8 @@
 				<img data-src="{{site.site_logo.url}}"  alt="{{site.site_name}}" uk-img>
 			</a>
 			<ul class="uk-navbar-nav uk-margin-left">
-				<li class="uk-active"><a href="/">首页</a></li>
-				<li mp:for="{{navs}}" mp:for-item="{{nav}}" >
+				<li class="{{ (active.nav == '') ? 'uk-active' }}" ><a href="/">首页</a></li>
+				<li class="{{ (active.nav == nav.category_id) ? 'uk-active' }}" mp:for="{{navs}}" mp:for-item="{{nav}}" >
 					<a mp:if="{{nav.link}}" href="{{nav.link}}" target="_blank"  class="{{ (nav.highlight) ? 'uk-text-danger'}}">{{nav.name}}</a>
 					<a mp:else href="/article/list/{{nav.category_id}}"  class="{{nav.highlight ? 'uk-text-danger'}}">{{nav.name}}</a>
 				</li>

@@ -69,7 +69,6 @@
 	
 </div></div></section>  <!-- END jm-focus -->
 
-
 <section id="jm-recommends-section" class="jm-recommends uk-section" style="z-index: 980;" ><div class="uk-container"  ><div class="uk-flex">
 	<div class="jm-recommends-left uk-width-3-4" >
 		<div class="jm-recommends-header" uk-sticky="cls-active:jm-recommends-header-active"  >
@@ -103,7 +102,7 @@
 								<div class="summary uk-text-muted">{{item.summary}} </div>
 							</div>
 						</div>
-					</li>
+					</a>
 				</ul>
 			</div> <!-- END uk-card-body -->
 		</div> <!-- END jm-card-s2  -->
@@ -179,7 +178,7 @@
 								<div class="summary uk-text-muted">{{HMDATETIME(item.publish_datetime)}}</div>
 							</div>
 						</div>
-					</li>
+					</a>
 				</ul>
 			</div> <!-- END uk-card-body -->
 		</div> <!-- END jm-card-s5  -->
