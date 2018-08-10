@@ -1,52 +1,49 @@
-<header>
-	<div class="topbar">
-		<ul class="tb-list left">
-			<li><a href="/landing/download"> 下载APP </a></li>
-			<li>
-				<a  href="#" 
-					data-html="true"
-					data-toggle="popover" 
-				 	data-placement="bottom"
-					data-container="body" 
-					data-content="<img width='150' onclick=$('[data-toggle=popover]').popover('hide') src='{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/qr-wxapp-index.jpg' />"  > 
-					小程序 <span class="m-left-5"><i class="fa fa-angle-down"></i> </span></a>
-			</li>
-			<li>
-				<a  href="#" 
-					data-html="true"
-					data-toggle="popover" 
-				 	data-placement="bottom"
-					data-container="body" 
-					data-content="<img width='150' onclick=$('[data-toggle=popover]').popover('hide') src='{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/qr-m-index.png' />"  > 
-					手机版 <span class="m-left-5"><i class="fa fa-angle-down"></i> </span></a>
-			</li>
-		</ul>
-		<ul class="tb-list right">
-			<li mp:if="{{user.user_id}}" >
-				{{user.nickname}}  <a href="/user/signout"> 退出 </a> 
-			</li>
-			<li><a href="/article"> 首页 </a></li>
-			<li mp:if="{{user.user_id === null}}" ><a href="/user/signup"> 注册 </a></li>
-			<li mp:if="{{user.user_id === null}}" ><a href="/user/signin/mobile"> 登录 </a></li>
-			<li><a href="/landing/mp"> 内容平台</a></li>
-			<li><a href="https://www.xpmsns.com/"> 联系购买 </a></li>
-		</ul>
+<section class="jm-topnav  uk-background-muted uk-hidden " ><div class="uk-container uk-clearfix">
+	<div class="uk-float-right"> 
+		<a class="uk-link-muted" href="mailto:{{site.email}}?subject=投稿:&lt;请填写文章标题-作者&gt;&body=此处填写文章正文和你的联系方式">我要投稿</a> 
+		<a class="uk-link-muted uk-hidden uk-margin-small-left" href="/article/contact">联系我们</a> 
+		<a class="uk-link-muted uk-hidden uk-margin-small-left" href="/article/faq">常见问题</a> 
 	</div>
-	<div class="clear"></div>
+	<div class="uk-float-left">
+		{{site.site_slogen}}
+	</div>
+</div></section> <!-- END jm-topnav -->
 
-	<div class="crumb" mp:if="{{crumbs}}">
-		<div class="container">
-			<div class="logo">
-				<a href="/article"><img src="{{site.site_logo.url}}" alt=""  class="title_block"></a>
-			</div>
-			<ul>
-				<li mp:for="{{crumbs}}" mp:for-item="{{crumb}}" >
-					<a mp:if="{{crumb.link}}" href="{{crumb.link}}" >{{crumb.name}}</a>
-					<span  mp:else>{{crumb.name}}</span>
+<section class="jm-navbar"  ><div class="uk-container">
+	<nav class="uk-navbar-container  uk-navbar-transparent uk-dark" uk-navbar  >
+		<div class="uk-navbar-left">
+			<a class="uk-navbar-item uk-logo uk-padding-remove-horizontal" href="/">
+				<img data-src="{{site.site_logo.url}}"  alt="{{site.site_name}}" uk-img>
+			</a>
+			<ul class="uk-navbar-nav uk-margin-left">
+				<li class="uk-active"><a href="/">首页</a></li>
+				<li mp:for="{{navs}}" mp:for-item="{{nav}}" >
+					<a mp:if="{{nav.link}}" href="{{nav.link}}" target="_blank"  class="{{ (nav.highlight) ? 'uk-text-danger'}}">{{nav.name}}</a>
+					<a mp:else href="/article/list/{{nav.category_id}}"  class="{{nav.highlight ? 'uk-text-danger'}}">{{nav.name}}</a>
 				</li>
+			</ul> 
+		</div><!-- END uk-navbar-left -->
+
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav">
+				<li mp:if="{{site.qr_wxapp}}">
+					<a href="javascript:void(0)" >小程序</a>
+					<div uk-dropdown="offset:-20; pos:bottom-justify">
+						<img data-src="{{site.qr_wxapp.url}}"  alt="{{site.site_name}}" uk-img>
+					</div>
+				</li>
+				<li mp:if="{{site.qr_wxpub}}">
+					<a href="javascript:void(0)">公众号</a>
+					<div uk-dropdown="offset:-20; pos:bottom-justify">
+						<img data-src="{{site.qr_wxpub.url}}"  alt="{{site.site_name}}" width="200" uk-img>
+						<div mp:if="{{site.name_wxpub}}" class="uk-text-center uk-margin-small-top uk-text-bold">
+							{{site.name_wxpub}}
+						</div>
+					</div>
+				</li>
+				<li><a href="/user/signup">注册</a></li>
+				<li><a href="/user/signin/mobile">登录</a></li>
 			</ul>
-			<div class="clear"></div>
-		</div> <!-- END  container -->
-	</div> <!-- END crumb -->
-	
-</header>
+		</div>
+	</nav>
+</div></section> <!-- END jm-navbar -->

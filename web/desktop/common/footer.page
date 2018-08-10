@@ -1,0 +1,52 @@
+<section class="jm-footer uk-background-secondary uk-light" ><div class="uk-container uk-padding uk-padding-remove-horizontal "><div class="" uk-grid>
+	<div class="uk-width-1-6">  
+		<div class="jm-footer-service uk-card">
+			<div class="uk-card-header">
+				<h3 class="uk-card-title"> {{site.site_name}} </h3>
+			</div>
+			<div class="uk-card-body" >
+				<ul class="uk-list" mp:for="{{navs}}" mp:for-item="{{nav}}" >
+					<a mp:if="{{nav.link}}" href="{{nav.link}}" target="_blank"  class="{{ (nav.highlight) ? 'uk-text-danger'}}">{{nav.name}}</a>
+					<a mp:else href="/article/list/{{nav.category_id}}"  class="{{nav.highlight ? 'uk-text-danger'}}">{{nav.name}}</a>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="uk-width-1-2"> 
+		<div class="jm-footer-service uk-card "> 
+			<div class="uk-card-header">
+				<h3 class="uk-card-title"> 友情链接 </h3>
+			</div>
+			<div class="uk-card-body links" >
+				<div class="uk-column-1-4@l">
+					<p mp:for="{{links.data}}" > <a href="{{item.link}}" target="_blank">{{item.name}}</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="uk-width-1-3"> 
+		<div class="jm-footer-contact uk-card">
+			<div class="uk-card-body uk-text-center uk-flex" >
+				<div class="uk-text-center" mp:if="{{site.qr_wxpub.url}}">
+					<img data-src="{{site.qr_wxpub.url}}"  alt="{{site.site_name}}" width="120" uk-img>
+					<div class="uk-text-center uk-margin-small-top">{{site.name_wxpub}}</div>
+				</div>
+				<div class="uk-text-left uk-margin-medium-left">
+					<div mp:if="{{site.tel}}"> 客服电话: {{site.tel}} </div>
+					<div mp:if="{{site.se_time}}"> ( {{site.se_time}} )</div>
+					<div mp:if="{{site.email}}"  class="uk-margin-small-top"> 邮箱: {{site.email}} </div>
+					<div mp:if="{{site.qq}}">  QQ: {{site.qq}} </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr class="uk-width-1-1" />
+
+	<div class="uk-width-1-1">
+		<div class="jm-footer-company">
+			<p>© 2018 {{site.company}} | {{site.site_no}}  地址:{{site.address}} </p>
+		</div>
+	</div>
+
+</div></div></section> <!-- END jm-footer -->
