@@ -37,6 +37,16 @@
 				"slugs":"section_2"
 			}
 		},
+		"articles":{
+			"api":"/xpmsns/pages/article/search",
+			"query":{
+				"perpage":15,
+				"order":"publish_time desc",
+				"categoryId":"{{__var.cid}}",
+				"page":"{{__get.page}}"
+			}
+		},
+		"section":"{{r.section_2}}",
 		"s":{
 			"api":"/xpmsns/pages/recommend/getContents",
 			"query":{
@@ -50,7 +60,6 @@
 				"select":"name,link"
 			}
 		},
-		"section":"{{r.section_2}}",
 		"page":{
 			"title":"首页",
 			"logo":"{{site.site_logo}}"
