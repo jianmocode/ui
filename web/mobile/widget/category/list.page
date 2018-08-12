@@ -1,0 +1,25 @@
+<div class="articles">
+	<a class="uk-flex item" href="/article/{{item.article_id}}" mp:for="{{articles.data}}" >
+		<div class="uk-panel" mp:if="{{item.cover}}" >
+			<div style="min-width:120px;min-height:70px; width:120px; height:70px;overflow: hidden;" >
+				<div class="uk-cover-container">
+					<canvas width="100%" height=""></canvas>
+					<img src="{{item.cover.url}}" alt="" uk-cover>
+				</div>
+			</div>
+		</div>
+		<div class="uk-margin-left uk-flex uk-flex-column uk-flex-between">
+			<div class="article">
+				<h4 class="title">{{item.title}}</h4>
+			</div>
+			<div class="attrs ">
+				<span class="attr uk-text-muted">{{ (item.author) ? item.author : '匿名' }} · {{HMDATETIME(item.publish_datetime)}} </span>
+			</div>
+		</div>
+	</a>
+</div>
+<div class="pagination">
+	<button mp:if="{{articles.next}}"
+		class="more uk-button uk-button-default uk-width-1-1" data-next="{{articles.next}}" >加载更多 </button>
+	<hr mp:else class="uk-divider-icon">
+</div>

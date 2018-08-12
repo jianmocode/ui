@@ -1,0 +1,26 @@
+<include src="__WEB_ROOT__/mobile/common/head.page"  />
+<include src="__WEB_ROOT__/mobile/common/header.page"  />
+
+<section id="jm-recommends" class="jm-recommends uk-margin-small-top">
+	<div class="jm-recommends-header" uk-sticky="cls-active:jm-recommends-header-active"  uk-slider="finite: true"  mp:if="{{subcates.total > 0}}" >
+		<ul class="uk-slider-items jm-subnav  jm-recommends-navbar" >
+			<a href="#jm-recommends"  class="{{(subcate == '') ? 'nav-active'}}" 
+				data-remote="/m/widget/category/list/{{__var.cid}}" uk-scroll="duration:200">
+				最近更新
+			</a>
+			<a href="#jm-recommends" mp:for="{{subcates.data}}" class="{{ (item.category_id == subcate.category_id) ? 'nav-active'}}" 
+				data-remote="/m/widget/category/list/{{__var.cid}}?subcate={{item.category_id}}" uk-scroll="duration:200">
+				{{item.name}}
+			</a>
+		</ul>
+	</div>
+
+	<div  class="jm-recommends-body" style="min-height: 800px;" >
+		<!-- Todo: 作为组件引用 -->
+		<include src="__WEB_ROOT__/mobile/widget/category/list.page" /> 
+	</div>
+
+</section>
+
+<include src="__WEB_ROOT__/mobile/common/footer.page"  />
+<include src="__WEB_ROOT__/mobile/common/foot.page"  />

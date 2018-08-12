@@ -1,0 +1,23 @@
+{	
+	"cname":"页面部件-分类列表",
+	"type":"component",
+	"data": {
+		"articles":{
+			"api":"/xpmsns/pages/article/search",
+			"query":{
+				"perpage":20,
+				"order":"publish_time desc",
+				"categoryId":"{{__var.cid}}",
+				"subcateId":"{{__get.subcate}}",
+				"page":"{{__get.page}}"
+			}
+		}
+	},
+	"entries":[
+		{"method":"GET", "router":"/m/widget/category/list/{cid:[0-9a-zA-Z_]+}", "ttl":0}
+	],
+	"alias": {
+		"desktop":"/desktop/widget/category/list",
+		"wxapp": "/widget/category/list"
+	}
+}

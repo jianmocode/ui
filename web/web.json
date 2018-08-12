@@ -4,13 +4,16 @@
 		"/desktop/article/index",
 		"/desktop/article/list",
 		"/mobile/article/index",
+		"/mobile/article/list",
 		"/desktop/widget/recommend/list",
 		"/desktop/widget/category/list",
-		"/mobile/widget/recommend/list"
+		"/mobile/widget/recommend/list",
+		"/mobile/widget/category/list"
 	],
 	"common":[
 		"/mobile/common",
 		"/mobile/widget/recommend",
+		"/mobile/widget/category",
 		"/desktop/common",
 		"/desktop/widget/recommend",
 		"/desktop/widget/category"

@@ -1,0 +1,56 @@
+@charset "utf-8";
+@import '/mobile/common/m.less';
+
+.pagination {
+	text-align: center;
+	.more {
+		width: 95%;	
+		margin-top: 20px;
+		margin-bottom: 40px;
+	}
+}
+
+.articles {
+	
+	.item {
+
+		width: 100%;
+		padding: 1.2em 1.2em 1.2em 1.2em;
+		border-bottom: 1px solid @dividerColor;
+		text-decoration:none;
+	
+		.uk-label {
+			background: rgba(0,0,0,0.6);
+			color: #ffffff;
+			font-size: 0.8rem;
+			padding:.2em;
+		}
+
+		.title {
+			font-size: 1.125rem;
+			padding: 0px;
+			margin-bottom: .2em;
+		}
+
+		.summary {
+			margin: 0px;
+			font-size: 0.875rem;
+		}
+
+		.attrs {
+			font-size: 0.875rem;
+
+			.attr {
+				margin-right: 3em;
+			}
+		}
+	}
+
+	.item:hover {
+		background-color: @backgroundMutedColor;
+	};
+
+	.item:last-child {
+		border: none;
+	};
+}

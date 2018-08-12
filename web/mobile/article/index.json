@@ -7,10 +7,10 @@
 				"select":"category_id,name,highlight,link,slug",
 				"order":"priority asc",
 				"children":false,
+				"noParentId":"1",
 				"isnav":1
 			}
 		},
-		
 		"wechat":{
 			"api":"/xpmsns/pages/article/wechat",
 			"query":{}

@@ -1,13 +1,44 @@
-<header>
-	<div class="titleBar">
-		<span>{{site.site_name}}/{{current.name}}</span>
-	</div>
-	<nav>
-		<a href="#"><img src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/icons/show_menu.svg" /></a>
-		<ul>
-			<li mp:for="{{categories.data}}" mp:for-item="{{ca}}" onclick="window.location='/m/article/list/{{ca.category_id}}'">
-				<a href="/m/article/list/{{ca.category_id}}" class="{{(ca.category_id == current.category_id) ? 'current'}}"> {{ca.name}} </a>
-			</li>
-		</ul>
+<section class="jm-navbar uk-background-primary uk-light">
+	<nav class="uk-navbar uk-navbar-container uk-navbar-transparent ">
+		<div class="uk-navbar-left">
+			<a class="uk-navbar-item uk-logo uk-padding-remove-horizontal uk-margin-left" href="/">
+				<img src="{{site.site_logo.url}}" class="logo-light" style="height:24px;" alt="" uk-img>
+			</a>
+		</div>
+	    <div class="uk-navbar-right">
+	        <a class="uk-navbar-toggle" uk-toggle="target: #side-menu" type="button" >
+	            <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left"></span>
+	        </a>
+	    </div>
 	</nav>
-</header>
+	<div id="side-menu" class="side-menu" uk-offcanvas="mode:reveal;overlay:true;flip:true">
+		<div class="uk-offcanvas-bar">
+			<button class="uk-offcanvas-close" type="button" uk-close></button>
+			<ul class="uk-nav uk-nav-default">
+				<li class="uk-nav-header">{{site.site_name}}</li>
+				<li mp:for="{{navs}}" mp:for-item="{{nav}}" class="{{(nav.category_id == cate.category_id) ? 'uk-active' }}" >
+					<a mp:if="{{nav.link}}" href="{{nav.link}}" target="_blank"  class="{{ (nav.highlight) ? 'uk-text-danger'}}">{{nav.name}}</a>
+					<a mp:else href="/m/article/list/{{nav.category_id}}.html"   class=" {{nav.highlight ? 'uk-text-danger'}}">{{nav.name}}</a>
+				</li>
+			</ul>
+			
+			<hr />
+			<div class="uk-text-center uk-margin-medium-top footer" mp:if="{{site.qr_wxpub.url}}">
+				<img data-src="{{site.qr_wxpub.url}}"  alt="{{site.site_name}}" width="120" uk-img>
+				<div class="uk-text-center uk-margin-small-top">{{site.name_wxpub}}</div>
+			</div>
+
+			<div class="uk-text-center uk-margin-medium-top footer">
+				<div mp:if="{{site.tel}}"> 客服电话: {{site.tel}} </div>
+				<div mp:if="{{site.se_time}}"> ( {{site.se_time}} )</div>
+				<div mp:if="{{site.email}}"  class="uk-margin-small-top"> 邮箱: {{site.email}} </div>
+				<div mp:if="{{site.qq}}">  QQ: {{site.qq}} </div>
+			</div>
+
+			<div class="uk-text-center uk-margin-medium-top footer">
+				<p>© 2018 {{site.company}}</p>
+				<p> {{site.site_no}} </p>
+			</div>
+		</div>
+	</div>
+</section> <!-- END jm-navbar -->
