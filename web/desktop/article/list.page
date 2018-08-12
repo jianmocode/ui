@@ -1,6 +1,6 @@
 <include src="__WEB_ROOT__/desktop/common/head.page"  />
 <include src="__WEB_ROOT__/desktop/common/header.page"  />
-<section class="jm-subnavbar  uk-background-secondary" mp:if="{{subcates.total > 0}}"  ><div class="uk-container">
+<section class="jm-subnavbar  uk-background-secondary"  uk-sticky="cls-active:jm-subnavbar-active" mp:if="{{subcates.total > 0}}"  ><div class="uk-container">
 	<nav class="uk-navbar-container uk-navbar-transparent " uk-navbar  >
 		<div class="uk-navbar-left">
 			<ul class="uk-navbar-nav uk-dark">
