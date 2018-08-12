@@ -1,0 +1,58 @@
+<include src="__WEB_ROOT__/desktop/common/head.page"  />
+<include src="__WEB_ROOT__/desktop/common/header.page"  />
+
+<section id="jm-recommends-section" class="jm-recommends uk-section uk-padding-remove-vertical" style="z-index: 980;" ><div class="uk-container"  ><div class="uk-flex">
+	
+	<div class="jm-recommends-left uk-width-3-4" >
+		<article class=" jm-article uk-article">
+			<h1 class="jm-article-title uk-article-title">{{article.title}}</h1>
+			<div class="jm-article-meta uk-article-meta"> 
+				<a class="author" href="#"> {{ (article.author) ? article.author : site.site_name }} </a> <span>•</span>
+				<span class="publictime"> {{HMDATETIME(article.publish_datetime)}} </span> <span>•</span>
+				<a class="category" href="/list/{{article.category_last.category_id}}"> {{article.category_last.name}} </a>
+			</div>
+
+			<div class="jm-article-summary">
+				{{article.summary}}
+			</div>
+
+			<div class="jm-article-content">
+				{{article.content}}
+			</div>
+
+		</article>
+		
+	</div> <!-- END uk-width-3-4 jm-recommends-left -->
+
+	
+	<div class="jm-recommends-right uk-width-1-4">
+		<div class="jm-card-s5 uk-card uk-margin-top">
+			<div class="uk-card-header">
+				<h3 class="uk-card-title"> {{s.sidebar_section_4.title}} </h3>
+			</div>
+			<div class="uk-card-body uk-panel" >
+				<ul class="jm-list-s5 uk-list">
+					<a class="jm-item" href="/article/{{item.article_id}}.html" mp:for="{{s.sidebar_section_4.contents.data}}" mp:for-from="0" mp:for-to="6" >
+						<div class="uk-flex">
+							<div style="min-width:100px;min-height:70px; width:100px; height:70px; overflow: hidden;" >
+								<div class="uk-cover-container">
+									<canvas width="100%" height=""></canvas>
+									<img src="{{item.cover.url}}" alt="" uk-cover>
+								</div>
+							</div>
+							<div class="uk-margin-small-left uk-flex uk-flex-column uk-flex-between">
+								<div class="title"> {{item.title}}  </div>
+								<div class="summary uk-text-muted">{{HMDATETIME(item.publish_datetime)}}</div>
+							</div>
+						</div>
+					</a>
+				</ul>
+			</div> <!-- END uk-card-body -->
+		</div> <!-- END jm-card-s5  -->
+	</div> <!-- END uk-width-4-4 jm-recommends-right -->
+
+</div></div></section>
+
+<include src="__WEB_ROOT__/desktop/common/quickbar.page"  />
+<include src="__WEB_ROOT__/desktop/common/footer.page"  />
+<include src="__WEB_ROOT__/desktop/common/foot.page"  />

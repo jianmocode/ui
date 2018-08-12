@@ -3,6 +3,7 @@
 	"pages":[
 		"/desktop/article/index",
 		"/desktop/article/list",
+		"/desktop/article/detail",
 		"/mobile/article/index",
 		"/mobile/article/list",
 		"/desktop/widget/recommend/list",

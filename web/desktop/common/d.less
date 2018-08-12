@@ -3,7 +3,7 @@
 @import '/desktop/common/vars.less';
 
 body,html {
-	font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
+	font-family: PingFang SC,Helvetica Neue,Microsoft YaHei,Source Han Sans SC, -apple-system,BlinkMacSystemFont,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
 	-ms-text-size-adjust: 100%;  -webkit-text-size-adjust: 100%; 
 	font-size: 16px; width: 100%; 
 	color: @textColor;
@@ -385,7 +385,62 @@ a { color: @linkColor; text-decoration: none; }
 }
 
 
+.jm-article {
+	
+	margin-top: 30px;
+	padding-right: 80px;
 
+	.jm-article-title {
+		font-size: 1.625rem;
+		line-height: 2.25rem;
+		margin-bottom: 1.75rem;
+	}
+
+	.jm-article-meta {
+		.author { color: @linkColor; }
+		.author:hover { color: @linkHoverColor; }
+		margin-bottom: 1.75rem;
+		a, span {
+			margin-right:.5em;
+		}
+	}
+
+	.jm-article-summary {
+		font-size: 1.125rem;
+		line-height: 1.625rem;
+
+		padding: 1.125rem 1.75rem 1.125rem 1.75rem;
+		border-radius:6px;
+		background: @backgroundMutedColor;
+		color: @textMutedColor;
+		margin-bottom: 1.75rem;
+	}
+
+	.jm-article-content {
+		font-size: 1rem;
+		line-height: 1.857rem;
+	
+		// 文件下载框
+		.mp-file {
+			background: @backgroundMutedColor !important;
+			color: @textMutedColor !important;
+			border: 1px solid @dividerColor !important;
+			border-radius: 6px;
+			font-size: 1.125rem;
+			padding:8px 20px 8px 8px !important;
+		}
+
+		.mp-file:hover{
+			background: @primaryColor !important;
+			color: @lightColor !important;
+		}
+	}
+}
+
+
+
+
+/** 常用函数 */
 .setAlpha(@alpha) {
 	@_a: @alpha * 100;
 	opacity: @alpha;
@@ -393,7 +448,12 @@ a { color: @linkColor; text-decoration: none; }
 }
 
 
-/* 兼容其他页面 */
+
+
+
+
+
+/* 兼容旧页面 ( 页面全部完成后废弃 ) */
 
 * {-webkit-box-sizing: border-box;-moz-box-sizing: border-box; box-sizing: border-box; margin:0; padding:0;}
 input{outline:none;}

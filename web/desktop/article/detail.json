@@ -1,0 +1,62 @@
+{	
+	"cname":"图文列表页(二级)",
+	"data": {
+		"categories":{
+			"api":"/xpmsns/pages/category/search",
+			"query":{
+				"select":"category_id,name,highlight,link,slug",
+				"order":"priority asc",
+				"noParentId":"1",
+				"children":false,
+				"isnav":1
+			}
+		},
+		"navs":"{{categories.data}}",
+		"article":{
+			"api":"/xpmsns/pages/article/get",
+			"query":{
+				"articleId":"{{__var.id}}"
+			}
+		},
+		"s":{
+			"api":"/xpmsns/pages/recommend/getContents",
+			"query":{
+				"api":"/xpmsns/pages/recommend/getContents",
+				"slugs":"sidebar_section_4"
+			}
+		},
+		"site":{
+			"api":"/xpmsns/pages/siteconf/get",
+			"query":{
+				"site_slug":"global",
+				"select":"*"
+			}
+		},
+		"links":{
+			"api":"/xpmsns/pages/links/search",
+			"query":{
+				"select":"name,link"
+			}
+		},
+		"page":{
+			"title":"{{article.title}}",
+			"logo":"{{site.site_logo}}"
+		},
+		"seo": {
+			"title":"{{article.seo_title}}",
+			"keywords":"{{site.seo_keywords}}",
+			"description":"{{site.seo_summary}}"
+		},
+		"active": {}
+	},
+	"entries":[
+		{"method":"GET", "router":"/article/{id:.+}.html", "ttl":0},
+		{"method":"GET", "router":"/article/{id:.+}", "ttl":0}
+	],
+	
+	"alias": {
+		"mobile":"/mobile/article",
+		"wechat":"/mobile/article",
+		"wxapp": "/article"
+	}
+}
