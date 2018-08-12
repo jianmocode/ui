@@ -1,41 +1,44 @@
 let web = getWeb();
-import articles from '../widget/category/list';  // 下一版应该可以引用组件
 
 Page({
 	data:{},
 	onReady: function( params ) {
-		try { this.initRecommendsNavbar(); } catch(e){
-			console.log( 'Error @initRecommendsNavbar', e);
-		}
-		try { articles.$load(
-				{
-					var: {cid:this.data.cate.category_id},
-					get: {subcate:this.data.subcate.category_id || '' },
-				},
-				{	
-					articles:this.data.articles, 
-					cate:this.data.cate, 
-					subcate: this.data.subcate
-				}); 
-		} catch(e){
-			console.log( 'Error @articles.$load', e);
+		try { this.initShareNavbar(); } catch(e){
+			console.log( 'Error @initShareNavbar', e);
 		}
 	},
 
-	/**
-	 * 初始化推荐导航条
-	 * @return {[type]} [description]
-	 */
-	initRecommendsNavbar: function() {
-		$('.jm-recommends-navbar a').click(function(){
-			$('.jm-recommends-navbar li').removeClass('uk-active');
-			$(this).parent().addClass('uk-active');
-			let link = $(this).attr('data-remote');
-			if ( link ) {
-				$('.jm-recommends-body').html('<div uk-spinner class="uk-padding-small"></div>');
-				$('.jm-recommends-body').load( link );
+	initShareNavbar: function() {
+		let pos = $('.share-navbar').offset();
+		let width = $('.share-navbar').outerWidth();
+		let winHeight = $(window).outerHeight();
+		let top =  pos.top;
+		let left = pos.left;
+		let offset = 20;
+
+		function setPos ( t ) {
+
+			if ( t < (top + offset ) ) {
+				$('.share-navbar')
+					.addClass('uk-position-fixed')
+					.addClass('uk-position-bottom');
+				$('.share-navbar').css('width', width +  'px');
+				$('.share-navbar').css('left', left +  'px');
+			} else {
+
+
+				$('.share-navbar')
+					.removeClass('uk-position-fixed')
+					.removeClass('uk-position-bottom');
+				$('.share-navbar').css('left', 0 +  'px');
 			}
-			return true;
-		})
+		}
+
+		setPos(  $(window).scrollTop() );
+		$(window).scroll(function(event) {
+
+			let t = $(window).scrollTop();
+			setPos( t + winHeight );
+		});
 	}
 })

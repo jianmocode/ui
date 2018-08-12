@@ -23,6 +23,17 @@ body,html {
 	color: @textMutedColor !important;
 }
 
+.uk-button-small {
+	border-radius: 4px;
+}
+.uk-button-primary {
+	color: @lightColor;
+	background-color: @primaryColor;
+}
+
+.uk-button-primary:hover{
+	background-color: @primaryHoverColor;
+}
 
 
 a { color: @linkColor; text-decoration: none; }
@@ -336,6 +347,18 @@ a { color: @linkColor; text-decoration: none; }
 	img { height: 100%; }
 	.summary { margin-top:.2em; font-size: 0.8125rem; color:@textMutedColor; }
 	.title { font-size: 0.9rem; }
+}
+
+
+.jm-card-s6 {
+	margin: 0px;
+	background: #ffffff;
+	border: 1px solid @dividerColor;
+	border-top: 2px solid @primaryColor;
+	padding: 15px;
+	font-size: 1rem;
+
+	.setAlpha( 0.95 );
 }
 
 

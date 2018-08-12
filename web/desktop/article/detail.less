@@ -2,23 +2,26 @@
 @import '/desktop/common/d.less';
 @import '/desktop/widget/recommend/list.less';
 
-.jm-focus {
-	padding-top: 25px;
-	padding-bottom: 25px;
-}
-
-.jm-recommends {
-	padding-top: 25px;
-	padding-bottom: 25px;
+.share-navbar {
 	
-	.jm-recommends-header {
-		background: rgba(255,255,255,.95);
-		a {
-			font-size: 1rem;
-		}
+	font-size: 0.875rem;
+	color: @textMutedColor;
+
+	span, a {
+		margin-right: .5em;
+		line-height: 24px;
 	}
 
-	.jm-recommends-header-active {
-		padding-top: 25px;
+	.avatar {
+		border-radius: 50%;
+		width: 24px;
+		height: 24px;
+		margin-right: 5px;
+	}
+
+	.author {
+		font-size: 0.875rem;
+		line-height: 24px;
+		margin-right: 15px;
 	}
 }

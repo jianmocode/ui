@@ -20,11 +20,36 @@
 				{{article.content}}
 			</div>
 
+			<div class="jm-card-s6 uk-card share-navbar ">
+				<div class="uk-clearfix">
+					
+					<div class="uk-float-left">
+						<img class="avatar" data-src="{{site.site_logo.url}}" width="48" height="" alt="" uk-img>
+						<a class="author" href="#"> {{ (article.author) ? article.author : site.site_name }} </a> 
+						<button class="uk-button uk-button-primary uk-button-small"> 关注 </button>
+					</div> <!-- END .uk-float-left -->
+
+					<div class="uk-float-right">
+						<!-- <span>分享: </span> -->
+						<a class="wechat" href="#" uk-icon="icon: star; ratio:1.5"></a>
+						<div uk-dropdown="pos:top-center;offset:5">
+							<img data-src="{{site.qr_wxpub.url}}"  alt="{{site.site_name}}" width="200" uk-img>
+							<div class="uk-text-center uk-margin-small-top uk-text-bold">关注{{site.name_wxpub}}</div>
+						</div>
+
+						<a class="weibo" href="#" uk-icon="icon: phone;  ratio:1.5"></a>
+						<div uk-dropdown="pos:top-center;offset:5">
+							<img data-src="/_api/xpmsns/pages/article/qrcode?width=200&text={{__sys.location}}" alt="{{site.site_name}}" width="200" uk-img>
+							<div class="uk-text-center uk-margin-small-top uk-text-bold">用手机阅读本页</div>				
+						</div>
+					</div>
+				</div>
+			</div>
+
 		</article>
-		
+
 	</div> <!-- END uk-width-3-4 jm-recommends-left -->
 
-	
 	<div class="jm-recommends-right uk-width-1-4">
 		<div class="jm-card-s5 uk-card uk-margin-top">
 			<div class="uk-card-header">
