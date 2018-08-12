@@ -5,13 +5,15 @@
 		"/desktop/article/list",
 		"/mobile/article/index",
 		"/desktop/widget/recommend/list",
+		"/desktop/widget/category/list",
 		"/mobile/widget/recommend/list"
 	],
 	"common":[
 		"/mobile/common",
 		"/mobile/widget/recommend",
 		"/desktop/common",
-		"/desktop/widget/recommend"
+		"/desktop/widget/recommend",
+		"/desktop/widget/category"
 	],
 	"storage": {
 		"engine":"minapages",

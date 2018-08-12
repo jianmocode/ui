@@ -1,0 +1,21 @@
+{	
+	"cname":"页面部件-分类列表",
+	"type":"component",
+	"data": {
+		"section":{
+			"api":"/xpmsns/pages/recommend/getContents",
+			"query":{
+				"slug":"{{__var.slug}}",
+				"page":"{{__get.page}}"
+			}
+		}
+	},
+	"entries":[
+		{"method":"GET", "router":"/widget/recommend/list/{slug:[0-9a-zA-Z_]+}", "ttl":0}
+	],
+	"alias": {
+		"mobile":"/mobile/widget/recommend/list",
+		"wechat":"/mobile/widget/recommend/list",
+		"wxapp": "/widget/recommend/list"
+	}
+}

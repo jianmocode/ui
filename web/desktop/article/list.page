@@ -22,12 +22,11 @@
 	</ul>
 </div></section>
 
-
 <section id="jm-recommends-section" class="jm-recommends uk-section uk-padding-remove-vertical" style="z-index: 980;" ><div class="uk-container"  ><div class="uk-flex">
 	<div class="jm-recommends-left uk-width-3-4" >
 		<div  class="jm-recommends-body" >
 			<!-- Todo: 作为组件引用 -->
-			<include src="__WEB_ROOT__/desktop/widget/recommend/list.page" /> 
+			<include src="__WEB_ROOT__/desktop/widget/category/list.page" /> 
 		</div>
 	</div> <!-- END uk-width-3-4 jm-recommends-left -->
 	

@@ -1,0 +1,53 @@
+@charset "utf-8";
+@import '/desktop/common/d.less';
+
+.pagination {
+	.more {
+		width: 95%;	
+		margin-top: 40px;
+		margin-bottom: 40px;
+	}
+}
+
+.articles {
+	
+	.item {
+
+		.uk-label {
+			background: rgba(0,0,0,0.6);
+			color: #ffffff;
+			font-size: 0.8rem;
+			padding:.2em;
+		}
+		width: 95%;
+		padding: 1.2em 0 1.2em 0;
+		border-bottom: 1px solid @dividerColor;
+		
+
+		.title {
+			padding: 0px;
+			margin-bottom: .2em;
+		}
+
+		.summary {
+			margin: 0px;
+			font-size: 0.875rem;
+		}
+
+		.attrs {
+			font-size: 0.875rem;
+
+			.attr {
+				margin-right: 3em;
+			}
+		}
+	}
+
+	.item:hover {
+		background-color: @backgroundMutedColor;
+	};
+
+	.item:last-child {
+		border: none;
+	};
+}
