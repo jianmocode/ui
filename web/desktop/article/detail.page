@@ -22,9 +22,8 @@
 
 			<div class="jm-card-s6 uk-card share-navbar ">
 				<div class="uk-clearfix">
-					
 					<div class="uk-float-left">
-						<img class="avatar" data-src="{{site.site_logo.url}}" width="48" height="" alt="" uk-img>
+						<img class="avatar" data-src="{{site.icon.url}}"  alt="{{ (article.author) ? article.author : site.site_name }}" uk-img>
 						<a class="author" href="#"> {{ (article.author) ? article.author : site.site_name }} </a> 
 						<button class="uk-button uk-button-primary uk-button-small"> 关注 </button>
 					</div> <!-- END .uk-float-left -->
@@ -43,8 +42,8 @@
 							<div class="uk-text-center uk-margin-small-top uk-text-bold">用手机阅读本页</div>				
 						</div>
 					</div>
-				</div>
-			</div>
+				</div> <!-- END uk-clearfix -->
+			</div> <!-- END share-navbar  -->
 
 		</article>
 
