@@ -29,6 +29,7 @@ let com = Page({
 					$('.pagination .more').attr('data-next', next).html('加载更多');
 				} else {
 					$('.pagination .more').remove();
+					$('.pagination').append('<hr  class="uk-divider-icon">');
 				}
 			});
 

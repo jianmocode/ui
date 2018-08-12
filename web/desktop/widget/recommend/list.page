@@ -1,5 +1,5 @@
 <div class="articles">
-	<a class="uk-flex item" href="/article/{{item.article_id}}" mp:for="{{section.contents.data}}" >
+	<a class="uk-flex item" href="/article/{{item.article_id}}.html" mp:for="{{section.contents.data}}" >
 		<div class="uk-panel" mp:if="{{item.cover}}" >
 			<div style="min-width:260px;min-height:150px; width:260px; height:150px;overflow: hidden;" >
 				<div class="uk-cover-container">
@@ -31,4 +31,5 @@
 <div class="pagination">
 	<button mp:if="{{section.contents.next}}"
 		class="more uk-button uk-button-default uk-width-1-1" data-next="{{section.contents.next}}" >加载更多 </button>
+	<hr mp:else class="uk-divider-icon">
 </div>
