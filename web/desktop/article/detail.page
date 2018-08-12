@@ -12,7 +12,7 @@
 				<a class="category" href="/list/{{article.category_last.category_id}}"> {{article.category_last.name}} </a>
 			</div>
 
-			<div class="jm-article-summary">
+			<div class="jm-article-summary" mp:if="{{article.summary}}">
 				{{article.summary}}
 			</div>
 

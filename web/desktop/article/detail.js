@@ -34,7 +34,7 @@ Page({
 			}
 		}
 
-		setPos(  $(window).scrollTop() );
+		setPos(  $(window).scrollTop() + winHeight );
 		$(window).scroll(function(event) {
 
 			let t = $(window).scrollTop();
