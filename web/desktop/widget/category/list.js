@@ -2,20 +2,23 @@ let web = getWeb();
 let com = Page({
 	data:{},
 	onReady: function( params ) {
+
+		console.log( params );
 		
 		// 翻页
 		$('.pagination .more').click(()=>{
 
-			console.log( params );
-
 			let vars = params.var || {};
-			let slug = vars.slug || 0;
+			let gets = params.get || {};
+			let cid = vars.cid || 0;
+			let subcate = gets.subcate || '';
+			
 			let page = $('.pagination .more').attr('data-next') || 1; 
 			if ( page == false ) {
 				return ;
 			}
 
-			let url = '/widget/recommend/list/' + slug + '?page=' + page;
+			let url = '/widget/category/list/' + cid + '?subcate=' + subcate + '&page=' + page;
 
 			$('.pagination .more').html('加载中...');
 			$.get(url, function(html) {

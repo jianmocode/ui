@@ -2,20 +2,23 @@
 	"cname":"页面部件-分类列表",
 	"type":"component",
 	"data": {
-		"section":{
-			"api":"/xpmsns/pages/recommend/getContents",
+		"articles":{
+			"api":"/xpmsns/pages/article/search",
 			"query":{
-				"slug":"{{__var.slug}}",
+				"perpage":20,
+				"order":"publish_time desc",
+				"categoryId":"{{__var.cid}}",
+				"subcateId":"{{__get.subcate}}",
 				"page":"{{__get.page}}"
 			}
 		}
 	},
 	"entries":[
-		{"method":"GET", "router":"/widget/recommend/list/{slug:[0-9a-zA-Z_]+}", "ttl":0}
+		{"method":"GET", "router":"/widget/category/list/{cid:[0-9a-zA-Z_]+}", "ttl":0}
 	],
 	"alias": {
-		"mobile":"/mobile/widget/recommend/list",
-		"wechat":"/mobile/widget/recommend/list",
-		"wxapp": "/widget/recommend/list"
+		"mobile":"/mobile/widget/category/list",
+		"wechat":"/mobile/widget/category/list",
+		"wxapp": "/widget/category/list"
 	}
 }

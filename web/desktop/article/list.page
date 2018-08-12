@@ -37,7 +37,7 @@
 			</div>
 			<div class="uk-card-body uk-panel" >
 				<ul class="jm-list-s5 uk-list">
-					<a class="jm-item" href="/article/{{item.article_id}}" mp:for="{{s.sidebar_section_4.contents.data}}" mp:for-from="0" mp:for-to="6" >
+					<a class="jm-item" href="/article/{{item.article_id}}.html" mp:for="{{s.sidebar_section_4.contents.data}}" mp:for-from="0" mp:for-to="6" >
 						<div class="uk-flex">
 							<div style="min-width:100px;min-height:70px; width:100px; height:70px; overflow: hidden;" >
 								<div class="uk-cover-container">
