@@ -1,4 +1,4 @@
-<div class="articles">
+<div class="articles" mp:if="{{articles.total > 0}}">
 	<a class="uk-flex item" href="/article/{{item.article_id}}.html" target="_blank" mp:for="{{articles.data}}" >
 		<div class="uk-panel" mp:if="{{item.cover.url}}" >
 			<div style="min-width:260px;min-height:150px; width:260px; height:150px;overflow: hidden;" >
@@ -28,6 +28,8 @@
 		</div>
 	</a>
 </div>
+<div class="articles uk-padding uk-text-muted  uk-text-center" mp:else > 暂无内容 </div>
+
 <div class="pagination">
 	<button mp:if="{{articles.next}}"
 		class="more uk-button uk-button-default uk-width-1-1" data-next="{{articles.next}}" >加载更多 </button>
