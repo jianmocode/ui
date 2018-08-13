@@ -20,6 +20,8 @@
 				{{article.content}}
 			</div>
 
+			<hr class="uk-divider-icon">
+
 			<div class="jm-card-s6 uk-card share-navbar uk-hidden">
 				<div class="uk-clearfix">
 					<div class="uk-float-left">
