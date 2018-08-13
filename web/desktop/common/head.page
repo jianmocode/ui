@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" >
 	<head>
 		<title>{{page.title}}-{{site.site_name}}</title>
 		<meta name="renderer" content="webkit">

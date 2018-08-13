@@ -1,16 +1,17 @@
 <ul class="jm-quickbar uk-list uk-position-center-right uk-position-fixed uk-iconnav uk-iconnav-vertical">
 	<li>
-		<a href="#" uk-icon="icon: star"></a>
+		<!-- <a href="#" uk-icon="icon: weixin"></a> -->
+		<a href="#" uk-icon="icon: weixin"></a>
 		<div uk-dropdown="pos:left-center;offset:65">
 			<img data-src="{{site.qr_wxpub.url}}"  alt="{{site.site_name}}" width="200" uk-img>
 			<div class="uk-text-center uk-margin-small-top uk-text-bold">关注{{site.name_wxpub}}</div>
 		</div>
 	</li>
 	<li>
-		<a href="#" uk-icon="icon: phone"></a>
+		<a href="#" uk-icon="icon: qr"></a>
 		<div uk-dropdown="pos:left-center;offset:65" >
-			<img data-src="/_api/xpmsns/pages/article/qrcode?width=200&text={{__sys.location}}" alt="{{site.site_name}}" width="200" uk-img>
-			<div class="uk-text-center uk-margin-small-top uk-text-bold">用手机阅读本页</div>
+			<img data-src="/_api/xpmsns/pages/article/qrcode?width=200&text={{__sys.location}}" alt="{{page.title}}" width="200" uk-img>
+			<div class="uk-text-center uk-margin-small-top uk-text-bold">本页二维码</div>
 		</div>
 	</li>
 	<li class="totop uk-hidden"><a  href="#" uk-icon="icon: chevron-up" uk-scroll="duration:200"  uk-tooltip="title:返回顶部; pos:left; delay: 100" ></a></li>

@@ -29,18 +29,16 @@
 					</div> <!-- END .uk-float-left -->
 
 					<div class="uk-float-right">
-						<!-- <span>分享: </span> -->
-						<a class="wechat" href="#" uk-icon="icon: star; ratio:1.5"></a>
-						<div uk-dropdown="pos:top-center;offset:5">
-							<img data-src="{{site.qr_wxpub.url}}"  alt="{{site.site_name}}" width="200" uk-img>
-							<div class="uk-text-center uk-margin-small-top uk-text-bold">关注{{site.name_wxpub}}</div>
+						<span>分享: </span>
+						<a class="share share-weixin" href="#" uk-icon="icon: weixin; ratio:1.5"></a>
+						<div uk-dropdown="pos:top-center;offset:15">
+							<img data-src="/_api/xpmsns/pages/article/qrcode?width=200&text={{__sys.location}}"  alt="{{page.title}}" width="200" uk-img>
+							<div class="uk-text-center uk-margin-small-top uk-text-bold">微信扫描二维码</div>
 						</div>
 
-						<a class="weibo" href="#" uk-icon="icon: phone;  ratio:1.5"></a>
-						<div uk-dropdown="pos:top-center;offset:5">
-							<img data-src="/_api/xpmsns/pages/article/qrcode?width=200&text={{__sys.location}}" alt="{{site.site_name}}" width="200" uk-img>
-							<div class="uk-text-center uk-margin-small-top uk-text-bold">用手机阅读本页</div>				
-						</div>
+						<a class="share share-weibo" href="http://service.weibo.com/share/share.php?url={{__sys.location}}&type=button&language=zh_cn&appkey={{site.weibo_appkey}}&title={{article.title}}&pic={{article.cover.url}}&searchPic=true&style=simple" target="_blank" uk-icon="icon: weibo; ratio:1.5"></a>
+						<a class="shareshare-qq" href="https://connect.qq.com/widget/shareqq/index.html?url={{__sys.location}}&title={{article.title}}&source={{site.site_name}}&desc={{article.summary}}&pics={{article.cover.url}}" target="_blank" uk-icon="icon: qq; ratio:1.5"></a>
+
 					</div>
 				</div> <!-- END uk-clearfix -->
 			</div> <!-- END share-navbar  -->
