@@ -1,6 +1,6 @@
 <div class="articles">
 	<a class="uk-flex item" href="/article/{{item.article_id}}" mp:for="{{section.contents.data}}" >
-		<div class="uk-panel" mp:if="{{item.cover}}" >
+		<div class="uk-panel" mp:if="{{item.cover.url}}" >
 			<div style="min-width:120px;min-height:70px; width:120px; height:70px;overflow: hidden;" >
 				<div class="uk-cover-container">
 					<canvas width="100%" height=""></canvas>
@@ -8,12 +8,12 @@
 				</div>
 			</div>
 		</div>
-		<div class="uk-margin-left uk-flex uk-flex-column uk-flex-between">
+		<div class="uk-flex uk-flex-column uk-flex-between {{(item.cover.url) ? 'uk-margin-left'}}">
 			<div class="article">
 				<h4 class="title">{{item.title}}</h4>
 			</div>
 			<div class="attrs ">
-				<span class="attr uk-text-muted">{{ (item.author) ? item.author : '匿名' }} · {{HMDATETIME(item.publish_datetime)}} </span>
+				<span class="attr uk-text-muted">{{ (item.author) ? item.author : site.site_name }} · {{HMDATETIME(item.publish_datetime)}} </span>
 			</div>
 		</div>
 	</a>

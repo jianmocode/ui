@@ -2,6 +2,13 @@
 	"cname":"页面部件-推荐列表",
 	"type":"component",
 	"data": {
+		"site":{
+			"api":"/xpmsns/pages/siteconf/get",
+			"query":{
+				"site_slug":"global",
+				"select":"*"
+			}
+		},
 		"section":{
 			"api":"/xpmsns/pages/recommend/getContents",
 			"query":{
