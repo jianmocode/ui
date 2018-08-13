@@ -20,7 +20,7 @@
 				{{article.content}}
 			</div>
 
-			<div class="jm-card-s6 uk-card share-navbar ">
+			<div class="jm-card-s6 uk-card share-navbar uk-hidden">
 				<div class="uk-clearfix">
 					<div class="uk-float-left">
 						<img class="avatar" data-src="{{site.icon.url}}"  alt="{{ (article.author) ? article.author : site.site_name }}" uk-img>
