@@ -16,9 +16,9 @@
 <section class="jm-breadcrumb uk-margin-top"  ><div class="uk-container">
 	<ul class="uk-breadcrumb">
 	    <li><a href="/">首页</a></li>
-	    <li><a href="/article/list/{{__var.cid}}.html">{{cate.name}}</a></li>
+	    <li mp:if="{{subcate}}" ><a href="/article/list/{{__var.cid}}.html">{{cate.name}}</a></li>
+	    <li mp:else><span> {{cate.name}} </span></li>
 	    <li mp:if="{{subcate}}"><span>{{subcate.name}}</span></li>
-	    <li mp:else><span> 最近更新 </span></li>
 	</ul>
 </div></section>
 
