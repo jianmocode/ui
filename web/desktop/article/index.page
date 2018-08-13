@@ -88,7 +88,7 @@
 
 	<div class="jm-recommends-right uk-width-1-4">
 
-		<div class="jm-card-s2 uk-card">
+		<div class="jm-card-s2 uk-card" mp:if="{{s.sidebar_section_1.status=='on'}}">
 			<div class="uk-card-header">
 				<h3 class="uk-card-title"> {{s.sidebar_section_1.title}} </h3>
 			</div>
@@ -108,7 +108,7 @@
 		</div> <!-- END jm-card-s2  -->
 		
 
-		<div class="jm-card-s3 uk-card uk-margin-top">
+		<div class="jm-card-s3 uk-card uk-margin-top" mp:if="{{s.sidebar_section_2.status=='on'}}">
 			<div class="uk-card-header">
 				<h3 class="uk-card-title"> {{s.sidebar_section_2.title}} </h3>
 			</div>
@@ -134,7 +134,7 @@
 		</div> <!-- END jm-card-s3 -->
 
 
-		<div class="jm-card-s4 uk-card uk-margin-top">
+		<div class="jm-card-s4 uk-card uk-margin-top" mp:if="{{s.sidebar_section_3.status=='on'}}">
 			<div class="uk-card-header">
 				<h3 class="uk-card-title"> {{s.sidebar_section_3.title}} </h3>
 			</div>
@@ -159,7 +159,7 @@
 		</div> <!-- END jm-card-s4  -->
 
 
-		<div class="jm-card-s5 uk-card uk-margin-top">
+		<div class="jm-card-s5 uk-card uk-margin-top" mp:if="{{s.sidebar_section_4.status=='on'}}">
 			<div class="uk-card-header">
 				<h3 class="uk-card-title"> {{s.sidebar_section_4.title}} </h3>
 			</div>

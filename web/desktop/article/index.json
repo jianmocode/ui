@@ -19,12 +19,20 @@
 			}
 		},
 		"navs":"{{categories.data}}",
+		"sections":{
+			"api":"/xpmsns/pages/recommend/search",
+			"query":{
+				"select":"title,slug",
+				"pos":"index"
+			}
+		},
 		"r": {
 			"api":"/xpmsns/pages/recommend/getContents",
 			"query":{
 				"slugs":"focus,latest,section_1"
 			}
 		},
+		"section":"{{r.section_1}}",
 		"s":{
 			"api":"/xpmsns/pages/recommend/getContents",
 			"query":{
@@ -38,20 +46,12 @@
 				"adv_slug":"index-001"
 			}
 		},
-		"sections":{
-			"api":"/xpmsns/pages/recommend/search",
-			"query":{
-				"select":"title,slug",
-				"slug":"section_1,section_2,section_3,section_4,section_5,section_6"
-			}
-		},
 		"links":{
 			"api":"/xpmsns/pages/links/search",
 			"query":{
 				"select":"name,link"
 			}
 		},
-		"section":"{{r.section_1}}",
 		"page":{
 			"title":"首页",
 			"logo":"{{site.site_logo}}"

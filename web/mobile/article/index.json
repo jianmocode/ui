@@ -29,11 +29,12 @@
 				"slugs":"focus,latest,section_1"
 			}
 		},
+		"section":"{{r.section_1}}",
 		"sections":{
 			"api":"/xpmsns/pages/recommend/search",
 			"query":{
 				"select":"title,slug",
-				"slug":"section_1,section_2,section_3,section_4,section_5,section_6"
+				"pos":"index"
 			}
 		},
 		"links":{
@@ -42,7 +43,6 @@
 				"select":"name,link"
 			}
 		},
-		"section":"{{r.section_1}}",
 		"seo": {
 			"title":"{{site.site_name}}",
 			"keywords":"{{site.site_name}}",
