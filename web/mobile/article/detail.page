@@ -1,0 +1,46 @@
+<include src="__WEB_ROOT__/mobile/common/head.page"  />
+<include src="__WEB_ROOT__/mobile/common/header.page"  />
+
+<section id="jm-recommends" class="jm-recommends uk-margin-small-top">
+	<div class="jm-recommends-header" uk-sticky="cls-active:jm-recommends-header-active"  uk-slider="finite: true"  mp:if="{{subcates.total > 0}}" >
+		<ul class="uk-slider-items jm-subnav  jm-recommends-navbar" >
+			<a href="#jm-recommends"  class="{{(subcate == '') ? 'nav-active'}}" 
+				data-remote="/m/widget/category/list/{{__var.cid}}" uk-scroll="duration:200">
+				最近更新
+			</a>
+			<a href="#jm-recommends" mp:for="{{subcates.data}}" class="{{ (item.category_id == subcate.category_id) ? 'nav-active'}}" 
+				data-remote="/m/widget/category/list/{{__var.cid}}?subcate={{item.category_id}}" uk-scroll="duration:200">
+				{{item.name}}
+			</a>
+		</ul>
+	</div>
+
+	<div  class="jm-recommends-body" style="min-height: 800px;" >
+		<article class="jm-article uk-article">
+			<h1 class="jm-article-title uk-article-title">{{article.title}}</h1>
+			<div class="jm-article-meta uk-article-meta"> 
+				<a class="author" href="#"> {{ (article.author) ? article.author : site.site_name }} </a> <span>•</span>
+				<span class="publictime"> {{HMDATETIME(article.publish_datetime)}} </span> <span>•</span>
+				<a class="category" href="/list/{{article.category_last.category_id}}"> {{article.category_last.name}} </a>
+			</div>
+
+			<div class="jm-article-summary" mp:if="{{article.summary}}">
+				{{article.summary}}
+			</div>
+
+			<div class="jm-article-content">
+				{{article.content}}
+			</div>
+			
+			<hr class="uk-divider-icon">
+
+			<div class="pagination">
+				<a class="more uk-button uk-button-default uk-width-1-1" href="/m" > 更多文章 </a>
+			</div>
+
+		</article>
+	</div>
+</section>
+
+<include src="__WEB_ROOT__/mobile/common/footer.page"  />
+<include src="__WEB_ROOT__/mobile/common/foot.page"  />

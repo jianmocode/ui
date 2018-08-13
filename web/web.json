@@ -6,6 +6,7 @@
 		"/desktop/article/detail",
 		"/mobile/article/index",
 		"/mobile/article/list",
+		"/mobile/article/detail",
 		"/desktop/widget/recommend/list",
 		"/desktop/widget/category/list",
 		"/mobile/widget/recommend/list",

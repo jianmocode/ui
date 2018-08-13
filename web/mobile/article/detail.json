@@ -1,5 +1,5 @@
 {	
-	"cname":"图文详情页(三级)",
+	"cname":"图文详情页(三级)-手机版",
 	"data": {
 		"categories":{
 			"api":"/xpmsns/pages/category/search",
@@ -50,13 +50,11 @@
 		"active": {}
 	},
 	"entries":[
-		{"method":"GET", "router":"/article/{id:[0-9a-zA-Z_]+}.html", "ttl":0},
-		{"method":"GET", "router":"/article/{id:[0-9a-zA-Z_]+}", "ttl":0}
+		{"method":"GET", "router":"/m/article/{id:[0-9a-zA-Z_]+}.html", "ttl":0},
+		{"method":"GET", "router":"/m/article/{id:[0-9a-zA-Z_]+}", "ttl":0}
 	],
-	
 	"alias": {
-		"mobile":"/mobile/article/detail",
-		"wechat":"/mobile/article/detail",
+		"desktop":"/desktop/article/detail",
 		"wxapp": "/article"
 	}
 }
