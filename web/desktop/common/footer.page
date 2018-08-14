@@ -7,7 +7,7 @@
 			<div class="uk-card-body" >
 				<ul class="uk-list" mp:for="{{services.data}}" mp:for-item="{{nav}}" >
 					<a mp:if="{{nav.link}}" href="{{nav.link}}" target="{{ (nav.isblank) ? '_blank' }}" class="{{ (nav.highlight) ? 'uk-text-danger'}}">{{nav.name}}</a>
-					<a mp:else href="/article/list/{{nav.category_id}}" target="{{ (nav.isblank) ? '_blank' }}" class="{{nav.highlight ? 'uk-text-danger'}}">{{nav.name}}</a>
+					<a mp:else href="/article/list/{{nav.category_id}}" target="{{ (nav.isblank) ? '_blank' }}" class="{{ (nav.highlight) ? 'uk-text-danger'}}">{{nav.name}}</a>
 				</ul>
 			</div>
 		</div>
