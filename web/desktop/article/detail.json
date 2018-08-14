@@ -47,7 +47,9 @@
 			"keywords":"{{site.seo_keywords}}",
 			"description":"{{site.seo_summary}}"
 		},
-		"active": {}
+		"active": {
+			"nav":"nothing"
+		}
 	},
 	"entries":[
 		{"method":"GET", "router":"/article/{id:[0-9a-zA-Z_]+}.html", "ttl":0},
