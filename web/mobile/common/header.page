@@ -2,7 +2,7 @@
 	<nav class="uk-navbar uk-navbar-container uk-navbar-transparent ">
 		<div class="uk-navbar-left">
 			<a class="uk-navbar-item uk-logo uk-padding-remove-horizontal uk-margin-left" href="/">
-				<img src="{{site.site_logo.url}}" class="logo-light" style="height:24px;" alt="" uk-img>
+				<img src="{{(site.site_logo_light.url) ? site.site_logo_light.url : site.site_logo.url}}" style="height:24px;" alt="" uk-img>
 			</a>
 		</div>
 	    <div class="uk-navbar-right">

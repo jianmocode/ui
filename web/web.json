@@ -13,6 +13,7 @@
 		"/mobile/widget/category/list"
 	],
 	"common":[
+		"/libs",
 		"/mobile/common",
 		"/mobile/widget/recommend",
 		"/mobile/widget/category",

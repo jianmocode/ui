@@ -1,3 +1,4 @@
+import {Article} from '../../libs/article.js';
 let web = getWeb();
 
 Page({
@@ -5,6 +6,12 @@ Page({
 	onReady: function( params ) {
 		try { this.initShareNavbar(); } catch(e){
 			console.log( 'Error @initShareNavbar', e);
+		}
+
+		try {
+			( new Article( 'article' ) ).init();
+		} catch( e ) {
+			console.log( 'Error @Article init', e);
 		}
 	},
 
