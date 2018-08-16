@@ -11,6 +11,7 @@
 		"/mobile/article/detail",
 		"/desktop/widget/recommend/list",
 		"/desktop/widget/category/list",
+		"/desktop/widget/category/video",
 		"/mobile/widget/recommend/list",
 		"/mobile/widget/category/list"
 	],

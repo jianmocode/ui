@@ -36,11 +36,17 @@
 		"articles":{
 			"api":"/xpmsns/pages/article/search",
 			"query":{
-				"perpage":20,
+				"perpage":21,
 				"order":"publish_time desc",
 				"categoryId":"{{cate.category_id}}",
 				"subcateId":"{{subcate.category_id}}",
 				"page":"{{__get.page}}"
+			}
+		},
+		"r": {
+			"api":"/xpmsns/pages/recommend/getContents",
+			"query":{
+				"slugs":"focus"
 			}
 		},
 		"site":{

@@ -1,62 +1,57 @@
 <include src="__WEB_ROOT__/desktop/common/head.page"  />
 <include src="__WEB_ROOT__/desktop/common/header.page"  />
-<section class="jm-subnavbar  uk-background-secondary"  uk-sticky="cls-active:jm-subnavbar-active" mp:if="{{subcates.total > 0}}"  ><div class="uk-container">
-	<nav class="uk-navbar-container uk-navbar-transparent " uk-navbar  >
-		<div class="uk-navbar-left">
-			<ul class="uk-navbar-nav uk-dark">
-				 <li class="{{(subcate == '') ? 'uk-active'}}"><a href="/article/list/{{__var.cid}}.html">最近更新</a></li>
-				 <li class="{{(item.category_id == subcate.category_id) ? 'uk-active'}}" mp:for="{{subcates.data}}" >
-				 	<a href="/article/list/{{__var.cid}}.html?subcate={{item.category_id}}">{{item.name}}</a>
-				 </li>
-			</ul>
-		</div>
-	</nav>
-</div></section>
 
-<section class="jm-breadcrumb uk-margin-top"  ><div class="uk-container">
-	<ul class="uk-breadcrumb">
-	    <li><a href="/">首页</a></li>
-	    <li mp:if="{{subcate}}" ><a href="/article/list/{{__var.cid}}.html">{{cate.name}}</a></li>
-	    <li mp:else><span> {{cate.name}} </span></li>
-	    <li mp:if="{{subcate}}"><span>{{subcate.name}}</span></li>
-	</ul>
-</div></section>
-
-<section id="jm-recommends-section" class="jm-recommends uk-section uk-padding-remove-vertical" style="z-index: 980;" ><div class="uk-container"  ><div class="uk-flex">
-	<div class="jm-recommends-left uk-width-3-4" >
-		<div  class="jm-recommends-body" >
-			<!-- Todo: 作为组件引用 -->
-			<include src="__WEB_ROOT__/desktop/widget/category/list.page" /> 
-		</div>
-	</div> <!-- END uk-width-3-4 jm-recommends-left -->
+<section class="jm-video-focus uk-section uk-background-secondary"><div class="uk-container" ><div class="uk-flex">
 	
-	<div class="jm-recommends-right uk-width-1-4">
-		<div class="jm-card-s5 uk-card uk-margin-top">
-			<div class="uk-card-header">
-				<h3 class="uk-card-title"> {{s.sidebar_section_4.title}} </h3>
+	<div class="jm-focus-slideshow uk-width-2-3" >
+		<div class="uk-position-relative uk-visible-toggle" uk-slideshow="animation: push">
+			<ul class="uk-slideshow-items" >
+				<a  href="/article/{{item.article_id}}.html" target="_blank" mp:for="{{r.focus.contents.data}}" mp:for-from="0" mp:for-to="3" >
+					<img src="{{item.cover.url}}"  alt="" uk-cover>
+					<div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-left uk-padding-small">
+						<p class="uk-margin-remove">{{item.title}}</p>
+					</div>
+				</a>
+			</ul>
+			<div class="uk-light">
+				<a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+				<a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
 			</div>
-			<div class="uk-card-body uk-panel" >
-				<ul class="jm-list-s5 uk-list">
-					<a class="jm-item" href="/article/{{item.article_id}}.html" mp:for="{{s.sidebar_section_4.contents.data}}" mp:for-from="0" mp:for-to="6" >
-						<div class="uk-flex">
-							<div style="min-width:100px;min-height:70px; width:100px; height:70px; overflow: hidden;" >
-								<div class="uk-cover-container">
-									<canvas width="100%" height=""></canvas>
-									<img src="{{item.cover.url}}" alt="" uk-cover>
-								</div>
-							</div>
-							<div class="uk-margin-small-left uk-flex uk-flex-column uk-flex-between">
-								<div class="title"> {{item.title}}  </div>
-								<div class="summary uk-text-muted">{{HMDATETIME(item.publish_datetime)}}</div>
-							</div>
-						</div>
-					</a>
-				</ul>
-			</div> <!-- END uk-card-body -->
-		</div> <!-- END jm-card-s5  -->
-	</div> <!-- END uk-width-4-4 jm-recommends-right -->
+		</div>
+	</div> <!-- END jm-focus-slideshow -->
 
-</div></div></section>
+	<div class="jm-focus-topics uk-width-1-3 uk-padding-small uk-padding-remove-vertical" style="padding-left: 12px;" > 
+		<a class="uk-inline uk-margin-small-bottom" href="/article/{{item.article_id}}.html" target="_blank" mp:for="{{r.focus.contents.data}}" mp:for-from="4" mp:for-to="6">
+			<div class="uk-cover-container" style="min-width:255px;min-height:163px; width:391px; height:220px;overflow: hidden;" >
+				<canvas width="100%" height=""></canvas>
+				<img src="{{item.cover.url}}" style="min-width:255px" alt="" uk-cover>
+				<div class="uk-overlay uk-light uk-position-bottom uk-text-left uk-padding-small">
+					<p>{{item.title}}</p>
+				</div>
+			</div>
+		</a>
+	</div> <!-- END jm-focus-topics -->
+	
+</div></div></section>  <!-- END jm-focus -->
+
+
+<section id="jm-recommends-section" class="jm-recommends uk-section  uk-margin-top uk-padding-remove-vertical" style="z-index: 980;" ><div class="uk-container"  >
+
+	<div class="jm-recommends-header" uk-sticky="cls-active:jm-recommends-header-active"  >
+		<ul class="jm-recommends-navbar uk-subnav uk-subnav-pill" >
+			 <li class="{{(subcate == '') ? 'uk-active'}}"><a href="/article/list/{{__var.cid}}.html">最近更新</a></li>
+			 <li class="{{(item.category_id == subcate.category_id) ? 'uk-active'}}" mp:for="{{subcates.data}}" >
+			 	<a href="/article/list/{{__var.cid}}.html?subcate={{item.category_id}}">{{item.name}}</a>
+			 </li>
+		</ul>
+	</div> <!-- END jm-recommends-header -->
+
+	<div  class="jm-recommends-body" >
+		<!-- Todo: 作为组件引用 -->
+		<include src="__WEB_ROOT__/desktop/widget/category/video.page" /> 
+	</div>
+	
+</div></section>
 
 <include src="__WEB_ROOT__/desktop/common/quickbar.page"  />
 <include src="__WEB_ROOT__/desktop/common/footer.page"  />
