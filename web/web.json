@@ -4,6 +4,8 @@
 		"/desktop/article/index",
 		"/desktop/article/list",
 		"/desktop/article/detail",
+		"/desktop/video/list",
+		"/desktop/video/detail",
 		"/mobile/article/index",
 		"/mobile/article/list",
 		"/mobile/article/detail",

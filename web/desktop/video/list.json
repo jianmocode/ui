@@ -1,0 +1,91 @@
+{	
+	"cname":"视频列表页(二级)",
+	"data": {
+		"categories":{
+			"api":"/xpmsns/pages/category/search",
+			"query":{
+				"select":"category_id,name,highlight,link,isblank,slug",
+				"order":"priority asc",
+				"noParentId":"1",
+				"children":false,
+				"isnav":1
+			}
+		},
+		"services":{
+			"api":"/xpmsns/pages/category/search",
+			"query":{
+				"select":"category_id,name,highlight,link,isblank,slug",
+				"order":"priority asc",
+				"noParentId":"1",
+				"children":false,
+				"isfootnav":1
+			}
+		},
+		"cate":"{{categories.map.__var.cid}}",
+		"subcates": {
+			"api":"/xpmsns/pages/category/search",
+			"query":{
+				"select":"category_id,name,highlight,link,slug",
+				"order":"priority asc",
+				"children":false,
+				"parentId": "{{ __var.cid}}",
+				"isnav":1
+			}
+		},
+		"subcate":"{{subcates.map.__get.subcate}}",
+		"articles":{
+			"api":"/xpmsns/pages/article/search",
+			"query":{
+				"perpage":20,
+				"order":"publish_time desc",
+				"categoryId":"{{cate.category_id}}",
+				"subcateId":"{{subcate.category_id}}",
+				"page":"{{__get.page}}"
+			}
+		},
+		"site":{
+			"api":"/xpmsns/pages/siteconf/get",
+			"query":{
+				"site_slug":"global",
+				"select":"*"
+			}
+		},
+		"navs":"{{categories.data}}",
+		"s":{
+			"api":"/xpmsns/pages/recommend/getContents",
+			"query":{
+				"api":"/xpmsns/pages/recommend/getContents",
+				"slugs":"sidebar_section_4"
+			}
+		},
+		"links":{
+			"api":"/xpmsns/pages/links/search",
+			"query":{
+				"select":"name,link"
+			}
+		},
+		"page":{
+			"title":"首页",
+			"logo":"{{site.site_logo}}"
+		},
+		"seo": {
+			"title":"{{site.site_name}}",
+			"keywords":"{{site.site_name}}",
+			"description":"{{site.site_intro}}"
+		},
+		"active": {
+			"nav": "{{__var.cid}}",
+			"subnav": "{{__get.subcid}}"
+		}
+	},
+	"entries":[
+		{"method":"GET", "router":"/video/list/{cid:.+}.html", "ttl":0},
+		{"method":"GET", "router":"/video/list/{cid:.+}", "ttl":0}
+	],
+	
+	"alias": {
+		"mobile":"/mobile/video/list",
+		"wechat":"/mobile/video/list",
+		"wxapp": "/video/list"
+	}
+}

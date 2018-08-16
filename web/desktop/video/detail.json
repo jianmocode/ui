@@ -1,0 +1,74 @@
+{	
+	"cname":"视频详情页(三级)",
+	"data": {
+		"categories":{
+			"api":"/xpmsns/pages/category/search",
+			"query":{
+				"select":"category_id,name,highlight,link,isblank,slug",
+				"order":"priority asc",
+				"noParentId":"1",
+				"children":false,
+				"isnav":1
+			}
+		},
+		"services":{
+			"api":"/xpmsns/pages/category/search",
+			"query":{
+				"select":"category_id,name,highlight,link,isblank,slug",
+				"order":"priority asc",
+				"noParentId":"1",
+				"children":false,
+				"isfootnav":1
+			}
+		},
+		"navs":"{{categories.data}}",
+		"article":{
+			"api":"/xpmsns/pages/article/get",
+			"query":{
+				"articleId":"{{__var.id}}"
+			}
+		},
+		"s":{
+			"api":"/xpmsns/pages/recommend/getContents",
+			"query":{
+				"api":"/xpmsns/pages/recommend/getContents",
+				"slugs":"sidebar_section_4"
+			}
+		},
+		"site":{
+			"api":"/xpmsns/pages/siteconf/get",
+			"query":{
+				"site_slug":"global",
+				"select":"*"
+			}
+		},
+		"links":{
+			"api":"/xpmsns/pages/links/search",
+			"query":{
+				"select":"name,link"
+			}
+		},
+		"page":{
+			"title":"{{article.title}}",
+			"logo":"{{site.site_logo}}"
+		},
+		"seo": {
+			"title":"{{article.seo_title}}",
+			"keywords":"{{site.seo_keywords}}",
+			"description":"{{site.seo_summary}}"
+		},
+		"active": {
+			"nav":"nothing"
+		}
+	},
+	"entries":[
+		{"method":"GET", "router":"/video/{id:[0-9a-zA-Z_]+}.html", "ttl":0},
+		{"method":"GET", "router":"/video/{id:[0-9a-zA-Z_]+}", "ttl":0}
+	],
+	
+	"alias": {
+		"mobile":"/mobile/video/detail",
+		"wechat":"/mobile/video/detail",
+		"wxapp": "/video"
+	}
+}
