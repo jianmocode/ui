@@ -1,5 +1,5 @@
 let web = getWeb();
-import articles from '../widget/category/list';  // 下一版应该可以引用组件
+import videos from '../widget/recommend/video';  // 下一版应该可以引用组件
 
 Page({
 	data:{},
@@ -7,18 +7,10 @@ Page({
 		try { this.initRecommendsNavbar(); } catch(e){
 			console.log( 'Error @initRecommendsNavbar', e);
 		}
-		try { articles.$load(
-				{
-					var: {cid:this.data.cate.category_id},
-					get: {subcate:this.data.subcate.category_id || '' },
-				},
-				{	
-					articles:this.data.articles, 
-					cate:this.data.cate, 
-					subcate: this.data.subcate
-				}); 
-		} catch(e){
-			console.log( 'Error @articles.$load', e);
+		
+		params['var']['slug'] = 'section_1';
+		try { videos.$load(params, { section:this.data.r.section_1}); } catch(e){
+			console.log( 'Error @videos.$load', e);
 		}
 	},
 

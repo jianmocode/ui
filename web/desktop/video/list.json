@@ -22,33 +22,21 @@
 			}
 		},
 		"cate":"{{categories.map.__var.cid}}",
-		"subcates": {
-			"api":"/xpmsns/pages/category/search",
+		"sections":{
+			"api":"/xpmsns/pages/recommend/search",
 			"query":{
-				"select":"category_id,name,highlight,link,slug",
-				"order":"priority asc",
-				"children":false,
-				"parentId": "{{ __var.cid}}",
-				"isnav":1
-			}
-		},
-		"subcate":"{{subcates.map.__get.subcate}}",
-		"articles":{
-			"api":"/xpmsns/pages/article/search",
-			"query":{
-				"perpage":21,
-				"order":"publish_time desc",
-				"categoryId":"{{cate.category_id}}",
-				"subcateId":"{{subcate.category_id}}",
-				"page":"{{__get.page}}"
+				"select":"title,slug",
+				"pos":"index"
 			}
 		},
 		"r": {
 			"api":"/xpmsns/pages/recommend/getContents",
 			"query":{
-				"slugs":"focus"
+				"slugs":"focus,section_1",
+				"perpage":18
 			}
 		},
+		"section":"{{r.section_1}}",
 		"site":{
 			"api":"/xpmsns/pages/siteconf/get",
 			"query":{

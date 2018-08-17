@@ -37,18 +37,17 @@
 
 <section id="jm-recommends-section" class="jm-recommends uk-section  uk-margin-top uk-padding-remove-vertical" style="z-index: 980;" ><div class="uk-container"  >
 
-	<div class="jm-recommends-header" uk-sticky="cls-active:jm-recommends-header-active"  >
+	<div class="jm-recommends-header" class="uk-background-muted" uk-sticky="cls-active:jm-recommends-header-active"  >
 		<ul class="jm-recommends-navbar uk-subnav uk-subnav-pill" >
-			 <li class="{{(subcate == '') ? 'uk-active'}}"><a href="/article/list/{{__var.cid}}.html">最近更新</a></li>
-			 <li class="{{(item.category_id == subcate.category_id) ? 'uk-active'}}" mp:for="{{subcates.data}}" >
-			 	<a href="/article/list/{{__var.cid}}.html?subcate={{item.category_id}}">{{item.name}}</a>
-			 </li>
+			<li class="{{ (index == 0) ? 'uk-active'}}" mp:for="{{sections.data}}">
+				<a href="#jm-recommends-section" data-remote="/widget/recommend/video/{{item.slug}}" uk-scroll="duration:200"> {{item.title}} </a>
+			</li>
 		</ul>
 	</div> <!-- END jm-recommends-header -->
 
 	<div  class="jm-recommends-body" >
 		<!-- Todo: 作为组件引用 -->
-		<include src="__WEB_ROOT__/desktop/widget/category/video.page" /> 
+		<include src="__WEB_ROOT__/desktop/widget/recommend/video.page" /> 
 	</div>
 	
 </div></section>

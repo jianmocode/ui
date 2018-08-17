@@ -1,0 +1,66 @@
+@charset "utf-8";
+@import '/desktop/common/d.less';
+
+.pagination {
+	.more {
+		width: 100%;	
+		margin-top: 0px;
+		margin-bottom: 40px;
+		background: @lightColor;
+	}
+}
+
+.videos {
+
+
+	.item {
+		margin-bottom: 40px;
+		
+		.uk-card {
+			border: 1px solid @lightColor;
+			border-radius:6px;
+		}
+
+		.summary {
+			font-size: 1rem;
+			padding:0em 1em 0em 1em;
+			background: @lightColor;
+			color: @textColor;
+			overflow: hidden;
+			height: 48px;
+			line-height: 48px;
+		}
+
+		.player {
+			color: @lightColor;
+			.setAlpha( 0.4 );
+		}
+
+		.uk-card-body {
+			padding: 1em .5em;
+		}
+
+		.uk-card-title {
+			margin-bottom:.5em;
+		}
+
+		.uk-text-danger .summary {
+			color: @textDangerColor;
+			background: rgba(0,0,0,1);
+		}
+		.uk-text-danger .player {
+			color: @textDangerColor;
+		}
+
+	}
+
+	a:hover {
+		.player { .setAlpha(1);}
+		.summary { .setAlpha(1); }
+		.uk-card  {
+			.summary  {
+				color: @textPrimaryColor;
+			}
+		}
+	}
+}
