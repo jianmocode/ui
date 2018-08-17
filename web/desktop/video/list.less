@@ -9,6 +9,16 @@ body {
 .jm-video-focus {
 	padding-top: 25px;
 	padding-bottom: 25px;
+
+	.player  {
+		color: @lightColor;
+		.setAlpha( 0.4 );
+	}
+
+	a:hover {
+		.player { .setAlpha(1);}
+		.title { color: @lightColor; }
+	}
 }
 
 .jm-recommends {

@@ -7,9 +7,13 @@
 		<div class="uk-position-relative uk-visible-toggle" uk-slideshow="animation: push">
 			<ul class="uk-slideshow-items" >
 				<a  href="/article/{{item.article_id}}.html" target="_blank" mp:for="{{r.focus.contents.data}}" mp:for-from="0" mp:for-to="3" >
-					<img src="{{item.cover.url}}"  alt="" uk-cover>
+					<div class="uk-cover-container">
+						<canvas style="height:460px;"></canvas>
+						<img src="{{item.cover.url}}"  alt="" uk-cover>
+						<div class="uk-overlay player uk-position-center"><span uk-icon="icon:play-circle;ratio:3"></span></div>
+					</div>
 					<div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-left uk-padding-small">
-						<p class="uk-margin-remove">{{item.title}}</p>
+						<p class="uk-margin-remove title">{{item.title}}</p>
 					</div>
 				</a>
 			</ul>
