@@ -30,7 +30,7 @@
 				<canvas width="100%" height=""></canvas>
 				<img src="{{item.cover.url}}" style="min-width:255px" alt="" uk-cover>
 				<div class="uk-overlay player uk-position-center"><span uk-icon="icon:play-circle;ratio:2"></span></div>
-				<div class="uk-overlay uk-light uk-position-bottom uk-text-left uk-padding-small">
+				<div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-left uk-padding-small">
 					<p class="title">{{item.title}}</p>
 				</div>
 			</div>
