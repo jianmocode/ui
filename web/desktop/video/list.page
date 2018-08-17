@@ -6,7 +6,7 @@
 	<div class="jm-focus-slideshow uk-width-2-3" >
 		<div class="uk-position-relative uk-visible-toggle" uk-slideshow="animation: push">
 			<ul class="uk-slideshow-items" >
-				<a  href="/article/{{item.article_id}}.html" target="_blank" mp:for="{{focus.contents.data}}" mp:for-from="0" mp:for-to="3" >
+				<a  href="/video/{{item.article_id}}.html" target="_blank" mp:for="{{focus.contents.data}}" mp:for-from="0" mp:for-to="3" >
 					<div class="uk-cover-container">
 						<canvas style="height:460px;"></canvas>
 						<img src="{{item.cover.url}}"  alt="" uk-cover>
@@ -25,7 +25,7 @@
 	</div> <!-- END jm-focus-slideshow -->
 
 	<div class="jm-focus-topics uk-width-1-3 uk-padding-small uk-padding-remove-vertical" style="padding-left: 12px;" > 
-		<a class="uk-inline uk-margin-small-bottom" href="/article/{{item.article_id}}.html" target="_blank" mp:for="{{focus.contents.data}}" mp:for-from="4" mp:for-to="6">
+		<a class="uk-inline uk-margin-small-bottom" href="/video/{{item.article_id}}.html" target="_blank" mp:for="{{focus.contents.data}}" mp:for-from="4" mp:for-to="6">
 			<div class="uk-cover-container" style="min-width:255px;min-height:163px; width:391px; height:220px;overflow: hidden;" >
 				<canvas width="100%" height=""></canvas>
 				<img src="{{item.cover.url}}" style="min-width:255px" alt="" uk-cover>

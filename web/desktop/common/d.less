@@ -68,7 +68,20 @@ a { color: @linkColor; text-decoration: none; }
 	}
 
 	border-bottom: 1px solid @dividerColor;
-	background-color: #ffffff;
+	background-color: @lightColor;
+}
+
+.jm-navbar.jm-dark {
+	.uk-navbar-nav>li>a {
+		color: @textMutedColor;
+	}
+
+	.uk-navbar-nav>li>a:hover {
+		color: @lightColor;
+	}
+
+	background-color:@darkColor;
+	border-bottom: none;
 }
 
 
@@ -90,6 +103,15 @@ a { color: @linkColor; text-decoration: none; }
 
 }
 
+
+.jm-player {
+
+	.player {
+		height: 500px;
+		min-height: 500px;
+		margin-bottom: 40px;
+	}
+}
 
 .jm-quickbar {
 	li {

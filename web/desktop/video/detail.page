@@ -1,80 +1,55 @@
 <include src="__WEB_ROOT__/desktop/common/head.page"  />
-<include src="__WEB_ROOT__/desktop/common/header.page"  />
 
-<section id="jm-recommends-section" class="jm-recommends uk-section uk-padding-remove-vertical" style="z-index: 980;" ><div class="uk-container"  ><div class="uk-flex">
-	
-	<div class="jm-recommends-left uk-width-3-4" >
-		<article class=" jm-article uk-article">
-			<h1 class="jm-article-title uk-article-title">[人邮]{{article.title}}</h1>
-			<div class="jm-article-meta uk-article-meta"> 
-				<a class="author" href="#"> {{ (article.author) ? article.author : site.site_name }} </a> <span>•</span>
-				<span class="publictime"> {{HMDATETIME(article.publish_datetime)}} </span> <span>•</span>
-				<a mp:if="{{article.category_last.parent_id}}" class="category" href="/article/list/{{article.category_last.parent_id}}.html?subcate={{article.category_last.category_id}}"> {{article.category_last.name}} </a>
-				<a mp:else class="category" href="/article/list/{{article.category_last.category_id}}.html}}"> {{article.category_last.name}} </a>
-			</div>
+<section class="jm-navbar jm-dark"  ><div class="uk-container">
+	<nav class="uk-navbar-container  uk-navbar-transparent uk-dark" uk-navbar  >
+		<div class="uk-navbar-left">
+			<a class="uk-navbar-item uk-logo uk-padding-remove-horizontal" href="/">
+				<img data-src="{{site.site_logo_light.url}}"  alt="{{site.site_name}}" uk-img>
+			</a>
+			<ul class="uk-navbar-nav uk-margin-left">
+				<li class="{{ (active.nav == '') ? 'uk-active' }}" ><a href="/">首页</a></li>
+				<li class="{{ (active.nav == nav.category_id) ? 'uk-active' }}" mp:for="{{navs}}" mp:for-item="{{nav}}" >
+					<a mp:if="{{nav.link}}" href="{{nav.link}}"  target="{{ (nav.isblank) ? '_blank' }}"  class="{{ (nav.highlight) ? 'uk-text-danger'}}">{{nav.name}}</a>
+					<a mp:else href="/article/list/{{nav.category_id}}.html"  target="{{ (nav.isblank) ? '_blank' }}"  class="{{ (nav.highlight) ? 'uk-text-danger'}}">{{nav.name}}</a>
+				</li>
+			</ul> 
+		</div><!-- END uk-navbar-left -->
 
-			<div class="jm-article-summary" mp:if="{{article.summary}}"> {{article.summary}} </div>
-
-			<div class="jm-article-content"> {{article.content}}</div>
-
-			<hr class="uk-divider-icon">
-
-
-			<div class="jm-card-s6 uk-card share-navbar uk-hidden">
-				<div class="uk-clearfix">
-					<div class="uk-float-left">
-						<img class="avatar" data-src="{{site.icon.url}}"  alt="{{ (article.author) ? article.author : site.site_name }}" uk-img>
-						<a class="author" href="#"> {{ (article.author) ? article.author : site.site_name }} </a> 
-						<button class="uk-button uk-button-primary uk-button-small"> 关注 </button>
-					</div> <!-- END .uk-float-left -->
-
-					<div class="uk-float-right">
-						<span>分享: </span>
-						<a class="share share-weixin" href="#" uk-icon="icon: weixin; ratio:1.5"></a>
-						<div uk-dropdown="pos:top-center;offset:15">
-							<img data-src="/_api/xpmsns/pages/article/qrcode?width=200&text={{__sys.location}}"  alt="{{page.title}}" width="200" uk-img>
-							<div class="uk-text-center uk-margin-small-top uk-text-bold">微信扫描二维码</div>
-						</div>
-
-						<a class="share share-weibo" href="http://service.weibo.com/share/share.php?url={{__sys.location}}&type=button&language=zh_cn&appkey={{site.weibo_appkey}}&title={{article.title}}&pic={{article.cover.url}}&searchPic=true&style=simple" target="_blank" uk-icon="icon: weibo; ratio:1.5"></a>
-						<a class="shareshare-qq" href="https://connect.qq.com/widget/shareqq/index.html?url={{__sys.location}}&title={{article.title}}&source={{site.site_name}}&desc={{article.summary}}&pics={{article.cover.url}}" target="_blank" uk-icon="icon: qq; ratio:1.5"></a>
-
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav">
+				<li mp:if="{{site.qr_wxapp}}">
+					<a href="javascript:void(0)" >小程序</a>
+					<div uk-dropdown="offset:-20; pos:bottom-justify">
+						<img data-src="{{site.qr_wxapp.url}}"  alt="{{site.site_name}}" uk-img>
 					</div>
-				</div> <!-- END uk-clearfix -->
-			</div> <!-- END share-navbar  -->
-
-		</article>
-
-	</div> <!-- END uk-width-3-4 jm-recommends-left -->
-
-	<div class="jm-recommends-right uk-width-1-4">
-		<div class="jm-card-s5 uk-card uk-margin-top">
-			<div class="uk-card-header">
-				<h3 class="uk-card-title"> {{s.sidebar_section_4.title}} </h3>
-			</div>
-			<div class="uk-card-body uk-panel" >
-				<ul class="jm-list-s5 uk-list">
-					<a class="jm-item" href="/article/{{item.article_id}}.html" mp:for="{{s.sidebar_section_4.contents.data}}" mp:for-from="0" mp:for-to="6" >
-						<div class="uk-flex">
-							<div style="min-width:100px;min-height:70px; width:100px; height:70px; overflow: hidden;" >
-								<div class="uk-cover-container">
-									<canvas width="100%" height=""></canvas>
-									<img src="{{item.cover.url}}" alt="" uk-cover>
-								</div>
-							</div>
-							<div class="uk-margin-small-left uk-flex uk-flex-column uk-flex-between">
-								<div class="title"> {{item.title}}  </div>
-								<div class="summary uk-text-muted">{{HMDATETIME(item.publish_datetime)}}</div>
-							</div>
+				</li>
+				<li mp:if="{{site.qr_wxpub}}">
+					<a href="javascript:void(0)">公众号</a>
+					<div uk-dropdown="offset:-20; pos:bottom-justify">
+						<img data-src="{{site.qr_wxpub.url}}"  alt="{{site.site_name}}" width="200" uk-img>
+						<div mp:if="{{site.name_wxpub}}" class="uk-text-center uk-margin-small-top uk-text-bold">
+							{{site.name_wxpub}}
 						</div>
-					</a>
-				</ul>
-			</div> <!-- END uk-card-body -->
-		</div> <!-- END jm-card-s5  -->
-	</div> <!-- END uk-width-4-4 jm-recommends-right -->
+					</div>
+				</li>
+				<li><a href="/user/signup">注册</a></li>
+				<li><a href="/user/signin/mobile">登录</a></li>
+			</ul>
+		</div>
+	</nav>
+</div></section> <!-- END jm-navbar -->
 
+<section class="jm-player uk-background-secondary"><div class="uk-container"><div class="uk-grid">
+	<div class="player uk-width-3-4">
+		<div class="loading">正在加载播放器....</div>
+		<iframe id="youku-player" height="500" width="100%"  src='//player.youku.com/embed/{{YOUKUID(video.url, article.content)}}==' frameborder=0 allowfullscreen  allowscriptaccess="always" ></iframe>
+	</div>
+	<div class="playlist uk-width-1-4">
+		PlayList
+	</div>
 </div></div></section>
 
+
+
 <include src="__WEB_ROOT__/desktop/common/quickbar.page"  />
-<include src="__WEB_ROOT__/desktop/common/footer.page"  />
 <include src="__WEB_ROOT__/desktop/common/foot.page"  />

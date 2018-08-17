@@ -28,6 +28,7 @@
 				"articleId":"{{__var.id}}"
 			}
 		},
+		"video":"{{article.videos.0}}",
 		"s":{
 			"api":"/xpmsns/pages/recommend/getContents",
 			"query":{

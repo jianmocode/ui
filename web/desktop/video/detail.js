@@ -1,18 +1,12 @@
-import {Article} from '../../libs/article.js';
 let web = getWeb();
 
 Page({
 	data:{},
 	onReady: function( params ) {
-		try { this.initShareNavbar(); } catch(e){
-			console.log( 'Error @initShareNavbar', e);
-		}
 
-		try {
-			( new Article( 'article' ) ).init();
-		} catch( e ) {
-			console.log( 'Error @Article init', e);
-		}
+		$('#youku-player').on('load', function(){
+			$('.player .loading').addClass('uk-hidden');
+		});
 	},
 
 	initShareNavbar: function() {
