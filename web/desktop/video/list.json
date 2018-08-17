@@ -26,17 +26,18 @@
 			"api":"/xpmsns/pages/recommend/search",
 			"query":{
 				"select":"title,slug",
-				"pos":"index"
+				"pos":"video"
 			}
 		},
 		"r": {
 			"api":"/xpmsns/pages/recommend/getContents",
 			"query":{
-				"slugs":"focus,section_1",
+				"slugs":"video_focus,{{sections.data.0.slug}}",
 				"perpage":18
 			}
 		},
-		"section":"{{r.section_1}}",
+		"section":"{{r.{{sections.data.0.slug}}}}",
+		"focus":"{{r.video_focus}}",
 		"site":{
 			"api":"/xpmsns/pages/siteconf/get",
 			"query":{

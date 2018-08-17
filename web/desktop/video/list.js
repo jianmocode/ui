@@ -8,9 +8,15 @@ Page({
 			console.log( 'Error @initRecommendsNavbar', e);
 		}
 		
-		params['var']['slug'] = 'section_1';
-		try { videos.$load(params, { section:this.data.r.section_1}); } catch(e){
-			console.log( 'Error @videos.$load', e);
+		// 下载Session数据
+		let sections = this.data.sections.data || [];
+		let section = sections[0] || {};
+		params['var']['slug'] = section.slug || null;
+		console.log( section );
+		if ( params['var']['slug'] ) {
+			try { videos.$load(params, { section:this.data.r.section_1}); } catch(e){
+				console.log( 'Error @videos.$load', e);
+			}
 		}
 	},
 
