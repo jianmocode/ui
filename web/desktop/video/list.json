@@ -79,8 +79,8 @@
 	],
 	
 	"alias": {
-		"mobile":"/mobile/video/list",
-		"wechat":"/mobile/video/list",
+		"mobile":"/mobile/article/list",
+		"wechat":"/mobile/article/list",
 		"wxapp": "/video/list"
 	}
 }
