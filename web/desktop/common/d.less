@@ -104,15 +104,6 @@ a { color: @linkColor; text-decoration: none; }
 }
 
 
-.jm-player {
-
-	.player {
-		height: 500px;
-		min-height: 500px;
-		margin-bottom: 40px;
-	}
-}
-
 .jm-quickbar {
 	li {
 		margin: -1px 0px 0px 0px !important;
@@ -369,6 +360,40 @@ a { color: @linkColor; text-decoration: none; }
 	img { height: 100%; }
 	.summary { margin-top:.2em; font-size: 0.8125rem; color:@textMutedColor; }
 	.title { font-size: 0.9rem; }
+}
+
+
+.jm-card-s5.jm-dark {
+
+	background: @darkColor;
+	border:none;
+
+	.uk-card-header {
+		margin: 0px; 
+		border-top: 0px;
+		padding: 0em 1em .5em 1em;
+
+		.uk-card-title {
+			color: @lightColor;
+			font-size: 1.125rem;
+		}
+	}
+
+	.uk-card-body { 
+		color: @textDarkColor;
+	}
+
+}
+
+.jm-dark .jm-list-s5 {
+	a {
+		color: @textMutedColor;
+		border: 0px;
+	}
+	a:hover {
+		background:none;
+		color: @textPrimaryColor;
+	}
 }
 
 

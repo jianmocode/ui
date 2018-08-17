@@ -33,9 +33,10 @@
 			"api":"/xpmsns/pages/recommend/getContents",
 			"query":{
 				"api":"/xpmsns/pages/recommend/getContents",
-				"slugs":"sidebar_section_4"
+				"slugs":"latest"
 			}
 		},
+		"latest":"{{s.latest}}",
 		"site":{
 			"api":"/xpmsns/pages/siteconf/get",
 			"query":{

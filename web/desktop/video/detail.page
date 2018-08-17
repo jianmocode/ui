@@ -43,14 +43,45 @@
 	<div class="player uk-width-3-4">
 		<div class="loading">正在加载播放器....</div>
 		<iframe id="youku-player" height="500" width="100%"  src='//player.youku.com/embed/{{YOUKUID(video.url, article.content)}}==' frameborder=0 allowfullscreen  allowscriptaccess="always" ></iframe>
-	</div>
+	</div> <!-- END  uk-width-3-4-->
 	<div class="playlist uk-width-1-4">
-		PlayList
-	</div>
+		<div class="jm-card-s5 jm-dark uk-card">
+			<div class="uk-card-header">
+				<h3 class="uk-card-title"> {{latest.title}} </h3>
+			</div>
+			<div class="uk-card-body uk-panel" data-toggle="slimscroll"  style="height:468px;">
+				<ul class="jm-list-s5 uk-list">
+					<a class="jm-item" href="/video/{{item.article_id}}.html"  mp:for="{{latest.contents.data}}" >
+						<div class="uk-flex">
+							<div style="min-width:100px;min-height:70px; width:100px; height:70px; overflow: hidden;" >
+								<div class="uk-cover-container">
+									<canvas width="100%" height=""></canvas>
+									<img src="{{item.cover.url}}" alt="" uk-cover>
+								</div>
+							</div>
+							<div class="uk-margin-small-left uk-flex uk-flex-column uk-flex-between">
+								<div class="title"> {{item.title}}  </div>
+							</div>
+						</div>
+					</a>
+				</ul>
+			</div> <!-- END uk-card-body -->
+		</div> <!-- END jm-card-s1 -->
+	</div> <!-- END  uk-width-4-4-->
+	
+	<div class="article uk-width-1-1" >
+		<div class="title">{{article.title}}</div>
+		<div class="attrs">
+			<img class="avatar" data-src="{{site.icon.url}}"   alt="{{ (article.author) ? article.author : site.site_name }}" uk-img>
+			<a class="author" href="#"> {{ (article.author) ? article.author : site.site_name }} </a>
+			<span>{{HMDATETIME(article.publish_datetime)}} </span>
+		</div>
+	</div> <!-- END  uk-width-1-1 -->
+
 </div></div></section>
 
 <section><div class="uk-container"><div class="uk-grid">
-	正文等信息
+
 </div></div></section>
 
 <include src="__WEB_ROOT__/desktop/common/quickbar.page"  />
