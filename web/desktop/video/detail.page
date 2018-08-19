@@ -58,7 +58,7 @@
 
 		<div class="qq-player "  mp:elif="{{video.mimetype == 'site/qq'}}">
 			<!-- <div class="loading">正在加载播放器....</div> -->
-			<iframe id="qq-player" height="500" width="100%"   class="iframe-player" src='//v.qq.com/iframe/player.html?vid={{QQVID(video.url, article.content)}}&tiny=0&auto=0' frameborder=0 allowfullscreen  allowscriptaccess="always" ></iframe>
+			<iframe id="qq-player" height="500" width="100%"   class="iframe-player" src='//v.qq.com/iframe/player.html?vid={{QQVID(video.url, article.content)}}&tiny=0&auto=0' frameborder=0  allowfullscreen></iframe>
 		</div> <!-- END qq-player -->
 
 		<div class="default-player"  mp:else>
