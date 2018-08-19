@@ -41,8 +41,30 @@
 
 <section class="jm-player uk-background-secondary"><div class="uk-container"><div class="uk-grid">
 	<div class="player uk-width-3-4">
-		<div class="loading">正在加载播放器....</div>
-		<iframe id="youku-player" height="500" width="100%"  src='//player.youku.com/embed/{{YOUKUID(video.url, article.content)}}==' frameborder=0 allowfullscreen  allowscriptaccess="always" ></iframe>
+		<div class="video-player" mp:if="{{video.mimetype == 'video/mp4'}}">
+			<video id="video-player" class="video-js" controls preload="auto" 
+				width="100%" style="height: 500px;" 
+				poster="{{video.cover}}" 
+				data-setup="{}">
+				<source src="{{video.url}}" type="{{video.mimetype}}">
+				<p class="vjs-no-js">未加载编辑器</p>\n 
+			</video>
+		</div> <!-- END video-player -->
+
+		<div class="youku-player"  mp:elif="{{video.mimetype == 'site/youku'}}">
+			<div class="loading">正在加载播放器....</div>
+			<iframe id="youku-player" height="500" width="100%" class="iframe-player"  src='//player.youku.com/embed/{{YOUKUID(video.url, article.content)}}==' frameborder=0 allowfullscreen  allowscriptaccess="always" ></iframe>
+		</div><!-- END youku-player -->
+
+		<div class="qq-player "  mp:elif="{{video.mimetype == 'site/qq'}}">
+			<!-- <div class="loading">正在加载播放器....</div> -->
+			<iframe id="qq-player" height="500" width="100%"   class="iframe-player" src='//v.qq.com/iframe/player.html?vid={{QQVID(video.url, article.content)}}&tiny=0&auto=0' frameborder=0 allowfullscreen  allowscriptaccess="always" ></iframe>
+		</div> <!-- END qq-player -->
+
+		<div class="default-player"  mp:else>
+			<div class="uk-text-center uk-padding">暂不支持播放此视频格式</div>
+		</div><!-- END default-player -->
+
 	</div> <!-- END  uk-width-3-4-->
 	<div class="playlist uk-width-1-4">
 		<div class="jm-card-s5 jm-dark uk-card">

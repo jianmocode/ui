@@ -4,7 +4,7 @@ Page({
 	data:{},
 	onReady: function( params ) {
 
-		$('#youku-player').on('load', function(){
+		$('.iframe-player').on('load', function(){
 			$('.player .loading').addClass('uk-hidden');
 		});
 	},
