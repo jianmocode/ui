@@ -66,6 +66,7 @@
 		</div><!-- END default-player -->
 
 	</div> <!-- END  uk-width-3-4-->
+
 	<div class="playlist uk-width-1-4">
 		<div class="jm-card-s5 jm-dark uk-card">
 			<div class="uk-card-header">
@@ -100,11 +101,36 @@
 		</div>
 	</div> <!-- END  uk-width-1-1 -->
 
-</div></div></section>
+</div></div></section> <!-- END jm-player -->
 
 <section><div class="uk-container"><div class="uk-grid">
+
+	<div class="jm-card-s7 related uk-width-1-1">
+		<div class="uk-card">
+			<div class="uk-card-header">
+				<h3 class="uk-card-title">相关视频</h3>
+			</div> <!-- END uk-card-header -->
+			<div class="uk-card-body uk-panel" >
+				<ul class="jm-list-s7 uk-grid">
+					<a class="jm-item uk-width-1-6" href="/video/{{item.article_id}}.html"  mp:for="{{latest.contents.data}}" >
+						<div class="uk-card">
+							<div class="uk-cover-container">
+								<canvas  style="height:120px;"></canvas>
+								<img src="{{item.cover.url}}" alt="" uk-cover>
+								<div class="uk-overlay player uk-position-center"><span uk-icon="icon:play-circle;ratio:2"></span></div>
+							</div>
+							<div class="summary">
+								{{item.title}}
+							</div>
+						</div>
+					</a>
+				</ul>
+			</div>
+		</div>
+	</div>
 
 </div></div></section>
 
 <include src="__WEB_ROOT__/desktop/common/quickbar.page"  />
+<include src="__WEB_ROOT__/desktop/common/footer.page"  />
 <include src="__WEB_ROOT__/desktop/common/foot.page"  />
