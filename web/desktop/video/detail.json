@@ -29,14 +29,30 @@
 			}
 		},
 		"video":"{{article.videos.0}}",
-		"s":{
+		"series":{
 			"api":"/xpmsns/pages/recommend/getContents",
 			"query":{
-				"api":"/xpmsns/pages/recommend/getContents",
-				"slugs":"latest"
+				"slug":"video_series",
+				"series":"{{article.series_param}}",
+				"exclude_articles":"{{article.article_id}}"
 			}
 		},
-		"latest":"{{s.latest}}",
+		"latest":{
+			"api":"/xpmsns/pages/recommend/getContents",
+			"query":{
+				"slug":"video_latest",
+				"exclude_articles":"{{article.article_id}}"
+			}
+		},
+		"relation":{
+			"api":"/xpmsns/pages/recommend/getContents",
+			"query":{
+				"perpage":18,
+				"slug":"video_relation",
+				"keywords":"{{article.keywords}}",
+				"exclude_articles":"{{article.article_id}}"
+			}
+		},
 		"site":{
 			"api":"/xpmsns/pages/siteconf/get",
 			"query":{

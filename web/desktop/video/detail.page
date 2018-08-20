@@ -66,11 +66,37 @@
 		</div><!-- END default-player -->
 
 	</div> <!-- END  uk-width-3-4-->
+	
 
-	<div class="playlist uk-width-1-4">
+	<div class="playlist uk-width-1-4" mp:if="{{series.contents.data}}">
 		<div class="jm-card-s5 jm-dark uk-card">
 			<div class="uk-card-header">
-				<h3 class="uk-card-title"> {{latest.title}} </h3>
+				<h3 class="uk-card-title"> {{series.title}} </h3>
+			</div>
+			<div class="uk-card-body uk-panel" data-toggle="slimscroll"  style="height:468px;">
+				<ul class="jm-list-s5 uk-list">
+					<a class="jm-item" href="/video/{{item.article_id}}.html"  mp:for="{{series.contents.data}}" >
+						<div class="uk-flex">
+							<div style="min-width:100px;min-height:70px; width:100px; height:70px; overflow: hidden;" >
+								<div class="uk-cover-container">
+									<canvas width="100%" height=""></canvas>
+									<img src="{{item.cover.url}}" alt="" uk-cover>
+								</div>
+							</div>
+							<div class="uk-margin-small-left uk-flex uk-flex-column uk-flex-between">
+								<div class="title"> {{item.title}}  </div>
+							</div>
+						</div>
+					</a>
+				</ul>
+			</div> <!-- END uk-card-body -->
+		</div> <!-- END jm-card-s1 -->
+	</div> <!-- END  uk-width-4-4-->
+
+	<div class="playlist uk-width-1-4" mp:else >
+		<div class="jm-card-s5 jm-dark uk-card">
+			<div class="uk-card-header">
+				<h3 class="uk-card-title"> {{latest.title}}</h3>
 			</div>
 			<div class="uk-card-body uk-panel" data-toggle="slimscroll"  style="height:468px;">
 				<ul class="jm-list-s5 uk-list">
@@ -108,11 +134,11 @@
 	<div class="jm-card-s7 related uk-width-1-1">
 		<div class="uk-card">
 			<div class="uk-card-header">
-				<h3 class="uk-card-title">相关视频</h3>
+				<h3 class="uk-card-title">{{relation.title}}</h3>
 			</div> <!-- END uk-card-header -->
 			<div class="uk-card-body uk-panel" >
 				<ul class="jm-list-s7 uk-grid">
-					<a class="jm-item uk-width-1-6" href="/video/{{item.article_id}}.html"  mp:for="{{latest.contents.data}}" >
+					<a class="jm-item uk-width-1-6" href="/video/{{item.article_id}}.html"  mp:for="{{relation.contents.data}}" >
 						<div class="uk-card">
 							<div class="uk-cover-container">
 								<canvas  style="height:120px;"></canvas>
