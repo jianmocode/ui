@@ -33,8 +33,7 @@
 			"api":"/xpmsns/pages/recommend/getContents",
 			"query":{
 				"slug":"video_series",
-				"series":"{{article.series_param}}",
-				"exclude_articles":"{{article.article_id}}"
+				"series":"{{article.series_param}}"
 			}
 		},
 		"latest":{

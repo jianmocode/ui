@@ -75,7 +75,7 @@
 			</div>
 			<div class="uk-card-body uk-panel" data-toggle="slimscroll"  style="height:468px;">
 				<ul class="jm-list-s5 uk-list">
-					<a class="jm-item" href="/video/{{item.article_id}}.html"  mp:for="{{series.contents.data}}" >
+					<a class="jm-item" href="/video/{{item.article_id}}.html"  mp:for="{{series.contents.data}}" class="{{ (article.article_id == item.article_id) ? 'active' }}" >
 						<div class="uk-flex">
 							<div style="min-width:100px;min-height:70px; width:100px; height:70px; overflow: hidden;" >
 								<div class="uk-cover-container">
