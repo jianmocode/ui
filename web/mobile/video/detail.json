@@ -1,0 +1,90 @@
+{	
+	"cname":"视频详情页(三级)-手机版",
+	"data": {
+		"categories":{
+			"api":"/xpmsns/pages/category/search",
+			"query":{
+				"select":"category_id,name,highlight,link,isblank,slug",
+				"order":"priority asc",
+				"noParentId":"1",
+				"children":false,
+				"isnav":1
+			}
+		},
+		"services":{
+			"api":"/xpmsns/pages/category/search",
+			"query":{
+				"select":"category_id,name,highlight,link,isblank,slug",
+				"order":"priority asc",
+				"noParentId":"1",
+				"children":false,
+				"isfootnav":1
+			}
+		},
+		"navs":"{{categories.data}}",
+		"article":{
+			"api":"/xpmsns/pages/article/get",
+			"query":{
+				"articleId":"{{__var.id}}"
+			}
+		},
+		"video":"{{article.videos.0}}",
+		"series":{
+			"api":"/xpmsns/pages/recommend/getContents",
+			"query":{
+				"slug":"video_series",
+				"series":"{{article.series_param}}"
+			}
+		},
+		"latest":{
+			"api":"/xpmsns/pages/recommend/getContents",
+			"query":{
+				"slug":"video_latest",
+				"exclude_articles":"{{article.article_id}}"
+			}
+		},
+		"relation":{
+			"api":"/xpmsns/pages/recommend/getContents",
+			"query":{
+				"perpage":18,
+				"slug":"video_relation",
+				"keywords":"{{article.keywords}}",
+				"exclude_articles":"{{article.article_id}}"
+			}
+		},
+		"site":{
+			"api":"/xpmsns/pages/siteconf/get",
+			"query":{
+				"site_slug":"global",
+				"select":"*"
+			}
+		},
+		"links":{
+			"api":"/xpmsns/pages/links/search",
+			"query":{
+				"select":"name,link"
+			}
+		},
+		"page":{
+			"title":"{{article.title}}",
+			"logo":"{{site.site_logo}}"
+		},
+		"seo": {
+			"title":"{{article.seo_title}}",
+			"keywords":"{{site.seo_keywords}}",
+			"description":"{{site.seo_summary}}"
+		},
+		"active": {
+			"nav":"nothing"
+		}
+	},
+	"entries":[
+		{"method":"GET", "router":"/m/video/{id:[0-9a-zA-Z_]+}.html", "ttl":0},
+		{"method":"GET", "router":"/m/video/{id:[0-9a-zA-Z_]+}", "ttl":0}
+	],
+	
+	"alias": {
+		"desktop":"/desktop/video/detail",
+		"wxapp": "/video"
+	}
+}

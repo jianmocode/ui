@@ -10,6 +10,7 @@
 		"/mobile/article/list",
 		"/mobile/article/detail",
 		"/mobile/video/list",
+		"/mobile/video/detail",
 		"/desktop/widget/recommend/list",
 		"/desktop/widget/category/list",
 		"/desktop/widget/recommend/video",
