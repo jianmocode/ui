@@ -1,0 +1,21 @@
+<div class="videos uk-grid" mp:if="{{section.contents.total > 0}}">
+	<a class="item uk-width-1-1" href="/m/video/{{item.article_id}}.html" target="_blank" mp:for="{{section.contents.data}}">
+		<div class="uk-card">
+			<div class="uk-cover-container">
+				<canvas  style="height:210px;"></canvas>
+				<img src="{{item.cover.url}}" alt="" uk-cover>
+				<div class="uk-overlay player uk-position-center"><span uk-icon="icon:play-circle;ratio:2"></span></div>
+			</div>
+			<div class="summary">
+				{{item.title}}
+			</div>
+		</div>
+	</a>
+</div>
+<div class="videos uk-padding uk-text-muted  uk-text-center" mp:else > 暂无内容 </div>
+
+<div class="pagination">
+	<button mp:if="{{section.contents.next}}"
+		class="more uk-button uk-button-default uk-width-1-1" data-next="{{section.contents.next}}" >加载更多</button>
+	<hr mp:else class="uk-divider-icon">
+</div>

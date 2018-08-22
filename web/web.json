@@ -14,7 +14,8 @@
 		"/desktop/widget/category/list",
 		"/desktop/widget/recommend/video",
 		"/mobile/widget/recommend/list",
-		"/mobile/widget/category/list"
+		"/mobile/widget/category/list",
+		"/mobile/widget/recommend/video"
 	],
 	"common":[
 		"/libs",

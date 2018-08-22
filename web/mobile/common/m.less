@@ -130,3 +130,10 @@ a, a:hover{ text-decoration:none; }
 	filter:brightness(100);
 	
 }
+
+/** 常用函数 */
+.setAlpha(@alpha) {
+	@_a: @alpha * 100;
+	opacity: @alpha;
+	filter: Alpha(opacity=@_a);
+}
