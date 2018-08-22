@@ -9,6 +9,7 @@
 		"/mobile/article/index",
 		"/mobile/article/list",
 		"/mobile/article/detail",
+		"/mobile/video/list",
 		"/desktop/widget/recommend/list",
 		"/desktop/widget/category/list",
 		"/desktop/widget/recommend/video",
