@@ -4,7 +4,7 @@
 		"categories":{
 			"api":"/xpmsns/pages/category/search",
 			"query":{
-				"select":"category_id,name,highlight,link,slug",
+				"select":"category_id,name,highlight,link,isblank,slug",
 				"order":"priority asc",
 				"children":false,
 				"noParentId":"1",
