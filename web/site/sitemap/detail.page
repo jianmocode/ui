@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urlset>
+	<url mp:for="{{maps}}">
+		<loc>{{item.loc}}</loc>
+		<lastmod>{{item.lastmod}}</lastmod>
+		<changefreq>{{item.changefreq}}</changefreq>
+		<priority>{{item.priority}}</priority>
+	</url>
+</urlset>

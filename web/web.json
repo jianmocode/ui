@@ -16,7 +16,10 @@
 		"/desktop/widget/recommend/video",
 		"/mobile/widget/recommend/list",
 		"/mobile/widget/category/list",
-		"/mobile/widget/recommend/video"
+		"/mobile/widget/recommend/video",
+		"/site/sitemap/index",
+		"/site/sitemap/detail",
+		"/site/robots"
 	],
 	"common":[
 		"/libs",

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sitemapindex>
+    <sitemap mp:for="{{sitemap.indexes}}">
+       <loc>{{sitemap.home}}/sitemap-{{item}}.xml</loc>
+    </sitemap>
+</sitemapindex>

@@ -1,0 +1,14 @@
+{
+	"cname":"站点地图明细",
+	"type":"text",
+	"data": {
+		"robots":{
+			"api":"/xpmsns/pages/site/robots",
+			"query":{}
+		}
+	},
+	"entries":[
+		{"method":"GET", "router":"/robots.txt", "ttl":0}
+	],
+	"alias": {}
+}
