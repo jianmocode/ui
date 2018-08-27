@@ -32,12 +32,12 @@
 		"r": {
 			"api":"/xpmsns/pages/recommend/getContents",
 			"query":{
-				"slugs":"video_focus,{{sections.data.0.slug}}",
+				"slugs":"album_focus,{{sections.data.0.slug}}",
 				"perpage":18
 			}
 		},
 		"section":"{{r.{{sections.data.0.slug}}}}",
-		"focus":"{{r.video_focus}}",
+		"focus":"{{r.album_focus}}",
 		"site":{
 			"api":"/xpmsns/pages/siteconf/get",
 			"query":{
