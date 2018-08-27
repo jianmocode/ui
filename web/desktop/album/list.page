@@ -12,9 +12,9 @@
 					</div>
 					<div class="uk-overlay uk-light uk-position-top-left "><div class="uk-container"><div class="block">
 						<p class="attrs">
-							<span>{{LENGTH(item.images)}}图</span>
-							<span>{{HMDATETIME(item.publish_time)}}</span>
 							<span>{{item.author}}</span>
+							<span>{{HMDATETIME(item.publish_time)}}</span>
+							<span>{{LENGTH(item.images)}}图</span>
 						</p>
 						<p class="title">{{item.title}}</p>	
 					</div></div></div>

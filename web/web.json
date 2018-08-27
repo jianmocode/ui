@@ -7,6 +7,7 @@
 		"/desktop/video/list",
 		"/desktop/video/detail",
 		"/desktop/album/list",
+		"/desktop/album/detail",
 		"/mobile/article/index",
 		"/mobile/article/list",
 		"/mobile/article/detail",
