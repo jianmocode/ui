@@ -20,8 +20,8 @@ let com = Page({
 			$('.pagination .more').html('加载中...');
 			$.get(url, function(html) {
 				html = '<div>' + html + '</div>';
-				var items = $(html).find('.videos').html();
-				$('.videos').append( items );
+				var items = $(html).find('.album').html();
+				$('.album').append( items );
 
 				// 翻页
 				var next = $(html).find('.pagination .more').attr('data-next');

@@ -1,5 +1,5 @@
 let web = getWeb();
-import videos from '../widget/recommend/video';  // 下一版应该可以引用组件
+import album from '../widget/recommend/album';  // 下一版应该可以引用组件
 
 Page({
 	data:{},
@@ -12,10 +12,9 @@ Page({
 		let sections = this.data.sections.data || [];
 		let section = sections[0] || {};
 		params['var']['slug'] = section.slug || null;
-		console.log( section );
 		if ( params['var']['slug'] ) {
-			try { videos.$load(params, { section:this.data.r.section_1}); } catch(e){
-				console.log( 'Error @videos.$load', e);
+			try { album.$load(params, { section:this.data.r.section_1}); } catch(e){
+				console.log( 'Error @album.$load', e);
 			}
 		}
 	},

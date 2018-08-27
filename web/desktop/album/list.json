@@ -26,7 +26,7 @@
 			"api":"/xpmsns/pages/recommend/search",
 			"query":{
 				"select":"title,slug",
-				"pos":"video"
+				"pos":"album"
 			}
 		},
 		"r": {
