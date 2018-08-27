@@ -44,10 +44,10 @@
 	<div class="player uk-width-3-4" >
 		<div class="uk-position-relative uk-visible-toggle jm-album-player" uk-slideshow="animation: slide;min-height:500;max-height:500">
 			<ul class="uk-slideshow-items" uk-lightbox="animation: slide">
-				<a mp:for="{{album.images}}" href="{{item.url}}"  data-caption="{{(item.summary)? item.summary : item.title}}" >
+				<a mp:for="{{album.images}}" href="{{item.url}}"  data-caption="{{index+1}}/{{LENGTH(album.images)}} {{(item.summary)? item.summary : item.title}}" >
 					<img src="{{item.url}}" uk-cover>
 					<div class="uk-overlay uk-overlay-primary uk-position-bottom-center uk-width-1-1 uk-padding-small">
-						<p>{{item.title}}</p>
+						<p>{{index+1}}/{{LENGTH(album.images)}} {{item.title}}</p>
 					</div>
 				</a>
 			</ul>
