@@ -5,18 +5,22 @@
 	<div class="jm-focus-slideshow" >
 		<div class="uk-position-relative uk-visible-toggle" uk-slideshow="animation: push; min-height:510; max-height:510;">
 			<ul class="uk-slideshow-items" >
-				<a  href="/video/{{item.article_id}}.html" target="_blank" mp:for="{{focus.contents.data}}" mp:for-from="0" mp:for-to="3" >
+				<a  href="/album/{{item.article_id}}.html" target="_blank" mp:for="{{focus.contents.data}}" mp:for-from="0" mp:for-to="3" >
 					<div class="uk-cover-container">
 						<canvas style="height: 510px;"></canvas>
 						<img src="{{ (item.cover.url) ? item.cover.url : item.images.0.url }}"  alt="" uk-cover>
 					</div>
-					<div class="uk-overlay uk-light uk-position-top-center uk-hidden-hover">
-						<p class="title uk-hidden-hover">{{item.title}}</p>
-					</div>
+					<div class="uk-overlay uk-light uk-position-top-left "><div class="uk-container"><div class="block">
+						<p class="attrs">
+							<span>{{HMDATETIME(item.publish_time)}}</span>
+							<span>{{item.author}}</span>
+						</p>
+						<p class="title">{{item.title}}</p>	
+					</div></div></div>
 				</a>
 			</ul>
 			<div class="uk-position-bottom-center uk-position-small">
-				<ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin uk-hidden-hover"></ul>
+				<ul class="uk-slideshow-nav uk-light uk-dotnav uk-flex-center uk-margin uk-hidden-hover"></ul>
 			</div>
 			<div class="uk-light">
 				<a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>

@@ -1,5 +1,5 @@
 <ul class="jm-quickbar uk-list uk-position-center-right uk-position-fixed uk-iconnav uk-iconnav-vertical">
-	<li>
+	<li class="totop uk-hidden">
 		<!-- <a href="#" uk-icon="icon: weixin"></a> -->
 		<a href="#" uk-icon="icon: weixin"></a>
 		<div uk-dropdown="pos:left-center;offset:65">
@@ -7,7 +7,7 @@
 			<div class="uk-text-center uk-margin-small-top uk-text-bold">关注{{site.name_wxpub}}</div>
 		</div>
 	</li>
-	<li>
+	<li class="totop uk-hidden">
 		<a href="#" uk-icon="icon: qr"></a>
 		<div uk-dropdown="pos:left-center;offset:65" >
 			<img data-src="/_api/xpmsns/pages/article/qrcode?width=200&text={{__sys.location}}" alt="{{page.title}}" width="200" uk-img>

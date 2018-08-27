@@ -8,9 +8,31 @@ body {
 
 .jm-album-focus {
 	padding: 0px;
+	
+	.uk-overlay {
+		width: 100%;
+		top:320px;
 
-	a:hover {
-		.title { color: @lightColor; }
+		.block {
+			width: 460px;	
+			background: rgba(0,0,0,.30);
+			padding: 20px;
+		
+			p {
+				margin:0px;
+				padding:0px;
+			}
+
+			.attrs {
+				color: @textMutedColor;
+				margin-bottom: .2em;
+			}
+
+			.title {
+				font-size: 1.5rem;
+				color: @lightColor;
+			}
+		}
 	}
 }
 
