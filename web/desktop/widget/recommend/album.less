@@ -47,6 +47,18 @@
 			color: @textDangerColor;
 		}
 
+		.uk-overlay {
+			background: rgba(0,0,0,.60);
+
+			p {
+				font-size: 0.75rem;
+				color: @lightColor;
+			}
+		}
+
+		.uk-hidden-hover {
+			visibility: hidden;
+		}
 	}
 
 	a:hover {
@@ -55,6 +67,10 @@
 			.summary  {
 				color: @textPrimaryColor;
 			}
+		}
+
+		.uk-hidden-hover {
+			visibility: visible;
 		}
 	}
 }

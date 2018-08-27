@@ -1,9 +1,12 @@
-<div class="album uk-grid" mp:if="{{section.contents.total > 0}}">
+<div class="album uk-grid " mp:if="{{section.contents.total > 0}}">
 	<a class="item uk-width-1-3" href="/album/{{item.album_id}}.html" target="_blank" mp:for="{{section.contents.data}}">
 		<div class="uk-card">
 			<div class="uk-cover-container">
 				<canvas  style="height:210px;"></canvas>
 				<img src="{{ (item.cover.url) ? item.cover.url : item.images.0.url }}" alt="" uk-cover>
+				<div class="uk-overlay uk-overlay-primary uk-position-top-right uk-padding-small uk-hidden-hover">
+					<p>{{LENGTH(item.images)}}图</p>
+				</div>
 			</div>
 			<div class="summary">
 				{{item.title}}
