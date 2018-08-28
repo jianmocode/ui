@@ -1,5 +1,5 @@
 {	
-	"cname":"视频详情页(三级)-手机版",
+	"cname":"图集详情页(三级)-手机版",
 	"data": {
 		"categories":{
 			"api":"/xpmsns/pages/category/search",
@@ -22,25 +22,10 @@
 			}
 		},
 		"navs":"{{categories.data}}",
-		"article":{
-			"api":"/xpmsns/pages/article/get",
+		"album":{
+			"api":"/xpmsns/pages/album/get",
 			"query":{
-				"articleId":"{{__var.id}}"
-			}
-		},
-		"video":"{{article.videos.0}}",
-		"series":{
-			"api":"/xpmsns/pages/recommend/getContents",
-			"query":{
-				"slug":"video_series",
-				"series":"{{article.series_param}}"
-			}
-		},
-		"latest":{
-			"api":"/xpmsns/pages/recommend/getContents",
-			"query":{
-				"slug":"video_latest",
-				"exclude_articles":"{{article.article_id}}"
+				"album_id":"{{__var.id}}"
 			}
 		},
 		"relation":{
@@ -66,11 +51,11 @@
 			}
 		},
 		"page":{
-			"title":"{{article.title}}",
+			"title":"{{album.title}}",
 			"logo":"{{site.site_logo}}"
 		},
 		"seo": {
-			"title":"{{article.seo_title}}",
+			"title":"{{album.title}}",
 			"keywords":"{{site.seo_keywords}}",
 			"description":"{{site.seo_summary}}"
 		},
@@ -79,12 +64,12 @@
 		}
 	},
 	"entries":[
-		{"method":"GET", "router":"/m/video/{id:[0-9a-zA-Z_]+}.html", "ttl":0},
-		{"method":"GET", "router":"/m/video/{id:[0-9a-zA-Z_]+}", "ttl":0}
+		{"method":"GET", "router":"/m/album/{id:[0-9a-zA-Z_]+}.html", "ttl":0},
+		{"method":"GET", "router":"/m/album/{id:[0-9a-zA-Z_]+}", "ttl":0}
 	],
 	
 	"alias": {
-		"desktop":"/desktop/video/detail",
-		"wxapp": "/video"
+		"desktop":"/desktop/album/detail",
+		"wxapp": "/album"
 	}
 }

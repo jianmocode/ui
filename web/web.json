@@ -14,6 +14,7 @@
 		"/mobile/video/list",
 		"/mobile/video/detail",
 		"/mobile/album/list",
+		"/mobile/album/detail",
 		"/desktop/widget/recommend/list",
 		"/desktop/widget/category/list",
 		"/desktop/widget/recommend/video",
