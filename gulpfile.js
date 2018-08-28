@@ -203,7 +203,8 @@ function uploadFile( file, options={}  ) { // 上传文件到指定地址
 				priority: conf.priority,
 				project: conf.project,
 				server: conf.server,
-				domain: conf.domain
+				domain: conf.domain,
+				instance: conf.instance
 			},
 			callback: function (err, data, res) {
 
@@ -1092,6 +1093,7 @@ gulp.task('wxapp-config',()=>{
 	content = replaceKey( content, {
 		host:CONF['mina']['domain'], 
 		https:CONF['mina']['domain'], 
+		instance:CONF['mina']['instance'], 
 		wss:CONF['mina']['domain'] + '/ws-server', 
 		appid:CONF['wxapp']['appid'], 
 		secret:CONF['mina']['appid'] + '|' +CONF['mina']['secret']
