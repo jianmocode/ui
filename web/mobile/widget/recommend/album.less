@@ -1,0 +1,72 @@
+@charset "utf-8";
+@import '/mobile/common/m.less';
+
+
+.pagination {
+	text-align: center;
+	.more {
+		width: 90%;	
+		margin-top: 20px;
+		margin-bottom: 40px;
+		background: @lightColor;
+		border-radius:4px;
+	}
+}
+
+
+.album {
+
+	.item {
+		margin:20px 20px 0px 20px;
+		.uk-card {
+			border: 1px solid @lightColor;
+			border-radius:6px;
+		}
+
+		.summary {
+			font-size: 1rem;
+			padding:0em 1em 0em 1em;
+			background: @lightColor;
+			color: @textColor;
+			overflow: hidden;
+			height: 48px;
+			line-height: 48px;
+		}
+
+		.player {
+			color: @lightColor;
+			.setAlpha( 0.4 );
+		}
+
+		.uk-card-body {
+			padding: 1em .5em;
+		}
+
+		.uk-card-title {
+			margin-bottom:.5em;
+		}
+
+		.uk-text-danger .summary {
+			color: @textDangerColor;
+			background: rgba(0,0,0,1);
+		}
+		.uk-text-danger .player {
+			color: @textDangerColor;
+		}
+
+		.uk-overlay {
+			p { font-size: 0.75rem; }
+		}
+
+	}
+
+	a:hover {
+		.player { .setAlpha(1);}
+		.summary { .setAlpha(1); }
+		.uk-card  {
+			.summary  {
+				color: @textPrimaryColor;
+			}
+		}
+	}
+}

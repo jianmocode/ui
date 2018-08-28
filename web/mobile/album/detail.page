@@ -1,0 +1,59 @@
+<include src="__WEB_ROOT__/mobile/common/head.page"  />
+<include src="__WEB_ROOT__/mobile/common/header.page"  />
+
+<section class="jm-player uk-background-secondary">
+	<div class="video-player" mp:if="{{video.mimetype == 'video/mp4'}}">
+		<video id="video-player" class="video-js" controls preload="auto" 
+			width="100%" 
+			poster="{{video.cover}}" 
+			data-setup="{}">
+			<source src="{{video.url}}" type="{{video.mimetype}}">
+			<p class="vjs-no-js">未加载编辑器</p>\n 
+		</video>
+	</div> <!-- END video-player -->
+
+	<div class="youku-player"  mp:elif="{{video.mimetype == 'site/youku'}}">
+		<div class="loading">正在加载播放器....</div>
+		<iframe id="youku-player"  width="100%" class="iframe-player uk-hidden"  src='//player.youku.com/embed/{{YOUKUID(video.url, article.content)}}==' frameborder=0 allowfullscreen  allowscriptaccess="always" ></iframe>
+	</div><!-- END youku-player -->
+
+	<div class="qq-player "  mp:elif="{{video.mimetype == 'site/qq'}}">
+		<!-- <div class="loading">正在加载播放器....</div> -->
+		<iframe id="qq-player" width="100%"   class="iframe-player uk-hidden" src='//v.qq.com/iframe/player.html?vid={{QQVID(video.url, article.content)}}&tiny=0&auto=0' frameborder=0  allowfullscreen></iframe>
+	</div> <!-- END qq-player -->
+
+	<div class="default-player"  mp:else>
+		<div class="uk-text-center uk-padding">暂不支持播放此视频格式</div>
+	</div><!-- END default-player -->
+</section>
+
+<section id="jm-recommends" class="jm-recommends">
+
+	<div  class="jm-recommends-body" style="min-height: 800px;" >
+		<article class="jm-article uk-article">
+			<h1 class="jm-article-title uk-article-title">{{article.title}}1</h1>
+			<div class="jm-article-meta uk-article-meta"> 
+				<a class="author" href="#"> {{ (article.author) ? article.author : site.site_name }} </a> <span>•</span>
+				<span class="publictime"> {{HMDATETIME(article.publish_datetime)}} </span> <span>•</span>
+				<a class="category" href="/list/{{article.category_last.category_id}}"> {{article.category_last.name}} </a>
+			</div>
+
+			<div class="jm-article-summary" mp:if="{{article.summary}}">
+				{{article.summary}}
+			</div>
+
+			<div class="jm-article-content">
+			</div>
+			
+			<hr class="uk-divider-icon">
+
+			<div class="pagination">
+				<a class="more uk-button uk-button-default uk-width-1-1" href="/m" > 返回首页 </a>
+			</div>
+
+		</article>
+	</div>
+</section>
+
+<include src="__WEB_ROOT__/mobile/common/footer.page"  />
+<include src="__WEB_ROOT__/mobile/common/foot.page"  />

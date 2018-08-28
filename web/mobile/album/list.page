@@ -4,11 +4,10 @@
 <section class="jm-focus">
 	<div class="uk-position-relative uk-visible-toggle" uk-slideshow="animation: push">
 		<ul class="uk-slideshow-items" >
-			<a  href="/m/video/{{item.article_id}}.html" mp:for="{{focus.contents.data}}" mp:for-from="0" mp:for-to="6" >
+			<a  href="/m/album/{{item.article_id}}.html" mp:for="{{focus.contents.data}}" mp:for-from="0" mp:for-to="3" >
 				<img src="{{item.cover.url}}"  alt="" uk-cover>
-				<div class="uk-overlay player uk-position-center"><span uk-icon="icon:play-circle;ratio:2.5"></span></div>
 				<div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-left uk-padding-small">
-					<p class="uk-margin-remove">{{item.title}}</p>
+					<p class="uk-margin-remove">{{item.title}} ({{LENGTH(item.images)}}图)</p>
 				</div>
 			</a>
 		</ul>
@@ -19,7 +18,7 @@
 	<div class="jm-recommends-header" uk-sticky="cls-active:jm-recommends-header-active"  uk-slider="finite: true">
 		<ul class="uk-slider-items jm-subnav  jm-recommends-navbar" >
 			<a href="#jm-recommends" mp:for="{{sections.data}}" class="{{ (index == 0) ? 'nav-active'}}" 
-				data-remote="/m/widget/recommend/video/{{item.slug}}" uk-scroll="duration:200">
+				data-remote="/m/widget/recommend/album/{{item.slug}}" uk-scroll="duration:200">
 				{{item.title}}
 			</a>
 		</ul>
@@ -27,7 +26,7 @@
 
 	<div  class="jm-recommends-body" style="min-height: 800px;" >
 		<!-- Todo: 作为组件引用 -->
-		<include src="__WEB_ROOT__/mobile/widget/recommend/video.page" /> 
+		<include src="__WEB_ROOT__/mobile/widget/recommend/album.page" /> 
 	</div>
 
 </section>

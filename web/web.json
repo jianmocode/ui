@@ -13,6 +13,7 @@
 		"/mobile/article/detail",
 		"/mobile/video/list",
 		"/mobile/video/detail",
+		"/mobile/album/list",
 		"/desktop/widget/recommend/list",
 		"/desktop/widget/category/list",
 		"/desktop/widget/recommend/video",
@@ -20,6 +21,7 @@
 		"/mobile/widget/recommend/list",
 		"/mobile/widget/category/list",
 		"/mobile/widget/recommend/video",
+		"/mobile/widget/recommend/album",
 		"/site/sitemap/index",
 		"/site/sitemap/detail",
 		"/site/robots"

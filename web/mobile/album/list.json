@@ -1,5 +1,5 @@
 {	
-	"cname":"视频列表页(二级)-手机版",
+	"cname":"图集列表页(二级)-手机版",
 	"data": {
 		"categories":{
 			"api":"/xpmsns/pages/category/search",
@@ -26,18 +26,18 @@
 			"api":"/xpmsns/pages/recommend/search",
 			"query":{
 				"select":"title,slug",
-				"pos":"video"
+				"pos":"album"
 			}
 		},
 		"r": {
 			"api":"/xpmsns/pages/recommend/getContents",
 			"query":{
-				"slugs":"video_focus,{{sections.data.0.slug}}",
+				"slugs":"album_focus,{{sections.data.0.slug}}",
 				"perpage":18
 			}
 		},
 		"section":"{{r.{{sections.data.0.slug}}}}",
-		"focus":"{{r.video_focus}}",
+		"focus":"{{r.album_focus}}",
 		"site":{
 			"api":"/xpmsns/pages/siteconf/get",
 			"query":{
@@ -46,13 +46,6 @@
 			}
 		},
 		"navs":"{{categories.data}}",
-		"s":{
-			"api":"/xpmsns/pages/recommend/getContents",
-			"query":{
-				"api":"/xpmsns/pages/recommend/getContents",
-				"slugs":"sidebar_section_4"
-			}
-		},
 		"links":{
 			"api":"/xpmsns/pages/links/search",
 			"query":{
@@ -74,12 +67,12 @@
 		}
 	},
 	"entries":[
-		{"method":"GET", "router":"/m/video/list/{cid:.+}.html", "ttl":0},
-		{"method":"GET", "router":"/m/video/list/{cid:.+}", "ttl":0}
+		{"method":"GET", "router":"/m/album/list/{cid:.+}.html", "ttl":0},
+		{"method":"GET", "router":"/m/album/list/{cid:.+}", "ttl":0}
 	],
 	
 	"alias": {
-		"desktop":"/desktop/video/list",
-		"wxapp": "/video/list"
+		"desktop":"/desktop/album/list",
+		"wxapp": "/album/list"
 	}
 }
