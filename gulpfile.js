@@ -38,6 +38,8 @@ if ( typeof online != 'undefined' ) {
 	CONF = require(path.resolve('./config.js'));
 }
 
+// 初始值
+CONF.mina['instance'] =  CONF.mina['instance'] || "";
 
 let WEB_CONF = JSON.parse(fs.readFileSync( path.resolve(__dirname, './web/web.json') ));
 let WEB_PAGES = WEB_CONF['pages'] || [];
