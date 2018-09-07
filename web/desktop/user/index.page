@@ -1,0 +1,101 @@
+<include src="__WEB_ROOT__/desktop/common/head.page"  />
+<include src="__WEB_ROOT__/desktop/common/header.page"  />
+
+<section class="canvas-wrap"> <div id="canvas" class="gradient"></div></section>
+<div class=" row page">
+	<div class="col-xs-8 col-xs-offset-2 form">
+		
+		<div class="row">
+			<ul class="nav navbar-nav pull-right">
+				<!-- <li mp:if="{{option.user_mobile_signup_on == 1}}"> <a href="/user/signup">注册</a> </li>
+				<li> <a href="/">首页</a> </li> -->
+			</ul>
+		</div>
+
+		<div class="row form-wraper">
+
+
+<!--  
+	***** 用户尚未登录  ************************************************************    
+-->
+
+			<div class="main" mp:if="{{user.user_id == ''}}"  >				
+				<div class="form-header">
+					<h2>您尚未登录，请登录后重试。</h2>
+					<div class="form-group"  >
+						<a href="/user/signin/wechat" class="wechat" mp:if="{{option.user_wechat_on == 1}}"  > 
+							<img src="{{__STOR__::/__PROJECT_NAME/assets/user}}/images/wechat-color.svg" width="40">微信登录
+						</a>
+					</div>
+				</div>
+			</div>
+<!--  
+	***** 绑定手机号码表单 ************************************************************    
+-->
+			<div class="main"  mp:else >
+				
+				<div class="signup-form">
+					<div class="form-header text-left">
+						<h2>可信云受理系统</h2>
+						<h4 class="text-muted"> 受理系统申请账号结果</h4>
+					</div>
+					 
+					<!-- 已通过 approved -->
+					<div class="alert alert-success alert-dismissible text-left" role="alert"  mp:if="{{user.process == 'approved'}}">
+						<span class="message">您的受理系统账号已开通，请通过下方链接登录系统。</span>
+					</div>
+
+					<!-- 已驳回 refused -->
+					<div class="alert alert-danger alert-dismissible text-left" role="alert"  mp:elif="{{user.process == 'refused'}}">
+						<span class="message">您的申请已被驳回，请联络可信云管理员。</span>
+					</div>
+
+					<!-- 审核中 submitted -->
+					<div class="alert alert-warning alert-dismissible text-left" role="alert"  mp:else >
+						<span class="message">您的申请正在审批中，请留意微信或短信通知。审核一般需要3到5个工作日。</span>
+					</div>
+
+
+					<div class="form-group" mp:if="{{user.process == 'approved'}}">
+						<a href="{{user.partners_home}}" class="btn btn-primary btn-lg btn-block">立即登录</a>
+					</div>
+					
+					
+					<!-- 绑定手机号码 -->
+					<input type="hidden" name="backurl" value="" />
+					<input type="hidden" name="group_slug" value="manufacture" />
+				</div>
+				
+			</div>
+
+
+	</div>
+
+<!-- 
+	<div class="header-top row" id="top">
+	用户注册桌面浏览器页面 ( 手机号注册表单 )
+	</div> -->
+</div>
+<div class="footer-wrap">
+	<a href="https://www.kexinyun.org" class="default" mp:if="{{option.user_mobile_signup_on == 1}}" > 
+		© 数据中心联盟版权所有 2017京ICP备06029202号-9
+	</a>
+	<!-- <ul class="nav navbar-nav">
+		<li mp:if="{{option.user_mobile_signup_on == 1}}"> <a href="/user/signup">注册</a> </li>
+		<li> <a href="/">首页</a> </li>
+	</ul> -->
+</div>
+
+
+<script type="text/javascript" type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/assets/user}}/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/assets/user}}/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/assets/user}}/js/motion/s1/three.min.js"></script>
+<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/assets/user}}/js/motion/s1/projector.js"></script>
+<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/assets/user}}/js/motion/s1/canvas-renderer.js"></script>
+<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/assets/user}}/js/motion/s1/3d-lines-animation.js"></script>
+<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/assets/user}}/js/motion/s1/color.js"></script>
+
+
+<!-- 最底部版权 -->
+</body>
+</html>

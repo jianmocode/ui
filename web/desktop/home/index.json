@@ -1,0 +1,46 @@
+{
+	"cname":"默认正文页-桌面版",
+	"data": {
+		"site":{
+			"api":"/xpmsns/pages/siteconf/get",
+			"query":{
+				"site_slug":"global",
+				"select":"*"
+			}
+		},
+		"user": {
+			"api": "/xpmsns/user/user/getUserInfo",
+			"query":{}
+		},
+		"categories":{
+			"api":"/xpmsns/pages/category/search",
+			"query":{
+				"select":"category_id,name",
+				"order":"priority asc",
+				"children":false,
+				"param":"isnav=true"
+			}
+		},
+		"crumbs":[
+			{"name":"首页", "link":"/"},
+			{"name":"用户中心", "link":"/home/index"},
+			{"name":"我的主页",  "link":"" }
+		],
+		"page":{
+			"title":"用户中心"
+		},
+		"seo": {
+			"title":"{{article.title}}",
+			"keywords":"{{article.seo_keywords}}",
+			"description":"{{article.seo_summary}}"
+		}
+	},
+	"entries":[
+		{"method":"GET", "router":"/home/index", "ttl":0}
+	],
+	"alias": {
+		"mobile":"/mobile/home/index",
+		"wechat":"/mobile/home/index",
+		"wxapp": "/home/index"
+	}
+}

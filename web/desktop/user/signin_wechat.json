@@ -1,0 +1,31 @@
+{
+	"cname":"微信登录页",
+	"data": {
+		"site":{
+			"api":"/xpmsns/pages/siteconf/get",
+			"query":{
+				"site_slug":"global",
+				"select":"*"
+			}
+		},
+		"qrcode":{
+			"api":"/xpmsns/user/user/wechatSigninQrcode",
+			"query":{}
+		},
+		"option":{
+			"api":"/xpmsns/user/user/option",
+			"query":{}
+		},
+		"page":{
+			"title":"用户登录"
+		}
+	},
+	"entries":[
+		{"method":"GET", "router":"/user/signin/wechat", "ttl":0}
+	],
+	"align": {
+		"mobile":"/mobile/user/signin/mobile",
+		"wechat":"/mobile/user/signin/wechat",
+		"wxapp": "/user/signin"
+	}
+}

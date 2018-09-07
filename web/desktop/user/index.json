@@ -1,0 +1,18 @@
+{
+	"cname":"用户中心首页",
+	"data": {
+		"user":{
+			"api":"/kexinyun/backend/manuuser/getUserInfo",
+			"query":{}
+		},
+		"page":{
+			"title":"用户中心首页"
+		}
+	},
+	"entries":[
+		{"method":"GET", "router":"/user/home/index", "ttl":0}
+	],
+	"align": {
+		"wxapp":"/user/home/index"
+	}
+}

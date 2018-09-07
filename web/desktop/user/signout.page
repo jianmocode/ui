@@ -1,0 +1,23 @@
+<include src="__WEB_ROOT__/desktop/common/head.page"  />
+<div class="container"><div class="row">
+	<header>
+		<div class="logo">
+			<a href="/article"><img src="{{site.site_logo.url}}" alt=""  class="title_block"></a>
+		</div>
+	</header>
+	
+	<div class="form signin-form" >
+		<div class="form-header">
+			<h3>{{site.site_name}}</h3>
+			<p>{{site.site_slogen}}</p>
+		</div>
+		
+		<div class="alert alert-success alert-dismissible " role="alert">
+			<span class="message">退出成功! <span class="timer">5</span>秒后返回首页 <a href="/">立即返回</a> </span>
+		</div>
+		
+	</div>
+
+</div></div> <!-- END Row Container -->
+
+<include src="__WEB_ROOT__/desktop/common/foot.page" />

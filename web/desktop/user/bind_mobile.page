@@ -1,0 +1,194 @@
+<include src="__WEB_ROOT__/desktop/common/head.page"  />
+<include src="__WEB_ROOT__/desktop/common/header.page"  />
+
+<section class="canvas-wrap"> <div id="canvas" class="gradient"></div></section>
+<div class=" row page">
+	<div class="col-xs-8 col-xs-offset-2 form">
+		
+		<div class="row">
+			<ul class="nav navbar-nav pull-right">
+				<!-- <li mp:if="{{option.user_mobile_signup_on == 1}}"> <a href="/user/signup">注册</a> </li>
+				<li> <a href="/">首页</a> </li> -->
+			</ul>
+		</div>
+
+		<div class="row form-wraper">
+
+
+<!--  
+	***** 用户尚未登录  ************************************************************    
+-->
+
+			<div class="main" mp:if="{{user.user_id == ''}}"  >				
+				<div class="form-header">
+					<h2>您尚未登录，请登录后重试。</h2>
+					<div class="form-group"  >
+						<a href="/user/signin/wechat" class="wechat" mp:if="{{option.user_wechat_on == 1}}"  > 
+							<img src="{{__STOR__::/__PROJECT_NAME/assets/user}}/images/wechat-color.svg" width="40">微信登录
+						</a>
+					</div>
+				</div>
+			</div>
+<!--  
+	***** 用户已绑定手机号  ************************************************************    
+-->
+
+			<div class="main" mp:elif="{{user.mobile != ''}}"  >				
+				<div class="form-header">
+					<h2>您已经成功注册</h2>
+					<div class="form-group"  >
+						<a href="/" class="wechat" mp:if="{{option.user_wechat_on == 1}}"  > 
+							<img src="{{__STOR__::/__PROJECT_NAME/assets/user}}/images/wechat-color.svg" width="40">返回首页
+						</a>
+					</div>
+				</div>
+			</div>
+<!--  
+	***** 绑定手机号码表单 ************************************************************    
+-->
+			<div class="main"  mp:elif="{{option.user_mobile_on == 1}}" >
+				
+				<div class="signup-form">
+					<div class="form-header text-left">
+						<h2>注册账号</h2>
+						<h4 class="text-muted">{{user.nickname}}欢迎您, 请填写申请账号所需信息。</h4>
+					</div>
+					
+					<div class="alert alert-success alert-dismissible hidden" role="alert">
+						<span class="message">错误描述</span>
+					</div>
+
+					<div class="alert alert-danger alert-dismissible hidden" role="alert">
+						<button type="button" class="close" onclick="$(this).parent().addClass('hidden');">
+						<span>&times;</span></button>
+						<span class="message">错误描述</span>
+					</div>
+
+					<div class="form-group has-feedback">
+						<input type="text"
+							name="company"
+							class="form-control input-md" placeholder="公司名称">
+						<span class="icon glyphicon glyphicon-ok form-control-feedback hidden" ></span>
+						<span class="help-block"></span>
+					</div>
+
+					<div class="form-group has-feedback">
+						<input type="text"
+							name="contact_name"
+							class="form-control input-md" placeholder="联系人姓名">
+						<span class="icon glyphicon glyphicon-ok form-control-feedback hidden" ></span>
+						<span class="help-block"></span>
+					</div>
+
+					<div class="form-group has-feedback">
+						<input type="text"
+							name="mobile"
+							class="form-control input-md" placeholder="手机号">
+						<span class="icon glyphicon glyphicon-ok form-control-feedback hidden" ></span>
+						<span class="help-block"></span>
+					</div>
+
+					<div class="form-group has-feedback">
+						<input 
+						name="password"
+						type="password" class="form-control input-md"  placeholder="密码">
+						<span class="icon glyphicon glyphicon-ok form-control-feedback hidden" ></span>
+						<span id="helpBlock" class="help-block"></span>
+					</div>
+
+					<div class="form-group has-feedback">
+					<input 
+						name="repassword"
+						type="password" class="form-control input-md" placeholder="再次输入密码">
+						<span class="icon glyphicon glyphicon-ok form-control-feedback hidden" ></span>
+						<span id="helpBlock" class="help-block"></span>
+					</div>
+				
+
+					<div class="form-group">
+						<div class="input-group">
+							<input 
+							name="_vcode"
+							type="text" class="form-control input-md" placeholder="图形验证码">
+							<span class="input-group-addon image vcode">
+								<img src="/_api/xpmsns/user/user/vcode?width=200&height=32&size=20">
+							</span>
+						</div>
+						<span id="helpBlock" class="help-block"></span>
+					</div>
+
+					<div class="form-group" mp:if="{{option.user_sms_on == 1}}">
+						<div class="input-group">
+							<input 
+							name="smscode"
+							type="text" class="form-control input-md" placeholder="短信验证码">
+							<span class="input-group-btn ">
+								 <button class="btn btn-primary btn-minw smscode action" type="button">发送短信验证码</button>
+							</span>
+						</div>
+						<span id="helpBlock" class="help-block"></span>
+					</div>
+
+
+					<div class="form-group">
+						<button class="btn btn-primary  btn-block signup action" type="button">提交申请</button>
+					</div>
+					
+					<!-- 绑定手机号码 -->
+					<input type="hidden" name="backurl" value="" />
+					<input type="hidden" name="group_slug" value="manufacture" />
+
+
+				</div>
+				
+			</div>
+
+<!--  
+	***** 后台未开放用户注册权限 ************************************************************   
+-->
+			<div class="main" mp:else >
+				<div class="form-header">
+					<h2>未开放微信登录</h2>
+					<div class="form-group"  >
+						<a href="/user/signin/mobile" class="user" mp:if="{{option.user_mobile_on == 1}}" > 
+						手机号登录
+						</a>
+						<a href="/user/signup" class="default" mp:if="{{option.user_mobile_signup_on == 1}}" > 
+							没有账号？立即注册
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+<!-- 
+	<div class="header-top row" id="top">
+	用户注册桌面浏览器页面 ( 手机号注册表单 )
+	</div> -->
+</div>
+<div class="footer-wrap">
+	<a href="https://www.kexinyun.org" class="default" mp:if="{{option.user_mobile_signup_on == 1}}" > 
+		© 数据中心联盟版权所有 2017京ICP备06029202号-9
+	</a>
+	<!-- <ul class="nav navbar-nav">
+		<li mp:if="{{option.user_mobile_signup_on == 1}}"> <a href="/user/signup">注册</a> </li>
+		<li> <a href="/">首页</a> </li>
+	</ul> -->
+</div>
+
+
+<script type="text/javascript" type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/assets/user}}/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/assets/user}}/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/assets/user}}/js/motion/s1/three.min.js"></script>
+<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/assets/user}}/js/motion/s1/projector.js"></script>
+<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/assets/user}}/js/motion/s1/canvas-renderer.js"></script>
+<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/assets/user}}/js/motion/s1/3d-lines-animation.js"></script>
+<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/assets/user}}/js/motion/s1/color.js"></script>
+
+
+<!-- 最底部版权 -->
+</body>
+</html>

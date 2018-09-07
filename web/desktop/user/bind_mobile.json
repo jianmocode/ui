@@ -1,0 +1,22 @@
+{
+	"cname":"绑定手机号码",
+	"data": {
+		"user":{
+			"api":"/xpmsns/user/user/getUserInfo",
+			"query":{}
+		},
+		"option":{
+			"api":"/xpmsns/user/user/option",
+			"query":{}
+		},
+		"page":{
+			"title":"绑定手机号码"
+		}
+	},
+	"entries":[
+		{"method":"GET", "router":"/user/bind/mobile", "ttl":0}
+	],
+	"align": {
+		"wxapp":"/user/bind/mobile"
+	}
+}

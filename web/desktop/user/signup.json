@@ -1,0 +1,27 @@
+{
+	"cname":"用户注册页",
+	"data": {
+		"site":{
+			"api":"/xpmsns/pages/siteconf/get",
+			"query":{
+				"site_slug":"global",
+				"select":"*"
+			}
+		},
+		"option":{
+			"api":"/xpmsns/user/user/option",
+			"query":{}
+		},
+		"page":{
+			"title":"用户注册"
+		}
+	},
+	"entries":[
+		{"method":"GET", "router":"/user/signup", "ttl":0}
+	],
+	"align": {
+		"mobile":"/mobile/user/signup",
+		"wechat":"/mobile/user/signup",
+		"wxapp": "/user/signup"
+	}
+}

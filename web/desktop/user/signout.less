@@ -1,0 +1,55 @@
+@charset "utf-8";
+@import '/desktop/common/desktop.less';
+
+a:hover {
+	text-decoration: none;
+};
+body {
+	background: @bgLight;
+}
+.container {
+	text-align: center;
+	.form {
+		text-align: left;
+	}
+}
+
+header {
+	text-align: left;
+	padding-top: 15px;
+	.logo img{
+		width: 200px;
+	}
+}
+
+.form.signin-form {
+	width: 500px;
+	background: #fff;
+	padding:40px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin: 40px auto;
+	border-radius: 0px;
+	font-size: 16px;
+	border: 1px solid @greyLight;
+	box-shadow: 0 0 8px rgba(0,0,0,.1);
+	-webkit-box-shadow:0 0 8px rgba(0,0,0,.1);
+
+	hr {
+		margin-top: 40px;
+		margin-bottom: 20px;
+	}
+}
+
+.form-header {
+	text-align: left;
+
+	p {
+		font-size: 16px;
+		color: @textGrey;
+	}
+
+	h3 {
+		font-size: 24px;
+	}
+}

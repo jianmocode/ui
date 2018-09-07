@@ -1,0 +1,31 @@
+{
+	"cname":"用户登录页",
+	"data": {
+		"site":{
+			"api":"/xpmsns/pages/siteconf/get",
+			"query":{
+				"site_slug":"global",
+				"select":"*"
+			}
+		},
+		"option":{
+			"api":"/xpmsns/user/user/option",
+			"query":{}
+		},
+		"out": {
+			"api":"/xpmsns/user/user/logout",
+			"query":{}
+		},
+		"page":{
+			"title":"退出登录"
+		}
+	},
+	"entries":[
+		{"method":"GET", "router":"/user/signout", "ttl":0}
+	],
+	"align": {
+		"mobile":"/mobile/user/signout",
+		"wechat":"/mobile/user/signout",
+		"wxapp": "/user/signout"
+	}
+}
