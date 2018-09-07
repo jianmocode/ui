@@ -1,2 +1,9 @@
+<div id="modal-iframe" uk-modal="bg-close:false;">
+	<div class="uk-modal-dialog uk-modal-body" style="padding: 0px;">
+		<button class="uk-modal-close-default" type="button" uk-close></button>
+		<div class="iframe"></div>
+	</div>
+</div>
+
 </body>
-</html>                                                                 
+</html>																 

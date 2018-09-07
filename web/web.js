@@ -22,6 +22,29 @@ Web({
 					}); } catch( e) {}
 				})
 			} catch(e) {}
+
+			try {
+				UIkit.util.on("[uk-ext-modal]", "click", function (e) {
+					e.preventDefault();
+        			e.target.blur();
+        			let link = e.target.getAttribute("href");
+        			let w = e.target.getAttribute("data-width") || 600;
+        			let h = e.target.getAttribute("data-height") || 400;
+        			let html =  '<iframe width="100%" height="'+h+'" src="'+ link +'" frameborder="0"  scrolling="no"  allowfullscreen></iframe>'
+								;
+					$('#modal-iframe .iframe').html(html);
+					$('#modal-iframe .uk-modal-body').width(w);
+					$('#modal-iframe .uk-modal-body').height(h);
+
+        			UIkit.modal('#modal-iframe').show();
+							
+					// console.log(w,h, link, html);
+					// UIkit.modal.dialog(html);
+
+			      
+				});
+			} catch(e) {}
+
 			this.fixTooltip();
 		});
 	},
