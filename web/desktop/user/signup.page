@@ -1,5 +1,8 @@
 <include src="__WEB_ROOT__/desktop/common/head.page"  />
-<div class="container" style="width:400px;"><div class="row">
+<div class="container" style="width:468px;min-height: 800px; background:rgba(0,0,0,0.6); color:#ffffff;">
+	hello world;
+</div>
+<div class="container uk-hidden" ><div class="row">
 	
 	<div class="form signup-form" mp:if="{{option.user_mobile_signup_on == 1}}">
 		<div class="form-header">

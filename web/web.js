@@ -25,6 +25,11 @@ Web({
 
 			try {
 				UIkit.util.on("[uk-ext-modal]", "click", function (e) {
+
+					// 设定为Loading提示
+					$('#modal-iframe .loading').removeClass('uk-hidden');
+					$('#modal-iframe .loaded').addClass('uk-hidden');
+
 					e.preventDefault();
         			e.target.blur();
         			let link = e.target.getAttribute("href");
@@ -36,12 +41,21 @@ Web({
 					$('#modal-iframe .uk-modal-body').width(w);
 					$('#modal-iframe .uk-modal-body').height(h);
 
-        			UIkit.modal('#modal-iframe').show();
-							
-					// console.log(w,h, link, html);
-					// UIkit.modal.dialog(html);
+					// 窗口载入完毕
+					$('#modal-iframe iframe').load(function( event ){
 
-			      
+						$('#modal-iframe .loading').addClass('uk-hidden');
+						$('#modal-iframe .loaded').removeClass('uk-hidden');
+					
+						// auto height
+						let frameH = $(this).contents().find("body").height();
+						$('#modal-iframe .uk-modal-body').height(frameH);
+						$(this).attr('height', frameH);
+						
+					});
+
+        			UIkit.modal('#modal-iframe').show();
+					
 				});
 			} catch(e) {}
 
