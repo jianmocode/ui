@@ -41,7 +41,7 @@
 						</div>
 					</div>
 				</li>
-				<li><a href="/user/signup" data-type="iframe" data-width="468" data-height="600" uk-ext-modal >注册</a></li>
+				<li><a href="/user/signup"  data-width="468" data-height="600" uk-ext-modal >注册</a></li>
 				<li><a href="/user/signin/mobile">登录</a></li>
 			</ul>
 		</div>
