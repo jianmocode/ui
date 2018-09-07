@@ -196,6 +196,11 @@ function uploadFile( file, options={}  ) { // 上传文件到指定地址
 		let conf = CONF.mina || {};
 			conf.priority = conf.priority || 0;
 		// console.log( conf );
+
+
+		var instance = conf.instance ? conf.instance : '';
+
+
 		let params = {
 			server:conf.server + '/_a/mina/dev/compile',
 			headers:{ "Accept":"application/json"},
@@ -206,7 +211,7 @@ function uploadFile( file, options={}  ) { // 上传文件到指定地址
 				project: conf.project,
 				server: conf.server,
 				domain: conf.domain,
-				instance: conf.instance
+				instance: instance
 			},
 			callback: function (err, data, res) {
 
