@@ -1,7 +1,95 @@
 <include src="__WEB_ROOT__/desktop/common/head.page"  />
-<div class="container" style="width:468px;min-height: 800px; background:rgba(0,0,0,0.6); color:#ffffff;">
+
+<form class="iframe-form">
+	<div class="uk-margin">
+		<h3>注册{{site.site_name}}</h3>
+	</div>
+	
+	<!-- 手机号 -->
+	<div class="uk-margin">
+		<div class="uk-inline">
+			<span class="uk-form-icon" uk-icon="icon: phone"></span>
+			<input name="mobile" type="text" class="uk-input uk-form-large" 
+				   placeholder="请输入手机号" >
+		</div>
+	</div> <!-- END 手机号 -->
+	
+	<!-- 图形验证码 -->
+	<div class="uk-margin">
+		<div class="uk-flex">
+			<div class="uk-margin-right">
+				<div class="uk-inline">
+					<span class="uk-form-icon" uk-icon="icon: nut"></span>
+					<input name="_vcode" type="text" class="uk-input uk-form-large" 
+						   placeholder="图形验证码" >
+				</div>
+			</div>
+			<div class="image vcode uk-padding-remove">
+				<img src="/_api/xpmsns/user/user/vcode?width=150&height=48&size=20" width="150" uk-image>
+			</div>
+		</div>
+	</div> <!--  END 图形验证码 -->
+
+	<!-- 短信验证码 -->
+	<div class="uk-margin">
+		<div class="uk-flex">
+			<div class="uk-margin-right">
+				<div class="uk-inline">
+					<span class="uk-form-icon" uk-icon="icon: mail"></span>
+					<input name="smscode" type="text" class="uk-input uk-form-large" 
+						   placeholder="短信验证码" >
+				</div>
+			</div>
+			<div class="uk-padding-remove">
+				<button class="uk-button uk-button-primary uk-form-large smscode action" style="width:150px;" type="button">发送验证码</button>
+			</div>
+		</div>
+	</div> <!--  END 短信验证码 -->
+
+
+	<!-- 密码 -->
+	<div class="uk-margin" mp:if="{{option.user_sms_on == 1}}" >
+		<div class="uk-inline">
+			<span class="uk-form-icon" uk-icon="icon: lock"></span>
+			<input name="password" type="password" class="uk-input uk-form-large" 
+				   placeholder="请设定登录密码" >
+		</div>
+	</div> <!-- END 密码 -->
+
+	<!-- 密码确认 -->
+	<div class="uk-margin">
+		<div class="uk-inline">
+			<span class="uk-form-icon" uk-icon="icon: lock"></span>
+			<input name="repassword" type="password" class="uk-input uk-form-large" 
+				   placeholder="请再次输入登录密码" >
+		</div>
+	</div> <!-- END 密码确认 -->
+
+	
+	<!-- 注册按钮 -->
+	<div class="uk-margin">
+		<button class="uk-button uk-button-primary uk-form-large signup action" style="width:100%;" type="button">注册</button>
+	</div><!-- END 注册按钮 -->
+	
+	<!-- 登录提醒 -->
+	<div class="uk-margin">
+		<a href="/user/signin/wechat" class="wechat text-wechat push-15-r" mp:if="{{option.user_wechat_on == 1}}"  > 
+			<i class="fab fa-weixin"></i> 使用微信登录
+		</a>
+
+		<a href="/user/signin/mobile" class="default" mp:if="{{option.user_mobile_on == 1}}" > 
+			已有账号？立即登录
+		</a>
+	</div>
+
+</form>
+
+
+
+<!-- 
+<div class="container" style="width:468px;min-height:800px; background:rgba(0,0,0,0.6); color:#ffffff;">
 	hello world;
-</div>
+</div> -->
 <div class="container uk-hidden" ><div class="row">
 	
 	<div class="form signup-form" mp:if="{{option.user_mobile_signup_on == 1}}">

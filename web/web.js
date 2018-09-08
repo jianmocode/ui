@@ -35,7 +35,7 @@ Web({
         			let link = e.target.getAttribute("href");
         			let w = e.target.getAttribute("data-width") || 600;
         			let h = e.target.getAttribute("data-height") || 400;
-        			let html =  '<iframe width="100%" height="'+h+'" src="'+ link +'" frameborder="0"  scrolling="no"  allowfullscreen></iframe>'
+        			let html =  '<iframe width="100%" height="'+h+'" src="'+ link +'" frameborder="0"  scrolling="no"  style="border-radius: 6px;" allowfullscreen></iframe>'
 								;
 					$('#modal-iframe .iframe').html(html);
 					$('#modal-iframe .uk-modal-body').width(w);

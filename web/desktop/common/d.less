@@ -35,10 +35,44 @@ body,html {
 	background-color: @primaryHoverColor;
 }
 
+[class*=uk-inline] {
+	width: 100%;
+}
+
+.uk-input, .uk-select, .uk-textarea {
+	color:@textDarkColor;
+	background: @backgroundMutedColor;
+	border-color: @dividerColor;
+}
+
+.uk-input:focus, .uk-select:focus, .uk-textarea:focus {
+	border-color: @primaryColor;
+	color: @textDarkColor;
+}
+
+.uk-form-large:not(textarea):not([multiple]):not([size]) {
+	height: 48px;
+	border-radius:4px;
+	font-size: 1rem;
+}
+
+
+.uk-button.uk-form-large {
+	height: 48px;
+	line-height: 48px;
+	font-size: 1.125rem;
+	text-align: center;
+	padding-left: 0px;
+	padding-right: 0px;
+	border-radius: 4px;
+}
+
 
 a { color: @linkColor; text-decoration: none; }
 .uk-link:hover, a:hover { color: @linkHoverColor; text-decoration: none; }
 .uk-active>a { color: @linkActiveColor; }
+
+
 
 
 
@@ -564,6 +598,14 @@ a { color: @linkColor; text-decoration: none; }
 			color: @lightColor !important;
 		}
 	}
+}
+
+
+
+.iframe-form {
+
+	padding: 40px;
+	
 }
 
 
