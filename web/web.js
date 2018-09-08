@@ -23,8 +23,10 @@ Web({
 				})
 			} catch(e) {}
 
+
+			// modal 载入 iframe 窗体
 			try {
-				UIkit.util.on("[uk-ext-modal]", "click", function (e) {
+				UIkit.util.on("[uk-iframe-modal]", "click", function (e) {
 
 					// 设定为Loading提示
 					$('#modal-iframe .loading').removeClass('uk-hidden');

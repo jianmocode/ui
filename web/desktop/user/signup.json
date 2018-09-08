@@ -17,8 +17,7 @@
 		},
 		"__js":[
 			"/js/jquery-validation-1.17.0/jquery.validate.min.js",
-			"/js/jquery-validation-1.17.0/additional-methods.min.js",
-			"/js/jquery-validation-1.17.0/localization/messages_zh.min.js"
+			"/js/jquery.form.min.js"
 		]
 	},
 	"entries":[

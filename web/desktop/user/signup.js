@@ -9,9 +9,10 @@ Page({
 		var that = this;
 
 		try {
-			( new Validate({
+			new Validate({
 				form:'.iframe-form',
-				change: function(){
+				// 如果是 iframe 载入，调整iframe 高度
+				change: function(){  
 					try {
 						if ( window.parent.$ ) {
 							let height = $('body').height();
@@ -20,8 +21,38 @@ Page({
 					}catch( e ){
 						console.log('fix iframe height Error', e );
 					}
+				},
+				submit: function( form ) {
+
+					let v = this;
+
+					let error = function( message, extra ) {
+						console.log( message, extra, form, v );
+					}
+
+					let $form = $(form).ajaxSubmit({
+						dataType: 'json',
+						type: $(form).attr('method') || 'POST',
+						url:  $(form).attr('action') || ''
+					});
+
+					let xhr = $form.data('jqxhr');
+					xhr.done(function( resp, status ) {
+
+						if ( 
+							( typeof resp['code'] != 'undefined' &&  typeof resp['message'] != 'undefined' && resp['code'] != 0  ) ||
+							status != 'success'
+						) {
+							let message = resp['message'] || status;
+							let extra = resp['extra'] || {};
+							error( message, extra);
+							return;
+						}
+
+
+					});
 				}
-			}) ).init();
+			});
 
 		} catch( e ) {
 			console.log( 'Error @Validate init', e);

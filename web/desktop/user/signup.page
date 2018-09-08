@@ -1,7 +1,7 @@
 <include src="__WEB_ROOT__/desktop/common/head.page"  />
 
 <!-- 用户注册表单 -->
-<form class="iframe-form" mp:if="{{option.user_mobile_signup_on == 1}}">
+<form class="iframe-form" action="/_api/xpmsns/user/user/create" method="post" mp:if="{{option.user_mobile_signup_on == 1}}">
 	<div class="uk-margin">
 		<h3>注册{{site.site_name}}</h3>
 	</div>
@@ -58,7 +58,7 @@
 				</div>
 			</div>
 			<div class="uk-padding-remove">
-				<button class="uk-button uk-button-primary uk-form-large smscode action" style="width:150px;" type="button">发送验证码</button>
+				<button class="uk-button uk-button-primary uk-form-large smscode uk-action" style="width:150px;" type="button">发送验证码</button>
 			</div>
 		</div>
 		<div class="uk-helper uk-helper-danger"></div>
@@ -87,7 +87,7 @@
 	
 	<!-- 注册按钮 -->
 	<div class="uk-margin">
-		<button class="uk-button uk-button-primary uk-form-large signup action" style="width:100%;" type="button">注册</button>
+		<button class="uk-button uk-button-primary uk-form-large signup uk-action" style="width:100%;" type="submit">注册</button>
 	</div><!-- END 注册按钮 -->
 	
 	<!-- 登录提醒 -->

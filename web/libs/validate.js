@@ -6,9 +6,13 @@ class Validate {
 	
 	constructor( option={} ) {
 		this.option(option);
-		this.form = option['form'] || null;
+		this.form = option['form'] || 'form';
 		this.change = option['change'] || function(){};
+		this.submit = option['submit'] || function(form) {
+			console.log( form );
+		}
 		this.v = null;
+		this.init();
 	}
 
 	option(option) {
@@ -57,7 +61,9 @@ class Validate {
             	let $helper = $formgroup.find('.uk-helper-danger');
                 $input.removeClass('uk-form-danger');
                 $helper.removeClass('uk-form-danger');
-            }
+            },
+            
+            submitHandler: that.submit
 		});
 
 		// 加载 rules
