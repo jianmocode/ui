@@ -9,7 +9,19 @@ Page({
 		var that = this;
 
 		try {
-			( new Validate({form:'.iframe-form'}) ).init();
+			( new Validate({
+				form:'.iframe-form',
+				change: function(){
+					try {
+						if ( window.parent.$ ) {
+							let height = $('body').height();
+							window.parent.$('iframe').height(height);
+						}
+					}catch( e ){
+						console.log('fix iframe height Error', e );
+					}
+				}
+			}) ).init();
 
 		} catch( e ) {
 			console.log( 'Error @Validate init', e);

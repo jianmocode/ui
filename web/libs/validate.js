@@ -7,6 +7,7 @@ class Validate {
 	constructor( option={} ) {
 		this.option(option);
 		this.form = option['form'] || null;
+		this.change = option['change'] || function(){};
 		this.v = null;
 	}
 
@@ -16,6 +17,7 @@ class Validate {
 
 	init() {
 
+		let that = this;
 		let $validates = (this.form) ? $('[validate]', this.form) : $('[validate]');
 		let $form = (this.form) ? $(this.form) : $('form');
 
@@ -30,6 +32,9 @@ class Validate {
             	let $helper = $formgroup.find('.uk-helper-danger');
             	let message = error.html();
             	$helper.html(error.html());
+            	try { that.change(error, element);} catch(e){
+            		console.log('callback change error:', e, this.change);
+            	}
             },
 
             highlight: function( element ) {
