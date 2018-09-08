@@ -10,9 +10,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="{{site.icon.url}}" rel="shortcut icon" type="image/x-icon" />
 		<link rel="stylesheet" href="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/css/uikit.min.css" />
+		<link  mp:for="{{__css}}" rel="stylesheet" href="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/{{item}}" />
 		<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/js/uikit.min.js"></script>
 		<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/js/uikit-icons.min.js"></script>
 		<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/js/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/js/jquery.slimscroll.min.js"></script>
+		<script mp:for="{{__js}}" type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/{{item}}"></script>
 	</head>
 	<body>

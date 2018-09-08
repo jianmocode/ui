@@ -1,4 +1,5 @@
 
+import {Validate} from '../../libs/validate.js';
 let web = getWeb();
 Page({
 	data:{},
@@ -7,9 +8,12 @@ Page({
 
 		var that = this;
 
-		// 自动播放更换背景
-		that.changebg(0);
-		that.fixheight();
+		try {
+			( new Validate({form:'.iframe-form'}) ).init();
+
+		} catch( e ) {
+			console.log( 'Error @Validate init', e);
+		}
 
 
 		// 图形验证码
@@ -28,10 +32,7 @@ Page({
 			that.submit();
 		});
 
-		
 	},
-
-
 
 	/**
 	 * 提交注册表单
@@ -343,44 +344,7 @@ Page({
 		$('.image.vcode img').attr('src', api);
 	},
 
-	/**
-	 * 修复高度
-	 * @return {[type]} [description]
-	 */
-	fixheight: function() {
-		$('.page').height($(document).height());
-	},
-
-
-	/**
-	 * 自动更换背景
-	 * @param  {[type]} curr [description]
-	 * @return {[type]}      [description]
-	 */
-	changebg: function( curr ){
-
-		var that = this;
-		var images = this.data['images'] || [];
-		var max = images.length;
-
-		if ( max == 0 ) return;
-
-		var images = this.data['images'] || [];
-		var img = images[curr];
-			$('.side').hide();
-			$('.side').css('background-image', 'url('+img+')').fadeIn('fast');
-
-		setTimeout(function(){
-			
-			curr ++;
-			if ( curr >= max ) {
-				curr = 0;
-			}
-
-			that.changebg(curr);
-		}, 5000);
-	},
-
+	
 	hello: function ( event ) {
 	}
 })
