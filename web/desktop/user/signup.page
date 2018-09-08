@@ -1,6 +1,7 @@
 <include src="__WEB_ROOT__/desktop/common/head.page"  />
 
-<form class="iframe-form">
+<!-- 用户注册表单 -->
+<form class="iframe-form" mp:if="{{option.user_mobile_signup_on == 1}}">
 	<div class="uk-margin">
 		<h3>注册{{site.site_name}}</h3>
 	</div>
@@ -82,116 +83,27 @@
 		</a>
 	</div>
 
-</form>
+</form> <!-- END 用户注册表单 -->
 
-
-
-<!-- 
-<div class="container" style="width:468px;min-height:800px; background:rgba(0,0,0,0.6); color:#ffffff;">
-	hello world;
-</div> -->
-<div class="container uk-hidden" ><div class="row">
+<!-- 未开放注册 -->
+<form class="iframe-form"  mp:else >
 	
-	<div class="form signup-form" mp:if="{{option.user_mobile_signup_on == 1}}">
-		<div class="form-header">
-			<h3>欢迎加入{{site.site_name}}!</h3>
-			<p>加入{{site.site_name}}, 您可以订阅、点赞、打赏、评论！</p>
-		</div>
-		
-		<div class="alert alert-success alert-dismissible hidden" role="alert">
-			<span class="message">错误描述</span>
-		</div>
+	<div class="uk-margin">
+		<h3>注册{{site.site_name}}</h3>
+	</div>
+	<div class="uk-margin">
+		<div class="uk-alert-danger" uk-alert> <p> 暂未开放用户注册 </p> </div>
+	</div>
+	<div class="uk-margin">
+		<a href="/user/signin/wechat" class="wechat text-wechat push-15-r" mp:if="{{option.user_wechat_on == 1}}"  > 
+			<span uk-icon="icon: weixin"></span> 使用微信登录
+		</a>
 
-		<div class="alert alert-danger alert-dismissible hidden" role="alert">
-			<button type="button" class="close" onclick="$(this).parent().addClass('hidden');">
-			<span>&times;</span></button>
-			<span class="message">错误描述</span>
-		</div>
+		<a href="/user/signin/mobile" class="default" mp:if="{{option.user_mobile_on == 1}}" > 
+			已有账号？直接登录
+		</a>
+	</div>
+</form> <!-- END 未开放注册 -->
 
-	
-		<div class="uk-margin">
-			<input name="mobile" type="text" class="uk-input" 
-				placeholder="手机号" >
-		</div>
-		
-		<div class="form-group has-feedback">
-			<input 
-			name="password"
-			type="password" class="uk-input"  placeholder="密码">
-			<span class="icon glyphicon glyphicon-ok form-control-feedback hidden" ></span>
-			<span id="helpBlock" class="help-block"></span>
-		</div>
-
-		<div class="form-group has-feedback">
-			<input 
-			name="repassword"
-			type="password" class="uk-input" placeholder="再次输入密码">
-			<span class="icon glyphicon glyphicon-ok form-control-feedback hidden" ></span>
-			<span id="helpBlock" class="help-block"></span>
-		</div>
-
-		<div class="form-group">
-			<div class="input-group">
-				<input 
-				name="_vcode"
-				type="text" class="form-control input-lg" placeholder="图形验证码">
-				<span class="input-group-addon input-lg image vcode">
-					<img src="/_api/xpmsns/user/user/vcode?width=150&height=44&size=20">
-				</span>
-			</div>
-			<span id="helpBlock" class="help-block"></span>
-		</div>
-
-
-		<div class="form-group" mp:if="{{option.user_sms_on == 1}}">
-			<div class="input-group">
-				<input 
-				name="smscode"
-				type="text" class="form-control input-lg" placeholder="短信验证码">
-				<span class="input-group-btn ">
-					 <button class="btn btn-primary btn-lg btn-minw smscode action" type="button">发送短信验证码</button>
-				</span>
-			</div>
-			<span id="helpBlock" class="help-block"></span>
-		</div>
-
-		<div class="form-group">
-			<button class="btn btn-primary btn-lg btn-block signup action" type="button">立即注册</button>
-		</div>
-
-		<hr />
-
-		<div class="form-group text-left push-30-t" >
-
-			<a href="/user/signin/wechat" class="wechat text-wechat push-15-r" mp:if="{{option.user_wechat_on == 1}}"  > 
-				<span uk-icon="icon: weixin"></span> 使用微信登录
-			</a>
-
-			<a href="/user/signin/mobile" class="default" mp:if="{{option.user_mobile_on == 1}}" > 
-				已有账号？立即登录
-			</a>
-		</div>
-
-	</div> <!-- END 用户登录表单 Form signup -->
-
-<!-- 
-	***** 后台未开放用户注册权限 ************************************************************  
--->
-	<div class="main" mp:else >
-		<div class="form-header">
-			<h2>未开放用户注册</h2>
-			<div class="form-group"  >
-				<a href="/user/signin/wechat" class="wechat" mp:if="{{option.user_wechat_on == 1}}"  > 
-					<img src="{{__STOR__::/__PROJECT_NAME/assets/user}}/images/wechat-color.svg" width="40">微信登录
-				</a>
-
-				<a href="/user/signin/mobile" class="default" mp:if="{{option.user_mobile_on == 1}}" > 
-					已有账号？立即登录
-				</a>
-			</div>
-		</div>
-	</div> <!-- END 未开放注册 -->
-
-</div></div> <!-- END Row Container -->
 
 <include src="__WEB_ROOT__/desktop/common/foot.page" />
