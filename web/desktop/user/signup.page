@@ -47,7 +47,6 @@
 		</div>
 	</div> <!--  END 短信验证码 -->
 
-
 	<!-- 密码 -->
 	<div class="uk-margin" mp:if="{{option.user_sms_on == 1}}" >
 		<div class="uk-inline">
@@ -91,9 +90,11 @@
 	<div class="uk-margin">
 		<h3>注册{{site.site_name}}</h3>
 	</div>
+
 	<div class="uk-margin">
 		<div class="uk-alert-danger" uk-alert> <p> 暂未开放用户注册 </p> </div>
 	</div>
+
 	<div class="uk-margin">
 		<a href="/user/signin/wechat" class="wechat text-wechat push-15-r" mp:if="{{option.user_wechat_on == 1}}"  > 
 			<span uk-icon="icon: weixin"></span> 使用微信登录
@@ -103,6 +104,7 @@
 			已有账号？直接登录
 		</a>
 	</div>
+	
 </form> <!-- END 未开放注册 -->
 
 <include src="__WEB_ROOT__/desktop/common/foot.page" />
