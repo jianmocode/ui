@@ -74,11 +74,11 @@
 	<!-- 登录提醒 -->
 	<div class="uk-margin">
 		<a href="/user/signin/wechat" class="wechat text-wechat push-15-r" mp:if="{{option.user_wechat_on == 1}}"  > 
-			<i class="fab fa-weixin"></i> 使用微信登录
+			<span uk-icon="icon: weixin"></span> 使用微信登录
 		</a>
 
 		<a href="/user/signin/mobile" class="default" mp:if="{{option.user_mobile_on == 1}}" > 
-			已有账号？立即登录
+			已有账号？直接登录
 		</a>
 	</div>
 
@@ -164,7 +164,7 @@
 		<div class="form-group text-left push-30-t" >
 
 			<a href="/user/signin/wechat" class="wechat text-wechat push-15-r" mp:if="{{option.user_wechat_on == 1}}"  > 
-				<i class="fab fa-weixin"></i> 使用微信登录
+				<span uk-icon="icon: weixin"></span> 使用微信登录
 			</a>
 
 			<a href="/user/signin/mobile" class="default" mp:if="{{option.user_mobile_on == 1}}" > 

@@ -618,10 +618,13 @@ a { color: @linkColor; text-decoration: none; }
 	filter: Alpha(opacity=@_a);
 }
 
+.text-wechat {
+	color:#609700 !important;
+}
 
-
-
-
+.text-wechat:hover {
+	color: @linkHoverColor !important;
+};
 
 
 /* 兼容旧页面 ( 页面全部完成后废弃 ) */
@@ -701,14 +704,6 @@ body {
 	position: fixed;
 }
 
-
-.text-wechat {
-	color:@wechatBrand !important;
-}
-
-.text-wechat:hover {
-	color: @wechatBrandHover !important;
-};
 
 
 /**
