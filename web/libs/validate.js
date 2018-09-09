@@ -4,6 +4,8 @@
 class UtilsClass {
 
 	constructor( option={} ) {
+
+		this.timerCounter = 5;
 	}
 
 	parentHeight( iframe='iframe' ){
@@ -32,6 +34,23 @@ class UtilsClass {
 		}catch( e ){
 			console.log('fix iframe height Error', e );
 		}
+	}
+
+
+	timer( output='.timer', callback=()=>{}, counter = null ) {
+
+		if ( counter !== null ) {
+			this.timerCounter = counter;
+		}
+
+		$(output).html(this.timerCounter);
+		this.timerCounter = this.timerCounter - 1;
+
+		if ( this.timerCounter > 0 ) {
+			setTimeout( ()=>{this.timer(output, callback); }, 1000);
+			return;
+		}
+		callback();
 	}
 }
 let Utils = new UtilsClass();

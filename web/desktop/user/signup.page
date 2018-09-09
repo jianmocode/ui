@@ -10,31 +10,12 @@
 			$('.success').removeClass('uk-hidden');
 
 			// 调整高度
-			try {
-				// 如果是 iframe 载入，调整iframe 高度
-				if ( window.parent.$ ) {
-					let height = $('body').height();
-					window.parent.$('iframe').height(height);
-				}
-			}catch( e ){
-				console.log('fix iframe height Error', e );
-			}
-			
-			// 计时器读秒
-			var t = 5;
-			var timer = function(){
-				$('.timer').html(t);
-				t = t - 1;
-				if ( t > 0 ) {
-					setTimeout(timer, 1000);
-					return;
-				}
+			Utils.parentHeight();
 
-				// 读秒结束后运行
+			// 计时器读秒后转向登录页面
+			Utils.timer('.timer', function(){
 				window.location = '/user/signin/mobile';
-			}
-
-			timer();
+			}, 5 );
 		}" 
 	>
 
