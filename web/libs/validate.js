@@ -1,91 +1,135 @@
 /**
  * 简墨 Validate 
  */
+class UtilsClass {
+
+	constructor( option={} ) {
+	}
+
+	parentHeight( iframe='iframe' ){
+		// console.log( 'run parentHeight ');
+		try {
+			// 如果是 iframe 载入，调整iframe 高度
+			if ( window.parent.$ ) {
+				let height = $('body').height();
+				window.parent.$('iframe').height(height);
+			}
+		}catch( e ){
+			console.log('fix iframe height Error', e );
+		}
+	}
+
+	parentClose( iframe='iframe'  ){
+
+		// console.log( 'run parentClose ');
+
+		try {
+			// 如果是 iframe 载入，调整iframe 高度
+			if ( window.parent.$ ) {
+				let height = $('body').height();
+				window.parent.$('iframe').height(height);
+			}
+		}catch( e ){
+			console.log('fix iframe height Error', e );
+		}
+	}
+}
+let Utils = new UtilsClass();
 
 class Validate {
 	
 	constructor( option={} ) {
+
+		let that =this;
 		this.option(option);
 		this.form = option['form'] || 'form';
 		this.change = option['change'] || function(){};
-		this.submit = option['submit'] || function( form ) {
+		this.loading = function(){
+			$('.uk-action').prop('disabled', true);
+			let origin = $('[uk-loading]').html();
+			let option = $('[uk-loading]').attr('uk-loading');
+			$('[uk-loading]').attr('data-origin', origin );
+			$('[uk-loading]').html('<span uk-spinner="'+option+'"></span> ' +  origin );
+		}
 
-					let v = this;
-
-					// 锁定操作
-					let loading = function(){
-						$('.uk-action').prop('disabled', true);
-						let origin = $('[uk-loading]').html();
-						let option = $('[uk-loading]').attr('uk-loading');
-						$('[uk-loading]').attr('data-origin', origin );
-						$('[uk-loading]').html('<span uk-spinner="'+option+'"></span> ' +  origin );
-					}
-
-					// 解锁操作
-					let complete = function(){
-						$('.uk-action').removeAttr('disabled');	
-						let origin = $('[uk-loading]').attr('data-origin');
-						$('[uk-loading]').html(origin);
-					}
-
-					// 通报错误
-					let error = function( message, extra ) {
-						let errorList = extra['errorlist'] || [];
-						for ( let i in errorList ) {
-							v.showErrors(errorList[i]) ;
-						}
-
-						$('.message')
-							.removeClass('uk-hidden')
-							.find('p').html('操作失败 (' + message + ')');
-
-						that.parentHeight();
-					}
+		this.complete = function(){
+			$('.uk-action').removeAttr('disabled');	
+			let origin = $('[uk-loading]').attr('data-origin');
+			$('[uk-loading]').html(origin);
+		}
 
 
-					// 成功返回
-					let successText = $(form).attr('success');
-					let success = null
-					try { eval('success=' + successText );} catch( e) {
-						success = successText;
-						console.log( 'success callback error:', successText, e );
-					}
+		this.error = function( message, extra ) {
+			let errorList = extra['errorlist'] || [];
+			for ( let i in errorList ) {
+				that.instance.showErrors(errorList[i]) ;
+			}
+
+			$('.message')
+				.removeClass('uk-hidden')
+				.find('p').html('操作失败 (' + message + ')');
+
+			Utils.parentHeight();
+		}
 
 
-					// 开始请求前锁定表单 
-					loading();
-					let $form = $(form).ajaxSubmit({
-						dataType: 'json',
-						type: $(form).attr('method') || 'POST',
-						url:  $(form).attr('action') || ''
-					});
 
-					let xhr = $form.data('jqxhr');
-					xhr.done(function( resp, status ) {
-						
-						// 请求完成
-						complete();
+		this.submit = option['submit'] || function( form, opts={} ) {
 
-						if ( 
-							( typeof resp['code'] != 'undefined' &&  typeof resp['message'] != 'undefined' && resp['code'] != 0  ) ||
-							status != 'success'
-						) {
-							let message = resp['message'] || status;
-							let extra = resp['extra'] || {};
-							error( message, extra);
-							return;
-						}
+			let v = this;
 
-						// 成功返回
-						if (typeof success != 'function') {
-							window.location = success;
-							return;
-						}
-						success( resp );
+			// 锁定操作
+			let loading = that.loading;
 
-					});
+			// 解锁操作
+			let complete = that.complete;
+
+			// 通报错误
+			let error = that.error;
+
+			// 成功返回
+			let successText = $(form).attr('success');
+			let success = null
+			try { eval('success=' + successText );} catch( e) {
+				success = successText;
+				console.log( 'success callback error:', successText, e );
+			}
+
+
+			// 开始请求前锁定表单 
+			loading();
+			let $form = $(form).ajaxSubmit({
+				dataType: 'json',
+				type: opts['method'] || $(form).attr('method') || 'POST',
+				url:  opts['url'] || $(form).attr('action') || ''
+			});
+
+			let xhr = $form.data('jqxhr');
+			xhr.done(function( resp, status ) {
+				
+				// 请求完成
+				complete();
+
+				if ( 
+					( typeof resp['code'] != 'undefined' &&  typeof resp['message'] != 'undefined' && resp['code'] != 0  ) ||
+					status != 'success'
+				) {
+					let message = resp['message'] || status;
+					let extra = resp['extra'] || {};
+					error( message, extra);
+					return;
 				}
-		this.v = null;
+
+				// 成功返回
+				if (typeof success != 'function') {
+					window.location = success;
+					return;
+				}
+				success( resp );
+
+			});
+		}
+		this.inst = this.instance = null;
 		this.init();
 	}
 
@@ -100,7 +144,7 @@ class Validate {
 		let $form = (this.form) ? $(this.form) : $('form');
 
 		// 设定错误通报方式
-		$form.validate({
+		this.inst = this.instance = $form.validate({
 			debug:true,
 			errorClass: 'uk-helper uk-form-danger',
             errorElement: 'div',
@@ -155,4 +199,5 @@ class Validate {
 }
 
 
-export { Validate }
+
+export { Validate, Utils }

@@ -94,7 +94,13 @@
 				<div class="uk-inline">
 					<span class="uk-form-icon" uk-icon="icon: mail"></span>
 					<input name="smscode" type="text" class="uk-input uk-form-large" 
-						   placeholder="短信验证码" >
+						   placeholder="短信验证码" 
+						   validate="{
+							   	required:true, 
+							   	messages: {
+									required:'请填写短信验证码'
+							   	}
+						   }">
 				</div>
 			</div>
 			<div class="uk-padding-remove">
@@ -109,7 +115,17 @@
 		<div class="uk-inline">
 			<span class="uk-form-icon" uk-icon="icon: lock"></span>
 			<input name="password" type="password" class="uk-input uk-form-large" 
-				   placeholder="请设定登录密码" >
+				   placeholder="请设定登录密码" 
+				   validate="{
+					   	required:true,
+					   	minlength:6,
+					   	maxlength:15,
+					   	messages: {
+							required:'请设定登录密码',
+							minlength: '密码长度不能少于6位',
+							maxlength: '密码长度不能超过11位'
+					   	}
+					}">
 		</div>
 		<div class="uk-helper uk-helper-danger"></div>
 	</div> <!-- END 密码 -->
@@ -119,7 +135,17 @@
 		<div class="uk-inline">
 			<span class="uk-form-icon" uk-icon="icon: lock"></span>
 			<input name="repassword" type="password" class="uk-input uk-form-large" 
-				   placeholder="请再次输入登录密码" >
+				   placeholder="请再次输入登录密码" 
+				   validate="{
+					   	required:true, 
+					   	minlength:6,
+					   	maxlength:15,
+					   	messages: {
+							required:'请设定登录密码',
+							minlength: '密码长度不能少于6位',
+							maxlength: '密码长度不能超过11位'
+					   	}
+					}">
 		</div>
 		<div class="uk-helper uk-helper-danger"></div>
 	</div> <!-- END 密码确认 -->
