@@ -4,7 +4,38 @@
 <form	class="iframe-form"  mp:if="{{option.user_mobile_signup_on == 1}}"
 		method="POST" 
 		action="/_api/xpmsns/user/user/create" 
-		success="/signup/code" 
+		success="function(data) {
+			// 打开登录成功面板
+			$('.iframe-form').addClass('uk-hidden');
+			$('.success').removeClass('uk-hidden');
+
+			// 调整高度
+			try {
+				// 如果是 iframe 载入，调整iframe 高度
+				if ( window.parent.$ ) {
+					let height = $('body').height();
+					window.parent.$('iframe').height(height);
+				}
+			}catch( e ){
+				console.log('fix iframe height Error', e );
+			}
+			
+			// 计时器读秒
+			var t = 5;
+			var timer = function(){
+				$('.timer').html(t);
+				t = t - 1;
+				if ( t > 0 ) {
+					setTimeout(timer, 1000);
+					return;
+				}
+
+				// 读秒结束后运行
+				window.location = '/user/signin/mobile';
+			}
+
+			timer();
+		}" 
 	>
 
 	<div class="uk-margin">
@@ -134,6 +165,21 @@
 	</div>
 
 </form> <!-- END 未开放注册 -->
+
+
+<!-- 注册成功面板 -->
+<form class="iframe-form success uk-hidden" >
+	<div class="uk-margin">
+		<h3>注册{{site.site_name}}</h3>
+	</div>
+	<div class="uk-alert-success" uk-alert> 
+		<p> <span uk-icon="icon: check"></span> 注册成功!  <spacn class="timer">5</spacn> 秒后转向登录 </p> 
+	</div>
+	<!-- 登录按钮 -->
+	<div class="uk-margin">
+		<a href="/user/signin/mobile" class="uk-button uk-button-primary uk-form-large uk-action" style="width:100%;" >立即登录</a>
+	</div><!-- END 登录按钮 -->
+</form>
 
 
 <include src="__WEB_ROOT__/desktop/common/foot.page" />

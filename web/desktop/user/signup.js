@@ -16,6 +16,20 @@ Page({
 			console.log('fix iframe height Error', e );
 		}
 	},
+	parentClose: function( iframe='iframe'  ){
+
+		console.log( 'run parentClose ');
+
+		try {
+			// 如果是 iframe 载入，调整iframe 高度
+			if ( window.parent.$ ) {
+				let height = $('body').height();
+				window.parent.$('iframe').height(height);
+			}
+		}catch( e ){
+			console.log('fix iframe height Error', e );
+		}
+	},
 	onReady: function( get ) {
 		var that = this;
 
@@ -28,84 +42,7 @@ Page({
 		try {
 			new Validate({
 				form:'.iframe-form',
-				change: ( error, element)=>{ that.parentHeight(); },
-				submit: function( form ) {
-
-					let v = this;
-
-					// 锁定操作
-					let loading = function(){
-						$('.uk-action').prop('disabled', true);
-						let origin = $('[uk-loading]').html();
-						let option = $('[uk-loading]').attr('uk-loading');
-						$('[uk-loading]').attr('data-origin', origin );
-						$('[uk-loading]').html('<span uk-spinner="'+option+'"></span> ' +  origin );
-					}
-
-					// 解锁操作
-					let complete = function(){
-						$('.uk-action').removeAttr('disabled');	
-						let origin = $('[uk-loading]').attr('data-origin');
-						$('[uk-loading]').html(origin);
-					}
-
-					// 通报错误
-					let error = function( message, extra ) {
-						let errorList = extra['errorlist'] || [];
-						for ( let i in errorList ) {
-							v.showErrors(errorList[i]) ;
-						}
-
-						$('.message')
-							.removeClass('uk-hidden')
-							.find('p').html('操作失败 (' + message + ')');
-
-						that.parentHeight();
-					}
-
-
-					// 成功返回
-					let successText = $(form).attr('success');
-					let success = null
-					try { eval('success=' + successText );} catch( e) {
-						success = successText;
-						console.log( 'success callback error:', successText, e );
-					}
-
-
-					// 开始请求前锁定表单 
-					loading();
-					let $form = $(form).ajaxSubmit({
-						dataType: 'json',
-						type: $(form).attr('method') || 'POST',
-						url:  $(form).attr('action') || ''
-					});
-
-					let xhr = $form.data('jqxhr');
-					xhr.done(function( resp, status ) {
-						
-						// 请求完成
-						complete();
-
-						if ( 
-							( typeof resp['code'] != 'undefined' &&  typeof resp['message'] != 'undefined' && resp['code'] != 0  ) ||
-							status != 'success'
-						) {
-							let message = resp['message'] || status;
-							let extra = resp['extra'] || {};
-							error( message, extra);
-							return;
-						}
-
-						// 成功返回
-						if (typeof success != 'function') {
-							window.location = success;
-							return;
-						}
-						success( resp );
-
-					});
-				}
+				change: ( error, element)=>{ that.parentHeight(); }
 			});
 
 		} catch( e ) { console.log( 'Error @Validate', e); }
