@@ -1,35 +1,80 @@
 
 import {Validate} from '../../libs/validate.js';
 let web = getWeb();
+let $$ = UIkit.util;
 Page({
 	data:{},
 	smscodeTimer:0,
+	parentHeight: function( iframe='iframe' ){
+		try {
+			// 如果是 iframe 载入，调整iframe 高度
+			if ( window.parent.$ ) {
+				let height = $('body').height();
+				window.parent.$('iframe').height(height);
+			}
+		}catch( e ){
+			console.log('fix iframe height Error', e );
+		}
+	},
 	onReady: function( get ) {
-
 		var that = this;
+
+		try {
+			$$.on('.uk-alert', 'hide', ()=>{
+				setTimeout(()=>{that.parentHeight();}, 500);
+			});
+		} catch( e ) { console.log( 'Error @Alert Hide Event', e); }
 
 		try {
 			new Validate({
 				form:'.iframe-form',
-				// 如果是 iframe 载入，调整iframe 高度
-				change: function(){  
-					try {
-						if ( window.parent.$ ) {
-							let height = $('body').height();
-							window.parent.$('iframe').height(height);
-						}
-					}catch( e ){
-						console.log('fix iframe height Error', e );
-					}
-				},
+				change: ( error, element)=>{ that.parentHeight(); },
 				submit: function( form ) {
 
 					let v = this;
 
-					let error = function( message, extra ) {
-						console.log( message, extra, form, v );
+					// 锁定操作
+					let loading = function(){
+						$('.uk-action').prop('disabled', true);
+						let origin = $('[uk-loading]').html();
+						let option = $('[uk-loading]').attr('uk-loading');
+						$('[uk-loading]').attr('data-origin', origin );
+						$('[uk-loading]').html('<span uk-spinner="'+option+'"></span> ' +  origin );
 					}
 
+					// 解锁操作
+					let complete = function(){
+						$('.uk-action').removeAttr('disabled');	
+						let origin = $('[uk-loading]').attr('data-origin');
+						$('[uk-loading]').html(origin);
+					}
+
+					// 通报错误
+					let error = function( message, extra ) {
+						let errorList = extra['errorlist'] || [];
+						for ( let i in errorList ) {
+							v.showErrors(errorList[i]) ;
+						}
+
+						$('.message')
+							.removeClass('uk-hidden')
+							.find('p').html('操作失败 (' + message + ')');
+
+						that.parentHeight();
+					}
+
+
+					// 成功返回
+					let successText = $(form).attr('success');
+					let success = null
+					try { eval('success=' + successText );} catch( e) {
+						success = successText;
+						console.log( 'success callback error:', successText, e );
+					}
+
+
+					// 开始请求前锁定表单 
+					loading();
 					let $form = $(form).ajaxSubmit({
 						dataType: 'json',
 						type: $(form).attr('method') || 'POST',
@@ -38,6 +83,9 @@ Page({
 
 					let xhr = $form.data('jqxhr');
 					xhr.done(function( resp, status ) {
+						
+						// 请求完成
+						complete();
 
 						if ( 
 							( typeof resp['code'] != 'undefined' &&  typeof resp['message'] != 'undefined' && resp['code'] != 0  ) ||
@@ -49,14 +97,18 @@ Page({
 							return;
 						}
 
+						// 成功返回
+						if (typeof success != 'function') {
+							window.location = success;
+							return;
+						}
+						success( resp );
 
 					});
 				}
 			});
 
-		} catch( e ) {
-			console.log( 'Error @Validate init', e);
-		}
+		} catch( e ) { console.log( 'Error @Validate', e); }
 
 
 		// 图形验证码
@@ -70,7 +122,6 @@ Page({
 		});
 
 		// 提交表单
-		// 
 		$('.signup-form .signup').click(function(){
 			that.submit();
 		});

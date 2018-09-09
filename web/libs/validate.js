@@ -56,11 +56,10 @@ class Validate {
                 $helper.removeClass('uk-form-danger');
             },
             success: function(element) {
-                let $input = $(element);  
-                let $formgroup = $input.parents('.uk-form-group'); 
-            	let $helper = $formgroup.find('.uk-helper-danger');
-                $input.removeClass('uk-form-danger');
-                $helper.removeClass('uk-form-danger');
+            	// console.log( 'success', $(element) );
+                let $formgroup = $(element).parents('.uk-form-group'); 
+              	$formgroup.find('.uk-form-danger').removeClass('uk-form-danger');
+
             },
             
             submitHandler: that.submit
