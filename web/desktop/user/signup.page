@@ -23,9 +23,8 @@
 		<h3>注册{{site.site_name}} <span uk-loading="ratio:0.8" class="uk-margin-small-left"></span></h3>
 	</div>
 	
-	<div class="message uk-alert-danger uk-hidden" uk-alert> 
-		<p></p> 
-	</div>
+	<!-- 呈现错误信息 -->
+	<div class="message uk-alert-danger uk-hidden" uk-alert> <p></p></div>
 
 	<!-- 手机号 -->
 	<div class="uk-form-group uk-margin" id="testit">

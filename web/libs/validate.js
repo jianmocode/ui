@@ -161,7 +161,7 @@ class Validate {
 		let that = this;
 		let $validates = (this.form) ? $('[validate]', this.form) : $('[validate]');
 		let $form = (this.form) ? $(this.form) : $('form');
-
+		
 		// 设定错误通报方式
 		this.inst = this.instance = $form.validate({
 			debug:true,

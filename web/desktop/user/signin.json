@@ -14,7 +14,11 @@
 		},
 		"page":{
 			"title":"用户登录"
-		}
+		},
+		"__js":[
+			"/js/jquery-validation-1.17.0/jquery.validate.min.js",
+			"/js/jquery.form.min.js"
+		]
 	},
 	"entries":[
 		{"method":"GET", "router":"/user/signin/mobile", "ttl":0}
