@@ -35,12 +35,12 @@
 				</div>
 				<div class="uk-width-1-1 uk-text-center">
 					<!-- 裁切面板 -->
-					<div class="uk-placeholder uk-text-center uk-height-1-1 uk-margin-remove-top uk-margin-left">
+					<div class="uk-placeholder uk-text-center uk-height-1-1 uk-margin-remove-top uk-margin-left uk-hidden">
 					   
 					</div>
 				</div>
 			</div>
-			<progress id="js-progressbar" class="uk-progress" value="20" max="100"></progress>
+			<progress id="js-progressbar" class="uk-progress" value="20" max="100" hidden></progress>
 			
 		</div>
 	</div> <!-- 用户头像 -->
