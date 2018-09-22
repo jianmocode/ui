@@ -5,7 +5,7 @@
 	
 	<div class="jm-recommends-left uk-width-3-4" >
 		<article class=" jm-article uk-article">
-			<h1 class="jm-article-title uk-article-title">{{article.title}}</h1>
+			<h1 class="jm-article-title uk-article-title" >{{article.title}}</h1>
 			<div class="jm-article-meta uk-article-meta"> 
 				<a class="author" href="#"> {{ (article.author) ? article.author : site.site_name }} </a> <span>•</span>
 				<span class="publictime"> {{HMDATETIME(article.publish_datetime)}} </span> <span>•</span>

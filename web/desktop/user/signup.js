@@ -1,7 +1,9 @@
+import { Utils } from '../../libs/utils.js';
+import {Validate} from '../../libs/validate.js';
 
-import {Validate, Utils} from '../../libs/validate.js';
 let web = getWeb();
 let $$ = UIkit.util;
+let $Utils = new Utils(); 
 
 Page({
 	data:{},
@@ -14,7 +16,7 @@ Page({
 		// 错误提醒框关闭事件
 		try {
 			$$.on('.uk-alert', 'hide', ()=>{
-				setTimeout(()=>{Utils.parentHeight();}, 500);
+				setTimeout(()=>{$Utils.parentHeight();}, 500);
 			});
 		} catch( e ) { console.log( 'Error @Alert Hide Event', e); }
 
@@ -22,7 +24,9 @@ Page({
 		try {
 			this.validator = new Validate({
 				form:'.iframe-form',
-				change: ( error, element)=>{ Utils.parentHeight(); }
+				change: ( error, element)=>{ $Utils.parentHeight(); },
+				error: (message, extra)=>{ $Utils.parentHeight(); },
+				complete: ()=>{ $Utils.parentHeight(); }
 			});
 
 		} catch( e ) { console.log( 'Error @Validate', e); }

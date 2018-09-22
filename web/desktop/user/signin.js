@@ -1,4 +1,7 @@
-import {Validate, Utils} from '../../libs/validate.js';
+import {Validate} from '../../libs/validate.js';
+import {Utils} from '../../libs/utils.js';
+
+let utils = new Utils();
 let web = getWeb();
 let $$ = UIkit.util;
 

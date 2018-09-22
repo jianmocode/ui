@@ -1,68 +1,21 @@
+import { Utils } from './utils.js';
 /**
- * 简墨 Validate 
+ * 简墨验证类
  */
-class UtilsClass {
-
-	constructor( option={} ) {
-
-		this.timerCounter = 5;
-	}
-
-	parentHeight( iframe='iframe' ){
-		// console.log( 'run parentHeight ');
-		try {
-			// 如果是 iframe 载入，调整iframe 高度
-			if ( window.parent.$ ) {
-				let height = $('body').height();
-				window.parent.$('iframe').height(height);
-			}
-		}catch( e ){
-			console.log('fix iframe height Error', e );
-		}
-	}
-
-	parentClose( iframe='iframe'  ){
-
-		// console.log( 'run parentClose ');
-
-		try {
-			// 如果是 iframe 载入，调整iframe 高度
-			if ( window.parent.$ ) {
-				let height = $('body').height();
-				window.parent.$('iframe').height(height);
-			}
-		}catch( e ){
-			console.log('fix iframe height Error', e );
-		}
-	}
-
-
-	timer( output='.timer', callback=()=>{}, counter = null ) {
-
-		if ( counter !== null ) {
-			this.timerCounter = counter;
-		}
-
-		$(output).html(this.timerCounter);
-		this.timerCounter = this.timerCounter - 1;
-
-		if ( this.timerCounter > 0 ) {
-			setTimeout( ()=>{this.timer(output, callback); }, 1000);
-			return;
-		}
-		callback();
-	}
-}
-let Utils = new UtilsClass();
-
 class Validate {
 	
 	constructor( option={} ) {
 
 		let that =this;
+		let $validate = this;
+		this.utils = new Utils(); 
+		this.events = {}
 		this.option(option);
 		this.form = option['form'] || 'form';
-		this.change = option['change'] || function(){};
+		this.events['change'] = option['change'] || function(){};
+		this.events['error'] = option['error'] || function(){};
+		this.events['complete'] = option['complete'] || function(){};
+
 		this.loading = function(){
 			$('.uk-action').prop('disabled', true);
 			let origin = $('[uk-loading]').html();
@@ -75,6 +28,10 @@ class Validate {
 			$('.uk-action').removeAttr('disabled');	
 			let origin = $('[uk-loading]').attr('data-origin');
 			$('[uk-loading]').html(origin);
+
+			try { that.events.complete(); } catch(e){
+            	console.log('callback error error:', e, this.events.complete);
+            }
 		}
 
 
@@ -88,9 +45,10 @@ class Validate {
 				.removeClass('uk-hidden')
 				.find('p').html('操作失败 (' + message + ')');
 
-			Utils.parentHeight();
+			try { that.events.error(message, extra);} catch(e){
+            	console.log('callback error error:', e, this.events.error);
+            }
 		}
-
 
 
 		this.submit = option['submit'] || function( form, opts={} ) {
@@ -173,8 +131,8 @@ class Validate {
             	let $helper = $formgroup.find('.uk-helper-danger');
             	let message = error.html();
             	$helper.html(error.html());
-            	try { that.change(error, element);} catch(e){
-            		console.log('callback change error:', e, this.change);
+            	try { that.events.change(error, element);} catch(e){
+            		console.log('callback change error:', e, this.events.change);
             	}
             },
 
@@ -219,4 +177,4 @@ class Validate {
 
 
 
-export { Validate, Utils }
+export { Validate }
