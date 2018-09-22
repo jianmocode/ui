@@ -1,0 +1,35 @@
+{
+	"cname":"个人资料页",
+	"data": {
+		"site":{
+			"api":"/xpmsns/pages/siteconf/get",
+			"query":{
+				"site_slug":"global",
+				"select":"*"
+			}
+		},
+		"option":{
+			"api":"/xpmsns/user/user/option",
+			"query":{}
+		},
+		"user":{
+			"api":"/xpmsns/user/user/getUserInfo",
+			"query":{}
+		},
+		"page":{
+			"title":"个人资料"
+		},
+		"__js":[
+			"/js/jquery-validation-1.17.0/jquery.validate.min.js",
+			"/js/jquery.form.min.js"
+		]
+	},
+	"entries":[
+		{"method":"GET", "router":"/home/forms/profile", "ttl":0}
+	],
+	"align": {
+		"mobile":"/mobile/home/forms/profile",
+		"wechat":"/mobile/home/forms/profile",
+		"wxapp": "/home/forms/profile"
+	}
+}

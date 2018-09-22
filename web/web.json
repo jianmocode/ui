@@ -14,6 +14,7 @@
 		"/desktop/user/signout",
 		"/desktop/user/bind_mobile",
 		"/desktop/home/index",
+		"/desktop/home/forms/profile",
 		"/mobile/article/index",
 		"/mobile/article/list",
 		"/mobile/article/detail",

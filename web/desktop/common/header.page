@@ -51,6 +51,7 @@
 					<div uk-dropdown="offset:-20; pos:bottom-justify" class="menu">
 						<ul class="uk-nav uk-navbar-dropdown-nav">
 							<li class="{{ (active.subnav == '__home') ? 'uk-active' }}"><a href="/home/index.html" > 我的主页</a></li>
+							<li><a href="/draft.html">投稿</a></li>
 							<li><a href="/user/logout.html"> 退出登录</a></li>
 						</ul>
 					</div>
