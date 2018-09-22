@@ -24,6 +24,7 @@ Page({
 			});
 		});
 
+		// 激活当前页
 		let uri = window.location.href.split('#');
 		let form = uri[1] || 'profile';
 		let link = '/home/forms/'+form;
