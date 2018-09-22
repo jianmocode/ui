@@ -1,6 +1,28 @@
 {
-	"cname":"默认正文页-桌面版",
+	"cname":"个人中心首页-桌面版",
 	"data": {
+		"categories":{
+			"api":"/xpmsns/pages/category/search",
+			"query":{
+				"select":"category_id,name,highlight,link,isblank,slug",
+				"order":"priority asc",
+				"noParentId":"1",
+				"children":false,
+				"isnav":1
+			}
+		},
+		"services":{
+			"api":"/xpmsns/pages/category/search",
+			"query":{
+				"select":"category_id,name,highlight,link,isblank,slug",
+				"order":"priority asc",
+				"noParentId":"1",
+				"children":false,
+				"isfootnav":1
+			}
+		},
+		"navs":"{{categories.data}}",
+		"nav":"null",
 		"site":{
 			"api":"/xpmsns/pages/siteconf/get",
 			"query":{
@@ -8,24 +30,21 @@
 				"select":"*"
 			}
 		},
-		"user": {
-			"api": "/xpmsns/user/user/getUserInfo",
-			"query":{}
-		},
-		"categories":{
-			"api":"/xpmsns/pages/category/search",
-			"query":{
-				"select":"category_id,name",
-				"order":"priority asc",
-				"children":false,
-				"param":"isnav=true"
-			}
-		},
 		"crumbs":[
 			{"name":"首页", "link":"/"},
 			{"name":"用户中心", "link":"/home/index"},
 			{"name":"我的主页",  "link":"" }
 		],
+		"links":{
+			"api":"/xpmsns/pages/links/search",
+			"query":{
+				"select":"name,link"
+			}
+		},
+		"user":{
+			"api":"/xpmsns/user/user/getUserInfo",
+			"query":{}
+		},
 		"page":{
 			"title":"用户中心"
 		},
@@ -33,10 +52,14 @@
 			"title":"{{article.title}}",
 			"keywords":"{{article.seo_keywords}}",
 			"description":"{{article.seo_summary}}"
+		},
+		"active": {
+			"nav": "__user",
+			"subnav": "__home"
 		}
 	},
 	"entries":[
-		{"method":"GET", "router":"/home/index", "ttl":0}
+		{"method":"GET", "router":"/home/index.html", "ttl":0}
 	],
 	"alias": {
 		"mobile":"/mobile/home/index",

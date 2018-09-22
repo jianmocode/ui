@@ -5,4 +5,5 @@
 	用户中心 我的主页
 </div></div><!-- END row END container -->
 
+<include src="__WEB_ROOT__/desktop/common/footer.page" />
 <include src="__WEB_ROOT__/desktop/common/foot.page" />

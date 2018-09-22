@@ -13,6 +13,7 @@
 		"/desktop/user/signup",
 		"/desktop/user/signout",
 		"/desktop/user/bind_mobile",
+		"/desktop/home/index",
 		"/mobile/article/index",
 		"/mobile/article/list",
 		"/mobile/article/detail",
