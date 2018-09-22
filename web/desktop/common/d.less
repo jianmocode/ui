@@ -88,6 +88,11 @@ body,html {
 	border-radius: 4px;
 }
 
+
+.uk-button.uk-form-small {
+	border-radius: 4px;
+}
+
 .vcode.uk-form-large {
 	padding: 0px !important;
 	font-size: 0.875rem !important;
@@ -703,6 +708,21 @@ a { color: @linkColor; text-decoration: none; }
 	padding: 20px;
 	background: @lightColor;
 	border: 1px solid @dividerColor;
+}
+
+@media (min-width: 960px) {
+	.uk-form-horizontal .uk-form-label {
+		width: 140px;
+		padding-left:0px !important;
+		padding-right:0px  !important;
+		line-height: 48px  !important;
+		margin-top:0px;
+	}
+
+	.uk-form-horizontal .uk-form-controls {
+		margin-left: 155px;
+	}
+
 }
 
 /** 常用函数 */

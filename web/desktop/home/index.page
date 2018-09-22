@@ -10,7 +10,8 @@
 	</div>
 	<ul class="jm-tabs jm-nav uk-flex-center uk-margin-remove-top" uk-tab>
 		<li><a href="/home/forms/articles">我的文章</a></li>
-		<li><a href="/home/forms/follow">我的关注</a></li>
+		<li><a href="/home/forms/likes">我喜欢的</a></li>
+		<li><a href="/home/forms/follow">我关注的</a></li>
 		<li><a href="/home/forms/fans">我的粉丝</a></li>
 		<li><a href="/home/forms/profile">个人资料</a></li>
 		<li><a href="/home/forms/trust">实名认证</a></li>
