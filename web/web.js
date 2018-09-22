@@ -53,6 +53,9 @@ Web({
 						let frameH = $(this).contents().find("body").height();
 						$('#modal-iframe .uk-modal-body').height(frameH);
 						$(this).attr('height', frameH);
+						$(this).css('height', frameH);
+
+						// console.log('iframe load and height is:', frameH);
 						
 					});
 

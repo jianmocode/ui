@@ -1,3 +1,5 @@
+import { User } from './User.js';
+
 /**
  * 简墨工具包 
  */
@@ -5,9 +7,16 @@ class Utils {
 
 	constructor() {
 
+		// 计数器
 		this.timerCounter = 5;
+		this.user = new User();
 	}
 
+	/**
+	 * 调整窗体高度
+	 * @param  {String} iframe [description]
+	 * @return {[type]}        [description]
+	 */
 	parentHeight( iframe='iframe' ){
 		// console.log( 'run parentHeight ');
 		try {
@@ -15,28 +24,42 @@ class Utils {
 			if ( window.parent.$ ) {
 				let height = $('body').height();
 				window.parent.$('iframe').height(height);
+				return true;
 			}
 		}catch( e ){
-			console.log('fix iframe height Error', e );
+			console.log('parentHeight Error', e );
+			return false;
 		}
+
+		return false;
 	}
 
-	parentClose( iframe='iframe'  ){
-
-		// console.log( 'run parentClose ');
-
+	/**
+	 * 关闭弹窗
+	 * @return {[type]} [description]
+	 */
+	parentClose(){
 		try {
-			// 如果是 iframe 载入，调整iframe 高度
-			if ( window.parent.$ ) {
-				let height = $('body').height();
-				window.parent.$('iframe').height(height);
+			// 如果是 iframe 载入，关闭弹窗
+			if ( window.parent.UIkit ) {
+				window.parent.UIkit.modal('#modal-iframe').hide();
+				return true;
 			}
 		}catch( e ){
-			console.log('fix iframe height Error', e );
+			console.log('parentClose Error', e );
+			return false;
 		}
+
+		return false;
 	}
 
 
+	/**
+	 * 计时器
+	 * @param  String   output  倒计时数字呈现选择器
+	 * @param  Function callback  倒计时完毕回调函数
+	 * @return {[type]}            [description]
+	 */
 	timer( output='.timer', callback=()=>{}, counter = null ) {
 
 		if ( counter !== null ) {

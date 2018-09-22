@@ -28,6 +28,7 @@ class Validate {
 			$('.uk-action').removeAttr('disabled');	
 			let origin = $('[uk-loading]').attr('data-origin');
 			$('[uk-loading]').html(origin);
+			$('.message').addClass('uk-hidden');
 
 			try { that.events.complete(); } catch(e){
             	console.log('callback error error:', e, this.events.complete);

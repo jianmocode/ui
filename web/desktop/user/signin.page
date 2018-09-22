@@ -5,7 +5,10 @@
 		method="POST" 
 		action="/_api/xpmsns/user/user/login" 
 		success="function(data) {
-			console.log( 'login success',  data );
+			var $user = $validate.utils.user;
+			var $utils = $validate.utils;
+			$user.login(data);
+			$utils.parentClose();
 		}" 
 	>
 

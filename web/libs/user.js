@@ -7,7 +7,7 @@ class User {
 	}
 
 	login( user ) {
-		console.log( user );
+		console.log( 'User login:', user );
 	}
 
 	logout() {
