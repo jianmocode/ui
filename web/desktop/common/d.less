@@ -671,6 +671,35 @@ a { color: @linkColor; text-decoration: none; }
 }
 
 
+.jm-tabs {
+	background: @lightColor;
+	margin-left:0px;
+
+	a {
+		color: @textMutedColor;
+	}
+	
+	.uk-active a {
+		border-bottom: 2px solid @primaryColor;
+		color: @linkActiveColor;
+	} 
+}
+.jm-tabs:before {
+	left:0px;
+	border-color: @dividerColor;
+}
+
+.jm-tabs.jm-nav {
+	li {
+		line-height:2.6rem;
+		a {
+			font-size: 1rem;
+		}
+	}
+	
+}
+
+
 /** 常用函数 */
 .setAlpha(@alpha) {
 	@_a: @alpha * 100;

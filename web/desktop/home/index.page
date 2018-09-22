@@ -1,9 +1,23 @@
 <include src="__WEB_ROOT__/desktop/common/head.page"  />
 <include src="__WEB_ROOT__/desktop/common/header.page"  />
 
-<section class="jm-focus"><div class="uk-container" ><div class="uk-flex">
-	用户中心 我的主页
-</div></div></section><!-- END row END container -->
+<section class="jm-focus"><div class="uk-container" >
+	<div class="uk-cover-container uk-height-medium uk-margin-top uk-padding-remove">
+		<video autoplay loop muted playsinline uk-cover>
+			<source src="https://quirksmode.org/html5/videos/big_buck_bunny.mp4" type="video/mp4">
+			<source src="https://quirksmode.org/html5/videos/big_buck_bunny.ogv" type="video/ogg">
+		</video>
+	</div>
+	<ul class="jm-tabs jm-nav uk-flex-center uk-margin-remove-top" uk-tab>
+		<li><a href="#">我的文章</a></li>
+		<li><a href="#">我的关注</a></li>
+		<li><a href="#">我的粉丝</a></li>
+		<li class="uk-active"><a href="#">个人资料</a></li>
+		<li><a href="#">实名认证</a></li>
+		<li><a href="#">专栏认证</a></li>
+		<li><a href="#">修改密码</a></li>
+	</ul>
+</div></section><!-- END row END container -->
 
 <include src="__WEB_ROOT__/desktop/common/footer.page" />
 <include src="__WEB_ROOT__/desktop/common/foot.page" />
