@@ -46,7 +46,8 @@
 			"query":{}
 		},
 		"page":{
-			"title":"用户中心"
+			"title":"用户中心",
+			"background": "uk-background-muted"
 		},
 		"seo": {
 			"title":"{{article.title}}",
