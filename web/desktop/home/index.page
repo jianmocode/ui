@@ -16,7 +16,11 @@
 		<li><a href="#">实名认证</a></li>
 		<li><a href="#">专栏认证</a></li>
 		<li><a href="#">修改密码</a></li>
+		<li><a href="#">消息通知</a></li>
 	</ul>
+	<div class="jm-tab-content">
+		个人资料
+	</div>
 </div></section><!-- END row END container -->
 
 <include src="__WEB_ROOT__/desktop/common/footer.page" />
