@@ -95,8 +95,24 @@
 				">
 			<div class="uk-helper uk-helper-danger"></div>
 		</div>
-		
 	</div> <!-- END 用户昵称 -->
+
+	<!-- 简介 -->
+	<div class="uk-form-group uk-margin " >
+		<label class="uk-form-label uk-form-large">个人简介: </label>
+		<div class="uk-form-controls">
+			<textarea name="bio" type="text"  rows="3" class="uk-textarea uk-form-large" 
+				   placeholder="请输入个人简介" 
+				   validate="{
+				   		required:true, 
+				   		messages: {
+							required:'请填写个人简介'
+				   		}
+				   	}
+				"></textarea>
+			<div class="uk-helper uk-helper-danger"></div>
+		</div>
+	</div> <!-- END 简介 -->
 	
 	<!-- 图形验证码 -->
 	<div class="uk-form-group uk-margin">
