@@ -35,14 +35,26 @@
 				<li mp:if="{{site.qr_wxpub}}">
 					<a href="javascript:void(0)">公众号</a>
 					<div uk-dropdown="offset:-20; pos:bottom-justify">
-						<img data-src="{{site.qr_wxpub.url}}"  alt="{{site.site_name}}" width="200" uk-img>
-						<div mp:if="{{site.name_wxpub}}" class="uk-text-center uk-margin-small-top uk-text-bold">
+						<img data-src="{{site.qr_wxpub.url}}"  alt="{{site.site_name}}" width="200" class="uk-margin" uk-img>
+						<div mp:if="{{site.name_wxpub}}" class="uk-text-center uk-text-bold">
 							{{site.name_wxpub}}
 						</div>
 					</div>
 				</li>
-				<li><a href="/user/signup"  data-width="468" data-height="600" uk-iframe-modal >注册</a></li>
-				<li><a href="/user/signin/mobile" data-width="468" data-height="600" uk-iframe-modal>登录</a></li>
+				<li class="beforelogin" mp:if="{{user.user_id == ''}}"><a href="/user/signup"  data-width="468" data-height="600" uk-iframe-modal >注册</a></li>
+				<li class="beforelogin" mp:if="{{user.user_id == ''}}"><a href="/user/signin/mobile" data-width="468" data-height="600" uk-iframe-modal>登录</a></li>
+				<li mp:if="{{user.user_id}}" class="afterlogin">
+					<a href="#"> 
+						<span class="nick-name">{{ PRINTNAME(user) }}</span>
+						<span class="uk-icon" uk-icon="icon:triangle-down"></span>
+					</a>
+					<div uk-dropdown="offset:-20; pos:bottom-justify" class="menu">
+						<ul class="uk-nav uk-navbar-dropdown-nav">
+							<li><a href="#"> 我的主页</a></li>
+							<li><a href="#"> 退出登录</a></li>
+						</ul>
+					</div>
+				</li>
 			</ul>
 		</div>
 	</nav>

@@ -62,6 +62,10 @@
 				"select":"name,link"
 			}
 		},
+		"user":{
+			"api":"/xpmsns/user/user/getUserInfo",
+			"query":{}
+		},
 		"page":{
 			"title":"首页",
 			"logo":"{{site.site_logo}}"

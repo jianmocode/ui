@@ -101,6 +101,31 @@ a { color: @linkColor; text-decoration: none; }
 .uk-active>a { color: @linkActiveColor; }
 
 
+.uk-dropdown.menu {
+	min-width: 120px;
+	padding: 10px 0;
+	
+	.uk-navbar-dropdown-nav {
+		li {
+			font-size: 1rem;
+			line-height: 1.25rem;
+			a { 
+				margin: 0 15px;
+				padding: .5em;
+				color: @textColor;
+			}
+			a:hover {
+				color: @linkHoverColor;
+			}
+		}
+
+		li:hover {
+			background: @backgroundMutedColor;
+		}
+	}
+}
+
+
 /* JM-CSS 通用定义 */
 .jm-topnav {  
 	padding-top: 8px;
