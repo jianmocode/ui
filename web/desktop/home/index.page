@@ -22,7 +22,6 @@
 		<div class="loading uk-text-center" ><div uk-spinner class="uk-padding-small"></div></div>
 		<div class="iframe uk-hidden loaded"></div>
 	</div>
-
 </div></section><!-- END row END container -->
 
 <include src="__WEB_ROOT__/desktop/common/footer.page" />

@@ -1,7 +1,8 @@
 <include src="__WEB_ROOT__/desktop/common/head.page"  />
+<div class="uk-flex uk-flex-center">
 
-<!-- 用户注册表单 -->
-<form	class="iframe-form"  mp:if="{{option.user_mobile_signup_on == 1}}"
+<!-- 用户资料表单 -->
+<form	class="iframe-form uk-width-xxlarge"  mp:if="{{option.user_mobile_signup_on == 1}}"
 		method="POST" 
 		action="/_api/xpmsns/user/user/login" 
 		success="function(data) {
@@ -12,15 +13,15 @@
 		}" 
 	>
 
-	<div class="uk-margin">
-		<h3>登录{{site.site_name}} <span uk-loading="ratio:0.8" class="uk-margin-small-left"></span></h3>
+	<div class="uk-margin ">
+		<h3>个人资料 <span uk-loading="ratio:0.8" class="uk-margin-small-left"></span></h3>
 	</div>
 	
 	<!-- 呈现错误信息 -->
 	<div class="message uk-alert-danger uk-hidden" uk-alert> <p></p></div>
 	
 	<!-- 手机号 -->
-	<div class="uk-form-group uk-margin" id="testit">
+	<div class="uk-form-group uk-margin " id="testit">
 		<div class="uk-inline">
 			<span class="uk-form-icon" uk-icon="icon: phone"></span>
 			<input name="mobile" type="text" class="uk-input uk-form-large" 
@@ -82,7 +83,7 @@
 
 	<!-- 登录按钮 -->
 	<div class="uk-margin">
-		<button class="uk-button uk-button-primary uk-form-large uk-action" style="width:100%;" type="submit">登录</button>
+		<button class="uk-button uk-button-primary uk-form-large uk-action" style="width:100%;" type="submit"> 更新个人资料 </button>
 	</div><!-- END 登录按钮 -->
 
 </form>
@@ -180,4 +181,7 @@
 
 </div></div> <!-- END Row Container -->
 
+
+
+</div> <!-- End uk-flex uk-flex-center -->
 <include src="__WEB_ROOT__/desktop/common/foot.page" />
