@@ -1,4 +1,6 @@
-<include src="__WEB_ROOT__/desktop/common/head.page"  />
+<include src="__WEB_ROOT__/desktop/common/head.page" />
+<include src="__WEB_ROOT__/desktop/components/uploader/image.page" /> <!-- 引入部件 -->
+
 <div class="uk-flex uk-flex-center">
 
 <!-- 用户资料表单 -->
@@ -23,28 +25,11 @@
 	<!-- 用户头像 -->
 	<div class="uk-form-group uk-margin" >
 		<label class="uk-form-label uk-form-large">头像: </label>
-		<div class="uk-form-controls">
-			<div class="uk-flex">
-				<div>
-					<div class="uk-card uk-card-default uk-card-body uk-width-small uk-height-small uk-border-circle" style="padding:4px;" >
-						<div class="uk-card-body uk-border-circle">
-							<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537641253479&di=9b8c63987ebc4a567ce5767526246dd3&imgtype=0&src=http%3A%2F%2Fwww.ld12.com%2Fupimg358%2F20160130%2F22240398993450.jpg" class="uk-border-circle" alt="" uk-cover>
-						</div>
-					</div>
-					<button class="uk-button uk-button-default uk-form-small uk-width-small uk-margin-small-top" type="button"> 上传头像 </button>
-				</div>
-				<div class="uk-width-1-1 uk-text-center">
-					<!-- 裁切面板 -->
-					<div class="uk-placeholder uk-text-center uk-height-1-1 uk-margin-remove-top uk-margin-left uk-hidden">
-					   
-					</div>
-				</div>
-			</div>
+		<div class="uk-form-controls uk-form-large">
+			<uploader name="headimgurl" type="image" src="" crop="ratio:1" class="jm-form-large"> 上传头像 </uploader>
 			<progress id="js-progressbar" class="uk-progress" value="20" max="100" hidden></progress>
 		</div>
 	</div> <!-- 用户头像 -->
-
-	
 
 	<!-- 账号等级 -->
 	<div class="uk-form-group uk-margin" >

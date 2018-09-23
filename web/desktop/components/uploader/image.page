@@ -1,0 +1,15 @@
+<component name="uploader-image">
+<div class="uk-flex" >
+	<div>
+		<div class="uk-card uk-card-default uk-card-body uk-width-small uk-height-small uk-border-circle" style="{{style}}" >
+			<div class="uk-card-body uk-border-circle">
+				<img src="{{src}}" class="uk-border-circle" alt="" uk-cover>
+			</div>
+		</div>
+		<button class="uk-button uk-button-default uk-form-small uk-width-small uk-margin-small-top" type="button">{{_html}}</button>
+	</div>
+	<div class="uk-width-1-1 uk-text-center">
+		<div class="uk-placeholder uk-text-center uk-height-1-1 uk-margin-remove-top uk-margin-left uk-hidden"></div><!-- 裁切面板 -->
+	</div>
+</div>
+</component>

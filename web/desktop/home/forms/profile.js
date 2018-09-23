@@ -1,5 +1,6 @@
 import {Utils} from '../../../libs/utils.js';
 import {Validate} from '../../../libs/validate.js';
+import ImageUploader from '../../components/uploader/image';  // 下一版应该可以自动引用组件
 
 let $utils = new Utils();
 let web = getWeb();
@@ -13,6 +14,11 @@ Page({
 	onReady: function( get ) {
 
 		var that = this;
+
+		// 引用组件
+		try {
+			ImageUploader.$load( {selector:'uploader[type=image]'} );
+		}  catch( e ) { console.log( 'Error @ImageUploader', e); }
 
 		// 错误提醒框关闭事件
 		try {

@@ -21,7 +21,8 @@
 		},
 		"__js":[
 			"/js/jquery-validation-1.17.0/jquery.validate.min.js",
-			"/js/jquery.form.min.js"
+			"/js/jquery.form.min.js",
+			"/js/mustache.min.js"
 		]
 	},
 	"entries":[

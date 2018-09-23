@@ -23,7 +23,12 @@ let sync = require(path.resolve("./gulp-plugins/sync"));
 let __WEB_ROOT__ = path.resolve(__dirname, './web');
 
 let online = process.env.online;
+let debug = process.env.debug;
+let WEB_JSON_FN =( debug && fs.existsSync(path.resolve('./web/_debug/web.json'))) ? '_debug/web.json' : 'web.json';
 let CONF = [];
+
+// console.log(WEB_JSON_FN, path.resolve('./web/_debug/web.json') );
+// process.exit();
 
 if ( typeof online != 'undefined' ) {
 
@@ -38,14 +43,15 @@ if ( typeof online != 'undefined' ) {
 	CONF = require(path.resolve('./config.js'));
 }
 
+
 // 初始值
 CONF.mina['instance'] =  CONF.mina['instance'] || "";
 
-let WEB_CONF = JSON.parse(fs.readFileSync( path.resolve(__dirname, './web/web.json') ));
+let WEB_CONF = JSON.parse(fs.readFileSync( path.resolve(__dirname, './web/' + WEB_JSON_FN ) ));
 let WEB_PAGES = WEB_CONF['pages'] || [];
 let WEB_COMMONS = WEB_CONF['common'] || [];
 	WEB_COMMONS.push('/web.js') ;
-	WEB_COMMONS.push('/web.json') ;
+	WEB_COMMONS.push('/' + WEB_JSON_FN ) ;
 	WEB_COMMONS.push('/web.less') ;
 	
 let WEB_STORAGE = WEB_CONF['storage'] || [];
@@ -635,8 +641,9 @@ function web_script() {
 // Copy JSON DATA 
 function web_json() {
 	let scripts = {
-		"/web/web.json": path.join(path.resolve(__dirname, './web') ,  '/web.json')
+		"/web/web.json": path.join(path.resolve(__dirname, './web') ,  '/' + WEB_JSON_FN )
 	};
+
 
 	let binds = _stor_binds(); 
 	let bindsMap = {};
@@ -686,6 +693,8 @@ function web_json() {
 				.pipe(gulp.dest(out)).on('error', reject).on('end', resolve);
 		}));
 	}
+
+	console.log( tasks );
 
 	return  Promise.all(tasks);
 }
