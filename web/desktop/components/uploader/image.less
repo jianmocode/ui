@@ -6,14 +6,28 @@
 uploader {
 	display: none;
 	.jm-form-large {
+		.uk-position-cover {
+			border-radius: 4px;				
+		}
+
 		.preview-card {
-			width:150px;
-			height: 150px;
+			width:140px;
+			height: 140px;
 			padding: 4px;
-			margin:0 20px 0 0;
+			margin:0 20px 20px 0;
+			border-radius: 4px;
+
 			.uk-cover-container{
-				width: 142px;
-				height: 142px;
+				width: 132px;
+				height: 132px;
+				text-align:center;
+				progress {
+					margin-top:0px;
+				}
+
+				.name {
+					font-size:0.875rem;
+				}
 			}
 		}
 
@@ -24,9 +38,15 @@ uploader {
 	}
 
 	.jm-border-circle {
-		.preview-card , .uk-cover-container, img {
+		.preview-card , .uk-cover-container, .uk-position-cover, img {
 			border-radius: 50%;
-
 		}
+	}
+
+	.jm-uploader-image {
+		padding: 15px;
+	}
+	.jm-uploader-image:focus {
+		outline: #efefef auto 5px;
 	}
 }

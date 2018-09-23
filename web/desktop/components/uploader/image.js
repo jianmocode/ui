@@ -11,8 +11,16 @@ let com = Page({
 		"crop":"object",
 		"type":"string",
 		"class":"string",
-		"ratio":"string"
+		"ratio":"string",
+		"allow":"string",
+		"mime":"string",
+		"concurrent":"string",
+		"msg-invalid-mime":"string",
+		"msg-invalid-name":"string",
+		"cls-dragover":"string"
 	},
+
+	files:[],
 
 	onReady: function( params ) {
 		let $elms = $(params['selector']);
@@ -22,15 +30,45 @@ let com = Page({
 	 	});
 	},
 
+	removeAddBtn: function( $elm ) {
+		$elm.find('.btn-upload').addClass('uk-hidden');
+	},
 
-	add: function( src ) {
+	add: function( $elm, src, attrs ) {
 
-		let cnt = $('uploader .previews:not(.uk-hidden)').length;
-		let $html = $('uploader .previews:last').clone();
+		let cnt = $elm.find('.previews:not(.uk-hidden)').length;
+			if (cnt >= 1 && !attrs['multiple'] ) {
+				return false;
+			}
+
+		let $html = $elm.find('.previews:last').clone();
 			$html.removeClass('uk-hidden');
 			$html.find('img').attr('src', src);
 
-		$('uploader .previews:last').after($html);
+			if ( src == null ) {
+				this.loading( $html );
+			}
+
+		$elm.find('.previews:last').after($html);
+		if (cnt == 0 && !attrs['multiple'] ) {
+			this.removeAddBtn( $elm );
+		}
+
+		return $html;
+	},
+
+	loading: function( $preview ) {
+		$preview.removeClass('uk-hidden');
+		$preview.find('progress').prop('hidden', false);
+		$preview.find('.name').removeClass('uk-hidden');
+		$preview.find('.uk-overlay-primary').addClass('uk-hidden');
+	},
+
+	success: function( $preview, src ) {
+		$preview.find('img').attr('src', src);
+		$preview.find('progress').prop('hidden', true);
+		$preview.find('.name').addClass('uk-hidden');
+		$preview.find('.uk-overlay-primary').removeClass('uk-hidden');
 	},
 
 	init: function( $elm ) {
@@ -39,10 +77,12 @@ let com = Page({
 
 		let html = Mustache.render(this.template, attrs );
 			$elm.html(html);
-			$elm.addClass('uploader-inited');
+			$elm.addClass('uploader-inited'); //标记初始化完毕
+
+			// 设定多图上传
 			$elm.find('input[type="file"]').prop('multiple', attrs['multiple']); // 多图上传
 
-			// 固定比例
+			// 设定固定比例
 			if ( attrs['ratio'] != null ){
 				let ratio = null;
 				try { ratio =  eval(attrs['ratio']) } catch(e){ ratio=null; console.log(attrs['name'], ' ratio error:', attrs['ratio']);};
@@ -50,50 +90,52 @@ let com = Page({
 					let width = $elm.find('.uk-cover-container').width();
 					let height = width / ratio;
 					$elm.find('.uk-cover-container').height(height);
-					console.log( ratio, typeof ratio, width, height );
 				}
 			}
-			
 
-			// 创建预览
+			// 设定预览界面
 			for ( let i in attrs['src'] ) {
 				let src = attrs['src'][i];
 				if ( src != '' ) {
-					this.add(src);
+					this.add($elm, src, attrs);
 				}
 			}
 
-		let $bar = $elm.find('.uk-progress');
+			// 设定添加按钮
+		let cnt = $elm.find('.previews:not(.uk-hidden)').length;
+			if (cnt >= 1 && !attrs['multiple'] ) {
+				this.removeAddBtn($elm);
+			}
 
-		UIkit.upload( $elm.find('.js-upload'), {
-			url: attrs['url'],
-			multiple: attrs['multiple'],
-			beforeSend: function() {
-				console.log('beforeSend', arguments);
-			},
-			loadStart: function(e ){
-				
-				$bar.removeAttr('hidden');
-				$bar.fadeIn('fast');
-				$bar.attr('max', e.total);
-				$bar.attr('value', e.loaded);
 
+		// 初始化 upload 控件
+		// @see https://github.com/blueimp/jQuery-File-Upload/wiki/Options
+		$elm.find('input[type=file]').fileupload({
+			dropZone: $elm,
+			pasteZone: $elm,
+			maxChunkSize:102400,
+			recalculateProgress:false,
+			add: (e, data) => {
+				let $preview = this.add($elm, null, attrs );
+				if ($preview){
+					data['$preview'] = $preview;
+					$preview.find('.name').removeClass('uk-hidden');
+					$preview.find('.name').html(data.files[0].name);
+					data.submit();
+				}
 			},
-			progress: function (e) {
-				console.log('progress',  e.total, e.loaded );
-				$bar.attr('max', e.total);
-				$bar.attr('value', e.loaded);
+			progress: (e, data) => {
+				// let progress = parseInt(data.loaded / data.total * 100, 10);
+				let $p = data.$preview.find('progress');
+				$p.attr('max', data.total);
+				$p.attr('value', data.loaded);
+				// console.log( $p );
 			},
-			loadEnd: function (e) {
-				console.log('loadEnd', arguments);
-				$bar.attr('max', e.total);
-				$bar.attr('value', e.loaded);
-				
-			},
-			completeAll: function () {
-				$bar.fadeOut('fast');
+			always: (e, data) => {
+				this.success( data.$preview, 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537733814589&di=2a8d922ad7fd874cd3fcfecb2b3393ad&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F9e3df8dcd100baa1f3d70e9d4d10b912c8fc2e18.jpg' );
 			}
 		});
+
 	},
 
 	getAttrs: function( $elm ) {

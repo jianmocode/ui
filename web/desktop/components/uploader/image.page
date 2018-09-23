@@ -1,20 +1,21 @@
 <component name="uploader-image">
-<div class="uk-flex  {{class}}" style="{{style}}" >
-
+<div class="jm-uploader-image uk-flex uk-flex-wrap {{class}}" style="{{style}}" tabindex="-1" >
+	
 	<div class="previews preview-card uk-card uk-card-default uk-visible-toggle uk-flex uk-flex-middle uk-hidden" >
 		<div class="uk-cover-container">
 			<img src=""  alt="" uk-cover>
+			<progress class="uk-progress" value="0" max="100" hidden ></progress>
+			<span class="name uk-hidden"></span>
 		</div>
 		<div class="uk-hidden-hover uk-overlay-primary uk-position-cover uk-flex uk-flex-center uk-flex-middle">
 			<a href="#" class="uk-icon-button uk-margin-small-right" uk-icon="settings"></a>
 			<a href="#" class="uk-icon-button" uk-icon="trash"></a>
 		</div>
-		<progress class="uk-progress" value="0" max="100" hidden ></progress>
 	</div>
 
-	<div class="upload preview-card uk-card uk-card-default js-upload" uk-form-custom >
-		<input type="file" name="{{name}}">
-		<div class="uk-flex uk-height-1-1 uk-flex-middle uk-flex-center">
+	<div class="btn-upload preview-card uk-card uk-card-default">
+		<div class="uk-flex uk-height-1-1 uk-flex-middle uk-flex-center" uk-form-custom>
+			<input type="file" name="{{name}}" >
 			<a class="uk-text-center uk-width-1-1">
 				<span uk-icon="icon:plus;ratio:1.5"></span>
 				<div>{{_html}}</div>
