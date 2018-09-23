@@ -1,15 +1,27 @@
 <component name="uploader-image">
-<div class="uk-flex" >
-	<div>
-		<div class="uk-card uk-card-default uk-card-body uk-width-small uk-height-small uk-border-circle" style="{{style}}" >
-			<div class="uk-card-body uk-border-circle">
-				<img src="{{src}}" class="uk-border-circle" alt="" uk-cover>
-			</div>
+<div class="uk-flex  {{class}}" style="{{style}}" >
+
+	<div class="previews preview-card uk-card uk-card-default uk-visible-toggle uk-flex uk-flex-middle uk-hidden" >
+		<div class="uk-cover-container">
+			<img src=""  alt="" uk-cover>
 		</div>
-		<button class="uk-button uk-button-default uk-form-small uk-width-small uk-margin-small-top" type="button">{{_html}}</button>
+		<div class="uk-hidden-hover uk-overlay-primary uk-position-cover uk-flex uk-flex-center uk-flex-middle">
+			<a href="#" class="uk-icon-button uk-margin-small-right" uk-icon="settings"></a>
+			<a href="#" class="uk-icon-button" uk-icon="trash"></a>
+		</div>
+		<progress class="uk-progress" value="0" max="100" hidden ></progress>
 	</div>
-	<div class="uk-width-1-1 uk-text-center">
-		<div class="uk-placeholder uk-text-center uk-height-1-1 uk-margin-remove-top uk-margin-left uk-hidden"></div><!-- 裁切面板 -->
+
+	<div class="upload preview-card uk-card uk-card-default js-upload" uk-form-custom >
+		<input type="file" name="{{name}}">
+		<div class="uk-flex uk-height-1-1 uk-flex-middle uk-flex-center">
+			<a class="uk-text-center uk-width-1-1">
+				<span uk-icon="icon:plus;ratio:1.5"></span>
+				<div>{{_html}}</div>
+			</a>
+		</div>
 	</div>
+	
 </div>
+
 </component>

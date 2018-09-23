@@ -15,7 +15,7 @@ Page({
 
 		var that = this;
 
-		// 引用组件
+		// // 引用组件
 		try {
 			ImageUploader.$load( {selector:'uploader[type=image]'} );
 		}  catch( e ) { console.log( 'Error @ImageUploader', e); }
