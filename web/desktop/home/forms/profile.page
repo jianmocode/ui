@@ -41,9 +41,10 @@
 				</div>
 			</div>
 			<progress id="js-progressbar" class="uk-progress" value="20" max="100" hidden></progress>
-			
 		</div>
 	</div> <!-- 用户头像 -->
+
+	
 
 	<!-- 账号等级 -->
 	<div class="uk-form-group uk-margin" >
