@@ -1,5 +1,5 @@
 <component name="uploader-image">
-<div class="jm-uploader-image uk-flex uk-flex-wrap {{class}}" style="{{style}}" tabindex="-1" >
+<div class="jm-uploader-image uk-flex uk-flex-wrap {{class}}" style="{{style}}" tabindex="-1" uk-sortable>
 	
 	<div class="previews preview-card uk-card uk-card-default uk-visible-toggle uk-flex uk-flex-middle uk-hidden" >
 		<div class="uk-cover-container">
@@ -17,8 +17,9 @@
 		<div class="uk-flex uk-height-1-1 uk-flex-middle uk-flex-center" uk-form-custom>
 			<input type="file" name="{{name}}" >
 			<a class="uk-text-center uk-width-1-1">
-				<span uk-icon="icon:plus;ratio:1.5"></span>
-				<div>{{_html}}</div>
+				<span uk-icon="icon:cloud-upload;ratio:1"></span>
+				<div class="btn-helper">{{_html}}</div>
+				<div class="btn-helper">支持图片直接粘贴、拖入、排序</div>
 			</a>
 		</div>
 	</div>

@@ -28,6 +28,21 @@ let com = Page({
 	 	$elms.each( (idx, elm )=>{
 	 		this.init( $(elm) );
 	 	});
+
+	 	$(document).on('dragover',()=>{
+	 		$('.jm-uploader-image').addClass('jm-prepare');
+	 	});
+
+	 	$(document).on('drop dragleave mouseleave keyup',()=>{
+	 		$('.jm-uploader-image').removeClass('jm-prepare');
+	 	});
+
+	 	$(document).on('keydown', (e)=>{
+	 		var keyCode = e.keyCode;
+	 		if ( keyCode==91 || keyCode == 17) {
+	 			$('.jm-uploader-image').addClass('jm-prepare');
+	 		}
+	 	});
 	},
 
 	removeAddBtn: function( $elm ) {
@@ -66,6 +81,7 @@ let com = Page({
 
 	success: function( $preview, src ) {
 		$preview.find('img').attr('src', src);
+		$preview.find('progress').attr('value', 0);
 		$preview.find('progress').prop('hidden', true);
 		$preview.find('.name').addClass('uk-hidden');
 		$preview.find('.uk-overlay-primary').removeClass('uk-hidden');
@@ -106,6 +122,14 @@ let com = Page({
 			if (cnt >= 1 && !attrs['multiple'] ) {
 				this.removeAddBtn($elm);
 			}
+
+			// 拖拽事件设定 dragover dragenter drop
+			$elm.on( 'dragover', ()=>{
+				$elm.find('.jm-uploader-image').addClass('jm-active');
+			});
+			$elm.on( 'drop dragleave mouseleave', ()=>{
+				$elm.find('.jm-uploader-image').removeClass('jm-active');
+			});
 
 
 		// 初始化 upload 控件

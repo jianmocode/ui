@@ -1,5 +1,5 @@
 @charset "utf-8";
-
+@import '/vars.less';
 .uploader-inited { display: block;}
 .jm-uploader-image-large { min-height: 180px; }
 
@@ -35,6 +35,16 @@ uploader {
 			margin-top: 10px;
 			text-align:center;
 		}
+
+		.btn-helper {
+			padding: .2rem .5rem .2rem .5rem;
+			font-size: 0.875rem;
+			color: @textMutedColor;
+		}
+
+		.uk-icon {
+			color: @textMutedColor;
+		}
 	}
 
 	.jm-border-circle {
@@ -46,7 +56,11 @@ uploader {
 	.jm-uploader-image {
 		padding: 15px;
 	}
-	.jm-uploader-image:focus {
-		outline: #efefef auto 5px;
+	.jm-uploader-image.jm-prepare {
+		outline: 2px dashed @dividerColor;
 	}
+
+	.jm-uploader-image.jm-active, .jm-uploader-image:focus {
+		outline: 2px dashed @primaryHoverColor;
+	}	
 }
