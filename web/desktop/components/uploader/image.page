@@ -5,7 +5,9 @@
 			<img src=""  alt="" uk-cover>
 			<progress class="uk-progress" value="0" max="100" hidden ></progress>
 			<span class="name uk-hidden"></span>
+			<div class="uk-overlay title {{titleClass}}" style="{{titleStyle}}"></div>
 		</div>
+
 		<div class="jm-overlay uk-hidden-hover uk-overlay-primary uk-position-cover uk-flex uk-flex-center uk-flex-middle">
 			<a href="#" class="uk-icon-button uk-margin-small-right" uk-icon="settings"></a>
 			<a href="javascript:void(0);" class="btn-remove uk-icon-button" uk-icon="trash"></a>
@@ -22,7 +24,7 @@
 			</a>
 		</div>
 	</div>
-	<input name="{{name}}" value='{{value_json}}' type="hidden">
+	<input name="{{name}}" value='{{__json__value}}' type="hidden">
 </div>
 <div class="jm-helper uk-helper uk-helper-danger"></div>
 </component>

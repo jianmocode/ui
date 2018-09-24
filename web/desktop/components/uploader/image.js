@@ -4,21 +4,24 @@ let com = Page({
 	template: '<div>图片上传组件</div>',
 	events: {},
 	props: {
-		"multiple":"bool",
-		"disabled":"bool",
-		"name":"string",
-		"id":"string",
-		"src":"array",
-		"url":"string",
-		"crop":"object",
-		"type":"string",
-		"class":"string",
-		"ratio":"string",
-		"allow":"string",
-		"accept":"string",
-		"max":"number",
-		"maxChunkSize":"number",
-		"value":"json"
+		"multiple":"bool",	 // 是否支持上传多张图片
+		"disabled":"bool",  // 是否 disabled
+		"name":"string",	// 名称
+		"id":"string",		// ID
+		"url":"string",		// 上传API云端地址
+		"crop":"object",	// 裁切配置
+		"type":"string",	// 类型 
+		"class":"string",	// 特别类型
+		"ratio":"string",	// 图片比例 eg: 16/9  auto 
+		"allow":"string",	// 文件类型校验正则 /(\.|\/)(gif|jpe?g|png|xls|xlsx|ai)$/i
+		"accept":"string",  // 许可文件类型 .jpg,.png 
+		"max":"number",  // 文件最大值, 默认 2G 
+		"maxChunkSize":"number", // 分段上传每次上传最大字节单位: kb
+		"value":"json",	 // 数值
+		"thumb":"string",  // 缩略图字段, 默认为 url
+		"title":"string",  // 标题字段，默认为 title
+		"titleClass":"string", //标题栏样式
+		"titleStyle":"string"  //标题栏样式
 	},
 
 	onReady: function( params ) {
@@ -48,6 +51,51 @@ let com = Page({
 	 	});
 	},
 
+
+	initValue: function( $elm, value, attrs ) {
+		if ( !$.isArray(value) ) {
+			value = [value];
+		}
+		for (let i in value) {
+			if ( value != "" && value != null ) {
+				let v = value[i];
+				this.add( $elm, v, attrs );
+			}
+		}
+	},
+
+	setValue: function( $item, value, attrs ) {
+
+		let thumbField = attrs['thumb'] ? attrs['thumb'] : 'url';
+		let titleField = attrs['title'] ? attrs['title'] : 'title';
+		let thumb = ( typeof value == 'object' && value != null ) ? value[thumbField] : value;
+		let title = ( typeof value == 'object' && value != null ) ? value[titleField] : "";
+		$item.find('img').attr('src', thumb);
+		(title !="") ? $item.find('.title').removeClass('uk-hidden').html(title) : $item.find('.title').addClass('uk-hidden');
+		$item.data('value', value);
+
+		// 更新数据
+		let $elm = $item.parents('uploader');
+		this.updateValue($elm, attrs['multiple']);
+
+	},
+
+	updateValue: function( $elm, multiple ) {
+
+		let values = [];
+		$elm.find('.item:not(.uk-hidden)').each((index, it)=>{
+			values.push($(it).data('value'));
+		});
+
+		if ( !multiple ){
+			$elm.find('input[type=hidden]').val(JSON.stringify(values[0]) );
+			return true;
+		}
+		$elm.find('input[type=hidden]').val(JSON.stringify(values) );
+		return true;
+	},
+
+
 	setAttrs: function( $elm, attrs ) {
 
 		// 设定多图上传
@@ -59,16 +107,8 @@ let com = Page({
 			this.setRatio( $elm.find('.item'), ratio);
 		}
 
-		// 设定数值
-		console.log( attrs['value']);
-
-		// 设定预览界面
-		for ( let i in attrs['src'] ) {
-			let src = attrs['src'][i];
-			if ( src != '' ) {
-				this.add($elm, src, attrs);
-			}
-		}
+		// 初始化数值
+		this.initValue( $elm, attrs['value'], attrs );
 
 		// 设定添加按钮
 		let cnt = $elm.find('.item:not(.uk-hidden)').length;
@@ -80,7 +120,6 @@ let com = Page({
 		if ( attrs['disabled'] ) {
 			this.disabled( $elm );
 		}
-
 
 		// 允许文件类型
 		let acceptFileTypes = /^.*$/i;
@@ -149,7 +188,7 @@ let com = Page({
 					return ;
 				}
 
-				let $item = this.add($elm, null, attrs );
+				let $item = this.add($elm, null, attrs, true ); // 添加 item
 				if ( !$item ){
 					errors.push({
 						code:402,
@@ -179,18 +218,32 @@ let com = Page({
 				// console.log( $p );
 			},
 			always: (e, data) => {
-				let response  = {
-					src:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537733814589&di=2a8d922ad7fd874cd3fcfecb2b3393ad&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F9e3df8dcd100baa1f3d70e9d4d10b912c8fc2e18.jpg'
+				let value  = {
+					title: "新创建的",
+					url:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537733814589&di=2a8d922ad7fd874cd3fcfecb2b3393ad&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F9e3df8dcd100baa1f3d70e9d4d10b912c8fc2e18.jpg'
 				};
-				this.success( data.$item, response );
+				this.success( data.$item, value, attrs );
 			}
 		});
+
+
+		// 初始化排序控件
+		UIkit.util.on($elm, 'moved', (event)=>{
+			this.updateValue($elm, attrs['multiple']);
+		});
 	},
+
 
 	init: function( $elm ) {
 
 		let attrs = this.getAttrs( $elm );
 			attrs['_html'] = $elm.html();
+
+			// 默认值
+			if ( attrs['titleClass'] == '' || attrs['titleClass'] == null ) {
+				attrs['titleClass'] = 'uk-overlay-default uk-position-bottom';
+			}
+
 
 		let html = Mustache.render(this.template, attrs );
 			$elm.html(html);
@@ -258,7 +311,7 @@ let com = Page({
 		$elm.find('.item').removeClass('uk-disabled');
 	},
 
-	add: function( $elm, src, attrs ) {
+	add: function( $elm, value, attrs, empty=false ) {
 
 		let cnt = $elm.find('.item:not(.uk-hidden)').length;
 			if (cnt >= 1 && !attrs['multiple'] ) {
@@ -267,9 +320,7 @@ let com = Page({
 
 		let $item = $elm.find('.item:last').clone();
 			$item.removeClass('uk-hidden');
-			$item.find('img').attr('src', src);
-
-			if ( src == null ) {
+			if ( empty ) {
 				this.loading( $item );
 			}
 
@@ -279,6 +330,7 @@ let com = Page({
 		}
 
 		this.bindItemEvents( $item, attrs );
+		this.setValue($item, value, attrs);
 		return $item;
 	},
 
@@ -292,6 +344,9 @@ let com = Page({
 		}
 
 		$item.remove();
+
+		// 更新数值
+		this.updateValue( $elm, attrs['multiple']);
 	},
 
 	loading: function( $item ) {
@@ -302,20 +357,18 @@ let com = Page({
 		try { this.events.change( this, $item, null); } catch(e){	console.log('Events change call fail', e );}
 	},
 
-	success: function( $item, data ) {
-		
+	success: function( $item, value, attrs ) {
 		let $elm = $item.parents('uploader');
-		let src = data['src'];
-		$item.find('img').attr('src', src);
+		this.setValue($item, value, attrs);
+
 		$item.find('progress').attr('value', 0);
 		$item.find('progress').prop('hidden', true);
 		$item.find('.name').addClass('uk-hidden');
 		$item.find('.uk-overlay-primary').removeClass('uk-hidden');
 		$elm.find('.jm-uploader-image').removeClass('jm-error');
 		$elm.find('.jm-helper').removeClass('uk-form-danger');
-		try { this.events.success( this, $elm, $item, data ); } catch(e){	console.log('Events success call fail', e );}
-		try { this.events.change( this, $item, data); } catch(e){	console.log('Events change call fail', e );}
-
+		try { this.events.success( this, $elm, $item, value ); } catch(e){	console.log('Events success call fail', e );}
+		try { this.events.change( this, $item, value); } catch(e){	console.log('Events change call fail', e );}
 	},
 
 	error: function( $elm, errors ) {
@@ -325,7 +378,6 @@ let com = Page({
 			$elm.find('.jm-helper').addClass('uk-form-danger');
 			$elm.find('.jm-helper').html(error.message);
 		}
-
 		try { this.events.error( this, errors, $elm ); } catch(e){	console.log('Events error call fail', e );}
 		try { this.events.change( this, $elm, null); } catch(e){	console.log('Events change call fail', e );}
 	},
@@ -372,7 +424,7 @@ let com = Page({
 						}
 					}
 					data[name] = json;
-					data[name+ '_json'] = $elm.attr(name);
+					data[ '__json__' + name ] = $elm.attr(name); // 留存原始数据
 					break;
 				default: 
 					data[name] = $elm.attr(name);
