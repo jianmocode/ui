@@ -10,7 +10,7 @@ uploader {
 			border-radius: 4px;				
 		}
 
-		.preview-card {
+		.item-card {
 			width:140px;
 			height: 140px;
 			padding: 4px;
@@ -31,7 +31,7 @@ uploader {
 			}
 		}
 
-		.preview-card-footer {
+		.item-card-footer {
 			margin-top: 10px;
 			text-align:center;
 		}
@@ -48,7 +48,7 @@ uploader {
 	}
 
 	.jm-border-circle {
-		.preview-card , .uk-cover-container, .uk-position-cover, img {
+		.item-card , .uk-cover-container, .uk-position-cover, img {
 			border-radius: 50%;
 		}
 	}
@@ -71,4 +71,20 @@ uploader {
 	.jm-form-danger.jm-helper {
 		display: block;
 	}
+	
+	.jm-disabled {
+		.item-card {
+			background: @backgroundMutedColor;
+
+			.jm-overlay {
+				display: none;		
+			}
+		}
+	}
+
+	.jm-disabled.jm-prepare, .jm-disabled.jm-active, .jm-disabled.jm-uploader-image:focus {
+		outline:none;
+	}
+
+
 }

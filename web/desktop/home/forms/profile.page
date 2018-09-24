@@ -33,6 +33,7 @@
 				allow="/(\.|\/)(gif|jpe?g|png|xls|xlsx|ai)$/i"
 				accept=".ai,.png"
 				name="background" type="image" crop="ratio:1"
+				disabled
 				class="jm-form-large">上传背景</uploader>
 		</div>
 	</div> <!-- 用户头像 -->
@@ -45,6 +46,7 @@
 				url="/_api/xpmsns/user/user/upload?_n=headimgurl"
 				src="http://img06.tooopen.com/images/20160720/tooopen_sy_170954359773.jpg" 
 				name="headimgurl" type="image" crop="ratio:1"
+				disabled
 				class="jm-form-large jm-border-circle">上传头像</uploader>
 		</div>
 	</div> <!-- 用户头像 -->
@@ -58,6 +60,7 @@
 				src="http://img06.tooopen.com/images/20160720/tooopen_sy_170954359773.jpg,https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537714086961&di=5a1e8a779c375347d0b519c00086c577&imgtype=0&src=http%3A%2F%2F4493bz.1985t.com%2Fuploads%2Fallimg%2F150721%2F1-150H1140632.jpg"
 				name="mult" type="image" crop="ratio:0.5625"
 				maxChunkSize="102400"
+				disabled
 				class="jm-form-large" multiple >上传多图</uploader>
 		</div>
 	</div> <!-- 背景图片 -->
@@ -73,6 +76,22 @@
 				name="ratio" type="image" crop="ratio:0.5625"
 				ratio="16/9"
 				class="jm-form-large" multiple >上传图片</uploader>
+		</div>
+	</div> <!-- 固定比率 -->
+
+
+	<!-- 自由比率 -->
+	<div class="uk-form-group uk-margin" >
+		<label class="uk-form-label uk-form-large">自由比例: </label>
+		<div class="uk-form-controls jm-uploader-image-large">
+			<uploader
+				url="/_api/xpmsns/user/user/upload?_n=background"
+				src="http://img06.tooopen.com/images/20160720/tooopen_sy_170954359773.jpg,https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537714086961&di=5a1e8a779c375347d0b519c00086c577&imgtype=0&src=http%3A%2F%2F4493bz.1985t.com%2Fuploads%2Fallimg%2F150721%2F1-150H1140632.jpg"
+				name="freeratio" type="image" crop="ratio:0.5625"
+				allow="/(\.|\/)(gif|jpe?g|png)$/i"
+				accept=".gif,.jpg,.jpeg,.png"
+				ratio="auto"
+				class="jm-form-large" multiple >自由比例</uploader>
 		</div>
 	</div> <!-- 固定比率 -->
 

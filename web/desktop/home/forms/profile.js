@@ -19,7 +19,7 @@ Page({
 		try {
 			ImageUploader.$load({
 				selector:'uploader[type=image]',
-				change: ( uploader, $item, src )=>{ $utils.parentHeight(); console.log('event cahnge'); },
+				change: ( uploader, $item, src )=>{ $utils.parentHeight(); },
 				error: (uploader, errors, $elm ) =>{
 					for( var i in errors ){
 						let error = errors[i];
@@ -50,11 +50,14 @@ Page({
 
 		} catch( e ) { console.log( 'Error @Validate', e); }
 
-
 		// 图形验证码
 		$('.image.vcode').click(function(){
 			that.changeVcode();
 		});
+
+		// setTimeout(()=>{
+		// 	$('uploader[type=image]').removeAttr('disabled');
+		// },1000);
 	},
 
 
