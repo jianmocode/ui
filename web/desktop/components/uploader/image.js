@@ -18,7 +18,7 @@ let com = Page({
 		"accept":"string",
 		"max":"number",
 		"maxChunkSize":"number",
-		"value":"string"
+		"value":"json"
 	},
 
 	onReady: function( params ) {
@@ -58,6 +58,9 @@ let com = Page({
 			try { ratio =  eval(attrs['ratio']) } catch(e){ ratio=null; console.log(attrs['name'], ' ratio error:', attrs['ratio']);};
 			this.setRatio( $elm.find('.item'), ratio);
 		}
+
+		// 设定数值
+		console.log( attrs['value']);
 
 		// 设定预览界面
 		for ( let i in attrs['src'] ) {
@@ -361,7 +364,16 @@ let com = Page({
 				case 'number':
 					data[name] = $elm.attr(name) ? parseInt($elm.attr(name)) : null;
 					break;
-
+				case 'json':
+					let json = null;
+					if ( $elm.attr(name) ) {
+						try { json=JSON.parse($elm.attr(name)) }catch(e){
+							console.log('json parser error:', $elm.attr('name'), name, $elm.attr(name), e);
+						}
+					}
+					data[name] = json;
+					data[name+ '_json'] = $elm.attr(name);
+					break;
 				default: 
 					data[name] = $elm.attr(name);
 			}

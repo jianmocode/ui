@@ -46,7 +46,7 @@
 				url="/_api/xpmsns/user/user/upload?_n=headimgurl"
 				src="http://img06.tooopen.com/images/20160720/tooopen_sy_170954359773.jpg" 
 				name="headimgurl" type="image" crop="ratio:1"
-				value="/images/20160720/tooopen_sy_170954359773.jpg"
+				value='"/images/20160720/tooopen_sy_170954359773.jpg"'
 				class="jm-form-large jm-border-circle">上传头像</uploader>
 		</div>
 	</div> <!-- 用户头像 -->
@@ -60,7 +60,7 @@
 				src="http://img06.tooopen.com/images/20160720/tooopen_sy_170954359773.jpg,https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537714086961&di=5a1e8a779c375347d0b519c00086c577&imgtype=0&src=http%3A%2F%2F4493bz.1985t.com%2Fuploads%2Fallimg%2F150721%2F1-150H1140632.jpg"
 				name="mult" type="image" crop="ratio:0.5625"
 				maxChunkSize="102400"
-				value="/images/20160720/tooopen_sy_170954359773.jpg,/images/20160720/150H1140632.jpg"
+				value='[{"path":"/2018/08/27/e49e1d9c8899b789ce21191ac819e375.jpg","title":"未命名","link":"","summary":""},{"path":"/2018/08/27/f2f7f47aab2640c829a56632f3178a5a.jpg","title":"未命名","link":"","summary":""},{"path":"/2018/08/27/6eb4ef90568f7ad9cfd8a7ecd2679498.jpg","title":"未命名","link":"","summary":""},{"path":"/2018/08/27/9fd95ddd0bba6c168e449091363f0a5e.jpg","title":"未命名","link":"","summary":""},{"path":"/2018/08/27/07868fa2418f2cb3baaa069fdc5470bd.jpg","title":"未命名","link":"","summary":""},{"path":"/2018/08/27/4ef63862ed0238875fa27347596ab0e8.jpg","title":"未命名","link":"","summary":""}]'
 				class="jm-form-large" multiple >上传多图</uploader>
 		</div>
 	</div> <!-- 背景图片 -->
@@ -75,7 +75,7 @@
 				src="http://img06.tooopen.com/images/20160720/tooopen_sy_170954359773.jpg,https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537714086961&di=5a1e8a779c375347d0b519c00086c577&imgtype=0&src=http%3A%2F%2F4493bz.1985t.com%2Fuploads%2Fallimg%2F150721%2F1-150H1140632.jpg"
 				name="ratio" type="image" crop="ratio:0.5625"
 				ratio="16/9"
-				value="/images/20160720/tooopen_sy_170954359773.jpg,/images/20160720/150H1140632.jpg"
+				value='{"path":"/2018/08/27/e49e1d9c8899b789ce21191ac819e375.jpg","title":"未命名","link":"","summary":""}'
 				class="jm-form-large" multiple >上传图片</uploader>
 		</div>
 	</div> <!-- 固定比率 -->
@@ -92,7 +92,7 @@
 				allow="/(\.|\/)(gif|jpe?g|png)$/i"
 				accept=".gif,.jpg,.jpeg,.png"
 				ratio="auto"
-				value="/images/20160720/tooopen_sy_170954359773.jpg,/images/20160720/150H1140632.jpg"
+				value='{"path":"/2018/08/27/e49e1d9c8899b789ce21191ac819e375.jpg","title":"未命名","link":"","summary":""}'
 				class="jm-form-large" multiple >自由比例</uploader>
 		</div>
 	</div> <!-- 固定比率 -->

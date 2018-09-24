@@ -22,7 +22,7 @@
 			</a>
 		</div>
 	</div>
-	<input name="{{name}}" value="{{value}}" type="hidden">
+	<input name="{{name}}" value='{{value_json}}' type="hidden">
 </div>
 <div class="jm-helper uk-helper uk-helper-danger"></div>
 </component>
