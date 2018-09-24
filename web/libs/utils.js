@@ -12,6 +12,29 @@ class Utils {
 		this.user = new User();
 	}
 
+	parentNotification( options={} ){
+		try {
+			// 如果是 iframe 载入， 调用 error 发送通知
+			if ( window.parent.UIkit ) {
+				console.log( options );
+				window.parent.UIkit.notification(options['message'], 'danger', 'top-right');
+
+				window.parent.UIkit.notification({
+				    message: 'my-message!',
+				    status: 'primary',
+				    pos: 'top-right',
+				    timeout: 5000
+				});
+				return true;
+			}
+		}catch( e ){
+			console.log('parentNotification Error', e );
+			return false;
+		}
+
+		return false;
+	}
+
 	/**
 	 * 调整窗体高度
 	 * @param  {String} iframe [description]

@@ -28,7 +28,10 @@
 		<div class="uk-form-controls jm-uploader-image-large">
 			<uploader 
 				url="/_api/xpmsns/user/user/upload?_n=headimgurl"
-				src="" 
+				src=""
+				max="2048"
+				allow="/(\.|\/)(gif|jpe?g|png|xls|xlsx|ai)$/i"
+				accept=".ai,.png"
 				name="background" type="image" crop="ratio:1"
 				class="jm-form-large">上传背景</uploader>
 		</div>
@@ -54,6 +57,7 @@
 				url="/_api/xpmsns/user/user/upload?_n=background"
 				src="http://img06.tooopen.com/images/20160720/tooopen_sy_170954359773.jpg,https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537714086961&di=5a1e8a779c375347d0b519c00086c577&imgtype=0&src=http%3A%2F%2F4493bz.1985t.com%2Fuploads%2Fallimg%2F150721%2F1-150H1140632.jpg"
 				name="mult" type="image" crop="ratio:0.5625"
+				maxChunkSize="102400"
 				class="jm-form-large" multiple >上传多图</uploader>
 		</div>
 	</div> <!-- 背景图片 -->

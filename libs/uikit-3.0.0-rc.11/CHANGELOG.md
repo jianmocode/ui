@@ -1,18 +1,86 @@
 # Changelog
 
+## 3.0.0 rc 16 (September 12, 2018)
+
+### Fixed
+
+- Fix regression in Overflow Auto component
+
+## 3.0.0 rc 15 (September 11, 2018)
+
+### Changed
+
+- Rename `selModal` to `selContainer` and `selPanel` to `selContent` in Overflow Auto component
+
+### Fixed
+
+- Fix `isInView` function for elements with zero width and height
+
+## 3.0.0 rc 14 (September 4, 2018)
+
+### Fixed
+
+- Fix regression in `removeClasses` function
+
+## 3.0.0 rc 13 (September 4, 2018)
+
+### Added
+
+- Add border pill to Utility component
+
+### Changed
+
+- Use `min-height` instead of `height` for navbar nav items
+
+### Removed
+
+- Remove `filterAttr` function
+
+### Fixed
+
+- Fix SVGs not preserving their aspect ratio in IE11
+- Fix lazy loading images in Edge
+
+## 3.0.0 rc 12 (August 27, 2018)
+
+### Added
+
+- Add responsiveness to SVGs in Base component
+- Make remaining components reactive
+- Boolean attributes coerce to `true` if the prop is defined as Boolean
+
+### Changed
+
+- Allow icons to shrink in Iconnav
+- Add more margin between accordion title and icon
+- `UIkit.mixin` can now be used to extend existing components
+
+### Removed
+
+- Remove fix for uppercase SVGs attributes in Edge on Windows 10 older than build 16251
+
+### Fixed
+
+- Fix form placeholder color in Edge
+- Fix accordion icon position if title is wrapping into the next line
+- Fix Slider incorrectly showing navigation
+- Fix element queuing in Scrollspy component
+- Fix parallax translating to subpixels
+- Fix issue with scrolling on mobile devices in Sortable component
+
 ## 3.0.0 rc 11 (August 8, 2018)
 
 ### Changed
 
 - Pass error object to callback function instead of message only in Upload component
 
-### Fixed
-
-- Fix bug in `pointInRect` function
-
 ### Removed
 
 - Remove deprecated prevention of the 300ms delay for touch devices
+
+### Fixed
+
+- Fix bug in `pointInRect` function
 
 ## 3.0.0 rc 10 (July 25, 2018)
 

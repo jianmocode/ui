@@ -17,7 +17,17 @@ Page({
 
 		// // 引用组件
 		try {
-			ImageUploader.$load( {selector:'uploader[type=image]'} );
+			ImageUploader.$load({
+				selector:'uploader[type=image]',
+				change: ( uploader, $preview, src )=>{ $utils.parentHeight(); },
+				error: (uploader, errors, $elm ) =>{
+					$utils.parentHeight();
+					for( var i in errors ){
+						let error = errors[i];
+						$utils.parentNotification({message:error.message, status:'danger', pos:'top-right'} );
+					}
+				}
+			});
 		}  catch( e ) { console.log( 'Error @ImageUploader', e); }
 
 		// 错误提醒框关闭事件
