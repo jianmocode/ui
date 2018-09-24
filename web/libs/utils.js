@@ -12,19 +12,11 @@ class Utils {
 		this.user = new User();
 	}
 
-	parentNotification( options={} ){
+	parentNotification( message, status, pos ){
 		try {
 			// 如果是 iframe 载入， 调用 error 发送通知
-			if ( window.parent.UIkit ) {
-				console.log( options );
-				window.parent.UIkit.notification(options['message'], 'danger', 'top-right');
-
-				window.parent.UIkit.notification({
-				    message: 'my-message!',
-				    status: 'primary',
-				    pos: 'top-right',
-				    timeout: 5000
-				});
+			if ( window.parent.Notification ) {
+				window.parent.Notification(message, status, pos );
 				return true;
 			}
 		}catch( e ){

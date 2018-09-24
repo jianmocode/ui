@@ -1,3 +1,10 @@
+<script type="text/javascript">
+	function Notification( message, status, pos ){
+		try {UIkit.notification({message:message, status:status, pos:pos} );}catch(e){
+			console.log('Notification error', e);
+		}
+	}
+</script>
 <div id="modal-iframe" uk-modal="bg-close:false;">
 	<div class="uk-modal-dialog uk-modal-body" style="padding: 0px;height: 0px;background:transparent;">
 		<button class="uk-modal-close-default uk-hidden loaded" type="button" uk-close></button>

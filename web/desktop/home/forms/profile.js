@@ -24,7 +24,7 @@ Page({
 					$utils.parentHeight();
 					for( var i in errors ){
 						let error = errors[i];
-						$utils.parentNotification({message:error.message, status:'danger', pos:'top-right'} );
+						$utils.parentNotification( '<span uk-icon="icon: warning;ratio:1.3"></span>  '+ error.message, 'danger', 'top-right');
 					}
 				}
 			});
