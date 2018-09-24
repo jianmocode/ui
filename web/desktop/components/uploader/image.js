@@ -17,7 +17,8 @@ let com = Page({
 		"allow":"string",
 		"accept":"string",
 		"max":"number",
-		"maxChunkSize":"number"
+		"maxChunkSize":"number",
+		"value":"string"
 	},
 
 	onReady: function( params ) {
@@ -207,7 +208,7 @@ let com = Page({
 	reset: function( $elm ){
 		$elm.html('');
 	},
-	
+
 	bindItemEvents: function( $item, attrs ) {
 
 		// 删除时候触发

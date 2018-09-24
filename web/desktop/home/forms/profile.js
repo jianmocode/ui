@@ -10,7 +10,7 @@ Page({
 	data:{},
 	smscodeTimer:0,
 	validator: null,
-
+	uploader: null,
 	onReady: function( get ) {
 
 		var that = this;
@@ -30,6 +30,9 @@ Page({
 					$utils.parentNotification( '<span uk-icon="icon: check;ratio:1.3"></span>  上传成功', 'success', 'top-right');
 				}
 			});
+
+			this.uploader = ImageUploader.options;
+
 		}  catch( e ) { console.log( 'Error @ImageUploader', e); }
 
 		// 错误提醒框关闭事件

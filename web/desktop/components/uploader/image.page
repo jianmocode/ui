@@ -14,7 +14,7 @@
 
 	<div class="btn-upload item-card uk-card uk-card-default">
 		<div class="uk-flex uk-height-1-1 uk-flex-middle uk-flex-center" uk-form-custom>
-			<input type="file" name="{{name}}" accept="{{accept}}" >
+			<input type="file" name="_file_{{name}}" accept="{{accept}}" class="jm-field-ignore" >
 			<a class="uk-text-center uk-width-1-1">
 				<span uk-icon="icon:cloud-upload;ratio:1"></span>
 				<div class="btn-helper">{{_html}}</div>
@@ -22,6 +22,7 @@
 			</a>
 		</div>
 	</div>
+	<input name="{{name}}" value="{{value}}" type="hidden">
 </div>
 <div class="jm-helper uk-helper uk-helper-danger"></div>
 </component>

@@ -77,12 +77,14 @@ class Validate {
 			// 开始请求前锁定表单 
 			loading();
 			let $form = $(form).ajaxSubmit({
+				filtering: (el, index)=>{ if ( !$(el).hasClass('uk-field-ignore') && !$(el).hasClass('jm-field-ignore') ) { return el; } },
 				dataType: 'json',
 				type: opts['method'] || $(form).attr('method') || 'POST',
 				url:  opts['url'] || $(form).attr('action') || ''
 			});
 
 			let xhr = $form.data('jqxhr');
+			if ( !xhr ) return;
 			xhr.done(function( resp, status ) {
 				
 				// 请求完成
