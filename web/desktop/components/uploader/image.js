@@ -24,6 +24,7 @@ let com = Page({
 		this.template = $('component[name=uploader-image]').html().toString();
 		this.events.change = (typeof params['change'] == 'function' ) ? params['change'] : () => {};
 		this.events.error = (typeof params['error'] == 'function' ) ? params['error'] : () => {};
+		this.events.success = (typeof params['success'] == 'function' ) ? params['success'] : () => {};
 
 	 	$elms.each( (idx, elm )=>{
 	 		this.init( $(elm) );
@@ -221,7 +222,7 @@ let com = Page({
 		$preview.find('progress').prop('hidden', false);
 		$preview.find('.name').removeClass('uk-hidden');
 		$preview.find('.uk-overlay-primary').addClass('uk-hidden');
-		this.events.change( this, $preview);
+		try { this.events.change( this, $preview, null); } catch(e){	console.log('Events change call fail', e );}
 	},
 
 	success: function( $elm, $preview, src ) {
@@ -232,7 +233,9 @@ let com = Page({
 		$preview.find('.uk-overlay-primary').removeClass('uk-hidden');
 		$elm.find('.jm-uploader-image').removeClass('jm-error');
 		$elm.find('.jm-helper').removeClass('uk-form-danger');
-		this.events.change( this, $preview, src );
+		try { this.events.success( this, $elm, $preview, src ); } catch(e){	console.log('Events success call fail', e );}
+		try { this.events.change( this, $preview, src); } catch(e){	console.log('Events change call fail', e );}
+
 	},
 
 	error: function( $elm, errors ) {
@@ -243,9 +246,8 @@ let com = Page({
 			$elm.find('.jm-helper').html(error.message);
 		}
 
-		try { this.events.error( this, errors, $elm ); } catch(e){
-			console.log('Events error call fail', e );
-		}
+		try { this.events.error( this, errors, $elm ); } catch(e){	console.log('Events error call fail', e );}
+		try { this.events.change( this, $elm, null); } catch(e){	console.log('Events change call fail', e );}
 	},
 
 	getAttrs: function( $elm ) {

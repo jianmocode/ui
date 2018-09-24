@@ -19,13 +19,15 @@ Page({
 		try {
 			ImageUploader.$load({
 				selector:'uploader[type=image]',
-				change: ( uploader, $preview, src )=>{ $utils.parentHeight(); },
+				change: ( uploader, $item, src )=>{ $utils.parentHeight(); console.log('event cahnge'); },
 				error: (uploader, errors, $elm ) =>{
-					$utils.parentHeight();
 					for( var i in errors ){
 						let error = errors[i];
-						$utils.parentNotification( '<span uk-icon="icon: warning;ratio:1.3"></span>  '+ error.message, 'danger', 'top-right');
+						$utils.parentNotification( '<span uk-icon="icon: close;ratio:1.3"></span>  '+ error.message, 'danger', 'top-right');
 					}
+				}, 
+				success: (uploader, $elm, $item, src) =>{
+					$utils.parentNotification( '<span uk-icon="icon: check;ratio:1.3"></span>  上传成功', 'success', 'top-right');
 				}
 			});
 		}  catch( e ) { console.log( 'Error @ImageUploader', e); }
