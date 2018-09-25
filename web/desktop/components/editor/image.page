@@ -1,0 +1,14 @@
+<component name="editor-image">
+	<div class="jm-editor-image uk-card uk-card-default">
+		<div class="toolbar uk-card-header">
+			<ul class="uk-iconnav uk-flex uk-flex-center">
+				<li><a href="javascript:void(0);" class="menu-item cropper" uk-icon="icon: plus" uk-tooltip="title:裁切;pos:bottom" ></a></li>
+				<li><a href="#" uk-icon="icon: file-edit"></a></li>
+				<li><a href="#" class="uk-margin-small-right" uk-icon="icon: copy"></a></li>
+				<li><a href="#" uk-icon="icon: trash"></a></li>
+			</ul>
+		</div>
+		<div class="image-canvas"></div>
+	</div>
+	<div class="jm-helper uk-helper uk-helper-danger"></div>
+</component>

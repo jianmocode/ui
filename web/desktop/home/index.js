@@ -1,8 +1,18 @@
+import ImageEditor from '../components/editor/image';  // 下一版应该可以自动引用组件
 
-let web = getWeb();
 Page({
 	data:{},
+	imageEditor:null,
 	onReady: function( param ) {
+		// 载入图片编辑器
+		try {
+			
+			ImageEditor.$load({
+				selector:'editor[type=image]'
+			});
+			this.imageEditor = ImageEditor.options;
+
+		}  catch( e ) { console.log( 'Error @ImageEditor', e); }
 
 		// Tab 切换
 		$('.jm-tabs li>a').click(function(event) {

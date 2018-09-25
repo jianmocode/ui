@@ -2,7 +2,7 @@
 	"cname":"简墨科技主题-DEV",
 	"pages":[
 		"/desktop/home/index",
-		"/desktop/home/forms/profile"
+		"/desktop/home/forms/index"
 	],
 	"common":[
 		"/libs",
@@ -12,7 +12,8 @@
 		"/desktop/common",
 		"/desktop/widget/recommend",
 		"/desktop/widget/category",
-		"/desktop/components/uploader"
+		"/desktop/components/uploader",
+		"/desktop/components/editor"
 	],
 	"storage": {
 		"engine":"minapages",

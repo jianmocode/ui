@@ -1,4 +1,3 @@
-let web = getWeb();
 let com = Page({
 	data:{},
 	template: '<div>图片上传组件</div>',
@@ -287,6 +286,7 @@ let com = Page({
 		if ( typeof ratio == 'number' && ratio != Infinity && ratio > 0 ) {
 			let width = $item.find('.uk-cover-container').width();
 			let height = width / ratio;
+			$item.height(height);
 			$item.find('.uk-cover-container').height(height);
 		}
 	},

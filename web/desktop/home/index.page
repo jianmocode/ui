@@ -1,4 +1,5 @@
 <include src="__WEB_ROOT__/desktop/common/head.page"  />
+<include src="__WEB_ROOT__/desktop/components/editor/image.page" /> <!-- 引入部件 -->
 <include src="__WEB_ROOT__/desktop/common/header.page"  />
 
 <section class="jm-focus"><div class="uk-container" >
@@ -19,6 +20,15 @@
 		<li><a href="/home/forms/password">修改密码</a></li>
 		<li><a href="/home/forms/message">消息通知</a></li>
 	</ul>
+	
+	<div style="height:400px;background: #ffffff;margin-bottom:20px">
+		<editor	type="image" 
+				name="photocrop" 
+				tools="undo,redo,reset,delete,delete-all,crop,filp,rotate,draw,shape,icon,text,mask,filter"
+				value='{"path":"/2018/08/27/e49e1d9c8899b789ce21191ac819e375.jpg","url":"http://wss.xpmjs.com/static-file/media/2018/08/27/c966303bd5edd594320c6a7e5b9c83fe.jpg","title":"璀璨星空","link":"http://www.starover.com","summary":"银河，大自然的馈赠。在这里孕育出拥有无上智慧的人类。"}'
+			></editor>
+	</div>
+
 	<div id="forms" >
 		<div class="loading uk-text-center" ><div uk-spinner class="uk-padding-small"></div></div>
 		<div class="iframe uk-hidden loaded"></div>
