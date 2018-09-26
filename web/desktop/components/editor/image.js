@@ -38,17 +38,9 @@ let com = Page({
 		let imageMaxHeight = canvasMaxHeight - canvasOffsetHeight;
 		let imageMaxWidth = $elm.width() - canvasOffsetWidth;
 		$elm.find('.image-canvas').height(imageMaxHeight).width(imageMaxWidth);
-		var imageEditor = new tui.ImageEditor( $elm.find('.image-canvas'), {
-			cssMaxWidth: imageMaxWidth, // Component default value: 1000
-			cssMaxHeight:imageMaxHeight // Component default value: 800
-		});
-		imageEditor.loadImageFromURL(value.url, value.title);
+		
 
-
-		// 设定工具栏
-		$elm.find('.menu-item.cropper').click(()=>{
-			imageEditor.startDrawingMode('CROPPER');
-		});
+		
 	},
 
 	setAttrs: function( $elm, attrs ){
