@@ -59,13 +59,12 @@
 			"subnav": "__home"
 		},
 		"__js":[
-			"js/cropper-4.0.0.min.js",
+			"js/cropper-1.4.1.min.js",
 			"js/jquery-cropper-1.0.0.min.js",
 			"js/mustache.min.js"
 		],
 		"__css":[
-			"js/tui-image-editor-3.2.0.min.css",
-			"js/cropper-4.0.0.min.css"
+			"js/cropper-1.4.1.min.css"
 		]
 	},
 	"entries":[

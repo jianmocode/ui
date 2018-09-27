@@ -2,6 +2,7 @@ let com = Page({
 	data:{},
 	template: '<div>图片编辑组件</div>',
 	events: {},
+	cropper: null,
 	props: {
 		"disabled":"bool",  // 是否 disabled
 		"name":"string",	// 名称
@@ -29,18 +30,19 @@ let com = Page({
 			$elm.addClass('editor-inited'); //标记初始化完毕
 		this.setAttrs($elm, attrs);
 
-
 		// 载入画布和图像
-		let value = attrs['value'];
-		let canvasOffsetWidth = $elm.find('.image-canvas').outerWidth() - $elm.find('.image-canvas').width();
-		let canvasOffsetHeight = $elm.find('.image-canvas').outerHeight() -$elm.find('.image-canvas').height();
-		let canvasMaxHeight = $elm.height() - $elm.find('.toolbar').outerHeight();
-		let imageMaxHeight = canvasMaxHeight - canvasOffsetHeight;
-		let imageMaxWidth = $elm.width() - canvasOffsetWidth;
-		$elm.find('.image-canvas').height(imageMaxHeight).width(imageMaxWidth);
-		
+		let $img = $elm.find('img');
+		$img.cropper({
+			dragMode:'move',
+			autoCrop:false, // 关闭自动裁切
+			preview:'.img-preview',
+			ready: ( event ) => {
+				$img.cropper('zoom', -0.1);
+			},
+			crop: function(event) {
+			}
+		});
 
-		
 	},
 
 	setAttrs: function( $elm, attrs ){

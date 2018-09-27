@@ -21,7 +21,7 @@
 		<li><a href="/home/forms/message">消息通知</a></li>
 	</ul>
 	
-	<div style="height:400px;background: #ffffff;margin-bottom:20px">
+	<div style="margin-bottom:20px">
 		<editor	type="image" 
 				name="photocrop" 
 				tools="undo,redo,reset,delete,delete-all,crop,filp,rotate,draw,shape,icon,text,mask,filter"
