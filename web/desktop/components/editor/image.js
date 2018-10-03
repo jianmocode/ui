@@ -31,17 +31,75 @@ let com = Page({
 		this.setAttrs($elm, attrs);
 
 		// 载入画布和图像
-		let $img = $elm.find('img');
+		let $img = $elm.find('.origin-image');
 		$img.cropper({
 			dragMode:'move',
 			autoCrop:false, // 关闭自动裁切
 			preview:'.img-preview',
 			ready: ( event ) => {
 				$img.cropper('zoom', -0.1);
+				$img.cropper('setDragMode', 'none');
+				$elm.find('.croped').addClass('uk-hidden');
 			},
 			crop: function(event) {
 			}
 		});
+
+		// 初始化工具条
+		this.initToolbar( $elm );
+
+	},
+
+	/**
+	 * 初始化工具条
+	 * @param  {[type]} $elm [description]
+	 * @return 
+	 */
+	initToolbar: function( $elm ) {
+		
+		// 裁切
+		$elm.find('.crop').click( function( event ) {
+			let $elm = $(this).parents('.jm-editor-image');
+			let $img = $elm.find('.origin-image');
+			$img.cropper('setDragMode', 'crop');
+			$elm.find('.croped').removeClass('uk-hidden');
+		});
+
+		// 移动
+		$elm.find('.move').click( function( event ) {
+			let $elm = $(this).parents('.jm-editor-image');
+			let $img = $elm.find('.origin-image');
+			$img.cropper('setDragMode', 'move');
+			$elm.find('.croped').removeClass('uk-hidden');
+		});
+
+		// 放大
+		$elm.find('.zoomin').click( function( event ) {
+			let $elm = $(this).parents('.jm-editor-image');
+			let $img = $elm.find('.origin-image');
+			$img.cropper('zoom', +0.1);
+		});
+
+		// 缩小
+		$elm.find('.zoomout').click( function( event ) {
+			let $elm = $(this).parents('.jm-editor-image');
+			let $img = $elm.find('.origin-image');
+			$img.cropper('zoom', -0.1);
+		});
+
+		// 设定比例
+		$elm.find('.aspectratio').click( function( event ) {
+			let $elm = $(this).parents('.jm-editor-image');
+			let $img = $elm.find('.origin-image');
+			let ratiostr = $(this).attr('data-value');
+			let ratio = NaN;
+			try { eval('ratio='+ratiostr); } catch(e) { ratio =NaN; }
+			$img.cropper('setAspectRatio', ratio);
+
+			console.log('aspectratio', ratio);
+			
+		});
+
 
 	},
 

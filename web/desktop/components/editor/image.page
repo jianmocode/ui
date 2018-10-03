@@ -12,6 +12,13 @@
 						
 						<li><a href="javascript:void(0);" class="menu-item upload " uk-icon="icon:cloud-upload" uk-tooltip="title:上传;pos:bottom" ></a></li>
 						
+						<li><span class="menu-item uk-margin-left uk-hidden croped uk-text-small uk-text-muted" >比例: </span></li>
+						<li><a href="javascript:void(0);" class="menu-item  uk-hidden croped aspectratio "  data-value="1/1"  uk-tooltip="title:上传;pos:bottom" >1:1</a></li>
+						<li><a href="javascript:void(0);" class="menu-item  uk-hidden croped aspectratio"  data-value="16/9"  uk-tooltip="title:上传;pos:bottom" >16:9</a></li>
+						<li><a href="javascript:void(0);" class="menu-item  uk-hidden croped aspectratio"  data-value="2/3"  uk-tooltip="title:上传;pos:bottom" >2:3</a></li>
+						<li><a href="javascript:void(0);" class="menu-item  uk-hidden croped aspectratio"  data-value="4/3"  uk-tooltip="title:上传;pos:bottom" >4:3</a></li>
+						<li><a href="javascript:void(0);" class="menu-item  uk-hidden croped aspectratio"  data-value="free"  uk-tooltip="title:上传;pos:bottom" >自由</a></li>
+						
 					</ul>
 				</div>
 				<div class="uk-navbar-right">
@@ -24,7 +31,9 @@
 			</nav>
 		</div>
 		<div class="uk-flex" style="height: auto;">
-			<div class="image-canvas uk-width-3-5"><img src="{{value.url}}" ></div>
+			<div class="image-canvas uk-width-3-5">
+				<img src="{{value.url}}" class="origin-image" />
+			</div>
 			<div class="uk-width-2-5 ">
 				<div class="image-previews">
 					<div class="img-preview cropper-bg preview-lg"></div>
