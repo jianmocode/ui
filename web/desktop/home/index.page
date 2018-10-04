@@ -23,7 +23,8 @@
 	
 	<div style="margin-bottom:20px">
 		<editor	type="image" 
-				name="photocrop" 
+				name="photocrop"
+				url="/_api/xpmsns/user/user/upload?_n=photocrop"
 				value='{"path":"/2018/08/27/e49e1d9c8899b789ce21191ac819e375.jpg","url":"http://wss.xpmjs.com/static-file/media/2018/08/27/c966303bd5edd594320c6a7e5b9c83fe.jpg","title":"璀璨星空","link":"http://www.starover.com","summary":"银河，大自然的馈赠。在这里孕育出拥有无上智慧的人类。"}'
 			></editor>
 	</div>
@@ -31,6 +32,7 @@
 	<div style="margin-bottom:20px">
 		<editor	type="image" 
 				name="photocrop2" 
+				url="/_api/xpmsns/user/user/upload?_n=photocrop2"
 				crop="ratio:16/9"
 				value='{"path":"/2018/08/27/e49e1d9c8899b789ce21191ac819e375.jpg","url":"http://wss.xpmjs.com/static-file/media/2018/08/27/c966303bd5edd594320c6a7e5b9c83fe.jpg","title":"璀璨星空","link":"http://www.starover.com","summary":"银河，大自然的馈赠。在这里孕育出拥有无上智慧的人类。"}'
 			></editor>

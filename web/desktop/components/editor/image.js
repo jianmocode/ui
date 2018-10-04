@@ -133,14 +133,17 @@ let com = Page({
 			let ratio = NaN;
 			try { eval('ratio='+ratiostr); } catch(e) { ratio =NaN; }
 			$img.cropper('setAspectRatio', ratio);
-
-			console.log('aspectratio', ratio);
 			
 		});
 
 		// 重置
 		$elm.find('.reset').click( () => {
 			this.reset( $elm);
+		});
+
+		// 保存
+		$elm.find('.save').click(()=>{
+			this.save( $elm );
 		});
 	},
 
@@ -178,6 +181,23 @@ let com = Page({
 	 * @return {[type]} [description]
 	 */
 	save: function( $elm, url=null) {
+
+		let $img = $elm.find('.origin-image');
+		let attrs = this.getAttrs( $elm );
+		let value = attrs['value'];
+		url =  url ? url : attrs['url'];
+
+		value['title'] = $elm.find('[name=title]').val() || "";
+		value['link'] = $elm.find('[name=link]').val() || "";
+		value['summary'] = $elm.find('[name=summary]').val() || "";
+		$elm.attr('value', JSON.stringify( value ) );
+
+		let croped = $img.cropper('getData');
+		if ( url && (croped['x'] != 0 || croped['y'] != 0 || croped['width'] != 0 || croped['height'] !=0 ) ) {
+			$.post(url, {'crop':JSON.stringify(croped), 'value':$elm.attr('value')}, function(xhr,status, message){
+				console.log( 'complete', xhr,status, message);
+			}, 'json');
+		}
 
 	},
 
