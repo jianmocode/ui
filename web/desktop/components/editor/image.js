@@ -193,12 +193,90 @@ let com = Page({
 		$elm.attr('value', JSON.stringify( value ) );
 
 		let croped = $img.cropper('getData');
-		if ( url && (croped['x'] != 0 || croped['y'] != 0 || croped['width'] != 0 || croped['height'] !=0 ) ) {
-			$.post(url, {'crop':JSON.stringify(croped), 'value':$elm.attr('value')}, function(xhr,status, message){
-				console.log( 'complete', xhr,status, message);
+		if ( url ) {
+			this.lock( $elm );
+			$.post(url, {'crop':JSON.stringify(croped), 'value':$elm.attr('value')}, ( data ,status, xhr)=>{
+				this.unlock( $elm );
+
+				if( typeof data['code'] != 'undefined'  && data['code'] != 0 ){
+					this.error( $elm, data, xhr );
+					return;
+				}
+
+				this.success( $elm, data, xhr );
+
 			}, 'json');
 		}
+	},
 
+
+	/**
+	 * 错误通报
+	 * @param  {[type]} $elm [description]
+	 * @return {[type]}      [description]
+	 */
+	error: function ( $elm, data, xhr ) {
+		try { this.events.error( this, data, $elm ); } catch(e){	console.log('Events error call fail', e );}
+	},
+
+
+	/**
+	 * 成功返回
+	 * @param  {[type]} $elm [description]
+	 * @param  {[type]} data [description]
+	 * @param  {[type]} xhr  [description]
+	 * @return {[type]}      [description]
+	 */
+	success: function ( $elm, data, xhr ) {
+
+		if ( typeof data['value'] != 'undefined') {
+			$elm.attr('value', JSON.stringify( data['value'] ) );
+		}
+
+		try { this.events.success( this, data, $elm ); } catch(e){	console.log('Events success call fail', e );}
+	},
+
+
+	/**
+	 * 锁定操作界面
+	 * @param  {[type]} $elm [description]
+	 * @return {[type]}      [description]
+	 */
+	lock: function( $elm ) {
+
+		$elm.find('a').addClass('uk-disabled');
+		$elm.find('a').prop('disabled', true);
+
+		$elm.find('input').addClass('uk-disabled');
+		$elm.find('input').prop('disabled', true);
+
+		$elm.find('textarea').addClass('uk-disabled');
+		$elm.find('textarea').prop('disabled', true);
+
+		$elm.find('button').addClass('uk-disabled');
+		$elm.find('button').prop('disabled', true);
+
+	},
+
+
+	/**
+	 * 解锁操作界面
+	 * @param  {[type]} $elm [description]
+	 * @return {[type]}      [description]
+	 */
+	unlock: function( $elm ){
+
+		$elm.find('a').removeClass('uk-disabled');
+		$elm.find('a').prop('disabled', false);
+
+		$elm.find('input').removeClass('uk-disabled');
+		$elm.find('input').prop('disabled', false);
+
+		$elm.find('textarea').removeClass('uk-disabled');
+		$elm.find('textarea').prop('disabled', false);
+
+		$elm.find('button').removeClass('uk-disabled');
+		$elm.find('button').prop('disabled', false);
 	},
 
 
