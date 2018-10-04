@@ -24,7 +24,20 @@
 				<div class="uk-navbar-right">
 					<div class="uk-navbar-item" class="uk-padding-remove-vertical">
 						<ul class="uk-iconnav">
-							<li><a href="javascript:void(0);" class="menu-item reset " uk-icon="icon: refresh" uk-tooltip="title:重置;pos:bottom" ></a></li>
+							<li>
+								<div class="uk-inline" style="width:auto;">
+									<a href="javascript:void(0);" class="menu-item " uk-icon="icon: refresh" uk-tooltip="title:重置;pos:bottom" ></a>
+									<div class="reset-drop" uk-drop="mode:click;pos:bottom-right;delay-hide:0">
+										<div class="uk-card uk-card-body uk-card-default uk-padding-small">
+											<div class="uk-text-danger"> 重置后所有修改将丢失，是否继续？ </div>
+											<div class="uk-inline uk-margin-small-top uk-text-center">
+												<button class="uk-button uk-button-small uk-button-primary uk-margin-small-right reset" type="button">确定</button>
+												<button onclick="UIkit.drop($(this).parents('.reset-drop')).hide();" class="uk-button uk-button-small uk-button-default" type="button">取消</button>
+											</div>
+										</div>
+									</div>	
+								</div>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -71,15 +84,29 @@
 						<!-- 简介 -->
 						<div class="uk-form-group uk-margin " >
 							<div class="uk-inline">
-							<textarea name="summary" type="text"  rows="3" class="uk-textarea uk-form-large" 
-								   placeholder="请输入图片介绍"   
-								>{{value.summary}}</textarea>
+								<textarea name="summary" type="text"  rows="3" class="uk-textarea uk-form-large" 
+									   placeholder="请输入图片介绍"   
+									>{{value.summary}}</textarea>
+							</div>
 							<div class="uk-helper uk-helper-danger"></div>
 						</div> <!-- END 简介 -->
 
-						<div class="uk-form-group uk-margin uk-text-center " >
-							<button class="uk-button uk-button-primary save uk-margin-right" type="button">保存</button>
-							<button class="uk-button uk-button-default reset " type="button">重置</button>
+						<div class="uk-form-group uk-margin uk-flex uk-flex-center " >
+							<div class="uk-inline uk-margin-right" style="width:auto;">
+								<button class="uk-button uk-button-primary save" type="button">保存</button>
+							</div>
+							<div class="uk-inline" style="width:auto;">
+								<button class="uk-button uk-button-default" type="button">重置</button>
+								<div class="reset-drop" uk-drop="mode:click;pos:top-center;delay-hide:0">
+									<div class="uk-card uk-card-body uk-card-default uk-padding-small">
+										<div class="uk-text-danger"> 重置后所有修改将丢失，是否继续？ </div>
+										<div class="uk-inline uk-margin-small-top uk-text-center">
+											<button class="uk-button uk-button-small uk-button-primary uk-margin-small-right reset" type="button">确定</button>
+											<button onclick="UIkit.drop($(this).parents('.reset-drop')).hide();" class="uk-button uk-button-small uk-button-default" type="button">取消</button>
+										</div>
+									</div>
+								</div>	
+							</div>
 						</div>
 
 					</form>

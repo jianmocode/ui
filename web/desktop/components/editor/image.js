@@ -80,7 +80,8 @@ let com = Page({
 			}
 		});
 
-
+		// 留存原始数据
+		$elm.data('origin-value', attrs['value']);
 
 		// 初始化工具条
 		this.initToolbar( $elm );
@@ -149,9 +150,35 @@ let com = Page({
 	 * @return {[type]}      [description]
 	 */
 	reset: function( $elm ){
+
+
 		let $img = $elm.find('.origin-image');
+		let val = $elm.data('origin-value') || {};
+		
+		// Reset 控件
 		$img.cropper('reset');
 		$img.cropper('zoom', -0.1);
+
+		// Reset value
+		$elm.find('[name=title]').val( val.title  || '' );
+		$elm.find('[name=link]').val( val.link  || '' );
+		$elm.find('[name=summary]').val( val.summary  || '' );
+		$elm.attr('value', JSON.stringify( val ) );
+
+		// 隐藏提醒窗体
+		$elm.find('.reset-drop').each((idx,el)=>{
+			UIkit.drop($(el)).hide();
+		})
+
+	},
+
+
+	/**
+	 * 保存
+	 * @return {[type]} [description]
+	 */
+	save: function( $elm, url=null) {
+
 	},
 
 
