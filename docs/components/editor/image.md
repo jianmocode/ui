@@ -117,7 +117,7 @@ name={"path":"/2018/08/27/e49e1d9c8899b789ce21191ac819e375.jpg","url":"http://ww
 
 当保存时，使用POST方法，向`url`属性设定的地址，提交标记数据；云端程序根据数据，对图片裁切后，返回全新图片信息。
 
-### REQUEST
+### 请求数据
 
 Form Data :
 
@@ -128,7 +128,7 @@ Form Data :
 | `crop`        | JSON String  | `{"x":0,"y":0,"width":0,"height":0,"rotate":0,"scaleX":1,"scaleY":1}`	| 裁切信息。`x` 裁切起点x轴坐标, `y` 裁切起点y轴坐标, `width` 裁切宽度, `height` 裁切高度,  `rotate` 旋转角度, `scaleX` x轴方向拉伸, 	`scaleY` y轴方向拉伸	|
 
 
-### RESPONSE
+### 响应数据
 
 成功返回 JSON Data:
 
