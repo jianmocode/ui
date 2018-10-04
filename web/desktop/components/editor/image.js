@@ -9,6 +9,7 @@ let com = Page({
 		"id":"string",		// ID
 		"url":"string",		// 云端通信地址
 		"value":"json",		// 数值
+		"crop":"object",	// 裁切配置
 		"tools":"array"		// 工具
 	},
 	onReady: function( params ) {
@@ -30,20 +31,56 @@ let com = Page({
 			$elm.addClass('editor-inited'); //标记初始化完毕
 		this.setAttrs($elm, attrs);
 
-		// 载入画布和图像
+		// 自动按比例裁切
+		let aspectRatio = NaN;
+		let autoCrop = false;
+		let dragMode = 'none';
+
+		if ( attrs['crop']['ratio'] ) {
+			autoCrop = true;
+			dragMode = 'crop';
+			try { eval('aspectRatio='+ attrs['crop']['ratio']); } catch(e) { aspectRatio =NaN; }
+		}
+
+		// 固定比例裁切
+		if ( aspectRatio ) {
+			$elm.find('.croped').remove();
+		}
+
+		// 图片对象
 		let $img = $elm.find('.origin-image');
+
+		//fix preview bug
+		$img.load( ( event) => {
+			$img.data('img-width', $img.width());
+			$img.data('img-height', $img.height());
+		});
+
+		// 载入画布和图像
 		$img.cropper({
-			dragMode:'move',
-			autoCrop:false, // 关闭自动裁切
-			preview:'.img-preview',
+			dragMode:dragMode,
+			aspectRatio: aspectRatio,
+			autoCrop:autoCrop, // 自动裁切
+			preview: '[name="'+ attrs['name'] +'-preview"]',
 			ready: ( event ) => {
 				$img.cropper('zoom', -0.1);
-				$img.cropper('setDragMode', 'none');
-				$elm.find('.croped').addClass('uk-hidden');
+
+				// const containerData = $img.cropper('getContainerData');
+				// $img.cropper('zoomTo', containerData.width/ containerData.height, { x: 0,y: 0 });
+
 			},
 			crop: function(event) {
+
+				let w = event.detail.width || $img.data('img-width') ;
+				let h = event.detail.height || $img.data('img-height') ;
+				let ratio = w/h;
+				$elm.find('.width-preview').html( w.toFixed(0) );
+				$elm.find('.height-preview').html( h.toFixed(0) );
+				$elm.find('.ratio-preview').html( ratio.toFixed(2) );
 			}
 		});
+
+
 
 		// 初始化工具条
 		this.initToolbar( $elm );
@@ -100,8 +137,23 @@ let com = Page({
 			
 		});
 
-
+		// 重置
+		$elm.find('.reset').click( () => {
+			this.reset( $elm);
+		});
 	},
+
+	/**
+	 * 恢复到初始化的状态
+	 * @param  {[type]} $elm [description]
+	 * @return {[type]}      [description]
+	 */
+	reset: function( $elm ){
+		let $img = $elm.find('.origin-image');
+		$img.cropper('reset');
+		$img.cropper('zoom', -0.1);
+	},
+
 
 	setAttrs: function( $elm, attrs ){
 		// console.log( attrs );
