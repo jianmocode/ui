@@ -9,7 +9,7 @@
 ```html 
 <uploader type="image"
 	name="background" class="jm-form-large"
-	url="/_api/xpmsns/user/user/upload?_n=headimgurl"
+	url="/_api/xpmsns/user/user/upload?_n=background"
 	allow="/(\.|\/)(gif|jpe?g|png|xls|xlsx|ai)$/i"
 	accept=".ai,.png"
 	>上传背景</uploader>
@@ -18,27 +18,81 @@
 ```html : demo 
 <uploader type="image"
 	name="background" class="jm-form-large"
-	url="/_api/xpmsns/user/user/upload?_n=headimgurl"
+	url="/_api/xpmsns/user/user/upload?_n=background"
 	allow="/(\.|\/)(gif|jpe?g|png|xls|xlsx|ai)$/i"
 	accept=".ai,.png"
 	>上传背景</uploader>
 ```
 
-## 初始化赋值
+## 初始赋值
+
+```html
+<uploader type="image"
+	url="/_api/xpmsns/user/user/upload?_n=background"
+	name="background" 
+	value='{"path":"/2018/08/27/e49e1d9c8899b789ce21191ac819e375.jpg","title":"未命名1","link":"","summary":""}'
+	class="jm-form-large"  >上传背景</uploader>
+
+```
 
 ## 分段上传
 
+```html
+<uploader type="image"
+	url="/_api/xpmsns/user/user/upload?_n=background"
+	name="background" 
+	maxChunkSize="102400"
+	value='{"path":"/2018/08/27/e49e1d9c8899b789ce21191ac819e375.jpg","title":"未命名1","link":"","summary":""}'
+	class="jm-form-large"  >上传背景</uploader>
+```
+
 ## 多图上传
+
+```html
+<uploader type="image"
+	url="/_api/xpmsns/user/user/upload?_n=background"
+	name="background" 
+	value='[{"path":"/2018/08/27/e49e1d9c8899b789ce21191ac819e375.jpg","title":"未命名1","link":"","summary":""},{"path":"/2018/08/27/e49e1d9c8899b789ce21191ac819e375.jpg","title":"未命名1","link":"","summary":""}]'
+	class="jm-form-large"  multiple >上传背景</uploader>
+```
 
 ## 固定比例 
 
+```html
+<uploader type="image"
+	url="/_api/xpmsns/user/user/upload?_n=background"
+	name="background" 
+	ratio="16/9"
+	value='{"path":"/2018/08/27/e49e1d9c8899b789ce21191ac819e375.jpg","title":"未命名1","link":"","summary":""}'
+	class="jm-form-large"  >上传背景</uploader>
+```
+
+
 ## 自由比例
+
+```html
+<uploader type="image"
+	url="/_api/xpmsns/user/user/upload?_n=background"
+	name="background" 
+	ratio="auto"
+	value='{"path":"/2018/08/27/e49e1d9c8899b789ce21191ac819e375.jpg","title":"未命名1","link":"","summary":""}'
+	class="jm-form-large"  >上传背景</uploader>
+```
 
 ## 拖拽响应
 
 ## 复制粘贴
 
 ## 表单样式
+
+
+```html
+<uploader type="image"
+	url="/_api/xpmsns/user/user/upload?_n=background"
+	name="background" 
+	value='{"path":"/2018/08/27/e49e1d9c8899b789ce21191ac819e375.jpg","title":"未命名1","link":"","summary":""}'
+	class="jm-form-large"  >上传背景</uploader>
+```
 
 
 ***
