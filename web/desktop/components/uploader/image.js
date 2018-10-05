@@ -63,6 +63,10 @@ let com = Page({
 		return this.getValue($(this.selector));
 	},
 
+
+
+
+
 	getValue: function( $elm ) {
 		let value = $elm.find('input[type=hidden]').val();
 		try {
@@ -321,12 +325,22 @@ let com = Page({
 	},
 
 	disabled: function( $elm ) {
+
+		if ( $elm == undefined ) {
+			$elm = $(this.selector);
+		}
+
 		$elm.find('.jm-uploader-image').addClass('jm-disabled');
 		$elm.find('input[type=file]').prop('disabled', true);
 		$elm.find('.item').addClass('uk-disabled');
 	},
 
 	enabled: function( $elm ){
+
+		if ( $elm == undefined ) {
+			$elm = $(this.selector);
+		}
+
 		$elm.find('.jm-uploader-image').removeClass('jm-disabled');
 		$elm.find('input[type=file]').prop('disabled', false);
 		$elm.find('.item').removeClass('uk-disabled');

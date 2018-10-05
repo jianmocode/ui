@@ -34,7 +34,12 @@ Page({
 			});
 		} catch( e ) { console.log( 'Error @ImageUploader', e); }
 
-		console.log( ' mult=', $$('uploader[name=ratio]').val() );
+		$$('uploader[name=background]').disabled();
+
+		setTimeout( ()=>{
+			$$('uploader[name=background]').enabled();
+		}, 2000);
+
 
 		// 错误提醒框关闭事件
 		try {

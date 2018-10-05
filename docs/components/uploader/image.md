@@ -140,6 +140,19 @@ Object Value:
 
 
 
+### disabled()  设定为 disabled
+
+```javascript
+$$('<selector>').disabled();
+
+```
+
+## enabled() 设定为 enabled
+```javascript
+$$('<selector>').enabled();
+
+```
+
 ***
 
 ## 表单
