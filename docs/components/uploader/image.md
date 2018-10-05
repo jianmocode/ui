@@ -46,7 +46,7 @@
 ## 参数
 
 ```javascript
-$$('<selector>').option({
+$$('<selector>').ImageUploader({
 	add: function( file) {
 		console.log('add file', file);
 	},

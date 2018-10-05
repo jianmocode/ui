@@ -1,4 +1,5 @@
 let com = Page({
+	_name:'ImageUploader',
 	data:{},
 	template: '<div>图片上传组件</div>',
 	events: {},

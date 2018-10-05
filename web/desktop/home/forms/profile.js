@@ -1,10 +1,13 @@
 import {Utils} from '../../../libs/utils.js';
+import {$$} from '../../../libs/component.js';
 import {Validate} from '../../../libs/validate.js';
-import ImageUploader from '../../components/uploader/image';  // 下一版应该可以自动引用组件
+$$.import(
+	'uploader/image',
+	'editor/image'
+);
 
 let $utils = new Utils();
 let web = getWeb();
-let $$ = UIkit.util;
 
 Page({
 	data:{},
@@ -15,29 +18,27 @@ Page({
 
 		var that = this;
 
-		// // 引用组件
 		try {
-			ImageUploader.$load({
-				selector:'uploader[type=image]',
+			// ImageUploader
+			$$('uploader[type=image]').ImageUploader({
 				change: ( uploader, $item, src )=>{ $utils.parentHeight(); },
 				error: (uploader, errors, $elm ) =>{
 					for( var i in errors ){
 						let error = errors[i];
 						$utils.parentNotification( '<span uk-icon="icon: close;ratio:1.3"></span>  '+ error.message, 'danger', 'top-right');
 					}
-				}, 
+				},
 				success: (uploader, $elm, $item, src) =>{
 					$utils.parentNotification( '<span uk-icon="icon: check;ratio:1.3"></span>  上传成功', 'success', 'top-right');
 				}
 			});
+		} catch( e ) { console.log( 'Error @ImageUploader', e); }
 
-			this.uploader = ImageUploader.options;
-
-		}  catch( e ) { console.log( 'Error @ImageUploader', e); }
+		console.log( $$('uploader[type=image]') );
 
 		// 错误提醒框关闭事件
 		try {
-			$$.on('.uk-alert', 'hide', ()=>{
+			UIkit.util.on('.uk-alert', 'hide', ()=>{
 				setTimeout(()=>{$utils.parentHeight();}, 500);
 			});
 		} catch( e ) { console.log( 'Error @Alert Hide Event', e); }
