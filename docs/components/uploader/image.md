@@ -46,6 +46,12 @@
 ## 参数
 
 ```javascript
+import {$$} from '/libs/component.js';
+$$.import(
+	'uploader/image'
+);
+
+
 $$('<selector>').ImageUploader({
 	add: function( file) {
 		console.log('add file', file);
