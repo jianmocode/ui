@@ -26,8 +26,12 @@ let com = Page({
 	onReady: function( params ) {
 		let $elms = $(params['selector']);
 		this.template = $('component[name=uploader-image]').html().toString();
-		this.events.change = (typeof params['change'] == 'function' ) ? params['change'] : () => {};
+		this.events.add = (typeof params['add'] == 'function' ) ? params['add'] : () => {};
+		this.events.beforeupload = (typeof params['beforeupload'] == 'function' ) ? params['beforeupload'] : () => {};
+		this.events.uploaded = (typeof params['uploaded'] == 'function' ) ? params['uploaded'] : () => {};
 		this.events.error = (typeof params['error'] == 'function' ) ? params['error'] : () => {};
+		this.events.change = (typeof params['change'] == 'function' ) ? params['change'] : () => {};
+
 		this.events.success = (typeof params['success'] == 'function' ) ? params['success'] : () => {};
 
 	 	$elms.each( (idx, elm )=>{

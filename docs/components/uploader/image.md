@@ -43,6 +43,40 @@
 
 ***
 
+## 参数
+
+```javascript
+$$('<selector>').option({
+	add: function( file) {
+		console.log('add file', file);
+	},
+	uploaded: function(){
+		$utils.parentNotification( '<span uk-icon="icon: check;ratio:1.3"></span>  上传成功', 'success', 'top-right');
+	},
+	change: ( uploader, $item, src )=>{ $utils.parentHeight(); },
+	error: (uploader, errors, $elm ) =>{
+		for( var i in errors ){
+			let error = errors[i];
+			$utils.parentNotification( '<span uk-icon="icon: close;ratio:1.3"></span>  '+ error.message, 'danger', 'top-right');
+		}
+	}
+});
+
+```
+
+参数表:
+
+| Name          | Type      | Default                   | Description                                |
+|:--------------|:----------|:--------------------------|:-------------------------------------------|
+| `add`         | function  | `()=>{}`					| add 事件								     |
+| `beforeupload`| function  | `()=>{}`					| beforeupload 事件					         |
+| `uploaded`    | function  | `()=>{}`					| uploaded 事件		   	          	         |
+| `error`       | function  | `()=>{}`				    | error 事件								     |
+| `change`      | function  | `()=>{}`				    | change 事件								 |
+
+
+***
+
 ## 属性
 
 | Prop          | Type    | Default | Description                                |
