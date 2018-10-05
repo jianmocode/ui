@@ -24,75 +24,18 @@
 	
 	<!-- 用户头像 -->
 	<div class="uk-form-group uk-margin" >
-		<label class="uk-form-label uk-form-large">背景: </label>
-		<div class="uk-form-controls jm-uploader-image-large">
-			<uploader 
-				url="/_api/xpmsns/user/user/upload?_n=headimgurl"
-				src=""
-				max="2048"
-				allow="/(\.|\/)(gif|jpe?g|png|xls|xlsx|ai)$/i"
-				accept=".ai,.png"
-				name="background" type="image" crop="ratio:1"
-				value=""
-				class="jm-form-large">上传背景</uploader>
-		</div>
-	</div> <!-- 用户头像 -->
-
-	<!-- 用户头像 -->
-	<div class="uk-form-group uk-margin" >
 		<label class="uk-form-label uk-form-large">头像: </label>
 		<div class="uk-form-controls jm-uploader-image-large">
-			<uploader 
+			<uploader type="image"
+				name="headimgurl"
 				url="/_api/xpmsns/user/user/upload?_n=headimgurl"
-				name="headimgurl" type="image" crop="ratio:1"
-				value='"/images/20160720/tooopen_sy_170954359773.jpg"'
-				class="jm-form-large jm-border-circle">上传头像</uploader>
+				allow="/(\.|\/)(gif|jpe?g|png)$/i" accept=".gif,.jpg,.jpeg,.png"
+				crop="ratio:1"
+				value=""
+				titleClass="uk-hidden"
+				class="jm-form-large">上传头像</uploader>
 		</div>
 	</div> <!-- 用户头像 -->
-
-	<!-- 背景图片 -->
-	<div class="uk-form-group uk-margin" >
-		<label class="uk-form-label uk-form-large">批量上传: </label>
-		<div class="uk-form-controls jm-uploader-image-large">
-			<uploader
-				url="/_api/xpmsns/user/user/upload?_n=background"
-				name="mult" type="image" crop="ratio:0.5625"
-				maxChunkSize="102400"
-				value='[{"path":"/2018/08/27/e49e1d9c8899b789ce21191ac819e375.jpg","title":"未命名1","link":"","summary":""},{"path":"/2018/08/27/f2f7f47aab2640c829a56632f3178a5a.jpg","title":"未命名2","link":"","summary":""},{"path":"/2018/08/27/6eb4ef90568f7ad9cfd8a7ecd2679498.jpg","title":"未命名3","link":"","summary":""},{"path":"/2018/08/27/9fd95ddd0bba6c168e449091363f0a5e.jpg","title":"未命名4","link":"","summary":""},{"path":"/2018/08/27/07868fa2418f2cb3baaa069fdc5470bd.jpg","title":"未命名5","link":"","summary":""},{"path":"/2018/08/27/4ef63862ed0238875fa27347596ab0e8.jpg","title":"未命名6","link":"","summary":""}]'
-				class="jm-form-large" multiple >上传多图</uploader>
-		</div>
-	</div> <!-- 背景图片 -->
-
-
-	<!-- 固定比率 -->
-	<div class="uk-form-group uk-margin" >
-		<label class="uk-form-label uk-form-large">固定比例: </label>
-		<div class="uk-form-controls jm-uploader-image-large">
-			<uploader
-				url="/_api/xpmsns/user/user/upload?_n=background"
-				name="ratio" type="image" crop="ratio:0.5625"
-				ratio="16/9"
-				titleClass="uk-overlay-primary uk-position-top"
-				value='{"path":"/2018/08/27/e49e1d9c8899b789ce21191ac819e375.jpg","title":"未命名","link":"","summary":""}'
-				class="jm-form-large" multiple >上传图片</uploader>
-		</div>
-	</div> <!-- 固定比率 -->
-
-
-	<!-- 自由比率 -->
-	<div class="uk-form-group uk-margin" >
-		<label class="uk-form-label uk-form-large">自由比例: </label>
-		<div class="uk-form-controls jm-uploader-image-large">
-			<uploader
-				url="/_api/xpmsns/user/user/upload?_n=background"
-				name="freeratio" type="image" crop="ratio:0.5625"
-				allow="/(\.|\/)(gif|jpe?g|png)$/i"
-				accept=".gif,.jpg,.jpeg,.png"
-				ratio="auto"
-				value='{"path":"/2018/08/27/e49e1d9c8899b789ce21191ac819e375.jpg","title":"未命名","link":"","summary":""}'
-				class="jm-form-large" multiple >自由比例</uploader>
-		</div>
-	</div> <!-- 固定比率 -->
 
 	<!-- 账号等级 -->
 	<div class="uk-form-group uk-margin" >
