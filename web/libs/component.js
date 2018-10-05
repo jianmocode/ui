@@ -44,6 +44,7 @@ function getComponent( selector ) {
 	
 
 	if ( $(selector).data('_component') ) {
+		$(selector).data('_component').selector = selector;
 		return $(selector).data('_component');
 	}
 

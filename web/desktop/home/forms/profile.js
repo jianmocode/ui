@@ -34,7 +34,7 @@ Page({
 			});
 		} catch( e ) { console.log( 'Error @ImageUploader', e); }
 
-		console.log( $$('uploader[type=image]') );
+		console.log( ' mult=', $$('uploader[name=ratio]').val() );
 
 		// 错误提醒框关闭事件
 		try {

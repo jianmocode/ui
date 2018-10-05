@@ -55,6 +55,22 @@ let com = Page({
 	 	});
 	},
 
+	/**
+	 * API Method
+	 * @return {[type]} [description]
+	 */
+	val:function(){
+		return this.getValue($(this.selector));
+	},
+
+	getValue: function( $elm ) {
+		let value = $elm.find('input[type=hidden]').val();
+		try {
+			value = JSON.parse( value )
+		}catch(e ) { value = {} };
+
+		return value;
+	},
 
 	initValue: function( $elm, value, attrs ) {
 		if ( !$.isArray(value) ) {
