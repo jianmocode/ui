@@ -164,11 +164,11 @@ $$('<selector>').ImageUploader({
 
 | Event        	| Param   |  Description                               |
 |:--------------|:--------|:-------------------------------------------|
-| `add`  	    | event   | 添加文件。								   |
-| `beforeupload`| event   | 发起云端请求前触发，可通过 `return false;` 终止上传行为。  |
-| `uploaded`  	| event   | 云端请求成功执行并返回正确结果后触发。           |
-| `error`  		| event   | 有错误发生时触发。	    					   |
-| `change`  	| event   | 当数据发生变更时触发						   |
+| `add`  	    | `function(event, data)`   | 发起云端请求前触发，可通过 `return false;` 终止添加行为。|
+| `beforeupload`| `function(event, data)`   | 发起云端请求前触发，可通过 `return false;` 终止上传行为。  |
+| `uploaded`  	| `function(data, $item)`   | 云端请求成功执行并返回正确结果后触发。           |
+| `error`  		| `function(errors, $elm)`  | 有错误发生时触发。	    					   |
+| `change`  	| `function(data, $item)`   | 当数据发生变更时触发						   |
 
 ***
 
@@ -239,12 +239,20 @@ name={"path":"/2018/08/27/e49e1d9c8899b789ce21191ac819e375.jpg","url":"http://ww
 
 Form Data :
 
-| Field         | Type    	   | Default | Description                                |
-|:--------------|:-------------|:--------|:-------------------------------------------|
-| `name`        | String 	   |    	| 组件字段名称							      |
-| `_file`       | Blob		   |    	| 当前切片图片文件							      |
-| `chuck`       | Number  	   | `1`	| 当前切片 Index							      |
-| `chuckTotal`  | Number  	   | `20`	| 切片总数								      |
+| Field                 | Type    	   | Description                                |
+|:----------------------|:-------------|:-------------------------------------------|
+| `_file_<name prop>`   | Blob		   |  当前切片图片文件							    |
+
+
+如果设定 maxChunkSize prop, 在 RQEUST Header 中读取切片信息:
+
+Header:
+
+| Field                 | Type    	   |  Description                                        |
+|:----------------------|:-------------|:----------------------------------------------------|
+| `Content-Range`       | String	   | 当前切片信息	 `Content-Range: bytes 0-102399/181879` @see: https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.16  		 |
+| `Content-Disposition` | String	   | 文件名称等信息 `attachment; filename="icon-sm.png`    |
+
 
 
 ### 响应数据
@@ -254,8 +262,10 @@ Form Data :
 | Field         | Type    	   | Return Value                                |
 |:--------------|:-------------|:--------------------------------------------|
 | `code`        | Number 	   |  0 						      			 |
-| `message`     | String 	   |  数据保存成功 						      	 |
-| `value`       | Object       |  如切片尚未完全上传 `null`， 否则返回图片数值。`url` 图片访问地址, `path` 图片存储路径, `title` 图片标题,	 `summary` 图片描述, `link` 链接地址 ... 其他用户定义字段 |
+| `message`     | String 	   |  保存成功 						      	     |
+| `completed`   | Bool	       |  所有切片都上传完毕为 `true` , 否则为 `false`    |
+| `progress`    | float        |  当前上传进度 0~100                            |
+| `data`        | Object       |  如切片尚未完全上传，返回切片信息 {`total`:文件总大小, `from`: 当前切片起始位置, `to`: 当前切片结束位置, `type`:文件类型}。 否则返回图片数值。{`url`:图片访问地址, `path`:图片存储路径, `title`:图片标题,	 `summary`:图片描述, `link`:链接地址 ... 其他用户定义字段} |
 
 
 失败返回 JSON Data: 
