@@ -9,7 +9,7 @@
 		</div>
 
 		<div class="jm-overlay uk-hidden-hover uk-overlay-primary uk-position-cover uk-flex uk-flex-center uk-flex-middle">
-			<a href="#" class="uk-icon-button uk-margin-small-right" uk-icon="settings"></a>
+			<a href="#" class="uk-icon-button uk-margin-small-right uk-hidden" uk-icon="settings"></a> <!-- 稍后支持裁切 -->
 			<a href="javascript:void(0);" class="btn-remove uk-icon-button" uk-icon="trash"></a>
 		</div>
 	</div>
