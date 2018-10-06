@@ -19,6 +19,7 @@ let com = Page({
 		"maxChunkSize":"number", // 分段上传每次上传最大字节单位: kb
 		"value":"json",	 // 数值
 		"thumb":"string",  // 缩略图字段, 默认为 url
+		"validate":"string", // 验证信息
 		"title":"string",  // 标题字段，默认为 title
 		"titleClass":"string", //标题栏样式
 		"titleStyle":"string"  //标题栏样式
@@ -299,6 +300,10 @@ let com = Page({
 			// 默认值
 			if ( attrs['titleClass'] == '' || attrs['titleClass'] == null ) {
 				attrs['titleClass'] = 'uk-overlay-default uk-position-bottom';
+			}
+
+			if ( attrs['validate'] == '' || attrs['validate'] == null ) { 
+				attrs['validate'] = '{}';
 			}
 
 

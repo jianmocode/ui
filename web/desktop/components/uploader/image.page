@@ -1,5 +1,5 @@
 <component name="uploader-image">
-<div class="jm-uploader-image uk-flex uk-flex-wrap {{class}}" style="{{style}}" tabindex="-1" uk-sortable >
+<div class="jm-uploader-image jm-component uk-flex uk-flex-wrap {{class}}" style="{{style}}" tabindex="-1" uk-sortable >
 	<div class="item item-card uk-card uk-card-default uk-visible-toggle uk-flex uk-flex-middle uk-hidden" uk-tooltip="title:拖动卡片调整顺序;pos:top">
 		<div class="uk-cover-container">
 			<img src=""  alt="" uk-cover>
@@ -23,7 +23,7 @@
 			</a>
 		</div>
 	</div>
-	<input name="{{name}}" value='{{__json__value}}' type="hidden">
+	<input name="{{name}}" value='{{__json__value}}' class="always-validate" type="hidden" validate="{{validate}}">
 </div>
 <div class="jm-helper uk-helper uk-helper-danger"></div>
 </component>

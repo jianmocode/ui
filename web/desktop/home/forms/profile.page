@@ -35,6 +35,12 @@
 				maxChunkSize="100"
 				value=""
 				titleClass="uk-hidden"
+				validate="{
+					required:true, 
+					messages: {
+						required:'请上传头像'
+					}
+				}"
 				class="jm-form-large jm-border-circle" multiple>上传头像</uploader>
 		</div>
 	</div> <!-- 用户头像 -->

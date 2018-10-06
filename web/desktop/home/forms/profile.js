@@ -47,7 +47,7 @@ Page({
 		try {
 			this.validator = new Validate({
 				form:'.iframe-form',
-				change: ( error, element)=>{ $utils.parentHeight(); },
+				change: (error, element)=>{ $utils.parentHeight(); },
 				error: (message, extra)=>{ $utils.parentHeight(); },
 				complete: ()=>{ $utils.parentHeight(); }
 			});

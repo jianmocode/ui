@@ -31,8 +31,8 @@ class Validate {
 			$('.message').addClass('uk-hidden');
 
 			try { that.events.complete(); } catch(e){
-            	console.log('callback error error:', e, this.events.complete);
-            }
+				console.log('callback error error:', e, this.events.complete);
+			}
 		}
 
 
@@ -47,8 +47,8 @@ class Validate {
 				.find('p').html('操作失败 (' + message + ')');
 
 			try { that.events.error(message, extra);} catch(e){
-            	console.log('callback error error:', e, this.events.error);
-            }
+				console.log('callback error error:', e, this.events.error);
+			}
 		}
 
 
@@ -123,44 +123,74 @@ class Validate {
 		let $validates = (this.form) ? $('[validate]', this.form) : $('[validate]');
 		let $form = (this.form) ? $(this.form) : $('form');
 		
-		// 设定错误通报方式
+		// 设定错误通报方式 
+		// [bug]?? helper info missing when second time submit
+		// https://jqueryvalidation.org/documentation/
 		this.inst = this.instance = $form.validate({
 			debug:true,
 			errorClass: 'uk-helper uk-form-danger',
-            errorElement: 'div',
-            errorPlacement: function(error, element) {  
-            	let $input = $(element);      
-            	let $formgroup = $input.parents('.uk-form-group'); 
-            	let $helper = $formgroup.find('.uk-helper-danger');
-            	let message = error.html();
-            	$helper.html(error.html());
-            	try { that.events.change(error, element);} catch(e){
-            		console.log('callback change error:', e, this.events.change);
-            	}
-            },
+			errorElement: 'div',
+			errorPlacement: function(error, element) {  
 
-            highlight: function( element ) {
-                let $input = $(element);  
-                let $formgroup = $input.parents('.uk-form-group'); 
-            	let $helper = $formgroup.find('.uk-helper-danger');
-                $input.addClass('uk-form-danger');
-                $helper.addClass('uk-form-danger');
-            },
-            unhighlight:function(element){
-                let $input = $(element);  
-                let $formgroup = $input.parents('.uk-form-group'); 
-            	let $helper = $formgroup.find('.uk-helper-danger');
-                $input.removeClass('uk-form-danger');
-                $helper.removeClass('uk-form-danger');
-            },
-            success: function(element) {
-            	// console.log( 'success', $(element) );
-                let $formgroup = $(element).parents('.uk-form-group'); 
-              	$formgroup.find('.uk-form-danger').removeClass('uk-form-danger');
+				let $input = $(element);	  
+				let $formgroup = $input.parents('.uk-form-group'); 
+				let $helper = $formgroup.find('.uk-helper-danger');
+				let message = error.html();
+				$helper.html(message);
+				// console.log( $helper.html() );
 
-            },
-            
-            submitHandler: that.submit
+				try { that.events.change(error, element);} catch(e){
+					console.log('callback change error:', e, this.events.change);
+				}
+			},
+
+			// invalidHandler: function(event, validator) {
+			// 	console.log('invalidHandler',event);
+			// },
+			// normalizer: function( value ) {
+			// 	console.log('normalizer', value);
+			// 	return $.trim( value );
+			// },
+
+			highlight: function( element ) {
+				let $input = $(element);  
+				let $formgroup = $input.parents('.uk-form-group'); 
+				let $helper = $formgroup.find('.uk-helper-danger');
+				let $component = $input.parents('.jm-component');
+				$input.addClass('uk-form-danger');
+				$helper.addClass('uk-form-danger');
+				$component.addClass('jm-error');
+			},
+			unhighlight:function(element){
+				let $input = $(element);  
+				let $formgroup = $input.parents('.uk-form-group'); 
+				let $helper = $formgroup.find('.uk-helper-danger');
+				$input.removeClass('uk-form-danger');
+				$helper.removeClass('uk-form-danger');
+			},
+			success: function(element) {
+				// console.log( 'success', $(element) );
+				let $formgroup = $(element).parents('.uk-form-group'); 
+				let $component = $(element).parents('.jm-component');
+			  	$formgroup.find('.uk-form-danger').removeClass('uk-form-danger');
+			  	$component.removeClass('jm-error');
+			},
+
+			ignore: function (index, el) {
+				var $el = $(el);
+
+			   	if ( $el.hasClass('uk-field-ignore') || $el.hasClass('jm-field-ignore') ) {
+			   		return true;
+			   	}
+
+				if ($el.hasClass('always-validate')) {
+				   return false;
+				}
+			   
+				return $el.is(':hidden'); // default
+			},
+			
+			submitHandler: that.submit
 		});
 
 		// 加载 rules
@@ -171,7 +201,7 @@ class Validate {
 				eval('rule=' + ruleString );
 			} catch( e) {
 				rule = {};
-				console.log('load rule error:', e.message, ruleString);
+				console.log('load rule error:', $(item), e.message, ruleString);
 			}
 			$(item).rules('add', rule );
 		})
