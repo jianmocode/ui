@@ -28,12 +28,31 @@
 		<div class="uk-form-controls jm-uploader-image-large">
 			<uploader type="image"
 				name="headimgurl"
-				url="/_api/xpmsns/user/user/upload?_n=headimgurl"
+				url="/_api/xpmsns/user/user/upload"
 				allow="/(\.|\/)(gif|jpe?g|png)$/i" accept=".gif,.jpg,.jpeg,.png"
 				crop="ratio:1"
+				maxFileSize="2048"
+				maxChunkSize="100"
 				value=""
 				titleClass="uk-hidden"
-				class="jm-form-large">上传头像</uploader>
+				class="jm-form-large jm-border-circle" multiple>上传头像</uploader>
+		</div>
+	</div> <!-- 用户头像 -->
+
+	<!-- 用户头像 -->
+	<div class="uk-form-group uk-margin" >
+		<label class="uk-form-label uk-form-large">背景图片: </label>
+		<div class="uk-form-controls jm-uploader-image-large">
+			<uploader type="image"
+				name="background"
+				url="/_api/xpmsns/user/user/upload"
+				allow="/(\.|\/)(gif|jpe?g|png)$/i" accept=".gif,.jpg,.jpeg,.png"
+				crop="ratio:1"
+				maxFileSize="2048"
+				maxChunkSize="100"
+				value=""
+				titleClass="uk-hidden"
+				class="jm-form-large" multiple>上传背景图片</uploader>
 		</div>
 	</div> <!-- 用户头像 -->
 

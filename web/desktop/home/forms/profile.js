@@ -21,25 +21,20 @@ Page({
 		try {
 			// ImageUploader
 			$$('uploader[type=image]').ImageUploader({
-				change: ( uploader, $item, src )=>{ $utils.parentHeight(); },
-				error: (uploader, errors, $elm ) =>{
+				change: ( data, $item )=>{ $utils.parentHeight(); },
+				add: (event, data)=>{  return true; },
+				beforeupload: (event, data)=>{  return true; },
+				uploaded:(data, $item) =>{  $utils.parentNotification( '<span uk-icon="icon: check;ratio:1.3"></span>  上传成功', 'success', 'top-right'); },
+				error: ( errors, $elm ) =>{
 					for( var i in errors ){
 						let error = errors[i];
 						$utils.parentNotification( '<span uk-icon="icon: close;ratio:1.3"></span>  '+ error.message, 'danger', 'top-right');
 					}
-				},
-				success: (uploader, $elm, $item, src) =>{
-					$utils.parentNotification( '<span uk-icon="icon: check;ratio:1.3"></span>  上传成功', 'success', 'top-right');
 				}
 			});
 		} catch( e ) { console.log( 'Error @ImageUploader', e); }
 
-		$$('uploader[name=background]').disabled();
-
-		setTimeout( ()=>{
-			$$('uploader[name=background]').enabled();
-		}, 2000);
-
+	
 
 		// 错误提醒框关闭事件
 		try {
@@ -63,10 +58,6 @@ Page({
 		$('.image.vcode').click(function(){
 			that.changeVcode();
 		});
-
-		// setTimeout(()=>{
-		// 	$('uploader[type=image]').removeAttr('disabled');
-		// },1000);
 	},
 
 

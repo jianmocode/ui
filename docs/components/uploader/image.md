@@ -85,13 +85,15 @@
 
 ## 表单样式
 
+`.jm-form-large`     large 型号
+`.jm-border-circle`  圆形
 
 ```html
 <uploader type="image"
 	url="/_api/xpmsns/user/user/upload?_n=background"
 	name="background" 
 	value='{"path":"/2018/08/27/e49e1d9c8899b789ce21191ac819e375.jpg","title":"未命名1","link":"","summary":""}'
-	class="jm-form-large"  >上传背景</uploader>
+	class="jm-form-large jm-border-circle"  >上传背景</uploader>
 ```
 
 
@@ -141,20 +143,20 @@ $$('<selector>').ImageUploader({
 
 | Prop          | Type    | Default | Description                                |
 |:--------------|:--------|:--------|:-------------------------------------------|
-| `name`        | String  | `""`	| 组件字段名称。								 |
-| `id`  		| String  | `""`    | 组件字段ID 									 |
-| `url`  		| String  | `""`    | 图片上传云端处理程序地址		  				 |
-| `ratio`  		| String  | `""`    | 固定裁切									 |
-| `allow`  		| String  | `""`    | 文件类型校验正则。例如: /(\.|\/)(gif|jpe?g|png|xls|xlsx|ai)$/i  |
-| `accept`  	| String  | `""`    | 许可文件类型 .jpg,.png 						 |
-| `max`  		| Number  | `2048`  | 单位MB, 默认为2048 2GB						 |
-| `maxChunkSize`| Number  | `""`    | 分段上传每次上传最大字节单位: kb	             |
-| `crop`  		| Object  | `""`    | 图片裁切选项 `ratio:16/9` 16/9固定比例裁切	 |
-| `value`  		| Json    | `{}`    | 待处理图片数值。 `url` 图片访问地址, `path` 图片存储路径, `title` 图片标题,	 `summary` 图片描述, `link` 链接地址 ... 其他用户定义字段 |
-| `thumb`  		| String  | `url`   | 缩略图字段, 默认为 url						 |
-| `title`  		| String  | `title` | 标题字段，默认为 title						 |
-| `titleClass`  | String  | `""`    | 标题栏样式表   				        		 |
-| `titleStyle`  | String  | `""`    | 标题栏样式						             |
+| `name`        | String  | `""`	  | 组件字段名称。								 |
+| `id`  		| String  | `""`      | 组件字段ID 									 |
+| `url`  		| String  | `""`      | 图片上传云端处理程序地址		  				 |
+| `ratio`  		| String  | `""`      | 固定裁切									 |
+| `allow`  		| String  | `""`      | 文件类型校验正则。例如: /(\.|\/)(gif|jpe?g|png|xls|xlsx|ai)$/i  |
+| `accept`  	| String  | `""`      | 许可文件类型 .jpg,.png 						 |
+| `maxFileSize` | Number  | `2097152` | 单位MB, 默认为2048 2GB 单位: kb				 |
+| `maxChunkSize`| Number  | `""`      | 分段上传每次上传最大字节 单位: kb	             |
+| `crop`  		| Object  | `""`      | 图片裁切选项 `ratio:16/9` 16/9固定比例裁切	 |
+| `value`  		| Json    | `{}`      | 待处理图片数值。 `url` 图片访问地址, `path` 图片存储路径, `title` 图片标题,	 `summary` 图片描述, `link` 链接地址 ... 其他用户定义字段 |
+| `thumb`  		| String  | `url`     | 缩略图字段, 默认为 url						 |
+| `title`  		| String  | `title`   | 标题字段，默认为 title						 |
+| `titleClass`  | String  | `""`      | 标题栏样式表   				        		 |
+| `titleStyle`  | String  | `""`      | 标题栏样式						             |
 
 ***
 

@@ -15,7 +15,7 @@ let com = Page({
 		"ratio":"string",	// 图片比例 eg: 16/9  auto 
 		"allow":"string",	// 文件类型校验正则 /(\.|\/)(gif|jpe?g|png|xls|xlsx|ai)$/i
 		"accept":"string",  // 许可文件类型 .jpg,.png 
-		"max":"number",  // 文件最大值, 默认 2G 
+		"maxFileSize":"number",  // 文件最大值, 默认 2G 单位 kb 
 		"maxChunkSize":"number", // 分段上传每次上传最大字节单位: kb
 		"value":"json",	 // 数值
 		"thumb":"string",  // 缩略图字段, 默认为 url
@@ -158,7 +158,10 @@ let com = Page({
 		}
 
 		// 允许文件大小
-		let maxFileSize = attrs['max'] ? attrs['max'] * 1024 : 2147483648; // 2GB
+		let maxFileSize = attrs['maxFileSize'] ? attrs['maxFileSize'] * 1024 : 2147483648; // 2GB
+		let maxChunkSize = attrs['maxChunkSize'] ? attrs['maxChunkSize'] * 1024 : undefined; // 不分段
+
+		// 允许
 
 		// 初始化 upload 控件
 		// @see https://github.com/blueimp/jQuery-File-Upload/wiki/Options
@@ -166,9 +169,20 @@ let com = Page({
 			dropZone: $elm,
 			pasteZone: $elm,
 			url: attrs['url'] ?  attrs['url'] : $elm.parent('form').attr('action'),
-			maxChunkSize:attrs['maxChunkSize'] ? attrs['maxChunkSize'] : undefined,
+			dataType: 'json',
+			type: 'POST',
+			maxChunkSize:maxChunkSize,
 			recalculateProgress:false,
+			formData:{},
 			add: (e, data) => {
+
+				// trigger add event
+				let eventResp = true;
+				try { eventResp = this.events.add( e, data); } catch( e ) { console.log( 'trigger add event error', e ); }
+				if ( eventResp == false ) {
+					return;
+				}
+
 
 				// disabled
 				if ($elm.prop('disabled') ) {
@@ -232,6 +246,17 @@ let com = Page({
 				data['$item'] = $item;
 				$item.find('.name').removeClass('uk-hidden');
 				$item.find('.name').html(data.files[0].name);
+
+
+				// trigger beforeupload event
+				eventResp = true;
+				try { eventResp = this.events.beforeupload( e, data); } catch( e ) { console.log( 'trigger beforeupload event error', e ); }
+				if ( eventResp == false ) {
+					// 恢复状态
+					this.remove($item, attrs);
+					return;
+				}
+
 				data.submit();
 			},
 			progress: (e, data) => {
@@ -242,14 +267,30 @@ let com = Page({
 				// console.log( $p );
 			},
 			always: (e, data) => {
-				let value  = {
-					title: "新创建的",
-					url:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537733814589&di=2a8d922ad7fd874cd3fcfecb2b3393ad&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F9e3df8dcd100baa1f3d70e9d4d10b912c8fc2e18.jpg'
-				};
-				this.success( data.$item, value, attrs );
+				// let value  = {
+				// 	title: "新创建的",
+				// 	url:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537733814589&di=2a8d922ad7fd874cd3fcfecb2b3393ad&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F9e3df8dcd100baa1f3d70e9d4d10b912c8fc2e18.jpg'
+				// };
+
+				// console.log( data );
+				// // this.success( data.$item, value, attrs );
+			},
+
+			fail: (e, data) => {
+				this.error($elm, [result] );
+			},
+			done: (e, data) =>{
+
+				let result = data.result;
+				if ( result.code != 0 ){
+					this.error($elm, [result] );
+					return;
+				}
+
+				// Success
+				this.uploaded( data.$item, result.data, attrs );
 			}
 		});
-
 
 		// 初始化排序控件
 		UIkit.util.on($elm, 'moved', (event)=>{
@@ -389,10 +430,10 @@ let com = Page({
 		$item.find('progress').prop('hidden', false);
 		$item.find('.name').removeClass('uk-hidden');
 		$item.find('.uk-overlay-primary').addClass('uk-hidden');
-		try { this.events.change( this, $item, null); } catch(e){	console.log('Events change call fail', e );}
+		try { this.events.change( null, $item ); } catch(e){	console.log('Events change call fail', e );}
 	},
 
-	success: function( $item, value, attrs ) {
+	uploaded: function( $item, value, attrs ) {
 		let $elm = $item.parents('uploader');
 		this.setValue($item, value, attrs);
 
@@ -402,8 +443,9 @@ let com = Page({
 		$item.find('.uk-overlay-primary').removeClass('uk-hidden');
 		$elm.find('.jm-uploader-image').removeClass('jm-error');
 		$elm.find('.jm-helper').removeClass('uk-form-danger');
-		try { this.events.success( this, $elm, $item, value ); } catch(e){	console.log('Events success call fail', e );}
-		try { this.events.change( this, $item, value); } catch(e){	console.log('Events change call fail', e );}
+
+		try { this.events.uploaded( value, $item ); } catch(e){	console.log('Events uploaded call fail', e );}
+		try { this.events.change( value, $item ); } catch(e){	console.log('Events change call fail', e );}
 	},
 
 	error: function( $elm, errors ) {
@@ -413,8 +455,8 @@ let com = Page({
 			$elm.find('.jm-helper').addClass('uk-form-danger');
 			$elm.find('.jm-helper').html(error.message);
 		}
-		try { this.events.error( this, errors, $elm ); } catch(e){	console.log('Events error call fail', e );}
-		try { this.events.change( this, $elm, null); } catch(e){	console.log('Events change call fail', e );}
+		try { this.events.error( errors, $elm ); } catch(e){	console.log('Events error call fail', e );}
+		try { this.events.change( errors, $elm); } catch(e){	console.log('Events change call fail', e );}
 	},
 
 	getAttrs: function( $elm ) {
