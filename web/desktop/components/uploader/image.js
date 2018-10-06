@@ -324,6 +324,9 @@ let com = Page({
 		$elm.on( 'drop dragleave mouseleave', ()=>{
 			$elm.find('.jm-uploader-image').removeClass('jm-active');
 		});
+
+		// 关闭提示
+		// setTimeout(()=>{$elm.find('.tips').fadeOut(); }, 3000);
 	},
 
 	reset: function( $elm ){

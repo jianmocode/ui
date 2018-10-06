@@ -1,6 +1,6 @@
 <component name="uploader-image">
-<div class="jm-uploader-image uk-flex uk-flex-wrap {{class}}" style="{{style}}" tabindex="-1" uk-sortable>
-	<div class="item item-card uk-card uk-card-default uk-visible-toggle uk-flex uk-flex-middle uk-hidden" >
+<div class="jm-uploader-image uk-flex uk-flex-wrap {{class}}" style="{{style}}" tabindex="-1" uk-sortable >
+	<div class="item item-card uk-card uk-card-default uk-visible-toggle uk-flex uk-flex-middle uk-hidden" uk-tooltip="title:拖动卡片调整顺序;pos:top">
 		<div class="uk-cover-container">
 			<img src=""  alt="" uk-cover>
 			<progress class="uk-progress" value="0" max="100" hidden ></progress>
@@ -14,13 +14,12 @@
 		</div>
 	</div>
 
-	<div class="btn-upload item-card uk-card uk-card-default">
-		<div class="uk-flex uk-height-1-1 uk-flex-middle uk-flex-center" uk-form-custom>
+	<div class="btn-upload item-card uk-card uk-card-default" uk-tooltip="title:可以直接粘贴或拖入文件。;pos:top" >
+		<div class="uk-flex uk-height-1-1 uk-flex-middle uk-flex-center" uk-form-custom> 
 			<input type="file" name="_file_{{name}}" accept="{{accept}}" class="jm-field-ignore" >
 			<a class="uk-text-center uk-width-1-1">
 				<span uk-icon="icon:cloud-upload;ratio:1"></span>
 				<div class="btn-helper">{{_html}}</div>
-				<div class="btn-helper">支持图片直接粘贴、拖入、排序</div>
 			</a>
 		</div>
 	</div>
