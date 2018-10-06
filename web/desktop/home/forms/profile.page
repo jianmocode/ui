@@ -54,6 +54,7 @@
 				url="/_api/xpmsns/user/user/upload"
 				allow="/(\.|\/)(gif|jpe?g|png)$/i" accept=".gif,.jpg,.jpeg,.png"
 				crop="ratio:1"
+				ratio="auto"
 				maxFileSize="2048"
 				maxChunkSize="100"
 				value=""
