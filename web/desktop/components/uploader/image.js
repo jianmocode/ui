@@ -267,15 +267,8 @@ let com = Page({
 				// console.log( $p );
 			},
 			always: (e, data) => {
-				// let value  = {
-				// 	title: "新创建的",
-				// 	url:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537733814589&di=2a8d922ad7fd874cd3fcfecb2b3393ad&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F9e3df8dcd100baa1f3d70e9d4d10b912c8fc2e18.jpg'
-				// };
-
-				// console.log( data );
-				// // this.success( data.$item, value, attrs );
+				// donoting
 			},
-
 			fail: (e, data) => {
 				this.error($elm, [result] );
 			},
@@ -286,7 +279,6 @@ let com = Page({
 					this.error($elm, [result] );
 					return;
 				}
-
 				// Success
 				this.uploaded( data.$item, result.data, attrs );
 			}
