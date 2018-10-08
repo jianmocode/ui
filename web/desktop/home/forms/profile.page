@@ -145,7 +145,7 @@
 <!-- 用户未登录界面 -->
 <div class="container" mp:else>
 	<script type="text/javascript" >
-		window.location="/user/signin/mobile";
+		window.location="/user/signin/mobile?then=/home/forms/profile";
 	</script>
 </div> <!-- END Row Container -->
 
