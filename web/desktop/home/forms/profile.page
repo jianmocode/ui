@@ -65,7 +65,7 @@
 		</div>
 	</div> <!-- 用户头像 -->
 
-	<!-- 账号等级 -->
+	<!-- 账号等级
 	<div class="uk-form-group uk-margin uk-hidden" >
 		<label class="uk-form-label uk-form-large">会员类型: </label>
 		<div class="uk-form-controls">
@@ -75,7 +75,7 @@
 				<a href="#" class="uk-link-muted uk-hidden"> 升级 </a>
 			</div>
 		</div>
-	</div> <!-- 账号等级 -->
+	</div>  账号等级 -->
 
 
 	<!-- 手机号 -->

@@ -45,7 +45,7 @@
 				<li class="before-login {{(user.user_id) ? 'uk-hidden'}} "><a href="/user/signin/mobile" data-width="468" data-height="600" uk-iframe-modal>登录</a></li>
 				<li class="after-login  {{(user.user_id == '') ? 'uk-hidden'}}  {{ (active.nav == '__user') ? 'uk-active' }} ">
 					<a href="#"> 
-						<span class="nick-name">{{ PRINTNAME(user) }}</span>
+						<span class="nick-name" user-nickname>{{ PRINTNAME(user) }}</span>
 						<span class="uk-icon" uk-icon="icon:triangle-down"></span>
 					</a>
 					<div uk-dropdown="offset:-20; pos:bottom-justify" class="menu">

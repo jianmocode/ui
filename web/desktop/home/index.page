@@ -4,18 +4,18 @@
 
 <section class="jm-focus"><div class="uk-container" >
 	<div class="uk-cover-container uk-height-medium uk-margin-top uk-padding-remove">
-		<img mp:if="{{user.bgimgurl.url}}" src="{{user.bgimgurl.url}}" uk-cover >
-		<img mp:else src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/defaults/user-bgimg.jpg" uk-cover >
+		<img mp:if="{{user.bgimgurl.url}}" src="{{user.bgimgurl.url}}" uk-cover user-bgimgurl>
+		<img mp:else src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/defaults/user-bgimg.jpg" uk-cover user-bgimgurl>
 
 		<div class="uk-overlay uk-position-center uk-light userhead">
 			<div class="uk-card  uk-card-default uk-card-large uk-border-circle">
 				<div class="uk-card-body uk-border-circle uk-cover-container">
-					<img mp:if="{{user.headimgurl.url}}" src="{{user.headimgurl.url}}" uk-cover  >
-					<img mp:else src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/defaults/user-headimg.png" uk-cover >
+					<img mp:if="{{user.headimgurl.url}}" src="{{user.headimgurl.url}}" uk-cover user-headimgurl>
+					<img mp:else src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/defaults/user-headimg.png" uk-cover user-headimgurl>
 				</div>
 			</div>
-			<div class="after-login {{(user.user_id == '') ? 'uk-hidden'}}  uk-text-center uk-margin-small-top nickname">{{user.nickname}}</div>
-			<div class="before-login {{(user.user_id) ? 'uk-hidden'}} uk-text-center uk-margin-small-top nickname"> 尚未登录 </div>
+			<div class="after-login {{(user.user_id == '') ? 'uk-hidden'}}  uk-text-center uk-margin-small-top nickname" user-nickname>{{user.nickname}}</div>
+			<div class="before-login {{(user.user_id) ? 'uk-hidden'}} uk-text-center uk-margin-small-top nickname" > 尚未登录 </div>
 		</div>
 	</div>
 	<div class="uk-padding-remove uk-overflow-hidden">
