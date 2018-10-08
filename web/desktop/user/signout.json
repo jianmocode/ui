@@ -21,6 +21,7 @@
 		}
 	},
 	"entries":[
+		{"method":"GET", "router":"/user/logout.html", "ttl":0},
 		{"method":"GET", "router":"/user/signout", "ttl":0}
 	],
 	"align": {

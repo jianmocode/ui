@@ -1,7 +1,8 @@
 <include src="__WEB_ROOT__/desktop/common/head.page"  />
-
+<div class="uk-flex uk-flex-center">
+	
 <!-- 用户注册表单 -->
-<form	class="iframe-form"  mp:if="{{option.user_mobile_signup_on == 1}}"
+<form	class="iframe-form uk-width-xxlarge"  mp:if="{{option.user_mobile_signup_on == 1}}"
 		method="POST" 
 		action="/_api/xpmsns/user/user/create" 
 		success="(data) => {
@@ -187,5 +188,5 @@
 	</div><!-- END 登录按钮 -->
 </form>
 
-
+</div> <!-- End uk-flex uk-flex-center -->
 <include src="__WEB_ROOT__/desktop/common/foot.page" />
