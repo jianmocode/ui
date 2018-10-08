@@ -16,6 +16,7 @@
 			"api":"/xpmsns/user/user/getUserInfo",
 			"query":{}
 		},
+		"sex":"{{user.sex}}",
 		"page":{
 			"title":"个人资料"
 		},

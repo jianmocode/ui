@@ -66,7 +66,7 @@
 	</div> <!-- 用户头像 -->
 
 	<!-- 账号等级 -->
-	<div class="uk-form-group uk-margin" >
+	<div class="uk-form-group uk-margin uk-hidden" >
 		<label class="uk-form-label uk-form-large">会员类型: </label>
 		<div class="uk-form-controls">
 			<div class="uk-form-large uk-padding-remove-left" >
@@ -99,6 +99,8 @@
 			<div class="uk-helper uk-helper-danger"></div>
 		</div>
 	</div> <!-- END 手机号 -->
+
+
 	
 	<!-- 用户昵称 -->
 	<div class="uk-form-group uk-margin " >
@@ -116,6 +118,24 @@
 				">
 			<div class="uk-helper uk-helper-danger"></div>
 		</div>
+	</div> <!-- END 用户昵称 -->
+	
+	<!-- 用户昵称 -->
+	<div class="uk-form-group uk-margin" >
+		<label class="uk-form-label uk-form-large">性别:</label>
+		<div class="uk-form-controls uk-form-controls-text">
+			<label class="uk-margin-right"><input class="uk-radio " type="radio" name="sex" value="1" > 男 </label>
+			<label><input class="uk-radio" type="radio" name="sex"  value="0" > 女</label>
+			<script type="text/javascript">
+				//数值初始化
+				if ('{{user.sex}}' == '1') {
+					$('[name=sex][value=1]').prop('checked', true);
+				} else {
+					$('[name=sex][value=0]').prop('checked', true);
+				}
+			</script>
+		</div>
+		<div class="uk-helper uk-helper-danger"></div>
 	</div> <!-- END 用户昵称 -->
 
 	<!-- 简介 -->
