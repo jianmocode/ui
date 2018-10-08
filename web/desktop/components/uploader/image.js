@@ -112,10 +112,16 @@ let com = Page({
 			values.push($(it).data('value'));
 		});
 
+		if ( values.length == 0 ){
+			$elm.find('input[type=hidden]').val('');
+			return true;
+		}
+
 		if ( !multiple ){
 			$elm.find('input[type=hidden]').val(JSON.stringify(values[0]) );
 			return true;
 		}
+
 		$elm.find('input[type=hidden]').val(JSON.stringify(values) );
 		return true;
 	},
@@ -223,7 +229,7 @@ let com = Page({
 				}
 
 				if ( errors.length > 0 ){
-					this.error( $elm, errors );
+					this.error( $item, errors, attrs );
 					return ;
 				}
 
@@ -240,7 +246,7 @@ let com = Page({
 						}
 					});
 
-					this.error( $elm, errors );
+					this.error( $item, errors, attrs );
 					return;
 				}
 
@@ -271,13 +277,13 @@ let com = Page({
 				// donoting
 			},
 			fail: (e, data) => {
-				this.error($elm, [result] );
+				this.error(data.$item, [result], attrs );
 			},
 			done: (e, data) =>{
 
 				let result = data.result;
 				if ( result.code != 0 ){
-					this.error($elm, [result] );
+					this.error(data.$item, [result], attrs );
 					return;
 				}
 				// Success
@@ -448,13 +454,18 @@ let com = Page({
 		try { this.events.change( value, $item ); } catch(e){	console.log('Events change call fail', e );}
 	},
 
-	error: function( $elm, errors ) {
+	error: function( $item, errors, attrs ) {
+		
+
+		let $elm = $item.parents('uploader');
 		$elm.find('.jm-uploader-image').addClass('jm-error');
 		for( var i in errors ){
 			let error = errors[i];
 			$elm.find('.jm-helper').addClass('uk-form-danger');
 			$elm.find('.jm-helper').html(error.message);
 		}
+
+		this.remove($item, attrs);
 		try { this.events.error( errors, $elm ); } catch(e){	console.log('Events error call fail', e );}
 		try { this.events.change( errors, $elm); } catch(e){	console.log('Events change call fail', e );}
 	},

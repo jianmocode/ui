@@ -137,20 +137,17 @@ class Validate {
 				let $helper = $formgroup.find('.uk-helper-danger');
 				let message = error.html();
 				$helper.html(message);
-				// console.log( $helper.html() );
-
-				try { that.events.change(error, element);} catch(e){
-					console.log('callback change error:', e, this.events.change);
-				}
+				$helper.show();
+				
+				// fix bug display:none bug 10ms 延迟 ??? 
+				setTimeout(()=>{
+					$helper.html(message);
+					$helper.fadeIn();
+					try { that.events.change(error, element);} catch(e){
+						console.log('callback change error:', e, this.events.change);
+					}
+				}, 10);
 			},
-
-			// invalidHandler: function(event, validator) {
-			// 	console.log('invalidHandler',event);
-			// },
-			// normalizer: function( value ) {
-			// 	console.log('normalizer', value);
-			// 	return $.trim( value );
-			// },
 
 			highlight: function( element ) {
 				let $input = $(element);  
@@ -162,6 +159,7 @@ class Validate {
 				$component.addClass('jm-error');
 			},
 			unhighlight:function(element){
+
 				let $input = $(element);  
 				let $formgroup = $input.parents('.uk-form-group'); 
 				let $helper = $formgroup.find('.uk-helper-danger');
