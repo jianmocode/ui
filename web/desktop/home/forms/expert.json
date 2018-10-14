@@ -1,5 +1,5 @@
 {
-	"cname":"实名认证页",
+	"cname":"专栏认证页",
 	"data": {
 		"site":{
 			"api":"/xpmsns/pages/siteconf/get",
@@ -25,7 +25,7 @@
 			}
 		},
 		"page":{
-			"title":"实名认证"
+			"title":"专栏认证"
 		},
 		"__js":[
 			"/js/jquery-validation-1.17.0/jquery.validate.min.js",
@@ -37,11 +37,11 @@
 		]
 	},
 	"entries":[
-		{"method":"GET", "router":"/home/forms/trust", "ttl":0}
+		{"method":"GET", "router":"/home/forms/expert", "ttl":0}
 	],
 	"align": {
-		"mobile":"/mobile/home/forms/trust",
-		"wechat":"/mobile/home/forms/trust",
-		"wxapp": "/home/forms/trust"
+		"mobile":"/mobile/home/forms/expert",
+		"wechat":"/mobile/home/forms/expert",
+		"wxapp": "/home/forms/expert"
 	}
 }

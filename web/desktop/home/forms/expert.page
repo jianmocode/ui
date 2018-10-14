@@ -1,0 +1,218 @@
+<include src="__WEB_ROOT__/desktop/common/head.page" />
+<include src="__WEB_ROOT__/desktop/components/uploader/image.page" /> <!-- 引入部件 -->
+
+<div class="uk-flex uk-flex-center">
+
+<!-- 实名认证表单 -->
+<form	class="uk-form-horizontal iframe-form uk-width-xxlarge"  mp:if="{{user.user_id}}"
+		method="POST" 
+		action="/_api/xpmsns/user/user/nameVerifiy" 
+		success="function(data) {
+			var $user = $validate.utils.user;
+			$validate.utils.parentNotification('<span uk-icon=\'icon: check;ratio:1.3\'></span>  实名认证申请提交成功', 'success', 'top-right');
+			$('form').addClass('uk-disabled');
+			$('.uk-action').addClass('uk-hidden');
+			$('.verifying').removeClass('uk-hidden');
+			$validate.utils.parentHeight();
+		}" 
+	>
+
+	<div class="uk-margin ">
+		<h3>专栏认证 <span uk-loading="ratio:0.8" class="uk-margin-small-left"></span></h3>
+	</div>
+	
+	<!-- 已经认证中的界面 -->
+	<div class="message uk-alert-warning" uk-alert  mp:if="{{rs.expert_verified == 'verifying'}}"> <p>
+		实名认证申请已提交, 请耐心等待管理员审核。
+	</p></div>
+	<div class="verifying message uk-alert-warning uk-hidden" uk-alert> <p>
+		实名认证申请已提交, 请耐心等待管理员审核。
+	</p></div>
+
+	<!-- 已经认证中的界面 -->
+	<div class="message uk-alert-success" uk-alert  mp:if="{{rs.expert_verified == 'verified'}}">
+		<div class="uk-flex uk-width-1-1 uk-flex-between"> 
+			<span>您已通过实名认证</span>
+			<a href="javascript:void(0);" class="uk-text-success" > 重新认证</a>
+			<div class="reset-drop" uk-drop="mode:click;pos:bottom-right;delay-hide:0">
+				<div class="uk-card uk-card-body uk-card-default uk-padding-small">
+					<div class="uk-text-danger"> 重新认证过程中，网站部分功能将不可用，是否继续？ </div>
+					<div class="uk-inline uk-margin-small-top uk-text-center">
+						<a href="/_api/xpmsns/user/user/nameReset?then=/home/forms/trust" class="uk-button uk-button-small uk-button-primary uk-margin-small-right reset" >确定</a>
+						<a onclick="UIkit.drop($(this).parents('.reset-drop')).hide();" class="uk-button uk-button-small uk-button-default" type="button">取消</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<!-- 	<div>
+		
+	</div> -->
+	
+	<!-- 呈现错误信息 -->
+	<div class="message uk-alert-danger uk-hidden" uk-alert> <p></p></div>
+	
+	<!-- 专栏名称 -->
+	<div class="uk-form-group uk-margin " >
+		<label class="uk-form-label uk-form-large">专栏名称: </label>
+		<div class="uk-form-controls">
+			<input name="expertname" type="text" class="uk-input uk-form-large" 
+				   placeholder="例如:简墨星球" 
+				   value="{{rs.expertname}}"
+				   validate="{
+				   		required:true, 
+				   		messages: {
+							required:'请填写专栏名称'
+				   		}
+				   	}
+				">
+			<div class="uk-helper uk-helper-danger"></div>
+		</div>
+	</div> <!-- END 专栏名称 -->
+
+	<!-- 专栏地址 -->
+	<div class="uk-form-group uk-margin " >
+		<label class="uk-form-label uk-form-large">专栏地址: </label>
+		<div class="uk-form-controls">
+			<div class="uk-flex">
+				<input type="input"  class="uk-input uk-form-large uk-width-3-5 uk-disabled uk-margin-small-right" value="{{home}}" disabled >
+
+				<input name="expertpath" type="text" class="uk-input uk-form-large uk-width-2-5" 
+					   placeholder="请输入专栏地址" 
+					   value="{{rs.expertpath}}"
+					   validate="{
+					   		required:true, 
+					   		messages: {
+								required:'请填写专栏地址'
+					   		}
+					   	}
+					">
+			</div>
+			<div class="uk-helper uk-helper-danger"></div>
+		</div>
+	</div> <!-- END 专栏地址 -->
+
+	<!-- 笔名 -->
+	<div class="uk-form-group uk-margin " >
+		<label class="uk-form-label uk-form-large">笔名: </label>
+		<div class="uk-form-controls">
+			<input name="pseudonym" type="text" class="uk-input uk-form-large" 
+				   placeholder="例如:球球" 
+				   value="{{rs.pseudonym}}"
+			">
+			<div class="uk-helper uk-helper-danger"></div>
+		</div>
+	</div> <!-- END 笔名 -->
+
+	
+	<!-- 认证类型 -->
+	<div class="uk-form-group uk-margin " >
+		<label class="uk-form-label uk-form-large">认证类型: </label>
+		<div class="uk-form-controls">
+            <select 
+            	name="exptype" class="uk-select uk-form-large" 
+            	validate="{
+					required:true, 
+					messages: {
+						required:'请选择证件类型'
+					}
+				}"
+            >
+            	<option value="">请选择...</option>
+                <option value="ID">身份信息认证</option>
+                <option value="AB">自媒体认证</option>
+                <option value="MID">官方认证</option>
+            </select>
+            <script type="text/javascript">
+            $(function(){ // SET Value
+            	if ( '{{rs.exptype}}' != '' ) {
+            		$('[name="exptype"]').val('{{rs.exptype}}');
+            	}
+            });
+            </script>
+			<div class="uk-helper uk-helper-danger"></div>
+		</div>
+	</div> <!-- END 认证类型 -->
+	
+	<!-- 认证信息 -->
+	<div class="uk-form-group uk-margin " >
+		<label class="uk-form-label uk-form-large">认证信息: </label>
+		<div class="uk-form-controls">
+			<input name="expertbio" type="text" class="uk-input uk-form-large" 
+				   placeholder="例如:简墨星球创始人，自媒体作者。" 
+				   value="{{rs.pseudonym}}"
+			">
+			<div class="uk-helper uk-helper-danger"></div>
+		</div>
+	</div> <!-- END 认证信息 -->
+
+
+
+	<!-- 证明材料扫描件 -->
+	<div class="uk-form-group uk-margin" >
+		<label class="uk-form-label uk-form-large">证明材料: </label>
+		<div class="uk-form-controls jm-uploader-image-large">
+			<uploader type="image"
+				name="expdoc"
+				url="/_api/xpmsns/user/user/upload"
+				allow="/(\.|\/)(gif|jpe?g|png)$/i" accept=".gif,.jpg,.jpeg,.png"
+				crop="ratio:1"
+				ratio="auto"
+				maxFileSize="2048"
+				maxChunkSize="1024"
+				value='{{JSON(rs.expdoc, true)}}'
+				titleClass="uk-hidden"
+				class="jm-form-large" multiple 
+
+				validate="{
+					required:true, 
+					messages: {
+						required:'请上传证明材料照片/扫描件'
+					}
+				}"
+
+			>请上传材料照片或扫描件</uploader>
+
+				<div class="uk-text-muted uk-padding-small uk-text-small"> 
+					<ol class="uk-padding-small">
+						<li><strong>身份证:</strong> 上传身份证正反面照片或扫描件。</li>
+						<li><strong>户口簿:</strong> 上传户口簿第一页和您所在页的照片或扫描件。</li>
+						<li><strong>军人身份证:</strong> 上传军人身份证正反面照片或扫描件。</li>
+						<li><strong>武装警察身份证:</strong> 上传武装警察身份证正反面照片或扫描件。</li>
+						<li><strong>港澳通行证:</strong> 上传港澳通行证第一页照片或扫描件。</li>
+						<li><strong>护照:</strong> 上传护照第一页照片或扫描件。</li>
+					</ol>
+				</div>
+		</div>
+	</div> <!-- 用户头像 -->
+
+	<!-- 更新按钮 -->
+	<div class="uk-margin uk-margin-medium-top  {{ (rs.expert_verified == 'verified') ? 'uk-hidden' }} {{ (rs.expert_verified == 'verifying') ? 'uk-hidden' }} ">
+		<button class="uk-button uk-button-primary uk-form-large uk-action" style="width:100%;" type="submit"> 申请开通专栏并认证 </button>
+	</div><!-- END 更新按钮 -->
+
+	<script type="text/javascript">
+	// 锁定认证信息
+	$(function(){
+		if ( "{{rs.expert_verified}}" == "verifying" || "{{rs.expert_verified}}" == "verified" ) {
+			$('form input').addClass('uk-disabled');
+			$('form select').addClass('uk-disabled');
+			$('form uploader').addClass('uk-disabled');
+			$('form button').addClass('uk-disabled');
+		}
+	})
+	</script>
+
+</form>
+
+<!-- 用户未登录界面 -->
+<div class="container" mp:else >
+	<script type="text/javascript" >
+		window.location="/user/signin/mobile?then=/home/forms/profile";
+	</script>
+</div> <!-- END Row Container -->
+
+</div> <!-- End uk-flex uk-flex-center -->
+<include src="__WEB_ROOT__/desktop/common/foot.page" />
