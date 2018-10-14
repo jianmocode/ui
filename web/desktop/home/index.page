@@ -8,8 +8,8 @@
 		<img mp:else src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/defaults/user-bgimg.jpg" uk-cover user-bgimgurl>
 
 		<div class="uk-overlay uk-position-center uk-light userhead">
-			<div class="uk-card  uk-card-default uk-card-large uk-border-circle">
-				<div class="uk-card-body uk-border-circle uk-cover-container">
+			<div class="uk-card  uk-card-default uk-card-large uk-border-circle" >
+				<div class="uk-card-body uk-border-circle uk-cover-container" style="height:52px;width:52px;">
 					<img mp:if="{{user.headimgurl.url}}" src="{{user.headimgurl.url}}" uk-cover user-headimgurl>
 					<img mp:else src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/defaults/user-headimg.png" uk-cover user-headimgurl>
 				</div>

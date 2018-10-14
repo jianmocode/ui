@@ -169,7 +169,6 @@ let com = Page({
 		let maxChunkSize = attrs['maxChunkSize'] ? attrs['maxChunkSize'] * 1024 : undefined; // 不分段
 
 		// 允许
-
 		// 初始化 upload 控件
 		// @see https://github.com/blueimp/jQuery-File-Upload/wiki/Options
 		$elm.find('input[type=file]').fileupload({
@@ -197,6 +196,7 @@ let com = Page({
 					return;
 				}
 
+				let $item = this.add($elm, null, attrs, true ); // 添加 item
 				let errors = [];
 
 				// 校验filetype
@@ -233,7 +233,6 @@ let com = Page({
 					return ;
 				}
 
-				let $item = this.add($elm, null, attrs, true ); // 添加 item
 				if ( !$item ){
 					errors.push({
 						code:402,
@@ -455,7 +454,6 @@ let com = Page({
 	},
 
 	error: function( $item, errors, attrs ) {
-		
 
 		let $elm = $item.parents('uploader');
 		$elm.find('.jm-uploader-image').addClass('jm-error');

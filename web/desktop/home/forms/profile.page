@@ -8,12 +8,10 @@
 		method="POST" 
 		action="/_api/xpmsns/user/user/updateProfile" 
 		success="function(data) {
+			var $user = $validate.utils.user;
 			$validate.utils.parentNotification('<span uk-icon=\'icon: check;ratio:1.3\'></span>  个人资料更新成功', 'success', 'top-right');
-
-			// var $user = $validate.utils.user;
-			// var $utils = $validate.utils;
-			// $user.login(data);
-			// $utils.parentClose();
+			$user.login(data);
+			console.log( data );
 		}" 
 	>
 
