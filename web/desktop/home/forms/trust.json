@@ -1,0 +1,47 @@
+{
+	"cname":"实名认证页",
+	"data": {
+		"site":{
+			"api":"/xpmsns/pages/siteconf/get",
+			"query":{
+				"site_slug":"global",
+				"select":"*"
+			}
+		},
+		"option":{
+			"api":"/xpmsns/user/user/option",
+			"query":{}
+		},
+		"user":{
+			"api":"/xpmsns/user/user/getUserInfo",
+			"query":{}
+		},
+		"sex":"{{user.sex}}",
+		"rs": {
+			"api":"/xpmsns/user/user/getData",
+			"query":{
+				"user_id": "{{user.user_id}}",
+				"select": "name,idno,idtype,iddoc,name_verified"
+			}
+		},
+		"page":{
+			"title":"个人资料"
+		},
+		"__js":[
+			"/js/jquery-validation-1.17.0/jquery.validate.min.js",
+			"/js/jquery.ui.widget.js",
+			"/js/jquery.iframe-transport.js",
+			"/js/jquery.fileupload.js",
+			"/js/jquery.form.min.js",
+			"/js/mustache.min.js"
+		]
+	},
+	"entries":[
+		{"method":"GET", "router":"/home/forms/trust", "ttl":0}
+	],
+	"align": {
+		"mobile":"/mobile/home/forms/trust",
+		"wechat":"/mobile/home/forms/trust",
+		"wxapp": "/home/forms/trust"
+	}
+}

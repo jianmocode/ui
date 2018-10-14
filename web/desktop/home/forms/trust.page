@@ -1,0 +1,191 @@
+<include src="__WEB_ROOT__/desktop/common/head.page" />
+<include src="__WEB_ROOT__/desktop/components/uploader/image.page" /> <!-- 引入部件 -->
+
+<div class="uk-flex uk-flex-center">
+
+<!-- 实名认证表单 -->
+<form	class="uk-form-horizontal iframe-form uk-width-xxlarge"  mp:if="{{user.user_id}}"
+		method="POST" 
+		action="/_api/xpmsns/user/user/nameVerifiy" 
+		success="function(data) {
+			var $user = $validate.utils.user;
+			$validate.utils.parentNotification('<span uk-icon=\'icon: check;ratio:1.3\'></span>  实名认证申请提交成功', 'success', 'top-right');
+			$('form').addClass('uk-disabled');
+			$('.uk-action').addClass('uk-hidden');
+			$('.verifying').removeClass('uk-hidden');
+			$validate.utils.parentHeight();
+		}" 
+	>
+
+	<div class="uk-margin ">
+		<h3>实名认证 <span uk-loading="ratio:0.8" class="uk-margin-small-left"></span></h3>
+	</div>
+	
+	<!-- 已经认证中的界面 -->
+	<div class="message uk-alert-warning" uk-alert  mp:if="{{rs.name_verified == 'verifying'}}"> <p>
+		实名认证申请已提交, 请耐心等待管理员审核。
+	</p></div>
+	<div class="verifying message uk-alert-warning uk-hidden" uk-alert> <p>
+		实名认证申请已提交, 请耐心等待管理员审核。
+	</p></div>
+
+	<!-- 已经认证中的界面 -->
+	<div class="message uk-alert-success" uk-alert  mp:if="{{rs.name_verified == 'verified'}}">
+		<div class="uk-flex uk-width-1-1 uk-flex-between"> 
+			<span>您已通过实名认证</span>
+			<a href="javascript:void(0);" class="uk-text-success" > 重新认证</a>
+			<div class="reset-drop" uk-drop="mode:click;pos:bottom-right;delay-hide:0">
+				<div class="uk-card uk-card-body uk-card-default uk-padding-small">
+					<div class="uk-text-danger"> 重新认证过程中，网站部分功能将不可用，是否继续？ </div>
+					<div class="uk-inline uk-margin-small-top uk-text-center">
+						<a href="/_api/xpmsns/user/user/nameReset?then=/home/forms/trust" class="uk-button uk-button-small uk-button-primary uk-margin-small-right reset" >确定</a>
+						<a onclick="UIkit.drop($(this).parents('.reset-drop')).hide();" class="uk-button uk-button-small uk-button-default" type="button">取消</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<!-- 	<div>
+		
+	</div> -->
+	
+	<!-- 呈现错误信息 -->
+	<div class="message uk-alert-danger uk-hidden" uk-alert> <p></p></div>
+	
+	<!-- 真实姓名 -->
+	<div class="uk-form-group uk-margin " >
+		<label class="uk-form-label uk-form-large">真实姓名: </label>
+		<div class="uk-form-controls">
+			<input name="name" type="text" class="uk-input uk-form-large" 
+				   placeholder="请输入真实姓名" 
+				   value="{{rs.name}}"
+				   validate="{
+				   		required:true, 
+				   		messages: {
+							required:'请填写真实姓名'
+				   		}
+				   	}
+				">
+			<div class="uk-helper uk-helper-danger"></div>
+		</div>
+	</div> <!-- END 真是姓名 -->
+
+	<!-- 证件号码 -->
+	<div class="uk-form-group uk-margin " >
+		<label class="uk-form-label uk-form-large">证件类型: </label>
+		<div class="uk-form-controls">
+            <select 
+            	name="idtype" class="uk-select uk-form-large" 
+            	validate="{
+					required:true, 
+					messages: {
+						required:'请选择证件类型'
+					}
+				}"
+            >
+                <option value="ID" selected>身份证</option>
+                <option value="AB">户口簿</option>
+                <option value="MID">军人身份证</option>
+                <option value="APID">武装警察身份证</option>
+                <option value="HMLP">港澳通行证(限港澳居民)</option>
+                <option value="MTPS">台胞证(限台湾省居民)</option>
+                <option value="PASSPORT">护照(限外国公民)</option>
+            </select>
+            <script type="text/javascript">
+            $(function(){ // SET Value
+            	if ( '{{rs.idtype}}' != '' ) {
+            		$('[name="idtype"]').val('{{rs.idtype}}');
+            	}
+            });
+            </script>
+			<div class="uk-helper uk-helper-danger"></div>
+		</div>
+	</div> <!-- END 证件号码 -->
+
+
+	<!-- 证件号码 -->
+	<div class="uk-form-group uk-margin " >
+		<label class="uk-form-label uk-form-large">证件号码: </label>
+		<div class="uk-form-controls">
+			<input name="idno" type="text" class="uk-input uk-form-large" 
+				   placeholder="请输入证件号码" 
+				   value="{{rs.idno}}"
+				   validate="{
+				   		required:true, 
+				   		messages: {
+							required:'请填写证件号码'
+				   		}
+				   	}
+				">
+			<div class="uk-helper uk-helper-danger"></div>
+		</div>
+	</div> <!-- END 证件号码 -->
+
+	<!-- 用户头像 -->
+	<div class="uk-form-group uk-margin" >
+		<label class="uk-form-label uk-form-large">证件扫描件/照片: </label>
+		<div class="uk-form-controls jm-uploader-image-large">
+			<uploader type="image"
+				name="iddoc"
+				url="/_api/xpmsns/user/user/upload"
+				allow="/(\.|\/)(gif|jpe?g|png)$/i" accept=".gif,.jpg,.jpeg,.png"
+				crop="ratio:1"
+				ratio="auto"
+				maxFileSize="2048"
+				maxChunkSize="1024"
+				value='{{JSON(rs.iddoc, true)}}'
+				titleClass="uk-hidden"
+				class="jm-form-large" multiple 
+
+				validate="{
+					required:true, 
+					messages: {
+						required:'请上传证件扫描件/照片'
+					}
+				}"
+
+			>上传证件照片</uploader>
+
+				<div class="uk-text-muted uk-padding-small uk-text-small"> 
+					<ol class="uk-padding-small">
+						<li><strong>身份证:</strong> 上传身份证正反面照片或扫描件。</li>
+						<li><strong>户口簿:</strong> 上传户口簿第一页和您所在页的照片或扫描件。</li>
+						<li><strong>军人身份证:</strong> 上传军人身份证正反面照片或扫描件。</li>
+						<li><strong>武装警察身份证:</strong> 上传武装警察身份证正反面照片或扫描件。</li>
+						<li><strong>港澳通行证:</strong> 上传港澳通行证第一页照片或扫描件。</li>
+						<li><strong>护照:</strong> 上传护照第一页照片或扫描件。</li>
+					</ol>
+				</div>
+		</div>
+	</div> <!-- 用户头像 -->
+
+	<!-- 更新按钮 -->
+	<div class="uk-margin uk-margin-medium-top  {{ (rs.name_verified == 'verified') ? 'uk-hidden' }} {{ (rs.name_verified == 'verifying') ? 'uk-hidden' }} ">
+		<button class="uk-button uk-button-primary uk-form-large uk-action" style="width:100%;" type="submit"> 提交实名认证申请 </button>
+	</div><!-- END 更新按钮 -->
+
+	<script type="text/javascript">
+	// 锁定认证信息
+	$(function(){
+		if ( "{{rs.name_verified}}" == "verifying" || "{{rs.name_verified}}" == "verified" ) {
+			$('form input').addClass('uk-disabled');
+			$('form select').addClass('uk-disabled');
+			$('form uploader').addClass('uk-disabled');
+			$('form button').addClass('uk-disabled');
+		}
+	})
+	</script>
+
+</form>
+
+<!-- 用户未登录界面 -->
+<div class="container" mp:else >
+	<script type="text/javascript" >
+		window.location="/user/signin/mobile?then=/home/forms/profile";
+	</script>
+</div> <!-- END Row Container -->
+
+</div> <!-- End uk-flex uk-flex-center -->
+<include src="__WEB_ROOT__/desktop/common/foot.page" />
