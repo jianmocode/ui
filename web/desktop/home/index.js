@@ -31,7 +31,20 @@ Page({
 				$(this).attr('height', frameH);
 				$(this).css('height', frameH);
 				$('#forms .loading').addClass('uk-hidden');
+
+
+				// 更新Location
+				var stateObj = { home: "index" };
+				var links = link.split('/');
+				var form = links.pop();
+				let uri = window.location.href.split('#');
+				let url = uri[0] + '#' + form;
+				var title = $(this).contents().find("title").html();
+					$('title').html(title);
+				window.history.pushState(stateObj, title, url);
 			});
+
+
 		});
 
 		// 激活当前页
