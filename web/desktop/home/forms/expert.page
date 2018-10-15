@@ -50,7 +50,7 @@
 	<!-- 呈现错误信息 -->
 	<div class="message uk-alert-danger uk-hidden" uk-alert> <p></p></div>
 	
-	<!-- 认证类型 -->
+	<!-- 专栏类型 -->
 	<div class="uk-form-group uk-margin " >
 		<label class="uk-form-label uk-form-large">专栏类型: </label>
         <div class="uk-form-controls uk-form-controls-text">
@@ -71,7 +71,7 @@
 			</div>
 		</div>
 		<div class="uk-helper uk-helper-danger"></div>
-	</div> <!-- END 认证类型 -->
+	</div> <!-- END 专栏类型 -->
 
 	<!-- 专栏地址 -->
 	<div class="uk-form-group uk-margin " >
@@ -123,6 +123,21 @@
 			<div class="uk-helper uk-helper-danger"></div>
 		</div>
 	</div> <!-- END 认证信息 -->
+
+	
+	<!-- 内容类目 -->
+	<div class="uk-form-group uk-margin " >
+		<label class="uk-form-label uk-form-large">内容类目: </label>
+        <div class="uk-form-controls uk-form-controls-text">
+        	<div class="uk-margin-small-top uk-margin-small-bottom" >
+				<label class="uk-margin-right "><input class="uk-checkbox" type="checkbox" name="expcates" value="TITLE" > 新闻媒体 </label>
+				<label class="uk-margin-right "><input class="uk-checkbox" type="checkbox" name="expcates"  value="WEMEDIA" > 新闻媒体 </label>
+				<label><input class="uk-checkbox" type="checkbox" name="expcates"  value="OFFICIAL" > 新闻媒体 </label>
+			</div>
+		</div>
+		<div class="uk-helper uk-helper-danger"></div>
+	</div> <!-- END 内容类目 -->
+
 
 	<!-- 证明材料扫描件 -->
 	<div class="uk-form-group uk-margin" >
