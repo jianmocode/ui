@@ -55,17 +55,17 @@
 		<label class="uk-form-label uk-form-large">专栏类型: </label>
         <div class="uk-form-controls uk-form-controls-text">
         	<div class="uk-margin-small-top uk-margin-small-bottom" >
-				<label class="uk-margin-right "><input class="uk-radio" type="radio" name="exptype" value="TITLE" > 业界专家 </label>
-				<label class="uk-margin-right "><input class="uk-radio" type="radio" name="exptype"  value="WEMEDIA" > 自媒体 </label>
-				<label><input class="uk-radio" type="radio" name="exptype"  value="OFFICIAL" > 官方 </label>
+				<label class="uk-margin-right "><input class="uk-radio" type="radio" name="type" value="expert" > 业界专家 </label>
+				<label class="uk-margin-right "><input class="uk-radio" type="radio" name="type"  value="wemedia" > 自媒体 </label>
+				<label><input class="uk-radio" type="radio" name="type"  value="official" > 官方机构 </label>
 				<script type="text/javascript">
 					//数值初始化
-					if ('{{rs.exptype}}' == 'TITLE' || '{{rs.exptype}}' == '' ) {
-						$('[name=exptype][value=TITLE]').prop('checked', true);
-					} else if ('{{rs.exptype}}' == 'WEMEDIA' ) {
-						$('[name=exptype][value=WEMEDIA]').prop('checked', true);
-					} else if ('{{rs.exptype}}' == 'OFFICIAL') {
-						$('[name=exptype][value=OFFICIAL]').prop('checked', true);
+					if ('{{rs.type}}' == 'expert' || '{{rs.type}}' == '' ) {
+						$('[name=type][value=expert]').prop('checked', true);
+					} else if ('{{rs.type}}' == 'wemedia' ) {
+						$('[name=type][value=wemedia]').prop('checked', true);
+					} else if ('{{rs.type}}' == 'official') {
+						$('[name=type][value=official]').prop('checked', true);
 					}
 				</script>
 			</div>
@@ -79,9 +79,9 @@
 		<div class="uk-form-controls">
 			<div class="uk-flex">
 				<input type="input"  class="uk-input uk-form-large uk-width-3-5 uk-disabled uk-margin-small-right"  value="{{__var.__home}}/v/" disabled >
-				<input name="expurl" type="text" class="uk-input uk-form-large uk-width-2-5" 
+				<input name="path" type="text" class="uk-input uk-form-large uk-width-2-5" 
 					   placeholder="字母或数字, 例如:jm123" 
-					   value="{{rs.expurl}}"
+					   value="{{rs.path}}"
 					   validate="{
 					   		required:true, 
 					   		messages: {
@@ -99,9 +99,9 @@
 	<div class="uk-form-group uk-margin " >
 		<label class="uk-form-label uk-form-large">专栏名称: </label>
 		<div class="uk-form-controls">
-			<input name="expname" type="text" class="uk-input uk-form-large" 
+			<input name="name" type="text" class="uk-input uk-form-large" 
 				   placeholder="例如:简墨星球" 
-				   value="{{rs.expname}}"
+				   value="{{rs.name}}"
 				   validate="{
 				   		required:true, 
 				   		messages: {
@@ -118,8 +118,8 @@
 	<div class="uk-form-group uk-margin " >
 		<label class="uk-form-label uk-form-large">专栏简介: </label>
 		<div class="uk-form-controls">
-			<textarea name="expbio" class="uk-textarea uk-form-large" rows="4" placeholder="例如:面向全球互联网软件行业资讯的垂直内容平台。" 
-			">{{rs.expbio}}</textarea>
+			<textarea name="summary" class="uk-textarea uk-form-large" rows="4" placeholder="例如:面向全球互联网软件行业资讯的垂直内容平台。" 
+			">{{rs.summary}}</textarea>
 			<div class="uk-helper uk-helper-danger"></div>
 		</div>
 	</div> <!-- END 认证信息 -->
@@ -130,28 +130,51 @@
 		<label class="uk-form-label uk-form-large">内容类目: </label>
         <div class="uk-form-controls uk-form-controls-text">
         	<div class="uk-margin-small-top uk-margin-small-bottom" >
-				<label class="uk-margin-right "><input class="uk-checkbox" type="checkbox" name="expcates" value="TITLE" > 新闻媒体 </label>
-				<label class="uk-margin-right "><input class="uk-checkbox" type="checkbox" name="expcates"  value="WEMEDIA" > 新闻媒体 </label>
-				<label><input class="uk-checkbox" type="checkbox" name="expcates"  value="OFFICIAL" > 新闻媒体 </label>
+				<label class="uk-margin-right "><input class="uk-checkbox" type="checkbox" name="category_ids" value="TITLE" > 新闻媒体 </label>
+				<label class="uk-margin-right "><input class="uk-checkbox" type="checkbox" name="category_ids"  value="WEMEDIA" > 新闻媒体 </label>
+				<label><input class="uk-checkbox" type="checkbox" name="category_ids"  value="OFFICIAL" > 新闻媒体 </label>
 			</div>
 		</div>
 		<div class="uk-helper uk-helper-danger"></div>
 	</div> <!-- END 内容类目 -->
 
+	<!-- 专栏LOGO -->
+	<div class="uk-form-group uk-margin" >
+		<label class="uk-form-label uk-form-large">证明材料: </label>
+		<div class="uk-form-controls jm-uploader-image-large">
+			<uploader type="image"
+				name="logo"
+				url="/_api/xpmsns/user/user/upload"
+				allow="/(\.|\/)(gif|jpe?g|png)$/i" accept=".gif,.jpg,.jpeg,.png"
+				ratio="1"
+				maxFileSize="2048"
+				maxChunkSize="1024"
+				value='{{JSON(rs.logo, true)}}'
+				titleClass="uk-hidden"
+				class="jm-form-large"
+				validate="{
+					required:true, 
+					messages: {
+						required:'请上传专栏LOGO'
+					}
+				}"
+			>请上传专栏LOGO</uploader>
+		</div>
+	</div> <!-- 专栏LOGO -->
 
 	<!-- 证明材料扫描件 -->
 	<div class="uk-form-group uk-margin" >
 		<label class="uk-form-label uk-form-large">证明材料: </label>
 		<div class="uk-form-controls jm-uploader-image-large">
 			<uploader type="image"
-				name="expdoc"
+				name="docs"
 				url="/_api/xpmsns/user/user/upload"
 				allow="/(\.|\/)(gif|jpe?g|png)$/i" accept=".gif,.jpg,.jpeg,.png"
 				crop="ratio:1"
 				ratio="auto"
 				maxFileSize="2048"
 				maxChunkSize="1024"
-				value='{{JSON(rs.expdoc, true)}}'
+				value='{{JSON(rs.docs, true)}}'
 				titleClass="uk-hidden"
 				class="jm-form-large" multiple 
 
@@ -172,7 +195,7 @@
 					</ol>
 				</div>
 		</div>
-	</div> <!-- 用户头像 -->
+	</div> <!-- 证明材料扫描件 -->
 
 	<!-- 更新按钮 -->
 	<div class="uk-margin uk-margin-medium-top  {{ (rs.expert_verified == 'verified') ? 'uk-hidden' }} {{ (rs.expert_verified == 'verifying') ? 'uk-hidden' }} ">
