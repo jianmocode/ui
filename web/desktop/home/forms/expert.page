@@ -6,10 +6,10 @@
 <!-- 实名认证表单 -->
 <form	class="uk-form-horizontal iframe-form uk-width-xxlarge"  mp:if="{{user.user_id}}"
 		method="POST" 
-		action="/_api/xpmsns/user/user/nameVerifiy" 
+		action="/_api/xpmsns/user/user/mySpecialUpdate" 
 		success="function(data) {
 			var $user = $validate.utils.user;
-			$validate.utils.parentNotification('<span uk-icon=\'icon: check;ratio:1.3\'></span>  实名认证申请提交成功', 'success', 'top-right');
+			$validate.utils.parentNotification('<span uk-icon=\'icon: check;ratio:1.3\'></span>  开通专栏申请提交成功', 'success', 'top-right');
 			$('form').addClass('uk-disabled');
 			$('.uk-action').addClass('uk-hidden');
 			$('.verifying').removeClass('uk-hidden');
@@ -23,17 +23,17 @@
 	
 	<!-- 已经认证中的界面 -->
 	<div class="message uk-alert-warning" uk-alert  mp:if="{{rs.expert_verified == 'verifying'}}"> <p>
-		实名认证申请已提交, 请耐心等待管理员审核。
+		专栏开通申请已提交, 请耐心等待管理员审核。
 	</p></div>
 	<div class="verifying message uk-alert-warning uk-hidden" uk-alert> <p>
-		实名认证申请已提交, 请耐心等待管理员审核。
+		专栏开通申请已提交, 请耐心等待管理员审核。
 	</p></div>
 
 	<!-- 已经认证中的界面 -->
 	<div class="message uk-alert-success" uk-alert  mp:if="{{rs.expert_verified == 'verified'}}">
 		<div class="uk-flex uk-width-1-1 uk-flex-between"> 
-			<span>您已通过实名认证</span>
-			<a href="javascript:void(0);" class="uk-text-success" > 重新认证</a>
+			<span>您的专栏已开通</span>
+			<a href="javascript:void(0);" class="uk-text-success" > 修改资料</a>
 			<div class="reset-drop" uk-drop="mode:click;pos:bottom-right;delay-hide:0">
 				<div class="uk-card uk-card-body uk-card-default uk-padding-small">
 					<div class="uk-text-danger"> 重新认证过程中，网站部分功能将不可用，是否继续？ </div>
@@ -119,6 +119,14 @@
 		<label class="uk-form-label uk-form-large">专栏简介: </label>
 		<div class="uk-form-controls">
 			<textarea name="summary" class="uk-textarea uk-form-large" rows="4" placeholder="例如:面向全球互联网软件行业资讯的垂直内容平台。" 
+				validate="{
+					required:true,
+					minlength:20,
+					messages: {
+						required:'请填写专栏简介',
+						minlength:'专栏简介至少填写20个字'
+					}
+				}
 			">{{rs.summary}}</textarea>
 			<div class="uk-helper uk-helper-danger"></div>
 		</div>
@@ -129,18 +137,21 @@
 	<div class="uk-form-group uk-margin " >
 		<label class="uk-form-label uk-form-large">内容类目: </label>
         <div class="uk-form-controls uk-form-controls-text">
-        	<div class="uk-margin-small-top uk-margin-small-bottom" >
-				<label class="uk-margin-right "><input class="uk-checkbox" type="checkbox" name="category_ids" value="TITLE" > 新闻媒体 </label>
-				<label class="uk-margin-right "><input class="uk-checkbox" type="checkbox" name="category_ids"  value="WEMEDIA" > 新闻媒体 </label>
-				<label><input class="uk-checkbox" type="checkbox" name="category_ids"  value="OFFICIAL" > 新闻媒体 </label>
+        	<div class="uk-margin-small-top uk-margin-small-bottom uk-flex-wrap uk-flex" >
+				<label class="uk-margin-right uk-checkbox-label uk-form-large " mp:for="{{cates}}" mp:for-item="{{ca}}" >
+					<input class="uk-checkbox" type="checkbox" name="category_ids[]" value="{{ca.category_id}}" > {{ca.name}} 
+				</label>
 			</div>
+			<script type="text/javascript">
+				// init data
+			</script>
 		</div>
 		<div class="uk-helper uk-helper-danger"></div>
 	</div> <!-- END 内容类目 -->
 
 	<!-- 专栏LOGO -->
 	<div class="uk-form-group uk-margin" >
-		<label class="uk-form-label uk-form-large">证明材料: </label>
+		<label class="uk-form-label uk-form-large">专栏LOGO: </label>
 		<div class="uk-form-controls jm-uploader-image-large">
 			<uploader type="image"
 				name="logo"
@@ -164,7 +175,7 @@
 
 	<!-- 证明材料扫描件 -->
 	<div class="uk-form-group uk-margin" >
-		<label class="uk-form-label uk-form-large">证明材料: </label>
+		<label class="uk-form-label uk-form-large">申请材料: </label>
 		<div class="uk-form-controls jm-uploader-image-large">
 			<uploader type="image"
 				name="docs"
@@ -176,15 +187,14 @@
 				maxChunkSize="1024"
 				value='{{JSON(rs.docs, true)}}'
 				titleClass="uk-hidden"
-				class="jm-form-large" multiple 
-
+				class="jm-form-large"  
 				validate="{
 					required:true, 
 					messages: {
 						required:'请上传证明材料照片/扫描件'
 					}
 				}"
-
+				multiple
 			>请上传材料照片或扫描件</uploader>
 
 				<div class="uk-text-muted uk-padding-small uk-text-small"> 
