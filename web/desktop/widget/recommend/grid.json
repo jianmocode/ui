@@ -1,0 +1,29 @@
+{	
+	"cname":"页面部件-推荐网格",
+	"type":"component",
+	"data": {
+		"site":{
+			"api":"/xpmsns/pages/siteconf/get",
+			"query":{
+				"site_slug":"global",
+				"select":"*"
+			}
+		},
+		"section":{
+			"api":"/xpmsns/pages/recommend/getContents",
+			"query":{
+				"slug":"{{__var.slug}}",
+				"page":"{{__get.page}}",
+				"perpage":18
+			}
+		}
+	},
+	"entries":[
+		{"method":"GET", "router":"/widget/recommend/grid/{slug:[0-9a-zA-Z_]+}", "ttl":0}
+	],
+	"alias": {
+		"mobile":"/mobile/widget/recommend/grid",
+		"wechat":"/mobile/widget/recommend/grid",
+		"wxapp": "/widget/recommend/grid"
+	}
+}
