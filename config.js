@@ -2,11 +2,12 @@ config = {
 	mina:{
 		target: false,
 		priority:0,
-		server:"https://wss.xpmjs.com",
-		domain:"wss.xpmjs.com",
+		server:"http://rainxn.tt.com",
+		domain:"rainxn.tt.com",
 		project:"default",
 		appid:'152389239297374',
-		secret:'500970dad3324330f8a1085939f20360'
+		secret:'500970dad3324330f8a1085939f20360',
+		instance:"rainxn",
 	},
 	wxapp:{
 		"cli":"/Applications/wechatwebdevtools.app/Contents/Resources/app.nw/bin/cli",
