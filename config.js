@@ -7,7 +7,7 @@ config = {
 		project:"default",
 		appid:'152389239297374',
 		secret:'500970dad3324330f8a1085939f20360',
-		instance:"rainxn",
+		instance:"root",
 	},
 	wxapp:{
 		"cli":"/Applications/wechatwebdevtools.app/Contents/Resources/app.nw/bin/cli",
