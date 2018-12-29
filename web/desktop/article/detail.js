@@ -5,8 +5,6 @@ Page({
 	data:{},
 	onReady: function( params ) {
 
-        console.log( "hello world", params );
-
 		try { this.initShareNavbar(); } catch(e){
 			console.log( 'Error @initShareNavbar', e);
 		}
@@ -15,7 +13,6 @@ Page({
 		} catch( e ) {
 			console.log( 'Error @Article init', e);
         }
-        
 	},
 
 	initShareNavbar: function() {
