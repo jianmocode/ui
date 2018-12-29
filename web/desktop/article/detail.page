@@ -12,13 +12,10 @@
 				<a mp:if="{{article.category_last.parent_id}}" class="category" href="/article/list/{{article.category_last.parent_id}}.html?subcate={{article.category_last.category_id}}"> {{article.category_last.name}} </a>
 				<a mp:else class="category" href="/article/list/{{article.category_last.category_id}}.html}}"> {{article.category_last.name}} </a>
 			</div>
-
 			<div class="jm-article-summary" mp:if="{{article.summary}}"> {{article.summary}} </div>
-
-			<div class="jm-article-content"> {{article.content}}</div>
+			<div class="jm-article-content">{{article.content}}</div>
 
 			<hr class="uk-divider-icon">
-
 
 			<div class="jm-card-s6 uk-card share-navbar uk-hidden">
 				<div class="uk-clearfix">

@@ -286,11 +286,11 @@ function uploadFile( file, options={}  ) { // 上传文件到指定地址
 // 存储API
 function _stor( options = {} ) {
 	let engine = WEB_STORAGE['engine'] || 'local';
-	let opts = {};
+	let opts = {
+        instance:CONF['mina']['instance']
+    };
 	objectMerge(opts,  WEB_STORAGE['options'], options);
 	let Storage = require(path.resolve('./gulp-plugins/storage/' + engine));
-
-
 	return new Storage( opts );
 }
 

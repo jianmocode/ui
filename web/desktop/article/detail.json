@@ -47,7 +47,12 @@
 			"query":{
 				"select":"name,link"
 			}
-		},
+        },
+        "user":{
+			"api":"/xpmsns/user/user/getUserInfo",
+			"query":{}
+        },
+        "name":"test2",
 		"page":{
 			"title":"{{article.title}}",
 			"logo":"{{site.site_logo}}"
