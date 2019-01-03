@@ -19,6 +19,11 @@
 		<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/js/jquery.slimscroll.min.js"></script>
 		
 		<script mp:for="{{__js}}" type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/{{item}}"></script>
-		
+        
+        <!-- Header 注入开始-->
+        {{site.header}}
+
+        <!-- Header 注入结束 -->
+        
 	</head>
 	<body class="{{(page.background) ? page.background}}">

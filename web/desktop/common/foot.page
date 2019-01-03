@@ -13,5 +13,8 @@
 	</div>
 </div>
 
+ <!-- Footer 注入开始-->
+ {{site.footer}}
+ <!-- Footer 注入结束 -->
 </body>
 </html>																 
