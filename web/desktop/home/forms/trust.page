@@ -24,7 +24,13 @@
 	<!-- 已经认证中的界面 -->
 	<div class="message uk-alert-warning" uk-alert  mp:if="{{rs.name_verified == 'verifying'}}"> <p>
 		实名认证申请已提交, 请耐心等待管理员审核。
-	</p></div>
+    </p></div>
+    
+    <div class="message uk-alert-danger" uk-alert  mp:if="{{rs.name_verified == 'failure'}}"> <p>
+        未通过审核:  
+        {{rs.name_message}}
+    </p></div>
+
 	<div class="verifying message uk-alert-warning uk-hidden" uk-alert> <p>
 		实名认证申请已提交, 请耐心等待管理员审核。
 	</p></div>

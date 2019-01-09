@@ -28,7 +28,7 @@
     
     <!-- 驳回申请 -->
     <div class="message uk-alert-danger" uk-alert  mp:if="{{rs.status == 'failure'}}"> <p>
-        未通过审核，未通过原因: 
+        未通过审核: 
         {{rs.message}}
     </p></div>
 

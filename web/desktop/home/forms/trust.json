@@ -21,7 +21,7 @@
 			"api":"/xpmsns/user/user/getData",
 			"query":{
 				"user_id": "{{user.user_id}}",
-				"select": "name,idno,idtype,iddoc,name_verified"
+				"select": "name,idno,idtype,iddoc,name_verified,name_message"
 			}
 		},
 		"page":{
