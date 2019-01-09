@@ -29,10 +29,10 @@
 		},
 		"sex":"{{user.sex}}",
 		"rs": {
-			"api":"/xpmsns/user/user/getData",
+			"api":"/xpmsns/pages/special/get",
 			"query":{
 				"user_id": "{{user.user_id}}",
-				"select": "name,idno,idtype,iddoc,name_verified"
+				"select": "*"
 			}
 		},
 		"page":{

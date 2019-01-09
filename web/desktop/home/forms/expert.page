@@ -3,10 +3,10 @@
 
 <div class="uk-flex uk-flex-center">
 
-<!-- 实名认证表单 -->
+<!-- 专栏申请表单 -->
 <form	class="uk-form-horizontal iframe-form uk-width-xxlarge"  mp:if="{{user.user_id}}"
 		method="POST" 
-		action="/_api/xpmsns/user/user/mySpecialUpdate" 
+		action="/_api/xpmsns/user/special/updateMySpecial" 
 		success="function(data) {
 			var $user = $validate.utils.user;
 			$validate.utils.parentNotification('<span uk-icon=\'icon: check;ratio:1.3\'></span>  开通专栏申请提交成功', 'success', 'top-right');
@@ -22,7 +22,7 @@
 	</div>
 	
 	<!-- 已经认证中的界面 -->
-	<div class="message uk-alert-warning" uk-alert  mp:if="{{rs.expert_verified == 'verifying'}}"> <p>
+	<div class="message uk-alert-warning" uk-alert  mp:if="{{rs.status == 'pending'}}"> <p>
 		专栏开通申请已提交, 请耐心等待管理员审核。
 	</p></div>
 	<div class="verifying message uk-alert-warning uk-hidden" uk-alert> <p>
@@ -30,10 +30,10 @@
 	</p></div>
 
 	<!-- 已经认证中的界面 -->
-	<div class="message uk-alert-success" uk-alert  mp:if="{{rs.expert_verified == 'verified'}}">
+	<div class="message uk-alert-success" uk-alert  mp:if="{{rs.status == 'on'}}">
 		<div class="uk-flex uk-width-1-1 uk-flex-between"> 
 			<span>您的专栏已开通</span>
-			<a href="javascript:void(0);" class="uk-text-success" > 修改资料</a>
+			<a href="javascript:void(0);" class="uk-text-success" > 更新资料</a>
 			<div class="reset-drop" uk-drop="mode:click;pos:bottom-right;delay-hide:0">
 				<div class="uk-card uk-card-body uk-card-default uk-padding-small">
 					<div class="uk-text-danger"> 重新认证过程中，网站部分功能将不可用，是否继续？ </div>
@@ -139,12 +139,12 @@
         <div class="uk-form-controls uk-form-controls-text">
         	<div class="uk-margin-small-top uk-margin-small-bottom uk-flex-wrap uk-flex" >
 				<label class="uk-margin-right uk-checkbox-label uk-form-large " mp:for="{{cates}}" mp:for-item="{{ca}}" >
-					<input class="uk-checkbox" type="checkbox" name="category_ids[]" value="{{ca.category_id}}" > {{ca.name}} 
+                    <input mp:if="{{InArray(ca.category_id,rs.category_ids)}}" checked class="uk-checkbox" type="checkbox" name="category_ids[]" value="{{ca.category_id}}"  > 
+                    <input mp:else class="uk-checkbox" type="checkbox" name="category_ids[]" value="{{ca.category_id}}"  > 
+                    {{ca.name}} 
 				</label>
 			</div>
-			<script type="text/javascript">
-				// init data
-			</script>
+           
 		</div>
 		<div class="uk-helper uk-helper-danger"></div>
 	</div> <!-- END 内容类目 -->
@@ -208,18 +208,19 @@
 	</div> <!-- 证明材料扫描件 -->
 
 	<!-- 更新按钮 -->
-	<div class="uk-margin uk-margin-medium-top  {{ (rs.expert_verified == 'verified') ? 'uk-hidden' }} {{ (rs.expert_verified == 'verifying') ? 'uk-hidden' }} ">
+	<div class="uk-margin uk-margin-medium-top  {{ (rs.status == 'ok') ? 'uk-hidden' }} {{ (rs.status == 'pending') ? 'uk-hidden' }} ">
 		<button class="uk-button uk-button-primary uk-form-large uk-action" style="width:100%;" type="submit"> 申请开通专栏 </button>
 	</div><!-- END 更新按钮 -->
 
 	<script type="text/javascript">
 	// 锁定认证信息
 	$(function(){
-		if ( "{{rs.expert_verified}}" == "verifying" || "{{rs.expert_verified}}" == "verified" ) {
-			$('form input').addClass('uk-disabled');
-			$('form select').addClass('uk-disabled');
-			$('form uploader').addClass('uk-disabled');
-			$('form button').addClass('uk-disabled');
+		if ( "{{rs.status}}" == "pending" || "{{rs.status}}" == "pending" ) {
+            $('form input').addClass('uk-disabled').prop('disabled', true);
+            $('form textarea').addClass('uk-disabled').prop('disabled', true);
+			$('form select').addClass('uk-disabled').prop('disabled', true);
+			$('form uploader').addClass('uk-disabled').prop('disabled', true);
+			$('form button').addClass('uk-disabled').prop('disabled', true);
 		}
 	})
 	</script>
