@@ -1,0 +1,15 @@
+<include src="__WEB_ROOT__/desktop/common/head.page" />
+
+<!-- 图文发布器-->
+<div class="container iframe-panel" mp:if="{{user.user_id}}">
+    图文编辑器
+</div>
+
+<!-- 用户未登录界面 -->
+<div class="container" mp:else >
+    <script type="text/javascript" >
+        window.location="/user/signin/mobile?then=/home/editor/article";
+    </script>
+</div> <!-- END Row Container -->
+    
+<include src="__WEB_ROOT__/desktop/common/foot.page" />

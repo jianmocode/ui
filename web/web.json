@@ -18,6 +18,7 @@
 		"/desktop/home/forms/trust",
         "/desktop/home/forms/expert",
         "/desktop/home/forms/articles",
+        "/desktop/home/editor/article",
 		"/mobile/article/index",
 		"/mobile/article/list",
 		"/mobile/article/detail",
