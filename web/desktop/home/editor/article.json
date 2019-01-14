@@ -33,8 +33,12 @@
 			"title":"编辑文章"
 		},
 		"__js":[
+			"/js/jquery-validation-1.17.0/jquery.validate.min.js",
 			"/js/jquery.ui.widget.js",
-			"/js/jquery.iframe-transport.js"
+			"/js/jquery.iframe-transport.js",
+			"/js/jquery.fileupload.js",
+			"/js/jquery.form.min.js",
+			"/js/mustache.min.js"
 		]
 	},
 	"entries":[
