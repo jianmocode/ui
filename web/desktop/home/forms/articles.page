@@ -14,7 +14,7 @@
             </form> 
         </div>
         <div class="uk-width-1-3 uk-text-right">
-            <a class="uk-button uk-button-small uk-button-primary" href="/home/editor/article" type="button">新建文章</a>
+            <a class="uk-button uk-button-small uk-button-primary" target="_blank" href="/home/editor/article" type="button">新建文章</a>
         </div>
     </div>
 

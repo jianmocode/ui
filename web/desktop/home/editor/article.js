@@ -1,9 +1,11 @@
 import {Utils} from '../../../libs/utils.js';
 import {$$} from '../../../libs/component.js';
 import {Validate} from '../../../libs/validate.js';
+
 $$.import(
 	'uploader/image',
-	'editor/image'
+    'editor/image',
+    'editor/html'
 );
 
 let $utils = new Utils();
@@ -11,7 +13,8 @@ Page({
 	data:{},
 	onReady: function( get ) {
         var that = this;
-        console.log( get );
+
+        // 加载组件
 		try {
 			// ImageUploader
 			$$('uploader[type=image]').ImageUploader({
@@ -27,7 +30,13 @@ Page({
 				}
 			});
         } catch( e ) { console.log( 'Error @ImageUploader', e); }
-        
+
+        try {
+            // HtmlEditor
+            $$('editor[type=html]').HtmlEditor({});
+        } catch( e ) { console.log( 'Error @HtmlEditor', e); }
+
+
         // 错误提醒框关闭事件
 		try {
 			UIkit.util.on('.uk-alert', 'hide', ()=>{

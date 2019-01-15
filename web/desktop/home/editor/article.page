@@ -1,9 +1,14 @@
 <include src="__WEB_ROOT__/desktop/common/head.page" />
-<include src="__WEB_ROOT__/desktop/components/uploader/image.page" /> <!-- 引入部件 -->
+<include src="__WEB_ROOT__/desktop/components/uploader/image.page" /> <!-- 引入部件 文件上传组件-->
+<include src="__WEB_ROOT__/desktop/components/editor/html.page" /> <!-- 引入部件 HTML编辑器 -->
 
 <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
     <nav class="uk-navbar-container" uk-navbar  style="position: relative; z-index: 980;">
         <div class="uk-navbar-left">
+            <a class="uk-navbar-item uk-logo" href="#">
+                <img mp:if={{site.icon}} data-src="{{site.icon.url}}" width="42" uk-img>
+                <span mp:else >{{site.site_name}}</span>
+            </a>
             <ul class="uk-navbar-nav">
                 <li>
                     <a href="#">类目: 
@@ -11,6 +16,11 @@
                     </a>
                 </li>
                 <li>
+                    <a href="#">标签: 
+                            视频、新闻
+                        </a>
+                    </li>
+                <li class="uk-hidden">
                     <a href="#">功能: 开放评论、付费阅读</a>
                 </li>
                 <li>
@@ -80,7 +90,7 @@
 
         <!-- 文章正文 -->
 	    <div class="uk-form-group uk-margin " >
-            <textarea name="summary" type="text" rows="20" class="uk-textarea uk-form-large" 
+            <editor name="content"  type="html" rows="20" 
                placeholder="文章正文" 
                validate="{
                        required:true, 
@@ -88,7 +98,7 @@
                         required:'请填写文章正文'
                        }
                    }
-            ">{{article.content}}</textarea>
+            ">Hello world</editor>
             <div class="uk-helper uk-helper-danger"></div>
         </div> <!-- END 文章正文-->
 
@@ -129,7 +139,25 @@
                         </div>
                         <div class="uk-helper uk-helper-danger"></div>
                     </div> <!-- END 内容类目 -->
-            
+                    
+                    <!-- 文章标签 -->
+                    <div class="uk-form-group uk-margin " >
+                        <label class="uk-form-label uk-form-large">标签: </label>
+                        <div class="uk-form-controls">
+                            <input name="mobile" type="text" class="uk-input uk-form-large" 
+                                placeholder="文章标签, 多个用 &quot;,&quot; 分割" 
+                                value="{{article.tag}}" 
+                                validate="{
+                                        required:false, 
+                                        messages: {
+                                            required:'请填写标签'
+                                        }
+                                    }
+                                ">
+                            <div class="uk-helper uk-helper-danger"></div>
+                        </div>
+                    </div> <!-- END 文章来源 -->
+
                     <!-- 文章来源 -->
                     <div class="uk-form-group uk-margin " >
                         <label class="uk-form-label uk-form-large">文章来源: </label>
@@ -161,6 +189,8 @@
                             <div class="uk-helper uk-helper-danger"></div>
                         </div>
                     </div> <!-- END 文章来源 -->
+
+                    
 
                 </div>
             </li>
