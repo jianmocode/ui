@@ -36,9 +36,9 @@ let com = Page({
         $elm.html(html);
         $elm.addClass('editor-inited'); //标记初始化完毕
 
-        // Init Summernote
-        console.log( attrs );
-        $('.jm-editor-html',$elm).summernote(attrs);
+        // Init trix
+        // console.log( attrs );
+        $('.jm-editor-html',$elm).append(`<trix-editor input="${attrs.name}_input"></trix-editor>`);
         
     },
 

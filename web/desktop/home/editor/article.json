@@ -32,19 +32,17 @@
 		"page":{
 			"title":"编辑文章"
         },
-        "__before_css":[
-            "/js/summernote/summernote.css"
+        "__css":[
+            "/js/trix/trix.css"
         ],
 		"__js":[
+            "/js/trix/trix.js",
 			"/js/jquery-validation-1.17.0/jquery.validate.min.js",
 			"/js/jquery.ui.widget.js",
 			"/js/jquery.iframe-transport.js",
 			"/js/jquery.fileupload.js",
 			"/js/jquery.form.min.js",
-            "/js/mustache.min.js",
-            "/js/bootstrap.min.js",
-            "/js/summernote/summernote.min.js",
-            "/js/summernote/lang/summernote-zh-CN.js"
+            "/js/mustache.min.js"
 		]
 	},
 	"entries":[

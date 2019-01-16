@@ -131,7 +131,7 @@ class Validate {
 			errorClass: 'uk-helper uk-form-danger',
 			errorElement: 'div',
 			errorPlacement: function(error, element) {  
-
+                // console.log( 'errorPlacement', $(element) );
 				let $input = $(element);	  
 				let $formgroup = $input.parents('.uk-form-group'); 
 				let $helper = $formgroup.find('.uk-helper-danger');
@@ -150,6 +150,7 @@ class Validate {
 			},
 
 			highlight: function( element ) {
+                // console.log( 'highlight', $(element) );
 				let $input = $(element);  
 				let $formgroup = $input.parents('.uk-form-group'); 
 				let $helper = $formgroup.find('.uk-helper-danger');
@@ -159,7 +160,7 @@ class Validate {
 				$component.addClass('jm-error');
 			},
 			unhighlight:function(element){
-
+                // console.log( 'unhighlight', $(element) );
 				let $input = $(element);  
 				let $formgroup = $input.parents('.uk-form-group'); 
 				let $helper = $formgroup.find('.uk-helper-danger');
@@ -175,7 +176,23 @@ class Validate {
 			},
 
 			ignore: function (index, el) {
-				var $el = $(el);
+                var $el = $(el);
+                
+                // if (  $el.prop('tagName') == "TRIX-EDITOR" ) {
+                //     console.log('TRIX-EDITOR');
+                //     return true;
+                // }
+
+                if ( $el.hasClass('trix-input') ) {
+                    // console.log('TRIX-INPUT');
+                    return true;
+                }
+
+                if ( $el.hasClass('attachment__caption-editor') ) {
+                    // console.log('TRIX-INPUT - attachment__caption');
+                    return true;
+                }
+                
 
 			   	if ( $el.hasClass('uk-field-ignore') || $el.hasClass('jm-field-ignore') ) {
 			   		return true;
@@ -183,7 +200,9 @@ class Validate {
 
 				if ($el.hasClass('always-validate')) {
 				   return false;
-				}
+                }
+                
+               
 			   
 				return $el.is(':hidden'); // default
 			},

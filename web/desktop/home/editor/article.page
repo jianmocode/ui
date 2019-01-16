@@ -97,7 +97,7 @@
                        messages: {
                         required:'请填写文章正文'
                        }
-                   }
+                }
             ">Hello world</editor>
             <div class="uk-helper uk-helper-danger"></div>
         </div> <!-- END 文章正文-->

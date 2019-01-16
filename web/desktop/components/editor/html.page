@@ -1,3 +1,5 @@
 <component name="editor-html">
-    <div class="jm-editor-html" name="{{name}}"></div>
+    <div class="jm-editor-html">
+        <input id="{{name}}_input" validate={{validate}} name="{{name}}" value="{{value}}" type="hidden" name="content">
+    </div>
 </component>
