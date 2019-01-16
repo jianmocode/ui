@@ -14,6 +14,8 @@ let com = Page({
 		"tooltip":"function"		// 工具
     },
     onReady: function( params ) {
+
+
 		let $elms = $(params['selector']);
 		this.template = $('component[name=editor-html]').html().toString();
 		this.events.change = (typeof params['change'] == 'function' ) ? params['change'] : () => {};
@@ -37,7 +39,6 @@ let com = Page({
         $elm.addClass('editor-inited'); //标记初始化完毕
 
         // Init trix
-        // console.log( attrs );
         $('.jm-editor-html',$elm).append(`<trix-editor class="jm-article" input="${attrs.name}_input"></trix-editor>`);
         
     },
