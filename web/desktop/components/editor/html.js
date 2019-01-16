@@ -38,7 +38,7 @@ let com = Page({
 
         // Init trix
         // console.log( attrs );
-        $('.jm-editor-html',$elm).append(`<trix-editor input="${attrs.name}_input"></trix-editor>`);
+        $('.jm-editor-html',$elm).append(`<trix-editor class="jm-article" input="${attrs.name}_input"></trix-editor>`);
         
     },
 
