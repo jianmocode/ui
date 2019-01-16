@@ -5,12 +5,13 @@ let com = Page({
 	events: {},
 	props: {
 		"disabled":"bool",  // 是否 disabled
-		"name":"string",	// 名称
+        "name":"string",	// 名称
+        "lang": 'string',   // 语言
 		"id":"string",		// ID
 		"url":"string",		// 云端通信地址
         "validate":"string",	// 数据验证
         "placeholder":"string",	// placeholder
-		"tools":"array"		// 工具
+		"tooltip":"function"		// 工具
     },
     onReady: function( params ) {
 		let $elms = $(params['selector']);
@@ -24,12 +25,21 @@ let com = Page({
     },
     init: function( $elm ) {
         let attrs = this.getAttrs( $elm );
+            attrs["lang"] = attrs["lang"] ?  attrs["lang"] : 'zh-CN';
+        
         let value = $elm.html();
-            attrs["value"] = value;
-        console.log( value );
-        let html = Mustache.render(this.template, attrs );
+        let data = Object.assign({},attrs);
+            data["value"] = value;
+        
+
+        let html = Mustache.render(this.template, data );
         $elm.html(html);
         $elm.addClass('editor-inited'); //标记初始化完毕
+
+        // Init Summernote
+        console.log( attrs );
+        $('.jm-editor-html',$elm).summernote(attrs);
+        
     },
 
     getAttrs: function( $elm ) {
@@ -75,7 +85,10 @@ let com = Page({
 					}
 					data[name] = json;
 					data[ '__json__' + name ] = $elm.attr(name); // 留存原始数据
-					break;
+                    break;
+                case 'function':
+                    data[name] = $elm.attr(name) ?  eval($elm.attr(name)) : function(){};
+                    break;
 				default: 
 					data[name] = $elm.attr(name);
 			}

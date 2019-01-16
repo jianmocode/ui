@@ -1,5 +1,3 @@
 <component name="editor-html">
-    <div class="jm-editor-html" name="{{name}}" >
-        {{value}}
-    </div>
+    <div class="jm-editor-html" name="{{name}}"></div>
 </component>
