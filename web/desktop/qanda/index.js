@@ -1,33 +1,39 @@
 let web = getWeb();
-import articles from '../widget/recommend/list';  // 下一版应该可以引用组件
 
 Page({
-	data:{},
-	onReady: function( params ) {
-		try { this.initRecommendsNavbar(); } catch(e){
-			console.log( 'Error @initRecommendsNavbar', e);
-		}
+      data: {},
+      onReady: function () {
+            const _that = this;
 
-		params['var']['slug'] = 'section_1';
-		try { articles.$load(params, { section:this.data.r.section_1}); } catch(e){
-			console.log( 'Error @articles.$load', e);
-		}
-	},
+            _that.handleClickAsk();
+            _that.handleClickHideAsk();
+      },
+      showAskModal: function () {
+            $('.ask_wrap')
+                  .fadeIn()
+                  .css({
+                        'display': 'flex',
+                        'justify-content': 'center',
+                        'align-items': 'center'
+                  });
+            $('body').css('overflow', 'hidden');
+      },
+      hideAskModal: function () {
+            $('.ask_wrap').fadeOut();
+            $('body').css('overflow', 'auto');
+      },
+      handleClickAsk: function () {
+            const _that = this;
 
-	/**
-	 * 初始化推荐导航条
-	 * @return {[type]} [description]
-	 */
-	initRecommendsNavbar: function() {
-		$('.jm-recommends-navbar a').click(function(){
-			$('.jm-recommends-navbar li').removeClass('uk-active');
-			$(this).parent().addClass('uk-active');
-			let link = $(this).attr('data-remote');
-			if ( link ) {
-				$('.jm-recommends-body').html('<div uk-spinner class="uk-padding-small"></div>');
-				$('.jm-recommends-body').load( link );
-			}
-			return true;
-		})
-	}
+            $('.ask').on('click', function () {
+                  _that.showAskModal();
+            })
+      },
+      handleClickHideAsk: function () {
+            const _that = this;
+
+            $('.btn_delete_modal').on('click', function () {
+                  _that.hideAskModal();
+            })
+      }
 })

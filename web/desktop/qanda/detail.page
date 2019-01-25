@@ -1,6 +1,39 @@
 <include src="__WEB_ROOT__/desktop/common/head.page" />
 <include src="__WEB_ROOT__/desktop/common/header.page" />
 
+<section class="question_wrap Card uk-flex uk-flex-center">
+      <div class="question uk-flex uk-flex-between">
+            <div class="left">
+                  <div class="question_item">
+                        <div class="topic_item uk-flex uk-flex-middle">
+                              <a class="topic_item_text">前端</a>
+                        </div>
+                        <div class="topic_item uk-flex uk-flex-middle">
+                              <a class="topic_item_text">React</a>
+                        </div>
+                        <div class="topic_item uk-flex uk-flex-middle">
+                              <a class="topic_item_text">Vue.js</a>
+                        </div>
+                        <div class="topic_item uk-flex uk-flex-middle">
+                              <a class="topic_item_text">Angular</a>
+                        </div>
+                        <div class="topic_item uk-flex uk-flex-middle">
+                              <a class="topic_item_text">nodejs</a>
+                        </div>
+                  </div>
+                  <div class="question_item">
+
+                  </div>
+            </div>
+            <div class="right uk-flex uk-flex-right">
+                  <div class="question_item uk-flex uk-flex-column uk-flex-middle">
+                        <span>被浏览</span>
+                        <span>4,970,916</span>
+                  </div>
+            </div>
+      </div>
+</section>
+
 <section class="content_wrap uk-flex uk-flex-center">
       <div class="content uk-flex uk-flex-between">
             <div class="left_wrap Card">
@@ -81,6 +114,7 @@
 </section>
 
 <section class="ask_wrap">
+
       <form class="ask_form uk-flex uk-flex-column">
             <img
                   class="btn_delete_modal"

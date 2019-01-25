@@ -1,26 +1,27 @@
 {
       "cname": "问答",
       "data": {
-            
+            "question_id": "{{__var.id}}"
       },
       "entries": [{
                   "method": "GET",
-                  "router": "/qanda/index",
+                  "router": "/qanda/detail/{id:[0-9a-zA-Z]+}",
                   "ttl": 3600
             },
             {
                   "method": "GET",
-                  "router": "/qanda/index",
+                  "router": "/qanda/detail/{id:[0-9a-zA-Z]+}",
                   "ttl": 0
             },
             {
                   "method": "GET",
-                  "router": "/qanda/index.html",
+                  "router": "/qanda/detail/{id:[0-9a-zA-Z]+}.html",
                   "ttl": 0
             }
       ],
+
       "alias": {
-            "mobile": "/mobile/qanda/index",
-            "wechat": "/mobile/qanda/index"
+            "mobile": "/mobile/qanda/detail",
+            "wechat": "/mobile/qanda/detail"
       }
 }
