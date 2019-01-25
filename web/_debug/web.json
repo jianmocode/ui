@@ -2,8 +2,8 @@
 	"cname":"简墨科技主题-DEV",
 	"pages":[
 		"/desktop/home/index",
-        "/desktop/home/forms/expert",
-        "/desktop/home/forms/trust"
+        "/desktop/home/forms/articles",
+        "/desktop/home/editor/article"
 	],
 	"common":[
 		"/libs",

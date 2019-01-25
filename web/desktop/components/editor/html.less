@@ -1,0 +1,50 @@
+@import '/vars.less';
+
+.jm-editor-html {
+    visibility: hidden;
+    border: 1px solid @dividerColor;
+    border-radius: 4px;
+    
+    .trix-button {
+        color: @textDarkColor;
+    }
+
+    trix-toolbar{
+        border-bottom: 1px solid @dividerColor;
+        padding-left: 10px;
+        padding-right: 10px;
+        .trix-button.trix-active {
+            background: @primaryHoverColor;
+            color: @lightColor;
+        }
+        .trix-button-group {
+            margin-top: 10px;
+            border: none;
+            button {
+                border: none;
+            }
+        }
+
+        .trix-button--icon {
+            height: 1.1rem;
+            width: 1.1rem;
+            margin-left: 0.25rem;
+            margin-right: 0.25rem;
+        }
+    }
+
+
+    trix-editor {
+        border: none;
+        margin-top: 0px;
+        min-height: 500px;
+        padding: 15px 20px 15px 20px;
+    }
+}
+
+
+.editor-inited {
+    .jm-editor-html {
+        visibility:visible;
+    }
+}

@@ -4,10 +4,12 @@
 const componentRoot = '../desktop/components/';
 import ImageUploader from '../desktop/components/uploader/image';  
 import ImageEditor from  '../desktop/components/editor/image';  
+import HtmlEditor from  '../desktop/components/editor/html';  
 
 let components = {
 	"uploader/image":ImageUploader,
-	"editor/image":ImageEditor
+    "editor/image":ImageEditor,
+    "editor/html":HtmlEditor
 };
 
 class ComponentUtil {

@@ -45,7 +45,7 @@
 		</div>
 	</div> <!-- 用户头像 -->
 
-	<!-- 用户头像 -->
+	<!-- 背景图片 -->
 	<div class="uk-form-group uk-margin" >
 		<label class="uk-form-label uk-form-large">背景图片: </label>
 		<div class="uk-form-controls jm-uploader-image-large">
@@ -61,7 +61,7 @@
 				titleClass="uk-hidden"
 				class="jm-form-large">上传背景图片</uploader>
 		</div>
-	</div> <!-- 用户头像 -->
+	</div> <!-- 背景图片 -->
 
 	<!-- 账号等级
 	<div class="uk-form-group uk-margin uk-hidden" >
