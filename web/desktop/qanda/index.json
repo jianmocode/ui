@@ -1,0 +1,28 @@
+{
+      "cname": "问答",
+      "data": {
+
+      },
+      "entries": [{
+                  "method": "GET",
+                  "router": "/qanda/index",
+                  "ttl": 3600
+            },
+            {
+                  "method": "GET",
+                  "router": "/qanda/index",
+                  "ttl": 0
+            },
+            {
+                  "method": "GET",
+                  "router": "/qanda/index.html",
+                  "ttl": 0
+            }
+      ],
+
+      "alias": {
+            "mobile": "/mobile/qanda/index",
+            "wechat": "/mobile/qanda/index",
+            "wxapp": "/qanda"
+      }
+}

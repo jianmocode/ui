@@ -1,6 +1,7 @@
 {
 	"cname":"简墨科技主题",
 	"pages":[
+		"/desktop/qanda/index",
 		"/desktop/article/index",
 		"/desktop/article/list",
 		"/desktop/article/detail",

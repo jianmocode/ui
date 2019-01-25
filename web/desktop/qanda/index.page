@@ -1,0 +1,52 @@
+<include src="__WEB_ROOT__/desktop/common/head.page" />
+<include src="__WEB_ROOT__/desktop/common/header.page" />
+
+<section class="content_wrap">
+      <div class="content uk-flex uk-flex-between">
+            <div class="left_wrap">
+                  <div class="tab">
+                        <span class="tab_item">推荐</span>
+                        <span class="tab_item">关注</span>
+                        <span class="tab_item">热榜</span>
+                  </div>
+                  <div class="question_items">
+                        <div class="question_item">
+                              <span class="question_content">有哪些金融领域的现象或事实，没有一定金融学知识的人不会相信，或者不能理解？</span>
+                              <span class="best_answer">一哥们是某大学的历史老师。他每次买几万块钱的东西时，都会用信用卡，并且到下个月把账单分期，而账单分期的月费率是0.75%。但后来他总是发现，每年剩下来的钱没有以前多了，他也不知道是怎么回事。</span>
+                        </div>
+                  </div>
+            </div>
+            <div class="right_wrap">
+                  <aside class="ask">
+                        <span class="btn_ask">提问</span>
+                  </aside>
+                  <aside class="hot">
+                        <div class="title">
+                              <span class="title_text">热门标签</span>
+                        </div>
+                        <span class="hot_item">架构</span>
+                        <span class="hot_item">开源</span>
+                        <span class="hot_item">算法</span>
+                        <span class="hot_item">Github</span>
+                        <span class="hot_item">面试</span>
+                        <span class="hot_item">代码规范</span>
+                        <span class="hot_item">产品</span>
+                  </aside>
+                  <aside class="my">
+                        <div class="my_item">
+                              <span class="btn_collection">我的关注</span>
+                        </div>
+                        <div class="my_item">
+                              <span class="btn_collection">我的提问</span>
+                        </div>
+                        <div class="my_item">
+                              <span class="btn_collection">我的回答</span>
+                        </div>
+                  </aside>
+            </div>
+      </div>
+</section>
+
+<include src="__WEB_ROOT__/desktop/common/quickbar.page" />
+<include src="__WEB_ROOT__/desktop/common/footer.page" />
+<include src="__WEB_ROOT__/desktop/common/foot.page" />

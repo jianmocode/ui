@@ -1,12 +1,14 @@
+var host = "re.xpmsns.com";
+
 config = {
 	mina:{
 		target: false,
 		priority:0,
-		server:"http://rainxn.tt.com",
-		domain:"rainxn.tt.com",
-		project:"default",
-		appid:'152389239297374',
-		secret:'500970dad3324330f8a1085939f20360',
+		server:"https://"+host,
+		domain:host,
+		project:"jm-tech",
+		appid:'154487369966420',
+		secret:'538fabbc5aea9b723b8a90107fdc0284',
 		instance:"root",
 	},
 	wxapp:{
