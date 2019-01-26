@@ -22,13 +22,36 @@
                         </div>
                   </div>
                   <div class="question_item">
-
+                        <span class="question_text">有哪些金融领域的现象或事实，没有一定金融学知识的人不会相信，或者不能理解？</span>
+                  </div>
+                  <div class="question_item">
+                        <span class="question_detail">
+                              可能生孩子的是2口子的一个分水岭。你跨过去了，你好，大家都好；你过不去这个坎，你的失望越来越多，只想从围城出来。写这个问题的主要原因，想了想，可能也是...
+                        </span>
+                        <button class="btn_show_all">
+                              显示全部
+                              <img
+                                    class="icon_arrow_down"
+                                    src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_arrow_down.svg"
+                                    alt="icon_arrow_down"
+                              >
+                        </button>
+                  </div>
+                  <div class="question_item">
+                        <button class="btn_write">
+                              <img
+                                    class="icon_write"
+                                    src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_write.svg"
+                                    alt="icon_write"
+                              >
+                              写回答
+                        </button>
                   </div>
             </div>
             <div class="right uk-flex uk-flex-right">
                   <div class="question_item uk-flex uk-flex-column uk-flex-middle">
-                        <span>被浏览</span>
-                        <span>4,970,916</span>
+                        <span class="name">被浏览</span>
+                        <span class="value">4,970,916</span>
                   </div>
             </div>
       </div>
@@ -36,154 +59,305 @@
 
 <section class="content_wrap uk-flex uk-flex-center">
       <div class="content uk-flex uk-flex-between">
-            <div class="left_wrap Card">
-                  <div class="tab">
-                        <span class="tab_item">
-                              <a
-                                    class="tab_link is_active"
-                                    href=""
-                              >推荐</a>
-                        </span>
-                        <span class="tab_item">
-                              <a
-                                    class="tab_link"
-                                    href=""
-                              >关注</a>
-                        </span>
-                        <span class="tab_item">
-                              <a
-                                    class="tab_link"
-                                    href=""
-                              >热榜</a>
-                        </span>
+            <div class="left_wrap">
+                  <div class="answer_input Card">
+                        <div class="user_info uk-flex">
+                              <img
+                                    class="img_avatar"
+                                    src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
+                                    alt="img_avatar"
+                              >
+                              <div class="detail uk-flex uk-flex-column uk-flex-center">
+                                    <span class="nickname">闻道</span>
+                                    <span class="intro line_clamp_1">灯下望月，不知其影灯下望月，不知其影灯下望月，不知其影灯下望月，不知其影灯下望月，不知其影灯下望月，不知其影灯下望月，不知其影灯下望月，不知其影</span>
+                              </div>
+                        </div>
+                        <form class="answer_form uk-flex uk-flex-column">
+                              <textarea
+                                    class="answer_content"
+                                    name="answer_content"
+                                    rows="6"
+                                    autocomplete="off"
+                                    placeholder="写回答..."
+                              ></textarea>
+                              <div class="options uk-flex uk-flex-between uk-flex-middle">
+                                    <div class="status">14个字</div>
+                                    <button
+                                          type="button"
+                                          class="btn_submit"
+                                    >提交回答</button>
+                              </div>
+                        </form>
                   </div>
-                  <div class="question_items">
-                        <div class="question_item uk-flex uk-flex-column">
-                              <a class="question_content">有哪些金融领域的现象或事实，没有一定金融学知识的人不会相信，或者不能理解？</a>
-                              <span class="best_answer">一哥们是某大学的历史老师。他每次买几万块钱的东西时，都会用信用卡，并且到下个月把账单分期，而账单分期的月费率是0.75%。但后来他总是发现，每年剩下来的钱没有以前多了，他也不知道是怎么回事。</span>
+                  <div class="answer_wrap Card uk-felx uk-flex-column">
+                        <div class="options uk-flex uk-flex-between uk-flex-middle">
+                              <div class="answer_count">
+                                    <span class="count">509</span>
+                                    <span>个回答</span>
+                              </div>
+                              <div class="answer_rank">
+                                    <button
+                                          class="btn_rank uk-button uk-button-default"
+                                          type="button"
+                                    >默认排序</button>
+                                    <div
+                                          class="rank_rules"
+                                          uk-dropdown="mode:click"
+                                    >
+                                          <div class="rule_items uk-flex uk-flex-column">
+                                                <button class="rule_item">默认排序</button>
+                                                <button class="rule_item">按时间排序</button>
+                                          </div>
+                                    </div>
+                              </div>
                         </div>
-                        <div class="question_item uk-flex uk-flex-column">
-                              <a class="question_content">有哪些金融领域的现象或事实，没有一定金融学知识的人不会相信，或者不能理解？</a>
-                              <span class="best_answer">一哥们是某大学的历史老师。他每次买几万块钱的东西时，都会用信用卡，并且到下个月把账单分期，而账单分期的月费率是0.75%。但后来他总是发现，每年剩下来的钱没有以前多了，他也不知道是怎么回事。</span>
-                        </div>
-                        <div class="question_item uk-flex uk-flex-column">
-                              <a class="question_content">有哪些金融领域的现象或事实，没有一定金融学知识的人不会相信，或者不能理解？</a>
-                              <span class="best_answer">一哥们是某大学的历史老师。他每次买几万块钱的东西时，都会用信用卡，并且到下个月把账单分期，而账单分期的月费率是0.75%。但后来他总是发现，每年剩下来的钱没有以前多了，他也不知道是怎么回事。</span>
-                        </div>
-                        <div class="question_item uk-flex uk-flex-column">
-                              <a class="question_content">有哪些金融领域的现象或事实，没有一定金融学知识的人不会相信，或者不能理解？</a>
-                              <span class="best_answer">一哥们是某大学的历史老师。他每次买几万块钱的东西时，都会用信用卡，并且到下个月把账单分期，而账单分期的月费率是0.75%。但后来他总是发现，每年剩下来的钱没有以前多了，他也不知道是怎么回事。</span>
-                        </div>
-                        <div class="question_item uk-flex uk-flex-column">
-                              <a class="question_content">有哪些金融领域的现象或事实，没有一定金融学知识的人不会相信，或者不能理解？</a>
-                              <span class="best_answer">一哥们是某大学的历史老师。他每次买几万块钱的东西时，都会用信用卡，并且到下个月把账单分期，而账单分期的月费率是0.75%。但后来他总是发现，每年剩下来的钱没有以前多了，他也不知道是怎么回事。</span>
+                        <div class="answer_items">
+                              <div class="answer_item">
+                                    <div class="author_content">
+                                          <div class="author_info uk-flex uk-flex-between uk-flex-middle">
+                                                <a
+                                                      class="author_link"
+                                                      href="#"
+                                                >
+                                                      <img
+                                                            class="avatar_author"
+                                                            src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
+                                                            alt="avatar_author"
+                                                      >
+                                                </a>
+                                                <div class="info uk-flex uk-flex-column">
+                                                      <span class="nickname">噗啦的胖肥</span>
+                                                      <span class="intro line_clamp_1">前剑桥雅思考试中心批卷人，口语满分得主，雅思问题请在值乎提问</span>
+                                                </div>
+                                          </div>
+                                          <div class="author_success uk-flex uk-flex-between">
+                                                <a class="success_item uk-flex uk-flex-column uk-flex-middle">
+                                                      <span class="name">回答</span>
+                                                      <span class="value">208</span>
+                                                </a>
+                                                <a class="success_item uk-flex uk-flex-column uk-flex-middle">
+                                                      <span class="name">提问</span>
+                                                      <span class="value">21</span>
+                                                </a>
+                                                <a class="success_item uk-flex uk-flex-column uk-flex-middle">
+                                                      <span class="name">关注者</span>
+                                                      <span class="value">24,250</span>
+                                                </a>
+                                          </div>
+                                          <div class="options">
+                                                <button class="btn_follow">
+                                                      <span class="text">关注TA</span>
+                                                </button>
+                                          </div>
+                                    </div>
+                                    <div class="user_info uk-flex">
+                                          <img
+                                                class="img_avatar"
+                                                src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
+                                                alt="img_avatar"
+                                          >
+                                          <div class="detail uk-flex uk-flex-column uk-flex-center">
+                                                <span class="nickname">kingslayer</span>
+                                                <span class="intro line_clamp_1">旅行过15个国家不想停下的crazy girl</span>
+                                          </div>
+                                    </div>
+                                    <div class="answer_content uk-flex uk-flex-column">
+                                          <p>故事讲述了性情古怪孤僻的小女孩玛丽・伦罗克斯的父母双亡后，生活在姨父克莱文先生神秘阴沉的庄园里。孤独的玛丽在女仆玛莎的鼓励下，开始尝试在庄园里寻找自己的乐趣。她认识了性格乖戾但善良的花匠和友好伶俐的知更鸟。在知更鸟的指引下，玛丽找到了开启秘密花园的钥匙。</p>
+                                          <p>每次翻开这本书，心情总是很轻松愉快。Burnett笔下的那座秘密花园里，鸟儿会说话，玫瑰花会指路，小草、树叶会窃窃私语，连空气里吹来的一阵风都会喃喃细语。小女孩Mary因为父母双亡而变得性格古怪，就像我们小时候一样顽皮、叛逆，有时不爱和外界沟通，人物角色代入感强。当她推开秘密花园荒废的木门，我们会不自觉地跟着Mary一起进入那个秘密世界，内心涌动着的惊喜、好奇，贯穿整个阅读过程。</p>
+                                    </div>
+                                    <div class="publish_time">
+                                          <span>发布于 2017-05-22</span>
+                                    </div>
+                              </div>
+                              <div class="answer_item">
+                                    <div class="author_content">
+                                          <div class="author_info uk-flex uk-flex-between uk-flex-middle">
+                                                <a
+                                                      class="author_link"
+                                                      href="#"
+                                                >
+                                                      <img
+                                                            class="avatar_author"
+                                                            src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
+                                                            alt="avatar_author"
+                                                      >
+                                                </a>
+                                                <div class="info uk-flex uk-flex-column">
+                                                      <span class="nickname">噗啦的胖肥</span>
+                                                      <span class="intro line_clamp_1">前剑桥雅思考试中心批卷人，口语满分得主，雅思问题请在值乎提问</span>
+                                                </div>
+                                          </div>
+                                          <div class="author_success uk-flex uk-flex-between">
+                                                <a class="success_item uk-flex uk-flex-column uk-flex-middle">
+                                                      <span class="name">回答</span>
+                                                      <span class="value">208</span>
+                                                </a>
+                                                <a class="success_item uk-flex uk-flex-column uk-flex-middle">
+                                                      <span class="name">提问</span>
+                                                      <span class="value">21</span>
+                                                </a>
+                                                <a class="success_item uk-flex uk-flex-column uk-flex-middle">
+                                                      <span class="name">关注者</span>
+                                                      <span class="value">24,250</span>
+                                                </a>
+                                          </div>
+                                          <div class="options">
+                                                <button class="btn_follow">
+                                                      <span class="text">关注TA</span>
+                                                </button>
+                                          </div>
+                                    </div>
+                                    <div class="user_info uk-flex">
+                                          <img
+                                                class="img_avatar"
+                                                src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
+                                                alt="img_avatar"
+                                          >
+                                          <div class="detail uk-flex uk-flex-column uk-flex-center">
+                                                <span class="nickname">kingslayer</span>
+                                                <span class="intro line_clamp_1">旅行过15个国家不想停下的crazy girl</span>
+                                          </div>
+                                    </div>
+                                    <div class="answer_content uk-flex uk-flex-column">
+                                          <p>故事讲述了性情古怪孤僻的小女孩玛丽・伦罗克斯的父母双亡后，生活在姨父克莱文先生神秘阴沉的庄园里。孤独的玛丽在女仆玛莎的鼓励下，开始尝试在庄园里寻找自己的乐趣。她认识了性格乖戾但善良的花匠和友好伶俐的知更鸟。在知更鸟的指引下，玛丽找到了开启秘密花园的钥匙。</p>
+                                          <p>每次翻开这本书，心情总是很轻松愉快。Burnett笔下的那座秘密花园里，鸟儿会说话，玫瑰花会指路，小草、树叶会窃窃私语，连空气里吹来的一阵风都会喃喃细语。小女孩Mary因为父母双亡而变得性格古怪，就像我们小时候一样顽皮、叛逆，有时不爱和外界沟通，人物角色代入感强。当她推开秘密花园荒废的木门，我们会不自觉地跟着Mary一起进入那个秘密世界，内心涌动着的惊喜、好奇，贯穿整个阅读过程。</p>
+                                    </div>
+                                    <div class="publish_time">
+                                          <span>发布于 2017-05-22</span>
+                                    </div>
+                              </div>
+                              <div class="answer_item">
+                                    <div class="author_content">
+                                          <div class="author_info uk-flex uk-flex-between uk-flex-middle">
+                                                <a
+                                                      class="author_link"
+                                                      href="#"
+                                                >
+                                                      <img
+                                                            class="avatar_author"
+                                                            src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
+                                                            alt="avatar_author"
+                                                      >
+                                                </a>
+                                                <div class="info uk-flex uk-flex-column">
+                                                      <span class="nickname">噗啦的胖肥</span>
+                                                      <span class="intro line_clamp_1">前剑桥雅思考试中心批卷人，口语满分得主，雅思问题请在值乎提问</span>
+                                                </div>
+                                          </div>
+                                          <div class="author_success uk-flex uk-flex-between">
+                                                <a class="success_item uk-flex uk-flex-column uk-flex-middle">
+                                                      <span class="name">回答</span>
+                                                      <span class="value">208</span>
+                                                </a>
+                                                <a class="success_item uk-flex uk-flex-column uk-flex-middle">
+                                                      <span class="name">提问</span>
+                                                      <span class="value">21</span>
+                                                </a>
+                                                <a class="success_item uk-flex uk-flex-column uk-flex-middle">
+                                                      <span class="name">关注者</span>
+                                                      <span class="value">24,250</span>
+                                                </a>
+                                          </div>
+                                          <div class="options">
+                                                <button class="btn_follow">
+                                                      <span class="text">关注TA</span>
+                                                </button>
+                                          </div>
+                                    </div>
+                                    <div class="user_info uk-flex">
+                                          <img
+                                                class="img_avatar"
+                                                src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
+                                                alt="img_avatar"
+                                          >
+                                          <div class="detail uk-flex uk-flex-column uk-flex-center">
+                                                <span class="nickname">kingslayer</span>
+                                                <span class="intro line_clamp_1">旅行过15个国家不想停下的crazy girl</span>
+                                          </div>
+                                    </div>
+                                    <div class="answer_content uk-flex uk-flex-column">
+                                          <p>故事讲述了性情古怪孤僻的小女孩玛丽・伦罗克斯的父母双亡后，生活在姨父克莱文先生神秘阴沉的庄园里。孤独的玛丽在女仆玛莎的鼓励下，开始尝试在庄园里寻找自己的乐趣。她认识了性格乖戾但善良的花匠和友好伶俐的知更鸟。在知更鸟的指引下，玛丽找到了开启秘密花园的钥匙。</p>
+                                          <p>每次翻开这本书，心情总是很轻松愉快。Burnett笔下的那座秘密花园里，鸟儿会说话，玫瑰花会指路，小草、树叶会窃窃私语，连空气里吹来的一阵风都会喃喃细语。小女孩Mary因为父母双亡而变得性格古怪，就像我们小时候一样顽皮、叛逆，有时不爱和外界沟通，人物角色代入感强。当她推开秘密花园荒废的木门，我们会不自觉地跟着Mary一起进入那个秘密世界，内心涌动着的惊喜、好奇，贯穿整个阅读过程。</p>
+                                    </div>
+                                    <div class="publish_time">
+                                          <span>发布于 2017-05-22</span>
+                                    </div>
+                              </div>
                         </div>
                   </div>
             </div>
             <div class="right_wrap uk-flex uk-flex-column">
-                  <aside class="ask Card uk-flex uk-flex-center">
-                        <a class="btn_ask">提问</a>
-                  </aside>
-                  <aside class="hot Card uk-flex uk-flex-column">
+                  <aside class="author Card uk-flex uk-flex-column">
                         <div class="title">
-                              <span class="title_text">热门话题</span>
+                              <span class="title_text">关于作者</span>
                         </div>
-                        <div class="hot_items uk-flex uk-flex-wrap">
-                              <a class="hot_item">架构</a>
-                              <a class="hot_item">开源</a>
-                              <a class="hot_item">算法</a>
-                              <a class="hot_item">Github</a>
-                              <a class="hot_item">面试</a>
-                              <a class="hot_item">代码规范</a>
-                              <a class="hot_item">产品</a>
+                        <div class="author_content uk-flex uk-flex-column">
+                              <div class="author_info uk-flex uk-flex-between uk-flex-middle">
+                                    <a
+                                          class="author_link"
+                                          href="#"
+                                    >
+                                          <img
+                                                class="avatar_author"
+                                                src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
+                                                alt="avatar_author"
+                                          >
+                                    </a>
+                                    <div class="info uk-flex uk-flex-column">
+                                          <span class="nickname">噗啦的胖肥</span>
+                                          <span class="intro line_clamp_1">前剑桥雅思考试中心批卷人，口语满分得主，雅思问题请在值乎提问</span>
+                                    </div>
+                              </div>
+                              <div class="author_success uk-flex uk-flex-between">
+                                    <a class="success_item uk-flex uk-flex-column uk-flex-middle">
+                                          <span class="name">回答</span>
+                                          <span class="value">208</span>
+                                    </a>
+                                    <a class="success_item uk-flex uk-flex-column uk-flex-middle">
+                                          <span class="name">提问</span>
+                                          <span class="value">21</span>
+                                    </a>
+                                    <a class="success_item uk-flex uk-flex-column uk-flex-middle">
+                                          <span class="name">关注者</span>
+                                          <span class="value">24,250</span>
+                                    </a>
+                              </div>
+                              <div class="options">
+                                    <button class="btn_follow">
+                                          <span class="text">关注TA</span>
+                                    </button>
+                              </div>
                         </div>
                   </aside>
-                  <aside class="my Card uk-flex uk-flex-column">
-                        <a class="my_follow my_item">
-                              <span class="item_text">我的关注</span>
-                        </a>
-                        <a class="my_question my_item">
-                              <span class="item_text">我的提问</span>
-                        </a>
-                        <a class="my_answer my_item">
-                              <span class="item_text">我的回答</span>
-                        </a>
+                  <aside class="related_questions Card">
+                        <div class="title">
+                              <span class="title_text">相关问题</span>
+                        </div>
+                        <div class="question_items">
+                              <div class="question_item">
+                                    <a class="question_text">你曾坚持背诵过哪些令你获益匪浅的英文文章？</a>
+                                    <span class="answer_count">213个回答</span>
+                              </div>
+                              <div class="question_item">
+                                    <a class="question_text">如何更有效地阅读原版英文书籍？为了能够更体会得到其中句法的妙处，该做什么样的功夫？</a>
+                                    <span class="answer_count">20个回答</span>
+                              </div>
+                              <div class="question_item">
+                                    <a class="question_text">读英文书籍不求甚解，是否可以提高英语水平？</a>
+                                    <span class="answer_count">3498个回答</span>
+                              </div>
+                              <div class="question_item">
+                                    <a class="question_text">这句英文中的「of」做什么成分，怎么解释？</a>
+                                    <span class="answer_count">10个回答</span>
+                              </div>
+                              <div class="question_item">
+                                    <a class="question_text">有什么语言本身就特别美的英文句子？</a>
+                                    <span class="answer_count">12个回答</span>
+                              </div>
+                        </div>
                   </aside>
             </div>
       </div>
-</section>
-
-<section class="ask_wrap">
-
-      <form class="ask_form uk-flex uk-flex-column">
-            <img
-                  class="btn_delete_modal"
-                  src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_delete_white.png"
-                  alt="btn_delete_modal"
-            >
-            <div class="ask_item uk-flex uk-flex-between">
-                  <img
-                        class="img_avatar"
-                        src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
-                        alt="img_avatar"
-                  >
-                  <textarea
-                        class="question_title"
-                        name="question_title"
-                        rows="2"
-                        autocomplete="off"
-                        placeholder="写下你的问题，准确地描述问题更容易得到解答"
-                  ></textarea>
-            </div>
-            <div class="ask_item uk-flex uk-flex-column">
-                  <textarea
-                        class="question_detail"
-                        name="question_detail"
-                        rows="6"
-                        autocomplete="off"
-                        placeholder="输入问题背景、条件等详细信息（选填）"
-                  ></textarea>
-            </div>
-            <div class="topic ask_item uk-flex uk-flex-between">
-                  <div class="left uk-flex uk-flex-column">
-                        <div class="topic_items uk-flex uk-flex-wrap">
-                              <div class="topic_item uk-flex uk-flex-middle">
-                                    <a class="topic_item_text">前端</a>
-                                    <span class="btn_delete"></span>
-                              </div>
-                              <div class="topic_item uk-flex uk-flex-middle">
-                                    <a class="topic_item_text">前端</a>
-                                    <span class="btn_delete"></span>
-                              </div>
-                              <div class="topic_item uk-flex uk-flex-middle">
-                                    <a class="topic_item_text">前端</a>
-                                    <span class="btn_delete"></span>
-                              </div>
-                              <div class="topic_item uk-flex uk-flex-middle">
-                                    <a class="topic_item_text">前端</a>
-                                    <span class="btn_delete"></span>
-                              </div>
-                              <div class="topic_item uk-flex uk-flex-middle">
-                                    <a class="topic_item_text">前端</a>
-                                    <span class="btn_delete"></span>
-                              </div>
-
-                        </div>
-                        <div class="topic_text_wrap">
-                              <input
-                                    class="topic_text"
-                                    type="text"
-                              >
-                        </div>
-                        <div class="add_topic_wrap">
-                              <button class="btn_add_topic">添加话题 ( 至少添加一个话题 ) </button>
-                        </div>
-                  </div>
-                  <div class="right">
-                        <button class="btn_publish">发布问题</button>
-                  </div>
-            </div>
-      </form>
 </section>
 
 <include src="__WEB_ROOT__/desktop/common/quickbar.page" />

@@ -62,6 +62,8 @@ body {
             width: 1000px;
             .left {
                   width: 694px;
+                  box-sizing: border-box;
+                  padding: 0 20px;
                   .question_item {
                         .topic_item {
                               display: inline-block;
@@ -80,10 +82,73 @@ body {
                         .topic_item:hover {
                               background-color: rgba(30, 135, 240, 0.24);
                         }
+                        .question_text {
+                              display: inline-block;
+                              margin-top: 8px;
+                              margin-bottom: 6px;
+                              font-size: 22px;
+                              font-weight: 600;
+                              line-height: 32px;
+                              color: #1A1A1A;
+                        }
+                        .question_detail {
+                              word-break: break-word;
+                              line-height: 1.6;
+                              font-size: 15px;
+                              color: #1a1a1a;
+                        }
+                        .btn_show_all {
+                              display: inline-block;
+                              background: none;
+                              border: none;
+                              outline: none;
+                              font-size: 14px;
+                              line-height: 25px;
+                              text-align: center;
+                              color: #8590A6;
+                              cursor: pointer;
+                              padding: 0;
+                              .icon_arrow_down {
+                                    width: 10px;
+                                    margin-left: 4px;
+                              }
+                        }
+                        .btn_write {
+                              height: 32px;
+                              line-height: 32px;
+                              font-size: 14px;
+                              color: #1e87f0;
+                              border: 1px solid #1e87f0;
+                              padding: 0 16px;
+                              cursor: pointer;
+                              background-color: transparent;
+                              border-radius: 4px;
+                              text-align: center;
+                              margin-top: 10px;
+                              .icon_write {
+                                    margin-right: 4px;
+                                    width: 16px;
+                              }
+                        }
+                        .btn_write:hover {
+                              background-color: rgba(30, 135, 240, 0.05);
+                        }
                   }
             }
             .right {
                   width: 296px;
+                  .question_item {
+                        margin-right: 30px;
+                        .name {
+                              font-size: 14px;
+                              color: #8590A6;
+                        }
+                        .value {
+                              font-size: 18px;
+                              color: #1a1a1a;
+                              font-weight: 600;
+                        }
+                  }
             }
       }
 }
@@ -94,276 +159,382 @@ body {
             width: 1000px;
             .left_wrap {
                   width: 694px;
-                  background-color: white;
-                  .tab {
-                        border-bottom: 1px solid #F0F2F7;
-                        font-size: 16px;
-                        color: #1A1A1A;
-                        .tab_item {
-                              padding: 0 20px;
-                              .tab_link {
-                                    display: inline-block;
-                                    padding: 18px 0;
-                              }
-                              .tab_link.is_active {
-                                    position: relative;
-                                    font-weight: 600;
-                              }
-                              .tab_link.is_active::after {
-                                    position: absolute;
-                                    right: 0;
-                                    bottom: -1px;
-                                    left: 0;
-                                    height: 3px;
-                                    background: #1e87f0;
-                                    content: '';
-                              }
-                        }
-                  }
-                  .question_items {
+                  .answer_input {
                         width: 100%;
-                        .question_item {
+                        .user_info {
                               width: 100%;
                               box-sizing: border-box;
-                              padding: 20px;
-                              border-bottom: 1px solid #F0F2F7;
-                              cursor: pointer;
-                              .question_content {
-                                    font-size: 18px;
-                                    font-weight: 600;
-                                    line-height: 1;
-                                    color: #1A1A1A;
-                                    margin-bottom: 10px;
+                              padding: 16px 20px;
+                              border-bottom: 1px solid #ebebeb;
+                              .img_avatar {
+                                    width: 40px;
+                                    height: 40px;
+                                    border-radius: 4px;
+                                    margin-right: 16px;
                               }
-                              .question_content:hover {
-                                    color: #1e87f0;
+                              .detail {
+                                    width: 100%;
+                                    .nickname {
+                                          color: #333;
+                                          font-weight: 600;
+                                          font-size: 15px;
+                                    }
+                                    .intro {
+                                          width: 50%;
+                                          color: #666;
+                                          font-size: 14px;
+                                    }
                               }
-                              .best_answer {
+                        }
+                        .answer_form {
+                              width: 100%;
+                              .answer_content {
+                                    width: 100%;
+                                    box-sizing: border-box;
                                     font-size: 15px;
                                     line-height: 1.6;
                                     color: #1a1a1a;
+                                    padding: 20px 20px;
+                                    border: none;
+                                    outline: none;
+                                    height: 126px;
+                                    resize: none;
+                              }
+                              .options {
+                                    width: 100%;
+                                    box-sizing: border-box;
+                                    padding: 20px;
+                                    .status {
+                                          font-size: 14px;
+                                          color: #8590A6;
+                                    }
+                                    .btn_submit {
+                                          height: 32px;
+                                          line-height: 32px;
+                                          background-color: #1e87f0;
+                                          border-radius: 4px;
+                                          color: white;
+                                          font-size: 14px;
+                                          padding: 0 16px;
+                                          border: none;
+                                          outline: none;
+                                          cursor: pointer;
+                                    }
+                                    .btn_submit:hover {
+                                          background-color: #1277db;
+                                    }
+                              }
+                        }
+                  }
+                  .answer_wrap {
+                        width: 100%;
+                        box-sizing: border-box;
+                        padding: 0 20px;
+                        .options {
+                              width: 100%;
+                              height: 50px;
+                              border-bottom: 1px solid #f6f6f6;
+                              .answer_count {
+                                    font-size: 15px;
+                                    color: #1a1a1a;
+                                    font-weight: 600;
+                                    .count {
+                                          margin-right: 2px;
+                                    }
+                              }
+                              .answer_rank {
+                                    button {
+                                          border: none;
+                                          outline: none;
+                                          background-color: transparent;
+                                          color: #76839b;
+                                          font-size: 14px;
+                                    }
+                                    .btn_rank {
+                                          background: url({{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_rank.svg) no-repeat right center;
+                                          background-size: 18%;
+                                          padding-right: 30px;
+                                    }
+                                    .uk-dropdown {
+                                          box-shadow: none;
+                                    }
+                                    .rank_rules {
+                                          background-color: transparent;
+                                          z-index: 999;
+                                          .rule_items {
+                                                border: 1px solid #EBEBEB;
+                                                border-radius: 4px;
+                                                box-shadow: 0 5px 20px rgba(26, 26, 26, 0.1);
+                                                width: 110px;
+                                                padding: 10px 0;
+                                                background-color: white;
+                                                margin-top: -80px;
+                                                margin-left: -20px;
+                                                .rule_item {
+                                                      padding: 0;
+                                                      width: 110px;
+                                                      height: 40px;
+                                                      line-height: 40px;
+                                                      padding: 0 20px;
+                                                      color: #8590A6;
+                                                      text-align: left;
+                                                      transition: all ease 0.3s;
+                                                      cursor: pointer;
+                                                }
+                                                .rule_item:hover {
+                                                      background-color: whitesmoke;
+                                                }
+                                          }
+                                    }
+                              }
+                        }
+                        .answer_items {
+                              width: 100%;
+                              .answer_item {
+                                    width: 100%;
+                                    border-bottom: 1px solid #ebebeb;
+                                    position: relative;
+                                    padding-bottom: 16px;
+                                    .author_content {
+                                          display: none;
+                                          position: absolute;
+                                          z-index: 999;
+                                          top: 70px;
+                                          left: 0;
+                                          width: 360px;
+                                          padding: 16px 20px;
+                                          box-shadow: 0 5px 20px rgba(26, 26, 26, 0.1);
+                                          background: #FFFFFF;
+                                          border-radius: 2px;
+                                          box-sizing: border-box;
+                                          .author_info {
+                                                width: 100%;
+                                                padding-bottom: 16px;
+                                                border-bottom: 1px solid #F0F2F7;
+                                                .author_link {
+                                                      width: 60px;
+                                                      height: 60px;
+                                                      .avatar_author {
+                                                            width: 100%;
+                                                            height: 100%;
+                                                            border-radius: 4px;
+                                                      }
+                                                }
+                                                .info {
+                                                      width: 246px;
+                                                      .nickname {
+                                                            font-size: 20px;
+                                                            font-weight: 600;
+                                                            line-height: 30px;
+                                                            color: #1A1A1A;
+                                                      }
+                                                }
+                                          }
+                                          .author_success {
+                                                width: 100%;
+                                                padding: 16px 0;
+                                                .success_item {
+                                                      width: 100%/3;
+                                                      .name {
+                                                            color: #8590A6;
+                                                            font-size: 14px;
+                                                      }
+                                                      .value {
+                                                            font-size: 18px;
+                                                            color: #1a1a1a;
+                                                            font-weight: 600;
+                                                      }
+                                                }
+                                          }
+                                          .options {
+                                                width: 100%;
+                                                height: 32px;
+                                                border-bottom: 0;
+                                                .btn_follow {
+                                                      width: 100%;
+                                                      height: 32px;
+                                                      display: inline-block;
+                                                      padding: 0 16px;
+                                                      font-size: 14px;
+                                                      line-height: 32px;
+                                                      color: white;
+                                                      text-align: center;
+                                                      cursor: pointer;
+                                                      background: none;
+                                                      border: none;
+                                                      border-radius: 3px;
+                                                      background-color: #1e87f0;
+                                                      transition: all ease 0.3s;
+                                                      .text {
+                                                            display: inline-block;
+                                                            background: url({{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_add_white.png) no-repeat left center;
+                                                            background-size: 30%;
+                                                            padding-left: 24px;
+                                                      }
+                                                }
+                                                .btn_follow:hover {
+                                                      background-color: #1277db;
+                                                }
+                                          }
+                                    }
+                                    .user_info {
+                                          width: 50%;
+                                          box-sizing: border-box;
+                                          padding: 16px 0;
+                                          .img_avatar {
+                                                width: 40px;
+                                                height: 40px;
+                                                border-radius: 4px;
+                                                margin-right: 16px;
+                                                cursor: pointer;
+                                          }
+                                          .detail {
+                                                width: 100%;
+                                                .nickname {
+                                                      color: #333;
+                                                      font-weight: 600;
+                                                      font-size: 15px;
+                                                      cursor: pointer;
+                                                }
+                                                .intro {
+                                                      width: 100%;
+                                                      color: #666;
+                                                      font-size: 14px;
+                                                }
+                                          }
+                                    }
+                                    .answer_content {
+                                          width: 100%;
+                                          p {
+                                                margin: 0;
+                                                font-size: 15px;
+                                                line-height: 1.6;
+                                                text-align: justify;
+                                                color: #1a1a1a;
+                                                margin-bottom: 10px;
+                                          }
+                                    }
+                                    .publish_time{
+                                          font-size: 14px;
+                                          color: #8590A6;
+                                    }
                               }
                         }
                   }
             }
             .right_wrap {
                   width: 296px;
-                  .ask {
+                  .author {
                         width: 100%;
-                        padding: 15px 20px;
-                        background-color: #1e87f0;
-                        font-size: 15px;
-                        font-weight: 600;
-                        cursor: pointer;
-                        .btn_ask {
-                              display: inline-block;
-                              background: url({{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_ask.png) no-repeat left center;
-                              background-size: 30%;
-                              padding-left: 24px;
-                              color: white;
-                        }
-                  }
-                  .hot {
                         .title {
                               padding: 15px 20px;
                               font-size: 15px;
                               border-bottom: 1px solid #F0F2F7;
                               font-weight: 600;
                         }
-                        .hot_items {
-                              padding: 20px;
-                              .hot_item {
-                                    font-size: 14px;
-                                    background-color: whitesmoke;
-                                    padding: 3px 5px;
-                                    border-radius: 2px;
-                                    margin-right: 10px;
-                                    margin-bottom: 10px;
-                                    color: #8590a6;
-                              }
-                        }
-                  }
-                  .my {
-                        padding: 10px 0;
-                        .my_item {
-                              display: inline-block;
-                              padding: 10px 20px;
-                              color: #8590a6;
-                              font-size: 14px;
-                              .item_text {
-                                    display: inline-block;
-                              }
-                        }
-                        .my_item:hover {
-                              background: whitesmoke;
-                        }
-                        .my_follow {
-                              .item_text {
-                                    background: url({{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_follow.png) no-repeat left center;
-                                    background-size: 20%;
-                                    padding-left: 30px;
-                              }
-                        }
-                        .my_question {
-                              .item_text {
-                                    background: url({{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_question.png) no-repeat left center;
-                                    background-size: 24%;
-                                    padding-left: 32px;
-                                    margin-left: -2px;
-                              }
-                        }
-                        .my_answer {
-                              .item_text {
-                                    background: url({{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_answer.png) no-repeat left center;
-                                    background-size: 20%;
-                                    padding-left: 30px;
-                              }
-                        }
-                  }
-            }
-      }
-}
-
-.ask_wrap {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(26, 26, 26, 0.65);
-      z-index: 999999;
-      .ask_form {
-            width: 540px;
-            background-color: white;
-            padding: 24px;
-            border-radius: 4px;
-            position: relative;
-            .btn_delete_modal {
-                  position: absolute;
-                  top: 20px;
-                  right: -50px;
-                  width: 20px;
-                  height: 20px;
-                  cursor: pointer;
-            }
-            .ask_item {
-                  margin-bottom: 20px;
-                  textarea {
-                        white-space: pre-wrap;
-                        overflow-wrap: break-word;
-                  }
-                  .img_avatar {
-                        width: 60px;
-                        height: 60px;
-                        border-top-left-radius: 4px;
-                        border-bottom-left-radius: 4px;
-                  }
-                  .question_title {
-                        width: 480px;
-                        height: 60px;
-                        resize: none;
-                        box-sizing: border-box;
-                        padding: 4px 10px;
-                        color: #1a1a1a;
-                        font-size: 16px;
-                        line-height: 1.6;
-                        border: none;
-                        background: whitesmoke;
-                        outline: none;
-                        border-top-right-radius: 4px;
-                        border-bottom-right-radius: 4px;
-                  }
-                  .question_detail {
-                        width: 100%;
-                        max-height: 320px;
-                        outline-color: #ddd;
-                        border: 1px solid #EBEBEB;
-                        border-radius: 4px;
-                        padding: 10px;
-                        box-sizing: border-box;
-                        resize: none;
-                        font-size: 14px;
-                        color: #1a1a1a;
-                        line-height: 1.6;
-                  }
-            }
-            .topic {
-                  width: 100%;
-                  .left {
-                        width: 432px;
-                        .topic_items {
-                              font-size: 14px;
-                              margin-bottom: 10px;
-                              .topic_item {
-                                    display: inline-block;
-                                    height: 24px;
-                                    line-height: 24px;
-                                    padding: 0 16px;
-                                    border-radius: 100px;
-                                    font-weight: 600;
-                                    margin-right: 10px;
-                                    margin-bottom: 10px;
-                                    background-color: rgba(30, 135, 240, 0.2);
-                                    .topic_item_text {
-                                          display: inline-block;
-                                          color: #1e87f0;
+                        .author_content {
+                              width: 100%;
+                              padding: 16px 20px;
+                              box-sizing: border-box;
+                              .author_info {
+                                    width: 100%;
+                                    padding-bottom: 16px;
+                                    border-bottom: 1px solid #F0F2F7;
+                                    .author_link {
+                                          width: 60px;
+                                          height: 60px;
+                                          .avatar_author {
+                                                width: 100%;
+                                                height: 100%;
+                                                border-radius: 4px;
+                                          }
                                     }
-                                    .btn_delete {
-                                          width: 16px;
-                                          height: 10px;
+                                    .info {
+                                          width: 186px;
+                                          .nickname {
+                                                font-size: 20px;
+                                                font-weight: 600;
+                                                line-height: 30px;
+                                                color: #1A1A1A;
+                                          }
+                                    }
+                              }
+                              .author_success {
+                                    width: 100%;
+                                    padding: 16px 0;
+                                    .success_item {
+                                          width: 100%/3;
+                                          .name {
+                                                color: #8590A6;
+                                                font-size: 14px;
+                                          }
+                                          .value {
+                                                font-size: 18px;
+                                                color: #1a1a1a;
+                                                font-weight: 600;
+                                          }
+                                    }
+                              }
+                              .options {
+                                    width: 100%;
+                                    .btn_follow {
+                                          width: 100%;
+                                          height: 32px;
                                           display: inline-block;
-                                          background: url({{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_delete.png) no-repeat center center;
-                                          background-size: 100%;
+                                          padding: 0 16px;
+                                          font-size: 14px;
+                                          line-height: 32px;
+                                          color: white;
+                                          text-align: center;
                                           cursor: pointer;
+                                          background: none;
+                                          border: none;
+                                          border-radius: 3px;
+                                          background-color: #1e87f0;
+                                          transition: all ease 0.3s;
+                                          .text {
+                                                display: inline-block;
+                                                background: url({{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_add_white.png) no-repeat left center;
+                                                background-size: 30%;
+                                                padding-left: 24px;
+                                          }
                                     }
-                              }
-                              .topic_item:hover {
-                                    background-color: rgba(30, 135, 240, 0.24);
-                              }
-                        }
-                        .topic_text_wrap {
-                              .topic_text {
-                                    width: 200px;
-                                    height: 28px;
-                                    line-height: 28px;
-                                    padding: 0 24px;
-                                    font-size: 14px;
-                                    border: 1px solid #1e87f0;
-                                    outline: none;
-                                    color: #888;
-                                    box-sizing: border-box;
-                                    border-radius: 100px;
-                              }
-                        }
-                        .add_topic_wrap {
-                              .btn_add_topic {
-                                    height: 30px;
-                                    line-height: 30px;
-                                    background: url({{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_add.png) no-repeat left center white;
-                                    background-size: 12%;
-                                    padding-left: 24px;
-                                    font-size: 14px;
-                                    border: none;
-                                    outline: none;
-                                    color: #1e87f0;
-                                    margin-top: 10px;
-                                    cursor: pointer;
+                                    .btn_follow:hover {
+                                          background-color: #1277db;
+                                    }
                               }
                         }
                   }
-                  .right {
-                        .btn_publish {
-                              width: 88px;
-                              height: 36px;
-                              line-height: 36px;
-                              font-size: 14px;
-                              color: white;
-                              background: #1e87f0;
-                              border-radius: 4px;
-                              border: none;
-                              outline: none;
-                              cursor: pointer;
+                  .related_questions {
+                        width: 100%;
+                        .title {
+                              padding: 15px 20px;
+                              font-size: 15px;
+                              border-bottom: 1px solid #F0F2F7;
+                              font-weight: 600;
+                        }
+                        .question_items {
+                              width: 100%;
+                              box-sizing: border-box;
+                              padding: 16px 20px;
+                              .question_item {
+                                    font-size: 14px;
+                                    margin-bottom: 10px;
+                                    .question_text {
+                                          color: #1868b9;
+                                          border-bottom: 1px solid transparent;
+                                          transition: all ease 0.3s;
+                                    }
+                                    .question_text:hover {
+                                          border-bottom: 1px solid #1868b9;
+                                    }
+                                    .answer_count {
+                                          color: #8590A6;
+                                    }
+                              }
+                              .question_item:last-child {
+                                    margin-bottom: 0;
+                              }
                         }
                   }
             }

@@ -1,0 +1,14 @@
+{
+	"cname":"我的知否",
+	"data": {
+	
+	},
+	"entries":[
+		{"method":"GET", "router":"/home/forms/zhifou", "ttl":0}
+	],
+	"align": {
+		"mobile":"/mobile/home/forms/zhifou",
+		"wechat":"/mobile/home/forms/zhifou",
+		"wxapp": "/home/forms/zhifou"
+	}
+}

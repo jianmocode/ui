@@ -1,14 +1,37 @@
-body {}
-component{ display:none; }
+component {
+      display: none;
+}
 
-.color_1a{
+.color_1a {
       color: #1a1a1a;
 }
 
-.color_main{
+.color_main {
       color: #1e87f0;
 }
 
-.bg_main{
+.color_sub{
+      color: #1277db;
+}
+
+.bg_main {
       background-color: #1e87f0;
+}
+
+.bg_sub{
+      background-color: #1277db;
+}
+
+.line_clamp_1 {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+}
+
+.line_clamp_2 {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      text-overflow: ellipsis;
 }

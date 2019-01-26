@@ -1,0 +1,328 @@
+<include src="__WEB_ROOT__/desktop/common/head.page" />
+
+<!-- mp:if="{{user.user_id}}" -->
+<div class="uk-flex uk-flex-center">
+
+      <!-- 用户知否资料 -->
+      <div class="zhifou_wrap uk-flex uk-flex-column">
+            <div class="tab uk-flex uk-flex-left">
+                  <span class="tab_item">
+                        <a
+                              class="tab_link is_active"
+                              href=""
+                        >提问
+                              <span class="count">18</span>
+                        </a>
+                  </span>
+                  <span class="tab_item">
+                        <a
+                              class="tab_link"
+                              href=""
+                        >回答
+                              <span class="count">236</span>
+                        </a>
+                  </span>
+                  <span class="tab_item">
+                        <a
+                              class="tab_link"
+                              href=""
+                        >我关注的人</a>
+                  </span>
+                  <span class="tab_item">
+                        <a
+                              class="tab_link"
+                              href=""
+                        >关注我的人</a>
+                  </span>
+            </div>
+            <div class="content_items uk-flex">
+                  <div class="my_questions content_item uk-flex uk-flex-column">
+                        <span class="title">我的提问</span>
+                        <div class="question_items uk-flex uk-flex-column">
+                              <div class="question_item uk-flex uk-flex-column">
+                                    <a class="question_title">有哪些使用nodejs作为后端技术支撑的公司？</a>
+                                    <div class="question_options uk-flex">
+                                          <span class="option_item">2017-7-14</span>
+                                          <span class="dot">·</span>
+                                          <span class="option_item">0 个回答</span>
+                                    </div>
+                              </div>
+                              <div class="question_item uk-flex uk-flex-column">
+                                    <a class="question_title">有哪些使用nodejs作为后端技术支撑的公司？</a>
+                                    <div class="question_options uk-flex">
+                                          <span class="option_item">2017-7-14</span>
+                                          <span class="dot">·</span>
+                                          <span class="option_item">0 个回答</span>
+                                    </div>
+                              </div>
+                              <div class="question_item uk-flex uk-flex-column">
+                                    <a class="question_title">有哪些使用nodejs作为后端技术支撑的公司？</a>
+                                    <div class="question_options uk-flex">
+                                          <span class="option_item">2017-7-14</span>
+                                          <span class="dot">·</span>
+                                          <span class="option_item">0 个回答</span>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <div class="my_answers content_item uk-flex uk-flex-column">
+                        <span class="title">我的回答</span>
+                        <div class="answer_items uk-flex uk-flex-column">
+                              <div class="answer_item uk-flex uk-flex-column">
+                                    <a class="question_title">有哪些使用nodejs作为后端技术支撑的公司？</a>
+                                    <div class="answer_content">
+                                          <span class="answer_text">从语言特性来说，首先排除python，py本身的定义就是动态脚本语言，通俗来说就是胶水语言，是用来连接软件组件的程序设计语言。所以更多的情况下，他可以用作于连接不同语言或者处理一些非强制类型语言比较难处理的场景。</span>
+                                          <button class="btn_show_all">
+                                                显示全部
+                                                <img
+                                                      class="icon_arrow_down"
+                                                      src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_arrow_down.svg"
+                                                      alt="icon_arrow_down"
+                                                >
+                                          </button>
+                                    </div>
+                                    <div class="answer_options uk-flex">
+                                          <span class="option_item">发表于2017-7-14</span>
+                                    </div>
+                              </div>
+                              <div class="answer_item uk-flex uk-flex-column">
+                                    <a class="question_title">有哪些使用nodejs作为后端技术支撑的公司？</a>
+                                    <div class="answer_content">
+                                          <span class="answer_text">从语言特性来说，首先排除python，py本身的定义就是动态脚本语言，通俗来说就是胶水语言，是用来连接软件组件的程序设计语言。所以更多的情况下，他可以用作于连接不同语言或者处理一些非强制类型语言比较难处理的场景。</span>
+                                          <button class="btn_show_all">
+                                                显示全部
+                                                <img
+                                                      class="icon_arrow_down"
+                                                      src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_arrow_down.svg"
+                                                      alt="icon_arrow_down"
+                                                >
+                                          </button>
+                                    </div>
+                                    <div class="answer_options uk-flex">
+                                          <span class="option_item">发表于2017-7-14</span>
+                                    </div>
+                              </div>
+                              <div class="answer_item uk-flex uk-flex-column">
+                                    <a class="question_title">有哪些使用nodejs作为后端技术支撑的公司？</a>
+                                    <div class="answer_content">
+                                          <span class="answer_text">从语言特性来说，首先排除python，py本身的定义就是动态脚本语言，通俗来说就是胶水语言，是用来连接软件组件的程序设计语言。所以更多的情况下，他可以用作于连接不同语言或者处理一些非强制类型语言比较难处理的场景。</span>
+                                          <button class="btn_show_all">
+                                                显示全部
+                                                <img
+                                                      class="icon_arrow_down"
+                                                      src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_arrow_down.svg"
+                                                      alt="icon_arrow_down"
+                                                >
+                                          </button>
+                                    </div>
+                                    <div class="answer_options uk-flex">
+                                          <span class="option_item">发表于2017-7-14</span>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <div class="my_followers content_item uk-flex uk-flex-column">
+                        <span class="title">我关注的人</span>
+                        <div class="follower_items uk-flex uk-flex-column">
+                              <div class="follower_item uk-flex uk-flex-between">
+                                    <a href="#">
+                                          <img
+                                                class="img_avatar"
+                                                src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
+                                                alt="img_avatar"
+                                          >
+                                    </a>
+                                    <div class="options uk-flex uk-flex-between uk-flex-middle">
+                                          <div class="left uk-flex uk-flex-column">
+                                                <div class="user_info uk-flex uk-flex-middle">
+                                                      <a class="nickname">KGdesign</a>
+                                                      <span class="line">|</span>
+                                                      <span class="intro line_clamp_1">多年专注Logo设计 kgdesign.cn多年专注Logo设计
+                                                            kgdesign.cn多年专注Logo设计 kgdesign.cn</span>
+                                                </div>
+                                                <div class="user_success uk-flex">
+                                                      <span class="success_item">85 回答</span>
+                                                      <span class="dot">·</span>
+                                                      <span class="success_item">60 文章</span>
+                                                      <span class="dot">·</span>
+                                                      <span class="success_item">16,047 关注者</span>
+                                                </div>
+                                          </div>
+                                          <div class="right">
+                                                <button class="btn_cancel">已关注</button>
+                                          </div>
+                                    </div>
+                              </div>
+                              <div class="follower_item uk-flex uk-flex-between">
+                                    <a href="#">
+                                          <img
+                                                class="img_avatar"
+                                                src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
+                                                alt="img_avatar"
+                                          >
+                                    </a>
+                                    <div class="options uk-flex uk-flex-between uk-flex-middle">
+                                          <div class="left uk-flex uk-flex-column">
+                                                <div class="user_info uk-flex uk-flex-middle">
+                                                      <a class="nickname">KGdesign</a>
+                                                      <span class="line">|</span>
+                                                      <span class="intro line_clamp_1">多年专注Logo设计 kgdesign.cn多年专注Logo设计
+                                                            kgdesign.cn多年专注Logo设计 kgdesign.cn</span>
+                                                </div>
+                                                <div class="user_success uk-flex">
+                                                      <span class="success_item">85 回答</span>
+                                                      <span class="dot">·</span>
+                                                      <span class="success_item">60 文章</span>
+                                                      <span class="dot">·</span>
+                                                      <span class="success_item">16,047 关注者</span>
+                                                </div>
+                                          </div>
+                                          <div class="right">
+                                                <button class="btn_cancel">已关注</button>
+                                          </div>
+                                    </div>
+                              </div>
+                              <div class="follower_item uk-flex uk-flex-between">
+                                    <a href="#">
+                                          <img
+                                                class="img_avatar"
+                                                src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
+                                                alt="img_avatar"
+                                          >
+                                    </a>
+                                    <div class="options uk-flex uk-flex-between uk-flex-middle">
+                                          <div class="left uk-flex uk-flex-column">
+                                                <div class="user_info uk-flex uk-flex-middle">
+                                                      <a class="nickname">KGdesign</a>
+                                                      <span class="line">|</span>
+                                                      <span class="intro line_clamp_1">多年专注Logo设计 kgdesign.cn多年专注Logo设计
+                                                            kgdesign.cn多年专注Logo设计 kgdesign.cn</span>
+                                                </div>
+                                                <div class="user_success uk-flex">
+                                                      <span class="success_item">85 回答</span>
+                                                      <span class="dot">·</span>
+                                                      <span class="success_item">60 文章</span>
+                                                      <span class="dot">·</span>
+                                                      <span class="success_item">16,047 关注者</span>
+                                                </div>
+                                          </div>
+                                          <div class="right">
+                                                <button class="btn_cancel">已关注</button>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <div class="my_following content_item uk-flex uk-flex-column">
+                        <span class="title">关注我的人</span>
+                        <div class="follower_items uk-flex uk-flex-column">
+                              <div class="follower_item uk-flex uk-flex-between">
+                                    <a href="#">
+                                          <img
+                                                class="img_avatar"
+                                                src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
+                                                alt="img_avatar"
+                                          >
+                                    </a>
+                                    <div class="options uk-flex uk-flex-between uk-flex-middle">
+                                          <div class="left uk-flex uk-flex-column">
+                                                <div class="user_info uk-flex uk-flex-middle">
+                                                      <a class="nickname">KGdesign</a>
+                                                      <span class="line">|</span>
+                                                      <span class="intro line_clamp_1">多年专注Logo设计 kgdesign.cn多年专注Logo设计
+                                                            kgdesign.cn多年专注Logo设计 kgdesign.cn</span>
+                                                </div>
+                                                <div class="user_success uk-flex">
+                                                      <span class="success_item">85 回答</span>
+                                                      <span class="dot">·</span>
+                                                      <span class="success_item">60 文章</span>
+                                                      <span class="dot">·</span>
+                                                      <span class="success_item">16,047 关注者</span>
+                                                </div>
+                                          </div>
+                                          <div class="right">
+                                                <button class="btn_cancel">
+                                                      <span class="text">关注TA</span>
+                                                </button>
+                                          </div>
+                                    </div>
+                              </div>
+                              <div class="follower_item uk-flex uk-flex-between">
+                                    <a href="#">
+                                          <img
+                                                class="img_avatar"
+                                                src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
+                                                alt="img_avatar"
+                                          >
+                                    </a>
+                                    <div class="options uk-flex uk-flex-between uk-flex-middle">
+                                          <div class="left uk-flex uk-flex-column">
+                                                <div class="user_info uk-flex uk-flex-middle">
+                                                      <a class="nickname">KGdesign</a>
+                                                      <span class="line">|</span>
+                                                      <span class="intro line_clamp_1">多年专注Logo设计 kgdesign.cn多年专注Logo设计
+                                                            kgdesign.cn多年专注Logo设计 kgdesign.cn</span>
+                                                </div>
+                                                <div class="user_success uk-flex">
+                                                      <span class="success_item">85 回答</span>
+                                                      <span class="dot">·</span>
+                                                      <span class="success_item">60 文章</span>
+                                                      <span class="dot">·</span>
+                                                      <span class="success_item">16,047 关注者</span>
+                                                </div>
+                                          </div>
+                                          <div class="right">
+                                                <button class="btn_cancel">
+                                                      <span class="text">关注TA</span>
+                                                </button>
+                                          </div>
+                                    </div>
+                              </div>
+                              <div class="follower_item uk-flex uk-flex-between">
+                                    <a href="#">
+                                          <img
+                                                class="img_avatar"
+                                                src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
+                                                alt="img_avatar"
+                                          >
+                                    </a>
+                                    <div class="options uk-flex uk-flex-between uk-flex-middle">
+                                          <div class="left uk-flex uk-flex-column">
+                                                <div class="user_info uk-flex uk-flex-middle">
+                                                      <a class="nickname">KGdesign</a>
+                                                      <span class="line">|</span>
+                                                      <span class="intro line_clamp_1">多年专注Logo设计 kgdesign.cn多年专注Logo设计
+                                                            kgdesign.cn多年专注Logo设计 kgdesign.cn</span>
+                                                </div>
+                                                <div class="user_success uk-flex">
+                                                      <span class="success_item">85 回答</span>
+                                                      <span class="dot">·</span>
+                                                      <span class="success_item">60 文章</span>
+                                                      <span class="dot">·</span>
+                                                      <span class="success_item">16,047 关注者</span>
+                                                </div>
+                                          </div>
+                                          <div class="right">
+                                                <button class="btn_cancel">
+                                                      <span class="text">关注TA</span>
+                                                </button>
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+      </div>
+
+      <!-- 用户未登录界面 -->
+      <!-- <div
+            class="container"
+            mp:else
+      >
+            <script type="text/javascript">
+                  window.location = "/user/signin/mobile?then=/home/forms/profile";
+            </script>
+      </div> -->
+
+</div>
+<include src="__WEB_ROOT__/desktop/common/foot.page" />
