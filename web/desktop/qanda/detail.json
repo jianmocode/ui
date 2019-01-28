@@ -1,7 +1,20 @@
 {
       "cname": "问答",
       "data": {
-            "question_id": "{{__var.id}}"
+            "question_id": "{{__var.id}}",
+            "question": {
+                  "api": "/xpmsns/qanda/question/get",
+                  "query": {
+                        "question_id": "{{__var.id}}",
+                        "withanswer": "1",
+                        "withagree": "1",
+                        "page": "1",
+                        "perpage": "12",
+                        "answer_select": "answer.answer_id,answer.summary,answer.content,answer.agree_cnt,answer.publish_time,user.headimgurl,user.name,user.nickname,user.mobile,user.bio",
+                        "agree_desc": "1",
+                        "publish_desc": "1"
+                  }
+            }
       },
       "entries": [{
                   "method": "GET",

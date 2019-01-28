@@ -1,14 +1,19 @@
 {
-	"cname":"我的知否",
-	"data": {
-	
-	},
-	"entries":[
-		{"method":"GET", "router":"/home/forms/zhifou", "ttl":0}
-	],
-	"align": {
-		"mobile":"/mobile/home/forms/zhifou",
-		"wechat":"/mobile/home/forms/zhifou",
-		"wxapp": "/home/forms/zhifou"
-	}
+      "cname": "我的知否",
+      "data": {
+            "user": {
+                  "api": "/xpmsns/user/user/getUserInfo",
+                  "query": {}
+            }
+      },
+      "entries": [{
+            "method": "GET",
+            "router": "/home/forms/zhifou",
+            "ttl": 0
+      }],
+      "align": {
+            "mobile": "/mobile/home/forms/zhifou",
+            "wechat": "/mobile/home/forms/zhifou",
+            "wxapp": "/home/forms/zhifou"
+      }
 }

@@ -5,30 +5,27 @@
       <div class="question uk-flex uk-flex-between">
             <div class="left">
                   <div class="question_item">
-                        <div class="topic_item uk-flex uk-flex-middle">
-                              <a class="topic_item_text">前端</a>
-                        </div>
-                        <div class="topic_item uk-flex uk-flex-middle">
-                              <a class="topic_item_text">React</a>
-                        </div>
-                        <div class="topic_item uk-flex uk-flex-middle">
-                              <a class="topic_item_text">Vue.js</a>
-                        </div>
-                        <div class="topic_item uk-flex uk-flex-middle">
-                              <a class="topic_item_text">Angular</a>
-                        </div>
-                        <div class="topic_item uk-flex uk-flex-middle">
-                              <a class="topic_item_text">nodejs</a>
+                        <div
+                              class="topic_item uk-flex uk-flex-middle"
+                              mp:if="{{question.tags}}"
+                        >
+                              <a
+                                    class="topic_item_text"
+                                    mp:for="{{question.tags}}"
+                              >前端</a>
                         </div>
                   </div>
                   <div class="question_item">
-                        <span class="question_text">有哪些金融领域的现象或事实，没有一定金融学知识的人不会相信，或者不能理解？</span>
+                        <span class="question_text">{{question.title}}</span>
                   </div>
                   <div class="question_item">
-                        <span class="question_detail">
-                              可能生孩子的是2口子的一个分水岭。你跨过去了，你好，大家都好；你过不去这个坎，你的失望越来越多，只想从围城出来。写这个问题的主要原因，想了想，可能也是...
+                        <span class="question_summary">
+                              {{question.summary}}...
                         </span>
-                        <button class="btn_show_all">
+                        <span class="question_detail none">
+                              {{question.content}}
+                        </span>
+                        <button class="btn_show_all_question">
                               显示全部
                               <img
                                     class="icon_arrow_down"
@@ -44,7 +41,7 @@
                                     src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_write.svg"
                                     alt="icon_write"
                               >
-                              写回答
+                              <span class="text">写回答</span>
                         </button>
                   </div>
             </div>
@@ -72,10 +69,19 @@
                                     <span class="intro line_clamp_1">灯下望月，不知其影灯下望月，不知其影灯下望月，不知其影灯下望月，不知其影灯下望月，不知其影灯下望月，不知其影灯下望月，不知其影灯下望月，不知其影</span>
                               </div>
                         </div>
-                        <form class="answer_form uk-flex uk-flex-column">
+                        <form
+                              id="answer_form"
+                              class="answer_form uk-flex uk-flex-column"
+                        >
+                              <input
+                                    class="question_id"
+                                    name="question_id"
+                                    type="text"
+                                    value="{{question_id}}"
+                              >
                               <textarea
                                     class="answer_content"
-                                    name="answer_content"
+                                    name="content"
                                     rows="6"
                                     autocomplete="off"
                                     placeholder="写回答..."
@@ -92,7 +98,7 @@
                   <div class="answer_wrap Card uk-felx uk-flex-column">
                         <div class="options uk-flex uk-flex-between uk-flex-middle">
                               <div class="answer_count">
-                                    <span class="count">509</span>
+                                    <span class="count">{{question.answer_cnt}}</span>
                                     <span>个回答</span>
                               </div>
                               <div class="answer_rank">
@@ -112,7 +118,11 @@
                               </div>
                         </div>
                         <div class="answer_items">
-                              <div class="answer_item">
+                              <div
+                                    class="answer_item"
+                                    mp:for="{{question.answers.data}}"
+                                    data-id="{{item.answer_id}}"
+                              >
                                     <div class="author_content">
                                           <div class="author_info uk-flex uk-flex-between uk-flex-middle">
                                                 <a
@@ -126,8 +136,8 @@
                                                       >
                                                 </a>
                                                 <div class="info uk-flex uk-flex-column">
-                                                      <span class="nickname">噗啦的胖肥</span>
-                                                      <span class="intro line_clamp_1">前剑桥雅思考试中心批卷人，口语满分得主，雅思问题请在值乎提问</span>
+                                                      <span class="nickname line_clamp_1">{{(item.user_nickname)?item.user_nickname:item.user_mobile}}</span>
+                                                      <span class="intro line_clamp_1">{{(item.user_bio)?item.user_bio:'TA还没有简介哦'}}</span>
                                                 </div>
                                           </div>
                                           <div class="author_success uk-flex uk-flex-between">
@@ -157,130 +167,49 @@
                                                 alt="img_avatar"
                                           >
                                           <div class="detail uk-flex uk-flex-column uk-flex-center">
-                                                <span class="nickname">kingslayer</span>
-                                                <span class="intro line_clamp_1">旅行过15个国家不想停下的crazy girl</span>
+                                                <span class="nickname line_clamp_1">{{(item.user_nickname)?item.user_nickname:item.user_mobile}}</span>
+                                                <span class="intro line_clamp_1">{{(item.user_bio)?item.user_bio:'TA还没有简介哦'}}</span>
                                           </div>
                                     </div>
                                     <div class="answer_content uk-flex uk-flex-column">
-                                          <p>故事讲述了性情古怪孤僻的小女孩玛丽・伦罗克斯的父母双亡后，生活在姨父克莱文先生神秘阴沉的庄园里。孤独的玛丽在女仆玛莎的鼓励下，开始尝试在庄园里寻找自己的乐趣。她认识了性格乖戾但善良的花匠和友好伶俐的知更鸟。在知更鸟的指引下，玛丽找到了开启秘密花园的钥匙。</p>
-                                          <p>每次翻开这本书，心情总是很轻松愉快。Burnett笔下的那座秘密花园里，鸟儿会说话，玫瑰花会指路，小草、树叶会窃窃私语，连空气里吹来的一阵风都会喃喃细语。小女孩Mary因为父母双亡而变得性格古怪，就像我们小时候一样顽皮、叛逆，有时不爱和外界沟通，人物角色代入感强。当她推开秘密花园荒废的木门，我们会不自觉地跟着Mary一起进入那个秘密世界，内心涌动着的惊喜、好奇，贯穿整个阅读过程。</p>
-                                    </div>
-                                    <div class="publish_time">
-                                          <span>发布于 2017-05-22</span>
-                                    </div>
-                              </div>
-                              <div class="answer_item">
-                                    <div class="author_content">
-                                          <div class="author_info uk-flex uk-flex-between uk-flex-middle">
-                                                <a
-                                                      class="author_link"
-                                                      href="#"
+                                          {{item.content}}
+                                          <button class="btn_show_all_answer uk-flex uk-flex-center uk-flex-middle">
+                                                <span class="text">展开阅读全文</span>
+                                                <img
+                                                      class="icon_pull"
+                                                      src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_arrow_down_blue.png"
+                                                      alt="icon_pull"
                                                 >
-                                                      <img
-                                                            class="avatar_author"
-                                                            src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
-                                                            alt="avatar_author"
-                                                      >
-                                                </a>
-                                                <div class="info uk-flex uk-flex-column">
-                                                      <span class="nickname">噗啦的胖肥</span>
-                                                      <span class="intro line_clamp_1">前剑桥雅思考试中心批卷人，口语满分得主，雅思问题请在值乎提问</span>
-                                                </div>
-                                          </div>
-                                          <div class="author_success uk-flex uk-flex-between">
-                                                <a class="success_item uk-flex uk-flex-column uk-flex-middle">
-                                                      <span class="name">回答</span>
-                                                      <span class="value">208</span>
-                                                </a>
-                                                <a class="success_item uk-flex uk-flex-column uk-flex-middle">
-                                                      <span class="name">提问</span>
-                                                      <span class="value">21</span>
-                                                </a>
-                                                <a class="success_item uk-flex uk-flex-column uk-flex-middle">
-                                                      <span class="name">关注者</span>
-                                                      <span class="value">24,250</span>
-                                                </a>
-                                          </div>
-                                          <div class="options">
-                                                <button class="btn_follow">
-                                                      <span class="text">关注TA</span>
-                                                </button>
-                                          </div>
-                                    </div>
-                                    <div class="user_info uk-flex">
-                                          <img
-                                                class="img_avatar"
-                                                src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
-                                                alt="img_avatar"
-                                          >
-                                          <div class="detail uk-flex uk-flex-column uk-flex-center">
-                                                <span class="nickname">kingslayer</span>
-                                                <span class="intro line_clamp_1">旅行过15个国家不想停下的crazy girl</span>
-                                          </div>
-                                    </div>
-                                    <div class="answer_content uk-flex uk-flex-column">
-                                          <p>故事讲述了性情古怪孤僻的小女孩玛丽・伦罗克斯的父母双亡后，生活在姨父克莱文先生神秘阴沉的庄园里。孤独的玛丽在女仆玛莎的鼓励下，开始尝试在庄园里寻找自己的乐趣。她认识了性格乖戾但善良的花匠和友好伶俐的知更鸟。在知更鸟的指引下，玛丽找到了开启秘密花园的钥匙。</p>
-                                          <p>每次翻开这本书，心情总是很轻松愉快。Burnett笔下的那座秘密花园里，鸟儿会说话，玫瑰花会指路，小草、树叶会窃窃私语，连空气里吹来的一阵风都会喃喃细语。小女孩Mary因为父母双亡而变得性格古怪，就像我们小时候一样顽皮、叛逆，有时不爱和外界沟通，人物角色代入感强。当她推开秘密花园荒废的木门，我们会不自觉地跟着Mary一起进入那个秘密世界，内心涌动着的惊喜、好奇，贯穿整个阅读过程。</p>
+                                          </button>
                                     </div>
                                     <div class="publish_time">
-                                          <span>发布于 2017-05-22</span>
+                                          <span>发布于 {{item.publish_time}}</span>
                                     </div>
-                              </div>
-                              <div class="answer_item">
-                                    <div class="author_content">
-                                          <div class="author_info uk-flex uk-flex-between uk-flex-middle">
-                                                <a
-                                                      class="author_link"
-                                                      href="#"
+                                    <div class="options uk-flex">
+                                          <button
+                                                class="btn_agree uk-flex uk-flex-middle {{(item.has_agreed)?'none':'block'}}"
+                                                data-id="{{item.answer_id}}"
+                                          >
+                                                <img
+                                                      class="img_clap"
+                                                      src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_agree.svg"
+                                                      alt="icon_clap"
                                                 >
-                                                      <img
-                                                            class="avatar_author"
-                                                            src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
-                                                            alt="avatar_author"
-                                                      >
-                                                </a>
-                                                <div class="info uk-flex uk-flex-column">
-                                                      <span class="nickname">噗啦的胖肥</span>
-                                                      <span class="intro line_clamp_1">前剑桥雅思考试中心批卷人，口语满分得主，雅思问题请在值乎提问</span>
-                                                </div>
-                                          </div>
-                                          <div class="author_success uk-flex uk-flex-between">
-                                                <a class="success_item uk-flex uk-flex-column uk-flex-middle">
-                                                      <span class="name">回答</span>
-                                                      <span class="value">208</span>
-                                                </a>
-                                                <a class="success_item uk-flex uk-flex-column uk-flex-middle">
-                                                      <span class="name">提问</span>
-                                                      <span class="value">21</span>
-                                                </a>
-                                                <a class="success_item uk-flex uk-flex-column uk-flex-middle">
-                                                      <span class="name">关注者</span>
-                                                      <span class="value">24,250</span>
-                                                </a>
-                                          </div>
-                                          <div class="options">
-                                                <button class="btn_follow">
-                                                      <span class="text">关注TA</span>
-                                                </button>
-                                          </div>
-                                    </div>
-                                    <div class="user_info uk-flex">
-                                          <img
-                                                class="img_avatar"
-                                                src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
-                                                alt="img_avatar"
+                                                <span class="text">赞同</span>
+                                                <span class="count">{{item.agree_cnt}}3.6K</span>
+                                          </button>
+                                          <button
+                                                class="btn_agree_clicked uk-flex uk-flex-middle {{(item.has_agreed)?'block':'none'}}"
+                                                data-id="{{item.answer_id}}"
                                           >
-                                          <div class="detail uk-flex uk-flex-column uk-flex-center">
-                                                <span class="nickname">kingslayer</span>
-                                                <span class="intro line_clamp_1">旅行过15个国家不想停下的crazy girl</span>
-                                          </div>
-                                    </div>
-                                    <div class="answer_content uk-flex uk-flex-column">
-                                          <p>故事讲述了性情古怪孤僻的小女孩玛丽・伦罗克斯的父母双亡后，生活在姨父克莱文先生神秘阴沉的庄园里。孤独的玛丽在女仆玛莎的鼓励下，开始尝试在庄园里寻找自己的乐趣。她认识了性格乖戾但善良的花匠和友好伶俐的知更鸟。在知更鸟的指引下，玛丽找到了开启秘密花园的钥匙。</p>
-                                          <p>每次翻开这本书，心情总是很轻松愉快。Burnett笔下的那座秘密花园里，鸟儿会说话，玫瑰花会指路，小草、树叶会窃窃私语，连空气里吹来的一阵风都会喃喃细语。小女孩Mary因为父母双亡而变得性格古怪，就像我们小时候一样顽皮、叛逆，有时不爱和外界沟通，人物角色代入感强。当她推开秘密花园荒废的木门，我们会不自觉地跟着Mary一起进入那个秘密世界，内心涌动着的惊喜、好奇，贯穿整个阅读过程。</p>
-                                    </div>
-                                    <div class="publish_time">
-                                          <span>发布于 2017-05-22</span>
+                                                <img
+                                                      class="img_clap"
+                                                      src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_agree_white.svg"
+                                                      alt="icon_clap"
+                                                >
+                                                <span class="text">已赞同</span>
+                                                <span class="count">{{item.agree_cnt}}3.7K</span>
+                                          </button>
                                     </div>
                               </div>
                         </div>

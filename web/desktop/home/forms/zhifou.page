@@ -1,10 +1,11 @@
 <include src="__WEB_ROOT__/desktop/common/head.page" />
 
-<!-- mp:if="{{user.user_id}}" -->
 <div class="uk-flex uk-flex-center">
-
       <!-- 用户知否资料 -->
-      <div class="zhifou_wrap uk-flex uk-flex-column">
+      <div
+            class="zhifou_wrap uk-flex uk-flex-column"
+            mp:if="{{user.user_id}}"
+      >
             <div class="tab uk-flex uk-flex-left">
                   <span class="tab_item">
                         <a
@@ -315,14 +316,14 @@
       </div>
 
       <!-- 用户未登录界面 -->
-      <!-- <div
+      <div
             class="container"
             mp:else
       >
             <script type="text/javascript">
                   window.location = "/user/signin/mobile?then=/home/forms/profile";
             </script>
-      </div> -->
+      </div>
 
 </div>
 <include src="__WEB_ROOT__/desktop/common/foot.page" />

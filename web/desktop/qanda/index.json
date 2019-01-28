@@ -1,7 +1,14 @@
 {
       "cname": "问答",
       "data": {
-            
+            "questions": {
+                  "api": "/xpmsns/qanda/question/search",
+                  "query": {
+                        "page":"1",
+                        "perpage":"12",
+                        "select":"question_id,question.title,question.content,user.name,category.name,tags,user.user_id,status"
+                  }
+            }
       },
       "entries": [{
                   "method": "GET",

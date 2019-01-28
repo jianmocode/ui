@@ -25,25 +25,14 @@
                         </span>
                   </div>
                   <div class="question_items">
-                        <div class="question_item uk-flex uk-flex-column">
-                              <a class="question_content">有哪些金融领域的现象或事实，没有一定金融学知识的人不会相信，或者不能理解？</a>
-                              <span class="best_answer">一哥们是某大学的历史老师。他每次买几万块钱的东西时，都会用信用卡，并且到下个月把账单分期，而账单分期的月费率是0.75%。但后来他总是发现，每年剩下来的钱没有以前多了，他也不知道是怎么回事。</span>
-                        </div>
-                        <div class="question_item uk-flex uk-flex-column">
-                              <a class="question_content">有哪些金融领域的现象或事实，没有一定金融学知识的人不会相信，或者不能理解？</a>
-                              <span class="best_answer">一哥们是某大学的历史老师。他每次买几万块钱的东西时，都会用信用卡，并且到下个月把账单分期，而账单分期的月费率是0.75%。但后来他总是发现，每年剩下来的钱没有以前多了，他也不知道是怎么回事。</span>
-                        </div>
-                        <div class="question_item uk-flex uk-flex-column">
-                              <a class="question_content">有哪些金融领域的现象或事实，没有一定金融学知识的人不会相信，或者不能理解？</a>
-                              <span class="best_answer">一哥们是某大学的历史老师。他每次买几万块钱的东西时，都会用信用卡，并且到下个月把账单分期，而账单分期的月费率是0.75%。但后来他总是发现，每年剩下来的钱没有以前多了，他也不知道是怎么回事。</span>
-                        </div>
-                        <div class="question_item uk-flex uk-flex-column">
-                              <a class="question_content">有哪些金融领域的现象或事实，没有一定金融学知识的人不会相信，或者不能理解？</a>
-                              <span class="best_answer">一哥们是某大学的历史老师。他每次买几万块钱的东西时，都会用信用卡，并且到下个月把账单分期，而账单分期的月费率是0.75%。但后来他总是发现，每年剩下来的钱没有以前多了，他也不知道是怎么回事。</span>
-                        </div>
-                        <div class="question_item uk-flex uk-flex-column">
-                              <a class="question_content">有哪些金融领域的现象或事实，没有一定金融学知识的人不会相信，或者不能理解？</a>
-                              <span class="best_answer">一哥们是某大学的历史老师。他每次买几万块钱的东西时，都会用信用卡，并且到下个月把账单分期，而账单分期的月费率是0.75%。但后来他总是发现，每年剩下来的钱没有以前多了，他也不知道是怎么回事。</span>
+                        <div
+                              class="question_item uk-flex uk-flex-column"
+                              mp:for="{{questions.data}}"
+                              mp:key="{{item.question_id}}"
+                              data-id="{{item.question_id}}"
+                        >
+                              <a href="/qanda/detail/{{item.question_id}}" class="question_content">{{item.title}}</a>
+                              <span class="best_answer">{{item.content}}</span>
                         </div>
                   </div>
             </div>
@@ -81,7 +70,10 @@
 </section>
 
 <section class="ask_wrap">
-      <form class="ask_form uk-flex uk-flex-column">
+      <form
+            id="ask_form"
+            class="ask_form uk-flex uk-flex-column"
+      >
             <img
                   class="btn_delete_modal"
                   src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_delete_white.png"
@@ -95,7 +87,7 @@
                   >
                   <textarea
                         class="question_title"
-                        name="question_title"
+                        name="title"
                         rows="2"
                         autocomplete="off"
                         placeholder="写下你的问题，准确地描述问题更容易得到解答"
@@ -104,7 +96,7 @@
             <div class="ask_item uk-flex uk-flex-column">
                   <textarea
                         class="question_detail"
-                        name="question_detail"
+                        name="content"
                         rows="6"
                         autocomplete="off"
                         placeholder="输入问题背景、条件等详细信息（选填）"
@@ -146,7 +138,10 @@
                         </div>
                   </div>
                   <div class="right">
-                        <button class="btn_publish">发布问题</button>
+                        <button
+                              type="button"
+                              class="btn_publish"
+                        >发布问题</button>
                   </div>
             </div>
       </form>
