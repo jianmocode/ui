@@ -185,31 +185,43 @@
                                     <div class="publish_time">
                                           <span>发布于 {{item.publish_time}}</span>
                                     </div>
-                                    <div class="options uk-flex">
-                                          <button
-                                                class="btn_agree uk-flex uk-flex-middle {{(item.has_agreed)?'none':'block'}}"
-                                                data-id="{{item.answer_id}}"
-                                          >
-                                                <img
-                                                      class="img_clap"
-                                                      src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_agree.svg"
-                                                      alt="icon_clap"
+                                    <div class="options uk-flex uk-flex-between">
+                                          <div class="left">
+                                                <button
+                                                      class="btn_agree uk-flex uk-flex-middle {{(item.has_agreed)?'none':'block'}}"
+                                                      data-id="{{item.answer_id}}"
                                                 >
-                                                <span class="text">赞同</span>
-                                                <span class="count">{{item.agree_cnt}}3.6K</span>
-                                          </button>
-                                          <button
-                                                class="btn_agree_clicked uk-flex uk-flex-middle {{(item.has_agreed)?'block':'none'}}"
-                                                data-id="{{item.answer_id}}"
-                                          >
-                                                <img
-                                                      class="img_clap"
-                                                      src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_agree_white.svg"
-                                                      alt="icon_clap"
+                                                      <img
+                                                            class="img_agree"
+                                                            src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_agree.svg"
+                                                            alt="icon_agree"
+                                                      >
+                                                      <span class="text">赞同</span>
+                                                      <span class="count">{{item.agree_cnt}}3.6K</span>
+                                                </button>
+                                                <button
+                                                      class="btn_agree_clicked uk-flex uk-flex-middle {{(item.has_agreed)?'block':'none'}}"
+                                                      data-id="{{item.answer_id}}"
                                                 >
-                                                <span class="text">已赞同</span>
-                                                <span class="count">{{item.agree_cnt}}3.7K</span>
-                                          </button>
+                                                      <img
+                                                            class="img_clap"
+                                                            src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_agree_white.svg"
+                                                            alt="icon_clap"
+                                                      >
+                                                      <span class="text">已赞同</span>
+                                                      <span class="count">{{item.agree_cnt}}3.7K</span>
+                                                </button>
+                                          </div>
+                                          <div class="right">
+                                                <button class="btn_collapse_answer uk-flex uk-flex-middle">
+                                                      <span class="text">收起</span>
+                                                      <img
+                                                            class="img_collapse"
+                                                            src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_arrow_up.png"
+                                                            alt="icon_collapse"
+                                                      >
+                                                </button>
+                                          </div>
                                     </div>
                               </div>
                         </div>

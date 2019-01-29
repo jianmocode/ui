@@ -8,6 +8,7 @@ Page({
 
             _that.handleHoverUserAvatar();
             _that.handleClickQuestionShowAll();
+            _that.handleClickAnswerShowAll();
             _that.handleClickWriteAnswer();
             _that.handleClickSubmitAnswer();
             _that.handleClickAnswerAgree();
@@ -59,6 +60,40 @@ Page({
                         .find('.question_detail')
                         .toggle();
             })
+      },
+      handleClickAnswerShowAll: function () {
+            const _that = this;
+
+            $('.btn_show_all_answer').on('click', function () {
+                  $(this)
+                        .hide();
+
+                  $(this)
+                        .parent()
+                        .css('height', 'auto');
+                  
+                  $(this)
+                        .parent()
+                        .parent()
+                        .find('.btn_collapse_answer')
+                        .show();
+            });
+
+            $('.btn_collapse_answer').on('click', function () {
+                  $(this)
+                        .hide();
+
+                  $(this)
+                        .parents('.answer_content')
+                        .css('height', '240px');
+                  
+                  $(this)
+                        .parent()
+                        .parent()
+                        .parent()
+                        .find('.btn_show_all_answer')
+                        .show();
+            });
       },
       handleClickWriteAnswer: function () {
             const _that = this;
