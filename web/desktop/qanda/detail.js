@@ -84,13 +84,12 @@ Page({
                         .hide();
 
                   $(this)
-                        .parents('.answer_content')
+                        .parents('.answer_item')
+                        .find('.answer_content')
                         .css('height', '240px');
                   
                   $(this)
-                        .parent()
-                        .parent()
-                        .parent()
+                        .parents('.answer_item')
                         .find('.btn_show_all_answer')
                         .show();
             });
