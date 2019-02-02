@@ -1,15 +1,13 @@
-var host = "re.xpmsns.com";
-
 config = {
 	mina:{
 		target: false,
 		priority:0,
-		server:"https://"+host,
-		domain:host,
-		project:"jm-tech",
-		appid:'154487369966420',
-		secret:'538fabbc5aea9b723b8a90107fdc0284',
-		instance:"root",
+		server:"https://wss.xpmjs.com",
+        domain:"wss.xpmjs.com",
+        instance: "root",
+		project:"default",
+		appid:'152389239297374',
+		secret:'500970dad3324330f8a1085939f20360'
 	},
 	wxapp:{
 		"cli":"/Applications/wechatwebdevtools.app/Contents/Resources/app.nw/bin/cli",

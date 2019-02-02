@@ -15,7 +15,6 @@ let com = Page({
     },
     onReady: function( params ) {
 
-
 		let $elms = $(params['selector']);
 		this.template = $('component[name=editor-html]').html().toString();
 		this.events.change = (typeof params['change'] == 'function' ) ? params['change'] : () => {};
@@ -23,8 +22,86 @@ let com = Page({
 		this.events.success = (typeof params['success'] == 'function' ) ? params['success'] : () => {};
 	 	$elms.each( (idx, elm )=>{
 	 		this.init( $(elm) );
-	 	});
+        });
+
+        // 添加 图片、视频和附件按钮
+        // @see https://gist.github.com/pmhoudry/a0dc6905872a41a316135d42a5537ddb
+        addEventListener("trix-initialize", (event) => {      
+            this.addNewBlock( event.target ); // 添加个性化面板
+            this.addImage( event.target ); // 添加图片
+            this.addVideo( event.target ); // 添加视频
+            this.addAttach( event.target ); // 添加附件
+        });
     },
+
+    // 添加个性化面板
+    addNewBlock: function ( trix ) {
+        let toolBar = trix.toolbarElement;
+        let spacer = toolBar.querySelector(".trix-button-group-spacer");
+        let blockElm = document.createElement("span");
+            blockElm.setAttribute("class","trix-button-group trix-button-group--block-tools trix-button-group-custom");
+            blockElm.setAttribute("data-trix-button-group", "block-tools");
+
+        if ( spacer ) {
+            spacer.before(blockElm);
+        }
+    },
+
+    // 添加附件 
+    addAttach:function( trix ) {
+
+        let button = document.createElement("button");
+            button.setAttribute("data-trix-action", "x-attach");
+            button.setAttribute("class", "trix-button trix-button--icon trix-button--icon-attach");
+            button.setAttribute("type", "button");
+
+        let toolBar = trix.toolbarElement;
+        let blockElm = toolBar.querySelector(".trix-button-group-custom");
+        let attachBtn = blockElm.appendChild(button);
+
+        // 上传按钮点击, 选择文件并上传
+        attachBtn.addEventListener("click", ()=>{
+            console.log('选择文件并上传');
+        });
+    },
+
+    // 添加图片
+    addImage:function( trix ) {
+
+        let button = document.createElement("button");
+            button.setAttribute("data-trix-action", "x-image");
+            button.setAttribute("class", "trix-button trix-button--icon trix-button--icon-image");
+            button.setAttribute("type", "button");
+
+        let toolBar = trix.toolbarElement;
+        let blockElm = toolBar.querySelector(".trix-button-group-custom");
+        let imageBtn = blockElm.appendChild(button);
+
+        // 上传按钮点击, 选择文件并上传
+        imageBtn.addEventListener("click", ()=>{
+            console.log('选择图片并上传');
+        });
+    },
+
+    // 添加视频
+    addVideo:function( trix ) {
+
+        let button = document.createElement("button");
+            button.setAttribute("data-trix-action", "x-image");
+            button.setAttribute("class", "trix-button trix-button--icon trix-button--icon-video");
+            button.setAttribute("type", "button");
+
+        let toolBar = trix.toolbarElement;
+        let blockElm = toolBar.querySelector(".trix-button-group-custom");
+        let videoBtn = blockElm.appendChild(button);
+
+        // 上传按钮点击, 选择文件并上传
+        videoBtn.addEventListener("click", ()=>{
+            console.log('选择视频并上传');
+        });
+    },
+
+    
     init: function( $elm ) {
         let attrs = this.getAttrs( $elm );
             attrs["lang"] = attrs["lang"] ?  attrs["lang"] : 'zh-CN';
@@ -40,7 +117,6 @@ let com = Page({
 
         // Init trix
         $('.jm-editor-html',$elm).append(`<trix-editor class="jm-article" input="${attrs.name}_input"></trix-editor>`);
-        
     },
 
     getAttrs: function( $elm ) {

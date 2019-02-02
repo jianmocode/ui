@@ -95,7 +95,7 @@
                validate="{
                        required:true, 
                        messages: {
-                        required:'请填写文章正文'
+                            required:'请填写文章正文'
                        }
                 }
             ">Hello world</editor>
@@ -156,7 +156,7 @@
                                 ">
                             <div class="uk-helper uk-helper-danger"></div>
                         </div>
-                    </div> <!-- END 文章来源 -->
+                    </div> <!-- END 文章标签 -->
 
                     <!-- 文章来源 -->
                     <div class="uk-form-group uk-margin " >
