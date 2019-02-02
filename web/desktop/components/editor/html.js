@@ -72,21 +72,24 @@ let com = Page({
 
         function uploadFileAttachment(attachment) {
 
-            uploadFile(attachment.file, setProgress, setAttributes)
+            uploadFile(attachment, setProgress, setAttributes)
 
             function setProgress(progress) {
               attachment.setUploadProgress(progress)
             }
         
-            function setAttributes(attributes) {
-              attachment.setAttributes(attributes)
+            function setAttributes(data) {
+              console.log(attachment);
             }
         }
 
         /**
          * 上传文件
          */
-        function uploadFile(file, progressCallback, successCallback) {
+        function uploadFile(attachment, progressCallback, successCallback) {
+
+            // Check File
+            let file = attachment.file;
 
             var key = createStorageKey(file)
             var formData = createFormData(key, file)
@@ -105,27 +108,68 @@ let com = Page({
                     response = JSON.parse( xhr.responseText );
                 }catch( e ){
                     console.log('upload error');
+                    attachment.remove();
                     return;
                 }
 
+                // 上传失败
                 if ( response.code != 0 || typeof response.data != "object" ) {
                     let message = response.message || "上传失败";
+                    attachment.remove();
                     console.log( message );
                     return;
                 }
 
-                let data = response.data || {};
-                
-                let attributes ={
-                    url: data.url,
-                    href: data.url
-                };
 
-                successCallback(attributes);
+                let data = response.data || {};
+                setContent( attachment, data);
+                successCallback(data);
             })
         
-            xhr.send(formData)
+            xhr.send(formData);
         }
+
+
+        function setContent( attachment, data ) {
+
+            let file = attachment.file;
+            let attributes ={
+                previewable: false,
+                url: data.url,
+                href: data.url
+            };
+
+            if (!data.mime ){ 
+                data.mime = "application/file";
+            }
+           
+            if ( data.mime.includes("image") ) { // 图片
+                attributes["content"] = `
+                    <span class="trix-preview-image" data-url="${data.url}"  data-name="${file.name}" >
+                        <img src="${data.url}" /> 
+                    <span>
+                `;
+
+            } else if ( data.mime.includes("video") ) { // 视频
+                attributes["content"] = `
+                    <span class="trix-preview-video"  data-url="${data.url}"  data-name="${file.name}" >
+                        <video width="100%" height="auto" controls>
+                            <source src="${data.url}" type="${data.mime}">
+                        </video>
+                    <span>
+                `;
+
+            } else {
+                attributes["content"] = `
+                    <span class="trix-preview-file" data-url="${data.url}"  data-name="${file.name}" >
+                        ${file.name}
+                    <span>
+                `;
+            }
+
+            attachment.setAttributes(attributes);
+        }   
+
 
         function createStorageKey(file) {
             var date = new Date()
