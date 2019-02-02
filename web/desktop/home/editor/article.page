@@ -91,10 +91,11 @@
         <!-- 文章正文 -->
 	    <div class="uk-form-group uk-margin " >
             <editor name="content"  type="html" rows="20" 
+                autofocus
                 url="/_api/xpmsns/user/user/upload"
-                placeholder="文章正文" 
+                placeholder="在这里输入文章正文"
                 validate="{
-                       required:true, 
+                       required:false, 
                        messages: {
                             required:'请填写文章正文'
                        }

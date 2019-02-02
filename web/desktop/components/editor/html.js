@@ -4,7 +4,8 @@ let com = Page({
 	template: '<textarea>HTML文本编辑器</textarea>',
 	events: {},
 	props: {
-		"disabled":"bool",  // 是否 disabled
+        "disabled":"bool",  // 是否 disabled
+        "autofocus":"bool",  // 是否 自动聚焦
         "name":"string",	// 名称
         "lang": 'string',   // 语言
 		"id":"string",		// ID
@@ -47,9 +48,16 @@ let com = Page({
         let html = Mustache.render(this.template, data );
         $elm.html(html);
         $elm.addClass('editor-inited'); //标记初始化完毕
-
+    
         // Init trix
-        $('.jm-editor-html',$elm).append(`<trix-editor class="jm-article" input="${attrs.name}_input"></trix-editor>`);
+        $('.jm-editor-html',$elm).append(`
+            <trix-editor 
+                placeholder=${attrs.placeholder}
+                class="jm-article" 
+                ${attrs.autofocus ? "autofocus=true" : ""}
+                input="${attrs.name}_input">
+            </trix-editor>`
+        );
 
         // 处理文件上传
         var elm = $('.jm-editor-html',$elm).get(0);
