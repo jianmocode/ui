@@ -92,7 +92,7 @@ let com = Page({
         }
 
         /**
-         * 上传文件
+         * 上传文件 ( 下一版应该支持分段上传 )
          */
         function uploadFile(attachment, progressCallback, successCallback) {
 
