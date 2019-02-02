@@ -91,14 +91,15 @@
         <!-- 文章正文 -->
 	    <div class="uk-form-group uk-margin " >
             <editor name="content"  type="html" rows="20" 
-               placeholder="文章正文" 
-               validate="{
+                url="/_api/xpmsns/user/user/upload"
+                placeholder="文章正文" 
+                validate="{
                        required:true, 
                        messages: {
                             required:'请填写文章正文'
                        }
                 }
-            ">Hello world</editor>
+            "></editor>
             <div class="uk-helper uk-helper-danger"></div>
         </div> <!-- END 文章正文-->
 

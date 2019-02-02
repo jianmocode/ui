@@ -34,6 +34,115 @@ let com = Page({
         });
     },
 
+    init: function( $elm ) {
+        let attrs = this.getAttrs( $elm );
+            attrs["lang"] = attrs["lang"] ?  attrs["lang"] : 'zh-CN';
+            attrs["url"] = attrs["url"] ? attrs["url"] : '';
+        
+        let value = $elm.html();
+        let data = Object.assign({},attrs);
+            data["value"] = value;
+        
+
+        let html = Mustache.render(this.template, data );
+        $elm.html(html);
+        $elm.addClass('editor-inited'); //标记初始化完毕
+
+        // Init trix
+        $('.jm-editor-html',$elm).append(`<trix-editor class="jm-article" input="${attrs.name}_input"></trix-editor>`);
+
+        // 处理文件上传
+        var elm = $('.jm-editor-html',$elm).get(0);
+        if ( elm ) {
+            elm.addEventListener("trix-attachment-add", (event) => {
+                this.bindFileUploadHandler( event.target, event.attachment, attrs["url"] );
+            });
+        }
+    },
+    
+    // 文件管理器
+    bindFileUploadHandler( trix, attachment, url ) {
+        if ( url == null || url == "" ) {
+            console.log('未指定文件上传云端服务地址(上传文件功能将无法使用)', " trix-id=", trix.getAttribute("trix-id"), attachment );
+            return;
+        }
+
+        // 上传文件
+        uploadFileAttachment( attachment );
+
+        function uploadFileAttachment(attachment) {
+
+            uploadFile(attachment.file, setProgress, setAttributes)
+
+            function setProgress(progress) {
+              attachment.setUploadProgress(progress)
+            }
+        
+            function setAttributes(attributes) {
+              attachment.setAttributes(attributes)
+            }
+        }
+
+        /**
+         * 上传文件
+         */
+        function uploadFile(file, progressCallback, successCallback) {
+
+            var key = createStorageKey(file)
+            var formData = createFormData(key, file)
+            var xhr = new XMLHttpRequest()
+        
+            xhr.open("POST", url, true)
+        
+            xhr.upload.addEventListener("progress", function(event) {
+                var progress = event.loaded / event.total * 100
+                progressCallback(progress)
+            })
+        
+            xhr.addEventListener("load", function(event) {
+                let response = {};
+                try {
+                    response = JSON.parse( xhr.responseText );
+                }catch( e ){
+                    console.log('upload error');
+                    return;
+                }
+
+                if ( response.code != 0 || typeof response.data != "object" ) {
+                    let message = response.message || "上传失败";
+                    console.log( message );
+                    return;
+                }
+
+                let data = response.data || {};
+                
+                let attributes ={
+                    url: data.url,
+                    href: data.url
+                };
+
+                successCallback(attributes);
+            })
+        
+            xhr.send(formData)
+        }
+
+        function createStorageKey(file) {
+            var date = new Date()
+            var day = date.toISOString().slice(0,10)
+            var name = date.getTime() + "-" + file.name
+            return [ "tmp", day, name ].join("/")
+        }
+
+        function createFormData(key, file) {
+            var data = new FormData()
+            data.append("key", key)
+            data.append("file", file)
+            data.append("Content-Type", file.type)
+            return data
+        }
+    },
+    
     // 添加个性化面板
     addNewBlock: function ( trix ) {
         let toolBar = trix.toolbarElement;
@@ -99,24 +208,6 @@ let com = Page({
         videoBtn.addEventListener("click", ()=>{
             console.log('选择视频并上传');
         });
-    },
-
-    
-    init: function( $elm ) {
-        let attrs = this.getAttrs( $elm );
-            attrs["lang"] = attrs["lang"] ?  attrs["lang"] : 'zh-CN';
-        
-        let value = $elm.html();
-        let data = Object.assign({},attrs);
-            data["value"] = value;
-        
-
-        let html = Mustache.render(this.template, data );
-        $elm.html(html);
-        $elm.addClass('editor-inited'); //标记初始化完毕
-
-        // Init trix
-        $('.jm-editor-html',$elm).append(`<trix-editor class="jm-article" input="${attrs.name}_input"></trix-editor>`);
     },
 
     getAttrs: function( $elm ) {
