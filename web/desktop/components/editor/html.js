@@ -109,7 +109,9 @@ let com = Page({
                 trix.toolbarElement.style.top = option["top"] + 'px';
                 trix.toolbarElement.style.width = width;
                 trix.toolbarElement.style.position = "fixed";
+                trix.toolbarElement.style.zIndex = 960;
                 trix.editor.element.style.paddingTop = (height + paddingTop) + 'px';
+                
             } else {
                 trix.toolbarElement.style.position = "static";
                 trix.editor.element.style.paddingTop = paddingTop + 'px';
