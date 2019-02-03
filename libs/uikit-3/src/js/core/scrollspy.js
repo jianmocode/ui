@@ -49,7 +49,7 @@ export default {
 
             read(els) {
 
-                if (!els.delay) {
+                if (!els.update) {
                     return;
                 }
 
@@ -72,9 +72,9 @@ export default {
             write(els) {
 
                 // Let child components be applied at least once first
-                if (!els.delay) {
+                if (!els.update) {
                     this.$emit();
-                    return els.delay = true;
+                    return els.update = true;
                 }
 
                 this.elements.forEach((el, i) => {
@@ -150,7 +150,7 @@ export default {
 
             },
 
-            events: ['scroll', 'load', 'resize']
+            events: ['scroll', 'resize']
 
         }
 

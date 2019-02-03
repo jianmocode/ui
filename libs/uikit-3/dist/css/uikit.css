@@ -1,4 +1,4 @@
-/*! UIkit 3.0.0-rc.16 | http://www.getuikit.com | (c) 2014 - 2018 YOOtheme | MIT License */
+/*! UIkit 3.0.3 | http://www.getuikit.com | (c) 2014 - 2018 YOOtheme | MIT License */
 /* ========================================================================
    Component: Base
  ========================================================================== */
@@ -10,7 +10,7 @@
  */
 html {
   /* 1 */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 16px;
   font-weight: normal;
   line-height: 1.5;
@@ -58,15 +58,15 @@ a:hover,
 /* Text-level semantics
  ========================================================================== */
 /*
- * 1. Remove the bottom border in Chrome 57-.
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ * 1. Add an underline text decoration in Safari, Edge and IE.
+ * 2. Add `dotted` style in Safari.
+ * Note: The shorthand declaration `underline dotted` is not supported in Safari, Edge and IE.
  */
 abbr[title] {
   /* 1 */
-  border-bottom: none;
-  /* 2 */
   text-decoration: underline;
-  text-decoration: underline dotted;
+  /* 2 */
+  -webkit-text-decoration-style: dotted;
 }
 /*
  * Add the correct font weight in Chrome, Edge, and Safari.
@@ -161,7 +161,6 @@ video {
  * 3. Corrects responsive `max-width` behavior if padding and border are used.
  * 4. Exclude SVGs for IE11 because they don't preserve their aspect ratio.
  */
-audio,
 canvas,
 img,
 video {
@@ -241,7 +240,7 @@ h5,
 h6,
 .uk-h6 {
   margin: 0 0 20px 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: normal;
   color: #333;
   text-transform: none;
@@ -410,11 +409,6 @@ pre code {
 }
 /* Selection pseudo-element
  ========================================================================== */
-::-moz-selection {
-  background: #39f;
-  color: #fff;
-  text-shadow: none;
-}
 ::selection {
   background: #39f;
   color: #fff;
@@ -448,17 +442,23 @@ template {
 /*
  * Breakpoints
  */
-.var-media-s::before {
+.uk-breakpoint-s::before {
   content: '640px';
 }
-.var-media-m::before {
+.uk-breakpoint-m::before {
   content: '960px';
 }
-.var-media-l::before {
+.uk-breakpoint-l::before {
   content: '1200px';
 }
-.var-media-xl::before {
+.uk-breakpoint-xl::before {
   content: '1600px';
+}
+:root {
+  --uk-breakpoint-s: 640px;
+  --uk-breakpoint-m: 960px;
+  --uk-breakpoint-l: 1200px;
+  --uk-breakpoint-xl: 1600px;
 }
 /* ========================================================================
    Component: Link
@@ -661,10 +661,11 @@ a.uk-link-reset:hover,
 /* Small
  ========================================================================== */
 /*
- * Reset child height, caused by `inline-block`
+ * Fix height of `hr` element not being expanded by child border width.
+ * `height` also needed to reset the child `line-height` caused by `inline-block`
  */
 .uk-divider-small {
-  line-height: 0;
+  height: 1px;
 }
 .uk-divider-small::after {
   content: "";
@@ -673,6 +674,15 @@ a.uk-link-reset:hover,
   max-width: 100%;
   border-top: 1px solid #e5e5e5;
   vertical-align: top;
+}
+/* Vertical
+ ========================================================================== */
+.uk-divider-vertical {
+  width: 1px;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  border-left: 1px solid #e5e5e5;
 }
 /* ========================================================================
    Component: List
@@ -741,6 +751,7 @@ a.uk-link-reset:hover,
 }
 /*
  * Bullet
+ * 1. Reset display `table` which causes issues in combination with multi column layouts.
  */
 .uk-list-bullet > li {
   position: relative;
@@ -756,6 +767,8 @@ a.uk-link-reset:hover,
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%226%22%20height%3D%226%22%20viewBox%3D%220%200%206%206%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Ccircle%20fill%3D%22%23666%22%20cx%3D%223%22%20cy%3D%223%22%20r%3D%223%22%20%2F%3E%0A%3C%2Fsvg%3E");
   background-repeat: no-repeat;
   background-position: 50% 50%;
+  /* 1 */
+  display: block;
 }
 /* Size modifier
  ========================================================================== */
@@ -1047,10 +1060,10 @@ button.uk-icon:not(:disabled) {
 /*
  * Set the fill and stroke color of all SVG elements to the current text color
  */
-.uk-icon [fill*='#']:not(.uk-preserve) {
+.uk-icon:not(.uk-preserve) [fill*='#']:not(.uk-preserve) {
   fill: currentcolor;
 }
-.uk-icon [stroke*='#']:not(.uk-preserve) {
+.uk-icon:not(.uk-preserve) [stroke*='#']:not(.uk-preserve) {
   stroke: currentcolor;
 }
 /*
@@ -2198,8 +2211,8 @@ select.uk-form-width-xsmall {
  *    unaffected by the padding on different breakpoints. It's important for the size modifiers.
  */
 .uk-container {
-  box-sizing: content-box;
   /* 1 */
+  box-sizing: content-box;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -2257,6 +2270,89 @@ select.uk-form-width-xsmall {
 }
 .uk-container-expand {
   max-width: none;
+}
+/* Expand modifier
+ ========================================================================== */
+/*
+ * Expand one side only
+ */
+.uk-container-expand-left {
+  margin-left: 0;
+}
+.uk-container-expand-right {
+  margin-right: 0;
+}
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+  .uk-container-expand-left.uk-container-xsmall,
+  .uk-container-expand-right.uk-container-xsmall {
+    max-width: calc(50% + (750px / 2) - 30px);
+  }
+  .uk-container-expand-left.uk-container-small,
+  .uk-container-expand-right.uk-container-small {
+    max-width: calc(50% + (900px / 2) - 30px);
+  }
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .uk-container-expand-left,
+  .uk-container-expand-right {
+    max-width: calc(50% + (1200px / 2) - 40px);
+  }
+  .uk-container-expand-left.uk-container-xsmall,
+  .uk-container-expand-right.uk-container-xsmall {
+    max-width: calc(50% + (750px / 2) - 40px);
+  }
+  .uk-container-expand-left.uk-container-small,
+  .uk-container-expand-right.uk-container-small {
+    max-width: calc(50% + (900px / 2) - 40px);
+  }
+  .uk-container-expand-left.uk-container-large,
+  .uk-container-expand-right.uk-container-large {
+    max-width: calc(50% + (1600px / 2) - 40px);
+  }
+}
+/* Item
+ ========================================================================== */
+/*
+ * Utility classes to reset container padding on the left or right side
+ * Note: It has to be negative margin on the item, because it's specific to the item.
+ */
+.uk-container-item-padding-remove-left,
+.uk-container-item-padding-remove-right {
+  width: calc(100% + 15px);
+}
+.uk-container-item-padding-remove-left {
+  margin-left: -15px;
+}
+.uk-container-item-padding-remove-right {
+  margin-right: -15px;
+}
+/* Phone landscape and bigger */
+@media (min-width: 640px) {
+  .uk-container-item-padding-remove-left,
+  .uk-container-item-padding-remove-right {
+    width: calc(100% + 30px);
+  }
+  .uk-container-item-padding-remove-left {
+    margin-left: -30px;
+  }
+  .uk-container-item-padding-remove-right {
+    margin-right: -30px;
+  }
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .uk-container-item-padding-remove-left,
+  .uk-container-item-padding-remove-right {
+    width: calc(100% + 40px);
+  }
+  .uk-container-item-padding-remove-left {
+    margin-left: -40px;
+  }
+  .uk-container-item-padding-remove-right {
+    margin-right: -40px;
+  }
 }
 /* ========================================================================
    Component: Grid
@@ -3698,6 +3794,9 @@ ul.uk-nav-sub {
 .uk-nav-default .uk-nav-sub a:focus {
   color: #666;
 }
+.uk-nav-default .uk-nav-sub li.uk-active > a {
+  color: #333;
+}
 /* Primary modifier
  ========================================================================== */
 /*
@@ -3738,6 +3837,9 @@ ul.uk-nav-sub {
 .uk-nav-primary .uk-nav-sub a:hover,
 .uk-nav-primary .uk-nav-sub a:focus {
   color: #666;
+}
+.uk-nav-primary .uk-nav-sub li.uk-active > a {
+  color: #333;
 }
 /* Alignment modifier
  ========================================================================== */
@@ -3880,7 +3982,7 @@ ul.uk-nav-sub {
   padding: 0 15px;
   /* 3 */
   font-size: 0.875rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   /* 4 */
   text-decoration: none;
 }
@@ -4068,6 +4170,9 @@ ul.uk-nav-sub {
 .uk-navbar-dropdown-nav .uk-nav-sub a:hover,
 .uk-navbar-dropdown-nav .uk-nav-sub a:focus {
   color: #666;
+}
+.uk-navbar-dropdown-nav .uk-nav-sub li.uk-active > a {
+  color: #333;
 }
 /* Dropbar
  ========================================================================== */
@@ -4837,7 +4942,8 @@ ul.uk-nav-sub {
   color: #999;
 }
 .uk-dropdown-nav .uk-nav-sub a:hover,
-.uk-dropdown-nav .uk-nav-sub a:focus {
+.uk-dropdown-nav .uk-nav-sub a:focus,
+.uk-dropdown-nav .uk-nav-sub li.uk-active > a {
   color: #666;
 }
 /* Direction / Alignment modifiers
@@ -5169,7 +5275,7 @@ ul.uk-nav-sub {
   background: rgba(0, 0, 0, 0.3);
   color: rgba(255, 255, 255, 0.7);
 }
-.uk-lightbox-toolbar * {
+.uk-lightbox-toolbar > * {
   color: rgba(255, 255, 255, 0.7);
 }
 /* Toolbar Icon (Close)
@@ -5390,14 +5496,13 @@ ul.uk-nav-sub {
  * 1. Set position
  * 2. Size and style
  * 3. Allow scrolling
- * 4. Transform
  */
 .uk-offcanvas-bar {
   /* 1 */
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 0;
+  left: -270px;
   /* 2 */
   box-sizing: border-box;
   width: 270px;
@@ -5406,12 +5511,11 @@ ul.uk-nav-sub {
   /* 3 */
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  /* 4 */
-  transform: translateX(-100%);
 }
 /* Tablet landscape and bigger */
 @media (min-width: 960px) {
   .uk-offcanvas-bar {
+    left: -350px;
     width: 350px;
     padding: 40px 40px;
   }
@@ -5419,27 +5523,39 @@ ul.uk-nav-sub {
 /* Flip modifier */
 .uk-offcanvas-flip .uk-offcanvas-bar {
   left: auto;
-  right: 0;
-  transform: translateX(100%);
+  right: -270px;
+}
+/* Tablet landscape and bigger */
+@media (min-width: 960px) {
+  .uk-offcanvas-flip .uk-offcanvas-bar {
+    right: -350px;
+  }
 }
 /*
  * Open
  */
 .uk-open > .uk-offcanvas-bar {
-  transform: translateX(0);
+  left: 0;
+}
+.uk-offcanvas-flip .uk-open > .uk-offcanvas-bar {
+  left: auto;
+  right: 0;
 }
 /*
  * Slide Animation (Used in slide and push mode)
  */
 .uk-offcanvas-bar-animation {
-  transition: transform 0.3s ease-out;
+  transition: left 0.3s ease-out;
+}
+.uk-offcanvas-flip .uk-offcanvas-bar-animation {
+  transition-property: right;
 }
 /*
  * Reveal Animation
  * 1. Set position
  * 2. Clip the bar
  * 3. Animation
- * 4. Reset transform
+ * 4. Reset position
  */
 .uk-offcanvas-reveal {
   /* 1 */
@@ -5455,7 +5571,12 @@ ul.uk-nav-sub {
 }
 .uk-offcanvas-reveal .uk-offcanvas-bar {
   /* 4 */
-  transform: translateX(0);
+  left: 0;
+}
+.uk-offcanvas-flip .uk-offcanvas-reveal .uk-offcanvas-bar {
+  /* 4 */
+  left: auto;
+  right: 0;
 }
 .uk-open > .uk-offcanvas-reveal {
   width: 270px;
@@ -5516,7 +5637,7 @@ ul.uk-nav-sub {
 .uk-offcanvas-overlay.uk-open::before {
   opacity: 1;
 }
-/* Container
+/* Prevent scrolling
  ========================================================================== */
 /*
  * Prevent horizontal scrollbar when the content is slide-out
@@ -5526,47 +5647,37 @@ ul.uk-nav-sub {
 .uk-offcanvas-container {
   overflow-x: hidden;
 }
-/*
- * Prevent all scrollbars if overlay is used
- */
-.uk-offcanvas-container-overlay {
-  overflow: hidden;
-}
-/* Content
+/* Container
  ========================================================================== */
 /*
  * Prepare slide-out animation (Used in reveal and push mode)
  * Using `position: left` instead of `transform` because position `fixed` elements like sticky navbars
  * lose their fixed state and behaves like `absolute` within a transformed container
- * Note: JS sets a fixed width and height so the page can slide-out without shrinking
- * 1. Smooth scrolling
+ * 1. Provide a fixed width and prevent shrinking
  */
-.uk-offcanvas-container .uk-offcanvas-content {
+.uk-offcanvas-container {
   position: relative;
   left: 0;
   transition: left 0.3s ease-out;
   /* 1 */
-  -webkit-overflow-scrolling: touch;
-}
-/* Disable scrolling if overlay mode */
-.uk-offcanvas-overlay .uk-offcanvas-content {
-  overflow-y: hidden;
+  box-sizing: border-box;
+  width: 100%;
 }
 /*
  * Activate slide-out animation
  */
-:not(.uk-offcanvas-flip) > .uk-offcanvas-content-animation {
+:not(.uk-offcanvas-flip).uk-offcanvas-container-animation {
   left: 270px;
 }
-.uk-offcanvas-flip > .uk-offcanvas-content-animation {
+.uk-offcanvas-flip.uk-offcanvas-container-animation {
   left: -270px;
 }
 /* Tablet landscape and bigger */
 @media (min-width: 960px) {
-  :not(.uk-offcanvas-flip) > .uk-offcanvas-content-animation {
+  :not(.uk-offcanvas-flip).uk-offcanvas-container-animation {
     left: 350px;
   }
-  .uk-offcanvas-flip > .uk-offcanvas-content-animation {
+  .uk-offcanvas-flip.uk-offcanvas-container-animation {
     left: -350px;
   }
 }
@@ -5624,9 +5735,14 @@ ul.uk-nav-sub {
 .uk-leader-fill.uk-leader-hide::after {
   display: none;
 }
-/* Pass fill character to JS */
-.var-leader-fill::before {
+/*
+ * Pass fill character to JS
+ */
+.uk-leader-fill-content::before {
   content: '.';
+}
+:root {
+  --uk-leader-fill-content: .;
 }
 /* ========================================================================
    Component: Iconnav
@@ -5746,13 +5862,15 @@ ul.uk-nav-sub {
 ========================================================================== */
 .uk-notification-message {
   position: relative;
-  margin-bottom: 10px;
   padding: 15px;
   background: #f8f8f8;
   color: #666;
   font-size: 1.25rem;
   line-height: 1.4;
   cursor: pointer;
+}
+* + .uk-notification-message {
+  margin-top: 10px;
 }
 /* Close
  * Adopts `uk-close`
@@ -6029,7 +6147,28 @@ ul.uk-nav-sub {
   animation-direction: reverse;
   animation-timing-function: ease-in;
 }
-/* Animations for scrollspy
+/* Toggle (Hover + Focus)
+========================================================================== */
+/*
+ * The toggle is triggered on touch devices using `:focus` and tabindex
+ */
+.uk-animation-toggle:not(:hover):not(:focus) [class*='uk-animation-'] {
+  animation-name: none;
+}
+/*
+ * 1. Prevent tab highlighting on iOS.
+ */
+.uk-animation-toggle {
+  /* 1 */
+  -webkit-tap-highlight-color: transparent;
+}
+/*
+ * Remove outline for `tabindex`
+ */
+.uk-animation-toggle:focus {
+  outline: none;
+}
+/* Animations
  ========================================================================== */
 /*
  * Fade
@@ -6110,14 +6249,6 @@ ul.uk-nav-sub {
  ========================================================================== */
 .uk-animation-fast {
   animation-duration: 0.1s;
-}
-/* Enable animation only on hover
-========================================================================== */
-/*
- * Note: Firefox and IE needs this because animations are not triggered when switching between display `none` and `block`
- */
-.uk-animation-toggle:not(:hover):not(.uk-hover) [class*='uk-animation-'] {
-  animation-name: none;
 }
 /* Keyframes used by animation classes
  ========================================================================== */
@@ -6958,6 +7089,9 @@ ul.uk-nav-sub {
 .uk-text-muted {
   color: #999 !important;
 }
+.uk-text-emphasis {
+  color: #333 !important;
+}
 .uk-text-primary {
   color: #1e87f0 !important;
 }
@@ -7686,7 +7820,6 @@ iframe.uk-cover {
  * Because `img, `video`, `canvas` and  `audio` are already responsive by default, see Base component
  */
 .uk-preserve-width,
-.uk-preserve-width audio,
 .uk-preserve-width canvas,
 .uk-preserve-width img,
 .uk-preserve-width svg,
@@ -7845,7 +7978,7 @@ iframe.uk-cover {
  */
 .uk-logo {
   font-size: 1.5rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   color: #666;
   /* 1 */
   text-decoration: none;
@@ -8514,17 +8647,15 @@ iframe.uk-cover {
 }
 /*
  * Center
- * 1. Fix text wrapping if content is larger than 50% of the container (Not working in Firefox)
- * 2. Fix text wrapping for Firefox
+ * 1. Fix text wrapping if content is larger than 50% of the container.
  */
 .uk-position-center {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   /* 1 */
-  display: table;
-  /* 2 */
   width: -moz-max-content;
+  width: max-content;
   max-width: 100%;
   box-sizing: border-box;
 }
@@ -8542,10 +8673,12 @@ iframe.uk-cover {
 }
 .uk-position-center-left-out {
   right: 100%;
+  width: -moz-max-content;
   width: max-content;
 }
 .uk-position-center-right-out {
   left: 100%;
+  width: -moz-max-content;
   width: max-content;
 }
 /* Horizontal */
@@ -8554,9 +8687,8 @@ iframe.uk-cover {
   left: 50%;
   transform: translateX(-50%);
   /* 1 */
-  display: table;
-  /* 2 */
   width: -moz-max-content;
+  width: max-content;
   max-width: 100%;
   box-sizing: border-box;
 }
@@ -8595,6 +8727,7 @@ iframe.uk-cover {
  * Small
  */
 .uk-position-small {
+  max-width: calc(100% - (15px * 2));
   margin: 15px;
 }
 .uk-position-small.uk-position-center {
@@ -8612,6 +8745,7 @@ iframe.uk-cover {
  * Medium
  */
 .uk-position-medium {
+  max-width: calc(100% - (30px * 2));
   margin: 30px;
 }
 .uk-position-medium.uk-position-center {
@@ -8629,6 +8763,7 @@ iframe.uk-cover {
  * Large
  */
 .uk-position-large {
+  max-width: calc(100% - (30px * 2));
   margin: 30px;
 }
 .uk-position-large.uk-position-center {
@@ -8645,6 +8780,7 @@ iframe.uk-cover {
 /* Desktop and bigger */
 @media (min-width: 1200px) {
   .uk-position-large {
+    max-width: calc(100% - (50px * 2));
     margin: 50px;
   }
   .uk-position-large.uk-position-center {
@@ -8662,40 +8798,52 @@ iframe.uk-cover {
 /* ========================================================================
    Component: Transition
  ========================================================================== */
+/* Toggle (Hover + Focus)
+ ========================================================================== */
 /*
- * Using multiple selectors to exclude `uk-transition-toggle`
- * Note: Transitions don't work with `uk-postion-center-*` classes because they also use `transform`
- *       Just put the transition in an extra `div`
+ * 1. Prevent tab highlighting on iOS.
+ */
+.uk-transition-toggle {
+  /* 1 */
+  -webkit-tap-highlight-color: transparent;
+}
+/*
+ * Remove outline for `tabindex`
+ */
+.uk-transition-toggle:focus {
+  outline: none;
+}
+/* Transitions
+ ========================================================================== */
+/*
+ * The toggle is triggered on touch devices by two methods:
+ * 1. Using `:focus` and tabindex
+ * 2. Using `:hover` and a `touchstart` event listener registered on the document
+ *    (Doesn't work on Surface touch devices)
+ *
+ * Note: Transitions don't work with `uk-postion-center-*` classes because they also use `transform`,
+ *       therefore it's recommended to use an extra `div` for the transition.
  */
 .uk-transition-fade,
 [class*='uk-transition-scale'],
-[class*='uk-transition-slide'] {
+[class*='uk-transition-slide'],
+.uk-transition-stroke {
   transition: 0.3s ease-out;
-  transition-property: opacity, transform, filter;
-}
-.uk-transition-toggle:focus {
-  outline: none;
+  transition-property: opacity, transform, filter, stroke-dashoffset;
+  opacity: 0;
 }
 /*
  * Fade
  */
-.uk-transition-fade {
-  opacity: 0;
-}
-/* Show */
-.uk-transition-toggle:hover [class*='uk-transition-fade'],
-.uk-transition-toggle.uk-hover [class*='uk-transition-fade'],
-.uk-transition-toggle:focus [class*='uk-transition-fade'],
-.uk-transition-active.uk-active [class*='uk-transition-fade'] {
+.uk-transition-toggle:hover .uk-transition-fade,
+.uk-transition-toggle:focus .uk-transition-fade,
+.uk-transition-active.uk-active .uk-transition-fade {
   opacity: 1;
 }
 /*
  * Scale
  * Note: Using `scale3d` for better image rendering
  */
-[class*='uk-transition-scale'] {
-  opacity: 0;
-}
 .uk-transition-scale-up {
   transform: scale3d(1, 1, 1);
 }
@@ -8704,14 +8852,12 @@ iframe.uk-cover {
 }
 /* Show */
 .uk-transition-toggle:hover .uk-transition-scale-up,
-.uk-transition-toggle.uk-hover .uk-transition-scale-up,
 .uk-transition-toggle:focus .uk-transition-scale-up,
 .uk-transition-active.uk-active .uk-transition-scale-up {
   opacity: 1;
   transform: scale3d(1.1, 1.1, 1);
 }
 .uk-transition-toggle:hover .uk-transition-scale-down,
-.uk-transition-toggle.uk-hover .uk-transition-scale-down,
 .uk-transition-toggle:focus .uk-transition-scale-down,
 .uk-transition-active.uk-active .uk-transition-scale-down {
   opacity: 1;
@@ -8720,9 +8866,6 @@ iframe.uk-cover {
 /*
  * Slide
  */
-[class*='uk-transition-slide'] {
-  opacity: 0;
-}
 .uk-transition-slide-top {
   transform: translateY(-100%);
 }
@@ -8761,19 +8904,31 @@ iframe.uk-cover {
 }
 /* Show */
 .uk-transition-toggle:hover [class*='uk-transition-slide'],
-.uk-transition-toggle.uk-hover [class*='uk-transition-slide'],
 .uk-transition-toggle:focus [class*='uk-transition-slide'],
 .uk-transition-active.uk-active [class*='uk-transition-slide'] {
   opacity: 1;
-  transform: translateX(0) translateY(0);
+  transform: translate(0, 0);
+}
+/*
+ * Stroke
+ */
+.uk-transition-stroke {
+  transition-duration: 3s;
+}
+/* Show */
+.uk-transition-stroke:hover,
+.uk-transition-stroke:focus,
+.uk-transition-stroke.uk-transition-active {
+  opacity: 1;
+  stroke-dashoffset: 0 !important;
 }
 /* Opacity modifier
-========================================================================== */
+ ========================================================================== */
 .uk-transition-opaque {
   opacity: 1;
 }
 /* Duration modifiers
-========================================================================== */
+ ========================================================================== */
 .uk-transition-slow {
   transition-duration: 0.7s;
 }
@@ -8844,13 +8999,19 @@ iframe.uk-cover {
 .uk-invisible {
   visibility: hidden !important;
 }
-/* Hover
+/* Toggle (Hover + Focus)
  ========================================================================== */
 /*
  * Hidden
- * Can't use `display: none` because it's not accessible through keyboard.
+ * 1. The toggle is triggered on touch devices using `:focus` and tabindex
+ * 2. The target stays visible if any element within receives focus through keyboard
+ *    Doesn't work in Edge, yet.
+ * 3. Can't use `display: none` nor `visibility: hidden` because both are not focusable.
+ *
  */
-.uk-visible-toggle:not(:hover):not(.uk-hover) .uk-hidden-hover:not(:focus) {
+/* 1 + 2 */
+.uk-visible-toggle:not(:hover):not(:focus) .uk-hidden-hover:not(:focus-within) {
+  /* 3 */
   position: absolute !important;
   width: 0 !important;
   height: 0 !important;
@@ -8860,10 +9021,24 @@ iframe.uk-cover {
 }
 /*
  * Invisible
- * Can't use `visibility: hidden` because it's not accessible through keyboard.
  */
-.uk-visible-toggle:not(:hover):not(.uk-hover) .uk-invisible-hover:not(:focus) {
+/* 1 + 2 */
+.uk-visible-toggle:not(:hover):not(:focus) .uk-invisible-hover:not(:focus-within) {
+  /* 3 */
   opacity: 0 !important;
+}
+/*
+ * 1. Prevent tab highlighting on iOS.
+ */
+.uk-visible-toggle {
+  /* 1 */
+  -webkit-tap-highlight-color: transparent;
+}
+/*
+ * Remove outline for `tabindex`
+ */
+.uk-visible-toggle:focus {
+  outline: none;
 }
 /* Touch
  ========================================================================== */
@@ -9387,6 +9562,19 @@ iframe.uk-cover {
 .uk-overlay-primary .uk-divider-small::after,
 .uk-offcanvas-bar .uk-divider-small::after {
   border-top-color: rgba(255, 255, 255, 0.2);
+}
+.uk-light .uk-divider-vertical::after,
+.uk-section-primary:not(.uk-preserve-color) .uk-divider-vertical::after,
+.uk-section-secondary:not(.uk-preserve-color) .uk-divider-vertical::after,
+.uk-tile-primary:not(.uk-preserve-color) .uk-divider-vertical::after,
+.uk-tile-secondary:not(.uk-preserve-color) .uk-divider-vertical::after,
+.uk-card-primary.uk-card-body .uk-divider-vertical::after,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-divider-vertical::after,
+.uk-card-secondary.uk-card-body .uk-divider-vertical::after,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-divider-vertical::after,
+.uk-overlay-primary .uk-divider-vertical::after,
+.uk-offcanvas-bar .uk-divider-vertical::after {
+  border-left-color: rgba(255, 255, 255, 0.2);
 }
 .uk-light .uk-list-divider > li:nth-child(n+2),
 .uk-section-primary:not(.uk-preserve-color) .uk-list-divider > li:nth-child(n+2),
@@ -10833,6 +11021,19 @@ iframe.uk-cover {
 .uk-offcanvas-bar .uk-nav-default .uk-nav-sub a:focus {
   color: rgba(255, 255, 255, 0.7);
 }
+.uk-light .uk-nav-default .uk-nav-sub li.uk-active > a,
+.uk-section-primary:not(.uk-preserve-color) .uk-nav-default .uk-nav-sub li.uk-active > a,
+.uk-section-secondary:not(.uk-preserve-color) .uk-nav-default .uk-nav-sub li.uk-active > a,
+.uk-tile-primary:not(.uk-preserve-color) .uk-nav-default .uk-nav-sub li.uk-active > a,
+.uk-tile-secondary:not(.uk-preserve-color) .uk-nav-default .uk-nav-sub li.uk-active > a,
+.uk-card-primary.uk-card-body .uk-nav-default .uk-nav-sub li.uk-active > a,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-nav-default .uk-nav-sub li.uk-active > a,
+.uk-card-secondary.uk-card-body .uk-nav-default .uk-nav-sub li.uk-active > a,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-nav-default .uk-nav-sub li.uk-active > a,
+.uk-overlay-primary .uk-nav-default .uk-nav-sub li.uk-active > a,
+.uk-offcanvas-bar .uk-nav-default .uk-nav-sub li.uk-active > a {
+  color: #fff;
+}
 .uk-light .uk-nav-primary > li > a,
 .uk-section-primary:not(.uk-preserve-color) .uk-nav-primary > li > a,
 .uk-section-secondary:not(.uk-preserve-color) .uk-nav-primary > li > a,
@@ -10945,6 +11146,19 @@ iframe.uk-cover {
 .uk-offcanvas-bar .uk-nav-primary .uk-nav-sub a:hover,
 .uk-offcanvas-bar .uk-nav-primary .uk-nav-sub a:focus {
   color: rgba(255, 255, 255, 0.7);
+}
+.uk-light .uk-nav-primary .uk-nav-sub li.uk-active > a,
+.uk-section-primary:not(.uk-preserve-color) .uk-nav-primary .uk-nav-sub li.uk-active > a,
+.uk-section-secondary:not(.uk-preserve-color) .uk-nav-primary .uk-nav-sub li.uk-active > a,
+.uk-tile-primary:not(.uk-preserve-color) .uk-nav-primary .uk-nav-sub li.uk-active > a,
+.uk-tile-secondary:not(.uk-preserve-color) .uk-nav-primary .uk-nav-sub li.uk-active > a,
+.uk-card-primary.uk-card-body .uk-nav-primary .uk-nav-sub li.uk-active > a,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-nav-primary .uk-nav-sub li.uk-active > a,
+.uk-card-secondary.uk-card-body .uk-nav-primary .uk-nav-sub li.uk-active > a,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-nav-primary .uk-nav-sub li.uk-active > a,
+.uk-overlay-primary .uk-nav-primary .uk-nav-sub li.uk-active > a,
+.uk-offcanvas-bar .uk-nav-primary .uk-nav-sub li.uk-active > a {
+  color: #fff;
 }
 .uk-light .uk-navbar-nav > li > a,
 .uk-section-primary:not(.uk-preserve-color) .uk-navbar-nav > li > a,
@@ -11579,7 +11793,7 @@ iframe.uk-cover {
 .uk-overlay-primary .uk-accordion-title:focus,
 .uk-offcanvas-bar .uk-accordion-title:hover,
 .uk-offcanvas-bar .uk-accordion-title:focus {
-  color: #666;
+  color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-iconnav > * > a,
 .uk-section-primary:not(.uk-preserve-color) .uk-iconnav > * > a,
@@ -11669,6 +11883,19 @@ iframe.uk-cover {
 .uk-overlay-primary .uk-text-muted,
 .uk-offcanvas-bar .uk-text-muted {
   color: rgba(255, 255, 255, 0.5) !important;
+}
+.uk-light .uk-text-emphasis,
+.uk-section-primary:not(.uk-preserve-color) .uk-text-emphasis,
+.uk-section-secondary:not(.uk-preserve-color) .uk-text-emphasis,
+.uk-tile-primary:not(.uk-preserve-color) .uk-text-emphasis,
+.uk-tile-secondary:not(.uk-preserve-color) .uk-text-emphasis,
+.uk-card-primary.uk-card-body .uk-text-emphasis,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-text-emphasis,
+.uk-card-secondary.uk-card-body .uk-text-emphasis,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-text-emphasis,
+.uk-overlay-primary .uk-text-emphasis,
+.uk-offcanvas-bar .uk-text-emphasis {
+  color: #fff !important;
 }
 .uk-light .uk-text-primary,
 .uk-section-primary:not(.uk-preserve-color) .uk-text-primary,

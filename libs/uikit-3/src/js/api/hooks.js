@@ -1,4 +1,4 @@
-import {assign, createEvent, fastdom, includes, isPlainObject, ready} from 'uikit-util';
+import {assign, fastdom, includes, isPlainObject} from 'uikit-util';
 
 export default function (UIkit) {
 
@@ -18,6 +18,7 @@ export default function (UIkit) {
         }
 
         this._data = {};
+        this._computeds = {};
         this._initProps();
 
         this._callHook('beforeConnect');
@@ -27,11 +28,6 @@ export default function (UIkit) {
         this._initObserver();
 
         this._callHook('connected');
-
-        if (!this._isReady) {
-            ready(() => this._callReady());
-        }
-
         this._callUpdate();
     };
 
@@ -55,26 +51,12 @@ export default function (UIkit) {
 
     };
 
-    UIkit.prototype._callReady = function () {
+    UIkit.prototype._callUpdate = function (e = 'update') {
 
-        if (this._isReady) {
-            return;
-        }
+        const type = e.type || e;
 
-        this._isReady = true;
-        this._callHook('ready');
-        this._resetComputeds();
-        this._callUpdate();
-    };
-
-    UIkit.prototype._callUpdate = function (e) {
-
-        e = createEvent(e || 'update');
-
-        const {type} = e;
-
-        if (includes(['update', 'load', 'resize'], type)) {
-            this._resetComputeds();
+        if (includes(['update', 'resize'], type)) {
+            this._callWatches();
         }
 
         const updates = this.$options.update;
@@ -93,23 +75,18 @@ export default function (UIkit) {
             if (read && !includes(fastdom.reads, reads[i])) {
                 reads[i] = fastdom.read(() => {
 
-                    const result = this._connected && read.call(this, this._data, e);
+                    const result = this._connected && read.call(this, this._data, type);
 
                     if (result === false && write) {
                         fastdom.clear(writes[i]);
-                        delete writes[i];
                     } else if (isPlainObject(result)) {
                         assign(this._data, result);
                     }
-                    delete reads[i];
                 });
             }
 
             if (write && !includes(fastdom.writes, writes[i])) {
-                writes[i] = fastdom.write(() => {
-                    this._connected && write.call(this, this._data, e);
-                    delete writes[i];
-                });
+                writes[i] = fastdom.write(() => this._connected && write.call(this, this._data, type));
             }
 
         });

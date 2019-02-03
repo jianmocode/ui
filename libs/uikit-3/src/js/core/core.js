@@ -1,21 +1,29 @@
-import {$$, addClass, css, hasTouch, on, ready, removeClass, toMs, within} from 'uikit-util';
+import {css, fastdom, on, ready, toMs} from 'uikit-util';
 
 export default function (UIkit) {
 
     ready(() => {
 
-        let scroll = 0;
-        let started = 0;
+        UIkit.update();
+        on(window, 'load resize', () => UIkit.update(null, 'resize'));
+        on(document, 'loadedmetadata load', ({target}) => UIkit.update(target, 'resize'), true);
 
-        on(window, 'load resize', e => UIkit.update(null, e));
+        // throttle `scroll` event (Safari triggers multiple `scroll` events per frame)
+        let pending;
         on(window, 'scroll', e => {
-            const {target} = e;
-            e.dir = scroll <= window.pageYOffset ? 'down' : 'up';
-            e.pageYOffset = scroll = window.pageYOffset;
-            UIkit.update(target.nodeType !== 1 ? document.body : target, e);
-        }, {passive: true, capture: true});
-        on(document, 'loadedmetadata load', ({target}) => UIkit.update(target, 'load'), true);
 
+            if (pending) {
+                return;
+            }
+            pending = true;
+            fastdom.write(() => pending = false);
+
+            const {target} = e;
+            UIkit.update(target.nodeType !== 1 ? document.body : target, e.type);
+
+        }, {passive: true, capture: true});
+
+        let started = 0;
         on(document, 'animationstart', ({target}) => {
             if ((css(target, 'animationName') || '').match(/^uk-.*(left|right)/)) {
 
@@ -28,28 +36,6 @@ export default function (UIkit) {
                 }, toMs(css(target, 'animationDuration')) + 100);
             }
         }, true);
-
-        if (!hasTouch) {
-            return;
-        }
-
-        const cls = 'uk-hover';
-
-        on(document, 'tap', ({target}) =>
-            $$(`.${cls}`).forEach(el =>
-                !within(target, el) && removeClass(el, cls)
-            )
-        );
-
-        Object.defineProperty(UIkit, 'hoverSelector', {
-
-            set(selector) {
-                on(document, 'tap', selector, ({current}) => addClass(current, cls));
-            }
-
-        });
-
-        UIkit.hoverSelector = '.uk-animation-toggle, .uk-transition-toggle, [uk-hover]';
 
     });
 

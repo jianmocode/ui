@@ -2,43 +2,41 @@
 <include src="__WEB_ROOT__/desktop/components/uploader/image.page" /> <!-- 引入部件 文件上传组件-->
 <include src="__WEB_ROOT__/desktop/components/editor/html.page" /> <!-- 引入部件 HTML编辑器 -->
 
-<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
-    <nav class="uk-navbar-container" uk-navbar  style="position: relative; z-index: 980;">
+<div class="uk-section-secondary">
+    <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
         <div class="uk-navbar-left">
             <a class="uk-navbar-item uk-logo" href="#">
-                <img mp:if={{site.icon}} data-src="{{site.icon.url}}" width="42" uk-img>
-                <span mp:else >{{site.site_name}}</span>
+                <img mp:if={{site.icon}} data-src="{{site.icon.url}}" width="42" uk-img >
+                <a href="/" class="uk-text-large">{{site.site_name}}</a>
             </a>
             <ul class="uk-navbar-nav">
-                <li>
-                    <a href="#">类目: 
-                        视频、新闻
-                    </a>
-                </li>
-                <li>
-                    <a href="#">标签: 
-                            视频、新闻
-                        </a>
-                    </li>
-                <li class="uk-hidden">
-                    <a href="#">功能: 开放评论、付费阅读</a>
-                </li>
-                <li>
-                    <a href="#">来源: 简墨内容云</a>
-                </li>
+             
             </ul>
         </div>
         <div class="uk-navbar-right">
-                <ul class="uk-navbar-nav">
-                    <li>
-                        <button class="uk-button uk-button-secondary uk-margin-small-right">取消发布</button>
-                        <button class="uk-button uk-button-primary uk-margin-small-right">立即发布</button>
-                        <button class="uk-button uk-button-primary uk-margin-right">预览</button>
-                    </li>
-                </ul>
-            </div>
+			<ul class="uk-navbar-nav">
+				<li class="before-login {{(user.user_id) ? 'uk-hidden'}} "><a href="/user/signup"  data-width="468" data-height="600" uk-iframe-modal >注册</a></li>
+				<li class="before-login {{(user.user_id) ? 'uk-hidden'}} "><a href="/user/signin/mobile" data-width="468" data-height="600" uk-iframe-modal>登录</a></li>
+				<li class="after-login  {{(user.user_id == '') ? 'uk-hidden'}}  {{ (active.nav == '__user') ? 'uk-active' }} ">
+					<a href="#"> 
+						<span class="nick-name" user-nickname>{{ PRINTNAME(user) }}</span>
+						<span class="uk-icon" uk-icon="icon:triangle-down"></span>
+					</a>
+					<div uk-dropdown="offset:-20; pos:bottom-justify" class="menu">
+						<ul class="uk-nav uk-navbar-dropdown-nav">
+							<li class="{{ (active.subnav == '__home') ? 'uk-active' }}"><a href="/home/index.html" >我的主页</a></li>
+							<!-- <li><a href="#">投稿</a></li> -->
+							<li><a href="/user/logout.html"> 退出登录</a></li>
+						</ul>
+					</div>
+                </li>
+                <li><a href="#" uk-icon="icon:cog" uk-toggle="target: #offcanvas-reveal"></a></li>
+			</ul>
+		</div>
     </nav>
 </div>
+
+
 
 <div class="uk-flex uk-flex-center">
 
@@ -219,3 +217,14 @@
 
 </div> <!-- END uk-flex uk-flex-center -->
 <include src="__WEB_ROOT__/desktop/common/foot.page" />
+<div id="offcanvas-reveal" uk-offcanvas="mode:push;flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+        <h3>Title</h3>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+    </div>
+</div>

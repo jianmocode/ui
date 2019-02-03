@@ -1,9 +1,10 @@
+import Media from '../mixin/media';
 import Togglable from '../mixin/togglable';
-import {closest, hasTouch, includes, isTouch, isVisible, matches, once, pointerEnter, pointerLeave, queryAll, trigger} from 'uikit-util';
+import {closest, hasTouch, includes, isTouch, isVisible, matches, pointerEnter, pointerLeave, queryAll, trigger} from 'uikit-util';
 
 export default {
 
-    mixins: [Togglable],
+    mixins: [Media, Togglable],
 
     args: 'target',
 
@@ -11,7 +12,6 @@ export default {
         href: String,
         target: null,
         mode: 'list',
-        media: 'media'
     },
 
     data: {
@@ -19,7 +19,6 @@ export default {
         target: false,
         mode: 'click',
         queued: true,
-        media: false
     },
 
     computed: {
@@ -29,6 +28,10 @@ export default {
             return target.length && target || [$el];
         }
 
+    },
+
+    connected() {
+        trigger(this.target, 'updatearia', [this]);
     },
 
     events: [
@@ -65,20 +68,21 @@ export default {
 
                 // TODO better isToggled handling
                 let link;
-                if (closest(e.target, 'a[href="#"], button')
+                if (closest(e.target, 'a[href="#"], a[href=""], button')
                     || (link = closest(e.target, 'a[href]')) && (
                         this.cls
                         || !isVisible(this.target)
                         || link.hash && matches(this.target, link.hash)
                     )
                 ) {
-                    once(document, 'click', e => e.preventDefault());
+                    e.preventDefault();
                 }
 
                 this.toggle();
             }
 
         }
+
     ],
 
     update: {
@@ -90,13 +94,13 @@ export default {
             }
 
             const toggled = this.isToggled(this.target);
-            if (window.matchMedia(this.media).matches ? !toggled : toggled) {
+            if (this.matchMedia ? !toggled : toggled) {
                 this.toggle();
             }
 
         },
 
-        events: ['load', 'resize']
+        events: ['resize']
 
     },
 

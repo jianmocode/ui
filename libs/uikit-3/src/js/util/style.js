@@ -1,6 +1,7 @@
-import {append} from './dom';
+import {isIE} from './env';
+import {append, remove} from './dom';
 import {addClass} from './class';
-import {each, hyphenate, isArray, isNumeric, isObject, isString, isUndefined, toNode, toNodes} from './lang';
+import {each, hyphenate, isArray, isNumber, isNumeric, isObject, isString, isUndefined, toNode, toNodes} from './lang';
 
 const cssNumber = {
     'animation-iteration-count': true,
@@ -28,7 +29,7 @@ export function css(element, property, value) {
 
             if (isUndefined(value)) {
                 return getStyle(element, property);
-            } else if (!value && value !== 0) {
+            } else if (!value && !isNumber(value)) {
                 element.style.removeProperty(property);
             } else {
                 element.style[property] = isNumeric(value) && !cssNumber[property] ? `${value}px` : value;
@@ -66,22 +67,23 @@ const vars = {};
 
 export function getCssVar(name) {
 
+    const docEl = document.documentElement;
+
+    if (!isIE) {
+        return getStyles(docEl).getPropertyValue(`--uk-${name}`);
+    }
+
     if (!(name in vars)) {
 
-        /* usage in css: .var-name:before { content:"xyz" } */
+        /* usage in css: .uk-name:before { content:"xyz" } */
 
-        const element = append(document.documentElement, document.createElement('div'));
+        const element = append(docEl, document.createElement('div'));
 
-        addClass(element, `var-${name}`);
+        addClass(element, `uk-${name}`);
 
-        try {
+        vars[name] = getStyle(element, 'content', ':before').replace(/^["'](.*)["']$/, '$1');
 
-            vars[name] = getStyle(element, 'content', ':before').replace(/^["'](.*)["']$/, '$1');
-            vars[name] = JSON.parse(vars[name]);
-
-        } catch (e) {}
-
-        document.documentElement.removeChild(element);
+        remove(element);
 
     }
 

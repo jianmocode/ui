@@ -3,7 +3,7 @@ import Container from '../mixin/container';
 import Modal from '../mixin/modal';
 import Slideshow from '../mixin/slideshow';
 import Togglable from '../mixin/togglable';
-import {$, addClass, ajax, append, assign, attr, css, getImage, html, index, on, pointerDown, pointerMove, removeClass, Transition, trigger} from 'uikit-util';
+import {$, addClass, ajax, append, assign, attr, css, getImage, html, index, once, pointerDown, pointerMove, pointerUp, removeClass, Transition, trigger} from 'uikit-util';
 
 export default {
 
@@ -64,12 +64,12 @@ export default {
 
         {
 
-            name: 'click',
+            name: pointerUp,
 
             self: true,
 
             delegate() {
-                return this.slidesSelector;
+                return this.selSlides;
             },
 
             handler(e) {
@@ -85,7 +85,11 @@ export default {
 
             self: true,
 
-            handler: 'showControls'
+            handler() {
+                this.startAutoplay();
+                this.showControls();
+            }
+
         },
 
         {
@@ -96,12 +100,25 @@ export default {
 
             handler() {
 
+                this.stopAutoplay();
                 this.hideControls();
 
                 removeClass(this.slides, this.clsActive);
                 Transition.stop(this.slides);
 
             }
+        },
+
+        {
+
+            name: 'hidden',
+
+            self: true,
+
+            handler() {
+                this.$destroy(true);
+            }
+
         },
 
         {
@@ -137,7 +154,7 @@ export default {
                     return;
                 }
 
-                this.preventCatch = true;
+                this.draggable = false;
 
                 e.preventDefault();
 
@@ -177,7 +194,7 @@ export default {
             name: 'itemshown',
 
             handler() {
-                this.preventCatch = false;
+                this.draggable = this.$props.draggable;
             }
 
         },
@@ -212,10 +229,13 @@ export default {
                     const video = $(`<video controls playsinline${item.poster ? ` poster="${item.poster}"` : ''} uk-video="${this.videoAutoplay}"></video>`);
                     attr(video, 'src', source);
 
-                    on(video, 'error', () => this.setError(item));
-                    on(video, 'loadedmetadata', () => {
-                        attr(video, {width: video.videoWidth, height: video.videoHeight});
-                        this.setItem(item, video);
+                    once(video, 'error loadedmetadata', type => {
+                        if (type === 'error') {
+                            this.setError(item);
+                        } else {
+                            attr(video, {width: video.videoWidth, height: video.videoHeight});
+                            this.setItem(item, video);
+                        }
                     });
 
                     // Iframe

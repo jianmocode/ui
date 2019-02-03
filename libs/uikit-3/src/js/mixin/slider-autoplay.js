@@ -16,6 +16,7 @@ export default {
 
     connected() {
         this.startAutoplay();
+        this.userInteracted = false;
     },
 
     disconnected() {
@@ -34,7 +35,7 @@ export default {
                 if (document.hidden) {
                     this.stopAutoplay();
                 } else {
-                    this.startAutoplay();
+                    !this.userInteracted && this.startAutoplay();
                 }
             }
 
@@ -43,7 +44,10 @@ export default {
         {
 
             name: pointerDown,
-            handler: 'stopAutoplay'
+            handler() {
+                this.userInteracted = true;
+                this.stopAutoplay();
+            }
 
         },
 

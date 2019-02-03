@@ -1,4 +1,4 @@
-import {createEvent, css, Dimensions, endsWith, getImage, height, includes, isInView, isNumeric, noop, queryAll, startsWith, toFloat, trigger, width} from 'uikit-util';
+import {createEvent, css, Dimensions, endsWith, escape, getImage, height, includes, IntersectionObserver, isNumeric, noop, queryAll, startsWith, toFloat, trigger, width} from 'uikit-util';
 
 export default {
 
@@ -46,8 +46,16 @@ export default {
             return isImg($el);
         },
 
-        target({target}) {
-            return [this.$el].concat(queryAll(target, this.$el));
+        target: {
+
+            get({target}) {
+                return [this.$el].concat(queryAll(target, this.$el));
+            },
+
+            watch() {
+                this.observe();
+            }
+
         },
 
         offsetTop({offsetTop}) {
@@ -68,54 +76,78 @@ export default {
             setSrcAttrs(this.$el, getPlaceholderImage(this.width, this.height, this.sizes));
         }
 
+        this.observer = new IntersectionObserver(this.load, {
+            rootMargin: `${this.offsetTop}px ${this.offsetLeft}px`,
+        });
+
+        requestAnimationFrame(this.observe);
+
     },
 
-    update: [
+    disconnected() {
+        this.observer.disconnect();
+    },
 
-        {
+    update: {
 
-            read({delay, image}) {
+        read({image}) {
 
-                if (!delay) {
-                    return;
+            if (!image && document.readyState === 'complete') {
+                this.load(this.observer.takeRecords());
+            }
+
+            if (this.isImg) {
+                return false;
+            }
+
+            image && image.then(img => img && img.currentSrc !== '' && setSrcAttrs(this.$el, currentSrc(img)));
+
+        },
+
+        write(data) {
+
+            if (this.dataSrcset && window.devicePixelRatio !== 1) {
+
+                const bgSize = css(this.$el, 'backgroundSize');
+                if (bgSize.match(/^(auto\s?)+$/) || toFloat(bgSize) === data.bgSize) {
+                    data.bgSize = getSourceSize(this.dataSrcset, this.sizes);
+                    css(this.$el, 'backgroundSize', `${data.bgSize}px`);
                 }
 
-                if (image || !this.target.some(el => isInView(el, this.offsetTop, this.offsetLeft, true))) {
+            }
 
-                    if (!this.isImg && image) {
-                        image.then(img => img && setSrcAttrs(this.$el, currentSrc(img)));
-                    }
+        },
 
-                    return;
-                }
+        events: ['resize']
 
-                return {
-                    image: getImage(this.dataSrc, this.dataSrcset, this.sizes).then(img => {
+    },
 
-                        setSrcAttrs(this.$el, currentSrc(img), img.srcset, img.sizes);
-                        storage[this.cacheKey] = currentSrc(img);
-                        return img;
+    methods: {
 
-                    }, noop)
-                };
+        load(entries) {
 
-            },
+            if (!entries.some(entry => entry.isIntersecting)) {
+                return;
+            }
 
-            write(data) {
+            this._data.image = getImage(this.dataSrc, this.dataSrcset, this.sizes).then(img => {
 
-                // Give placeholder images time to apply their dimensions
-                if (!data.delay) {
-                    this.$emit();
-                    return data.delay = true;
-                }
+                setSrcAttrs(this.$el, currentSrc(img), img.srcset, img.sizes);
+                storage[this.cacheKey] = currentSrc(img);
+                return img;
 
-            },
+            }, noop);
 
-            events: ['scroll', 'load', 'resize']
+            this.observer.disconnect();
+        },
 
+        observe() {
+            if (!this._data.image && this._connected) {
+                this.target.forEach(el => this.observer.observe(el));
+            }
         }
 
-    ]
+    }
 
 };
 
@@ -128,8 +160,8 @@ function setSrcAttrs(el, src, srcset, sizes) {
     } else if (src) {
 
         const change = !includes(el.style.backgroundImage, src);
-        css(el, 'backgroundImage', `url(${src})`);
         if (change) {
+            css(el, 'backgroundImage', `url(${escape(src)})`);
             trigger(el, createEvent('load', false));
         }
 
@@ -137,26 +169,29 @@ function setSrcAttrs(el, src, srcset, sizes) {
 
 }
 
-const sizesRe = /\s*(.*?)\s*(\w+|calc\(.*?\))\s*(?:,|$)/g;
 function getPlaceholderImage(width, height, sizes) {
 
     if (sizes) {
-        let matches;
-
-        while ((matches = sizesRe.exec(sizes))) {
-            if (!matches[1] || window.matchMedia(matches[1]).matches) {
-                matches = evaluateSize(matches[2]);
-                break;
-            }
-        }
-
-        sizesRe.lastIndex = 0;
-
-        ({width, height} = Dimensions.ratio({width, height}, 'width', toPx(matches || '100vw')));
-
+        ({width, height} = Dimensions.ratio({width, height}, 'width', toPx(sizesToPixel(sizes))));
     }
 
     return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}"></svg>`;
+}
+
+const sizesRe = /\s*(.*?)\s*(\w+|calc\(.*?\))\s*(?:,|$)/g;
+function sizesToPixel(sizes) {
+    let matches;
+
+    sizesRe.lastIndex = 0;
+
+    while ((matches = sizesRe.exec(sizes))) {
+        if (!matches[1] || window.matchMedia(matches[1]).matches) {
+            matches = evaluateSize(matches[2]);
+            break;
+        }
+    }
+
+    return matches || '100vw';
 }
 
 const sizeRe = /\d+(?:\w+|%)/g;
@@ -182,6 +217,14 @@ function toPx(value, property = 'width', element = window) {
                 : endsWith(value, '%')
                     ? percent(element, property, value)
                     : toFloat(value);
+}
+
+const srcSetRe = /\s+\d+w\s*(?:,|$)/g;
+function getSourceSize(srcset, sizes) {
+    const srcSize = toPx(sizesToPixel(sizes));
+    const descriptors = (srcset.match(srcSetRe) || []).map(toFloat).sort((a, b) => a - b);
+
+    return descriptors.filter(size => size >= srcSize)[0] || descriptors.pop() || '';
 }
 
 const dimensions = {height, width};

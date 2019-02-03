@@ -1,7 +1,5 @@
 import Modal from '../mixin/modal';
-import {$, addClass, css, hasClass, height, isTouch, once, removeClass, trigger, unwrap, width, wrapAll} from 'uikit-util';
-
-let scroll;
+import {$, addClass, append, css, hasClass, height, isTouch, removeClass, trigger, unwrap, wrapAll} from 'uikit-util';
 
 export default {
 
@@ -10,14 +8,12 @@ export default {
     args: 'mode',
 
     props: {
-        content: String,
         mode: String,
         flip: Boolean,
         overlay: Boolean
     },
 
     data: {
-        content: '.uk-offcanvas-content',
         mode: 'slide',
         flip: false,
         overlay: false,
@@ -25,8 +21,7 @@ export default {
         clsContainer: 'uk-offcanvas-container',
         selPanel: '.uk-offcanvas-bar',
         clsFlip: 'uk-offcanvas-flip',
-        clsContent: 'uk-offcanvas-content',
-        clsContentAnimation: 'uk-offcanvas-content-animation',
+        clsContainerAnimation: 'uk-offcanvas-container-animation',
         clsSidebarAnimation: 'uk-offcanvas-bar-animation',
         clsMode: 'uk-offcanvas',
         clsOverlay: 'uk-offcanvas-overlay',
@@ -34,10 +29,6 @@ export default {
     },
 
     computed: {
-
-        content({content}) {
-            return $(content) || document.body;
-        },
 
         clsFlip({flip, clsFlip}) {
             return flip ? clsFlip : '';
@@ -55,38 +46,13 @@ export default {
             return mode === 'none' || mode === 'reveal' ? '' : clsSidebarAnimation;
         },
 
-        clsContentAnimation({mode, clsContentAnimation}) {
-            return mode !== 'push' && mode !== 'reveal' ? '' : clsContentAnimation;
+        clsContainerAnimation({mode, clsContainerAnimation}) {
+            return mode !== 'push' && mode !== 'reveal' ? '' : clsContainerAnimation;
         },
 
         transitionElement({mode}) {
             return mode === 'reveal' ? this.panel.parentNode : this.panel;
         }
-
-    },
-
-    update: {
-
-        write() {
-
-            if (this.getActive() === this) {
-
-                if (this.overlay || this.clsContentAnimation) {
-                    width(this.content, width(window) - this.scrollbarWidth);
-                }
-
-                if (this.overlay) {
-                    height(this.content, height(window));
-                    if (scroll) {
-                        this.content.scrollTop = scroll.y;
-                    }
-                }
-
-            }
-
-        },
-
-        events: ['resize']
 
     },
 
@@ -101,8 +67,7 @@ export default {
             },
 
             handler({current}) {
-                if (current.hash && $(current.hash, this.content)) {
-                    scroll = null;
+                if (current.hash && $(current.hash, document.body)) {
                     this.hide();
                 }
             }
@@ -110,18 +75,63 @@ export default {
         },
 
         {
+            name: 'touchstart',
 
-            name: 'beforescroll',
+            el() {
+                return this.panel;
+            },
+
+            handler({targetTouches}) {
+
+                if (targetTouches.length === 1) {
+                    this.clientY = targetTouches[0].clientY;
+                }
+
+            }
+
+        },
+
+        {
+            name: 'touchmove',
+
+            self: true,
+            passive: false,
 
             filter() {
                 return this.overlay;
             },
 
-            handler(e, scroll, target) {
-                if (scroll && target && this.isToggled() && $(target, this.content)) {
-                    once(this.$el, 'hidden', () => scroll.scrollTo(target));
+            handler(e) {
+                e.preventDefault();
+            }
+
+        },
+
+        {
+            name: 'touchmove',
+
+            passive: false,
+
+            el() {
+                return this.panel;
+            },
+
+            handler(e) {
+
+                if (e.targetTouches.length !== 1) {
+                    return;
+                }
+
+                const clientY = event.targetTouches[0].clientY - this.clientY;
+                const {scrollTop, scrollHeight, clientHeight} = this.panel;
+
+                if (clientHeight >= scrollHeight
+                    || scrollTop === 0 && clientY > 0
+                    || scrollHeight - scrollTop <= clientHeight && clientY < 0
+                ) {
                     e.preventDefault();
                 }
+
             }
 
         },
@@ -133,21 +143,21 @@ export default {
 
             handler() {
 
-                scroll = scroll || {x: window.pageXOffset, y: window.pageYOffset};
-
-                if (this.mode === 'reveal' && !hasClass(this.panel, this.clsMode)) {
+                if (this.mode === 'reveal' && !hasClass(this.panel.parentNode, this.clsMode)) {
                     wrapAll(this.panel, '<div>');
                     addClass(this.panel.parentNode, this.clsMode);
                 }
 
-                css(document.documentElement, 'overflowY', (!this.clsContentAnimation || this.flip) && this.scrollbarWidth && this.overlay ? 'scroll' : '');
-                addClass(document.body, this.clsContainer, this.clsFlip, this.clsOverlay);
-                height(document.body); // force reflow
-                addClass(this.content, this.clsContentAnimation);
-                addClass(this.panel, this.clsSidebarAnimation, this.mode !== 'reveal' ? this.clsMode : '');
-                addClass(this.$el, this.clsOverlay);
+                css(document.documentElement, 'overflowY', this.overlay ? 'hidden' : '');
+                addClass(document.body, this.clsContainer, this.clsFlip);
                 css(this.$el, 'display', 'block');
-                height(this.$el); // force reflow
+                addClass(this.$el, this.clsOverlay);
+                addClass(this.panel, this.clsSidebarAnimation, this.mode !== 'reveal' ? this.clsMode : '');
+
+                height(document.body); // force reflow
+                addClass(document.body, this.clsContainerAnimation);
+
+                this.clsContainerAnimation && suppressUserScale();
 
             }
         },
@@ -158,7 +168,7 @@ export default {
             self: true,
 
             handler() {
-                removeClass(this.content, this.clsContentAnimation);
+                removeClass(document.body, this.clsContainerAnimation);
 
                 const active = this.getActive();
                 if (this.mode === 'none' || active && active !== this && active !== this.prev) {
@@ -174,31 +184,18 @@ export default {
 
             handler() {
 
+                this.clsContainerAnimation && resumeUserScale();
+
                 if (this.mode === 'reveal') {
                     unwrap(this.panel);
-                }
-
-                if (!this.overlay) {
-                    scroll = {x: window.pageXOffset, y: window.pageYOffset};
-                } else if (!scroll) {
-                    const {scrollLeft: x, scrollTop: y} = this.content;
-                    scroll = {x, y};
                 }
 
                 removeClass(this.panel, this.clsSidebarAnimation, this.clsMode);
                 removeClass(this.$el, this.clsOverlay);
                 css(this.$el, 'display', '');
-                removeClass(document.body, this.clsContainer, this.clsFlip, this.clsOverlay);
-                document.body.scrollTop = scroll.y;
+                removeClass(document.body, this.clsContainer, this.clsFlip);
 
                 css(document.documentElement, 'overflowY', '');
-
-                width(this.content, '');
-                height(this.content, '');
-
-                window.scroll(scroll.x, scroll.y);
-
-                scroll = null;
 
             }
         },
@@ -208,7 +205,7 @@ export default {
 
             handler(e) {
 
-                if (this.isToggled() && isTouch(e) && (e.type === 'swipeLeft' && !this.flip || e.type === 'swipeRight' && this.flip)) {
+                if (this.isToggled() && isTouch(e) && e.type === 'swipeLeft' ^ this.flip) {
                     this.hide();
                 }
 
@@ -218,3 +215,17 @@ export default {
     ]
 
 };
+
+// Chrome in responsive mode zooms page upon opening offcanvas
+function suppressUserScale() {
+    getViewport().content += ',user-scalable=0';
+}
+
+function resumeUserScale() {
+    const viewport = getViewport();
+    viewport.content = viewport.content.replace(/,user-scalable=0$/, '');
+}
+
+function getViewport() {
+    return $('meta[name="viewport"]', document.head) || append(document.head, '<meta name="viewport">');
+}

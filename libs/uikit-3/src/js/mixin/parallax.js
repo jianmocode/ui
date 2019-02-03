@@ -1,22 +1,21 @@
-import {css, Dimensions, each, getImage, includes, isNumber, isUndefined, toFloat} from 'uikit-util';
+import Media from '../mixin/media';
+import {css, Dimensions, each, includes, isNumber, isUndefined, toFloat} from 'uikit-util';
 
 const props = ['x', 'y', 'bgx', 'bgy', 'rotate', 'scale', 'color', 'backgroundColor', 'borderColor', 'opacity', 'blur', 'hue', 'grayscale', 'invert', 'saturate', 'sepia', 'fopacity'];
 
 export default {
 
+    mixins: [Media],
+
     props: props.reduce((props, prop) => {
         props[prop] = 'list';
         return props;
-    }, {
-        media: 'media'
-    }),
+    }, {}),
 
     data: props.reduce((data, prop) => {
         data[prop] = undefined;
         return data;
-    }, {
-        media: false
-    }),
+    }, {}),
 
     computed: {
 
@@ -105,95 +104,92 @@ export default {
         delete this._image;
     },
 
-    update: [
+    update: {
 
-        {
+        read(data) {
 
-            read(data) {
+            data.active = this.matchMedia;
 
-                data.active = !this.media || window.matchMedia(this.media).matches;
+            if (!data.active) {
+                return;
+            }
 
-                if (data.image) {
-                    data.image.dimEl = {
-                        width: this.$el.offsetWidth,
-                        height: this.$el.offsetHeight
-                    };
-                }
-
-                if ('image' in data || !this.covers || !this.bgProps.length) {
-                    return;
-                }
-
+            if (!data.image && this.covers && this.bgProps.length) {
                 const src = css(this.$el, 'backgroundImage').replace(/^none|url\(["']?(.+?)["']?\)$/, '$1');
 
-                if (!src) {
-                    return;
-                }
+                if (src) {
+                    const img = new Image();
+                    img.src = src;
+                    data.image = img;
 
-                data.image = false;
-
-                getImage(src).then(img => {
-                    data.image = {
-                        width: img.naturalWidth,
-                        height: img.naturalHeight
-                    };
-
-                    this.$emit();
-                });
-
-            },
-
-            write({image, active}) {
-
-                if (!image) {
-                    return;
-                }
-
-                if (!active) {
-                    css(this.$el, {backgroundSize: '', backgroundRepeat: ''});
-                    return;
-                }
-
-                const {dimEl} = image;
-
-                let dim = Dimensions.cover(image, dimEl);
-
-                this.bgProps.forEach(prop => {
-
-                    const {diff, bgPos, steps} = this.props[prop];
-                    const attr = prop === 'bgy' ? 'height' : 'width';
-                    const span = dim[attr] - dimEl[attr];
-
-                    if (!bgPos.match(/%$|0px/)) {
-                        return;
+                    if (!img.naturalWidth) {
+                        img.onload = () => this.$emit();
                     }
+                }
 
-                    if (span < diff) {
-                        dimEl[attr] = dim[attr] + diff - span;
-                    } else if (span > diff) {
+            }
 
-                        const bgPosFloat = parseFloat(bgPos);
+            const {image} = data;
 
-                        if (bgPosFloat) {
-                            this.props[prop].steps = steps.map(step => step - (span - diff) / (100 / bgPosFloat));
-                        }
+            if (!image || !image.naturalWidth) {
+                return;
+            }
+
+            const dimEl = {
+                width: this.$el.offsetWidth,
+                height: this.$el.offsetHeight
+            };
+            const dimImage = {
+                width: image.naturalWidth,
+                height: image.naturalHeight
+            };
+
+            let dim = Dimensions.cover(dimImage, dimEl);
+
+            this.bgProps.forEach(prop => {
+
+                const {diff, bgPos, steps} = this.props[prop];
+                const attr = prop === 'bgy' ? 'height' : 'width';
+                const span = dim[attr] - dimEl[attr];
+
+                if (!bgPos.match(/%$|0px/)) {
+                    return;
+                }
+
+                if (span < diff) {
+                    dimEl[attr] = dim[attr] + diff - span;
+                } else if (span > diff) {
+
+                    const bgPosFloat = parseFloat(bgPos);
+
+                    if (bgPosFloat) {
+                        this.props[prop].steps = steps.map(step => step - (span - diff) / (100 / bgPosFloat));
                     }
+                }
 
-                    dim = Dimensions.cover(image, dimEl);
-                });
+                dim = Dimensions.cover(dimImage, dimEl);
+            });
 
-                css(this.$el, {
-                    backgroundSize: `${dim.width}px ${dim.height}px`,
-                    backgroundRepeat: 'no-repeat'
-                });
+            data.dim = dim;
+        },
 
-            },
+        write({dim, active}) {
 
-            events: ['load', 'resize']
+            if (!active) {
+                css(this.$el, {backgroundSize: '', backgroundRepeat: ''});
+                return;
+            }
 
-        }
+            dim && css(this.$el, {
+                backgroundSize: `${dim.width}px ${dim.height}px`,
+                backgroundRepeat: 'no-repeat'
+            });
 
-    ],
+        },
+
+        events: ['resize']
+
+    },
 
     methods: {
 
@@ -215,7 +211,7 @@ export default {
 
                     // transforms
                     case 'x':
-                    case 'y':
+                    case 'y': {
 
                         if (translated) {
                             break;
@@ -224,12 +220,13 @@ export default {
                         const [x, y] = ['x', 'y'].map(dir => prop === dir
                             ? toFloat(value).toFixed(0) + unit
                             : props[dir]
-                                ? getValue(props[dir].steps, percent, 0) + props[dir].unit
+                                ? getValue(props[dir].steps, percent, 1) + props[dir].unit
                                 : 0
                         );
 
                         translated = css.transform += ` translate3d(${x}, ${y}, 0)`;
                         break;
+                    }
                     case 'rotate':
                         css.transform += ` rotate(${value}deg)`;
                         break;
@@ -246,7 +243,7 @@ export default {
                     // color
                     case 'color':
                     case 'backgroundColor':
-                    case 'borderColor':
+                    case 'borderColor': {
 
                         const [start, end, p] = getStep(steps, percent);
 
@@ -257,7 +254,7 @@ export default {
                             }).join(',')
                             })`;
                         break;
-
+                    }
                     // CSS Filter
                     case 'blur':
                         css.filter += ` blur(${value}px)`;

@@ -12,37 +12,33 @@ export default {
             return $(selNav, $el);
         },
 
-        navItemSelector({attrItem}) {
+        selNavItem({attrItem}) {
             return `[${attrItem}],[data-${attrItem}]`;
         },
 
         navItems(_, $el) {
-            return $$(this.navItemSelector, $el);
+            return $$(this.selNavItem, $el);
         }
 
     },
 
-    update: [
+    update: {
 
-        {
+        write() {
 
-            write() {
+            if (this.nav && this.length !== this.nav.children.length) {
+                html(this.nav, this.slides.map((_, i) => `<li ${this.attrItem}="${i}"><a href="#"></a></li>`).join(''));
+            }
 
-                if (this.nav && this.length !== this.nav.children.length) {
-                    html(this.nav, this.slides.map((_, i) => `<li ${this.attrItem}="${i}"><a href="#"></a></li>`).join(''));
-                }
+            toggleClass($$(this.selNavItem, this.$el).concat(this.nav), 'uk-hidden', !this.maxIndex);
 
-                toggleClass($$(this.navItemSelector, this.$el).concat(this.nav), 'uk-hidden', !this.maxIndex);
+            this.updateNav();
 
-                this.updateNav();
+        },
 
-            },
+        events: ['resize']
 
-            events: ['load', 'resize']
-
-        }
-
-    ],
+    },
 
     events: [
 
@@ -51,12 +47,11 @@ export default {
             name: 'click',
 
             delegate() {
-                return this.navItemSelector;
+                return this.selNavItem;
             },
 
             handler(e) {
                 e.preventDefault();
-                e.current.blur();
                 this.show(data(e.current, this.attrItem));
             }
 

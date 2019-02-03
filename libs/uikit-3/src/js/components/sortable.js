@@ -1,6 +1,6 @@
 import Animate from '../mixin/animate';
 import Class from '../mixin/class';
-import {$$, addClass, after, assign, append, attr, before, closest, css, height, getPos, includes, index, isInput, offset, off, on, pointerDown, pointerMove, pointerUp, preventClick, remove, removeClass, scrollTop, toggleClass, toNodes, trigger, within} from 'uikit-util';
+import {$$, addClass, after, assign, append, attr, before, css, height, getPos, includes, index, isInput, offset, off, on, pointerDown, pointerMove, pointerUp, preventClick, remove, removeClass, scrollTop, toggleClass, toNodes, trigger, within} from 'uikit-util';
 
 export default {
 
@@ -34,12 +34,12 @@ export default {
         handle: false
     },
 
-    init() {
+    created() {
         ['init', 'start', 'move', 'end'].forEach(key => {
             const fn = this[key];
             this[key] = e => {
                 this.scrollY = window.pageYOffset;
-                const {x, y} = getPos(e);
+                const {x, y} = getPos(e, 'page');
                 this.pos = {x, y};
 
                 fn(e);
@@ -49,7 +49,9 @@ export default {
 
     events: {
 
-        [pointerDown]: 'init'
+        name: pointerDown,
+        passive: false,
+        handler: 'init'
 
     },
 
@@ -69,8 +71,8 @@ export default {
 
             offset(this.drag, {top: this.pos.y + this.origin.top, left: this.pos.x + this.origin.left});
 
-            const {top} = offset(this.drag);
-            const bottom = top + this.drag.offsetHeight;
+            const {top, height: offsetHeight} = offset(this.drag);
+            const bottom = top + offsetHeight;
             let scroll;
 
             if (top > 0 && top < this.scrollY) {
@@ -92,7 +94,7 @@ export default {
             const [placeholder] = toNodes(this.$el.children).filter(el => within(target, el));
 
             if (!placeholder
-                || isInput(e.target)
+                || isInput(target)
                 || this.handle && !within(target, this.handle)
                 || button > 0
                 || within(target, `.${this.clsNoDrag}`)
@@ -156,7 +158,7 @@ export default {
 
             this.$emit();
 
-            let target = e.type === 'mousemove' ? e.target : document.elementFromPoint(this.pos.x - document.body.scrollLeft, this.pos.y - document.body.scrollTop);
+            let target = e.type === 'mousemove' ? e.target : document.elementFromPoint(this.pos.x - window.pageXOffset, this.pos.y - window.pageYOffset);
 
             const sortable = this.getSortable(target);
             const previous = this.getSortable(this.placeholder);
@@ -182,15 +184,6 @@ export default {
 
         },
 
-        scroll() {
-            const scroll = window.pageYOffset;
-            if (scroll !== this.scrollY) {
-                this.pos.y += scroll - this.scrollY;
-                this.scrollY = scroll;
-                this.$emit();
-            }
-        },
-
         end(e) {
 
             off(document, pointerMove, this.move);
@@ -198,9 +191,8 @@ export default {
             off(window, 'scroll', this.scroll);
 
             if (!this.drag) {
-
-                if (e.type !== 'mouseup' && within(e.target, 'a[href]')) {
-                    location.href = closest(e.target, 'a[href]').href;
+                if (e.type === 'touchend') {
+                    e.target.click();
                 }
 
                 return;
@@ -229,6 +221,15 @@ export default {
 
             removeClass(document.documentElement, this.clsDragState);
 
+        },
+
+        scroll() {
+            const scroll = window.pageYOffset;
+            if (scroll !== this.scrollY) {
+                this.pos.y += scroll - this.scrollY;
+                this.scrollY = scroll;
+                this.$emit();
+            }
         },
 
         insert(element, target) {

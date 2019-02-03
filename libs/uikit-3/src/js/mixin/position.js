@@ -41,14 +41,15 @@ export default {
 
             let node;
             let {offset} = this;
+            const axis = this.getAxis();
 
-            offset = isNumeric(offset)
-                ? offset
-                : (node = $(offset))
+            if (!isNumeric(offset)) {
+                node = $(offset);
+                offset = node
                     ? getOffset(node)[axis === 'x' ? 'left' : 'top'] - getOffset(target)[axis === 'x' ? 'right' : 'bottom']
                     : 0;
+            }
 
-            const axis = this.getAxis();
             const {x, y} = positionAt(
                 element,
                 target,

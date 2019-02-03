@@ -1,24 +1,18 @@
 import {on} from './event';
+import {find, findAll} from './selector';
 import {clamp, isNumeric, isString, isUndefined, toNode, toNodes, toNumber} from './lang';
-
-export function isReady() {
-    return document.readyState === 'complete' || document.readyState !== 'loading' && !document.documentElement.doScroll;
-}
 
 export function ready(fn) {
 
-    if (isReady()) {
+    if (document.readyState !== 'loading') {
         fn();
         return;
     }
 
-    const handle = function () {
-        unbind1();
-        unbind2();
+    const unbind = on(document, 'DOMContentLoaded', function () {
+        unbind();
         fn();
-    };
-    const unbind1 = on(document, 'DOMContentLoaded', handle);
-    const unbind2 = on(window, 'load', handle);
+    });
 }
 
 export function index(element, ref) {
@@ -51,13 +45,13 @@ export function getIndex(i, elements, current = 0, finite = false) {
 }
 
 export function empty(element) {
-    element = toNode(element);
+    element = $(element);
     element.innerHTML = '';
     return element;
 }
 
 export function html(parent, html) {
-    parent = toNode(parent);
+    parent = $(parent);
     return isUndefined(html)
         ? parent.innerHTML
         : append(parent.hasChildNodes() ? empty(parent) : parent, html);
@@ -65,7 +59,7 @@ export function html(parent, html) {
 
 export function prepend(parent, element) {
 
-    parent = toNode(parent);
+    parent = $(parent);
 
     if (!parent.hasChildNodes()) {
         return append(parent, element);
@@ -75,17 +69,17 @@ export function prepend(parent, element) {
 }
 
 export function append(parent, element) {
-    parent = toNode(parent);
+    parent = $(parent);
     return insertNodes(element, element => parent.appendChild(element));
 }
 
 export function before(ref, element) {
-    ref = toNode(ref);
+    ref = $(ref);
     return insertNodes(element, element => ref.parentNode.insertBefore(element, ref));
 }
 
 export function after(ref, element) {
-    ref = toNode(ref);
+    ref = $(ref);
     return insertNodes(element, element => ref.nextSibling
         ? before(ref.nextSibling, element)
         : append(ref.parentNode, element)
@@ -168,3 +162,24 @@ export function apply(node, fn) {
         node = node.nextElementSibling;
     }
 }
+
+export function $(selector, context) {
+    return !isString(selector)
+        ? toNode(selector)
+        : isHtml(selector)
+            ? toNode(fragment(selector))
+            : find(selector, context);
+}
+
+export function $$(selector, context) {
+    return !isString(selector)
+        ? toNodes(selector)
+        : isHtml(selector)
+            ? toNodes(fragment(selector))
+            : findAll(selector, context);
+}
+
+function isHtml(str) {
+    return str[0] === '<' || str.match(/^\s*</);
+}
+

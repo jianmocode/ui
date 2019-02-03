@@ -176,6 +176,14 @@ export function toMs(time) {
             : toFloat(time) * 1000;
 }
 
+export function isEqual(value, other) {
+    return value === other
+        || isObject(value)
+        && isObject(other)
+        && Object.keys(value).length === Object.keys(other).length
+        && each(value, (val, key) => val === other[key]);
+}
+
 export function swap(value, a, b) {
     return value.replace(new RegExp(`${a}|${b}`, 'mg'), match => {
         return match === a ? b : a;
@@ -199,22 +207,25 @@ export const assign = Object.assign || function (target, ...args) {
 
 export function each(obj, cb) {
     for (const key in obj) {
-        cb.call(obj[key], obj[key], key);
+        if (false === cb(obj[key], key)) {
+            return false;
+        }
     }
+    return true;
 }
 
 export function sortBy(collection, prop) {
-    return collection.sort((a, b) =>
-        a[prop] > b[prop]
+    return collection.sort(({[prop]: propA = 0}, {[prop]: propB = 0}) =>
+        propA > propB
             ? 1
-            : b[prop] > a[prop]
+            : propB > propA
                 ? -1
                 : 0
     );
 }
 
 export function clamp(number, min = 0, max = 1) {
-    return Math.min(Math.max(number, min), max);
+    return Math.min(Math.max(toNumber(number) || 0, min), max);
 }
 
 export function noop() {}

@@ -2,6 +2,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const glob = require('glob');
 const less = require('less');
+const SVGO = require('svgo');
 const rollup = require('rollup');
 const uglify = require('uglify-js');
 const CleanCSS = require('clean-css');
@@ -110,7 +111,7 @@ exports.compile = async function (file, dest, {external, globals, name, aliases,
         ]
     });
 
-    let {code, map} = await bundle.generate({
+    let {output: [{code, map}]} = await bundle.generate({
         globals,
         format: 'umd',
         banner: exports.banner,
@@ -122,17 +123,46 @@ exports.compile = async function (file, dest, {external, globals, name, aliases,
     code = code.replace(/(>)\\n\s+|\\n\s+(<)/g, '$1 $2');
 
     return await Promise.all([
-        exports.write(`${dest}.js`, code + (!minify ? '\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,' + new Buffer(map.toString()).toString('base64') : '')),
+        exports.write(`${dest}.js`, code + (!minify ? '\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,' + Buffer.from(map.toString()).toString('base64') : '')),
         minify ? exports.write(`${dest}.min.js`, uglify.minify(code, {output: {preamble: exports.banner}}).code) : null
     ])[0];
 
 };
 
-exports.icons = function (src) {
-    return JSON.stringify(glob.sync(src, {nosort: true}).reduce((icons, file) => {
-        icons[path.basename(file, '.svg')] = fs.readFileSync(file).toString().trim().replace(/\n/g, '').replace(/>\s+</g, '> <');
-        return icons;
+exports.icons = async function (src) {
+
+    const svgo = new SVGO({
+
+        plugins: [
+            {removeViewBox: false},
+            {
+                cleanupNumericValues: {
+                    floatPrecision: 3
+                }
+            },
+            {convertPathData: false},
+            {convertShapeToPath: false},
+            {mergePaths: false},
+            {removeDimensions: false},
+            {removeStyleElement: false},
+            {removeScriptElement: false},
+            {removeUnknownsAndDefaults: false},
+            {removeUselessStrokeAndFill: false}
+        ]
+
+    });
+    const files = glob.sync(src, {nosort: true});
+    const icons = await Promise.all(files.map(async file => {
+        const data = await exports.read(file);
+        const {data: svg} = await svgo.optimize(data);
+        return svg;
+    }));
+
+    return JSON.stringify(files.reduce((result, file, i) => {
+        result[path.basename(file, '.svg')] = icons[i];
+        return result;
     }, {}), null, '    ');
+
 };
 
 exports.ucfirst = function (str) {

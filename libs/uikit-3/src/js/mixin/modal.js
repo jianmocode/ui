@@ -1,4 +1,4 @@
-import {$, addClass, append, css, hasClass, on, once, Promise, removeClass, toMs, width, within} from 'uikit-util';
+import {$, addClass, append, css, hasClass, on, once, pointerUp, Promise, removeClass, toMs, width, within} from 'uikit-util';
 import Class from './class';
 import Container from './container';
 import Togglable from './togglable';
@@ -35,14 +35,16 @@ export default {
             return this.panel;
         },
 
-        transitionDuration() {
-            return toMs(css(this.transitionElement, 'transitionDuration'));
-        },
-
         bgClose({bgClose}) {
             return bgClose && this.panel;
         }
 
+    },
+
+    beforeDisconnect() {
+        if (this.isToggled()) {
+            this.toggleNow(this.$el, false);
+        }
     },
 
     events: [
@@ -95,30 +97,22 @@ export default {
                     if (this.stack) {
                         this.prev = prev;
                     } else {
-                        prev.hide().then(this.show);
+
+                        active = prev;
+
+                        if (prev.isToggled()) {
+                            prev.hide().then(this.show);
+                        } else {
+                            once(prev.$el, 'beforeshow hidden', this.show, false, ({target, type}) => type === 'hidden' && target === prev.$el);
+                        }
                         e.preventDefault();
-                        return;
+
                     }
+
+                    return;
                 }
 
                 registerEvents();
-
-            }
-
-        },
-
-        {
-            name: 'beforehide',
-
-            self: true,
-
-            handler() {
-
-                active = active && active !== this && active || this.prev;
-
-                if (!active) {
-                    deregisterEvents();
-                }
 
             }
 
@@ -145,6 +139,20 @@ export default {
 
         {
 
+            name: 'hide',
+
+            self: true,
+
+            handler() {
+                if (!active || active === this && !this.prev) {
+                    deregisterEvents();
+                }
+            }
+
+        },
+
+        {
+
             name: 'hidden',
 
             self: true,
@@ -153,23 +161,30 @@ export default {
 
                 let found, {prev} = this;
 
-                while (prev) {
+                active = active && active !== this && active || prev;
 
-                    if (prev.clsPage === this.clsPage) {
-                        found = true;
-                        break;
+                if (!active) {
+
+                    css(document.body, 'overflowY', '');
+
+                } else {
+                    while (prev) {
+
+                        if (prev.clsPage === this.clsPage) {
+                            found = true;
+                            break;
+                        }
+
+                        prev = prev.prev;
+
                     }
-
-                    prev = prev.prev;
 
                 }
 
                 if (!found) {
                     removeClass(document.documentElement, this.clsPage);
-
                 }
 
-                !this.prev && css(document.body, 'overflowY', '');
             }
 
         }
@@ -190,34 +205,24 @@ export default {
 
             if (this.container && this.$el.parentNode !== this.container) {
                 append(this.container, this.$el);
-                this._callConnected();
+                return new Promise(resolve =>
+                    requestAnimationFrame(() =>
+                        this.show().then(resolve)
+                    )
+                );
             }
 
-            return this.toggleNow(this.$el, true);
+            return this.toggleElement(this.$el, true, animate(this));
         },
 
         hide() {
             return this.isToggled()
-                ? this.toggleNow(this.$el, false)
+                ? this.toggleElement(this.$el, false, animate(this))
                 : Promise.resolve();
         },
 
         getActive() {
             return active;
-        },
-
-        _toggleImmediate(el, show) {
-            return new Promise(resolve =>
-                requestAnimationFrame(() => {
-                    this._toggle(el, show);
-
-                    if (this.transitionDuration) {
-                        once(this.transitionElement, 'transitionend', resolve, false, e => e.target === this.transitionElement);
-                    } else {
-                        resolve();
-                    }
-                })
-            );
         }
 
     }
@@ -233,7 +238,7 @@ function registerEvents() {
     }
 
     events = [
-        on(document, 'click', ({target, defaultPrevented}) => {
+        on(document, pointerUp, ({target, defaultPrevented}) => {
             if (active && active.bgClose && !defaultPrevented && (!active.overlay || within(target, active.$el)) && !within(target, active.panel)) {
                 active.hide();
             }
@@ -250,4 +255,22 @@ function registerEvents() {
 function deregisterEvents() {
     events && events.forEach(unbind => unbind());
     events = null;
+}
+
+function animate({transitionElement, _toggle}) {
+    return (el, show) =>
+        new Promise((resolve, reject) =>
+            once(el, 'show hide', () => {
+                el._reject && el._reject();
+                el._reject = reject;
+
+                _toggle(el, show);
+
+                if (toMs(css(transitionElement, 'transitionDuration'))) {
+                    once(transitionElement, 'transitionend', resolve, false, e => e.target === transitionElement);
+                } else {
+                    resolve();
+                }
+            })
+        );
 }
