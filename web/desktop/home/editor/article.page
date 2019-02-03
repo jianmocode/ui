@@ -62,8 +62,8 @@
 
         <!-- 文章标题 -->
 	    <div class="uk-form-group uk-padding uk-padding-remove-bottom" >
-            <input name="title" type="text" class="uk-input uk-form-large" 
-                placeholder="文章标题" 
+            <textarea name="title" type="text" class="title uk-input uk-form-large" rows="2" maxlength="32"
+                placeholder="请输入标题" 
                 value="{{article.title}}"
                 validate="{
                         required:true, 
@@ -71,13 +71,12 @@
                          required:'请填写文章标题'
                         }
                     }
-            ">
-            <div class="uk-helper uk-helper-danger"></div>
+            "></textarea>
         </div> <!-- END 文章标题 -->
 
         <!-- 文章摘要/导读 -->
 	    <div class="uk-form-group uk-margin uk-padding uk-padding-remove-top uk-padding-remove-bottom" >
-            <textarea name="summary" type="text" rows="4" class="uk-textarea uk-form-large" 
+            <textarea name="summary" type="text" rows="4" class="summary uk-textarea uk-form-large" rows="1" maxlength="44"
                placeholder="导语(选填)" 
                validate="{
                        required:false, 

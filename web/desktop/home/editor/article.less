@@ -9,6 +9,7 @@
     padding: 0px;
 }
 
+// 设定工具栏样式
 .jm-editor-html {
     border: none;
     trix-toolbar {
@@ -21,4 +22,20 @@
     trix-editor:empty:not(:focus)::before {
         color: @textMutedColor;       
     }
+}
+
+textarea.uk-form-large.title {
+    resize:none;
+    font-size: 1.85rem;
+    background: transparent;
+    border: none;
+    height: 80px;
+    line-height: 40px;
+}
+
+textarea.uk-form-large.summary {
+    resize:none;
+    font-size: 0.875rem;
+    border-radius: 0;
+    padding: 15px;
 }
