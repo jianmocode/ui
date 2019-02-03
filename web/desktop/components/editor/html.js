@@ -12,7 +12,8 @@ let com = Page({
 		"url":"string",		// 云端通信地址
         "validate":"string",	// 数据验证
         "placeholder":"string",	// placeholder
-		"tooltip":"function"		// 工具
+        "tooltip":"function",		// 工具
+        "toolbar-sticky":"object"
     },
     onReady: function( params ) {
 
@@ -44,7 +45,6 @@ let com = Page({
         let data = Object.assign({},attrs);
             data["value"] = value;
         
-
         let html = Mustache.render(this.template, data );
         $elm.html(html);
         $elm.addClass('editor-inited'); //标记初始化完毕
@@ -59,13 +59,63 @@ let com = Page({
             </trix-editor>`
         );
 
-        // 处理文件上传
+        
         var elm = $('.jm-editor-html',$elm).get(0);
         if ( elm ) {
+
+            // 处理文件上传
             elm.addEventListener("trix-attachment-add", (event) => {
                 this.bindFileUploadHandler( event.target, event.attachment, attrs["url"] );
             });
+
+            // 工具栏置顶
+            if( attrs["toolbar-sticky"] ) {
+                this.toolbarSticky( elm.querySelector("trix-editor"), attrs["toolbar-sticky"] );
+            }
         }
+       
+    },
+
+    // 工具栏置顶
+    toolbarSticky( trix, option ) {
+
+        option["top"] =  parseInt(option["top"]) || 0;
+
+        let getScroll = function() {
+            if (window.pageYOffset != undefined) {
+                return [pageXOffset, pageYOffset];
+            } else {
+                var sx, sy, d = document,
+                    r = d.documentElement,
+                    b = d.body;
+                sx = r.scrollLeft || b.scrollLeft || 0;
+                sy = r.scrollTop || b.scrollTop || 0;
+                return [sx, sy];
+            }
+        }
+        var rect = trix.toolbarElement.getBoundingClientRect();
+        var top = rect.top || 0;
+        var style = getComputedStyle(trix.toolbarElement);
+        var editorStyle = getComputedStyle(trix.editor.element);
+        var width = style.width || "100%";
+        var paddingTop = parseInt(editorStyle.paddingTop);
+        var height = parseInt(style.height) || "auto";
+
+        // 监听滚动事件
+        window.addEventListener('scroll', (event) => {
+            let p = getScroll();
+            let offset = top -p[1];
+            if ( option["top"] > offset ) {
+                trix.toolbarElement.style.top = option["top"] + 'px';
+                trix.toolbarElement.style.width = width;
+                trix.toolbarElement.style.position = "fixed";
+                trix.editor.element.style.paddingTop = (height + paddingTop) + 'px';
+            } else {
+                trix.toolbarElement.style.position = "static";
+                trix.editor.element.style.paddingTop = paddingTop + 'px';
+            }
+        });
+
     },
     
     // 文件管理器

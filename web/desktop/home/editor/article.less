@@ -4,3 +4,21 @@
 // 引入组件
 @import '/desktop/components/uploader/image.less';  
 @import '/desktop/components/editor/html.less';  
+
+.iframe-form {
+    padding: 0px;
+}
+
+.jm-editor-html {
+    border: none;
+    trix-toolbar {
+        border-bottom: none;
+        background-color: @backgroundMutedColor;
+    }
+    trix-editor {
+        padding: 30px 40px 30px 40px;
+    }
+    trix-editor:empty:not(:focus)::before {
+        color: @textMutedColor;       
+    }
+}

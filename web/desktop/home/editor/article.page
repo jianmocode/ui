@@ -35,29 +35,33 @@
 		</div>
     </nav>
 </div>
+<div id="offcanvas-reveal" uk-offcanvas="mode:push; flip:true; overlay:true">
+    <div class="uk-offcanvas-bar">
+        <button class="uk-offcanvas-close" type="button" uk-close></button>
+        <h3>Title</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+</div>
 
-
-
-<div class="uk-flex uk-flex-center">
+<div class="uk-flex uk-flex-center uk-background-muted">
 
 <!-- 图文发布器-->
-<div class="container" mp:if="{{user.user_id}}">
-
+<div class="uk-card uk-card-default uk-card-body uk-padding-remove uk-margin-top uk-margin-large-bottom" mp:if="{{user.user_id}}">
 
     <!-- 图文发布表单 -->
-    <form	class="uk-form-horizontal iframe-form uk-width-xxlarge"  mp:if="{{user.user_id}}"
+    <form class="uk-form-horizontal iframe-form uk-width-xxlarge"
         method="POST" 
         action="/_api/xpmsns/user/user/x" 
         success="function(data) {
-            var $user = $validate.utils.user;
-            $validate.utils.parentNotification('<span uk-icon=\'icon: check;ratio:1.3\'></span>  个人资料更新成功', 'success', 'top-right');
-            $user.login(data);
-            console.log( data );
+            // var $user = $validate.utils.user;
+            // $validate.utils.parentNotification('<span uk-icon=\'icon: check;ratio:1.3\'></span>  个人资料更新成功', 'success', 'top-right');
+            // $user.login(data);
+            // console.log( data );
         }" 
         >
 
         <!-- 文章标题 -->
-	    <div class="uk-form-group uk-margin" >
+	    <div class="uk-form-group uk-padding uk-padding-remove-bottom" >
             <input name="title" type="text" class="uk-input uk-form-large" 
                 placeholder="文章标题" 
                 value="{{article.title}}"
@@ -68,15 +72,15 @@
                         }
                     }
             ">
-         <div class="uk-helper uk-helper-danger"></div>
+            <div class="uk-helper uk-helper-danger"></div>
         </div> <!-- END 文章标题 -->
 
         <!-- 文章摘要/导读 -->
-	    <div class="uk-form-group uk-margin " >
-            <textarea name="summary" type="text" rows="2" class="uk-textarea uk-form-large" 
-               placeholder="文章导读/摘要" 
+	    <div class="uk-form-group uk-margin uk-padding uk-padding-remove-top uk-padding-remove-bottom" >
+            <textarea name="summary" type="text" rows="4" class="uk-textarea uk-form-large" 
+               placeholder="导语(选填)" 
                validate="{
-                       required:true, 
+                       required:false, 
                        messages: {
                         required:'请填写文章导读/摘要'
                        }
@@ -87,9 +91,10 @@
 
 
         <!-- 文章正文 -->
-	    <div class="uk-form-group uk-margin " >
+	    <div class="uk-form-group uk-margin" >
             <editor name="content"  type="html" rows="20" 
                 autofocus
+                toolbar-sticky="top:0;"
                 url="/_api/xpmsns/user/user/upload"
                 placeholder="在这里输入文章正文"
                 validate="{
@@ -102,107 +107,95 @@
             <div class="uk-helper uk-helper-danger"></div>
         </div> <!-- END 文章正文-->
 
-        <ul uk-accordion>
-            <li class="uk-open uk-margin-large-top">
-                <a class="uk-accordion-title" href="#">发布设置</a>
-                <div class="uk-accordion-content">
-                    <!-- 文章封面 -->
-                    <div class="uk-form-group uk-margin" >
-                        <label class="uk-form-label uk-form-large">文章封面: </label>
-                        <div class="uk-form-controls jm-uploader-image-large">
-                            <uploader type="image"
-                                name="bgimgurl"
-                                url="/_api/xpmsns/user/user/upload"
-                                allow="/(\.|\/)(gif|jpe?g|png)$/i" accept=".gif,.jpg,.jpeg,.png"
-                                crop="ratio:1"
-                                ratio="900/500"
-                                maxFileSize="2048"
-                                maxChunkSize="100"
-                                value='{{JSON(article.cover, true)}}'
-                                titleClass="uk-hidden"
-                                class="jm-form-large">上传文章封面</uploader>
-                        </div>
-                    </div> <!-- 文章封面 -->
-            
-                    <!-- 内容类目 -->
-                    <div class="uk-form-group uk-margin " >
-                        <label class="uk-form-label uk-form-large">内容类目: </label>
-                        <div class="uk-form-controls uk-form-controls-text">
-                            <div class="uk-margin-small-top uk-margin-small-bottom uk-flex-wrap uk-flex" >
-                                <label class="uk-margin-right uk-checkbox-label uk-form-large " mp:for="{{cates}}" mp:for-item="{{ca}}" >
-                                    <input mp:if="{{InArray(ca.category_id,rs.category_ids)}}" checked class="uk-checkbox" type="checkbox" name="category_ids[]" value="{{ca.category_id}}"  > 
-                                    <input mp:else class="uk-checkbox" type="checkbox" name="category_ids[]" value="{{ca.category_id}}"  > 
-                                    {{ca.name}} 
-                                </label>
-                            </div>
-                        
-                        </div>
-                        <div class="uk-helper uk-helper-danger"></div>
-                    </div> <!-- END 内容类目 -->
-                    
-                    <!-- 文章标签 -->
-                    <div class="uk-form-group uk-margin " >
-                        <label class="uk-form-label uk-form-large">标签: </label>
-                        <div class="uk-form-controls">
-                            <input name="mobile" type="text" class="uk-input uk-form-large" 
-                                placeholder="文章标签, 多个用 &quot;,&quot; 分割" 
-                                value="{{article.tag}}" 
-                                validate="{
-                                        required:false, 
-                                        messages: {
-                                            required:'请填写标签'
-                                        }
-                                    }
-                                ">
-                            <div class="uk-helper uk-helper-danger"></div>
-                        </div>
-                    </div> <!-- END 文章标签 -->
+        <hr class="uk-divider-icon">
 
-                    <!-- 文章来源 -->
-                    <div class="uk-form-group uk-margin " >
-                        <label class="uk-form-label uk-form-large">文章来源: </label>
-                        <div class="uk-form-controls">
-                            <div class="uk-flex">
-                                <input name="mobile" type="text" class="uk-input uk-form-large uk-margin-small-right uk-width-1-3" 
-                                    placeholder="来源名称" 
-                                    value="{{article.origin}}" 
-                                    validate="{
-                                            required:true, 
-                                            messages: {
-                                                required:'请填写来源名称'
-                                            }
-                                        }
-                                    ">
-                                
-                                    <input name="mobile" type="text" class="uk-input uk-form-large uk-uk-width-2-3" 
-                                    placeholder="来源地址" 
-                                    value="{{article.origin_url}}" 
-                                    validate="{
-                                            required:true, 
-                                            messages: {
-                                            required:'请填写来源地址'
-                                            }
-                                        }
-                                ">
-                                
-                            </div>
-                            <div class="uk-helper uk-helper-danger"></div>
-                        </div>
-                    </div> <!-- END 文章来源 -->
+        <div class="uk-form-group uk-padding uk-padding-remove-top uk-padding-remove-bottom" >
+            <h3>发布设置</h3>
+        </div>
 
-                    
+        <!-- 文章封面 -->
+        <div class="uk-form-group uk-padding  uk-padding-remove-top uk-padding-remove-bottom" >
+            <label class="uk-form-label uk-form-large">文章封面: </label>
+            <div class="uk-form-controls jm-uploader-image-large">
+                <uploader type="image"
+                    name="bgimgurl"
+                    url="/_api/xpmsns/user/user/upload"
+                    allow="/(\.|\/)(gif|jpe?g|png)$/i" accept=".gif,.jpg,.jpeg,.png"
+                    crop="ratio:1"
+                    ratio="900/500"
+                    maxFileSize="2048"
+                    maxChunkSize="100"
+                    value='{{JSON(article.cover, true)}}'
+                    titleClass="uk-hidden"
+                    class="jm-form-large">上传文章封面</uploader>
+            </div>
+        </div> <!-- 文章封面 -->
 
+        <!-- 内容类目 -->
+        <div class="uk-form-group uk-padding  uk-padding-remove-top uk-padding-remove-bottom" >
+            <label class="uk-form-label uk-form-large">内容类目: </label>
+            <div class="uk-form-controls uk-form-controls-text">
+                <div class="uk-margin-small-top uk-margin-small-bottom uk-flex-wrap uk-flex" >
+                    <label class="uk-margin-right uk-checkbox-label uk-form-large " mp:for="{{cates}}" mp:for-item="{{ca}}" >
+                        <input mp:if="{{InArray(ca.category_id,rs.category_ids)}}" checked class="uk-checkbox" type="checkbox" name="category_ids[]" value="{{ca.category_id}}"  > 
+                        <input mp:else class="uk-checkbox" type="checkbox" name="category_ids[]" value="{{ca.category_id}}"  > 
+                        {{ca.name}} 
+                    </label>
                 </div>
-            </li>
-        </ul>
-
-
-        <!-- <div class="uk-margin uk-margin-large-top">
-            <h3 class="uk-text-muted">发布设置 <span uk-loading="ratio:0.8" class="uk-margin-small-left"></span></h3>
-            <hr />
-        </div> -->
-
+            
+            </div>
+            <div class="uk-helper uk-helper-danger"></div>
+        </div> <!-- END 内容类目 -->
         
+        <!-- 文章标签 -->
+        <div class="uk-form-group uk-padding  uk-padding-remove-top uk-padding-remove-bottom" >
+            <label class="uk-form-label uk-form-large">标签: </label>
+            <div class="uk-form-controls">
+                <input name="mobile" type="text" class="uk-input uk-form-large" 
+                    placeholder="文章标签, 多个用 &quot;,&quot; 分割" 
+                    value="{{article.tag}}" 
+                    validate="{
+                            required:false, 
+                            messages: {
+                                required:'请填写标签'
+                            }
+                        }
+                    ">
+                <div class="uk-helper uk-helper-danger"></div>
+            </div>
+        </div> <!-- END 文章标签 -->
+
+        <!-- 文章来源 -->
+        <div class="uk-form-group uk-padding" >
+            <label class="uk-form-label uk-form-large">文章来源: </label>
+            <div class="uk-form-controls">
+                <div class="uk-flex">
+                    <input name="mobile" type="text" class="uk-input uk-form-large uk-margin-small-right uk-width-1-3" 
+                        placeholder="来源名称" 
+                        value="{{article.origin}}" 
+                        validate="{
+                                required:true, 
+                                messages: {
+                                    required:'请填写来源名称'
+                                }
+                            }
+                        ">
+                    
+                        <input name="mobile" type="text" class="uk-input uk-form-large uk-uk-width-2-3" 
+                        placeholder="来源地址" 
+                        value="{{article.origin_url}}" 
+                        validate="{
+                                required:true, 
+                                messages: {
+                                required:'请填写来源地址'
+                                }
+                            }
+                    ">
+                    
+                </div>
+                <div class="uk-helper uk-helper-danger"></div>
+            </div>
+        </div> <!-- END 文章来源 -->        
         
     </form>
 
@@ -217,14 +210,3 @@
 
 </div> <!-- END uk-flex uk-flex-center -->
 <include src="__WEB_ROOT__/desktop/common/foot.page" />
-<div id="offcanvas-reveal" uk-offcanvas="mode:push;flip: true; overlay: true">
-    <div class="uk-offcanvas-bar">
-
-        <button class="uk-offcanvas-close" type="button" uk-close></button>
-
-        <h3>Title</h3>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-    </div>
-</div>
