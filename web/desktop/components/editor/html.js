@@ -80,6 +80,17 @@ let com = Page({
     toolbarSticky( trix, option ) {
 
         option["top"] =  parseInt(option["top"]) || 0;
+        var rect = trix.toolbarElement.getBoundingClientRect();
+        var top = rect.top || 0;
+        var style = getComputedStyle(trix.toolbarElement);
+        var editorStyle = getComputedStyle(trix.editor.element);
+        var width = style.width || "100%";
+        var paddingTop = parseInt(editorStyle.paddingTop);
+        var height = parseInt(style.height) || "auto";
+
+        if ( top < 0 ) {
+            top = 0;
+        }
 
         let getScroll = function() {
             if (window.pageYOffset != undefined) {
@@ -93,29 +104,30 @@ let com = Page({
                 return [sx, sy];
             }
         }
-        var rect = trix.toolbarElement.getBoundingClientRect();
-        var top = rect.top || 0;
-        var style = getComputedStyle(trix.toolbarElement);
-        var editorStyle = getComputedStyle(trix.editor.element);
-        var width = style.width || "100%";
-        var paddingTop = parseInt(editorStyle.paddingTop);
-        var height = parseInt(style.height) || "auto";
 
-        // 监听滚动事件
-        window.addEventListener('scroll', (event) => {
+        let setPos = function () {
             let p = getScroll();
-            let offset = top -p[1];
+            let offset = top - p[1];
             if ( option["top"] > offset ) {
                 trix.toolbarElement.style.top = option["top"] + 'px';
                 trix.toolbarElement.style.width = width;
                 trix.toolbarElement.style.position = "fixed";
                 trix.toolbarElement.style.zIndex = 960;
                 trix.editor.element.style.paddingTop = (height + paddingTop) + 'px';
-                
             } else {
                 trix.toolbarElement.style.position = "static";
                 trix.editor.element.style.paddingTop = paddingTop + 'px';
             }
+
+            // console.log( option["top"] , ">", offset, top , "-", p[1] );
+        }
+
+        // 设定当前进度条
+        setPos();
+
+        // 监听滚动事件
+        window.addEventListener('scroll', (event) => {
+            setPos();
         });
 
     },

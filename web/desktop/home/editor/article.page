@@ -2,6 +2,7 @@
 <include src="__WEB_ROOT__/desktop/components/uploader/image.page" /> <!-- 引入部件 文件上传组件-->
 <include src="__WEB_ROOT__/desktop/components/editor/html.page" /> <!-- 引入部件 HTML编辑器 -->
 
+<!-- 头部导航 -->
 <div class="uk-section-secondary">
     <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
         <div class="uk-navbar-left">
@@ -34,14 +35,16 @@
 			</ul>
 		</div>
     </nav>
-</div>
+</div> <!-- END 头部导航 -->
+
+<!-- 推出侧边栏 -->
 <div id="offcanvas-reveal" uk-offcanvas="mode:push; flip:true; overlay:true">
     <div class="uk-offcanvas-bar">
         <button class="uk-offcanvas-close" type="button" uk-close></button>
         <h3>Title</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
     </div>
-</div>
+</div> <!-- END 推出侧边栏 -->
 
 <div class="uk-flex uk-flex-center uk-background-muted">
 
@@ -196,16 +199,32 @@
             </div>
         </div> <!-- END 文章来源 -->        
         
-    </form>
+    </form>  <!-- END 图文发布表单 -->
 
-</div>
+</div><!-- END 图文发布器-->
 
 <!-- 用户未登录界面 -->
 <div class="container" mp:else >
     <script type="text/javascript" >
         window.location="/user/signin/mobile?then=/home/editor/article";
     </script>
-</div> <!-- END Row Container -->
+</div> <!-- END  Container -->
 
 </div> <!-- END uk-flex uk-flex-center -->
+
+
+<!-- 操作面板 -->
+<div class="uk-flex uk-flex-center action-panel" style="position:fixed;bottom:0;width:100%;">
+    <div class="uk-card uk-card-body uk-width-xxlarge uk-padding-small uk-clearfix">
+        <div class="uk-float-right">
+            <a href="#" class="uk-margin-right"> 保存 </a>
+            <a href="#" class="uk-margin-right"> 预览 </a>
+            <button class="uk-button uk-button-primary uk-button-small">发布</button>
+        </div>
+        <div class="uk-float-left">
+            <a href="#" style="line-height:30px;"> 发布设置  </a>
+        </div>
+
+    </div>
+</div> <!-- END 操作面板 -->
 <include src="__WEB_ROOT__/desktop/common/foot.page" />
