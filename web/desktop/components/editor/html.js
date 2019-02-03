@@ -120,7 +120,7 @@ let com = Page({
 
     },
     
-    // 文件管理器
+    // 处理文件上传
     bindFileUploadHandler( trix, attachment, url ) {
         if ( url == null || url == "" ) {
             console.log('未指定文件上传云端服务地址(上传文件功能将无法使用)', " trix-id=", trix.getAttribute("trix-id"), attachment );
