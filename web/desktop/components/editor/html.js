@@ -29,8 +29,8 @@ let com = Page({
         // @see https://gist.github.com/pmhoudry/a0dc6905872a41a316135d42a5537ddb
         addEventListener("trix-initialize", (event) => {      
             this.addNewBlock( event.target ); // 添加个性化面板
-            this.addImage( event.target ); // 添加图片
-            this.addVideo( event.target ); // 添加视频
+            // this.addImage( event.target ); // 添加图片
+            // this.addVideo( event.target ); // 添加视频
             this.addAttach( event.target ); // 添加附件
         });
     },
@@ -211,22 +211,48 @@ let com = Page({
     // 添加附件 
     addAttach:function( trix ) {
 
-        let button = document.createElement("button");
-            button.setAttribute("data-trix-action", "x-attach");
-            button.setAttribute("class", "trix-button trix-button--icon trix-button--icon-attach");
-            button.setAttribute("type", "button");
+        let trixId = trix.trixId;
+
+        let buttonContent = `
+            <button type="button" 
+                class="trix-button trix-button--icon trix-button--icon-attach" 
+                data-trix-attribute="attach" 
+                data-trix-key="+" title="附件" tabindex="-1"></button>
+        `;
+        
+        let dialogContent = `
+            <div class="trix-dialog trix-dialog--attach" data-trix-dialog="attach" data-trix-dialog-attribute="attach"  >
+                <div class="trix-dialog__attach-fields">
+                    <input type="file" class="trix-input trix-input--dialog" >
+                    <div class="trix-button-group">
+                        <input type="button" class="trix-button trix-button--dialog" 
+                            onclick="
+                                var trix = document.querySelector('trix-editor[trix-id=\\'${trixId}\\']');
+                                var fileElm = this.parentElement.parentElement.querySelector('input[type=\\'file\\']');
+                                if ( fileElm.files.length == 0 ) { 
+                                    console.log('nothing selected');
+                                    return;
+                                }
+                                var file = fileElm.files[0];
+                                trix.editor.insertFile(file);
+                            ";
+                            value="插入附件" data-trix-method="removeAttribute"
+                        >
+                        <input type="button" class="trix-button trix-button--dialog" value="取消操作" data-trix-method="removeAttribute">
+                    </div>
+                </div> 
+            </div>
+        `;
 
         let toolBar = trix.toolbarElement;
         let blockElm = toolBar.querySelector(".trix-button-group-custom");
-        let attachBtn = blockElm.appendChild(button);
+        var dialogElm = toolBar.querySelector(".trix-dialogs");
 
-        // 上传按钮点击, 选择文件并上传
-        attachBtn.addEventListener("click", ()=>{
-            console.log('选择文件并上传');
-        });
+        blockElm.insertAdjacentHTML("beforeend", buttonContent);
+        dialogElm.insertAdjacentHTML("beforeend", dialogContent);
     },
 
-    // 添加图片
+    // 添加图片 (下一版实现 )
     addImage:function( trix ) {
 
         let button = document.createElement("button");
@@ -244,7 +270,7 @@ let com = Page({
         });
     },
 
-    // 添加视频
+    // 添加视频 (下一版实现 )
     addVideo:function( trix ) {
 
         let button = document.createElement("button");
