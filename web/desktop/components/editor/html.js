@@ -22,14 +22,12 @@ let com = Page({
 
         // + 属性
         Trix.config.textAttributes.color = {
-            style: { color: "red" },
+            styleProperty:"color",
             inheritable: true,
-            parser: function(element) {
-                element.style.color === "red";
+            parser: function(element, v ) {
+                element.style.color !== "";
             }
         }
-
-        console.log( Trix.config.textAttributes.href.parser );
 
 		let $elms = $(params['selector']);
 		this.template = $('component[name=editor-html]').html().toString();
@@ -368,9 +366,26 @@ let com = Page({
             <div class="trix-dialog trix-dialog--color" data-trix-dialog="color" data-trix-dialog-attribute="color"  >
                 <div class="trix-dialog__attach-fields">
                     <input type="text" name="color" class="trix-input trix-input--dialog" placeholder="输入颜色代码" aria-label="URL" required data-trix-input>
+                </div>
+                <div class="trix-dialog__attach-fields">
                     <div class="trix-button-group">
-                        <input type="button" class="trix-button trix-button--dialog" value="设置颜色" data-trix-method="setAttribute">
-                        <input type="button" class="trix-button trix-button--dialog" value="取消操作" data-trix-method="removeAttribute">
+                        <input type="button" class="trix-button trix-button--dialog" value="设置颜色" 
+                            onclick="
+                                var trix = document.querySelector('trix-editor[trix-id=\\'${trixId}\\']');
+                                var colorElm = this.parentElement.parentElement.querySelector('input[type=\\'text\\']');
+                                console.log( colorElm );
+                                trix.editor.activateAttribute('color', '#ff0000');
+                            "
+                            data-trix-method="hideDialog"
+                        >
+                        <input type="button" class="trix-button trix-button--dialog" value="清除颜色"  style="border-left:none"
+                            onclick="
+                                var trix = document.querySelector('trix-editor[trix-id=\\'${trixId}\\']');
+                                var colorElm = this.parentElement.parentElement.querySelector('input[type=\\'text\\']');
+                                console.log( colorElm );
+                                trix.editor.deactivateAttribute('color');
+                            "
+                            data-trix-method="hideDialog" >
                     </div>
                 </div>
             </div>
