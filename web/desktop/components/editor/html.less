@@ -57,6 +57,79 @@
             }
         }
 
+        // 颜色选择框
+        .trix-dialog--color{
+            left: 245px;
+            max-width: 170px;
+            padding: 10px 10px 0px 10px;
+            .trix-input--dialog {
+                margin:0;
+            }
+
+            .trix-dialog-color-group {
+
+                margin-bottom: .5em;
+
+                ul {
+                    padding:.5em 0px .5em 0px ;
+                    margin: 0px;
+                    width: 150px;
+                    white-space:normal;
+                    word-wrap:break-word;
+                    height: auto;
+                    li {
+                        display: inline-block;
+                        list-style: none;
+                        margin:0px;
+                    }
+
+                }
+            }
+
+            .trix-dialog-color-group-title{
+                width: 100%;
+                display: block;
+                background-color: @backgroundMutedColor;
+                padding:.2em;
+            }
+
+            .trix-dialog-color-block {
+                width: 100%;
+                display: inline-block;
+                line-height: 14px;
+                font-size: 14px;
+                padding:.5em .2em .5em .2em;
+            }
+
+            .trix-dialog-color-block:hover {
+                background-color: @backgroundMutedColor;
+                color: @textColor;
+            }
+
+            .trix-dialog-color-item {
+                display: inline-block;
+                padding: 1px;
+                border: 1px solid #ffffff;
+                line-height: 0;
+                height: auto;
+            }
+
+            .trix-dialog-color-item:hover {
+                border: 1px solid #333333;
+            }
+            
+            .trix-dialog-color {
+                display: inline-block;
+                width:14px;
+                height:14px;
+                border-radius: 2px;
+            }
+
+            .trix-dialog-color--default {
+                background: #333333
+            }
+        }
+
     }
 
 
