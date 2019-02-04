@@ -353,20 +353,64 @@ let com = Page({
     // 添加文字属性 ( 颜色, 字号等 )
     addColor: function( trix ) {
 
-        let trixId = trix.trixId;
+        // 色板
+        let colors = {
+            standard: ["#717071", "#c9c9c9", "#fe8b7b", "#fec470", "#7ed6a6", "#5dc9e8", "#c793e7"],
+            theme:[
+                "#333333", "#808080", "#d14b3a", "#d39236", "#45ab73", "#239dc1", "#8f54b5",
+                "#717071", "#c9c9c9", "#fe8b7b", "#fec470", "#7ed6a6", "#5dc9e8", "#c793e7",
+                "#b5b5b5", "#e3e3e3", "#fec3ba", "#fee0b4", "#bcead0", "#abe3f3", "#e1c7f2"
+            ]
+        };
 
+        function getColorItem( colors ) {
+            let colorItem = '';
+            for( var i in colors ) {
+                let c = colors[i];
+                colorItem += `
+                    <li>
+                        <a  
+                            href="javascript:void(0);"
+                            onclick="
+                                var dialog = this.parentElement.parentElement.parentElement.parentElement;
+                                var color = dialog.querySelector('[name=\\'color\\']');
+                                    color.value='${c}';
+                            "
+                            class="trix-dialog-color-item" 
+                            data-trix-method="setAttribute" 
+                        >
+                            <span class="trix-dialog-color" style="background-color:${c}"></span>
+                        </a>
+                    </li>
+                `;
+            }
+            return colorItem;
+        }
+        
+        let standardColorItem = getColorItem(colors.standard);  // 标准色 
+        let themeColorItem = getColorItem(colors.theme);;  // 主题色
+
+        let trixId = trix.trixId;
         let buttonContent = `
             <button type="button" 
-                class="trix-button trix-button--icon trix-button--icon-attach" 
+                class="trix-button trix-button--icon trix-button--icon-color" 
                 data-trix-attribute="color" 
                 data-trix-key="+" title="颜色" tabindex="-1"></button>
         `;
         
         let dialogContent = `
             <div class="trix-dialog trix-dialog--color" data-trix-dialog="color" data-trix-dialog-attribute="color"  >
-                <input type="hidden" name="color" class="trix-input trix-input--dialog" placeholder="输入颜色代码" aria-label="URL" required data-trix-input>
+                <input 
+                    type="hidden" name="color" 
+                    onchange="
+                        console.log('change:', this.value );
+                    "
+                    data-trix-input required >
+
                 <div class="trix-dialog-color-group">
-                    <a href="" class="trix-dialog-color-block">
+                    <a href="javascript:void(0);"  
+                        data-trix-method="removeAttribute" 
+                        class="trix-dialog-color-block">
                         <span class="trix-dialog-color trix-dialog-color--default"></span>
                         自动
                     </a>
@@ -377,41 +421,7 @@ let com = Page({
                         标准色
                     </div>
                     <ul>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
+                        ${standardColorItem}
                     </ul>
                 </div>
 
@@ -420,113 +430,7 @@ let com = Page({
                         主题色
                     </div>
                     <ul>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="trix-dialog-color-item">
-                                <span class="trix-dialog-color trix-dialog-color--default"></span>
-                            </a>
-                        </li>
-
+                        ${themeColorItem}
                     </ul>
                 </div>
 
@@ -534,7 +438,6 @@ let com = Page({
                     <div class="trix-button-group">
                         <input type="button" class="trix-button trix-button--dialog" value="设置颜色"  data-trix-method="setAttribute"  >
                         <input type="button" class="trix-button trix-button--dialog" value="清除颜色"  data-trix-method="removeAttribute"   style="border-left:none"> 
-                        
                     </div>
                 </div>
             </div>
