@@ -6,6 +6,7 @@ let com = Page({
 	props: {
         "disabled":"bool",  // 是否 disabled
         "autofocus":"bool",  // 是否 自动聚焦
+        "fetch-image":"bool", // 是否抓取图片地址
         "name":"string",	// 名称
         "lang": 'string',   // 语言
 		"id":"string",		// ID
@@ -13,7 +14,7 @@ let com = Page({
         "validate":"string",	// 数据验证
         "placeholder":"string",	// placeholder
         "tooltip":"function",		// 工具
-        "toolbar-sticky":"object"
+        "toolbar-sticky":"object"  // 工具栏是否置顶 ( "top:xx" ) 
     },
     onReady: function( params ) {
 
@@ -65,7 +66,7 @@ let com = Page({
 
             // 处理文件上传
             elm.addEventListener("trix-attachment-add", (event) => {
-                this.bindFileUploadHandler( event.target, event.attachment, attrs["url"] );
+                this.bindFileUploadHandler( event.target, event.attachment, attrs );
             });
 
             // 工具栏置顶
@@ -73,7 +74,6 @@ let com = Page({
                 this.toolbarSticky( elm.querySelector("trix-editor"), attrs["toolbar-sticky"] );
             }
         }
-       
     },
 
     // 工具栏置顶
@@ -133,35 +133,45 @@ let com = Page({
     },
     
     // 处理文件上传
-    bindFileUploadHandler( trix, attachment, url ) {
+    bindFileUploadHandler( trix, attachment, attrs ) {
+        let url = attrs["url"] || "";
         if ( url == null || url == "" ) {
             console.log('未指定文件上传云端服务地址(上传文件功能将无法使用)', " trix-id=", trix.getAttribute("trix-id"), attachment );
             return;
         }
 
         // 上传文件
-        uploadFileAttachment( attachment );
-
-        function uploadFileAttachment(attachment) {
-
-            uploadFile(attachment, setProgress, setAttributes)
-
-            function setProgress(progress) {
-              attachment.setUploadProgress(progress)
-            }
-        
-            function setAttributes(data) {
-              console.log(attachment);
-            }
-        }
+        uploadAttachment( (progress)=>{attachment.setUploadProgress(progress)} );
 
         /**
          * 上传文件 ( 下一版应该支持分段上传 )
          */
-        function uploadFile(attachment, progressCallback, successCallback) {
+        function uploadAttachment( progressCallback, successCallback, failureCallback) {
+            
+            progressCallback = progressCallback ||(() => {});
+            successCallback = successCallback ||(() => {});
+            failureCallback = failureCallback ||(() => {});
 
-            // Check File
+            // 复制过图片等
+            if ( !attachment.file ) {   
+                fetchUrl(progressCallback, successCallback, failureCallback);
+                return;
+            }
+
+            sendFile(progressCallback, successCallback, failureCallback);
+        }
+        
+
+        /**
+         * 分段上传文件
+         * @param {*} progressCallback 
+         * @param {*} successCallback 
+         * @param {*} failureCallback 
+         */
+        function sendFile( progressCallback, successCallback, failureCallback ) {
+
             let file = attachment.file;
+            // Check File
 
             var key = createStorageKey(file)
             var formData = createFormData(key, file)
@@ -179,8 +189,9 @@ let com = Page({
                 try {
                     response = JSON.parse( xhr.responseText );
                 }catch( e ){
-                    console.log('upload error');
+                    console.log('upload error', e);
                     attachment.remove();
+                    failureCallback( {code:500, message:e.message, extra:{ error: e}} );
                     return;
                 }
 
@@ -189,20 +200,64 @@ let com = Page({
                     let message = response.message || "上传失败";
                     attachment.remove();
                     console.log( message );
+                    failureCallback( response );
                     return;
                 }
 
 
                 let data = response.data || {};
-                setContent( attachment, data);
+                setContent(data);
                 successCallback(data);
             })
         
             xhr.send(formData);
         }
 
+        /**
+         * 通过网址抓取附件
+         * @param {*} progressCallback 
+         * @param {*} successCallback 
+         * @param {*} failureCallback 
+         */
+        function fetchUrl( progressCallback, successCallback, failureCallback  ) {
 
-        function setContent( attachment, data ) {
+            let values = {};
+            try {
+                values = attachment.attachment.attributes.values;
+            }catch(e) { 
+                failureCallback({code:500, message:e.message, extra:{ e: e}});
+                return;
+            }
+
+            let type = values["contentType"];
+            if ( type != "image" ) {
+                // 忽略其他附件格式
+                return;
+            }
+
+            // 是否抓取网络图片( 下一版实现 )
+            // if ( !attrs["fetch-image"] ) {
+            if ( true ) {
+                attachment.file = {
+                    name:new Date().getTime() + ".png"
+                };
+                let data ={
+                    mime: "image/png",
+                    url: values["url"],
+                    origin:values["url"]
+                };
+                setContent( data );
+                successCallback(data);
+                return;
+            }
+
+        }
+
+        /**
+         * 设定附件内容预览
+         * @param {*} data 
+         */
+        function setContent( data ) {
 
             let file = attachment.file;
             let attributes ={
@@ -369,12 +424,20 @@ let com = Page({
 		}
 
 		$.each( this.props ,( name, type ) => {
+
+            if ( name  ) {
+                name = name.trim();
+            }
+            if ( type  ) {
+                type = type.trim();
+            }
+
 			switch( type ){
 				case 'string':
 					data[name] = $elm.attr(name) || null;
 					break;
-				case 'bool':
-					data[name] = $elm.attr(name) ? true : false;
+                case 'bool':
+                    data[name] = ($elm.attr(name)  !== undefined &&  $elm.attr(name)  !==  "false" &&  $elm.attr(name)  !==  "0")
 					break;
 				case 'object':
 					data[name] = parseObject($elm.attr(name));
