@@ -16,7 +16,20 @@ let com = Page({
         "tooltip":"function",		// 工具
         "toolbar-sticky":"object"  // 工具栏是否置顶 ( "top:xx" ) 
     },
+
+    // 组件初始化
     onReady: function( params ) {
+
+        // + 属性
+        Trix.config.textAttributes.color = {
+            style: { color: "red" },
+            inheritable: true,
+            parser: function(element) {
+                element.style.color === "red";
+            }
+        }
+
+        console.log( Trix.config.textAttributes.href.parser );
 
 		let $elms = $(params['selector']);
 		this.template = $('component[name=editor-html]').html().toString();
@@ -30,13 +43,21 @@ let com = Page({
         // 添加 图片、视频和附件按钮
         // @see https://gist.github.com/pmhoudry/a0dc6905872a41a316135d42a5537ddb
         addEventListener("trix-initialize", (event) => {      
-            this.addNewBlock( event.target ); // 添加个性化面板
+            
+            // 文字属性面板
+            this.addNewBlock( event.target, "text");
+            this.addColor( event.target );
+
+            // 附件上传面板
+            this.addNewBlock( event.target, "custom" ); // 添加个性化面板
+            this.addAttach( event.target ); // 添加附件
             // this.addImage( event.target ); // 添加图片
             // this.addVideo( event.target ); // 添加视频
-            this.addAttach( event.target ); // 添加附件
         });
     },
+    
 
+    // 初始化
     init: function( $elm ) {
         let attrs = this.getAttrs( $elm );
             attrs["lang"] = attrs["lang"] ?  attrs["lang"] : 'zh-CN';
@@ -313,18 +334,53 @@ let com = Page({
             return data
         }
     },
+
+
     
     // 添加个性化面板
-    addNewBlock: function ( trix ) {
+    addNewBlock: function ( trix, name ) {
+        name = name || "custom";
         let toolBar = trix.toolbarElement;
         let spacer = toolBar.querySelector(".trix-button-group-spacer");
         let blockElm = document.createElement("span");
-            blockElm.setAttribute("class","trix-button-group trix-button-group--block-tools trix-button-group-custom");
+            blockElm.setAttribute("class",`trix-button-group trix-button-group--block-tools trix-button-group-${name}`);
             blockElm.setAttribute("data-trix-button-group", "block-tools");
 
         if ( spacer ) {
             spacer.before(blockElm);
         }
+    },
+
+
+    // 添加文字属性 ( 颜色, 字号等 )
+    addColor: function( trix ) {
+
+        let trixId = trix.trixId;
+
+        let buttonContent = `
+            <button type="button" 
+                class="trix-button trix-button--icon trix-button--icon-attach" 
+                data-trix-attribute="color" 
+                data-trix-key="+" title="颜色" tabindex="-1"></button>
+        `;
+        
+        let dialogContent = `
+            <div class="trix-dialog trix-dialog--color" data-trix-dialog="color" data-trix-dialog-attribute="color"  >
+                <div class="trix-dialog__attach-fields">
+                    <input type="text" name="color" class="trix-input trix-input--dialog" placeholder="输入颜色代码" aria-label="URL" required data-trix-input>
+                    <div class="trix-button-group">
+                        <input type="button" class="trix-button trix-button--dialog" value="设置颜色" data-trix-method="setAttribute">
+                        <input type="button" class="trix-button trix-button--dialog" value="取消操作" data-trix-method="removeAttribute">
+                    </div>
+                </div>
+            </div>
+        `;
+
+        let toolBar = trix.toolbarElement;
+        let blockElm = toolBar.querySelector(".trix-button-group-text");
+        var dialogElm = toolBar.querySelector(".trix-dialogs");
+        blockElm.insertAdjacentHTML("beforeend", buttonContent);
+        dialogElm.insertAdjacentHTML("beforeend", dialogContent);
     },
 
     // 添加附件 
