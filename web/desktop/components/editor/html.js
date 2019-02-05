@@ -322,13 +322,15 @@ let com = Page({
             // if ( !attrs["fetch-image"] ) {
             if ( true ) {
                 attachment.file = {
-                    name:new Date().getTime() + ".png"
+                    name:new Date().getTime() + ".png",
+                    size:'100kb'
                 };
                 let data ={
                     mime: "image/png",
                     url: values["url"],
                     origin:values["url"]
                 };
+
                 setContent( data );
                 successCallback(data);
                 return;
@@ -354,11 +356,12 @@ let com = Page({
             }
            
             if ( data.mime.includes("image") ) { // 图片
-                attributes["content"] = `
-                    <span class="trix-preview-image" data-url="${data.url}"  data-name="${file.name}" >
-                        <img src="${data.url}" /> 
-                    <span>
-                `;
+                // attributes["content"] = `
+                //     <span class="trix-preview-image" data-url="${data.url}"  data-name="${file.name}" >
+                //         <img src="${data.url}" /> 
+                //     <span>
+                // `;
+                attributes["previewable"] = true;
 
             } else if ( data.mime.includes("video") ) { // 视频
                 attributes["content"] = `

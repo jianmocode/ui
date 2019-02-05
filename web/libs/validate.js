@@ -168,7 +168,7 @@ class Validate {
 				$helper.removeClass('uk-form-danger');
 			},
 			success: function(element) {
-				// console.log( 'success', $(element) );
+				console.log( 'success', $(element) );
 				let $formgroup = $(element).parents('.uk-form-group'); 
 				let $component = $(element).parents('.jm-component');
 			  	$formgroup.find('.uk-form-danger').removeClass('uk-form-danger');
@@ -187,12 +187,15 @@ class Validate {
                     // console.log('TRIX-INPUT');
                     return true;
                 }
-
+                
                 if ( $el.hasClass('attachment__caption-editor') ) {
                     // console.log('TRIX-INPUT - attachment__caption');
                     return true;
                 }
-                
+
+                if ( $el.hasClass('attachment--preview') ) {
+                    return true;
+                }
 
 			   	if ( $el.hasClass('uk-field-ignore') || $el.hasClass('jm-field-ignore') ) {
 			   		return true;
