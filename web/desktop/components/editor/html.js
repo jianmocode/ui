@@ -72,11 +72,18 @@ let com = Page({
             let ali = alignments[i];
             Trix.config.blockAttributes[ali.name] = {
                 tagName: 'p-' + ali.name,
-                style: { "text-align": ali.value},
                 breakOnReturn: true,
                 group: false
             }
             
+        }
+
+        // + divider
+        Trix.config.blockAttributes.divider = {
+            tagName: 'hr',
+            breakOnReturn: true,
+            terminal: false,
+            group: false
         }
 
 
@@ -99,8 +106,9 @@ let com = Page({
 
             // 文字属性面板
             this.addNewBlock( event.target, "text");
-            this.addColor( event.target );
-            this.addHeading( event.target );
+            this.addColor( event.target );    // 添加颜色
+            this.addHeading( event.target );  // 标题管理
+            this.addDivider( event.target );  // 分割线
 
             // 附件上传面板
             this.addNewBlock( event.target, "custom" ); // 添加个性化面板
@@ -405,6 +413,26 @@ let com = Page({
         }
     },
 
+
+    // 添加分割线
+    addDivider: function( trix ) {
+        
+        let trixId = trix.trixId;
+        let buttonContent = `
+            <button type="button" 
+                class="trix-button trix-button--icon trix-button--icon-divider" 
+                onclick="
+                    var trix = document.querySelector('trix-editor[trix-id=\\'${trixId}\\']');
+                    trix.editor.insertHTML('<p><hr/></p>')
+                "
+                data-trix-key="+" title="分割线" tabindex="-1"></button>
+        `;
+
+        let toolBar = trix.toolbarElement;
+        let blockElm = toolBar.querySelector(".trix-button-group-text");
+        blockElm.insertAdjacentHTML("beforeend", buttonContent);
+    },
+
     // 添加对齐选项
     addAlignments: function( trix ){
         let trixId = trix.trixId;
@@ -444,7 +472,6 @@ let com = Page({
     addHeading: function( trix ) {
         
         let trixId = trix.trixId;
-
         const headings = [
             {class:"heading-1", name:"一级标题"},
             {class:"heading-2", name:"二级标题"},
