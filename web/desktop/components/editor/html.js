@@ -28,32 +28,57 @@ let com = Page({
         Trix.config.textAttributes.color = {
             styleProperty:"color",
             inheritable: true,
-            parser: function(element, v ) {
-                element.style.color !== "";
+            parser: function(element) {
+                var style = getComputedStyle(element);
+                return style.color !== ""
             }
         }
 
         // + Heading 
         const headings = [
-            {name:"heading-1", tagName:'h1', className:"heading-1", title:"一级标题"},
-            {name:"heading-2", tagName:'h2', className:"heading-2", title:"二级标题"},
-            {name:"heading-3", tagName:'h3', className:"heading-3", title:"三级标题"},
-            {name:"heading-4", tagName:'h4', className:"heading-4", title:"四级标题"},
-            {name:"heading-5", tagName:'h5', className:"heading-5", title:"五级标题"},
+            {name:"heading-1", tagName:'h1',  title:"一级标题"},
+            {name:"heading-2", tagName:'h2', title:"二级标题"},
+            {name:"heading-3", tagName:'h3',  title:"三级标题"},
+            {name:"heading-4", tagName:'h4', title:"四级标题"},
+            {name:"heading-5", tagName:'h5',  title:"五级标题"},
         ];
 
         for ( var i in headings ) {
             let h = headings[i];
-            Trix.config.blockAttributes[h.name] = {
-                tagName: h.tagName,
-                className: h.className,
-                terminal: true,
+            Trix.config.textAttributes[h.name] = {
+                tagName:h.tagName,
+                inheritable: true,
+                parser: function(element) {
+                    element.tagName !== h.tagName
+                }
+            }
+
+            // Trix.config.blockAttributes[h.name] = {
+            //     tagName: h.tagName,
+            //     terminal: true,
+            //     breakOnReturn: true,
+            //     group: false
+            // }
+        }
+
+        // + alignments
+        const alignments = [
+            {name:"align-left", value:"left", title:"左对齐" }, 
+            {name:"align-center", value:"center",  title:"居中对齐" },  
+            {name:"align-right", value:"right", title:"右对齐" }, 
+            {name:"align-justify",  value:"justify",title:"两端对齐" }
+        ];
+        for ( var i in alignments ) {
+            let ali = alignments[i];
+            Trix.config.blockAttributes[ali.name] = {
+                tagName: 'p-' + ali.name,
+                style: { "text-align": ali.value},
                 breakOnReturn: true,
                 group: false
             }
+            
         }
-        
-        console.log( Trix.config.blockAttributes );
+
 
 		let $elms = $(params['selector']);
 		this.template = $('component[name=editor-html]').html().toString();
@@ -68,6 +93,10 @@ let com = Page({
         // @see https://gist.github.com/pmhoudry/a0dc6905872a41a316135d42a5537ddb
         addEventListener("trix-initialize", (event) => {      
             
+            // 文字对齐面板
+            this.addNewBlock( event.target, "alignment");
+            this.addAlignments( event.target );
+
             // 文字属性面板
             this.addNewBlock( event.target, "text");
             this.addColor( event.target );
@@ -376,8 +405,42 @@ let com = Page({
         }
     },
 
+    // 添加对齐选项
+    addAlignments: function( trix ){
+        let trixId = trix.trixId;
+        const alignments = [
+            {name:"align-left", value:"left", title:"左对齐" }, 
+            {name:"align-center", value:"center",  title:"居中对齐" },  
+            {name:"align-right", value:"right", title:"右对齐" }, 
+            {name:"align-justify",  value:"justify",title:"两端对齐" }
+        ];
+        let buttonContent = '';
+        for ( var i in alignments ) {
+            let ali = alignments[i];
+            buttonContent += `
+                <button type="button" 
+                    onclick="
+                        var trix = document.querySelector('trix-editor[trix-id=\\'${trixId}\\']');
+                        var dialog = this.parentElement.parentElement.parentElement.parentElement;
+                        trix.editor.deactivateAttribute('align-left');
+                        trix.editor.deactivateAttribute('align-center');
+                        trix.editor.deactivateAttribute('align-right');
+                        trix.editor.deactivateAttribute('align-justify');
+                        trix.editor.activateAttribute('${ali.name}');
+                    "
+                    class="trix-button trix-button--icon trix-button--icon-${ali.name}" 
+                    data-trix-attribute="${ali.name}"
+                    data-trix-method="setAttribute" 
+                    data-trix-key="+" title="${ali.title}" tabindex="-1"></button>
+            `;
+        }
 
-    // 添加标题选择
+        let toolBar = trix.toolbarElement;
+        let blockElm = toolBar.querySelector(".trix-button-group-alignment");
+        blockElm.insertAdjacentHTML("beforeend", buttonContent);
+    },
+
+    // 添加标题选项
     addHeading: function( trix ) {
         
         let trixId = trix.trixId;
