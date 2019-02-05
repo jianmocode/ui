@@ -20,7 +20,7 @@ let com = Page({
     // 组件初始化
     onReady: function( params ) {
 
-        // + 属性
+        // + color 调色板属性
         Trix.config.textAttributes.color = {
             styleProperty:"color",
             inheritable: true,
@@ -28,6 +28,28 @@ let com = Page({
                 element.style.color !== "";
             }
         }
+
+        // + Heading 
+        const headings = [
+            {name:"heading-1", tagName:'h1', className:"heading-1", title:"一级标题"},
+            {name:"heading-2", tagName:'h2', className:"heading-2", title:"二级标题"},
+            {name:"heading-3", tagName:'h3', className:"heading-3", title:"三级标题"},
+            {name:"heading-4", tagName:'h4', className:"heading-4", title:"四级标题"},
+            {name:"heading-5", tagName:'h5', className:"heading-5", title:"五级标题"},
+        ];
+
+        for ( var i in headings ) {
+            let h = headings[i];
+            Trix.config.blockAttributes[h.name] = {
+                tagName: h.tagName,
+                className: h.className,
+                terminal: true,
+                breakOnReturn: true,
+                group: false
+            }
+        }
+        
+        console.log( Trix.config.blockAttributes );
 
 		let $elms = $(params['selector']);
 		this.template = $('component[name=editor-html]').html().toString();
@@ -45,6 +67,7 @@ let com = Page({
             // 文字属性面板
             this.addNewBlock( event.target, "text");
             this.addColor( event.target );
+            this.addHeading( event.target );
 
             // 附件上传面板
             this.addNewBlock( event.target, "custom" ); // 添加个性化面板
@@ -350,11 +373,102 @@ let com = Page({
     },
 
 
-    // 添加文字属性 ( 颜色, 字号等 )
+    // 添加标题选择
+    addHeading: function( trix ) {
+        
+        let trixId = trix.trixId;
+
+        const headings = [
+            {class:"heading-1", name:"一级标题"},
+            {class:"heading-2", name:"二级标题"},
+            {class:"heading-3", name:"三级标题"},
+            {class:"heading-4", name:"四级标题"},
+            {class:"heading-5", name:"五级标题"},
+        ];
+        
+        function getHeadingItem( headings ) {
+            let headingItem = '';
+            for( var i in headings ) {
+                let h = headings[i];
+                let name = "heading-" + ( parseInt(i) + 1);
+                headingItem += `
+                    <li>
+                        <a  
+                            href="javascript:void(0);"
+                            onclick="
+                                var trix = document.querySelector('trix-editor[trix-id=\\'${trixId}\\']');
+                                var dialog = this.parentElement.parentElement.parentElement.parentElement;
+                                var selected = dialog.querySelector('a[data-trix-active]');
+                                if ( selected  ){
+                                    var name = selected.getAttribute('data-trix-attribute');
+                                    if ( name != this.getAttribute('data-trix-attribute') ) {
+                                        trix.editor.deactivateAttribute(name);
+                                        trix.editor.activateAttribute(this.getAttribute('data-trix-attribute'));
+                                    }
+                                }
+                            "
+                            class="trix-dialog-heading-item trix-button" 
+                            data-trix-attribute="${name}" 
+                            data-trix-method="setAttribute"
+                        >
+                            <span class="${h.class} trix-dialog-heading">${h.name}</span>
+                        </a>
+                    </li>
+                `;
+            }
+            return headingItem;
+        }
+
+        let headingItem = getHeadingItem( headings );
+
+        let buttonContent = `
+            <button type="button" 
+                class="trix-button trix-button--icon trix-button--icon-heading" 
+                data-trix-attribute="heading" 
+                data-trix-key="+" title="标题" tabindex="-1"></button>
+        `;
+
+        let dialogContent = `
+            <div class="trix-dialog trix-dialog--heading" data-trix-dialog="heading" data-trix-dialog-attribute="heading"  >
+                <input 
+                    type="hidden" name="heading" 
+                    data-trix-input required >
+                <ul>
+                    ${headingItem}
+                    <li>
+                        <a  href="javascript:void(0);"
+                            class="trix-dialog-heading-item" 
+                            onclick="
+                                var trix = document.querySelector('trix-editor[trix-id=\\'${trixId}\\']');
+                                var dialog = this.parentElement.parentElement.parentElement.parentElement;
+                                var selected = dialog.querySelector('a[data-trix-active]');
+                                if ( selected  ){
+                                    var name = selected.getAttribute('data-trix-attribute');
+                                    trix.editor.deactivateAttribute(name);
+                                }
+                            "
+                            data-trix-method="removeAttribute" 
+                        >
+                            <span class="trix-dialog-normal">正文</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        `;
+
+        let toolBar = trix.toolbarElement;
+        let blockElm = toolBar.querySelector(".trix-button-group-text");
+        var dialogElm = toolBar.querySelector(".trix-dialogs");
+        blockElm.insertAdjacentHTML("beforeend", buttonContent);
+        dialogElm.insertAdjacentHTML("beforeend", dialogContent);
+    },
+
+
+    // 添加颜色选择
     addColor: function( trix ) {
 
         // 色板
-        let colors = {
+        const colors = {
             standard: ["#717071", "#c9c9c9", "#fe8b7b", "#fec470", "#7ed6a6", "#5dc9e8", "#c793e7"],
             theme:[
                 "#333333", "#808080", "#d14b3a", "#d39236", "#45ab73", "#239dc1", "#8f54b5",
@@ -401,11 +515,7 @@ let com = Page({
         let dialogContent = `
             <div class="trix-dialog trix-dialog--color" data-trix-dialog="color" data-trix-dialog-attribute="color"  >
                 <input 
-                    type="hidden" name="color" 
-                    onchange="
-                        console.log('change:', this.value );
-                    "
-                    data-trix-input required >
+                    type="hidden" name="color" data-trix-input required >
 
                 <div class="trix-dialog-color-group">
                     <a href="javascript:void(0);"  
@@ -432,13 +542,6 @@ let com = Page({
                     <ul>
                         ${themeColorItem}
                     </ul>
-                </div>
-
-                <div class="trix-dialog__attach-fields" style="display:none">
-                    <div class="trix-button-group">
-                        <input type="button" class="trix-button trix-button--dialog" value="设置颜色"  data-trix-method="setAttribute"  >
-                        <input type="button" class="trix-button trix-button--dialog" value="清除颜色"  data-trix-method="removeAttribute"   style="border-left:none"> 
-                    </div>
                 </div>
             </div>
         `;
