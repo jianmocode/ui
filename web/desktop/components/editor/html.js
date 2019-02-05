@@ -20,6 +20,10 @@ let com = Page({
     // 组件初始化
     onReady: function( params ) {
 
+        // Default Setting 
+        Trix.config.blockAttributes.default.tagName = "p";
+        Trix.config.blockAttributes.default.breakOnReturn = true;
+
         // + color 调色板属性
         Trix.config.textAttributes.color = {
             styleProperty:"color",
