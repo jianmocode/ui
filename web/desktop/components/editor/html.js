@@ -290,8 +290,6 @@ let com = Page({
                     let chunckProgress = event.loaded / event.total
                     let totalProgress = progress + chunckProgress * p;
 
-                    // console.log( " totalProgress:", typeof totalProgress, totalProgress, " progress:", typeof progress, progress );
-
                     if ( totalProgress > 100 ) {
                         totalProgress = 100;
                     }
@@ -299,6 +297,7 @@ let com = Page({
                     if ( totalProgress  ){
                         totalProgress = totalProgress.toFixed(2);
                     }
+
                     // console.log( 'totalProgress=', totalProgress, 'progress=', progress, ' chunckProgress=', chunckProgress, ' progressMax=', progressMax)
                     progressCallback(totalProgress);
                 })
@@ -336,7 +335,7 @@ let com = Page({
                 let formData = new FormData();
                     formData.append("file", blob, name);
                 
-                xhr.open("POST", url, false);
+                xhr.open("POST", url, true);
                 xhr.setRequestHeader("Content-Disposition", `attachment; filename="${encodeURIComponent(name)}"`);
                 xhr.setRequestHeader("Content-Range", `bytes ${start}-${end-1}/${total}`);
                 xhr.send(formData);
