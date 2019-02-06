@@ -14,11 +14,23 @@ let com = Page({
         "validate":"string",	// 数据验证
         "placeholder":"string",	// placeholder
         "tooltip":"function",		// 工具
-        "toolbar-sticky":"object"  // 工具栏是否置顶 ( "top:xx" ) 
+        "toolbar-sticky":"object",  // 工具栏是否置顶 ( "top:xx" ) 
+        "maxChunkSize":"number"  // 切片大小
     },
 
     // 组件初始化
     onReady: function( params ) {
+
+        // XMLHttpRequest sendAsBinary
+        if (!XMLHttpRequest.prototype.sendAsBinary) {
+            XMLHttpRequest.prototype.sendAsBinary = function (sData) {
+                var nBytes = sData.length, ui8Data = new Uint8Array(nBytes);
+                for (var nIdx = 0; nIdx < nBytes; nIdx++) {
+                    ui8Data[nIdx] = sData.charCodeAt(nIdx) & 0xff;
+                }
+                this.send(ui8Data);
+            };
+        }
 
         // Default Setting 
         Trix.config.blockAttributes.default.tagName = "p";
@@ -254,46 +266,84 @@ let com = Page({
         function sendFile( progressCallback, successCallback, failureCallback ) {
 
             let file = attachment.file;
-            // Check File
-
-            var key = createStorageKey(file)
-            var formData = createFormData(key, file)
-            var xhr = new XMLHttpRequest()
-        
-            xhr.open("POST", url, true)
-        
-            xhr.upload.addEventListener("progress", function(event) {
-                var progress = event.loaded / event.total * 100
-                progressCallback(progress)
-            })
-        
-            xhr.addEventListener("load", function(event) {
-                let response = {};
-                try {
-                    response = JSON.parse( xhr.responseText );
-                }catch( e ){
-                    console.log('upload error', e);
-                    attachment.remove();
-                    failureCallback( {code:500, message:e.message, extra:{ error: e}} );
-                    return;
+            
+            let name =file.name;
+            let total = file.size;
+            let maxChunkSize  = ( attrs.maxChunkSize ? attrs.maxChunkSize : 512 )  * 1024 // 默认 512k
+            let chunkCount = Math.ceil(total / maxChunkSize);
+            
+            for( let i =0; i<chunkCount; i++ ) {
+                let start = i * maxChunkSize;
+                let end = start + maxChunkSize;
+                if ( end > total ) {
+                    end = total;
                 }
+                
 
-                // 上传失败
-                if ( response.code != 0 || typeof response.data != "object" ) {
-                    let message = response.message || "上传失败";
-                    attachment.remove();
-                    console.log( message );
-                    failureCallback( response );
-                    return;
-                }
+                // Send Remote 
+                let xhr = new XMLHttpRequest();
 
+                xhr.upload.addEventListener("progress", function(event) {
+                    let progress = (start/total) * 100;
+                    let progressMax = ((start+maxChunkSize)/total) * 100;
+                    let p = progressMax - progress;
+                    let chunckProgress = event.loaded / event.total
+                    let totalProgress = progress + chunckProgress * p;
 
-                let data = response.data || {};
-                setContent(data);
-                successCallback(data);
-            })
+                    // console.log( " totalProgress:", typeof totalProgress, totalProgress, " progress:", typeof progress, progress );
+
+                    if ( totalProgress > 100 ) {
+                        totalProgress = 100;
+                    }
+
+                    if ( totalProgress  ){
+                        totalProgress = totalProgress.toFixed(2);
+                    }
+                    // console.log( 'totalProgress=', totalProgress, 'progress=', progress, ' chunckProgress=', chunckProgress, ' progressMax=', progressMax)
+                    progressCallback(totalProgress);
+                })
+
+                xhr.addEventListener("load", ()=> {
+                   
+                    let response = {};
+                    try {
+                        response = JSON.parse( xhr.responseText );
+                    }catch( e ){
+                        console.log('upload error', e);
+                        attachment.remove();
+                        failureCallback( {code:500, message:e.message, extra:{ error: e}} );
+                        return;
+                    }
         
-            xhr.send(formData);
+                    // 上传失败
+                    if ( response.code != 0 || typeof response.data != "object" ) {
+                        let message = response.message || "上传失败";
+                        attachment.remove();
+                        console.log( message );
+                        failureCallback( response );
+                        return;
+                    }
+                    
+                    if ( response.completed ) {
+                        let data = response.data || {};
+                        // console.log( data );
+                        setContent(data);
+                        successCallback(data);
+                    }
+                });
+
+                let blob = file.slice(start, end, file.type);
+                let formData = new FormData();
+                    formData.append("file", blob, name);
+                
+                xhr.open("POST", url, false);
+                xhr.setRequestHeader("Content-Disposition", `attachment; filename="${encodeURIComponent(name)}"`);
+                xhr.setRequestHeader("Content-Range", `bytes ${start}-${end-1}/${total}`);
+                xhr.send(formData);
+                // console.log( "Content-Range", `bytes ${start}-${end-1}/${total}  size:${blob.size}` );
+            }
+
+            return;
         }
 
         /**
@@ -395,25 +445,15 @@ let com = Page({
                     <span>
                 `;
             }
-
-            attachment.setAttributes(attributes);
+            try {
+                attachment.setAttributes(attributes);
+            }catch( e ) {
+                console.log('setAttributes Error', e);
+            }
         }   
 
 
-        function createStorageKey(file) {
-            var date = new Date()
-            var day = date.toISOString().slice(0,10)
-            var name = date.getTime() + "-" + file.name
-            return [ "tmp", day, name ].join("/")
-        }
-
-        function createFormData(key, file) {
-            var data = new FormData()
-            data.append("key", key)
-            data.append("file", file)
-            data.append("Content-Type", file.type)
-            return data
-        }
+        
     },
 
 
