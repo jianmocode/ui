@@ -24,8 +24,6 @@ let com = Page({
         Trix.config.blockAttributes.default.tagName = "p";
         Trix.config.blockAttributes.default.breakOnReturn = true;
 
-        console.log( Trix.config.blockAttributes.default );
-
         // + color 调色板属性
         Trix.config.textAttributes.color = {
             styleProperty:"color",
