@@ -345,12 +345,10 @@ let com = Page({
         function setContent( data ) {
 
             let file = attachment.file;
-            let attributes ={
-                previewable: false,
-                url: data.url,
-                href: data.url
-            };
-
+            let attributes = data;
+                attributes["previewable"] = false;
+                attributes["href"] = data.url;
+            
             if (!data.mime ){ 
                 data.mime = "application/file";
             }
@@ -365,17 +363,35 @@ let com = Page({
 
             } else if ( data.mime.includes("video") ) { // 视频
                 attributes["content"] = `
-                    <span class="trix-preview-video"  data-url="${data.url}"  data-name="${file.name}" >
+                    <span class="trix-preview-video jm-field-ignore"  data-url="${data.url}"  data-name="${file.name}" >
                         <video width="100%" height="auto" controls>
                             <source src="${data.url}" type="${data.mime}">
                         </video>
                     <span>
                 `;
+            } else if( data.mime.includes("audio") ) {
+
+                attributes["content"] = `
+                    <span class="trix-preview-audio jm-field-ignore"   data-url="${data.url}"  data-name="${file.name}" >
+                        <audio controls>
+                            <source src="${data.url}" type="${data.mime}">
+                        </audio>
+                    <span>
+                `;
 
             } else {
+                let ext = 'unknown';
+                if ( data.url ) {
+                    let uri = data.url.split(".");
+                    if ( uri.slice ) {
+                        ext = uri.slice(-1).pop();
+                    }
+                }
+                
                 attributes["content"] = `
                     <span class="trix-preview-file" data-url="${data.url}"  data-name="${file.name}" >
-                        ${file.name}
+                        <span class="icon trix-preview-icon-${ext}"></span>
+                        <span class="title"> ${file.name} </span>
                     <span>
                 `;
             }

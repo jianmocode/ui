@@ -176,13 +176,13 @@ class Validate {
 			},
 
 			ignore: function (index, el) {
+                
                 var $el = $(el);
                 
-                // if (  $el.prop('tagName') == "TRIX-EDITOR" ) {
-                //     console.log('TRIX-EDITOR');
-                //     return true;
-                // }
-
+                if ($el.hasClass('always-validate')) {
+                    return false;
+                }
+                
                 if ( $el.hasClass('trix-input') ) {
                     // console.log('TRIX-INPUT');
                     return true;
@@ -197,16 +197,15 @@ class Validate {
                     return true;
                 }
 
+                if ( $el.hasClass('attachment--content') ) {
+                    return true;
+                }
+
 			   	if ( $el.hasClass('uk-field-ignore') || $el.hasClass('jm-field-ignore') ) {
 			   		return true;
 			   	}
 
-				if ($el.hasClass('always-validate')) {
-				   return false;
-                }
-                
-               
-			   
+				
 				return $el.is(':hidden'); // default
 			},
 			
