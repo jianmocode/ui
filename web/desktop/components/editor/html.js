@@ -266,19 +266,28 @@ let com = Page({
         function sendFile( progressCallback, successCallback, failureCallback ) {
 
             let file = attachment.file;
-            
+
+            // 校验文件
+
             let name =file.name;
             let total = file.size;
             let maxChunkSize  = ( attrs.maxChunkSize ? attrs.maxChunkSize : 512 )  * 1024 // 默认 512k
             let chunkCount = Math.ceil(total / maxChunkSize);
-            
-            for( let i =0; i<chunkCount; i++ ) {
-                let start = i * maxChunkSize;
+
+
+            function sendRequest( next ) {
+
+                // 所有请求完成
+                if ( next >= chunkCount ) { 
+                    return ;
+                }
+
+                let start = next * maxChunkSize;
                 let end = start + maxChunkSize;
                 if ( end > total ) {
                     end = total;
                 }
-                
+
 
                 // Send Remote 
                 let xhr = new XMLHttpRequest();
@@ -329,6 +338,8 @@ let com = Page({
                         setContent(data);
                         successCallback(data);
                     }
+
+                    sendRequest( next + 1 );
                 });
 
                 let blob = file.slice(start, end, file.type);
@@ -339,10 +350,9 @@ let com = Page({
                 xhr.setRequestHeader("Content-Disposition", `attachment; filename="${encodeURIComponent(name)}"`);
                 xhr.setRequestHeader("Content-Range", `bytes ${start}-${end-1}/${total}`);
                 xhr.send(formData);
-                // console.log( "Content-Range", `bytes ${start}-${end-1}/${total}  size:${blob.size}` );
             }
 
-            return;
+            sendRequest( 0 );
         }
 
         /**
