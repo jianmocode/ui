@@ -101,6 +101,10 @@
                 url="/_api/xpmsns/user/user/upload"
                 placeholder="在这里输入文章正文"
                 maxChunkSize="1024"
+                onUploadSuccess="function(data) {
+                        console.log('onUploadSuccess', data);
+                    }
+                "
                 validate="{
                        required:false, 
                        messages: {

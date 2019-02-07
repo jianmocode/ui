@@ -15,7 +15,9 @@ let com = Page({
         "placeholder":"string",	// placeholder
         "tooltip":"function",		// 工具
         "toolbar-sticky":"object",  // 工具栏是否置顶 ( "top:xx" ) 
-        "maxChunkSize":"number"  // 切片大小
+        "maxChunkSize":"number",   // 切片大小
+        "onUploadSuccess": "function", // 文件上传成功回调
+        "onUploadFailure": "function"  // 文件上传失败回调
     },
 
     // 组件初始化
@@ -236,7 +238,11 @@ let com = Page({
         }
 
         // 上传文件
-        uploadAttachment( (progress)=>{attachment.setUploadProgress(progress)} );
+        uploadAttachment( 
+            (progress)=>{attachment.setUploadProgress(progress)},
+            attrs.onUploadSuccess,
+            attrs.onUploadFailure
+        );
 
         /**
          * 上传文件 ( 下一版应该支持分段上传 )
@@ -848,7 +854,15 @@ let com = Page({
 					data[ '__json__' + name ] = $elm.attr(name); // 留存原始数据
                     break;
                 case 'function':
-                    data[name] = $elm.attr(name) ?  eval($elm.attr(name)) : function(){};
+                    let evt = function(){};
+                    if ( $elm.attr(name) ) {
+                        var exp = "evt=" + $elm.attr(name);
+                        console.log( exp );
+                        try { eval(exp) }catch(e) {
+                            console.log('function error:', $elm.attr('name'), name, exp, e);
+                        }
+                    }
+                    data[name] = evt;
                     break;
 				default: 
 					data[name] = $elm.attr(name);
