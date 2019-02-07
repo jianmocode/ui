@@ -857,7 +857,6 @@ let com = Page({
                     let evt = function(){};
                     if ( $elm.attr(name) ) {
                         var exp = "evt=" + $elm.attr(name);
-                        console.log( exp );
                         try { eval(exp) }catch(e) {
                             console.log('function error:', $elm.attr('name'), name, exp, e);
                         }
