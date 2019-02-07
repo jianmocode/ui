@@ -168,7 +168,7 @@ class Validate {
 				$helper.removeClass('uk-form-danger');
 			},
 			success: function(element) {
-				console.log( 'success', $(element) );
+				// console.log( 'success', $(element) );
 				let $formgroup = $(element).parents('.uk-form-group'); 
 				let $component = $(element).parents('.jm-component');
 			  	$formgroup.find('.uk-form-danger').removeClass('uk-form-danger');

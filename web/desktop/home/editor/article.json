@@ -27,8 +27,13 @@
 			"api":"/xpmsns/user/user/getUserInfo",
 			"query":{}
 		},
-		"sex":"{{user.sex}}",
-		"rs": {},
+		"article":{
+			"api":"/xpmsns/pages/article/getUserArticle",
+			"query":{
+				"article_id":"{{__get.article_id}}",
+				"select":"*"
+			}
+		},
 		"page":{
 			"title":"编辑文章"
         },
