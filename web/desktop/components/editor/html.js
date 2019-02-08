@@ -43,8 +43,10 @@ let com = Page({
             styleProperty:"color",
             inheritable: true,
             parser: function(element) {
-                var style = getComputedStyle(element);
-                return style.color !== ""
+                if ( element.style.color  != "" && element.style.color.trim()  != ""  ) {
+                    return element.style.color.trim();
+                }
+                return false;
             }
         }
 
@@ -96,7 +98,7 @@ let com = Page({
         Trix.config.blockAttributes.divider = {
             tagName: 'hr',
             breakOnReturn: true,
-            terminal: false,
+            terminal: true,
             group: false
         }
 
