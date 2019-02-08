@@ -74,10 +74,16 @@ Page({
             this.lockAction();
             this.setStatus("warning", "审核中");
             this.showAction(["cancel"]);
-        // 已发布
-        } else if ( status == "published" ) {
-            this.setStatus("success", "已发布");
+        
+        // 已发布, 但更新文稿未发布
+        } else if ( status == "published" && draft_status == "unapplied" ) {
+            this.setStatus("warning", "待更新");
             this.showAction(["update", "save", "preview"]);
+
+        // 已发布, 且草稿未更新
+        } else if ( status == "published" && draft_status =="applied" ) {
+            this.setStatus("success", "已发布");
+            this.showAction(["cancel", "save", "preview"]);
 
         // 默认状态 (草稿)
         } else {
