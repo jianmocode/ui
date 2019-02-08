@@ -57,8 +57,7 @@ Page({
 
 
         let article = this.data.article || {};
-
-        this.updateStatus( article.status );
+        this.updateStatus( article.status, article.draft_status );
 
     },
 
@@ -66,15 +65,39 @@ Page({
      * 根据当前状态, 设定呈现样式
      * @param {string} status 
      */
-    updateStatus: function( status ) {
+    updateStatus: function( status, draft_status) {
+        
+        console.log( status, draft_status );
+
         // 审核中
         if ( status == "auditing" ) {
             this.lockAction();
             this.setStatus("warning", "审核中");
+            this.showAction(["cancel"]);
+        // 已发布
+        } else if ( status == "published" ) {
+            this.setStatus("success", "已发布");
+            this.showAction(["update", "save", "preview"]);
 
+        // 默认状态 (草稿)
         } else {
             // 默认状态
             this.setStatus("danger", "草稿");
+            this.showAction(["save", "preview", "publish"]);
+        }
+    },
+
+    showAction:function( actions ){
+
+        $(`.action-method`).removeClass('action-active');
+
+        for( var i in actions ) {
+            $(`.action-${actions[i]}`)
+                .removeClass('uk-hidden')
+                .removeClass('uk-disabled')
+                .removeAttr('disabled')
+                .addClass('action-active')
+            ;
         }
     },
 
@@ -86,8 +109,6 @@ Page({
             .removeClass('uk-label-danger')
             .removeClass('uk-hidden')
         ;
-
-
         if ( className ) {
             $('.status-label').addClass(`uk-label-${className}`);
         }

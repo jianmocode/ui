@@ -71,7 +71,8 @@
 
             // 更新文章状态
             if ( data.status ) {
-                window.page.updateStatus( data.status );
+                console.log( data );
+                window.page.updateStatus( data.status, data.draft_status );
             }
             
         }" 
@@ -242,17 +243,36 @@
             <a href="javascript:void(0);" 
                 onclick="
                     var $form = $('form');
+                    $('[name=\'status\']').val('');
                         $form.trigger('submit');
                 "
-                class="uk-margin-right  uk-action"> 保存 </a>
-            <a href="#" bindtap="test" class="uk-margin-right"> 预览 </a>
+                class="uk-margin-right  uk-action action-method action-save"> 保存 </a>
+            
+            <a href="#" bindtap="test" class="uk-margin-right action-method action-preview"> 预览 </a>
+            
             <button 
                 onclick="
                     var $form = $('form');
                         $('[name=\'status\']').val('published');
                     $form.trigger('submit');
                 "
-                class="uk-button uk-button-primary uk-button-small uk-action" >发布</button>
+                class="uk-button uk-button-primary uk-button-small uk-action action-method action-publish" >立即发布</button>
+            
+            <button 
+                onclick="
+                    var $form = $('form');
+                        $('[name=\'status\']').val('published');
+                    $form.trigger('submit');
+                "
+                class="uk-button uk-button-primary uk-button-small uk-action action-method action-update" >发布更新</button>
+            
+            <button 
+                onclick="
+                    var $form = $('form');
+                        $('[name=\'status\']').val('unpublished');
+                    $form.trigger('submit');
+                "
+                class="uk-button uk-button-primary uk-button-small uk-action action-method action-cancel" >取消发布</button>
         </div>
         <div class="uk-float-left">
             <a href="#" style="line-height:30px;"> 发布设置  </a>
