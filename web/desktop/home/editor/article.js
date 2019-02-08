@@ -55,6 +55,53 @@ Page({
 
         } catch( e ) { console.log( 'Error @Validate', e); }
 
+
+        let article = this.data.article || {};
+
+        this.updateStatus( article.status );
+
+    },
+
+    /**
+     * 根据当前状态, 设定呈现样式
+     * @param {string} status 
+     */
+    updateStatus: function( status ) {
+        // 审核中
+        if ( status == "auditing" ) {
+            this.lockAction();
+            this.setStatus("warning", "审核中");
+
+        } else {
+            // 默认状态
+            this.setStatus("danger", "草稿");
+        }
+    },
+
+    setStatus: function( className, name  ) {
+        $('.status-label').html( name );
+        $('.status-label')
+            .removeClass('uk-label-success')
+            .removeClass('uk-label-warning')
+            .removeClass('uk-label-danger')
+            .removeClass('uk-hidden')
+        ;
+
+
+        if ( className ) {
+            $('.status-label').addClass(`uk-label-${className}`);
+        }
+    },
+
+    lockAction: function(){
+        $('.uk-action').addClass('uk-disabled')
+                       .attr('disabled', 'disabled')
+        ;
+    },
+    unlockAction: function(){
+        $('.uk-action').removeClass('uk-disabled')
+                       .removeAttr('disabled')
+        ;
     },
     
     test: function( event ) {

@@ -68,13 +68,18 @@
                 var newurl = window.location.pathname + '?article_id=' + article_id;
                 window.history.pushState({path:newurl},'',newurl);
             }
-            console.log( data );
+
+            // 更新文章状态
+            if ( data.status ) {
+                window.page.updateStatus( data.status );
+            }
+            
         }" 
         >
 
         <!-- 文章标题 -->
 	    <div class="uk-form-group uk-padding uk-padding-remove-bottom" >
-            <textarea name="title" type="text" class="title uk-input uk-form-large" rows="2" maxlength="32"
+            <textarea name="title" type="text" class="title uk-input uk-form-large uk-action" rows="2" maxlength="32"
                 placeholder="请输入标题" 
                 validate="{
                         required:true, 
@@ -83,11 +88,12 @@
                         }
                     }
             ">{{article.title}}</textarea>
+            <span class="status-label uk-label uk-label-danger uk-position-top-right uk-hidden" >草稿</span>
         </div> <!-- END 文章标题 -->
 
         <!-- 文章摘要/导读 -->
 	    <div class="uk-form-group uk-margin uk-padding uk-padding-remove-top uk-padding-remove-bottom" >
-            <textarea name="summary" type="text" rows="4" class="summary uk-textarea uk-form-large" rows="1" maxlength="44"
+            <textarea name="summary" type="text" rows="4" class="summary uk-textarea uk-form-large uk-action" rows="1" maxlength="44"
                placeholder="导语(选填)" 
                validate="{
                        required:false, 
@@ -102,7 +108,7 @@
 
         <!-- 文章正文 -->
 	    <div class="uk-form-group uk-margin" >
-            <editor name="content"  type="html" rows="20" 
+            <editor name="content"  type="html" rows="20"  class="uk-action"
                 autofocus
                 fetch-image="false"
                 toolbar-sticky="top:0;"
@@ -132,7 +138,7 @@
         <!-- 文章封面 -->
         <div class="uk-form-group uk-padding  uk-padding-remove-top uk-padding-remove-bottom" >
             <label class="uk-form-label uk-form-large">文章封面: </label>
-            <div class="uk-form-controls jm-uploader-image-large">
+            <div class="uk-form-controls jm-uploader-image-large uk-action">
                 <uploader type="image"
                     name="cover"
                     url="/_api/xpmsns/user/user/upload"
@@ -153,8 +159,8 @@
             <div class="uk-form-controls uk-form-controls-text">
                 <div class="uk-margin-small-top uk-margin-small-bottom uk-flex-wrap uk-flex" >
                     <label class="uk-margin-right uk-checkbox-label uk-form-large " mp:for="{{cates}}" mp:for-item="{{ca}}" >
-                        <input mp:if="{{InArray(ca.category_id,article.category_ids)}}" checked class="uk-checkbox" type="checkbox" name="category[]" value="{{ca.category_id}}"  > 
-                        <input mp:else class="uk-checkbox" type="checkbox" name="category[]" value="{{ca.category_id}}"  > 
+                        <input mp:if="{{InArray(ca.category_id,article.category_ids)}}" checked class="uk-checkbox uk-action" type="checkbox" name="category[]" value="{{ca.category_id}}"  > 
+                        <input mp:else class="uk-checkbox uk-action" type="checkbox" name="category[]" value="{{ca.category_id}}"  > 
                         {{ca.name}} 
                     </label>
                 </div>
@@ -166,7 +172,7 @@
         <div class="uk-form-group uk-padding  uk-padding-remove-top uk-padding-remove-bottom" >
             <label class="uk-form-label uk-form-large">标签: </label>
             <div class="uk-form-controls">
-                <input name="tag" type="text" class="uk-input uk-form-large" 
+                <input name="tag" type="text" class="uk-input uk-form-large uk-action" 
                     placeholder="文章标签, 多个用 &quot;,&quot; 分割" 
                     value="{{IMPLODE(',',article.tags)}}" 
                     validate="{
@@ -185,7 +191,7 @@
             <label class="uk-form-label uk-form-large">文章来源: </label>
             <div class="uk-form-controls">
                 <div class="uk-flex">
-                    <input name="origin" type="text" class="uk-input uk-form-large uk-margin-small-right uk-width-1-3" 
+                    <input name="origin" type="text" class="uk-input uk-form-large uk-margin-small-right uk-width-1-3 uk-action" 
                         placeholder="来源名称" 
                         value="{{article.origin}}" 
                         validate="{
@@ -196,7 +202,7 @@
                             }
                         ">
                     
-                        <input name="origin_url" type="text" class="uk-input uk-form-large uk-uk-width-2-3" 
+                        <input name="origin_url" type="text" class="uk-input uk-form-large uk-uk-width-2-3 uk-action" 
                         placeholder="来源地址" 
                         value="{{article.origin_url}}" 
                         validate="{
@@ -238,7 +244,7 @@
                     var $form = $('form');
                         $form.trigger('submit');
                 "
-                 class="uk-margin-right"> 保存 </a>
+                class="uk-margin-right  uk-action"> 保存 </a>
             <a href="#" bindtap="test" class="uk-margin-right"> 预览 </a>
             <button 
                 onclick="
@@ -246,7 +252,7 @@
                         $('[name=\'status\']').val('published');
                     $form.trigger('submit');
                 "
-                class="uk-button uk-button-primary uk-button-small" >发布</button>
+                class="uk-button uk-button-primary uk-button-small uk-action" >发布</button>
         </div>
         <div class="uk-float-left">
             <a href="#" style="line-height:30px;"> 发布设置  </a>
