@@ -28,12 +28,13 @@ class ComponentUtil {
 	}
 
 	load( option ) {
+        option["__component"] = true;
 		option['selector'] = this.selector;
 		try {
 			this.component.$load(option);
 		} catch( e) { console.log('Load Component Error', this.component,  e); }
 
-		$(option['selector']).data('_component', this.component.options );
+        $(option['selector']).data('_component', this.component.options );
 	}
 
 	setOption( option ) {

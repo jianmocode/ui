@@ -239,10 +239,11 @@
                         $form.trigger('submit');
                 "
                  class="uk-margin-right"> 保存 </a>
-            <a href="#" class="uk-margin-right"> 预览 </a>
+            <a href="#" bindtap="test" class="uk-margin-right"> 预览 </a>
             <button 
                 onclick="
                     var $form = $('form');
+                        $('[name=\'status\']').val('published');
                     $form.trigger('submit');
                 "
                 class="uk-button uk-button-primary uk-button-small" >发布</button>

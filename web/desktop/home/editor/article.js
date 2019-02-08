@@ -53,8 +53,12 @@ Page({
 				complete: ()=>{ $utils.parentHeight(); }
 			});
 
-		} catch( e ) { console.log( 'Error @Validate', e); }
+        } catch( e ) { console.log( 'Error @Validate', e); }
 
-
-	}
+    },
+    
+    test: function( event ) {
+        let that = this;
+        console.log( 'bindtap', that );
+    }
 })
