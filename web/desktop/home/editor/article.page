@@ -71,7 +71,6 @@
 
             // 更新文章状态
             if ( data.status ) {
-                console.log( data );
                 window.page.updateStatus( data.status, data.draft_status );
             }
             

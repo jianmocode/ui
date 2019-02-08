@@ -67,8 +67,6 @@ Page({
      */
     updateStatus: function( status, draft_status) {
         
-        console.log( status, draft_status );
-
         // 审核中
         if ( status == "auditing" ) {
             this.lockAction();
@@ -77,22 +75,29 @@ Page({
         
         // 已发布, 但更新文稿未发布
         } else if ( status == "published" && draft_status == "unapplied" ) {
+            this.unlockAction();
             this.setStatus("warning", "待更新");
             this.showAction(["update", "save", "preview"]);
 
         // 已发布, 且草稿未更新
         } else if ( status == "published" && draft_status =="applied" ) {
+            this.unlockAction();
             this.setStatus("success", "已发布");
             this.showAction(["cancel", "save", "preview"]);
 
         // 默认状态 (草稿)
         } else {
             // 默认状态
+            this.unlockAction();
             this.setStatus("danger", "草稿");
             this.showAction(["save", "preview", "publish"]);
         }
     },
 
+    /**
+     * 显示功能按钮
+     * @param {array} actions 功能按钮
+     */
     showAction:function( actions ){
 
         $(`.action-method`).removeClass('action-active');
@@ -107,6 +112,11 @@ Page({
         }
     },
 
+    /**
+     * 显示状态信息
+     * @param {string} className 
+     * @param {string} name 
+     */
     setStatus: function( className, name  ) {
         $('.status-label').html( name );
         $('.status-label')
@@ -120,11 +130,18 @@ Page({
         }
     },
 
+    /**
+     * 锁定所有操作
+     */
     lockAction: function(){
         $('.uk-action').addClass('uk-disabled')
                        .attr('disabled', 'disabled')
         ;
     },
+
+    /**
+     * 解锁所有操作
+     */
     unlockAction: function(){
         $('.uk-action').removeClass('uk-disabled')
                        .removeAttr('disabled')
