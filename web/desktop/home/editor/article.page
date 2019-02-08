@@ -59,10 +59,15 @@
             // var $user = $validate.utils.user;
             // $validate.utils.parentNotification('<span uk-icon=\'icon: check;ratio:1.3\'></span>  个人资料更新成功', 'success', 'top-right');
             // $user.login(data);
+
             
             // 更新文章ID数据
             var article_id = data['article_id'];
             $('[name=article_id]').val( article_id);
+            if (history.pushState) {
+                var newurl = window.location.pathname + '?article_id=' + article_id;
+                window.history.pushState({path:newurl},'',newurl);
+            }
             console.log( data );
         }" 
         >
@@ -235,7 +240,12 @@
                 "
                  class="uk-margin-right"> 保存 </a>
             <a href="#" class="uk-margin-right"> 预览 </a>
-            <button class="uk-button uk-button-primary uk-button-small">发布</button>
+            <button 
+                onclick="
+                    var $form = $('form');
+                    $form.trigger('submit');
+                "
+                class="uk-button uk-button-primary uk-button-small" >发布</button>
         </div>
         <div class="uk-float-left">
             <a href="#" style="line-height:30px;"> 发布设置  </a>

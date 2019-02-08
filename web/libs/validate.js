@@ -184,12 +184,22 @@ class Validate {
                 }
                 
                 if ( $el.hasClass('trix-input') ) {
-                    // console.log('TRIX-INPUT');
                     return true;
                 }
                 
                 if ( $el.hasClass('attachment__caption-editor') ) {
-                    // console.log('TRIX-INPUT - attachment__caption');
+                    return true;
+                }
+
+                if ( $el.hasClass('attachment__caption') ) {
+                    return true;
+                }
+                
+                if ( $el.attr('name') == undefined ) {
+                    return true;
+                }
+
+                if ( $el.prop('tagName') === 'TRIX-EDITOR' ) {
                     return true;
                 }
 
@@ -203,9 +213,8 @@ class Validate {
 
 			   	if ( $el.hasClass('uk-field-ignore') || $el.hasClass('jm-field-ignore') ) {
 			   		return true;
-			   	}
+                }
 
-				
 				return $el.is(':hidden'); // default
 			},
 			
