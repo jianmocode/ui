@@ -134,8 +134,13 @@ Page({
      * 锁定所有操作
      */
     lockAction: function(){
-        $('.uk-action').addClass('uk-disabled')
-                       .attr('disabled', 'disabled')
+        $('.uk-action')
+            .addClass('uk-disabled')
+            .attr('disabled', 'disabled')
+        ;
+        $('form')
+            .addClass('uk-disabled')
+            .attr('disabled', 'disabled')
         ;
     },
 
@@ -143,8 +148,14 @@ Page({
      * 解锁所有操作
      */
     unlockAction: function(){
-        $('.uk-action').removeClass('uk-disabled')
-                       .removeAttr('disabled')
+        $('.uk-action')
+            .removeClass('uk-disabled')
+            .removeAttr('disabled')
+        ;
+
+        $('form')
+            .removeClass('uk-disabled')
+            .removeAttr('disabled')
         ;
     },
     

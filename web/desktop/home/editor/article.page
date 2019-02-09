@@ -79,7 +79,7 @@
 
         <!-- 文章标题 -->
 	    <div class="uk-form-group uk-padding uk-padding-remove-bottom" >
-            <textarea name="title" type="text" class="title uk-input uk-form-large uk-action" rows="2" maxlength="32"
+            <textarea name="title" type="text" class="title uk-input uk-form-large" rows="2" maxlength="32"
                 placeholder="请输入标题" 
                 validate="{
                         required:true, 
@@ -93,7 +93,7 @@
 
         <!-- 文章摘要/导读 -->
 	    <div class="uk-form-group uk-margin uk-padding uk-padding-remove-top uk-padding-remove-bottom" >
-            <textarea name="summary" type="text" rows="4" class="summary uk-textarea uk-form-large uk-action" rows="1" maxlength="44"
+            <textarea name="summary" type="text" rows="4" class="summary uk-textarea uk-form-large" rows="1" maxlength="44"
                placeholder="导语(选填)" 
                validate="{
                        required:false, 
@@ -108,7 +108,7 @@
 
         <!-- 文章正文 -->
 	    <div class="uk-form-group uk-margin" >
-            <editor name="content"  type="html" rows="20"  class="uk-action"
+            <editor name="content"  type="html" rows="20" 
                 autofocus
                 fetch-image="false"
                 toolbar-sticky="top:0;"
@@ -138,7 +138,7 @@
         <!-- 文章封面 -->
         <div class="uk-form-group uk-padding  uk-padding-remove-top uk-padding-remove-bottom" >
             <label class="uk-form-label uk-form-large">文章封面: </label>
-            <div class="uk-form-controls jm-uploader-image-large uk-action">
+            <div class="uk-form-controls jm-uploader-image-large">
                 <uploader type="image"
                     name="cover"
                     url="/_api/xpmsns/user/user/upload"
@@ -159,8 +159,8 @@
             <div class="uk-form-controls uk-form-controls-text">
                 <div class="uk-margin-small-top uk-margin-small-bottom uk-flex-wrap uk-flex" >
                     <label class="uk-margin-right uk-checkbox-label uk-form-large " mp:for="{{cates}}" mp:for-item="{{ca}}" >
-                        <input mp:if="{{InArray(ca.category_id,article.category_ids)}}" checked class="uk-checkbox uk-action" type="checkbox" name="category[]" value="{{ca.category_id}}"  > 
-                        <input mp:else class="uk-checkbox uk-action" type="checkbox" name="category[]" value="{{ca.category_id}}"  > 
+                        <input mp:if="{{InArray(ca.category_id,article.category_ids)}}" checked class="uk-checkbox " type="checkbox" name="category[]" value="{{ca.category_id}}"  > 
+                        <input mp:else class="uk-checkbox" type="checkbox" name="category[]" value="{{ca.category_id}}"  > 
                         {{ca.name}} 
                     </label>
                 </div>
@@ -172,7 +172,7 @@
         <div class="uk-form-group uk-padding  uk-padding-remove-top uk-padding-remove-bottom" >
             <label class="uk-form-label uk-form-large">标签: </label>
             <div class="uk-form-controls">
-                <input name="tag" type="text" class="uk-input uk-form-large uk-action" 
+                <input name="tag" type="text" class="uk-input uk-form-large" 
                     placeholder="文章标签, 多个用 &quot;,&quot; 分割" 
                     value="{{IMPLODE(',',article.tags)}}" 
                     validate="{
@@ -191,22 +191,22 @@
             <label class="uk-form-label uk-form-large">文章来源: </label>
             <div class="uk-form-controls">
                 <div class="uk-flex">
-                    <input name="origin" type="text" class="uk-input uk-form-large uk-margin-small-right uk-width-1-3 uk-action" 
+                    <input name="origin" type="text" class="uk-input uk-form-large uk-margin-small-right uk-width-1-3" 
                         placeholder="来源名称" 
                         value="{{article.origin}}" 
                         validate="{
-                                required:true, 
+                                required:false, 
                                 messages: {
                                     required:'请填写来源名称'
                                 }
                             }
                         ">
                     
-                        <input name="origin_url" type="text" class="uk-input uk-form-large uk-uk-width-2-3 uk-action" 
+                        <input name="origin_url" type="text" class="uk-input uk-form-large uk-uk-width-2-3" 
                         placeholder="来源地址" 
                         value="{{article.origin_url}}" 
                         validate="{
-                                required:true, 
+                                required:false, 
                                 messages: {
                                 required:'请填写来源地址'
                                 }
