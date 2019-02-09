@@ -153,41 +153,26 @@
             </div>
         </div> <!-- 文章封面 -->
 
-        <!-- 内容类目 -->
+        <!-- 文章作者 -->
         <div class="uk-form-group uk-padding  uk-padding-remove-top uk-padding-remove-bottom" >
-            <label class="uk-form-label uk-form-large">内容类目: </label>
-            <div class="uk-form-controls uk-form-controls-text">
-                <div class="uk-margin-small-top uk-margin-small-bottom uk-flex-wrap uk-flex" >
-                    <label class="uk-margin-right uk-checkbox-label uk-form-large " mp:for="{{cates}}" mp:for-item="{{ca}}" >
-                        <input mp:if="{{InArray(ca.category_id,article.category_ids)}}" checked class="uk-checkbox " type="checkbox" name="category[]" value="{{ca.category_id}}"  > 
-                        <input mp:else class="uk-checkbox" type="checkbox" name="category[]" value="{{ca.category_id}}"  > 
-                        {{ca.name}} 
-                    </label>
-                </div>
-            </div>
-            <div class="uk-helper uk-helper-danger"></div>
-        </div> <!-- END 内容类目 -->
-        
-        <!-- 文章标签 -->
-        <div class="uk-form-group uk-padding  uk-padding-remove-top uk-padding-remove-bottom" >
-            <label class="uk-form-label uk-form-large">标签: </label>
+            <label class="uk-form-label uk-form-large">文章作者: </label>
             <div class="uk-form-controls">
-                <input name="tag" type="text" class="uk-input uk-form-large" 
-                    placeholder="文章标签, 多个用 &quot;,&quot; 分割" 
-                    value="{{IMPLODE(',',article.tags)}}" 
+                <input name="author" type="text" class="uk-input uk-form-large" 
+                    placeholder="请填写本文作者" 
+                    value="{{article.author}}" 
                     validate="{
                             required:false, 
                             messages: {
-                                required:'请填写标签'
+                                required:'请填写作者'
                             }
                         }
                     ">
                 <div class="uk-helper uk-helper-danger"></div>
             </div>
-        </div> <!-- END 文章标签 -->
+        </div> <!-- END 文章作者 -->
 
-        <!-- 文章来源 -->
-        <div class="uk-form-group uk-padding" >
+         <!-- 文章来源 -->
+         <div class="uk-form-group uk-padding" >
             <label class="uk-form-label uk-form-large">文章来源: </label>
             <div class="uk-form-controls">
                 <div class="uk-flex">
@@ -216,7 +201,160 @@
                 </div>
                 <div class="uk-helper uk-helper-danger"></div>
             </div>
-        </div> <!-- END 文章来源 -->        
+        </div> <!-- END 文章来源 -->    
+
+        <!-- 内容类目 -->
+        <div class="uk-form-group uk-padding  uk-padding-remove-top uk-padding-remove-bottom" >
+            <label class="uk-form-label uk-form-large">文章类目: </label>
+            <div class="uk-form-controls uk-form-controls-text">
+                <div class="uk-margin-small-top uk-margin-small-bottom uk-flex-wrap uk-flex" >
+                    <label class="uk-margin-right uk-checkbox-label uk-form-large " mp:for="{{cates}}" mp:for-item="{{ca}}" >
+                        <input mp:if="{{InArray(ca.category_id,article.category_ids)}}" checked class="uk-checkbox " type="checkbox" name="category[]" value="{{ca.category_id}}"  > 
+                        <input mp:else class="uk-checkbox" type="checkbox" name="category[]" value="{{ca.category_id}}"  > 
+                        {{ca.name}} 
+                    </label>
+                </div>
+            </div>
+            <div class="uk-helper uk-helper-danger"></div>
+        </div> <!-- END 内容类目 -->
+        
+        <!-- 文章标签 -->
+        <div class="uk-form-group uk-padding  uk-padding-remove-top" >
+            <label class="uk-form-label uk-form-large">标签: </label>
+            <div class="uk-form-controls">
+                <input name="tag" type="text" class="uk-input uk-form-large" 
+                    placeholder="文章标签, 多个用 &quot;,&quot; 分割" 
+                    value="{{IMPLODE(',',article.tags)}}" 
+                    validate="{
+                            required:false, 
+                            messages: {
+                                required:'请填写标签'
+                            }
+                        }
+                    ">
+                <div class="uk-helper uk-helper-danger"></div>
+            </div>
+        </div> <!-- END 文章标签 -->
+
+        <!-- 阅读权限:粉丝可见 -->
+        <div class="uk-form-group uk-padding  uk-padding-remove-top uk-padding-remove-bottom" >
+            <label class="uk-form-label uk-form-large">阅读设置: </label>
+            <div class="uk-form-controls uk-form-controls-text">
+                <div class="uk-margin-small-top uk-margin-small-bottom uk-flex-wrap uk-flex" >
+                    <label class="uk-margin-right uk-checkbox-label uk-form-large" >
+                        <input mp:if="{{article.policies == 'follower-only'}}" checked class="uk-checkbox " type="checkbox" name="policies" value="follower-only"  > 
+                        <input mp:else class="uk-checkbox" type="checkbox" name="policies" value="follower-only"  > 
+                        仅粉丝可见
+                    </label>
+
+                    <label class="uk-margin-right uk-checkbox-label uk-form-large" >
+                        <input mp:if="{{article.stick == '1'}}" checked class="uk-checkbox " type="checkbox" name="stick" value="1"  > 
+                        <input mp:else class="uk-checkbox" type="checkbox" name="stick" value="1"  > 
+                        文章置顶
+                    </label>
+                </div>
+            </div>
+            <div class="uk-helper uk-helper-danger"></div>
+        </div> <!-- END  阅读权限:粉丝可见  -->
+
+        <!-- 互动权限 -->
+        <div class="uk-form-group uk-padding  uk-padding-remove-top uk-padding-remove-bottom" >
+            <label class="uk-form-label uk-form-large">互动设置: </label>
+            <div class="uk-form-controls uk-form-controls-text">
+                
+                <div class="uk-margin-small-top uk-margin-small-bottom uk-flex-wrap uk-flex" >
+                    <!-- 打赏 -->
+                    <label class="uk-margin-right uk-checkbox-label uk-form-large" >
+                        <input mp:if="{{article.policies_reward == 'opened'}}" checked class="uk-checkbox " type="checkbox" name="policies_reward" value="opened"  > 
+                        <input mp:else class="uk-checkbox" type="checkbox" name="policies_reward" value="opened"  > 
+                        开启打赏
+                    </label>
+                </div>
+
+                <div class="uk-margin-small-top uk-margin-small-bottom uk-flex-wrap uk-flex" >
+                    <!-- 开启评论 -->
+                    <label class="uk-margin-right uk-checkbox-label uk-form-large" >
+                        <input mp:if="{{article.policies_comment == 'opened'}}" checked class="uk-radio " type="radio" name="policies_comment" value="opened"  > 
+                        <input mp:else class="uk-radio" type="radio" name="policies_comment" value="opened"  > 
+                        开启评论
+                    </label>
+
+                    <!-- 禁止评论 -->
+                    <label class="uk-margin-right uk-checkbox-label uk-form-large" >
+                        <input mp:if="{{article.policies_comment == 'closed'}}" checked class="uk-radio " type="radio" name="policies_comment" value="closed"  > 
+                        <input mp:else class="uk-radio" type="radio" name="policies_comment" value="closed"  > 
+                        禁止评论
+                    </label>
+                        
+                    <!-- 允许粉丝评论 -->
+                    <label class="uk-margin-right uk-checkbox-label uk-form-large" >
+                        <input mp:if="{{article.policies_comment == 'follower-only'}}" checked class="uk-radio " type="radio" name="policies_comment" value="follower-only"  > 
+                        <input mp:else class="uk-radio" type="radio" name="policies_comment" value="follower-only"  > 
+                        允许粉丝评论
+                    </label>
+                </div>
+            </div>
+            <div class="uk-helper uk-helper-danger"></div>
+        </div> <!-- END  互动权限  -->
+
+        <!-- 付费阅读:设置金额 -->
+        <div class="uk-form-group uk-padding uk-padding-remove-top uk-padding-remove-bottom" >
+            <label class="uk-form-label uk-form-large">付费阅读: </label>
+            <div class="uk-form-controls">
+                    <input name="money_view" type="text" class="uk-input uk-form-large uk-width-2-3 uk-margin-small-right" 
+                        placeholder="阅读全文需支付金额" 
+                        value="{{article.money_view}}" 
+                        validate="{
+                                required:false, 
+                                messages: {
+                                    required:'请填写阅读全文需支付金额'
+                                }
+                            }
+                        "> 
+                    <span>元</span>
+            </div>
+            <div class="uk-helper uk-helper-danger"></div>
+        </div> <!-- END  付费阅读:设置金额  -->
+
+        <!-- 付费阅读:设置金币 -->
+        <div class="uk-form-group uk-padding uk-padding-remove-top uk-margin-small-top" >
+            <label class="uk-form-label uk-form-large"> </label>
+            <div class="uk-form-controls">
+                    <input name="coin_view" type="text" class="uk-input uk-form-large uk-width-2-3 uk-margin-small-right" 
+                        placeholder="阅读全文需支付积分数量" 
+                        value="{{article.coin_view}}" 
+                        validate="{
+                                required:false, 
+                                messages: {
+                                    required:'请填写阅读全文需支付积分数量'
+                                }
+                            }
+                        "> 
+                    <span>积分</span>
+            </div>
+            <div class="uk-helper uk-helper-danger"></div>
+        </div> <!-- END  付费阅读:设置金额  -->
+
+        <!-- 文章标签 -->
+        <div class="uk-form-group uk-padding  uk-padding-remove-top" >
+                <label class="uk-form-label uk-form-large">手动排序: </label>
+                <div class="uk-form-controls">
+                    <input name="priority" type="text" class="uk-input uk-form-large uk-width-2-3" 
+                        placeholder="手动排序, 数值越小越靠前" 
+                        value="{{article.priority}}" 
+                        validate="{
+                                required:false, 
+                                messages: {
+                                    required:'请填写手动排序数值'
+                                }
+                            }
+                        ">
+                    <div class="uk-helper uk-helper-danger"></div>
+                </div>
+            </div> <!-- END 文章标签 -->
+
+
+           
 
         <input name="article_id" type="hidden" value="{{article.article_id}}" />
         <input name="status" type="hidden" value="{{article.status}}" />
