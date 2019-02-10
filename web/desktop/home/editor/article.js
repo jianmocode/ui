@@ -175,7 +175,18 @@ Page({
      * 发布设置按钮
      */
     setQuickLink: function(){
- 
+        
+        // UIkit.util.on('#quick-link-btn', 'scrolled', function () {
+        //     console.log('hh');
+        //     if ( $('#quick-link-btn').attr('href') == "#publish-setting" ) {
+        //         $('#quick-link-btn').attr('href', "#article-edit");
+        //         $('#quick-link-btn').html('<span uk-icon="icon: chevron-up;"></span> 编辑文章');
+        //     } else {
+        //         $('#quick-link-btn').attr('href', "#publish-setting");
+        //         $('#quick-link-btn').html('<span uk-icon="icon: chevron-down;"></span> 发布设置');
+        //     }
+        // });
+
         // 监听滚动事件
         let getScroll = function() {
             if (window.pageYOffset != undefined) {
@@ -196,7 +207,8 @@ Page({
         }
         window.addEventListener('scroll', (event) => {
             let pos = getScroll();
-            if ( pos[1] > offset.top ) {
+            console.log( pos[1] , offset.top );
+            if ( pos[1] > (offset.top - 200)) {
                 $('#quick-link-btn').attr('href', "#article-edit");
                 $('#quick-link-btn').html('<span uk-icon="icon: chevron-up;"></span> 编辑文章');
             } else {
