@@ -61,7 +61,7 @@ Page({
             
         // 设定文章状态
         let article = this.data.article || {};
-        if ( article.code != 0 ) {
+        if ( article.code != 0 && article.code != undefined ) {
             $('.action-panel').remove();
             return;
         } 
