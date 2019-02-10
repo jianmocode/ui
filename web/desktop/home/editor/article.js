@@ -56,8 +56,12 @@ Page({
         } catch( e ) { console.log( 'Error @Validate', e); }
 
 
+        // 设定文章状态
         let article = this.data.article || {};
         this.updateStatus( article.status, article.draft_status );
+
+        // 设置QuickLink按钮
+        this.setQuickLink();
 
     },
 
@@ -157,6 +161,38 @@ Page({
             .removeClass('uk-disabled')
             .removeAttr('disabled')
         ;
+    },
+
+    /**
+     * 发布设置按钮
+     */
+    setQuickLink: function(){
+ 
+        // 监听滚动事件
+        let getScroll = function() {
+            if (window.pageYOffset != undefined) {
+                return [pageXOffset, pageYOffset];
+            } else {
+                var sx, sy, d = document,
+                    r = d.documentElement,
+                    b = d.body;
+                sx = r.scrollLeft || b.scrollLeft || 0;
+                sy = r.scrollTop || b.scrollTop || 0;
+                return [sx, sy];
+            }
+        }
+
+        let offset = $('#publish-setting').offset();
+        window.addEventListener('scroll', (event) => {
+            let pos = getScroll();
+            if ( pos[1] > offset.top ) {
+                $('#quick-link-btn').attr('href', "#article-edit");
+                $('#quick-link-btn').html('<span uk-icon="icon: chevron-up;"></span> 编辑文章');
+            } else {
+                $('#quick-link-btn').attr('href', "#publish-setting");
+                $('#quick-link-btn').html('<span uk-icon="icon: chevron-down;"></span> 发布设置');
+            }
+        });
     },
     
     test: function( event ) {

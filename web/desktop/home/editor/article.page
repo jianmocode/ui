@@ -52,7 +52,7 @@
 <div class="uk-card uk-card-default uk-card-body uk-padding-remove uk-margin-top uk-margin-large-bottom" mp:if="{{user.user_id}}">
 
     <!-- 图文发布表单 -->
-    <form class="uk-form-horizontal iframe-form uk-width-xxlarge"
+    <form id="article-edit" class="uk-form-horizontal iframe-form uk-width-xxlarge"
         method="POST" 
         action="/_api/xpmsns/pages/article/save" 
         success="function(data) {
@@ -131,7 +131,7 @@
 
         <hr class="uk-divider-icon">
 
-        <div class="uk-form-group uk-padding uk-padding-remove-top uk-padding-remove-bottom" >
+        <div  id="publish-setting"  class="uk-form-group uk-padding uk-padding-remove-top uk-padding-remove-bottom" >
             <h3>发布设置</h3>
         </div>
 
@@ -337,24 +337,21 @@
 
         <!-- 文章标签 -->
         <div class="uk-form-group uk-padding  uk-padding-remove-top" >
-                <label class="uk-form-label uk-form-large">手动排序: </label>
-                <div class="uk-form-controls">
-                    <input name="priority" type="text" class="uk-input uk-form-large uk-width-2-3" 
-                        placeholder="手动排序, 数值越小越靠前" 
-                        value="{{article.priority}}" 
-                        validate="{
-                                required:false, 
-                                messages: {
-                                    required:'请填写手动排序数值'
-                                }
+            <label class="uk-form-label uk-form-large">手动排序: </label>
+            <div class="uk-form-controls">
+                <input name="priority" type="text" class="uk-input uk-form-large uk-width-2-3" 
+                    placeholder="手动排序, 数值越小越靠前" 
+                    value="{{article.priority}}" 
+                    validate="{
+                            required:false, 
+                            messages: {
+                                required:'请填写手动排序数值'
                             }
-                        ">
-                    <div class="uk-helper uk-helper-danger"></div>
-                </div>
-            </div> <!-- END 文章标签 -->
-
-
-           
+                        }
+                    ">
+                <div class="uk-helper uk-helper-danger"></div>
+            </div>
+        </div> <!-- END 文章标签 -->
 
         <input name="article_id" type="hidden" value="{{article.article_id}}" />
         <input name="status" type="hidden" value="{{article.status}}" />
@@ -411,8 +408,11 @@
                 "
                 class="uk-button uk-button-primary uk-button-small uk-action action-method action-cancel" >取消发布</button>
         </div>
+
         <div class="uk-float-left">
-            <a href="#" style="line-height:30px;"> 发布设置  </a>
+            <a id="quick-link-btn" href="#publish-setting"  class="quick-link" uk-scroll="offset:100;duration:200;"> 
+                <span uk-icon="icon: chevron-down;"></span> 发布设置  
+            </a>
         </div>
 
     </div>
