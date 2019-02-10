@@ -7,8 +7,12 @@
     <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
         <div class="uk-navbar-left">
             <a class="uk-navbar-item uk-logo" href="#">
-                <img mp:if={{site.icon}} data-src="{{site.icon.url}}" width="42" uk-img >
-                <a href="/" class="uk-text-large">{{site.site_name}}</a>
+                
+                <img mp:if="{{special.status == 'on'}}" data-src="{{special.logo.url}}" width="42" uk-img >
+                <img mp:elif="{{site.icon}}" data-src="{{site.icon.url}}" width="42" uk-img >
+                
+                <a mp:if="{{special.status == 'on'}}" href="/{{special.path}}" class="uk-text-large">{{special.name}}</a>
+                <a mp:else href="/" class="uk-text-large">{{site.site_name}}</a>
             </a>
             <ul class="uk-navbar-nav">
              
@@ -46,13 +50,13 @@
     </div>
 </div> <!-- END 推出侧边栏 -->
 
-<div class="uk-flex uk-flex-center uk-background-muted">
+<div class="uk-flex uk-flex-center uk-background-muted uk-height-1-1">
 
 <!-- 图文发布器-->
 <div class="uk-card uk-card-default uk-card-body uk-padding-remove uk-margin-top uk-margin-large-bottom" mp:if="{{user.user_id}}">
 
     <!-- 图文发布表单 -->
-    <form id="article-edit" class="uk-form-horizontal iframe-form uk-width-xxlarge"
+    <form id="article-edit" class="uk-form-horizontal iframe-form uk-width-xxlarge" mp:if="{{article.code == ''}}"
         method="POST" 
         action="/_api/xpmsns/pages/article/save" 
         success="function(data) {
@@ -358,12 +362,22 @@
         
     </form>  <!-- END 图文发布表单 -->
 
+    <form id="article-edit" class="uk-form-horizontal iframe-form uk-width-xxlarge" mp:else>
+        <div class="uk-form-group uk-padding" >
+            <div class="uk-alert-danger" uk-alert>
+                <p>{{article.message}}</p>
+            </div>
+            <a href="/home/index.html#articles" class="uk-button uk-button-primary uk-button-small uk-margin-small-right" >返回列表</a>
+            <a href="/home/editor/article" class="uk-button uk-button-primary uk-button-small" >新建文章</a>
+        </div>
+    </form>
+
 </div><!-- END 图文发布器-->
 
 <!-- 用户未登录界面 -->
 <div class="container" mp:else >
     <script type="text/javascript" >
-        window.location="/user/signin/mobile?then=/home/editor/article";
+        window.location="/user/signin/mobile?then=/home/editor/article?article_id={{__get.article_id}}";
     </script>
 </div> <!-- END  Container -->
 

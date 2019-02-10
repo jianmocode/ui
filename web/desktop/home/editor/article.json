@@ -26,6 +26,13 @@
 		"user":{
 			"api":"/xpmsns/user/user/getUserInfo",
 			"query":{}
+        },
+        "special": {
+			"api":"/xpmsns/pages/special/get",
+			"query":{
+				"user_id": "{{user.user_id}}",
+				"select": "special.name,special.path,special.type,special.status,special.logo,special.category_ids,special.summary"
+			}
 		},
 		"article":{
 			"api":"/xpmsns/pages/article/getUserArticle",

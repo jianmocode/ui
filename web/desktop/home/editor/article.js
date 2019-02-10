@@ -55,14 +55,22 @@ Page({
 
         } catch( e ) { console.log( 'Error @Validate', e); }
 
-
+        // 设置高度
+        let height = $( document ).height() - 160;
+        $('.iframe-form').css("min-height", height);
+            
         // 设定文章状态
         let article = this.data.article || {};
+        if ( article.code != 0 ) {
+            $('.action-panel').remove();
+            return;
+        } 
         this.updateStatus( article.status, article.draft_status );
 
         // 设置QuickLink按钮
         this.setQuickLink();
 
+    
     },
 
     /**
@@ -183,6 +191,9 @@ Page({
         }
 
         let offset = $('#publish-setting').offset();
+        if ( !offset ) {
+            return;
+        }
         window.addEventListener('scroll', (event) => {
             let pos = getScroll();
             if ( pos[1] > offset.top ) {
