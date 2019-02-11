@@ -51,15 +51,38 @@ Page({
 
             $('.btn_show_all_question').on('click', function () {
                   $(this)
-                        .parent()
-                        .find('.question_summary')
-                        .toggle();
+                        .hide();
+
+                  $('.btn_collapse_question').show()
 
                   $(this)
-                        .parent()
+                        .parents('.question')
+                        .find('.question_summary')
+                        .hide();
+
+                  $(this)
+                        .parents('.question')
                         .find('.question_detail')
-                        .toggle();
+                        .show();
             })
+
+
+            $('.btn_collapse_question').on('click', function () {
+                  $(this)
+                        .hide();
+                  
+                  $('.btn_show_all_question').show()
+
+                  $(this)
+                        .parents('.question')
+                        .find('.question_summary')
+                        .show();
+
+                  $(this)
+                        .parents('.question')
+                        .find('.question_detail')
+                        .hide();
+            });
       },
       handleClickAnswerShowAll: function () {
             const _that = this;
@@ -71,7 +94,7 @@ Page({
                   $(this)
                         .parent()
                         .css('height', 'auto');
-                  
+
                   $(this)
                         .parent()
                         .parent()
@@ -87,7 +110,7 @@ Page({
                         .parents('.answer_item')
                         .find('.answer_content')
                         .css('height', '240px');
-                  
+
                   $(this)
                         .parents('.answer_item')
                         .find('.btn_show_all_answer')

@@ -31,14 +31,17 @@
                               mp:key="{{item.question_id}}"
                               data-id="{{item.question_id}}"
                         >
-                              <a href="/qanda/detail/{{item.question_id}}" class="question_content">{{item.title}}</a>
+                              <a
+                                    href="/qanda/detail/{{item.question_id}}"
+                                    class="question_content"
+                              >{{item.title}}</a>
                               <span class="best_answer">{{item.content}}</span>
                         </div>
                   </div>
             </div>
             <div class="right_wrap uk-flex uk-flex-column">
-                  <aside class="ask Card uk-flex uk-flex-center">
-                        <a class="btn_ask">提问</a>
+                  <aside class="ask Card uk-flex">
+                        <a class="btn_ask">提问 | 问天下墨客谁知</a>
                   </aside>
                   <aside class="hot Card uk-flex uk-flex-column">
                         <div class="title">
@@ -104,37 +107,15 @@
             </div>
             <div class="topic ask_item uk-flex uk-flex-between">
                   <div class="left uk-flex uk-flex-column">
-                        <div class="topic_items uk-flex uk-flex-wrap">
-                              <div class="topic_item uk-flex uk-flex-middle">
-                                    <a class="topic_item_text">前端</a>
-                                    <span class="btn_delete"></span>
-                              </div>
-                              <div class="topic_item uk-flex uk-flex-middle">
-                                    <a class="topic_item_text">前端</a>
-                                    <span class="btn_delete"></span>
-                              </div>
-                              <div class="topic_item uk-flex uk-flex-middle">
-                                    <a class="topic_item_text">前端</a>
-                                    <span class="btn_delete"></span>
-                              </div>
-                              <div class="topic_item uk-flex uk-flex-middle">
-                                    <a class="topic_item_text">前端</a>
-                                    <span class="btn_delete"></span>
-                              </div>
-                              <div class="topic_item uk-flex uk-flex-middle">
-                                    <a class="topic_item_text">前端</a>
-                                    <span class="btn_delete"></span>
-                              </div>
-
-                        </div>
-                        <div class="topic_text_wrap">
+                        <div class="topic_items uk-flex uk-flex-wrap"></div>
+                        <div class="topic_text_wrap uk-flex uk-flex-middle">
                               <input
                                     class="topic_text"
                                     type="text"
                               >
                         </div>
                         <div class="add_topic_wrap">
-                              <button class="btn_add_topic">添加话题 ( 至少添加一个话题 ) </button>
+                              <button type="button" class="btn_add_topic">添加话题 ( 至少添加一个话题 ) </button>
                         </div>
                   </div>
                   <div class="right">

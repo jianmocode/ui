@@ -9,59 +9,43 @@
             <div class="tab uk-flex uk-flex-left">
                   <span class="tab_item">
                         <a
-                              class="tab_link is_active"
-                              href=""
+                              class="tab_link tab_link_questions is_active"
+                              data-link="my_questions"
                         >提问
-                              <span class="count">18</span>
+                              <span class="count">{{questions.total}}</span>
                         </a>
                   </span>
                   <span class="tab_item">
                         <a
-                              class="tab_link"
-                              href=""
+                              class="tab_link tab_link_answers"
+                              data-link="my_answers"
                         >回答
-                              <span class="count">236</span>
+                              <span class="count">{{answers.total}}</span>
                         </a>
                   </span>
                   <span class="tab_item">
                         <a
-                              class="tab_link"
-                              href=""
+                              class="tab_link tab_link_followers"
+                              data-link="my_followers"
                         >我关注的人</a>
                   </span>
                   <span class="tab_item">
                         <a
-                              class="tab_link"
-                              href=""
+                              class="tab_link tab_link_following"
+                              data-link="my_following"
                         >关注我的人</a>
                   </span>
             </div>
-            <div class="content_items uk-flex">
+            <div class="content_items uk-flex uk-flex-column">
                   <div class="my_questions content_item uk-flex uk-flex-column">
                         <span class="title">我的提问</span>
                         <div class="question_items uk-flex uk-flex-column">
-                              <div class="question_item uk-flex uk-flex-column">
-                                    <a class="question_title">有哪些使用nodejs作为后端技术支撑的公司？</a>
+                              <div class="question_item uk-flex uk-flex-column" mp:for="{{questions.data}}">
+                                    <a class="question_title" href="/qanda/detail/{{item.question_id}}">{{item.title}}</a>
                                     <div class="question_options uk-flex">
-                                          <span class="option_item">2017-7-14</span>
+                                          <span class="option_item">{{item.publish_time}}</span>
                                           <span class="dot">·</span>
-                                          <span class="option_item">0 个回答</span>
-                                    </div>
-                              </div>
-                              <div class="question_item uk-flex uk-flex-column">
-                                    <a class="question_title">有哪些使用nodejs作为后端技术支撑的公司？</a>
-                                    <div class="question_options uk-flex">
-                                          <span class="option_item">2017-7-14</span>
-                                          <span class="dot">·</span>
-                                          <span class="option_item">0 个回答</span>
-                                    </div>
-                              </div>
-                              <div class="question_item uk-flex uk-flex-column">
-                                    <a class="question_title">有哪些使用nodejs作为后端技术支撑的公司？</a>
-                                    <div class="question_options uk-flex">
-                                          <span class="option_item">2017-7-14</span>
-                                          <span class="dot">·</span>
-                                          <span class="option_item">0 个回答</span>
+                                          <span class="option_item">{{item.answer_cnt}} 个回答</span>
                                     </div>
                               </div>
                         </div>
@@ -69,10 +53,10 @@
                   <div class="my_answers content_item uk-flex uk-flex-column">
                         <span class="title">我的回答</span>
                         <div class="answer_items uk-flex uk-flex-column">
-                              <div class="answer_item uk-flex uk-flex-column">
-                                    <a class="question_title">有哪些使用nodejs作为后端技术支撑的公司？</a>
+                              <div class="answer_item uk-flex uk-flex-column" mp:for="{{answers.data}}">
+                                    <a class="question_title">{{item.question_title}}</a>
                                     <div class="answer_content">
-                                          <span class="answer_text">从语言特性来说，首先排除python，py本身的定义就是动态脚本语言，通俗来说就是胶水语言，是用来连接软件组件的程序设计语言。所以更多的情况下，他可以用作于连接不同语言或者处理一些非强制类型语言比较难处理的场景。</span>
+                                          <span class="answer_text">{{item.content}}</span>
                                           <button class="btn_show_all">
                                                 显示全部
                                                 <img
@@ -83,41 +67,7 @@
                                           </button>
                                     </div>
                                     <div class="answer_options uk-flex">
-                                          <span class="option_item">发表于2017-7-14</span>
-                                    </div>
-                              </div>
-                              <div class="answer_item uk-flex uk-flex-column">
-                                    <a class="question_title">有哪些使用nodejs作为后端技术支撑的公司？</a>
-                                    <div class="answer_content">
-                                          <span class="answer_text">从语言特性来说，首先排除python，py本身的定义就是动态脚本语言，通俗来说就是胶水语言，是用来连接软件组件的程序设计语言。所以更多的情况下，他可以用作于连接不同语言或者处理一些非强制类型语言比较难处理的场景。</span>
-                                          <button class="btn_show_all">
-                                                显示全部
-                                                <img
-                                                      class="icon_arrow_down"
-                                                      src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_arrow_down.svg"
-                                                      alt="icon_arrow_down"
-                                                >
-                                          </button>
-                                    </div>
-                                    <div class="answer_options uk-flex">
-                                          <span class="option_item">发表于2017-7-14</span>
-                                    </div>
-                              </div>
-                              <div class="answer_item uk-flex uk-flex-column">
-                                    <a class="question_title">有哪些使用nodejs作为后端技术支撑的公司？</a>
-                                    <div class="answer_content">
-                                          <span class="answer_text">从语言特性来说，首先排除python，py本身的定义就是动态脚本语言，通俗来说就是胶水语言，是用来连接软件组件的程序设计语言。所以更多的情况下，他可以用作于连接不同语言或者处理一些非强制类型语言比较难处理的场景。</span>
-                                          <button class="btn_show_all">
-                                                显示全部
-                                                <img
-                                                      class="icon_arrow_down"
-                                                      src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_arrow_down.svg"
-                                                      alt="icon_arrow_down"
-                                                >
-                                          </button>
-                                    </div>
-                                    <div class="answer_options uk-flex">
-                                          <span class="option_item">发表于2017-7-14</span>
+                                          <span class="option_item">{{item.publish_time}}</span>
                                     </div>
                               </div>
                         </div>
