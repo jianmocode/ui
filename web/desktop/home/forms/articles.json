@@ -26,7 +26,17 @@
 		"user":{
 			"api":"/xpmsns/user/user/getUserInfo",
 			"query":{}
-		},
+        },
+        "articles":{
+            "api":"/xpmsns/pages/article/userArticles",
+            "query":{
+                "status":"published,unpublished,auditing,pending",
+                "order":"article.stick desc,  article.priority,  article.publish_time desc",
+                "keyword":"{{__get.keyword}}",
+                "perpage":2,
+                "page":"{{__get.page}}"
+            }
+        },
 		"sex":"{{user.sex}}",
 		"rs": {},
 		"page":{

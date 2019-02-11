@@ -7,9 +7,11 @@
         <div class="uk-width-2-3">
             <form>
                 <div class="uk-flex">
-                    <input  class="uk-input uk-form-small  uk-width-2-3" type="text" placeholder="输入关键词">
+                    <input name="keyword" value="{{__get.keyword}}" class="uk-input uk-form-small  uk-width-2-3" type="text" placeholder="输入关键词">
                     <button class="uk-button uk-form-small uk-button-primary uk-margin-left">搜索</button>
-                    <button class="uk-button uk-form-small uk-button-default uk-margin-small-left">重置</button>
+                    <button 
+                        onclick="javascript:$([name='keyword']).val('');"
+                        class="uk-button uk-form-small uk-button-default uk-margin-small-left">重置</button>
                 </div>
             </form> 
         </div>
@@ -21,72 +23,43 @@
     <table class="uk-table uk-table-middle uk-table-divider">
         <thead>
             <tr>
-                <th class="uk-width-1-6">封面</th>
                 <th class="uk-width-1-3">标题</th>
                 <th class="uk-width-1-6">类目</th>
                 <th class="uk-width-1-6">发布日期</th>
+                <th class="uk-width-1-6">状态</th>
                 <th class="uk-width-1-6">管理</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr mp:for="{{articles.data}}" mp:for-item="{{rs}}" >
                 <td>
-                    <img class="uk-preserve-width" src="https://wss.xpmjs.com/static-file/media/2018/11/07/d05bbb5ef3b70cd30aaaea9dab9ac75f.png" width="100%" alt="">
+                    <img mp:if="{{rs.cover.url}}" class="uk-preserve-width uk-width-1-3 uk-margin-small-right" src="{{rs.cover.url}}"  alt="">
+                    {{rs.title}}
                 </td>
-                <td>IPO新动向:1家企业取消审核 两迹象表明暂停概率不大</td>
-                <td>科技头条</td>
+                <td>{{rs.category_last.name}}</td>
                 <td>
-                    <div class="uk-text-meta">发布: 2019年1月24日</div>
-                    <div class="uk-text-meta">更新: 2019年1月24日</div>
-                </td>
-                <td>
-                    <button class="uk-button uk-button-small uk-button-secondary" type="button">取消发布</button>
-                    <button class="uk-button uk-button-small uk-button-default" type="button">查看</button>
-                </td>
-            </tr>
-            <tr>
-                <td><img class="uk-preserve-width" src="https://wss.xpmjs.com/static-file/media/2018/08/08/010a19917ef346a0cb627028b1cc7eb9.png" width="100%" alt=""></td>
-                <td>A股再添CRO巨头 康龙化成上市或引行业局变</td>
-                <td>科技头条</td>
-                <td>
-                    <div class="uk-text-meta">发布: 2019年1月24日</div>
-                    <div class="uk-text-meta">更新: 2019年1月24日</div>
+                    <div class="uk-text-meta">发布: {{HmDateTime(rs.publish_datetime)}} </div>
+                    <div class="uk-text-meta">更新: {{HmDateTime(rs.update_time)}} </div>
                 </td>
                 <td>
-                    <button class="uk-button uk-button-small uk-button-primary" type="button">发布</button>
-                    <button class="uk-button uk-button-small uk-button-default" type="button">编辑</button>
+                    <span class="uk-label uk-label-{{rs._status.style}}">{{rs._status.name}}</span>
+                </td>
+                <td>
+                    <a  target="_blank" href="/home/editor/article?article_id={{rs.article_id}}" class="uk-button uk-button-small uk-button-default" type="button">管理</a>
                 </td>
             </tr>
-            <tr>
-                    <td><img class="uk-preserve-width" src="https://wss.xpmjs.com/static-file/media/2018/08/08/010a19917ef346a0cb627028b1cc7eb9.png" width="100%" alt=""></td>
-                    <td>A股再添CRO巨头 康龙化成上市或引行业局变</td>
-                    <td>科技头条</td>
-                    <td>
-                        <div class="uk-text-meta">发布: 2019年1月24日</div>
-                        <div class="uk-text-meta">更新: 2019年1月24日</div>
-                    </td>
-                    <td>
-                        <button class="uk-button uk-button-small uk-button-primary" type="button">发布</button>
-                        <button class="uk-button uk-button-small uk-button-default" type="button">编辑</button>
-                    </td>
-                </tr>
         </tbody>
         <tfoot>
             <tr><td colspan="6">
                <ul class="uk-pagination" uk-margin>
-                   <li><a href="#"><span uk-pagination-previous></span></a></li>
-                   <li><a href="#">1</a></li>
-                   <li class="uk-disabled"><span>...</span></li>
-                   <li><a href="#">4</a></li>
-                   <li><a href="#">5</a></li>
-                   <li><a href="#">6</a></li>
-                   <li class="uk-active"><span>7</span></li>
-                   <li><a href="#">8</a></li>
-                   <li><a href="#">9</a></li>
-                   <li><a href="#">10</a></li>
-                   <li class="uk-disabled"><span>...</span></li>
-                   <li><a href="#">20</a></li>
-                   <li><a href="#"><span uk-pagination-next></span></a></li>
+                    <li ><a href="?keyword={{__get.keyword}}&page={{(articles.prev != false) ? articles.prev}}"><span uk-pagination-previous></span></a></li>
+                    <li  
+                        mp:for-from="1" mp:for-to="{{articles.last + 1}}"
+                        class="{{(articles.curr == index) ? 'uk-active'}}"
+                    >
+                       <a href="?keyword={{__get.keyword}}&page={{index}}">{{index}}</a>
+                    </li>
+                   <li><a href="?keyword={{__get.keyword}}&page={{(articles.next != false) ? articles.next}}"><span uk-pagination-next></span></a></li>
                </ul>
             </td></tr>
         </tfoot>
