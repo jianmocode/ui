@@ -8,11 +8,9 @@
                         <div
                               class="topic_item uk-flex uk-flex-middle"
                               mp:if="{{question.tags}}"
+                              mp:for="{{question.tags}}"
                         >
-                              <a
-                                    class="topic_item_text"
-                                    mp:for="{{question.tags}}"
-                              >前端</a>
+                              <a class="topic_item_text">{{item}}</a>
                         </div>
                   </div>
                   <div class="question_item">
@@ -34,7 +32,7 @@
                               >
                         </button>
                   </div>
-                  <div class="question_item">
+                  <div class="question_item uk-flex uk-flex-between">
                         <button class="btn_write">
                               <img
                                     class="icon_write"
@@ -42,6 +40,14 @@
                                     alt="icon_write"
                               >
                               <span class="text">写回答</span>
+                        </button>
+                        <button class="btn_collapse_question uk-flex uk-flex-middle">
+                              <span class="text">收起</span>
+                              <img
+                                    class="img_collapse"
+                                    src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_arrow_up.png"
+                                    alt="icon_collapse"
+                              >
                         </button>
                   </div>
             </div>

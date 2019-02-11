@@ -4,6 +4,22 @@
             "user": {
                   "api": "/xpmsns/user/user/getUserInfo",
                   "query": {}
+            },
+            "questions": {
+                  "api": "/xpmsns/qanda/question/search",
+                  "query": {
+                        "page": "1",
+                        "perpage": "12",
+                        "user_id":"{{user.user_id}}"
+                  }
+            },
+            "answers": {
+                  "api": "/xpmsns/qanda/answer/search",
+                  "query": {
+                        "page": "1",
+                        "perpage": "12",
+                        "user_id":"{{user.user_id}}"
+                  }
             }
       },
       "entries": [{

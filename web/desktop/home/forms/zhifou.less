@@ -2,7 +2,6 @@
 @import '/desktop/common/d.less';
 .zhifou_wrap {
       width: 100%;
-      overflow-x: hidden;
       .tab {
             width: 100%;
             border-bottom: 1px solid #F0F2F7;
@@ -19,7 +18,7 @@
                   }
                   .tab_link.is_active {
                         position: relative;
-                        font-weight: 600;
+                        font-weight: 600; 
                   }
                   .tab_link.is_active::after {
                         position: absolute;
@@ -33,10 +32,9 @@
             }
       }
       .content_items {
-            width: 300%;
-            min-height: 200px;
+            width: 100%;
             .content_item {
-                  width: 100%/3;
+                  width: 100%;
                   box-sizing: border-box;
                   padding: 0px 20px;
                   .title {
@@ -50,7 +48,7 @@
                   }
             }
             .my_questions {
-                  display: none;
+                  // display: none;
                   .question_items {
                         width: 100%;
                         .question_item {
@@ -180,6 +178,7 @@
                   }
             }
             .my_following {
+                  display: none;
                   .follower_items {
                         width: 100%;
                         .follower_item {
@@ -203,7 +202,6 @@
                                                 }
                                                 .line {
                                                       margin: 0 4px;
-                                                      color: #eee;
                                                 }
                                                 .intro {
                                                       width: 60%;
