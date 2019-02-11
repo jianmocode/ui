@@ -50,11 +50,9 @@
             </tr>
         </tbody>
         <tbody mp:else>
-            <tr>
-                <td>
+            <tr><td colspan="6">
                     未找到任何文章。 <a class="uk-text-primary" target="_blank" href="/home/editor/article" type="button">新建文章</a>
-                </td>
-            </tr>
+            </td></tr>
         </tbody>
         <tfoot>
             <tr><td colspan="6">
