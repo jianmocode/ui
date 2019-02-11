@@ -35,7 +35,7 @@
 			}
 		},
 		"article":{
-			"api":"/xpmsns/pages/article/getUserArticle",
+			"api":"/xpmsns/pages/article/userArticleDetail",
 			"query":{
 				"article_id":"{{__get.article_id}}",
 				"select":"*"
