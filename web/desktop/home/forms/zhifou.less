@@ -1,25 +1,32 @@
 @charset "utf-8";
 @import '/desktop/common/d.less';
+
 .zhifou_wrap {
       width: 100%;
+
       .tab {
             width: 100%;
             border-bottom: 1px solid #F0F2F7;
             font-size: 16px;
             color: #1A1A1A;
+
             .tab_item {
                   padding: 0 20px;
+
                   .tab_link {
                         display: inline-block;
                         padding: 18px 0;
+
                         .count {
                               margin-left: 2px;
                         }
                   }
+
                   .tab_link.is_active {
                         position: relative;
-                        font-weight: 600; 
+                        font-weight: 600;
                   }
+
                   .tab_link.is_active::after {
                         position: absolute;
                         right: 0;
@@ -31,12 +38,15 @@
                   }
             }
       }
+
       .content_items {
             width: 100%;
+
             .content_item {
                   width: 100%;
                   box-sizing: border-box;
                   padding: 0px 20px;
+
                   .title {
                         width: 100%;
                         display: inline-block;
@@ -47,23 +57,29 @@
                         border-bottom: 1px solid #F0F2F7;
                   }
             }
+
             .my_questions {
+
                   // display: none;
                   .question_items {
                         width: 100%;
+
                         .question_item {
                               width: 100%;
                               box-sizing: border-box;
                               padding: 16px 0px;
                               border-bottom: 1px solid #F0F2F7;
+
                               .question_title {
                                     font-size: 18px;
                                     color: #1a1a1a;
                                     font-weight: 600;
                               }
+
                               .question_title:hover {
                                     color: #1e87f0;
                               }
+
                               .answer_options {
                                     color: #8590A6;
                                     font-size: 14px;
@@ -71,29 +87,36 @@
                         }
                   }
             }
+
             .my_answers {
                   display: none;
+
                   .answer_items {
                         width: 100%;
+
                         .answer_item {
                               width: 100%;
                               box-sizing: border-box;
                               padding: 16px 0px;
                               border-bottom: 1px solid #F0F2F7;
+
                               .question_title {
                                     font-size: 18px;
                                     color: #1a1a1a;
                                     font-weight: 600;
                               }
+
                               .question_title:hover {
                                     color: #1e87f0;
                               }
+
                               .answer_content {
                                     margin: 10px 0;
                                     word-break: break-word;
                                     line-height: 1.6;
                                     font-size: 15px;
                                     color: #1a1a1a;
+
                                     .btn_show_all {
                                           display: inline-block;
                                           background: none;
@@ -105,15 +128,18 @@
                                           color: #8590A6;
                                           cursor: pointer;
                                           padding: 0;
+
                                           .icon_arrow_down {
                                                 width: 10px;
                                                 margin-left: 4px;
                                           }
                                     }
                               }
+
                               .answer_options {
                                     color: #8590A6;
                                     font-size: 14px;
+
                                     .dot {
                                           margin: 0 4px;
                                     }
@@ -121,22 +147,28 @@
                         }
                   }
             }
+
             .my_followers {
                   display: none;
+
                   .follower_items {
                         width: 100%;
+
                         .follower_item {
                               width: 100%;
                               box-sizing: border-box;
                               padding: 16px 0;
                               border-bottom: 1px solid #F0F2F7;
+
                               .img_avatar {
                                     width: 64px;
                                     height: 64px;
                                     border-radius: 4px;
                               }
+
                               .options {
                                     width: calc(~'100% - 80px');
+
                                     .left {
                                           .user_info {
                                                 .nickname {
@@ -144,22 +176,108 @@
                                                       color: #1a1a1a;
                                                       font-weight: 600;
                                                 }
+
                                                 .line {
                                                       margin: 0 4px;
                                                 }
+
                                                 .intro {
                                                       width: 60%;
                                                       font-size: 15px;
                                                       color: #666;
                                                 }
                                           }
+
                                           .user_success {
                                                 font-size: 14px;
                                                 color: #8590A6;
+
                                                 .success_item {}
+
                                                 .dot {}
                                           }
                                     }
+
+                                    .right {
+                                          .btn_follow {
+                                                width: 100px;
+                                                height: 32px;
+                                                line-height: 32px;
+                                                border: none;
+                                                outline: none;
+                                                border-radius: 4px;
+                                                color: white;
+                                                cursor: pointer;
+                                                background-color: #1e87f0;
+                                                transition: all ease 0.3s;
+
+                                                .text {
+                                                      background: url({{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_add_white.png) no-repeat left center;
+                                                      padding-left: 24px;
+                                                      background-size: 30%;
+                                                }
+                                          }
+
+                                          .btn_follow:hover {
+                                                background-color: #1277db;
+                                          }
+
+                                    }
+                              }
+                        }
+                  }
+            }
+
+            .my_following {
+                  display: none;
+
+                  .follower_items {
+                        width: 100%;
+
+                        .follower_item {
+                              width: 100%;
+                              box-sizing: border-box;
+                              padding: 16px 0;
+                              border-bottom: 1px solid #F0F2F7;
+
+                              .img_avatar {
+                                    width: 64px;
+                                    height: 64px;
+                                    border-radius: 4px;
+                              }
+
+                              .options {
+                                    width: calc(~'100% - 80px');
+
+                                    .left {
+                                          .user_info {
+                                                .nickname {
+                                                      font-size: 18px;
+                                                      color: #1a1a1a;
+                                                      font-weight: 600;
+                                                }
+
+                                                .line {
+                                                      margin: 0 4px;
+                                                }
+
+                                                .intro {
+                                                      width: 60%;
+                                                      font-size: 15px;
+                                                      color: #666;
+                                                }
+                                          }
+
+                                          .user_success {
+                                                font-size: 14px;
+                                                color: #8590A6;
+
+                                                .success_item {}
+
+                                                .dot {}
+                                          }
+                                    }
+
                                     .right {
                                           .btn_cancel {
                                                 width: 100px;
@@ -171,71 +289,6 @@
                                                 color: white;
                                                 background-color: #8590A6;
                                                 cursor: pointer;
-                                          }
-                                    }
-                              }
-                        }
-                  }
-            }
-            .my_following {
-                  display: none;
-                  .follower_items {
-                        width: 100%;
-                        .follower_item {
-                              width: 100%;
-                              box-sizing: border-box;
-                              padding: 16px 0;
-                              border-bottom: 1px solid #F0F2F7;
-                              .img_avatar {
-                                    width: 64px;
-                                    height: 64px;
-                                    border-radius: 4px;
-                              }
-                              .options {
-                                    width: calc(~'100% - 80px');
-                                    .left {
-                                          .user_info {
-                                                .nickname {
-                                                      font-size: 18px;
-                                                      color: #1a1a1a;
-                                                      font-weight: 600;
-                                                }
-                                                .line {
-                                                      margin: 0 4px;
-                                                }
-                                                .intro {
-                                                      width: 60%;
-                                                      font-size: 15px;
-                                                      color: #666;
-                                                }
-                                          }
-                                          .user_success {
-                                                font-size: 14px;
-                                                color: #8590A6;
-                                                .success_item {}
-                                                .dot {}
-                                          }
-                                    }
-                                    .right {
-                                          .btn_cancel {
-                                                width: 100px;
-                                                height: 32px;
-                                                line-height: 32px;
-                                                border: none;
-                                                outline: none;
-                                                border-radius: 4px;
-                                                color: white;
-                                                cursor: pointer;
-                                                background-color: #1e87f0;
-                                                transition: all ease 0.3s;
-                                                .text {
-                                                      background: url({{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_add_white.png) no-repeat left center;
-                                                      padding-left: 24px;
-                                                      background-size: 30%;
-                                                }
-                                          }
-                                          .btn_cancel:hover{
-                                                background-color:#1277db;
                                           }
                                     }
                               }

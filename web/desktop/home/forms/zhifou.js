@@ -1,3 +1,8 @@
+import {
+      follow,
+      unfollow
+} from '../../../services/service';
+
 let web = getWeb();
 
 Page({
@@ -6,6 +11,9 @@ Page({
             const _that = this;
 
             _that.handleClickTabLick();
+            _that.handleHoverCancelFollow();
+            _that.handleClickFollow();
+            _that.handleClickCancelFollow();
       },
       handleClickTabLick: function () {
             function resetTab() {
@@ -44,6 +52,23 @@ Page({
                   }
 
                   resetIframeHeight()
+            })
+      },
+      handleHoverCancelFollow: function () {
+            $('.btn_cancel').hover(function () {
+                  $(this).text('取消关注')
+            }, function () {
+                  $(this).text('已关注')
+            })
+      },
+      handleClickFollow: function () {
+            $('.my_followers').on('click', '.btn_follow', function () {
+                  follow($(this).find('.text').data('id'))
+            })
+      },
+      handleClickCancelFollow: function () {
+            $('.my_following').on('click', '.btn_cancel', function () {
+                  unfollow($(this).data('id'))
             })
       }
 })

@@ -1,3 +1,8 @@
+import {
+      follow,
+      unfollow
+} from '../../services/service';
+
 let web = getWeb();
 
 Page({
@@ -12,6 +17,9 @@ Page({
             _that.handleClickWriteAnswer();
             _that.handleClickSubmitAnswer();
             _that.handleClickAnswerAgree();
+            _that.listenQuestionSummaryHeight();
+            _that.listenAnswersSummaryHeight();
+            _that.handleClickFollowAnswerPerson();
       },
       handleHoverUserAvatar: function () {
             const _that = this;
@@ -66,11 +74,10 @@ Page({
                         .show();
             })
 
-
             $('.btn_collapse_question').on('click', function () {
                   $(this)
                         .hide();
-                  
+
                   $('.btn_show_all_question').show()
 
                   $(this)
@@ -82,7 +89,7 @@ Page({
                         .parents('.question')
                         .find('.question_detail')
                         .hide();
-            });
+            })
       },
       handleClickAnswerShowAll: function () {
             const _that = this;
@@ -100,7 +107,7 @@ Page({
                         .parent()
                         .find('.btn_collapse_answer')
                         .show();
-            });
+            })
 
             $('.btn_collapse_answer').on('click', function () {
                   $(this)
@@ -115,7 +122,7 @@ Page({
                         .parents('.answer_item')
                         .find('.btn_show_all_answer')
                         .show();
-            });
+            })
       },
       handleClickWriteAnswer: function () {
             const _that = this;
@@ -164,7 +171,7 @@ Page({
                   error: function (err) {
                         console.log(err);
                   }
-            });
+            })
       },
       handleClickSubmitAnswer: function () {
             const _that = this;
@@ -195,30 +202,28 @@ Page({
                   dataType: "json",
                   data: data,
                   success: function (response) {
-                        console.log(response);
+                        if (response._id) {
+                              UIkit.notification({
+                                    message: '回答成功',
+                                    status: 'success',
+                                    pos: 'bottom-right'
+                              });
 
-                        // if (response._id) {
-                        //       UIkit.notification({
-                        //             message: '回答成功',
-                        //             status: 'success',
-                        //             pos: 'bottom-right'
-                        //       });
-
-                        //       setTimeout(() => {
-                        //             window.location.reload();
-                        //       }, 1000);
-                        // } else {
-                        //       UIkit.notification({
-                        //             message: response.message,
-                        //             status: 'danger',
-                        //             pos: 'bottom-right'
-                        //       })
-                        // }
+                              setTimeout(() => {
+                                    window.location.reload();
+                              }, 1000);
+                        } else {
+                              UIkit.notification({
+                                    message: response.message,
+                                    status: 'danger',
+                                    pos: 'bottom-right'
+                              })
+                        }
                   },
                   error: function (err) {
                         console.log(err);
                   }
-            });
+            })
       },
       removeAgree: function () {
             $.ajax({
@@ -248,7 +253,7 @@ Page({
                   error: function (err) {
                         console.log(err);
                   }
-            });
+            })
       },
       handleClickAnswerAgree: function () {
             const _that = this;
@@ -263,7 +268,7 @@ Page({
                   _that.createAgree({
                         outer_id: $(this).data('id'),
                         origin: 'answer'
-                  });
+                  })
             })
 
             $('.btn_agree_clicked').on('click', function () {
@@ -271,7 +276,35 @@ Page({
                   $(this)
                         .parent()
                         .find('.btn_agree')
-                        .show();
+                        .show()
+            })
+      },
+      listenQuestionSummaryHeight: function () {
+            if ($('.question_summary').height() > 21) {
+                  $('.btn_show_all_question').css('display', 'inline-block')
+                  $('.question_summary').text(`${$('.question_summary').text()}...`)
+            }
+      },
+      listenAnswersSummaryHeight: function () {
+            const _el = $('.answer_content_text')
+
+            for (let i = 0; i < _el.length; i++) {
+                  if (_el.eq(i).height() < 240) {
+                        _el.eq(i)
+                              .parent()
+                              .css('height', 'auto')
+
+                        _el.eq(i)
+                              .parent()
+                              .find('.btn_show_all_answer')
+                              .hide()
+                  }
+            }
+      },
+      handleClickFollowAnswerPerson: function () {
+            $('.answer_items').on('click', '.btn_follow', function () {
+                  console.log($(this).data('id'));
+                  follow($(this).data('id'))
             })
       }
 })

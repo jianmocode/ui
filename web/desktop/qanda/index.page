@@ -38,10 +38,15 @@
                               <span class="best_answer">{{item.content}}</span>
                         </div>
                   </div>
+                  <div class="loadmore_wrap">
+                        <div class="loading_item"></div>
+                        <div class="loading_item"></div>
+                        <div class="loading_item"></div>
+                  </div>
             </div>
             <div class="right_wrap uk-flex uk-flex-column">
                   <aside class="ask Card uk-flex">
-                        <a class="btn_ask">提问 | 问天下墨客谁知</a>
+                        <a class="btn_ask">提问 | 君子之学必好问</a>
                   </aside>
                   <aside class="hot Card uk-flex uk-flex-column">
                         <div class="title">
@@ -115,7 +120,10 @@
                               >
                         </div>
                         <div class="add_topic_wrap">
-                              <button type="button" class="btn_add_topic">添加话题 ( 至少添加一个话题 ) </button>
+                              <button
+                                    type="button"
+                                    class="btn_add_topic"
+                              >添加话题 ( 至少添加一个话题 ) </button>
                         </div>
                   </div>
                   <div class="right">

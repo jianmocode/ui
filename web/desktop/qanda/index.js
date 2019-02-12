@@ -1,7 +1,14 @@
+import {
+      isScrollToBottom,
+      debounce
+} from '../../services/service'
+
 let web = getWeb();
 
 Page({
       data: {},
+      current_page: 1,
+      has_load_all: false,
       onReady: function () {
             const _that = this;
 
@@ -12,6 +19,7 @@ Page({
             _that.handleKeydownTagsInput();
             _that.handleClickBtnDeleteTag();
             _that.handleClickPublish();
+            _that.listenScrollPositioningRightAndLoadMore();
       },
       showAskModal: function () {
             $('.ask_wrap')
@@ -104,15 +112,15 @@ Page({
       },
       submitAskForm: function () {
             let tags = ''
-            let tags_array=[]
+            let tags_array = []
 
             for (let i = 0; i < $('.topic_item_text').length; i++) {
                   tags_array[i] = $('.topic_item_text').eq(i).text()
             }
 
             tags = tags_array.join()
-            
-            let ask_form_data=`${$('#ask_form').serialize()}&tags=${tags}`
+
+            let ask_form_data = `${$('#ask_form').serialize()}&tags=${tags}`
             $.ajax({
                   type: "post",
                   url: "/_api/xpmsns/qanda/question/create",
@@ -127,7 +135,7 @@ Page({
                               });
 
                               setTimeout(() => {
-                                    // window.location.href = `/qanda/detail/${response.question_id}`;
+                                    window.location.href = `/qanda/detail/${response.question_id}`;
                               }, 1000);
                         } else {
                               UIkit.notification({
@@ -163,5 +171,74 @@ Page({
                         _that.submitAskForm();
                   }
             })
+      },
+      loadMoreQuestions: function () {
+            const _that = this
+
+            function updateQuestionItems(data) {
+                  for (let i = 0; i < data.length; i++) {
+                        let nodes = `
+                              <div
+                                    class="question_item uk-flex uk-flex-column"
+                                    mp:key="${data[i].question_id}"
+                                    data-id="${data[i].question_id}"
+                              >
+                                    <a
+                                          href="/qanda/detail/${data[i].question_id}"
+                                          class="question_content"
+                                    >${data[i].title}</a>
+                                    <span class="best_answer">${data[i].content}</span>
+                              </div>
+                        `
+                        $('.question_items').append(nodes)
+                  }
+            }
+
+            $.ajax({
+                  type: "post",
+                  url: "/_api/xpmsns/qanda/question/search",
+                  dataType: "json",
+                  data: {
+                        page: _that.current_page + 1,
+                        perpage: "12",
+                        select: "question_id,question.title,question.content,user.name,category.name,tags,user.user_id,status",
+                        publish_desc: "1"
+                  },
+                  success: function (response) {
+                        if (response.data.length !== 0) {
+                              updateQuestionItems(response.data)
+                              _that.current_page = _that.current_page + 1
+                        } else {
+                              _that.has_load_all = true
+                              $('.loadmore_wrap').hide()
+
+                              UIkit.notification({
+                                    message: '没有更多了',
+                                    status: 'danger',
+                                    pos: 'bottom-right'
+                              })
+                        }
+                  },
+                  error: function (err) {
+                        console.log(err);
+                  }
+            })
+      },
+      listenScrollPositioningRightAndLoadMore: function () {
+            const _that = this
+
+            window.onscroll = debounce(function () {
+                  let scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop
+                  if (scrollTop > 80) {
+                        $('.content_wrap .right_wrap').css('transform', 'translateY(-80px)');
+                  } else {
+                        $('.content_wrap .right_wrap').css('transform', 'translateY(0px)');
+                  }
+
+                  if (isScrollToBottom()&&!_that.has_load_all) {
+                        _that.loadMoreQuestions()
+                        $('.loadmore_wrap').show()
+                  }
+            }, 200)
       }
 })

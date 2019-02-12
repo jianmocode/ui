@@ -20,6 +20,14 @@
                         "perpage": "12",
                         "user_id":"{{user.user_id}}"
                   }
+            },
+            "followers": {
+                  "api": "/xpmsns/user/follow/getFollowers",
+                  "query": {}
+            },
+            "following": {
+                  "api": "/xpmsns/user/follow/getFollowings",
+                  "query": {}
             }
       },
       "entries": [{

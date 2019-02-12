@@ -18,7 +18,7 @@
                   </div>
                   <div class="question_item">
                         <span class="question_summary">
-                              {{question.summary}}...
+                              {{question.summary}}
                         </span>
                         <span class="question_detail none">
                               {{question.content}}
@@ -54,7 +54,7 @@
             <div class="right uk-flex uk-flex-right">
                   <div class="question_item uk-flex uk-flex-column uk-flex-middle">
                         <span class="name">被浏览</span>
-                        <span class="value">4,970,916</span>
+                        <span class="value">{{(question.view_cnt===null)?'0':question.view_cnt}}</span>
                   </div>
             </div>
       </div>
@@ -104,7 +104,7 @@
                   <div class="answer_wrap Card uk-felx uk-flex-column">
                         <div class="options uk-flex uk-flex-between uk-flex-middle">
                               <div class="answer_count">
-                                    <span class="count">{{question.answer_cnt}}</span>
+                                    <span class="count">{{(question.answer_cnt===null)?'0':question.answer_cnt}}</span>
                                     <span>个回答</span>
                               </div>
                               <div class="answer_rank">
@@ -160,8 +160,11 @@
                                                       <span class="value">24,250</span>
                                                 </a>
                                           </div>
-                                          <div class="options">
-                                                <button class="btn_follow">
+                                          <div
+                                                class="options"
+                                                mp:if="{{item.user_user_id!==user.user_id}}"
+                                          >
+                                                <button class="btn_follow" data-id="{{item.user_user_id}}">
                                                       <span class="text">关注TA</span>
                                                 </button>
                                           </div>
@@ -178,7 +181,7 @@
                                           </div>
                                     </div>
                                     <div class="answer_content uk-flex uk-flex-column">
-                                          {{item.content}}
+                                          <span class="answer_content_text">{{item.content}}</span>
                                           <button class="btn_show_all_answer uk-flex uk-flex-center uk-flex-middle">
                                                 <span class="text">展开阅读全文</span>
                                                 <img
