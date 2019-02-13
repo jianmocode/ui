@@ -1,15 +1,48 @@
 {
       "cname": "问答",
       "data": {
+            "user": {
+                  "api": "/xpmsns/user/user/getUserInfo",
+                  "query": {}
+            },
+            "categories": {
+                  "api": "/xpmsns/pages/category/search",
+                  "query": {
+                        "select": "category_id,name,highlight,link,isblank,slug",
+                        "order": "priority asc",
+                        "noParentId": "1",
+                        "children": false,
+                        "isnav": 1
+                  }
+            },
+            "services": {
+                  "api": "/xpmsns/pages/category/search",
+                  "query": {
+                        "select": "category_id,name,highlight,link,isblank,slug",
+                        "order": "priority asc",
+                        "noParentId": "1",
+                        "children": false,
+                        "isfootnav": 1
+                  }
+            },
+            "navs": "{{categories.data}}",
+            "nav": "null",
+            "site": {
+                  "api": "/xpmsns/pages/siteconf/get",
+                  "query": {
+                        "site_slug": "global",
+                        "select": "*"
+                  }
+            },
             "questions": {
                   "api": "/xpmsns/qanda/question/search",
                   "query": {
-                        "page":"1",
-                        "perpage":"12",
-                        "select":"question_id,question.title,question.content,user.name,category.name,tags,user.user_id,status",
-                        "publish_desc":"1"
+                        "page": "1",
+                        "perpage": "12",
+                        "select": "question_id,question.title,question.content,user.name,category.name,tags,user.user_id,status",
+                        "publish_desc": "1"
                   }
-            } 
+            }
       },
       "entries": [{
                   "method": "GET",

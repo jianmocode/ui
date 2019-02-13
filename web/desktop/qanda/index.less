@@ -133,9 +133,6 @@ body {
 
             .right_wrap {
                   width: 296px;
-                  position: fixed;
-                  margin-left: 704px;
-                  transition: all ease 0.3s;
 
                   .ask {
                         width: 100%;
@@ -155,6 +152,8 @@ body {
                   }
 
                   .hot {
+                        width: 100%;
+
                         .title {
                               padding: 15px 20px;
                               font-size: 15px;
@@ -163,16 +162,27 @@ body {
                         }
 
                         .hot_items {
+                              width: 100%;
                               padding: 20px;
-
+                              .hot_item:nth-of-type(3n){
+                                    margin-right: 0;
+                              }
                               .hot_item {
+                                    width: 92%/3;
+                                    margin-right: 4%;
                                     font-size: 14px;
+                                    text-align: center;
                                     background-color: whitesmoke;
-                                    padding: 3px 5px;
+                                    padding: 3px 0px;
                                     border-radius: 2px;
-                                    margin-right: 10px;
                                     margin-bottom: 10px;
                                     color: #8590a6;
+                                    transition: all ease 0.3s;
+                                    overflow: hidden;
+                              }
+                              .hot_item:hover{
+                                    background-color: @primaryColor;
+                                    color: white;
                               }
                         }
                   }
@@ -195,18 +205,10 @@ body {
                               background: whitesmoke;
                         }
 
-                        .my_follow {
-                              .item_text {
-                                    background: url({{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_follow.png) no-repeat left center;
-                                    background-size: 20%;
-                                    padding-left: 30px;
-                              }
-                        }
-
                         .my_question {
                               .item_text {
-                                    background: url({{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_question.png) no-repeat left center;
-                                    background-size: 24%;
+                                    background: url({{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_question.png) no-repeat -1px center;
+                                    background-size: 26%;
                                     padding-left: 32px;
                                     margin-left: -2px;
                               }
@@ -216,6 +218,22 @@ body {
                               .item_text {
                                     background: url({{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_answer.png) no-repeat left center;
                                     background-size: 20%;
+                                    padding-left: 30px;
+                              }
+                        }
+
+                        .my_follower {
+                              .item_text {
+                                    background: url({{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_follower.png) no-repeat -4px center;
+                                    background-size: 22%;
+                                    padding-left: 30px;
+                              }
+                        }
+
+                        .my_following {
+                              .item_text {
+                                    background: url({{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_following.png) no-repeat -2px center;
+                                    background-size: 18%;
                                     padding-left: 30px;
                               }
                         }
@@ -405,7 +423,6 @@ body {
 .loadmore_wrap {
       display: none;
       width: 100%;
-      box-sizing: border-box;
       padding: 20px;
       padding-bottom: 10px;
 
@@ -417,7 +434,7 @@ body {
             width: 100%;
             height: 14px;
             margin-bottom: 16px;
-            background-color: whitesmoke;
+            background:linear-gradient(to right,whitesmoke,white);
             animation: loading 1s infinite;
       }
 }

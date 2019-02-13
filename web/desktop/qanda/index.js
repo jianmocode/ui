@@ -120,7 +120,7 @@ Page({
 
             tags = tags_array.join()
 
-            let ask_form_data = `${$('#ask_form').serialize()}&tags=${tags}`
+            let ask_form_data =tags?`${$('#ask_form').serialize()}&tags=${tags}`:`${$('#ask_form').serialize()}`
             $.ajax({
                   type: "post",
                   url: "/_api/xpmsns/qanda/question/create",
@@ -136,7 +136,7 @@ Page({
 
                               setTimeout(() => {
                                     window.location.href = `/qanda/detail/${response.question_id}`;
-                              }, 1000);
+                              }, 300);
                         } else {
                               UIkit.notification({
                                     message: response.message,
@@ -166,7 +166,7 @@ Page({
                               pos: 'bottom-right'
                         })
                   }
-
+ 
                   if (isValidated) {
                         _that.submitAskForm();
                   }
@@ -210,7 +210,7 @@ Page({
                               _that.current_page = _that.current_page + 1
                         } else {
                               _that.has_load_all = true
-                              $('.loadmore_wrap').hide()
+                              $('.loadmore_wrap').slideUp()
 
                               UIkit.notification({
                                     message: '没有更多了',
@@ -223,16 +223,25 @@ Page({
                         console.log(err);
                   }
             })
-      },
+      }, 
       listenScrollPositioningRightAndLoadMore: function () {
             const _that = this
 
             window.onscroll = debounce(function () {
                   let scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop
+
                   if (scrollTop > 80) {
-                        $('.content_wrap .right_wrap').css('transform', 'translateY(-80px)');
+                        $('.content_wrap .right_wrap').css({
+                              'transform': `translateY(-80px)`,
+                              'position': 'fixed',
+                              'margin-left':'704px'
+                        })
                   } else {
-                        $('.content_wrap .right_wrap').css('transform', 'translateY(0px)');
+                        $('.content_wrap .right_wrap').css({
+                              'transform': 'translateY(0px)',
+                              'position': 'initial',
+                              'margin-left':'0'
+                        })
                   }
 
                   if (isScrollToBottom()&&!_that.has_load_all) {

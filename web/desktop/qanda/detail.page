@@ -4,10 +4,12 @@
 <section class="question_wrap Card uk-flex uk-flex-center">
       <div class="question uk-flex uk-flex-between">
             <div class="left">
-                  <div class="question_item">
+                  <div
+                        class="question_item"
+                        mp:if="{{question.tags}}"
+                  >
                         <div
                               class="topic_item uk-flex uk-flex-middle"
-                              mp:if="{{question.tags}}"
                               mp:for="{{question.tags}}"
                         >
                               <a class="topic_item_text">{{item}}</a>
@@ -131,7 +133,7 @@
                               >
                                     <div class="author_content">
                                           <div class="author_info uk-flex uk-flex-between uk-flex-middle">
-                                                <a
+                                                <div
                                                       class="author_link"
                                                       href="#"
                                                 >
@@ -140,7 +142,7 @@
                                                             src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
                                                             alt="avatar_author"
                                                       >
-                                                </a>
+                                                </div>
                                                 <div class="info uk-flex uk-flex-column">
                                                       <span class="nickname line_clamp_1">{{(item.user_nickname)?item.user_nickname:item.user_mobile}}</span>
                                                       <span class="intro line_clamp_1">{{(item.user_bio)?item.user_bio:'TA还没有简介哦'}}</span>
@@ -164,9 +166,12 @@
                                                 class="options"
                                                 mp:if="{{item.user_user_id!==user.user_id}}"
                                           >
-                                                <button class="btn_follow" data-id="{{item.user_user_id}}">
+                                                <div
+                                                      class="btn_follow"
+                                                      data-id="{{item.user_user_id}}"
+                                                >
                                                       <span class="text">关注TA</span>
-                                                </button>
+                                                </div>
                                           </div>
                                     </div>
                                     <div class="user_info uk-flex">
@@ -182,22 +187,22 @@
                                     </div>
                                     <div class="answer_content uk-flex uk-flex-column">
                                           <span class="answer_content_text">{{item.content}}</span>
-                                          <button class="btn_show_all_answer uk-flex uk-flex-center uk-flex-middle">
+                                          <div class="btn_show_all_answer uk-flex uk-flex-center uk-flex-middle">
                                                 <span class="text">展开阅读全文</span>
                                                 <img
                                                       class="icon_pull"
                                                       src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_arrow_down_blue.png"
                                                       alt="icon_pull"
                                                 >
-                                          </button>
+                                          </div>
                                     </div>
                                     <div class="publish_time">
                                           <span>发布于 {{item.publish_time}}</span>
                                     </div>
                                     <div class="options uk-flex uk-flex-between">
                                           <div class="left">
-                                                <button
-                                                      class="btn_agree uk-flex uk-flex-middle {{(item.has_agreed)?'none':'block'}}"
+                                                <div
+                                                      class="btn_agree uk-flex uk-flex-middle {{(item.has_agreed)?'none':'flex'}}"
                                                       data-id="{{item.answer_id}}"
                                                 >
                                                       <img
@@ -207,9 +212,9 @@
                                                       >
                                                       <span class="text">赞同</span>
                                                       <span class="count">{{item.agree_cnt}}3.6K</span>
-                                                </button>
-                                                <button
-                                                      class="btn_agree_clicked uk-flex uk-flex-middle {{(item.has_agreed)?'block':'none'}}"
+                                                </div>
+                                                <div
+                                                      class="btn_agree_clicked uk-flex uk-flex-middle {{(item.has_agreed)?'flex':'none'}}"
                                                       data-id="{{item.answer_id}}"
                                                 >
                                                       <img
@@ -219,20 +224,27 @@
                                                       >
                                                       <span class="text">已赞同</span>
                                                       <span class="count">{{item.agree_cnt}}3.7K</span>
-                                                </button>
+                                                </div>
                                           </div>
                                           <div class="right">
-                                                <button class="btn_collapse_answer uk-flex uk-flex-middle">
+                                                <div class="btn_collapse_answer uk-flex uk-flex-middle">
                                                       <span class="text">收起</span>
                                                       <img
                                                             class="img_collapse"
                                                             src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_arrow_up.png"
                                                             alt="icon_collapse"
                                                       >
-                                                </button>
+                                                </div>
                                           </div>
                                     </div>
                               </div>
+                        </div>
+                        <div class="loadmore_wrap border_box">
+                              <div class="loading_item"></div>
+                              <div class="loading_item"></div>
+                              <div class="loading_item"></div>
+                              <div class="loading_item"></div>
+                              <div class="loading_item"></div>
                         </div>
                   </div>
             </div>

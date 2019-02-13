@@ -1,6 +1,7 @@
 {
 	"cname":"个人中心首页-桌面版",
 	"data": {
+            "target":"{{__get.target}}",
 		"categories":{
 			"api":"/xpmsns/pages/category/search",
 			"query":{
