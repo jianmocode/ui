@@ -38,34 +38,58 @@
                               <span class="best_answer">{{item.content}}</span>
                         </div>
                   </div>
+                  <div class="loadmore_wrap border_box">
+                        <div class="loading_item"></div>
+                        <div class="loading_item"></div>
+                        <div class="loading_item"></div>
+                  </div>
             </div>
             <div class="right_wrap uk-flex uk-flex-column">
                   <aside class="ask Card uk-flex">
-                        <a class="btn_ask">提问 | 问天下墨客谁知</a>
+                        <a class="btn_ask">提问 | 君子之学必好问</a>
                   </aside>
                   <aside class="hot Card uk-flex uk-flex-column">
                         <div class="title">
                               <span class="title_text">热门话题</span>
                         </div>
-                        <div class="hot_items uk-flex uk-flex-wrap">
-                              <a class="hot_item">架构</a>
-                              <a class="hot_item">开源</a>
-                              <a class="hot_item">算法</a>
-                              <a class="hot_item">Github</a>
-                              <a class="hot_item">面试</a>
-                              <a class="hot_item">代码规范</a>
-                              <a class="hot_item">产品</a>
+                        <div class="hot_items uk-flex uk-flex-wrap border_box">
+                              <a class="hot_item border_box">架构</a>
+                              <a class="hot_item border_box">开源</a>
+                              <a class="hot_item border_box">算法</a>
+                              <a class="hot_item border_box">Github</a>
+                              <a class="hot_item border_box">面试</a>
+                              <a class="hot_item border_box">代码规范</a>
+                              <a class="hot_item border_box">产品</a>
                         </div>
                   </aside>
                   <aside class="my Card uk-flex uk-flex-column">
-                        <a class="my_follow my_item">
-                              <span class="item_text">我的关注</span>
-                        </a>
-                        <a class="my_question my_item">
+                        <a
+                              href="https://wss.xpmjs.com/home/index.html?target=my_questions#zhifou"
+                              target="_blank"
+                              class="my_question my_item"
+                        >
                               <span class="item_text">我的提问</span>
                         </a>
-                        <a class="my_answer my_item">
+                        <a
+                              href="https://wss.xpmjs.com/home/index.html?target=my_answers#zhifou"
+                              target="_blank"
+                              class="my_answer my_item"
+                        >
                               <span class="item_text">我的回答</span>
+                        </a>
+                        <a
+                              href="https://wss.xpmjs.com/home/index.html?target=my_followers#follow"
+                              target="_blank"
+                              class="my_follower my_item"
+                        >
+                              <span class="item_text">关注我的人</span>
+                        </a>
+                        <a
+                              href="https://wss.xpmjs.com/home/index.html?target=my_following#follow"
+                              target="_blank"
+                              class="my_following my_item"
+                        >
+                              <span class="item_text">我关注的人</span>
                         </a>
                   </aside>
             </div>
@@ -115,7 +139,10 @@
                               >
                         </div>
                         <div class="add_topic_wrap">
-                              <button type="button" class="btn_add_topic">添加话题 ( 至少添加一个话题 ) </button>
+                              <button
+                                    type="button"
+                                    class="btn_add_topic"
+                              >添加话题 ( 至少添加一个话题 ) </button>
                         </div>
                   </div>
                   <div class="right">

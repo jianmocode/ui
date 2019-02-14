@@ -1,9 +1,15 @@
 import ImageEditor from '../components/editor/image'; // 下一版应该可以自动引用组件
 
+let web = getWeb()
+
 Page({
       data: {},
       imageEditor: null,
       onReady: function (param) {
+            const _that = this
+
+            _that.setTarget(_that.data.target)
+
             // 载入图片编辑器
             try {
 
@@ -58,5 +64,8 @@ Page({
             $('.jm-tabs li').removeClass('uk-active');
             $('.jm-tabs a[href=\'' + link + '\']').parent().addClass('uk-active');
             $('.jm-tabs a[href=\'' + link + '\']').trigger('click');
+      },
+      setTarget: function (target) {
+            sessionStorage.setItem('target', target)
       }
 })

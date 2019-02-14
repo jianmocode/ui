@@ -1,0 +1,33 @@
+{
+      "cname": "我的关注",
+      "data": { 
+            "user": {
+                  "api": "/xpmsns/user/user/getUserInfo",
+                  "query": {}
+            },
+            "followers": {
+                  "api": "/xpmsns/user/follow/getFollowers",
+                  "query": {
+                        "page": "1",
+                        "perpage": "6"
+                  }
+            },
+            "following": {
+                  "api": "/xpmsns/user/follow/getFollowings",
+                  "query": {
+                        "page": "1",
+                        "perpage": "6"
+                  }
+            }
+      },
+      "entries": [{
+            "method": "GET",
+            "router": "/home/forms/follow",
+            "ttl": 0
+      }],
+      "align": {
+            "mobile": "/mobile/home/forms/follow",
+            "wechat": "/mobile/home/forms/follow",
+            "wxapp": "/home/forms/follow"
+      }
+}

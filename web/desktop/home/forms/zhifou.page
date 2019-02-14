@@ -23,25 +23,19 @@
                               <span class="count">{{answers.total}}</span>
                         </a>
                   </span>
-                  <span class="tab_item">
-                        <a
-                              class="tab_link tab_link_followers"
-                              data-link="my_followers"
-                        >我关注的人</a>
-                  </span>
-                  <span class="tab_item">
-                        <a
-                              class="tab_link tab_link_following"
-                              data-link="my_following"
-                        >关注我的人</a>
-                  </span>
             </div>
             <div class="content_items uk-flex uk-flex-column">
                   <div class="my_questions content_item uk-flex uk-flex-column">
-                        <span class="title">我的提问</span>
                         <div class="question_items uk-flex uk-flex-column">
-                              <div class="question_item uk-flex uk-flex-column" mp:for="{{questions.data}}">
-                                    <a class="question_title" href="/qanda/detail/{{item.question_id}}">{{item.title}}</a>
+                              <div
+                                    class="question_item uk-flex uk-flex-column"
+                                    mp:for="{{questions.data}}"
+                              >
+                                    <a
+                                          class="question_title"
+                                          href="/qanda/detail/{{item.question_id}}"
+                                          target="_blank"
+                                    >{{item.title}}</a>
                                     <div class="question_options uk-flex">
                                           <span class="option_item">{{item.publish_time}}</span>
                                           <span class="dot">·</span>
@@ -49,14 +43,21 @@
                                     </div>
                               </div>
                         </div>
+                        <div class="btn_loadmore">点击加载更多</div>
                   </div>
                   <div class="my_answers content_item uk-flex uk-flex-column">
-                        <span class="title">我的回答</span>
                         <div class="answer_items uk-flex uk-flex-column">
-                              <div class="answer_item uk-flex uk-flex-column" mp:for="{{answers.data}}">
-                                    <a class="question_title">{{item.question_title}}</a>
+                              <div
+                                    class="answer_item uk-flex uk-flex-column"
+                                    mp:for="{{answers.data}}"
+                              >
+                                    <a
+                                          class="question_title"
+                                          href="/qanda/detail/{{item.question_question_id}}"
+                                    >{{item.question_title}}</a>
                                     <div class="answer_content">
-                                          <span class="answer_text">{{item.content}}</span>
+                                          <span class="summary answer_text">{{item.summary}}</span>
+                                          <span class="content answer_text none">{{item.content}}</span>
                                           <button class="btn_show_all">
                                                 显示全部
                                                 <img
@@ -66,201 +67,20 @@
                                                 >
                                           </button>
                                     </div>
-                                    <div class="answer_options uk-flex">
+                                    <div class="answer_options uk-flex uk-flex-between">
                                           <span class="option_item">{{item.publish_time}}</span>
-                                    </div>
-                              </div>
-                        </div>
-                  </div>
-                  <div class="my_followers content_item uk-flex uk-flex-column">
-                        <span class="title">我关注的人</span>
-                        <div class="follower_items uk-flex uk-flex-column">
-                              <div class="follower_item uk-flex uk-flex-between">
-                                    <a href="#">
-                                          <img
-                                                class="img_avatar"
-                                                src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
-                                                alt="img_avatar"
-                                          >
-                                    </a>
-                                    <div class="options uk-flex uk-flex-between uk-flex-middle">
-                                          <div class="left uk-flex uk-flex-column">
-                                                <div class="user_info uk-flex uk-flex-middle">
-                                                      <a class="nickname">KGdesign</a>
-                                                      <span class="line">|</span>
-                                                      <span class="intro line_clamp_1">多年专注Logo设计 kgdesign.cn多年专注Logo设计
-                                                            kgdesign.cn多年专注Logo设计 kgdesign.cn</span>
-                                                </div>
-                                                <div class="user_success uk-flex">
-                                                      <span class="success_item">85 回答</span>
-                                                      <span class="dot">·</span>
-                                                      <span class="success_item">60 文章</span>
-                                                      <span class="dot">·</span>
-                                                      <span class="success_item">16,047 关注者</span>
-                                                </div>
-                                          </div>
-                                          <div class="right">
-                                                <button class="btn_cancel">已关注</button>
-                                          </div>
-                                    </div>
-                              </div>
-                              <div class="follower_item uk-flex uk-flex-between">
-                                    <a href="#">
-                                          <img
-                                                class="img_avatar"
-                                                src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
-                                                alt="img_avatar"
-                                          >
-                                    </a>
-                                    <div class="options uk-flex uk-flex-between uk-flex-middle">
-                                          <div class="left uk-flex uk-flex-column">
-                                                <div class="user_info uk-flex uk-flex-middle">
-                                                      <a class="nickname">KGdesign</a>
-                                                      <span class="line">|</span>
-                                                      <span class="intro line_clamp_1">多年专注Logo设计 kgdesign.cn多年专注Logo设计
-                                                            kgdesign.cn多年专注Logo设计 kgdesign.cn</span>
-                                                </div>
-                                                <div class="user_success uk-flex">
-                                                      <span class="success_item">85 回答</span>
-                                                      <span class="dot">·</span>
-                                                      <span class="success_item">60 文章</span>
-                                                      <span class="dot">·</span>
-                                                      <span class="success_item">16,047 关注者</span>
-                                                </div>
-                                          </div>
-                                          <div class="right">
-                                                <button class="btn_cancel">已关注</button>
-                                          </div>
-                                    </div>
-                              </div>
-                              <div class="follower_item uk-flex uk-flex-between">
-                                    <a href="#">
-                                          <img
-                                                class="img_avatar"
-                                                src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
-                                                alt="img_avatar"
-                                          >
-                                    </a>
-                                    <div class="options uk-flex uk-flex-between uk-flex-middle">
-                                          <div class="left uk-flex uk-flex-column">
-                                                <div class="user_info uk-flex uk-flex-middle">
-                                                      <a class="nickname">KGdesign</a>
-                                                      <span class="line">|</span>
-                                                      <span class="intro line_clamp_1">多年专注Logo设计 kgdesign.cn多年专注Logo设计
-                                                            kgdesign.cn多年专注Logo设计 kgdesign.cn</span>
-                                                </div>
-                                                <div class="user_success uk-flex">
-                                                      <span class="success_item">85 回答</span>
-                                                      <span class="dot">·</span>
-                                                      <span class="success_item">60 文章</span>
-                                                      <span class="dot">·</span>
-                                                      <span class="success_item">16,047 关注者</span>
-                                                </div>
-                                          </div>
-                                          <div class="right">
-                                                <button class="btn_cancel">已关注</button>
+                                          <div class="btn_collapse_answer uk-flex uk-flex-middle">
+                                                <span class="text">收起</span>
+                                                <img
+                                                      class="img_collapse"
+                                                      src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_arrow_up.png"
+                                                      alt="icon_collapse"
+                                                >
                                           </div>
                                     </div>
                               </div>
                         </div>
-                  </div>
-                  <div class="my_following content_item uk-flex uk-flex-column">
-                        <span class="title">关注我的人</span>
-                        <div class="follower_items uk-flex uk-flex-column">
-                              <div class="follower_item uk-flex uk-flex-between">
-                                    <a href="#">
-                                          <img
-                                                class="img_avatar"
-                                                src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
-                                                alt="img_avatar"
-                                          >
-                                    </a>
-                                    <div class="options uk-flex uk-flex-between uk-flex-middle">
-                                          <div class="left uk-flex uk-flex-column">
-                                                <div class="user_info uk-flex uk-flex-middle">
-                                                      <a class="nickname">KGdesign</a>
-                                                      <span class="line">|</span>
-                                                      <span class="intro line_clamp_1">多年专注Logo设计 kgdesign.cn多年专注Logo设计
-                                                            kgdesign.cn多年专注Logo设计 kgdesign.cn</span>
-                                                </div>
-                                                <div class="user_success uk-flex">
-                                                      <span class="success_item">85 回答</span>
-                                                      <span class="dot">·</span>
-                                                      <span class="success_item">60 文章</span>
-                                                      <span class="dot">·</span>
-                                                      <span class="success_item">16,047 关注者</span>
-                                                </div>
-                                          </div>
-                                          <div class="right">
-                                                <button class="btn_cancel">
-                                                      <span class="text">关注TA</span>
-                                                </button>
-                                          </div>
-                                    </div>
-                              </div>
-                              <div class="follower_item uk-flex uk-flex-between">
-                                    <a href="#">
-                                          <img
-                                                class="img_avatar"
-                                                src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
-                                                alt="img_avatar"
-                                          >
-                                    </a>
-                                    <div class="options uk-flex uk-flex-between uk-flex-middle">
-                                          <div class="left uk-flex uk-flex-column">
-                                                <div class="user_info uk-flex uk-flex-middle">
-                                                      <a class="nickname">KGdesign</a>
-                                                      <span class="line">|</span>
-                                                      <span class="intro line_clamp_1">多年专注Logo设计 kgdesign.cn多年专注Logo设计
-                                                            kgdesign.cn多年专注Logo设计 kgdesign.cn</span>
-                                                </div>
-                                                <div class="user_success uk-flex">
-                                                      <span class="success_item">85 回答</span>
-                                                      <span class="dot">·</span>
-                                                      <span class="success_item">60 文章</span>
-                                                      <span class="dot">·</span>
-                                                      <span class="success_item">16,047 关注者</span>
-                                                </div>
-                                          </div>
-                                          <div class="right">
-                                                <button class="btn_cancel">
-                                                      <span class="text">关注TA</span>
-                                                </button>
-                                          </div>
-                                    </div>
-                              </div>
-                              <div class="follower_item uk-flex uk-flex-between">
-                                    <a href="#">
-                                          <img
-                                                class="img_avatar"
-                                                src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
-                                                alt="img_avatar"
-                                          >
-                                    </a>
-                                    <div class="options uk-flex uk-flex-between uk-flex-middle">
-                                          <div class="left uk-flex uk-flex-column">
-                                                <div class="user_info uk-flex uk-flex-middle">
-                                                      <a class="nickname">KGdesign</a>
-                                                      <span class="line">|</span>
-                                                      <span class="intro line_clamp_1">多年专注Logo设计 kgdesign.cn多年专注Logo设计
-                                                            kgdesign.cn多年专注Logo设计 kgdesign.cn</span>
-                                                </div>
-                                                <div class="user_success uk-flex">
-                                                      <span class="success_item">85 回答</span>
-                                                      <span class="dot">·</span>
-                                                      <span class="success_item">60 文章</span>
-                                                      <span class="dot">·</span>
-                                                      <span class="success_item">16,047 关注者</span>
-                                                </div>
-                                          </div>
-                                          <div class="right">
-                                                <button class="btn_cancel">
-                                                      <span class="text">关注TA</span>
-                                                </button>
-                                          </div>
-                                    </div>
-                              </div>
-                        </div>
+                        <div class="btn_loadmore">点击加载更多</div>
                   </div>
             </div>
       </div>

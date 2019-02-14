@@ -1,42 +1,77 @@
-<include src="__WEB_ROOT__/desktop/common/head.page"  />
+<include src="__WEB_ROOT__/desktop/common/head.page" />
 <include src="__WEB_ROOT__/desktop/components/editor/image.page" /> <!-- 引入部件 -->
-<include src="__WEB_ROOT__/desktop/common/header.page"  />
+<include src="__WEB_ROOT__/desktop/common/header.page" />
 
-<section class="jm-focus"><div class="uk-container" >
-	<div class="uk-cover-container uk-height-medium uk-margin-top uk-padding-remove">
-		<img mp:if="{{user.bgimgurl.url}}" src="{{user.bgimgurl.url}}" uk-cover user-bgimgurl>
-		<img mp:else src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/defaults/user-bgimg.jpg" uk-cover user-bgimgurl>
+<section class="jm-focus">
+      <div class="uk-container">
+            <div class="uk-cover-container uk-height-medium uk-margin-top uk-padding-remove">
+                  <img
+                        mp:if="{{user.bgimgurl.url}}"
+                        src="{{user.bgimgurl.url}}"
+                        uk-cover
+                        user-bgimgurl
+                  >
+                  <img
+                        mp:else
+                        src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/defaults/user-bgimg.jpg"
+                        uk-cover
+                        user-bgimgurl
+                  >
 
-		<div class="uk-overlay uk-position-center uk-light userhead">
-			<div class="uk-card  uk-card-default uk-card-large uk-border-circle" >
-				<div class="uk-card-body uk-border-circle uk-cover-container">
-					<img mp:if="{{user.headimgurl.url}}" src="{{user.headimgurl.url}}" uk-cover user-headimgurl >
-					<img mp:else src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/defaults/user-headimg.png" uk-cover user-headimgurl>
-				</div>
-			</div>
-			<div class="after-login {{(user.user_id == '') ? 'uk-hidden'}}  uk-text-center uk-margin-small-top nickname" user-nickname>{{user.nickname}}</div>
-			<div class="before-login {{(user.user_id) ? 'uk-hidden'}} uk-text-center uk-margin-small-top nickname" > 尚未登录 </div>
-		</div>
-	</div>
-	<div class="uk-padding-remove uk-overflow-hidden">
-		<ul class="jm-tabs jm-nav uk-flex-center uk-margin-remove-top" uk-tab>
-			<li><a href="/home/forms/articles">我的文章</a></li>
-			<!-- <li><a href="/home/forms/likes">我喜欢的</a></li>
+                  <div class="uk-overlay uk-position-center uk-light userhead">
+                        <div class="uk-card  uk-card-default uk-card-large uk-border-circle">
+                              <div class="uk-card-body uk-border-circle uk-cover-container">
+                                    <img
+                                          mp:if="{{user.headimgurl.url}}"
+                                          src="{{user.headimgurl.url}}"
+                                          uk-cover
+                                          user-headimgurl
+                                    >
+                                    <img
+                                          mp:else
+                                          src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/defaults/user-headimg.png"
+                                          uk-cover
+                                          user-headimgurl
+                                    >
+                              </div>
+                        </div>
+                        <div
+                              class="after-login {{(user.user_id == '') ? 'uk-hidden'}}  uk-text-center uk-margin-small-top nickname"
+                              user-nickname
+                        >{{user.nickname}}</div>
+                        <div class="before-login {{(user.user_id) ? 'uk-hidden'}} uk-text-center uk-margin-small-top nickname">
+                              尚未登录 </div>
+                  </div>
+            </div>
+            <div class="uk-padding-remove uk-overflow-hidden">
+                  <ul
+                        class="jm-tabs jm-nav uk-flex-center uk-margin-remove-top"
+                        uk-tab
+                  >
+                        <li><a href="/home/forms/articles">我的文章</a></li>
+                        <!-- <li><a href="/home/forms/likes">我喜欢的</a></li>
 			<li><a href="/home/forms/follow">我关注的</a></li>
 			<li><a href="/home/forms/fans">我的粉丝</a></li> -->
-                  <li><a href="/home/forms/expert">我的专栏</a></li>
-			<li><a href="/home/forms/zhifou">知否</a></li>
-                  <li><a href="/home/forms/profile">个人资料</a></li>
-			<li><a href="/home/forms/trust">实名认证</a></li>
-			<!-- <li><a href="/home/forms/password">修改密码</a></li>
+                        <li><a href="/home/forms/expert">我的专栏</a></li>
+                        <li><a href="/home/forms/follow">我的关注</a></li>
+                        <li><a href="/home/forms/zhifou">知否问答</a></li>
+                        <li><a href="/home/forms/profile">个人资料</a></li>
+                        <li><a href="/home/forms/trust">实名认证</a></li>
+                        <!-- <li><a href="/home/forms/password">修改密码</a></li>
 			<li><a href="/home/forms/message">消息通知</a></li> -->
-		</ul>
-	</div>
-	<div id="forms" >
-		<div class="loading uk-text-center" ><div uk-spinner class="uk-padding-small"></div></div>
-		<div class="iframe uk-hidden loaded"></div>
-	</div>
-</div></section><!-- END row END container -->
+                  </ul>
+            </div>
+            <div id="forms">
+                  <div class="loading uk-text-center">
+                        <div
+                              uk-spinner
+                              class="uk-padding-small"
+                        ></div>
+                  </div>
+                  <div class="iframe uk-hidden loaded"></div>
+            </div>
+      </div>
+</section><!-- END row END container -->
 
 <include src="__WEB_ROOT__/desktop/common/footer.page" />
 <include src="__WEB_ROOT__/desktop/common/foot.page" />

@@ -1,5 +1,5 @@
 {
-      "cname": "我的知否",
+      "cname": "知否问答",
       "data": {
             "user": {
                   "api": "/xpmsns/user/user/getUserInfo",
@@ -9,16 +9,19 @@
                   "api": "/xpmsns/qanda/question/search",
                   "query": {
                         "page": "1",
-                        "perpage": "12",
-                        "user_id":"{{user.user_id}}"
+                        "perpage": "6",
+                        "user_id": "{{user.user_id}}",
+                        "publish_desc": "1"
                   }
             },
             "answers": {
                   "api": "/xpmsns/qanda/answer/search",
                   "query": {
                         "page": "1",
-                        "perpage": "12",
-                        "user_id":"{{user.user_id}}"
+                        "perpage": "6",
+                        "user_id": "{{user.user_id}}",
+                        "select": "question.question_id,question.title,user_id,summary,content,publish_time",
+                        "publish_desc": "1"
                   }
             }
       },

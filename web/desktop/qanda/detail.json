@@ -2,15 +2,49 @@
       "cname": "问答",
       "data": {
             "question_id": "{{__var.id}}",
+            "user": {
+                  "api": "/xpmsns/user/user/getUserInfo",
+                  "query": {}
+            },
+            "categories": {
+                  "api": "/xpmsns/pages/category/search",
+                  "query": {
+                        "select": "category_id,name,highlight,link,isblank,slug",
+                        "order": "priority asc",
+                        "noParentId": "1",
+                        "children": false,
+                        "isnav": 1
+                  }
+            },
+            "services": {
+                  "api": "/xpmsns/pages/category/search",
+                  "query": {
+                        "select": "category_id,name,highlight,link,isblank,slug",
+                        "order": "priority asc",
+                        "noParentId": "1",
+                        "children": false,
+                        "isfootnav": 1
+                  }
+            },
+            "navs": "{{categories.data}}",
+            "nav": "null",
+            "site": {
+                  "api": "/xpmsns/pages/siteconf/get",
+                  "query": {
+                        "site_slug": "global",
+                        "select": "*"
+                  }
+            },
             "question": {
                   "api": "/xpmsns/qanda/question/get",
                   "query": {
                         "question_id": "{{__var.id}}",
                         "withanswer": "1",
                         "withagree": "1",
+                        "withrelation": "1",
                         "page": "1",
-                        "perpage": "12",
-                        "answer_select": "answer.answer_id,answer.summary,answer.content,answer.agree_cnt,answer.publish_time,user.headimgurl,user.name,user.nickname,user.mobile,user.bio",
+                        "perpage": "6",
+                        "answer_select": "answer.answer_id,answer.summary,answer.content,answer.agree_cnt,answer.publish_time,user.headimgurl,user.user_id,user.name,user.nickname,user.mobile,user.bio",
                         "agree_desc": "1",
                         "publish_desc": "1"
                   }
