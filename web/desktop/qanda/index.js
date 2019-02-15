@@ -3,15 +3,33 @@ import {
       debounce
 } from '../../services/service'
 
-let web = getWeb();
+import {
+      $$
+} from '../../libs/component'
+
+$$.import(
+      'editor/image',
+      'editor/html'
+)
+
+let web = getWeb()
 
 Page({
       data: {},
       current_page: 1,
       has_load_all: false,
+      loadEditor: function () {
+            try {
+                  // HtmlEditor
+                  $$('editor[type=html]').HtmlEditor({});
+            } catch (e) {
+                  console.log('Error @HtmlEditor', e);
+            }
+      },
       onReady: function () {
             const _that = this;
 
+            _that.loadEditor();
             _that.handleClickAsk();
             _that.handleClickHideAsk();
             _that.handleClickAddTags();
@@ -120,7 +138,7 @@ Page({
 
             tags = tags_array.join()
 
-            let ask_form_data =tags?`${$('#ask_form').serialize()}&tags=${tags}`:`${$('#ask_form').serialize()}`
+            let ask_form_data = tags ? `${$('#ask_form').serialize()}&tags=${tags}` : `${$('#ask_form').serialize()}`
             $.ajax({
                   type: "post",
                   url: "/_api/xpmsns/qanda/question/create",
@@ -166,7 +184,7 @@ Page({
                               pos: 'bottom-right'
                         })
                   }
- 
+
                   if (isValidated) {
                         _that.submitAskForm();
                   }
@@ -210,7 +228,7 @@ Page({
                               _that.current_page = _that.current_page + 1
                         } else {
                               _that.has_load_all = true
-                              $('.loadmore_wrap').slideUp()
+                              $('.loadmore_wrap').hide()
 
                               UIkit.notification({
                                     message: '没有更多了',
@@ -223,7 +241,7 @@ Page({
                         console.log(err);
                   }
             })
-      }, 
+      },
       listenScrollPositioningRightAndLoadMore: function () {
             const _that = this
 
@@ -234,17 +252,17 @@ Page({
                         $('.content_wrap .right_wrap').css({
                               'transform': `translateY(-80px)`,
                               'position': 'fixed',
-                              'margin-left':'704px'
+                              'margin-left': '704px'
                         })
                   } else {
                         $('.content_wrap .right_wrap').css({
                               'transform': 'translateY(0px)',
                               'position': 'initial',
-                              'margin-left':'0'
+                              'margin-left': '0'
                         })
                   }
 
-                  if (isScrollToBottom()&&!_that.has_load_all) {
+                  if (isScrollToBottom() && !_that.has_load_all) {
                         _that.loadMoreQuestions()
                         $('.loadmore_wrap').show()
                   }

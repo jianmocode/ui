@@ -1,6 +1,9 @@
 {
       "cname": "问答",
       "data": {
+            "page":{
+                  "title":"知否"
+            },
             "user": {
                   "api": "/xpmsns/user/user/getUserInfo",
                   "query": {}
@@ -39,10 +42,22 @@
                   "query": {
                         "page": "1",
                         "perpage": "12",
-                        "select": "question_id,question.title,question.content,user.name,category.name,tags,user.user_id,status",
+                        "select": "question_id,question.title,question.content,user.name,category.name,tags,user.user_id",
                         "publish_desc": "1"
                   }
-            }
+            },
+            "__css": [
+                  "/js/trix/trix.css"
+            ],
+            "__js": [
+                  "/js/trix/trix.js",
+                  "/js/jquery-validation-1.17.0/jquery.validate.min.js",
+                  "/js/jquery.ui.widget.js",
+                  "/js/jquery.iframe-transport.js",
+                  "/js/jquery.fileupload.js",
+                  "/js/jquery.form.min.js",
+                  "/js/mustache.min.js"
+            ]
       },
       "entries": [{
                   "method": "GET",

@@ -1,5 +1,7 @@
 <include src="__WEB_ROOT__/desktop/common/head.page" />
 <include src="__WEB_ROOT__/desktop/common/header.page" />
+<include src="__WEB_ROOT__/desktop/components/uploader/image.page" /> <!-- 引入部件 文件上传组件-->
+<include src="__WEB_ROOT__/desktop/components/editor/html.page" /> <!-- 引入部件 HTML编辑器 -->
 
 <section class="content_wrap uk-flex uk-flex-center">
       <div class="content uk-flex uk-flex-between">
@@ -10,12 +12,6 @@
                                     class="tab_link is_active"
                                     href=""
                               >推荐</a>
-                        </span>
-                        <span class="tab_item">
-                              <a
-                                    class="tab_link"
-                                    href=""
-                              >关注</a>
                         </span>
                         <span class="tab_item">
                               <a
@@ -35,7 +31,8 @@
                                     href="/qanda/detail/{{item.question_id}}"
                                     class="question_content"
                               >{{item.title}}</a>
-                              <span class="best_answer">{{item.content}}</span>
+                              <span class="best_answer answer_summary">{{item.summary}}</span>
+                              <span class="best_answer answer_content none">{{item.content}}</span>
                         </div>
                   </div>
                   <div class="loadmore_wrap border_box">
@@ -64,28 +61,28 @@
                   </aside>
                   <aside class="my Card uk-flex uk-flex-column">
                         <a
-                              href="https://wss.xpmjs.com/home/index.html?target=my_questions#zhifou"
+                              href="/home/index.html?target=my_questions#zhifou"
                               target="_blank"
                               class="my_question my_item"
                         >
                               <span class="item_text">我的提问</span>
                         </a>
                         <a
-                              href="https://wss.xpmjs.com/home/index.html?target=my_answers#zhifou"
+                              href="/home/index.html?target=my_answers#zhifou"
                               target="_blank"
                               class="my_answer my_item"
                         >
                               <span class="item_text">我的回答</span>
                         </a>
                         <a
-                              href="https://wss.xpmjs.com/home/index.html?target=my_followers#follow"
+                              href="/home/index.html?target=my_followers#follow"
                               target="_blank"
                               class="my_follower my_item"
                         >
                               <span class="item_text">关注我的人</span>
                         </a>
                         <a
-                              href="https://wss.xpmjs.com/home/index.html?target=my_following#follow"
+                              href="/home/index.html?target=my_following#follow"
                               target="_blank"
                               class="my_following my_item"
                         >
@@ -121,13 +118,17 @@
                   ></textarea>
             </div>
             <div class="ask_item uk-flex uk-flex-column">
-                  <textarea
-                        class="question_detail"
+                  <editor
                         name="content"
-                        rows="6"
-                        autocomplete="off"
+                        type="html"
+                        rows="20"
+                        autofocus
+                        fetch-image="false"
+                        toolbar-sticky="top:0;"
+                        url="/_api/xpmsns/user/user/upload"
                         placeholder="输入问题背景、条件等详细信息（选填）"
-                  ></textarea>
+                        maxChunkSize="1024"
+                  ></editor>
             </div>
             <div class="topic ask_item uk-flex uk-flex-between">
                   <div class="left uk-flex uk-flex-column">

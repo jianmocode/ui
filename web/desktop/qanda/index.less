@@ -2,6 +2,10 @@
 @import '/desktop/common/d.less';
 @import '/desktop/widget/recommend/list.less';
 
+// 引入组件
+@import '/desktop/components/uploader/image.less';
+@import '/desktop/components/editor/html.less';
+
 ::-webkit-input-placeholder {
       color: #bdc3cf;
       font-size: 16px;
@@ -37,6 +41,44 @@ body {
       margin-bottom: 10px;
 }
 
+.iframe-form {
+      padding: 0px;
+      min-height: 500px;
+}
+
+// 设定工具栏样式
+.trix-button--icon-decrease-nesting-level {
+      display: none;
+}
+
+.trix-button--icon-increase-nesting-level {
+      display: none;
+}
+
+.trix-button-group-alignment {
+      display: none !important;
+}
+
+.jm-editor-html {
+      border: none;
+
+      trix-toolbar {
+            border-bottom: none;
+            background-color: @backgroundMutedColor;
+      }
+
+      trix-editor {
+            padding: 10px !important;
+            min-height: 300px !important;
+            max-height: 300px !important;
+            overflow-y: scroll !important;
+      }
+
+      trix-editor:empty:not(:focus)::before {
+            color: @textMutedColor;
+      }
+}
+
 .jm-focus {
       padding-top: 25px;
       padding-bottom: 25px;
@@ -61,6 +103,7 @@ body {
 
 .content_wrap {
       width: 100%;
+      min-height: calc(~'100vh - 91px - 310.5px');
       padding-top: 10px;
 
       .content {
@@ -164,9 +207,11 @@ body {
                         .hot_items {
                               width: 100%;
                               padding: 20px;
-                              .hot_item:nth-of-type(3n){
+
+                              .hot_item:nth-of-type(3n) {
                                     margin-right: 0;
                               }
+
                               .hot_item {
                                     width: 92%/3;
                                     margin-right: 4%;
@@ -180,7 +225,8 @@ body {
                                     transition: all ease 0.3s;
                                     overflow: hidden;
                               }
-                              .hot_item:hover{
+
+                              .hot_item:hover {
                                     background-color: @primaryColor;
                                     color: white;
                               }
@@ -297,20 +343,6 @@ body {
                         outline: none;
                         border-top-right-radius: 4px;
                         border-bottom-right-radius: 4px;
-                  }
-
-                  .question_detail {
-                        width: 100%;
-                        max-height: 320px;
-                        outline-color: #ddd;
-                        border: 1px solid #EBEBEB;
-                        border-radius: 4px;
-                        padding: 10px;
-                        box-sizing: border-box;
-                        resize: none;
-                        font-size: 14px;
-                        color: #1a1a1a;
-                        line-height: 1.6;
                   }
             }
 
@@ -434,7 +466,7 @@ body {
             width: 100%;
             height: 14px;
             margin-bottom: 16px;
-            background:linear-gradient(to right,whitesmoke,white);
+            background: linear-gradient(to right, whitesmoke, white);
             animation: loading 1s infinite;
       }
 }

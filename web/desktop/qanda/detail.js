@@ -3,7 +3,17 @@ import {
       unfollow,
       isScrollToBottom,
       debounce
-} from '../../services/service';
+} from '../../services/service'
+
+import {
+      $$
+} from '../../libs/component'
+
+$$.import(
+      'editor/image',
+      'editor/html'
+)
+
 
 let web = getWeb();
 
@@ -12,9 +22,18 @@ Page({
       is_answer_input_show: false,
       current_page: 1,
       has_load_all: false,
+      loadEditor: function () {
+            try {
+                  // HtmlEditor
+                  $$('editor[type=html]').HtmlEditor({});
+            } catch (e) {
+                  console.log('Error @HtmlEditor', e);
+            }
+      },
       onReady: function () {
             const _that = this;
 
+            _that.loadEditor();
             _that.handleHoverUserAvatar();
             _that.handleClickQuestionShowAll();
             _that.handleClickAnswerShowAll();
@@ -184,7 +203,7 @@ Page({
 
             $('.btn_submit').on('click', function () {
 
-                  if ($('.answer_content').val()) {
+                  if ($('.jm-editor-html #content_input').val()) {
                         isValidated = true;
                   } else {
                         UIkit.notification({
@@ -264,7 +283,7 @@ Page({
             })
       },
       listenQuestionSummaryHeight: function () {
-            if ($('.question_summary').height() > 21) {
+            if ($('.question_summary').height() >= 21) {
                   $('.btn_show_all_question').css('display', 'inline-block')
                   $('.question_summary').text(`${$('.question_summary').text()}...`)
             }
@@ -468,13 +487,13 @@ Page({
                         $('.content_wrap .right_wrap').css({
                               'transform': `translateY(${right_up_height_1}px)`,
                               'position': 'fixed',
-                              'margin-left':'704px'
+                              'margin-left': '704px'
                         })
                   } else {
                         $('.content_wrap .right_wrap').css({
                               'transform': 'translateY(0px)',
                               'position': 'initial',
-                              'margin-left':'0'
+                              'margin-left': '0'
                         })
                   }
 
