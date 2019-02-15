@@ -1,5 +1,5 @@
 <div class="articles"  mp:if="{{section.contents.total > 0}}">
-	<a class="uk-flex item" href="/article/{{item.article_id}}.html" target="_blank" mp:for="{{section.contents.data}}" >
+	<a class="uk-flex item" href="/article/{{item.article_id}}.html" target="_blank" mp:for="{{section.data}}" >
 		<div class="uk-panel" mp:if="{{item.cover.url}}" >
 			<div style="min-width:260px;min-height:150px; width:260px; height:150px;overflow: hidden;" >
 				<div class="uk-cover-container">
