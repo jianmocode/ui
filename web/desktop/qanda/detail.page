@@ -1,5 +1,7 @@
 <include src="__WEB_ROOT__/desktop/common/head.page" />
 <include src="__WEB_ROOT__/desktop/common/header.page" />
+<include src="__WEB_ROOT__/desktop/components/uploader/image.page" /> <!-- 引入部件 文件上传组件-->
+<include src="__WEB_ROOT__/desktop/components/editor/html.page" /> <!-- 引入部件 HTML编辑器 -->
 
 <section class="question_wrap Card uk-flex uk-flex-center">
       <div class="question uk-flex uk-flex-between">
@@ -14,7 +16,7 @@
                         >
                               <a class="topic_item_text">{{item}}</a>
                         </div>
-                  </div>
+                  </div> 
                   <div class="question_item">
                         <span class="question_text">{{question.title}}</span>
                   </div>
@@ -87,13 +89,17 @@
                                     type="text"
                                     value="{{question_id}}"
                               >
-                              <textarea
-                                    class="answer_content"
+                              <editor
                                     name="content"
-                                    rows="6"
-                                    autocomplete="off"
+                                    type="html"
+                                    rows="20"
+                                    autofocus
+                                    fetch-image="false"
+                                    toolbar-sticky="top:0;"
+                                    url="/_api/xpmsns/user/user/upload"
                                     placeholder="写回答..."
-                              ></textarea>
+                                    maxChunkSize="1024"
+                              ></editor>
                               <div class="options uk-flex uk-flex-between uk-flex-middle">
                                     <div class="status">14个字</div>
                                     <button
@@ -249,7 +255,7 @@
                   </div>
             </div>
             <div class="right_wrap uk-flex uk-flex-column">
-                  <aside class="author Card uk-flex uk-flex-column">
+                  <!-- <aside class="author Card uk-flex uk-flex-column">
                         <div class="title">
                               <span class="title_text">关于作者</span>
                         </div>
@@ -290,7 +296,7 @@
                                     </button>
                               </div>
                         </div>
-                  </aside>
+                  </aside> -->
                   <aside class="related_questions Card">
                         <div class="title">
                               <span class="title_text">相关问题</span>

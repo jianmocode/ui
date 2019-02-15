@@ -2,6 +2,10 @@
 @import '/desktop/common/d.less';
 @import '/desktop/widget/recommend/list.less';
 
+// 引入组件
+@import '/desktop/components/uploader/image.less';
+@import '/desktop/components/editor/html.less';
+
 ::-webkit-input-placeholder {
       color: #bdc3cf;
       font-size: 16px;
@@ -35,6 +39,25 @@ body {
       box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
       box-sizing: border-box;
       margin-bottom: 10px;
+}
+
+// 设定工具栏样式
+.jm-editor-html {
+      border: none;
+
+      trix-toolbar {
+            border-bottom: none;
+            background-color: @backgroundMutedColor;
+      }
+
+      trix-editor {
+            padding: 10px 20px !important;
+            min-height: 140px !important;
+      }
+
+      trix-editor:empty:not(:focus)::before {
+            color: @textMutedColor;
+      }
 }
 
 .jm-focus {
@@ -202,6 +225,7 @@ body {
 
 .content_wrap {
       width: 100%;
+      min-height:700px;
 
       .content {
             width: 1000px;
@@ -250,19 +274,6 @@ body {
                                     display: none;
                               }
 
-                              .answer_content {
-                                    width: 100%;
-                                    height: 126px;
-                                    box-sizing: border-box;
-                                    font-size: 15px;
-                                    line-height: 1.6;
-                                    color: #1a1a1a;
-                                    padding: 20px 20px;
-                                    border: none;
-                                    outline: none;
-                                    resize: none;
-                              }
-
                               .options {
                                     width: 100%;
                                     box-sizing: border-box;
@@ -298,7 +309,6 @@ body {
                         box-sizing: border-box;
                         padding: 0 20px;
                         overflow: visible;
-                        min-height: 640px;
 
                         .options {
                               width: 100%;

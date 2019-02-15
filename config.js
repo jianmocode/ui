@@ -1,16 +1,16 @@
-var host="wss.xpmjs.com"
+var host="alpha.jianmoapp.com"
 
 config = {
       mina: {
             target: false,
             priority: 0,
-            server:"http://"+host,
+            server:"https://"+host,
             domain: host,
             project: "default",
-            appid: '153694864269198',
-            secret: '0e2930fcf9af732ce7fc417853cf3d54',
+            appid: '154986709417809',
+            secret: 'ad899eb233e03779176feb2c62ce6b70',
             instance: "root",
-      },
+      }, 
       wxapp: {
             "cli": "/Applications/wechatwebdevtools.app/Contents/Resources/app.nw/bin/cli",
             "appdid": "wx0550a96041cf486c",
