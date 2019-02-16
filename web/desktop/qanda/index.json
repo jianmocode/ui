@@ -16,7 +16,7 @@
                         "noParentId": "1",
                         "children": false,
                         "isnav": 1
-                  }
+                  } 
             },
             "services": {
                   "api": "/xpmsns/pages/category/search",
@@ -42,8 +42,16 @@
                   "query": {
                         "page": "1",
                         "perpage": "12",
-                        "select": "question_id,question.title,question.content,user.name,category.name,tags,user.user_id",
+                        "select": "question_id,question.title,question.summary,question.content,user.name,category.name,tags,user.user_id",
                         "publish_desc": "1"
+                  }
+            },
+            "hot_tags":{
+                  "api": "/xpmsns/pages/tag/search",
+                  "query": {
+                        "page": "1",
+                        "perpage": "8",
+                        "question_desc": "1"
                   }
             },
             "__css": [

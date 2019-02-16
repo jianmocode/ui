@@ -195,6 +195,7 @@ Page({
 
             function updateQuestionItems(data) {
                   for (let i = 0; i < data.length; i++) {
+                        let is_summary_show = data[i].summary ? 'block' : 'none'
                         let nodes = `
                               <div
                                     class="question_item uk-flex uk-flex-column"
@@ -205,7 +206,7 @@ Page({
                                           href="/qanda/detail/${data[i].question_id}"
                                           class="question_content"
                                     >${data[i].title}</a>
-                                    <span class="best_answer">${data[i].content}</span>
+                                    <span class="best_answer answer_summary ${is_summary_show}">${data[i].summary}</span>
                               </div>
                         `
                         $('.question_items').append(nodes)

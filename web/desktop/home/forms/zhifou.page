@@ -26,6 +26,17 @@
             </div>
             <div class="content_items uk-flex uk-flex-column">
                   <div class="my_questions content_item uk-flex uk-flex-column">
+                        <div
+                              class="empty_wrap uk-flex uk-flex-column uk-flex-center uk-flex-middle"
+                              mp:if="{{questions.total===0}}"
+                        >
+                              <span class="title_empty">这里还什么都没有~</span>
+                              <img
+                                    class="img_empty"
+                                    src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/empty.svg"
+                                    alt="img_empty"
+                              >
+                        </div>
                         <div class="question_items uk-flex uk-flex-column">
                               <div
                                     class="question_item uk-flex uk-flex-column"
@@ -43,9 +54,23 @@
                                     </div>
                               </div>
                         </div>
-                        <div class="btn_loadmore">点击加载更多</div>
+                        <div
+                              class="btn_loadmore"
+                              mp:if="{{questions.total>6}}"
+                        >点击加载更多</div>
                   </div>
                   <div class="my_answers content_item uk-flex uk-flex-column">
+                        <div
+                              class="empty_wrap uk-flex uk-flex-column uk-flex-center uk-flex-middle"
+                              mp:if="{{answers.total===0}}"
+                        >
+                              <span class="title_empty">这里还什么都没有~</span>
+                              <img
+                                    class="img_empty"
+                                    src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/empty.svg"
+                                    alt="img_empty"
+                              >
+                        </div>
                         <div class="answer_items uk-flex uk-flex-column">
                               <div
                                     class="answer_item uk-flex uk-flex-column"
@@ -80,7 +105,10 @@
                                     </div>
                               </div>
                         </div>
-                        <div class="btn_loadmore">点击加载更多</div>
+                        <div
+                              class="btn_loadmore"
+                              mp:if="{{answers.total>6}}"
+                        >点击加载更多</div>
                   </div>
             </div>
       </div>

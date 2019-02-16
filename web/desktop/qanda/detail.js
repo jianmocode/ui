@@ -22,6 +22,7 @@ Page({
       is_answer_input_show: false,
       current_page: 1,
       has_load_all: false,
+      current_rank_type: 'default',
       loadEditor: function () {
             try {
                   // HtmlEditor
@@ -43,7 +44,10 @@ Page({
             _that.listenQuestionSummaryHeight();
             _that.listenAnswersSummaryHeight();
             _that.handleClickFollowAnswerPerson();
+            _that.handleHoverUnfollowAnswerPerson();
+            _that.handleClickUnfollowAnswerPerson();
             _that.listenScrollPositioningRightAndLoadMore();
+            _that.handleClickBtnRankAnswers();
       },
       handleHoverUserAvatar: function () {
             const _that = this;
@@ -238,12 +242,12 @@ Page({
                   }
             })
       },
-      removeAgree: function () {
+      removeAgree: function (data) {
             $.ajax({
                   type: "post",
                   url: "/_api/xpmsns/comment/agree/remove",
                   dataType: "json",
-                  data: $('#answer_form').serialize(),
+                  data: data,
                   success: function (response) {
                         if (response._id) {} else {
                               UIkit.notification({
@@ -280,6 +284,11 @@ Page({
                         .parent()
                         .find('.btn_agree')
                         .css('display', 'flex')
+
+                  _that.removeAgree({
+                        outer_id: $(this).data('id'),
+                        origin: 'answer'
+                  })
             })
       },
       listenQuestionSummaryHeight: function () {
@@ -306,8 +315,34 @@ Page({
       },
       handleClickFollowAnswerPerson: function () {
             $('.answer_items').on('click', '.btn_follow', function () {
-                  console.log($(this).data('id'));
                   follow($(this).data('id'))
+
+                  $(this).hide()
+
+                  $(this)
+                        .parents('.author_content')
+                        .find('.btn_unfollow_real')
+                        .show()
+            })
+      },
+      handleHoverUnfollowAnswerPerson: function () {
+            $('.answer_items').on('mouseover', '.btn_unfollow', function () {
+                  $(this).text('取消关注')
+            })
+            $('.answer_items').on('mouseout', '.btn_unfollow', function () {
+                  $(this).text('已关注')
+            })
+      },
+      handleClickUnfollowAnswerPerson: function () {
+            $('.answer_items').on('click', '.btn_unfollow', function () {
+                  unfollow($(this).data('id'))
+
+                  $(this).hide()
+
+                  $(this)
+                        .parents('.author_content')
+                        .find('.btn_follow_real')
+                        .show()
             })
       },
       loadMoreAnswers: function () {
@@ -315,8 +350,16 @@ Page({
 
             function updateAnswersItems(data) {
                   for (let i = 0; i < data.length; i++) {
+                        let user_headimgurl = data[i].user_headimgurl ? data[i].user_headimgurl.url : '/static-file/default/desktop/assets/images/elephant.svg'
                         let nickname = data[i].user_nickname ? data[i].user_nickname : data[i].user_mobile
                         let bio = data[i].user_bio ? data[i].user_bio : 'TA还没有简介哦'
+                        let user_answer_cnt = data[i].user_answer_cnt ? data[i].user_answer_cnt : '0'
+                        let user_question_cnt = data[i].user_question_cnt ? data[i].user_question_cnt : '0'
+                        let user_follower_cnt = data[i].user_follower_cnt ? data[i].user_follower_cnt : '0'
+                        let relation_1 = data[i].relation === 'no-relation' ? 'block' : 'none'
+                        let relation_2 = data[i].relation === 'follower' ? 'block' : 'none'
+                        let relation_3 = data[i].relation === 'following' ? 'block' : 'none'
+                        let relation_4 = data[i].relation === 'friend' ? 'block' : 'none'
                         let follow_state = data[i].user_user_id !== _that.data.user.user_id ? 'block' : 'none'
                         let has_agreed_state_1 = data[i].has_agreed ? 'none' : 'flex'
                         let has_agreed_state_2 = data[i].has_agreed ? 'flex' : 'none'
@@ -337,7 +380,7 @@ Page({
                                                 >
                                                       <img
                                                             class="avatar_author"
-                                                            src="${asset_path}/images/img_avatar_eg.jpg"
+                                                            src="${user_headimgurl}"
                                                             alt="avatar_author"
                                                       >
                                                 </a>
@@ -349,30 +392,52 @@ Page({
                                           <div class="author_success uk-flex uk-flex-between">
                                                 <a class="success_item uk-flex uk-flex-column uk-flex-middle">
                                                       <span class="name">回答</span>
-                                                      <span class="value">208</span>
+                                                      <span class="value">${user_answer_cnt}</span>
                                                 </a>
                                                 <a class="success_item uk-flex uk-flex-column uk-flex-middle">
                                                       <span class="name">提问</span>
-                                                      <span class="value">21</span>
+                                                      <span class="value">${user_question_cnt}</span>
                                                 </a>
                                                 <a class="success_item uk-flex uk-flex-column uk-flex-middle">
                                                       <span class="name">关注者</span>
-                                                      <span class="value">24,250</span>
+                                                      <span class="value">${user_follower_cnt}</span>
                                                 </a>
                                           </div>
                                           <div class="options ${follow_state}">
                                                 <div
-                                                      class="btn_follow"
+                                                      class="btn_follow btn_follow_real"
                                                       data-id="${data[i].user_user_id}"
+                                                      style="display:${relation_1}"
                                                 >
                                                       <span class="text">关注TA</span>
+                                                </div>
+                                                <div
+                                                      class="btn_follow"
+                                                      data-id="${data[i].user_user_id}"
+                                                      style="display:${relation_2}"
+                                                >
+                                                      <span class="text">关注TA</span>
+                                                </div>
+                                                <div
+                                                      class="btn_unfollow btn_unfollow_real"
+                                                      data-id="${data[i].user_user_id}"
+                                                      style="display:${relation_3}"
+                                                >
+                                                      <span class="text">已关注</span>
+                                                </div>
+                                                <div
+                                                      class="btn_unfollow"
+                                                      data-id="${data[i].user_user_id}"
+                                                      style="display:${relation_4}"
+                                                >
+                                                      <span class="text">互相关注</span>
                                                 </div>
                                           </div>
                                     </div>
                                     <div class="user_info uk-flex">
                                           <img
                                                 class="img_avatar"
-                                                src="${asset_path}/images/img_avatar_eg.jpg"
+                                                src="${user_headimgurl}"
                                                 alt="img_avatar"
                                           >
                                           <div class="detail uk-flex uk-flex-column uk-flex-center">
@@ -400,13 +465,13 @@ Page({
                                                       class="btn_agree uk-flex uk-flex-middle ${has_agreed_state_1}"
                                                       data-id="${data[i].answer_id}"
                                                 >
-                                                      <img
+                                                      <img 
                                                             class="img_agree"
                                                             src="${asset_path}/images/icon_agree.svg"
                                                             alt="icon_agree"
                                                       >
                                                       <span class="text">赞同</span>
-                                                      <span class="count">${data[i].agree_cnt}3.6K</span>
+                                                      <span class="count">${data[i].agree_cnt}</span>
                                                 </div>
                                                 <div
                                                       class="btn_agree_clicked uk-flex uk-flex-middle ${has_agreed_state_2}"
@@ -418,7 +483,7 @@ Page({
                                                             alt="icon_clap"
                                                       >
                                                       <span class="text">已赞同</span>
-                                                      <span class="count">${data[i].agree_cnt}3.7K</span>
+                                                      <span class="count">${data[i].agree_cnt}</span>
                                                 </div>
                                           </div>
                                           <div class="right">
@@ -451,8 +516,8 @@ Page({
                         page: _that.current_page + 1,
                         perpage: "6",
                         answer_select: "answer.answer_id,answer.summary,answer.content,answer.agree_cnt,answer.publish_time,user.headimgurl,user.user_id,user.name,user.nickname,user.mobile,user.bio",
-                        agree_desc: "1",
-                        publish_desc: "1"
+                        agree_desc: _that.current_rank_type === 'default' ? "1" : "",
+                        publish_desc: _that.current_rank_type === 'time' ? "1" : ""
                   },
                   success: function (response) {
                         if (response.answers.data.length !== 0) {
@@ -502,5 +567,220 @@ Page({
                         $('.loadmore_wrap').show()
                   }
             }, 200)
+      },
+      loadAnswers: function () {
+            const _that = this
+
+            $('.answer_items').html('')
+
+            function updateAnswersItems(data) {
+                  for (let i = 0; i < data.length; i++) {
+                        let user_headimgurl = data[i].user_headimgurl ? data[i].user_headimgurl.url : '/static-file/default/desktop/assets/images/elephant.svg'
+                        let nickname = data[i].user_nickname ? data[i].user_nickname : data[i].user_mobile
+                        let bio = data[i].user_bio ? data[i].user_bio : 'TA还没有简介哦'
+                        let user_answer_cnt = data[i].user_answer_cnt ? data[i].user_answer_cnt : '0'
+                        let user_question_cnt = data[i].user_question_cnt ? data[i].user_question_cnt : '0'
+                        let user_follower_cnt = data[i].user_follower_cnt ? data[i].user_follower_cnt : '0'
+                        let relation_1 = data[i].relation === 'no-relation' ? 'block' : 'none'
+                        let relation_2 = data[i].relation === 'follower' ? 'block' : 'none'
+                        let relation_3 = data[i].relation === 'following' ? 'block' : 'none'
+                        let relation_4 = data[i].relation === 'friend' ? 'block' : 'none'
+                        let follow_state = data[i].user_user_id !== _that.data.user.user_id ? 'block' : 'none'
+                        let has_agreed_state_1 = data[i].has_agreed ? 'none' : 'flex'
+                        let has_agreed_state_2 = data[i].has_agreed ? 'flex' : 'none'
+
+                        const asset_path = '/static-file/default/desktop/assets'
+
+                        let nodes = `
+                              <div
+                                    class="answer_item"
+                                    mp:key="${data[i].answer_id}"
+                                    data-id="${data[i].answer_id}"
+                              >
+                                    <div class="author_content">
+                                          <div class="author_info uk-flex uk-flex-between uk-flex-middle">
+                                                <a
+                                                      class="author_link"
+                                                      href="#"
+                                                >
+                                                      <img
+                                                            class="avatar_author"
+                                                            src="${user_headimgurl}"
+                                                            alt="avatar_author"
+                                                      >
+                                                </a>
+                                                <div class="info uk-flex uk-flex-column">
+                                                      <span class="nickname line_clamp_1">${nickname}</span>
+                                                      <span class="intro line_clamp_1">${bio}</span>
+                                                </div>
+                                          </div>
+                                          <div class="author_success uk-flex uk-flex-between">
+                                                <a class="success_item uk-flex uk-flex-column uk-flex-middle">
+                                                      <span class="name">回答</span>
+                                                      <span class="value">${user_answer_cnt}</span>
+                                                </a>
+                                                <a class="success_item uk-flex uk-flex-column uk-flex-middle">
+                                                      <span class="name">提问</span>
+                                                      <span class="value">${user_question_cnt}</span>
+                                                </a>
+                                                <a class="success_item uk-flex uk-flex-column uk-flex-middle">
+                                                      <span class="name">关注者</span>
+                                                      <span class="value">${user_follower_cnt}</span>
+                                                </a>
+                                          </div>
+                                          <div class="options ${follow_state}">
+                                                <div
+                                                      class="btn_follow btn_follow_real"
+                                                      data-id="${data[i].user_user_id}"
+                                                      style="display:${relation_1}"
+                                                >
+                                                      <span class="text">关注TA</span>
+                                                </div>
+                                                <div
+                                                      class="btn_follow"
+                                                      data-id="${data[i].user_user_id}"
+                                                      style="display:${relation_2}"
+                                                >
+                                                      <span class="text">关注TA</span>
+                                                </div>
+                                                <div
+                                                      class="btn_unfollow btn_unfollow_real"
+                                                      data-id="${data[i].user_user_id}"
+                                                      style="display:${relation_3}"
+                                                >
+                                                      <span class="text">已关注</span>
+                                                </div>
+                                                <div
+                                                      class="btn_unfollow"
+                                                      data-id="${data[i].user_user_id}"
+                                                      style="display:${relation_4}"
+                                                >
+                                                      <span class="text">互相关注</span>
+                                                </div>
+                                          </div>
+                                    </div>
+                                    <div class="user_info uk-flex">
+                                          <img
+                                                class="img_avatar"
+                                                src="${user_headimgurl}"
+                                                alt="img_avatar"
+                                          >
+                                          <div class="detail uk-flex uk-flex-column uk-flex-center">
+                                                <span class="nickname line_clamp_1">${nickname}</span>
+                                                <span class="intro line_clamp_1">${bio}</span>
+                                          </div>
+                                    </div>
+                                    <div class="answer_content uk-flex uk-flex-column">
+                                          <span class="answer_content_text">${data[i].content}</span>
+                                          <div class="btn_show_all_answer uk-flex uk-flex-center uk-flex-middle">
+                                                <span class="text">展开阅读全文</span>
+                                                <img
+                                                      class="icon_pull"
+                                                      src="${asset_path}/images/icon_arrow_down_blue.png"
+                                                      alt="icon_pull"
+                                                >
+                                          </div>
+                                    </div>
+                                    <div class="publish_time">
+                                          <span>发布于 ${data[i].publish_time}</span>
+                                    </div>
+                                    <div class="options uk-flex uk-flex-between">
+                                          <div class="left">
+                                                <div
+                                                      class="btn_agree uk-flex uk-flex-middle ${has_agreed_state_1}"
+                                                      data-id="${data[i].answer_id}"
+                                                >
+                                                      <img 
+                                                            class="img_agree"
+                                                            src="${asset_path}/images/icon_agree.svg"
+                                                            alt="icon_agree"
+                                                      >
+                                                      <span class="text">赞同</span>
+                                                      <span class="count">${data[i].agree_cnt}</span>
+                                                </div>
+                                                <div
+                                                      class="btn_agree_clicked uk-flex uk-flex-middle ${has_agreed_state_2}"
+                                                      data-id="${data[i].answer_id}"
+                                                >
+                                                      <img
+                                                            class="img_clap"
+                                                            src="${asset_path}/images/icon_agree_white.svg"
+                                                            alt="icon_clap"
+                                                      >
+                                                      <span class="text">已赞同</span>
+                                                      <span class="count">${data[i].agree_cnt}</span>
+                                                </div>
+                                          </div>
+                                          <div class="right">
+                                                <div class="btn_collapse_answer uk-flex uk-flex-middle">
+                                                      <span class="text">收起</span>
+                                                      <img
+                                                            class="img_collapse"
+                                                            src="${asset_path}/images/icon_arrow_up.png"
+                                                            alt="icon_collapse"
+                                                      >
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+                        `
+
+                        $('.answer_items').append(nodes)
+                  }
+            }
+
+            $.ajax({
+                  type: "post",
+                  url: "/_api/xpmsns/qanda/question/get",
+                  dataType: "json",
+                  data: {
+                        question_id: _that.data.question_id,
+                        withanswer: "1",
+                        withagree: "1",
+                        withrelation: "1",
+                        page: 1,
+                        perpage: "6",
+                        answer_select: "answer.answer_id,answer.summary,answer.content,answer.agree_cnt,answer.publish_time,user.headimgurl,user.user_id,user.name,user.nickname,user.mobile,user.bio",
+                        agree_desc: _that.current_rank_type === 'default' ? "1" : "",
+                        publish_desc: _that.current_rank_type === 'time' ? "1" : ""
+                  },
+                  success: function (response) {
+                        if (response.answers.data.length !== 0) {
+                              updateAnswersItems(response.answers.data)
+                              _that.listenAnswersSummaryHeight()
+                        }
+                  },
+                  error: function (err) {
+                        console.log(err);
+                  }
+            })
+      },
+      handleClickBtnRankAnswers: function () {
+            const _that = this
+
+            $('.btn_rank_as').on('click', function () {
+                  _that.has_load_all = false
+
+                  switch ($(this).data('type')) {
+                        case 'default':
+                              $(this)
+                                    .parents('.answer_rank')
+                                    .find('.btn_rank')
+                                    .text('默认排序')
+
+                              _that.current_rank_type = 'default'
+                              _that.loadAnswers()
+                              break
+                        case 'time':
+                              $(this)
+                                    .parents('.answer_rank')
+                                    .find('.btn_rank')
+                                    .text('按时间排序')
+
+                              _that.current_rank_type = 'time'
+                              _that.loadAnswers()
+                              break
+                  }
+            })
       }
 })

@@ -1,0 +1,48 @@
+<include src="__WEB_ROOT__/desktop/common/head.page" />
+<include src="__WEB_ROOT__/desktop/common/header.page" />
+<include src="__WEB_ROOT__/desktop/components/uploader/image.page" /> <!-- 引入部件 文件上传组件-->
+<include src="__WEB_ROOT__/desktop/components/editor/html.page" /> <!-- 引入部件 HTML编辑器 -->
+
+<section class="tag_wrap uk-flex uk-flex-center uk-flex-middle">
+      <span class="text">{{tag}}</span>
+</section>
+
+<section class="content_wrap uk-flex uk-flex-center">
+      <div class="content uk-flex uk-flex-between">
+            <div class="left_wrap Card">
+                  <div
+                        class="empty_wrap uk-flex uk-flex-column uk-flex-center uk-flex-middle"
+                        mp:if="{{questions.total===0}}"
+                  >
+                        <span class="title_empty">这里还什么都没有~</span>
+                        <img
+                              class="img_empty"
+                              src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/empty.svg"
+                              alt="img_empty"
+                        >
+                  </div>
+                  <div class="question_items">
+                        <div
+                              class="question_item uk-flex uk-flex-column"
+                              mp:for="{{questions.data}}"
+                              mp:key="{{item.question_id}}"
+                              data-id="{{item.question_id}}"
+                        >
+                              <a 
+                                    href="/qanda/detail/{{item.question_id}}"
+                                    class="question_content"
+                              >{{item.title}}</a>
+                        </div>
+                  </div>
+                  <div class="loadmore_wrap border_box">
+                        <div class="loading_item"></div>
+                        <div class="loading_item"></div>
+                        <div class="loading_item"></div>
+                  </div>
+            </div>
+      </div>
+</section>
+
+<include src="__WEB_ROOT__/desktop/common/quickbar.page" />
+<include src="__WEB_ROOT__/desktop/common/footer.page" />
+<include src="__WEB_ROOT__/desktop/common/foot.page" />

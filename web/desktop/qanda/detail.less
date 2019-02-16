@@ -336,7 +336,7 @@ body {
 
                                     .btn_rank {
                                           background: url({{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_rank.svg) no-repeat right center;
-                                          background-size: 18%;
+                                          background-size:20px 20px;
                                           padding-right: 30px;
                                     }
 
@@ -380,6 +380,7 @@ body {
 
                         .answer_items {
                               width: 100%;
+                              min-height: 200px;
 
                               .answer_item:last-child {
                                     border-bottom: none;
@@ -458,9 +459,9 @@ body {
                                                 border-bottom: 0;
 
                                                 .btn_follow {
+                                                      display: none;
                                                       width: 100%;
                                                       height: 32px;
-                                                      display: inline-block;
                                                       padding: 0 16px;
                                                       font-size: 14px;
                                                       line-height: 32px;
@@ -480,6 +481,24 @@ body {
                                                             background-size: 30%;
                                                             padding-left: 24px;
                                                       }
+                                                }
+
+                                                .btn_unfollow {
+                                                      display: none;
+                                                      width: 100%;
+                                                      height: 32px;
+                                                      padding: 0 16px;
+                                                      font-size: 14px;
+                                                      line-height: 32px;
+                                                      color: white;
+                                                      text-align: center;
+                                                      cursor: pointer;
+                                                      background: none;
+                                                      border: none;
+                                                      border-radius: 3px;
+                                                      background-color: rgb(118,131,155);
+                                                      transition: all ease 0.3s;
+                                                      box-sizing: border-box;
                                                 }
 
                                                 .btn_follow:hover {
@@ -532,6 +551,7 @@ body {
                                                 text-align: justify;
                                                 color: #1a1a1a;
                                                 margin-bottom: 10px;
+                                                word-wrap: break-word;
                                           }
 
                                           .btn_show_all_answer {

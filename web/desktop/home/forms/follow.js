@@ -89,7 +89,12 @@ Page({
 
             function updateFollowersItems(data) {
                   for (let i = 0; i < data.length; i++) {
-                        let nickname = data[i].follower_nickname ? data[i].follower_nickname : data[i].follower_name
+                        let follower_headimgurl = data[i].follower_headimgurl ? data[i].follower_headimgurl.url : '/static-file/default/desktop/assets/images/elephant.svg'
+                        let follower_nickname = data[i].follower_nickname ? data[i].follower_nickname : data[i].following_id
+                        let follower_bio = data[i].follower_bio ? data[i].follower_bio : 'TA还没有简介哦'
+                        let follower_answer_cnt = data[i].follower_answer_cnt ? data[i].follower_answer_cnt : '0'
+                        let follower_question_cnt = data[i].follower_question_cnt ? data[i].follower_question_cnt : '0'
+                        let follower_follower_cnt = data[i].follower_follower_cnt ? data[i].follower_follower_cnt : '0'
 
                         const asset_path = '/static-file/default/desktop/assets'
 
@@ -100,24 +105,23 @@ Page({
                                     <a href="#">
                                           <img
                                                 class="img_avatar"
-                                                src="${asset_path}/images/img_avatar_eg.jpg"
+                                                src="${follower_headimgurl}"
                                                 alt="img_avatar"
                                           >
                                     </a>
                                     <div class="options uk-flex uk-flex-between uk-flex-middle">
                                           <div class="left uk-flex uk-flex-column">
                                                 <div class="user_info uk-flex uk-flex-middle">
-                                                      <a class="nickname">${nickname}</a>
+                                                      <a class="nickname">${follower_nickname}</a>
                                                       <span class="line">|</span>
-                                                      <span class="intro line_clamp_1">多年专注Logo设计 kgdesign.cn多年专注Logo设计
-                                                            kgdesign.cn多年专注Logo设计 kgdesign.cn</span>
+                                                      <span class="intro line_clamp_1">${follower_bio}</span>
                                                 </div>
                                                 <div class="user_success uk-flex">
-                                                      <span class="success_item">85 回答</span>
+                                                      <span class="success_item">${follower_answer_cnt} 回答</span>
                                                       <span class="dot">·</span>
-                                                      <span class="success_item">60 提问</span>
+                                                      <span class="success_item">${follower_question_cnt} 提问</span>
                                                       <span class="dot">·</span>
-                                                      <span class="success_item">16,047 关注者</span>
+                                                      <span class="success_item">${follower_follower_cnt} 关注者</span>
                                                 </div>
                                           </div>
                                           <div class="right">
@@ -135,7 +139,7 @@ Page({
                   }
             }
 
-            $.ajax({ 
+            $.ajax({
                   type: "post",
                   url: "/_api/xpmsns/user/follow/getFollowers",
                   dataType: "json",
@@ -173,7 +177,12 @@ Page({
 
             function updateFollowingItems(data) {
                   for (let i = 0; i < data.length; i++) {
-                        let nickname = data[i].user_nickname ? data[i].user_nickname : data[i].user_name
+                        let following_headimgurl = data[i].following_headimgurl ? data[i].following_headimgurl.url : '/static-file/default/desktop/assets/images/elephant.svg'
+                        let following_nickname = data[i].following_nickname ? data[i].following_nickname : data[i].following_id
+                        let following_bio = data[i].following_bio ? data[i].follower_bio : 'TA还没有简介哦'
+                        let following_answer_cnt = data[i].following_answer_cnt ? data[i].following_answer_cnt : '0'
+                        let following_question_cnt = data[i].following_question_cnt ? data[i].following_question_cnt : '0'
+                        let following_follower_cnt = data[i].following_follower_cnt ? data[i].following_follower_cnt : '0'
 
                         const asset_path = '/static-file/default/desktop/assets'
 
@@ -184,30 +193,29 @@ Page({
                                     <a href="#">
                                           <img
                                                 class="img_avatar"
-                                                src="${asset_path}/images/img_avatar_eg.jpg"
+                                                src="${following_headimgurl}"
                                                 alt="img_avatar"
                                           >
                                     </a>
                                     <div class="options uk-flex uk-flex-between uk-flex-middle">
                                           <div class="left uk-flex uk-flex-column">
                                                 <div class="user_info uk-flex uk-flex-middle">
-                                                      <a class="nickname">${nickname}</a>
+                                                      <a class="nickname">${following_nickname}</a>
                                                       <span class="line">|</span>
-                                                      <span class="intro line_clamp_1">多年专注Logo设计 kgdesign.cn多年专注Logo设计
-                                                            kgdesign.cn多年专注Logo设计 kgdesign.cn</span>
+                                                      <span class="intro line_clamp_1">${following_bio}</span>
                                                 </div>
                                                 <div class="user_success uk-flex">
-                                                      <span class="success_item">85 回答</span>
+                                                      <span class="success_item">${following_answer_cnt} 回答</span>
                                                       <span class="dot">·</span>
-                                                      <span class="success_item">60 文章</span>
+                                                      <span class="success_item">${following_question_cnt} 文章</span>
                                                       <span class="dot">·</span>
-                                                      <span class="success_item">16,047 关注者</span>
+                                                      <span class="success_item">${following_follower_cnt} 关注者</span>
                                                 </div>
                                           </div>
                                           <div class="right">
                                                 <button
                                                       class="btn_cancel"
-                                                      data-id="${data[i].user_user_id}"
+                                                      data-id="${data[i].following_id}"
                                                 >已关注</button>
                                           </div>
                                     </div>

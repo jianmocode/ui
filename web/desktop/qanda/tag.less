@@ -1,0 +1,179 @@
+@charset "utf-8";
+@import '/desktop/common/d.less';
+@import '/desktop/widget/recommend/list.less';
+
+// 引入组件
+@import '/desktop/components/uploader/image.less';
+@import '/desktop/components/editor/html.less';
+
+::-webkit-input-placeholder {
+      color: #bdc3cf;
+      font-size: 16px;
+}
+
+:-moz-placeholder {
+      color: #bdc3cf;
+      font-size: 16px;
+}
+
+::-moz-placeholder {
+      color: #bdc3cf;
+      font-size: 16px;
+}
+
+:-ms-input-placeholder {
+      color: #bdc3cf;
+      font-size: 16px;
+}
+
+body {
+      font-size: 15px;
+      color: #1A1A1A;
+      background-color: #f6f6f6;
+      min-height: calc(~'100vh');
+}
+
+.Card {
+      background-color: white;
+      overflow: hidden;
+      border-radius: 2px;
+      box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
+      box-sizing: border-box;
+      margin-bottom: 10px;
+}
+
+.iframe-form {
+      padding: 0px;
+      min-height: 500px;
+}
+
+// 设定工具栏样式
+.trix-button--icon-decrease-nesting-level {
+      display: none;
+}
+
+.trix-button--icon-increase-nesting-level {
+      display: none;
+}
+
+.trix-button-group-alignment {
+      display: none !important;
+}
+
+.jm-footer {
+      display: none;
+}
+
+.jm-focus {
+      padding-top: 25px;
+      padding-bottom: 25px;
+}
+
+.jm-recommends {
+      padding-top: 25px;
+      padding-bottom: 25px;
+
+      .jm-recommends-header {
+            background: rgba(255, 255, 255, .95);
+
+            a {
+                  font-size: 1rem;
+            }
+      }
+
+      .jm-recommends-header-active {
+            padding-top: 25px;
+      }
+}
+
+.tag_wrap {
+      margin: 80px 0;
+
+
+      .text {
+            padding-bottom: 4px;
+            padding-left: 8px;
+            padding-right: 8px;
+            border-bottom: 2px solid #bdc3cf;
+            color: #bdc3cf;
+            font-size: 32px;
+            font-weight: bold;
+      }
+}
+
+.content_wrap {
+      width: 100%;
+      padding-top: 10px;
+
+      .content {
+            width: 1000px;
+
+            .left_wrap {
+                  width: 1000px;
+                  background-color: white;
+
+                  .question_items {
+                        width: 100%;
+
+                        .question_item {
+                              width: 100%;
+                              box-sizing: border-box;
+                              padding: 20px;
+                              border-bottom: 1px solid #F0F2F7;
+                              cursor: pointer;
+
+                              .question_content {
+                                    font-size: 18px;
+                                    font-weight: 600;
+                                    line-height: 1.6;
+                                    color: #1A1A1A;
+                              }
+
+                              .question_content:hover {
+                                    color: #1e87f0;
+                              }
+
+                              .best_answer {
+                                    font-size: 15px;
+                                    line-height: 1.6;
+                                    color: #1a1a1a;
+                                    margin-top: 10px;
+                              }
+
+                              .answer_content {
+                                    display: none;
+                              }
+                        }
+                  }
+            }
+      }
+}
+
+@keyframes loading {
+      from {
+            opacity: 0;
+      }
+
+      to {
+            opacity: 1;
+      }
+}
+
+.loadmore_wrap {
+      display: none;
+      width: 100%;
+      padding: 20px;
+      padding-bottom: 10px;
+
+      .loading_item :last-child {
+            margin-bottom: 0;
+      }
+
+      .loading_item {
+            width: 100%;
+            height: 14px;
+            margin-bottom: 16px;
+            background: linear-gradient(to right, whitesmoke, white);
+            animation: loading 1s infinite;
+      }
+}

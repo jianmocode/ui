@@ -9,16 +9,27 @@
                   <div class="tab">
                         <span class="tab_item">
                               <a
-                                    class="tab_link is_active"
+                                    class="tab_link"
                                     href=""
                               >推荐</a>
                         </span>
                         <span class="tab_item">
                               <a
-                                    class="tab_link"
+                                    class="tab_link is_active"
                                     href=""
                               >热榜</a>
                         </span>
+                  </div>
+                  <div
+                        class="empty_wrap uk-flex uk-flex-column uk-flex-center uk-flex-middle"
+                        mp:if="{{questions.total===0}}"
+                  >
+                        <span class="title_empty">这里还什么都没有~</span>
+                        <img
+                              class="img_empty"
+                              src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/empty.svg"
+                              alt="img_empty"
+                        >
                   </div>
                   <div class="question_items">
                         <div
@@ -31,8 +42,11 @@
                                     href="/qanda/detail/{{item.question_id}}"
                                     class="question_content"
                               >{{item.title}}</a>
-                              <span class="best_answer answer_summary">{{item.summary}}</span>
-                              <span class="best_answer answer_content none">{{item.content}}</span>
+                              <span
+                                    class="best_answer answer_summary"
+                                    mp:if="{{item.summary}}"
+                              >{{item.summary}}</span> 
+                              <!-- <span class="best_answer answer_content">{{item.content}}</span> -->
                         </div>
                   </div>
                   <div class="loadmore_wrap border_box">
@@ -47,16 +61,14 @@
                   </aside>
                   <aside class="hot Card uk-flex uk-flex-column">
                         <div class="title">
-                              <span class="title_text">热门话题</span>
+                              <span class="title_text">热门标签</span>
                         </div>
                         <div class="hot_items uk-flex uk-flex-wrap border_box">
-                              <a class="hot_item border_box">架构</a>
-                              <a class="hot_item border_box">开源</a>
-                              <a class="hot_item border_box">算法</a>
-                              <a class="hot_item border_box">Github</a>
-                              <a class="hot_item border_box">面试</a>
-                              <a class="hot_item border_box">代码规范</a>
-                              <a class="hot_item border_box">产品</a>
+                              <a
+                                    class="hot_item border_box"
+                                    mp:for="{{hot_tags.data}}"
+                                    href="/qanda/tag/{{item.name}}"
+                              >{{item.name}}</a>
                         </div>
                   </aside>
                   <aside class="my Card uk-flex uk-flex-column">
@@ -106,8 +118,9 @@
             <div class="ask_item uk-flex uk-flex-between">
                   <img
                         class="img_avatar"
-                        src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
+                        src="{{user.headimgurl.url}}"
                         alt="img_avatar"
+                        mp:if="{{user.headimgurl}}"
                   >
                   <textarea
                         class="question_title"

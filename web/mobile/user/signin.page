@@ -1,0 +1,57 @@
+<include src="__WEB_ROOT__/mobile/common/head.page" />
+
+<section class="login_wrap uk-flex uk-flex-column border_box">
+      <span class="legend">账号密码登录</span>
+      <form class="login_form uk-flex uk-flex-column">
+            <div class="login_item">
+                  <input
+                        class="input"
+                        type="text"
+                        placeholder="请输入手机号"
+                  >
+            </div>
+            <div class="login_item">
+                  <input
+                        class="input"
+                        type="password"
+                        placeholder="请输入密码"
+                  >
+            </div>
+            <div class="login_item uk-flex uk-flex-middle">
+                  <input
+                        class="input input_qr_code"
+                        type="text"
+                        placeholder="请输入验证码"
+                  >
+                  <img
+                        class="img_qr_code"
+                        src="/_api/xpmsns/user/user/vcode?width=80&height=40&size=20"
+                        alt="img_qr_code"
+                  >
+            </div>
+      </form>
+      <button
+            class="btn_login"
+            type="button"
+      >登录</button>
+      <div class="options uk-flex uk-flex-center uk-flex-middle">
+            <a
+                  class="link"
+                  href="#"
+            >忘记密码</a>
+            <span class="line">|</span>
+            <a
+                  class="link"
+                  href="#"
+            >注册账号</a>
+      </div>
+
+</section>
+
+<a class="sundry uk-flex uk-flex-column uk-flex-middle">
+      <span class="title">简墨</span>
+      <span class="describtion">信息形于简墨</span>
+</a>
+
+<include src="__WEB_ROOT__/mobile/common/footer.page" />
+<include src="__WEB_ROOT__/mobile/common/foot.page" />

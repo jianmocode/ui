@@ -16,7 +16,7 @@
                         >
                               <a class="topic_item_text">{{item}}</a>
                         </div>
-                  </div> 
+                  </div>
                   <div class="question_item">
                         <span class="question_text">{{question.title}}</span>
                   </div>
@@ -71,12 +71,12 @@
                         <div class="user_info uk-flex">
                               <img
                                     class="img_avatar"
-                                    src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
+                                    src="{{(user.headimgurl)?user.headimgurl.url:'/static-file/default/desktop/assets/images/elephant.svg'}}"
                                     alt="img_avatar"
                               >
                               <div class="detail uk-flex uk-flex-column uk-flex-center">
-                                    <span class="nickname">闻道</span>
-                                    <span class="intro line_clamp_1">灯下望月，不知其影灯下望月，不知其影灯下望月，不知其影灯下望月，不知其影灯下望月，不知其影灯下望月，不知其影灯下望月，不知其影灯下望月，不知其影</span>
+                                    <span class="nickname">{{(user.nickname)?user.nickname:user.mobile}}</span>
+                                    <span class="intro line_clamp_1">{{(user.bio)?user.bio:'TA还没有简介哦'}}</span>
                               </div>
                         </div>
                         <form
@@ -125,13 +125,30 @@
                                           uk-dropdown="mode:click"
                                     >
                                           <div class="rule_items uk-flex uk-flex-column">
-                                                <button class="rule_item">默认排序</button>
-                                                <button class="rule_item">按时间排序</button>
+                                                <button
+                                                      class="rule_item btn_rank_as"
+                                                      data-type="default"
+                                                >默认排序</button>
+                                                <button
+                                                      class="rule_item btn_rank_as"
+                                                      data-type="time"
+                                                >按时间排序</button>
                                           </div>
                                     </div>
                               </div>
                         </div>
                         <div class="answer_items">
+                              <div
+                                    class="empty_wrap uk-flex uk-flex-column uk-flex-center uk-flex-middle"
+                                    mp:if="{{question.answers.total===0}}"
+                              >
+                                    <span class="title_empty">这里还什么都没有~</span>
+                                    <img
+                                          class="img_empty"
+                                          src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/empty.svg"
+                                          alt="img_empty"
+                                    >
+                              </div>
                               <div
                                     class="answer_item"
                                     mp:for="{{question.answers.data}}"
@@ -145,7 +162,7 @@
                                                 >
                                                       <img
                                                             class="avatar_author"
-                                                            src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
+                                                            src="{{(item.user_headimgurl)?item.user_headimgurl.url:'/static-file/default/desktop/assets/images/elephant.svg'}}"
                                                             alt="avatar_author"
                                                       >
                                                 </div>
@@ -157,15 +174,15 @@
                                           <div class="author_success uk-flex uk-flex-between">
                                                 <a class="success_item uk-flex uk-flex-column uk-flex-middle">
                                                       <span class="name">回答</span>
-                                                      <span class="value">208</span>
+                                                      <span class="value">{{(item.user_answer_cnt)?item.user_answer_cnt:'0'}}</span>
                                                 </a>
                                                 <a class="success_item uk-flex uk-flex-column uk-flex-middle">
                                                       <span class="name">提问</span>
-                                                      <span class="value">21</span>
+                                                      <span class="value">{{(item.user_question_cnt)?item.user_question_cnt:'0'}}</span>
                                                 </a>
                                                 <a class="success_item uk-flex uk-flex-column uk-flex-middle">
                                                       <span class="name">关注者</span>
-                                                      <span class="value">24,250</span>
+                                                      <span class="value">{{(item.user_follower_cnt)?item.user_follower_cnt:'0'}}</span>
                                                 </a>
                                           </div>
                                           <div
@@ -173,17 +190,39 @@
                                                 mp:if="{{item.user_user_id!==user.user_id}}"
                                           >
                                                 <div
-                                                      class="btn_follow"
+                                                      class="btn_follow btn_follow_real"
                                                       data-id="{{item.user_user_id}}"
+                                                      style="display:{{(item.relation==='no-relation')?'block'}}"
                                                 >
                                                       <span class="text">关注TA</span>
+                                                </div>
+                                                <div
+                                                      class="btn_follow"
+                                                      data-id="{{item.user_user_id}}"
+                                                      style="display:{{(item.relation==='follower')?'block'}}"
+                                                >
+                                                      <span class="text">关注TA</span>
+                                                </div>
+                                                <div
+                                                      class="btn_unfollow btn_unfollow_real"
+                                                      data-id="{{item.user_user_id}}"
+                                                      style="display:{{(item.relation==='following')?'block'}}"
+                                                >
+                                                      <span class="text">已关注</span>
+                                                </div>
+                                                <div
+                                                      class="btn_unfollow"
+                                                      data-id="{{item.user_user_id}}"
+                                                      style="display:{{(item.relation==='friend')?'block'}}"
+                                                >
+                                                      <span class="text">互相关注</span>
                                                 </div>
                                           </div>
                                     </div>
                                     <div class="user_info uk-flex">
                                           <img
                                                 class="img_avatar"
-                                                src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/img_avatar_eg.jpg"
+                                                src="{{(item.user_headimgurl)?item.user_headimgurl.url:'/static-file/default/desktop/assets/images/elephant.svg'}}"
                                                 alt="img_avatar"
                                           >
                                           <div class="detail uk-flex uk-flex-column uk-flex-center">
@@ -192,7 +231,7 @@
                                           </div>
                                     </div>
                                     <div class="answer_content uk-flex uk-flex-column">
-                                          <span class="answer_content_text">{{item.content}}</span>
+                                          <div class="answer_content_text">{{item.content}}</div>
                                           <div class="btn_show_all_answer uk-flex uk-flex-center uk-flex-middle">
                                                 <span class="text">展开阅读全文</span>
                                                 <img
@@ -217,7 +256,7 @@
                                                             alt="icon_agree"
                                                       >
                                                       <span class="text">赞同</span>
-                                                      <span class="count">{{item.agree_cnt}}3.6K</span>
+                                                      <span class="count">{{item.agree_cnt}}</span>
                                                 </div>
                                                 <div
                                                       class="btn_agree_clicked uk-flex uk-flex-middle {{(item.has_agreed)?'flex':'none'}}"
@@ -229,7 +268,7 @@
                                                             alt="icon_clap"
                                                       >
                                                       <span class="text">已赞同</span>
-                                                      <span class="count">{{item.agree_cnt}}3.7K</span>
+                                                      <span class="count">{{item.agree_cnt}}</span>
                                                 </div>
                                           </div>
                                           <div class="right">

@@ -30,6 +30,11 @@ Page({
                   .find(".iframe iframe")
                   .height($('.zhifou_wrap').height())
       },
+      resetAnswerTabHeight: function () {
+            $(window.parent.document)
+                  .find(".iframe iframe")
+                  .height($('.my_answers').height() + 61)
+      },
       handleClickTabLick: function () {
             const _that = this
 
@@ -68,6 +73,8 @@ Page({
             })
       },
       handleClickShowAndHideAnswerContent: function () {
+            const _that = this
+
             $('.my_answers .answer_items').on('click', '.btn_show_all', function () {
                   $(this)
                         .hide()
@@ -86,6 +93,8 @@ Page({
                         .parents('.answer_item')
                         .find('.content')
                         .show()
+
+                  _that.resetAnswerTabHeight()
             })
 
             $('.my_answers .answer_items').on('click', '.btn_collapse_answer', function () {
@@ -106,6 +115,8 @@ Page({
                         .parents('.answer_item')
                         .find('.content')
                         .hide()
+
+                  _that.resetAnswerTabHeight()
             })
       },
       getTarget: function () {
@@ -223,7 +234,7 @@ Page({
                                                       src="${asset_path}/images/icon_arrow_up.png"
                                                       alt="icon_collapse"
                                                 >
-                                          </div>
+                                          </div> 
                                     </div>
                               </div>
                         `

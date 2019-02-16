@@ -3,6 +3,7 @@
       "pages": [
             "/desktop/qanda/index",
             "/desktop/qanda/detail",
+            "/desktop/qanda/tag",
             "/desktop/article/index",
             "/desktop/article/list",
             "/desktop/article/detail",
@@ -23,6 +24,7 @@
             "/desktop/home/forms/zhifou",
             "/desktop/home/forms/follow",
             "/desktop/home/editor/article",
+            "/mobile/user/signin",
             "/mobile/article/index",
             "/mobile/article/list",
             "/mobile/article/detail",

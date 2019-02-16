@@ -19,7 +19,7 @@
                         "perpage": "6"
                   }
             }
-      },
+      }, 
       "entries": [{
             "method": "GET",
             "router": "/home/forms/follow",

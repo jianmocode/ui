@@ -1,7 +1,10 @@
 {
       "cname": "问答",
       "data": {
-            "question_id": "{{__var.id}}",
+            "page":{
+                  "title":"{{__var.tag}}-标签-知否"
+            },
+            "tag":"{{__var.tag}}",
             "user": {
                   "api": "/xpmsns/user/user/getUserInfo",
                   "query": {}
@@ -14,7 +17,7 @@
                         "noParentId": "1",
                         "children": false,
                         "isnav": 1
-                  }
+                  } 
             },
             "services": {
                   "api": "/xpmsns/pages/category/search",
@@ -35,54 +38,35 @@
                         "select": "*"
                   }
             },
-            "question": {
-                  "api": "/xpmsns/qanda/question/get",
+            "questions": {
+                  "api": "/xpmsns/qanda/question/search",
                   "query": {
-                        "question_id": "{{__var.id}}",
-                        "withanswer": "1",
-                        "withagree": "1",
-                        "withrelation": "1",
                         "page": "1",
-                        "perpage": "6",
-                        "answer_select": "answer.user_id,answer.answer_id,answer.summary,answer.content,answer.agree_cnt,answer.publish_time,user.headimgurl,user.user_id,user.name,user.nickname,user.mobile,user.bio,user.answer_cnt,user.question_cnt,user.follower_cnt",
-                        "agree_desc": "1"
+                        "perpage": "12",
+                        "tags":"{{__var.tag}}",
+                        "select": "question_id,question.title,user.name,category.name,tags,user.user_id",
+                        "publish_desc": "1"
                   }
-            },
-            "page":{
-                  "title":"{{question.title}} - 知否"
-            }, 
-            "__css": [
-                  "/js/trix/trix.css"
-            ],
-            "__js": [
-                  "/js/trix/trix.js",
-                  "/js/jquery-validation-1.17.0/jquery.validate.min.js",
-                  "/js/jquery.ui.widget.js",
-                  "/js/jquery.iframe-transport.js",
-                  "/js/jquery.fileupload.js",
-                  "/js/jquery.form.min.js",
-                  "/js/mustache.min.js"
-            ]
+            }
       },
       "entries": [{
                   "method": "GET",
-                  "router": "/qanda/detail/{id:[0-9a-zA-Z]+}",
+                  "router": "/qanda/tag/{tag}",
                   "ttl": 3600
             },
             {
                   "method": "GET",
-                  "router": "/qanda/detail/{id:[0-9a-zA-Z]+}",
+                  "router": "/qanda/tag/{tag}",
                   "ttl": 0
             },
             {
                   "method": "GET",
-                  "router": "/qanda/detail/{id:[0-9a-zA-Z]+}.html",
+                  "router": "/qanda/tag/{tag}.html",
                   "ttl": 0
             }
       ],
-
       "alias": {
-            "mobile": "/mobile/qanda/detail",
-            "wechat": "/mobile/qanda/detail"
+            "mobile": "/mobile/qanda/tag",
+            "wechat": "/mobile/qanda/tag"
       }
 }
