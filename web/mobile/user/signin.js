@@ -1,9 +1,21 @@
 let web = getWeb();
-import videos from '../widget/recommend/album';  // 下一版应该可以引用组件
 
 Page({
-	data:{},
-	onReady: function( params ) {
-	
-	}
+      data: {},
+      resizeBodyHeight: function () {
+            const initial_height = $(document).height()
+
+            $(window).resize(function () {
+                  if ($(document).height() < initial_height) {
+                        $('.sundry').hide()
+                  } else {
+                        $('.sundry').css('display', 'flex')
+                  }
+            })
+      },
+      onReady: function () {
+            const _that = this
+
+            _that.resizeBodyHeight()
+      }
 })
