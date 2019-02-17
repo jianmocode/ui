@@ -52,6 +52,7 @@
             "/mobile/widget/recommend",
             "/mobile/widget/category",
             "/desktop/common",
+            "/desktop/admin/common",
             "/desktop/widget/recommend",
             "/desktop/widget/category",
             "/desktop/components/uploader"

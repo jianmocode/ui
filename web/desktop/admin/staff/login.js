@@ -3,7 +3,6 @@ import {Validate} from '../../../libs/validate.js';
 
 let web = getWeb();
 let $utils = new Utils();
-let $$ = UIkit.util;
 
 Page({
 	data:{},
@@ -11,16 +10,9 @@ Page({
 	validator: null,
 
 	onReady: function( get ) {
-
-		var that = this;
-
-		// 错误提醒框关闭事件
-		try {
-			$$.on('.uk-alert', 'hide', ()=>{
-				setTimeout(()=>{$utils.parentHeight();}, 500);
-			});
-		} catch( e ) { console.log( 'Error @Alert Hide Event', e); }
-
+        
+        var that = this;
+        
 		// 加载表单验证类
 		try {
 			this.validator = new Validate({
@@ -30,7 +22,10 @@ Page({
 				complete: ()=>{ $utils.parentHeight(); }
 			});
 
-		} catch( e ) { console.log( 'Error @Validate', e); }
+        } catch( e ) { console.log( 'Error @Validate', e); }
+
+        console.log( 'onReady', Validate );
+        
 	},
 
 
