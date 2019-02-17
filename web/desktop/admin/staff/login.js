@@ -31,8 +31,8 @@ Page({
 	 * 更换图片验证码
 	 * @return {[type]} [description]
 	 */
-	changeVcode: function(){
-		var api = '/_api/xpmse/xpmse/staff/vcode?width=150&height=40&size=20&t=' + Date.parse(new Date()); 
-		$('.image.vcode img').attr('src', api);
+	changeVcode: function( event ){
+        var api = '/_api/xpmse/xpmse/staff/vcode?width=120&height=38&size=20&t=' + Date.parse(new Date()); 
+		$(event.target).attr('src', api);
 	},
 })

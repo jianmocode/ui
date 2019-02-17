@@ -26,36 +26,59 @@
             }" 
           >
             <div class="card-body p-6">
-              <div class="card-title"> 管理员登录 </div>
-              <div class="form-group">
-                <label class="form-label">手机号</label>
-                <input name="mobile" type="text" class="form-control" 
-				   placeholder="请输入手机号" 
-				   validate="{
-				   		required:true, 
-				   		messages: {
-							required:'请填写手机号码'
-				   		}
-				   	}
-				   ">
-              </div>
-              <div class="form-group">
-                <label class="form-label">
-                 登录密码
-                </label>
-                <input name="password" type="password" class="form-control" 
-				   placeholder="请输入登录密码" 
-				   validate="{
-					   	required:true,
-					   	minlength:6,
-					   	maxlength:15,
-					   	messages: {
-							required:'请输入登录密码',
-							minlength: '密码长度不能少于6位',
-							maxlength: '密码长度不能超过11位'
-					   	}
-					}">
-              </div>
+                <div class="card-title"> 管理员登录 </div>
+                <div class="form-group">
+                    <label class="form-label">手机号</label>
+                    <input name="mobile" type="text" class="form-control" 
+                    placeholder="请输入手机号" 
+                    validate="{
+                            required:true, 
+                            messages: {
+                                required:'请填写手机号码'
+                            }
+                        }
+                    ">
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">
+                    登录密码
+                    </label>
+                    <input name="password" type="password" class="form-control" 
+                    placeholder="请输入登录密码" 
+                    validate="{
+                            required:true,
+                            minlength:6,
+                            maxlength:15,
+                            messages: {
+                                required:'请输入登录密码',
+                                minlength: '密码长度不能少于6位',
+                                maxlength: '密码长度不能超过11位'
+                            }
+                        }">
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">图形验证码</label>
+                    <div class="row gutters-xs">
+                        <div class="col">
+                                <input name="_vcode" class="form-control" 
+                                    placeholder="请输入图形验证码"
+                                    validate="{
+                                            required:true, 
+                                            messages: {
+                                                required:'请填图形验证码'
+                                            }
+                                        }
+                                    "
+                                />
+                        </div>
+                        <div class="col-auto">
+                            <img bindtap="changeVcode" src="/_api/xpmse/xpmse/staff/vcode?width=120&height=38&size=20" width="120" alt="点击更换" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="invalid-feedback"></div>
+                </div>
               
               <div class="form-footer">
                 <button type="submit" class="btn btn-primary btn-block">登录</button>
@@ -63,7 +86,7 @@
             </div>
           </form>
           <div class="text-center text-muted">
-            信息形於简墨 <a href="https://www.jianmo.ink/?from=site">简墨内容云</a>
+                信息形於简墨 <a href="https://www.jianmo.ink/?from=site">简墨内容云</a>
           </div>
         </div>
     </div>

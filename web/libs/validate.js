@@ -133,11 +133,22 @@ class Validate {
 			errorPlacement: function(error, element) {  
                 // console.log( 'errorPlacement', $(element) );
 				let $input = $(element);	  
-				let $formgroup = $input.parents('.uk-form-group'); 
-				let $helper = $formgroup.find('.uk-helper-danger');
+                let $formgroup = $input.parents('.uk-form-group'); 
+                if ( $formgroup.length == 0 ) {
+                    $formgroup = $input.parents('.form-group'); 
+                }
+                
+                let $helper = $formgroup.find('.uk-helper-danger');
 				let message = error.html();
 				$helper.html(message);
-				$helper.show();
+                $helper.show();
+                
+                if ( $helper.length == 0 ) {
+                    $helper = $formgroup.find('.invalid-feedback'); 
+                    $helper.html( message );
+                    $input.addClass('is-invalid');
+                }
+
 				
 				// fix bug display:none bug 10ms 延迟 ??? 
 				setTimeout(()=>{
@@ -150,7 +161,6 @@ class Validate {
 			},
 
 			highlight: function( element ) {
-                // console.log( 'highlight', $(element) );
 				let $input = $(element);  
 				let $formgroup = $input.parents('.uk-form-group'); 
 				let $helper = $formgroup.find('.uk-helper-danger');
@@ -160,19 +170,21 @@ class Validate {
 				$component.addClass('jm-error');
 			},
 			unhighlight:function(element){
-                // console.log( 'unhighlight', $(element) );
 				let $input = $(element);  
 				let $formgroup = $input.parents('.uk-form-group'); 
 				let $helper = $formgroup.find('.uk-helper-danger');
 				$input.removeClass('uk-form-danger');
-				$helper.removeClass('uk-form-danger');
+                $helper.removeClass('uk-form-danger');
+                $input.removeClass('is-invalid');
 			},
 			success: function(element) {
-				// console.log( 'success', $(element) );
+                let $input = $(element);  
 				let $formgroup = $(element).parents('.uk-form-group'); 
 				let $component = $(element).parents('.jm-component');
 			  	$formgroup.find('.uk-form-danger').removeClass('uk-form-danger');
-			  	$component.removeClass('jm-error');
+                $component.removeClass('jm-error');
+                $input.removeClass('is-invalid').addClass('is-valid');
+                    
 			},
 
 			ignore: function (index, el) {
