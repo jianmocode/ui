@@ -22,7 +22,6 @@
                     window.location = '{{__get.then}}';
                     return;
                 }
-
             }" 
           >
             <div class="card-body p-6">
@@ -74,7 +73,7 @@
                                 />
                         </div>
                         <div class="col-auto">
-                            <img bindtap="changeVcode" src="/_api/xpmse/xpmse/staff/vcode?width=120&height=38&size=20" width="120" alt="点击更换" class="img-fluid">
+                            <img bindtap="changeVcode" src="/_api/xpmse/xpmse/staff/vcode?width=120&height=38&size=20" width="120" alt="点击更换" class="img-fluid vcode">
                         </div>
                     </div>
                     <div class="invalid-feedback"></div>
