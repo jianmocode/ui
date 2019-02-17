@@ -4,8 +4,8 @@
     <div class="row">
         <div class="col col-login mx-auto">
           <div class="text-center mb-6">
-            <img src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/defaults/brand/icon.svg" class="h-8 mr-2" alt="">
-            <img src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/defaults/brand/word.svg" class="h-7" alt="">
+            <img src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/defaults/brand/icon.svg" class="h-6 mr-2" alt="">
+            <img src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/defaults/brand/word.svg" class="h-6" alt="">
           </div>
 
           <!-- 用户注册表单 -->
@@ -15,7 +15,7 @@
             success="function(data) {
                 var $utils = $validate.utils;
                 $utils.parentClose();
-                console.log(  data );
+                console.log( '跳转到 DashBoard',  data );
                 
                 // 跳转至来访页面
                 if ( '{{__get.then}}' != '' ) {
@@ -25,7 +25,9 @@
             }" 
           >
             <div class="card-body p-6">
-                <div class="card-title"> 管理员登录 </div>
+                <div class="card-title"> 
+                    登录管理后台
+                </div>
                 <div class="form-group">
                     <label class="form-label">手机号</label>
                     <input name="mobile" type="text" class="form-control" 
@@ -80,12 +82,12 @@
                 </div>
               
               <div class="form-footer">
-                <button type="submit" class="btn btn-primary btn-block">登录</button>
+                <button type="submit" class="btn btn-primary btn-block uk-action">登录</button>
               </div>
             </div>
           </form>
           <div class="text-center text-muted">
-                信息形於简墨 <a href="https://www.jianmo.ink/?from=site">简墨内容云</a>
+                信息形於简墨 <a href="https://www.jianmo.ink/?from=instance">简墨内容云</a>
           </div>
         </div>
     </div>
