@@ -42,9 +42,19 @@
               <div class="form-group">
                 <label class="form-label">
                  登录密码
-                  
                 </label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入登录密码">
+                <input name="password" type="password" class="form-control" 
+				   placeholder="请输入登录密码" 
+				   validate="{
+					   	required:true,
+					   	minlength:6,
+					   	maxlength:15,
+					   	messages: {
+							required:'请输入登录密码',
+							minlength: '密码长度不能少于6位',
+							maxlength: '密码长度不能超过11位'
+					   	}
+					}">
               </div>
               
               <div class="form-footer">

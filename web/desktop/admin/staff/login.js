@@ -23,8 +23,6 @@ Page({
 			});
 
         } catch( e ) { console.log( 'Error @Validate', e); }
-
-        console.log( 'onReady', Validate );
         
 	},
 
