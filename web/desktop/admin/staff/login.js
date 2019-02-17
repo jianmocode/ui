@@ -1,8 +1,8 @@
 import {Utils} from '../../../libs/utils.js';
 import {Validate} from '../../../libs/validate.js';
 
-let $utils = new Utils();
 let web = getWeb();
+let $utils = new Utils();
 let $$ = UIkit.util;
 
 Page({
@@ -31,11 +31,6 @@ Page({
 			});
 
 		} catch( e ) { console.log( 'Error @Validate', e); }
-
-		// 图形验证码
-		$('.image.vcode').click(function(){
-			that.changeVcode();
-		});
 	},
 
 
@@ -44,7 +39,7 @@ Page({
 	 * @return {[type]} [description]
 	 */
 	changeVcode: function(){
-		var api = '/_api/xpmsns/user/user/vcode?width=150&height=40&size=20&t=' + Date.parse(new Date()); 
+		var api = '/_api/xpmse/xpmse/staff/vcode?width=150&height=40&size=20&t=' + Date.parse(new Date()); 
 		$('.image.vcode img').attr('src', api);
 	},
 })
