@@ -2,7 +2,7 @@
 </div> <!-- END page-main -->
 
 <!-- 页尾 -->
-<footer class="footer">
+<footer class="footer" mp:if="{{staff.active == 1}}">
 	<div class="container">
 		<div class="row align-items-center flex-row-reverse">
 			<div class="col-auto ml-lg-auto">

@@ -1,5 +1,12 @@
-<div class="page-main">
-
+<div class="page-main" mp:if="{{staff.active != 1}}">
+    <div class="container text-center mt-3">
+        <i class="fe fe-loader btn-loading"></i>
+    </div>
+    <script>
+        window.location = "/admin/login.html";
+    </script>
+</div>
+<div class="page-main" mp:else>
    <!-- 头部导航 -->
    <div class="header py-4">
        <div class="container"><div class="d-flex">

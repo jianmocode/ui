@@ -2,20 +2,17 @@
     "cname":"管理后台-应用列表",
     "type": "html",
 	"data": {
-		"site":{
-			"api":"/xpmsns/pages/siteconf/get",
-			"query":{
-				"site_slug":"global",
-				"select":"*"
-			}
+		"staff":{
+			"api":"/xpmse/xpmse/staff/getLoginInfo",
+			"query":{}
 		},
 		"page":{
-			"title":"管理后台-应用列表"
+			"title":"应用列表/管理后台"
 		},
 		"__js":[]
 	},
 	"entries":[
-        {"method":"GET", "router":"/admin/dashboard/apps.html", "ttl":3600}
+        {"method":"GET", "router":"/admin/dashboard/apps.html", "ttl":0}
 	],
 	"align": {}
 }
