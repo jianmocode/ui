@@ -1,27 +1,16 @@
 {
-	"cname":"管理员退出页",
+	"cname":"管理后台退出页",
 	"data": {
-		"site":{
-			"api":"/xpmsns/pages/siteconf/get",
-			"query":{
-				"site_slug":"global",
-				"select":"*"
-			}
-		},
-		"option":{
-			"api":"/xpmsns/user/user/option",
-			"query":{}
-		},
 		"out": {
-			"api":"/xpmsns/user/user/logout",
+			"api":"/xpmse/xpmse/staff/logout",
 			"query":{}
 		},
 		"page":{
-			"title":"退出登录"
+			"title":"退出登录-简墨"
 		}
 	},
 	"entries":[
-		{"method":"GET", "router":"/admin/logout.html", "ttl":0}
+		{"method":"GET", "router":"/admin/logout.html", "ttl":2592000}
 	],
 	"align": {}
 }

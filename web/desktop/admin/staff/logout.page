@@ -9,7 +9,7 @@
 	</div>
 	<div class="message uk-alert-success" uk-alert> 
 		<p>
-			<span class="message">退出成功! <span class="timer">5</span>秒后返回首页 <a href="/">立即返回</a> </span>
+			<span class="message">退出成功! <span class="timer">5</span>秒后返回管理员登录界面 <a href="/admin/login.html">立即返回</a> </span>
 		</p>
 	</div>
 </form>

@@ -38,7 +38,7 @@
                          <a class="dropdown-item" href="https://www.jianmo.ink/?from={{__var.__home}}" target="_blank">
                             <i class="dropdown-icon fe fe-home"></i> 简墨官网
                         </a>
-						 <a class="dropdown-item" href="/admin/staff/logout">
+						 <a class="dropdown-item" href="/admin/logout.html">
 							 <i class="dropdown-icon fe fe-log-out"></i> 退出登录
 						 </a>
 					 </div>

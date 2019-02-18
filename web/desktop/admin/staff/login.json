@@ -22,7 +22,7 @@
 		]
 	},
 	"entries":[
-        {"method":"GET", "router":"/admin/login.html", "ttl":3600}
+        {"method":"GET", "router":"/admin/login.html", "ttl":2592000}
 	],
 	"align": {}
 }

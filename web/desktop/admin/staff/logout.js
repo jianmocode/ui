@@ -2,20 +2,9 @@ let web = getWeb();
 Page({
 	data:{},
 	onReady: function( get ) {
-
 		var that = this;
-		that.fixheight();
-		that.redirect('/', '转向首页', 5);
+		that.redirect('/admin/login.html', '转向后台登录', 5);
 	},
-
-	/**
-	 * 修复高度
-	 * @return {[type]} [description]
-	 */
-	fixheight: function() {
-		$('.page').height($(document).height());
-	},
-
 
 	redirect: function( url, message, timer, name ) {
 		var that = this;
