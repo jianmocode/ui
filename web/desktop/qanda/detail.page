@@ -14,7 +14,7 @@
                               class="topic_item uk-flex uk-flex-middle"
                               mp:for="{{question.tags}}"
                         >
-                              <a class="topic_item_text">{{item}}</a>
+                              <a class="topic_item_text" href="/qanda/tag/{{item}}" target="_blank">{{item}}</a>
                         </div>
                   </div>
                   <div class="question_item">

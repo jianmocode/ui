@@ -2,7 +2,10 @@
 
 <section class="login_wrap uk-flex uk-flex-column border_box">
       <span class="legend">注册账号</span>
-      <form id="signup_form" class="login_form uk-flex uk-flex-column">
+      <form
+            id="signup_form"
+            class="login_form uk-flex uk-flex-column"
+      >
             <div class="login_item">
                   <input
                         class="mobile input"
@@ -65,7 +68,7 @@
             <span class="line">|</span>
             <a
                   class="link"
-                  href="#"
+                  href="/m/user/signin"
             >登录账号</a>
       </div>
 

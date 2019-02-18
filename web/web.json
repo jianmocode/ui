@@ -29,6 +29,7 @@
             "/desktop/home/editor/article",
             "/mobile/user/signin",
             "/mobile/user/signup",
+            "/mobile/qanda/index",
             "/mobile/article/index",
             "/mobile/article/list",
             "/mobile/article/detail",

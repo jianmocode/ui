@@ -1,0 +1,26 @@
+<include src="__WEB_ROOT__/mobile/common/head.page" />
+
+<ul
+      uk-tab="animation: uk-animation-fade"
+>
+      <li><a href="#">推荐</a></li>
+      <li><a href="#">关注</a></li>
+      <li class="uk-active"><a href="#">热榜</a></li>
+      <li><a href="#">热评</a></li>
+</ul>
+
+<div class="uk-switcher border_box">
+      <div class="recommend_page switch_item">Hello!</div>
+      <div class="focus_page switch_item">Hello again!</div>
+      <div class="hot_questions_page switch_item">
+            <div class="question_items">
+                  <div class="question_item border_box" mp:for="{{questions.data}}">
+                        <span class="title">{{item.title}}</span>
+                  </div>
+            </div>
+      </div>
+      <div class="hot_answers_page switch_item">Bazinga!</div>
+</div>
+
+<include src="__WEB_ROOT__/mobile/common/footer.page" />
+<include src="__WEB_ROOT__/mobile/common/foot.page" />

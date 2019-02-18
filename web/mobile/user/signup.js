@@ -75,7 +75,7 @@ Page({
 
             _that.timer = setTimeout(function () {
                   _el.fadeOut()
-            }, 2000);
+            }, 2000)
       },
       message_clock: function () {
             const _el = $('.btn_get_message')

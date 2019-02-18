@@ -1,0 +1,59 @@
+@charset "utf-8";
+@import '/mobile/common/m.less';
+
+body {
+      background-color: white;
+}
+
+.uk-tab::before {
+      border-bottom: none;
+}
+
+.uk-tab {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      width: 100%;
+      margin: 0;
+      box-shadow: 0 0.1rem 0.4rem #eee;
+
+      .uk-active {
+            color: #333;
+
+            a {
+                  border-bottom: 0.1rem solid black;
+            }
+      }
+
+      li {
+            width: 25%;
+            padding: 0;
+
+            a {
+                  width: 100%;
+                  font-size: 0.8rem;
+                  color: #888;
+                  padding: 0.8rem 0;
+            }
+      }
+}
+
+.uk-switcher {
+      width: 100vw;
+      padding: 1rem;
+      margin-top: 3rem;
+}
+
+.hot_questions_page {
+      width: 100%;
+
+      .question_items {
+            width: 100%;
+
+            .question_item {
+                  width: 100%;
+                  border-bottom: 0.05rem solid rgba(238, 238, 238, 0.5);                  
+            }
+      }
+}
