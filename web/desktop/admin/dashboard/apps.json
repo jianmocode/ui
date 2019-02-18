@@ -5,7 +5,18 @@
 		"staff":{
 			"api":"/xpmse/xpmse/staff/getLoginInfo",
 			"query":{}
-		},
+        },
+        "menu":[
+            {   "name":"控制台", "slug":"pages", "icon":"fe fe-layout", "link":"/admin/dashboard/apps.html", "active":true },
+            {
+                "name":"头条", "slug":"pages", "icon":"fe fe-feather",
+                "submenu": [
+                    { "name":"写文章", "slug":"editor", "icon":"fe fe-edit", "link":"/admin/pages/editor" },
+                    { "name":"文章审核", "slug":"article-audit", "icon":"fe fe-check-square", "link":"/admin/pages/article/audit" },
+                    { "name":"文章管理", "slug":"article-management", "icon":"fe fe-layers", "link":"/admin/pages/article/management" }
+                ]
+            }
+        ],
 		"page":{
 			"title":"应用列表/管理后台"
 		},

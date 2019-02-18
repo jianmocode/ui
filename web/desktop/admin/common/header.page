@@ -1,46 +1,51 @@
 <div class="page-main" mp:if="{{staff.active != 1}}">
-    <div class="container text-center mt-3">
-        <i class="fe fe-loader btn-loading"></i>
-    </div>
-    <script>
-        window.location = "/admin/login.html";
-    </script>
+	<div class="container text-center mt-3">
+		<i class="fe fe-loader btn-loading"></i>
+	</div>
+	<script>
+		window.location = "/admin/login.html";
+	</script>
 </div>
 <div class="page-main" mp:else>
-   <!-- 头部导航 -->
-   <div class="header py-4">
-       <div class="container"><div class="d-flex">
-           <a class="header-brand" href="./index.html">
-               <img src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/defaults/brand/logo.svg" class="header-brand-img" alt="简墨LOGO">
-           </a>
-           <div class="d-flex order-lg-2 ml-auto">
-               <div class="nav-item d-none d-md-flex">
-                   <a href="https://github.com/tabler/tabler" class="btn btn-sm btn-outline-primary" target="_blank">知否社区</a>
-               </div>
-               <div class="dropdown">
-                   <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
-                       <span class="avatar" style="background-image: url(./demo/faces/female/25.jpg)"></span>
-                       <span class="ml-2 d-none d-lg-block">
-                       <span class="text-default">王伟平</span>
-                       <small class="text-muted d-block mt-1">管理员</small>
-                       </span>
-                   </a>
-                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                       <a class="dropdown-item" href="#">
-                           <i class="dropdown-icon fe fe-send"></i> 写文章
-                       </a>
-                       <div class="dropdown-divider"></div>
-                       <a class="dropdown-item" href="#">
-                           <i class="dropdown-icon fe fe-help-circle"></i> 寻求帮助
-                       </a>
-                       <a class="dropdown-item" href="#">
-                           <i class="dropdown-icon fe fe-log-out"></i> 退出登录
-                       </a>
-                   </div>
-               </div>
-           </div>
-           <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">
-               <span class="header-toggler-icon"></span>
-           </a>
-       </div></div><!-- END d-flex --> <!-- END container -->
-   </div> <!-- END 头部导航 -->
+	 <!-- 头部导航 -->
+	 <div class="header py-4">
+		 <div class="container"><div class="d-flex">
+			 <a class="header-brand" href="./index.html">
+				 <img src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/defaults/brand/logo.svg" class="header-brand-img" alt="简墨LOGO">
+			 </a>
+			 <div class="d-flex order-lg-2 ml-auto">
+				 <div class="nav-item d-none d-md-flex">
+					 <a href="https://www.jianmo.ink/qanda/index?from={{__var.__home}}" class="btn btn-sm btn-outline-primary" target="_blank">知否社区</a>
+				 </div>
+				 <div class="dropdown">
+					 <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
+						<span class="avatar" style="background-image: url({{staff.avatarinfo.url}})"></span>
+						<span class="ml-2 d-none d-lg-block">
+                            <span class="text-default">{{staff.name}}</span>
+                            <small class="text-muted d-block mt-1">
+                                {{(staff.isAdmin) ? '管理员' : '编辑'}}
+                            </small>
+						</span>
+					 </a>
+					 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+						 <a class="dropdown-item" href="/admin/pages/editor">
+							 <i class="dropdown-icon fe fe-edit"></i> 写文章
+						 </a>
+						 <div class="dropdown-divider"></div>
+						 <a class="dropdown-item" href="https://www.jianmo.ink/docs/index.html?from={{__var.__home}}">
+							 <i class="dropdown-icon fe fe-help-circle"></i> 帮助文档
+                         </a>
+                         <a class="dropdown-item" href="https://www.jianmo.ink/?from={{__var.__home}}" target="_blank">
+                            <i class="dropdown-icon fe fe-home"></i> 简墨官网
+                        </a>
+						 <a class="dropdown-item" href="/admin/staff/logout">
+							 <i class="dropdown-icon fe fe-log-out"></i> 退出登录
+						 </a>
+					 </div>
+				 </div>
+			 </div>
+			 <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">
+				 <span class="header-toggler-icon"></span>
+			 </a>
+		 </div></div><!-- END d-flex --> <!-- END container -->
+	 </div> <!-- END 头部导航 -->
