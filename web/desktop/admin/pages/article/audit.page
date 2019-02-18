@@ -7,24 +7,116 @@
 	<div class="container">
 		<div class="page-header">
 			<h1 class="page-title">
-				文章审核
+				文章审核 
 			</h1>
+			<div class="page-subtitle">1 - 20 页 / 1713条</div>
+			<div class="page-options d-flex">
+				<select class="form-control custom-select w-auto">
+					<option value="asc"> 新申请在后</option>
+					<option value="desc">新申请在前</option>
+				</select>
+			</div>
 		</div>
 		<div class="row row-cards">
-			<div class="col-md-6" mp:for-from="0" mp:for-to="5">
-				<div class="card">
-					<div class="card-status bg-green"></div>
-					<div class="card-header">
-						<h3 class="card-title">Card green</h3>
-					</div>
+
+			<!-- 文章搜索器 -->
+			<div class="col-lg-3">
+				<form class="card">
 					<div class="card-body">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam deleniti fugit incidunt, iste, itaque minima neque pariatur perferendis sed suscipit velit vitae voluptatem. A consequuntur, deserunt eaque error nulla temporibus!
+						<div class="form-group">
+							<div class="form-label">关键词</div>
+							<input type="text" class="form-control"/>
+						</div>
+						<div class="form-group">
+							<label class="form-label">类目</label>
+							<select name="beast" id="select-beast" class="form-control selectize">
+								<option value="1">栏目一</option>
+								<option value="4">栏目二</option>
+								<option value="3">栏目三</option>
+							</select>
+						</div>
 					</div>
-				</div>
-			</div>
+					<div class="card-footer text-right">
+						<button type="submit" class="btn btn-primary">搜索</button>
+					</div>
+				</form>
+			</div> <!-- END 文章搜索器 -->
+
+			<!-- 文章列表 -->
+			<div class="col-lg-9">
+				
+				<!-- 文章卡片 -->
+				<div class="card card-aside"   mp:for-from="0" mp:for-to="10">
+					<a mp:if="{{index!=1}}" bindtap="openArticle" data-id="1023833" class="card-aside-column" href="javacript:void(0);"  style="background-image: url(https://preview.tabler.io/demo/photos/david-marcu-114194-500.jpg)"></a>
+					<div class="card-body d-flex flex-column">
+						<h4><a href="javacript:void(0);" bindtap="openArticle" data-id="1023833" >Well, I didn't vote for you.</a></h4>
+						<div class="text-muted">Well, we did do the nose. Why? Shut up! Will you shut up?! You don't frighten us, English pig-dog...</div>
+						<div class="d-flex align-items-center pt-5 mt-auto">
+							<div class="avatar avatar-md mr-3" style="background-image: url(https://preview.tabler.io/demo/faces/male/16.jpg)"></div>
+							<div>
+								<a href="./profile.html" class="text-default">Peter Richards</a>
+								<small class="d-block text-muted">3 days ago</small>
+							</div>
+							<div class="ml-auto text-muted">
+								<button type="button" data-id="1023833" class="btn btn-primary mr-2 btn-sm">通过</button>
+								<button type="button" data-id="1023833" class="btn btn-secondary btn-sm">驳回</button>		 
+							</div>
+						</div>
+					</div>
+				</div><!-- END 文章卡片 -->
+				
+				<!-- 分页开始 -->
+				<ul class="pagination ">
+					<li class="page-item page-prev disabled">
+						<a class="page-link" href="#" tabindex="-1">
+							上一页
+						</a>
+					</li>
+					<li class="page-item"><a class="page-link" href="#">1</a></li>
+					<li class="page-item active"><a class="page-link" href="#">2</a></li>
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+					<li class="page-item"><a class="page-link" href="#">4</a></li>
+					<li class="page-item"><a class="page-link" href="#">5</a></li>
+					<li class="page-item page-next">
+						<a class="page-link" href="#">
+							下一页
+						</a>
+					</li>
+				</ul> <!-- 分页结束 -->
+
+			</div> <!-- END 文章列表 -->
 		</div>	
 	</div><!-- END container -->
 </div> <!-- END 主界面 -->
+<script>
 
+	// Setup Selectize
+	require(["selectize"], function(selectize){
+		$(document).ready(function (){
+			$('.selectize').selectize();
+		});
+	});
+
+</script>
+
+<!-- Modal -->
+<div class="modal fade" id="articleDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+			...
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-primary mr-2 btn-sm">通过</button>
+			<button type="button" class="btn btn-secondary mr-2 btn-sm">驳回</button>
+			<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" >稍后处理</button>
+		</div>
+		</div>
+	</div>
+</div>
 <include src="__WEB_ROOT__/desktop/admin/common/footer.page" />
 <include src="__WEB_ROOT__/desktop/admin/common/foot.page" />

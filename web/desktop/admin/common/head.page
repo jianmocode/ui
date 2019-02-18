@@ -33,8 +33,8 @@
     
     <!-- Input Mask Plugin -->
     <script src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/tabler/plugins/input-mask/plugin.js"></script>
-	<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/js/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/js/jquery.slimscroll.min.js"></script>
+    
+	<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/tabler/js/vendors/jquery-3.2.1.min.js"></script>
  
     <script mp:for="{{__js}}" type="text/javascript">
         require(["{{__STOR__::/__PROJECT_NAME/desktop/assets}}{{item}}"]);
