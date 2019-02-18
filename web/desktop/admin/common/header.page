@@ -1,0 +1,39 @@
+<div class="page-main">
+
+   <!-- 头部导航 -->
+   <div class="header py-4">
+       <div class="container"><div class="d-flex">
+           <a class="header-brand" href="./index.html">
+               <img src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/defaults/brand/logo.svg" class="header-brand-img" alt="简墨LOGO">
+           </a>
+           <div class="d-flex order-lg-2 ml-auto">
+               <div class="nav-item d-none d-md-flex">
+                   <a href="https://github.com/tabler/tabler" class="btn btn-sm btn-outline-primary" target="_blank">知否社区</a>
+               </div>
+               <div class="dropdown">
+                   <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
+                       <span class="avatar" style="background-image: url(./demo/faces/female/25.jpg)"></span>
+                       <span class="ml-2 d-none d-lg-block">
+                       <span class="text-default">王伟平</span>
+                       <small class="text-muted d-block mt-1">管理员</small>
+                       </span>
+                   </a>
+                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                       <a class="dropdown-item" href="#">
+                           <i class="dropdown-icon fe fe-send"></i> 写文章
+                       </a>
+                       <div class="dropdown-divider"></div>
+                       <a class="dropdown-item" href="#">
+                           <i class="dropdown-icon fe fe-help-circle"></i> 寻求帮助
+                       </a>
+                       <a class="dropdown-item" href="#">
+                           <i class="dropdown-icon fe fe-log-out"></i> 退出登录
+                       </a>
+                   </div>
+               </div>
+           </div>
+           <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">
+               <span class="header-toggler-icon"></span>
+           </a>
+       </div></div><!-- END d-flex --> <!-- END container -->
+   </div> <!-- END 头部导航 -->

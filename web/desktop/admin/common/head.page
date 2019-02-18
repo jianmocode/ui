@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta http-equiv="Content-Language" content="en" />
+    <meta http-equiv="Content-Language" content="zh-CN" />
     <meta name="msapplication-TileColor" content="#2d89ef">
     <meta name="theme-color" content="#4188c9">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
@@ -13,10 +13,10 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon"/>
-    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="icon" href="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/defaults/brand/icon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" type="image/x-icon" href="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/defaults/brand/icon.ico" />
 
-    <title>简墨</title>
+    <title>{{page.title}}-简墨</title>
     <link  mp:for="{{__css}}" rel="stylesheet" href="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/{{item}}" />
     <link rel="stylesheet" href="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/fonts/fontawesome/css/fontawesome.min.css">
     
@@ -25,7 +25,6 @@
         requirejs.config({
             baseUrl: '{{__STOR__::/__PROJECT_NAME/desktop/assets}}'
         });
-
     </script>
 
     <!-- Dashboard Core -->

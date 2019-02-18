@@ -9,10 +9,6 @@
 				"select":"*"
 			}
 		},
-		"option":{
-			"api":"/xpmsns/user/user/option",
-			"query":{}
-		},
 		"page":{
 			"title":"管理后台-应用列表"
 		},
