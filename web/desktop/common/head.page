@@ -1,28 +1,76 @@
 <!DOCTYPE html>
-<html lang="zh-CN" >
-	<head>
-		<title>{{page.title}}-{{site.site_name}}</title>
-		<meta name="renderer" content="webkit">
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="description" content="{{seo.description}}" />
-		<meta name="keywords" content="{{seo.keywords}}" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="{{site.icon.url}}" rel="shortcut icon" type="image/x-icon" />
-		<link rel="stylesheet" href="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/css/uikit.min.css" />
-		<link  mp:for="{{__css}}" rel="stylesheet" href="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/{{item}}" />
-		
-		<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/js/uikit.min.js"></script>
-		<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/js/uikit-icons.min.js"></script>
-		<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/js/jquery-1.9.1.min.js"></script>
-		<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/js/jquery.slimscroll.min.js"></script>
-		
-		<script mp:for="{{__js}}" type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/{{item}}"></script>
-        
-        <!-- Header 注入开始-->
-        {{site.header}}
+<html lang="zh-CN">
 
-        <!-- Header 注入结束 -->
-        
-	</head>
-	<body class="{{(page.background) ? page.background}}">
+      <head>
+            <title>{{page.title}}-{{site.site_name}}</title>
+            <meta
+                  name="renderer"
+                  content="webkit"
+            >
+            <meta
+                  http-equiv="Content-Type"
+                  content="text/html; charset=utf-8"
+            >
+            </meta>
+            <meta
+                  http-equiv="X-UA-Compatible"
+                  content="IE=edge"
+            >
+            <meta
+                  name="description"
+                  content="{{seo.description}}"
+            />
+            <meta
+                  name="keywords"
+                  content="{{seo.keywords}}"
+            />
+            <meta
+                  name="viewport"
+                  content="width=device-width, initial-scale=1"
+            >
+            <link
+                  href="{{site.icon.url}}"
+                  rel="shortcut icon"
+                  type="image/x-icon"
+            />
+            <link
+                  rel="stylesheet"
+                  href="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/css/uikit.min.css"
+            />
+            <link
+                  mp:for="{{__css}}"
+                  rel="stylesheet"
+                  href="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/{{item}}"
+            />
+
+            <script
+                  type="text/javascript"
+                  src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/js/uikit.min.js"
+            ></script>
+            <script
+                  type="text/javascript"
+                  src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/js/uikit-icons.min.js"
+            ></script>
+            <script
+                  type="text/javascript"
+                  src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/js/jquery-1.9.1.min.js"
+            ></script>
+            <script
+                  type="text/javascript"
+                  src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/js/jquery.slimscroll.min.js"
+            ></script>
+
+            <script
+                  mp:for="{{__js}}"
+                  type="text/javascript"
+                  src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/{{item}}"
+            ></script>
+
+            <!-- Header 注入开始-->
+            {{site.header}}
+
+            <!-- Header 注入结束 -->
+
+      </head>
+
+      <body class="{{(page.background) ? page.background}}">

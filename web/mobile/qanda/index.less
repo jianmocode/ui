@@ -1,8 +1,59 @@
 @charset "utf-8";
 @import '/mobile/common/m.less';
+// 引入组件
+@import '/desktop/components/uploader/image.less';
+@import '/desktop/components/editor/html.less';
 
 body {
       background-color: white;
+}
+
+// 设定工具栏样式
+.trix-button--icon-italic {
+      display: none;
+}
+
+.trix-button--icon-strike{
+      display: none;
+}
+
+.trix-button--icon-decrease-nesting-level {
+      display: none;
+}
+
+.trix-button--icon-increase-nesting-level {
+      display: none;
+}
+
+.trix-button-group-alignment {
+      display: none !important;
+}
+
+.jm-editor-html {
+      margin-top: 0.2rem;
+      border-radius: 1rem;
+      border: none;
+
+      trix-toolbar {
+            border-bottom: none;
+            padding: 0;
+            width: 100vw;
+            position: fixed !important;
+            top:3.5rem  !important;
+            left: 0;
+            background-color: white;
+            box-sizing: border-box;
+            padding: 0 1rem;
+      }
+
+      trix-editor {
+            font-size: 0.8rem;
+            color: #333;
+            padding:0.4rem;
+            max-height: 60vh !important;
+            overflow-y: scroll !important;
+            padding-top: 0.4rem !important;
+      }
 }
 
 .uk-tab::before {
@@ -41,8 +92,87 @@ body {
 
 .uk-switcher {
       width: 100vw;
-      padding: 1rem;
+      padding: 0 1rem;
       margin-top: 3rem;
+}
+
+.btn_ask {
+      position: fixed;
+      right: 1.5rem;
+      bottom: 3rem;
+      width: 3.6rem;
+      height: 3.6rem;
+      text-align: center;
+      line-height: 3.6rem;
+      background-color: #1e87f0;
+      color: white;
+      border-radius: 10rem;
+      border: none;
+      box-shadow: 0 0 1rem rgba(30, 135, 240, 0.4);
+      z-index: 9999;
+}
+
+.ask_wrap {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 99999;
+      width: 100vw;
+      height: 100vh;
+      background-color: white;
+
+      .bar {
+            padding: 1rem;
+            box-shadow: 0 0.1rem 0.4rem #eee;
+
+            .left {
+                  .btn_del {
+                        display: inline-block;
+                        width: 0.8rem;
+                        height: 0.8rem;
+                        background: url({{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/delete.svg) no-repeat center center white;
+                        background-size: 100% 100%;
+                        border: none;
+                        outline: none;
+                        margin-right: 2rem;
+                  }
+
+                  .title {
+                        font-size: 1rem;
+                        color: #333;
+                        font-weight: bold;
+                  }
+            }
+
+            .right {
+                  .btn_next {
+                        display: inline-block;
+                        width: 1.2rem;
+                        height: 1.2rem;
+                        background: url({{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/next.svg) no-repeat center center white;
+                        background-size: 100% 100%;
+                        border: none;
+                        outline: none;
+                  }
+            }
+      }
+
+      .ask_form {
+            width: 100%;
+            padding: 1rem;
+
+            .question_title {
+                  font-size: 1rem;
+                  font-weight: bold;
+                  color: #333;
+                  padding: 0.6rem;
+                  border: none;
+                  background-color: whitesmoke;
+                  outline: none;
+                  border-radius: 10rem;
+                  margin-top: 2rem;
+            }
+      }
 }
 
 .hot_questions_page {
@@ -53,7 +183,14 @@ body {
 
             .question_item {
                   width: 100%;
-                  border-bottom: 0.05rem solid rgba(238, 238, 238, 0.5);                  
+                  border-bottom: 0.05rem solid rgba(238, 238, 238, 0.5);
+                  padding: 1rem 0;
+
+                  .title {
+                        font-size: 1rem;
+                        color: #333;
+                        font-weight: bold;
+                  }
             }
       }
 }

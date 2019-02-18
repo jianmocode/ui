@@ -106,7 +106,7 @@
                                     <div class="options uk-flex uk-flex-between uk-flex-middle">
                                           <div class="left uk-flex uk-flex-column">
                                                 <div class="user_info uk-flex uk-flex-middle">
-                                                      <a class="nickname">{{(item.following_nickname)?item.following_nickname:item.following_id}}1231</a>
+                                                      <a class="nickname">{{(item.following_nickname)?item.following_nickname:item.following_id}}</a>
                                                       <span class="line">|</span>
                                                       <span class="intro line_clamp_1">{{(item.following_bio)?item.following_bio:'TA还没有简介哦'}}</span>
                                                 </div>

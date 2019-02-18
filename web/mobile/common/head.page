@@ -1,29 +1,85 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<title>{{page.title}}-{{site.site_name}}</title>
-	
-	<!-- 微信 JS SDK -->
-	<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js" mp:if="{{__var.__browser == 'wechat'}}"></script>
 
-	<!-- Load CSS Framework -->
-	<link rel="stylesheet" href="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/css/uikit.min.css" />
-	<link rel="stylesheet" href="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/css/jquery.rippleria.min.css" />
-	<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/js/uikit.min.js"></script>
-	<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/js/uikit-icons.min.js"></script>
-	<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/js/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript" src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/js/jquery.rippleria.min.js"></script>
-    
-     <!-- Header 注入开始-->
-     {{site.header}}
+      <head>
+            <meta
+                  http-equiv="Content-Type"
+                  content="text/html; charset=utf-8"
+            >
+            </meta>
+            <meta
+                  http-equiv="X-UA-Compatible"
+                  content="IE=edge"
+            >
+            <meta
+                  name="viewport"
+                  content="width=device-width, initial-scale=1"
+            >
+            <meta
+                  name="viewport"
+                  content="initial-scale=1, maximum-scale=1"
+            >
+            <meta
+                  name="apple-mobile-web-app-capable"
+                  content="yes"
+            >
+            <meta
+                  name="apple-mobile-web-app-status-bar-style"
+                  content="black"
+            >
+            <title>{{page.title}}-{{site.site_name}}</title>
 
-     <!-- Header 注入结束 -->
-     
-</head>
-<body><div class="uk-offcanvas-content">
+            <!-- 微信 JS SDK -->
+            <script
+                  type="text/javascript"
+                  src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"
+                  mp:if="{{__var.__browser == 'wechat'}}"
+            ></script>
+
+            <link
+                  mp:for="{{__css}}"
+                  rel="stylesheet"
+                  href="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/{{item}}"
+            />
+
+            <!-- Load CSS Framework -->
+            <link
+                  rel="stylesheet"
+                  href="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/css/uikit.min.css"
+            />
+            <link
+                  rel="stylesheet"
+                  href="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/css/jquery.rippleria.min.css"
+            />
+            <script
+                  type="text/javascript"
+                  src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/js/uikit.min.js"
+            ></script>
+            <script
+                  type="text/javascript"
+                  src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/js/uikit-icons.min.js"
+            ></script>
+            <script
+                  type="text/javascript"
+                  src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/js/jquery-1.9.1.min.js"
+            ></script>
+            <script
+                  type="text/javascript"
+                  src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/js/jquery.rippleria.min.js"
+            ></script>
+
+            <script
+                  mp:for="{{__js}}"
+                  type="text/javascript"
+                  src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/{{item}}"
+            ></script>
+
+            <!-- Header 注入开始-->
+            {{site.header}}
+
+            <!-- Header 注入结束 -->
+
+      </head>
+
+      <body>
+            <div class="uk-offcanvas-content">

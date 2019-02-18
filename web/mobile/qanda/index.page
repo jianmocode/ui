@@ -1,21 +1,61 @@
 <include src="__WEB_ROOT__/mobile/common/head.page" />
+<include src="__WEB_ROOT__/desktop/components/uploader/image.page" />
+<include src="__WEB_ROOT__/desktop/components/editor/html.page" />
 
-<ul
-      uk-tab="animation: uk-animation-fade"
->
+<ul uk-tab="animation: uk-animation-fade">
       <li><a href="#">推荐</a></li>
       <li><a href="#">关注</a></li>
       <li class="uk-active"><a href="#">热榜</a></li>
       <li><a href="#">热评</a></li>
 </ul>
 
+<button class="btn_ask">提问</button>
+
+<div class="ask_wrap border_box">
+      <div class="bar uk-flex uk-flex-between uk-flex-middle border_box">
+            <div class="left uk-flex uk-flex-middle">
+                  <a class="btn_del"></a>
+                  <span class="title">提问</span>
+            </div>
+            <div class="right uk-flex uk-flex-middle">
+                  <a class="btn_next"></a>
+            </div>
+      </div>
+      <form
+            id="ask_form"
+            class="ask_form uk-flex uk-flex-column border_box"
+      >
+            <input
+                  class="question_title border_box"
+                  name="title"
+                  type="text"
+                  placeholder="输入问题并以问号结尾"
+            >
+            <editor
+                  name="content"
+                  type="html"
+                  rows="20"
+                  autofocus
+                  fetch-image="false"
+                  toolbar-sticky="top:60;"
+                  url="/_api/xpmsns/user/user/upload"
+                  placeholder="输入问题背景、条件等详细信息（选填）"
+                  maxChunkSize="1024"
+            ></editor>
+      </form>
+</div>
+
 <div class="uk-switcher border_box">
       <div class="recommend_page switch_item">Hello!</div>
       <div class="focus_page switch_item">Hello again!</div>
       <div class="hot_questions_page switch_item">
             <div class="question_items">
-                  <div class="question_item border_box" mp:for="{{questions.data}}">
-                        <span class="title">{{item.title}}</span>
+                  <div
+                        class="question_item border_box"
+                        mp:for="{{questions.data}}"
+                        data-rippleria
+                  >
+                        <a class="title">{{item.title}}</a>
                   </div>
             </div>
       </div>
