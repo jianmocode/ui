@@ -3,6 +3,7 @@
       "pages": [
             "/desktop/admin/staff/login",
             "/desktop/admin/staff/logout",
+            "/desktop/admin/dashboard/apps",
             "/desktop/qanda/index",
             "/desktop/qanda/detail",
             "/desktop/qanda/tag",

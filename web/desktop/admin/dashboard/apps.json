@@ -1,0 +1,28 @@
+{
+    "cname":"管理后台-应用列表",
+    "type": "html",
+	"data": {
+		"site":{
+			"api":"/xpmsns/pages/siteconf/get",
+			"query":{
+				"site_slug":"global",
+				"select":"*"
+			}
+		},
+		"option":{
+			"api":"/xpmsns/user/user/option",
+			"query":{}
+		},
+		"page":{
+			"title":"管理后台-应用列表"
+		},
+		"__js":[
+			"/js/jquery-validation-1.17.0/jquery.validate.min.js",
+			"/js/jquery.form.min.js"
+		]
+	},
+	"entries":[
+        {"method":"GET", "router":"/admin/dashboard/apps.html", "ttl":3600}
+	],
+	"align": {}
+}

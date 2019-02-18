@@ -1,0 +1,113 @@
+<include src="__WEB_ROOT__/desktop/admin/common/head.page"	/>
+<div class="page-main">
+
+	<!-- 头部导航 -->
+	<div class="header py-4">
+		<div class="container"><div class="d-flex">
+			<a class="header-brand" href="./index.html">
+				<img src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/defaults/brand/logo.svg" class="header-brand-img" alt="简墨LOGO">
+			</a>
+			<div class="d-flex order-lg-2 ml-auto">
+				<div class="nav-item d-none d-md-flex">
+					<a href="https://github.com/tabler/tabler" class="btn btn-sm btn-outline-primary" target="_blank">知否社区</a>
+				</div>
+				<div class="dropdown">
+					<a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
+						<span class="avatar" style="background-image: url(./demo/faces/female/25.jpg)"></span>
+						<span class="ml-2 d-none d-lg-block">
+						<span class="text-default">王伟平</span>
+						<small class="text-muted d-block mt-1">管理员</small>
+						</span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+						<a class="dropdown-item" href="#">
+							<i class="dropdown-icon fe fe-send"></i> 写文章
+						</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">
+							<i class="dropdown-icon fe fe-help-circle"></i> 寻求帮助
+						</a>
+						<a class="dropdown-item" href="#">
+							<i class="dropdown-icon fe fe-log-out"></i> 退出登录
+						</a>
+					</div>
+				</div>
+			</div>
+			<a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">
+				<span class="header-toggler-icon"></span>
+			</a>
+		</div></div><!-- END d-flex --> <!-- END container -->
+	</div> <!-- END 头部导航 -->
+	
+	<!-- 功能菜单 -->
+	<div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
+		<div class="container"><div class="row align-items-center">
+			<div class="col-lg order-lg-first">
+				<ul class="nav nav-tabs border-0 flex-column flex-lg-row">
+					<li class="nav-item">
+						<a href="./index.html" class="nav-link active"><i class="fe fe-home"></i> 控制台</a>
+					</li>
+					<li class="nav-item">
+						<a href="javascript:void(0)" class="nav-link" data-toggle="dropdown"><i class="fe fe-box"></i> 头条</a>
+						<div class="dropdown-menu dropdown-menu-arrow">
+						<a href="./cards.html" class="dropdown-item"> 写文章</a>
+						<a href="./charts.html" class="dropdown-item "> 文章审核</a>
+						<a href="./pricing-cards.html" class="dropdown-item "> 文章列表</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div></div> <!-- END row --> <!-- END container -->
+	</div><!-- END 功能菜单 -->
+	
+	<!-- 主界面 -->
+	<div class="my-3 my-md-5">
+		<div class="container">
+			<div class="page-header">
+				<h1 class="page-title">
+					已安装应用
+				</h1>
+			</div>
+			<div class="row row-cards">
+				<div class="col-md-6" mp:for-from="0" mp:for-to="5">
+					<div class="card">
+						<div class="card-status bg-green"></div>
+						<div class="card-header">
+							<h3 class="card-title">Card green</h3>
+						</div>
+						<div class="card-body">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam deleniti fugit incidunt, iste, itaque minima neque pariatur perferendis sed suscipit velit vitae voluptatem. A consequuntur, deserunt eaque error nulla temporibus!
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div><!-- END container -->
+	</div> <!-- END 主界面 -->
+</div> <!-- END page-main -->
+
+<!-- 页尾 -->
+<footer class="footer">
+	<div class="container">
+		<div class="row align-items-center flex-row-reverse">
+			<div class="col-auto ml-lg-auto">
+				<div class="row align-items-center">
+				<div class="col-auto">
+					<ul class="list-inline list-inline-dots mb-0">
+					<li class="list-inline-item"><a  target="_blank" href="https://www.jianmo.ink/docs/index.html">帮助文档</a></li>
+					<li class="list-inline-item"><a  target="_blank" href="https://www.jianmo.ink/faq.html">常见问题</a></li>
+					</ul>
+				</div>
+				<div class="col-auto">
+					<a target="_blank" href="https://www.jianmo.ink/qanda/index?from={{__var.__home}}" class="btn btn-outline-primary btn-sm">知否社区</a>
+				</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
+                    本站采用<a target="_blank" href="https://www.jianmo.ink/get?from={{__var.__home}}">简墨</a>搭建,  
+                    由<a target="_blank" href="https://www.jianmo.ink/qanda/index?from={{__var.__home}}">知否社区</a>提供技术支持。
+			</div>
+		</div>
+	</div><!-- END container -->
+</footer><!-- END 页尾 -->
+
+<include src="__WEB_ROOT__/desktop/admin/common/foot.page" />
