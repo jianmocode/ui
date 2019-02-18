@@ -1,6 +1,8 @@
 {
       "cname": "简墨科技主题",
       "pages": [
+            "/desktop/admin/staff/login",
+            "/desktop/admin/staff/logout",
             "/desktop/qanda/index",
             "/desktop/qanda/detail",
             "/desktop/qanda/tag",
@@ -51,6 +53,7 @@
             "/mobile/widget/recommend",
             "/mobile/widget/category",
             "/desktop/common",
+            "/desktop/admin/common",
             "/desktop/widget/recommend",
             "/desktop/widget/category",
             "/desktop/components/uploader"
