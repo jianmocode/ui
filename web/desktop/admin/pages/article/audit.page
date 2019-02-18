@@ -1,0 +1,30 @@
+<include src="__WEB_ROOT__/desktop/admin/common/head.page"	/>
+<include src="__WEB_ROOT__/desktop/admin/common/header.page" />
+<include src="__WEB_ROOT__/desktop/admin/common/menu.page" />
+
+<!-- 主界面 -->
+<div class="my-3 my-md-5">
+	<div class="container">
+		<div class="page-header">
+			<h1 class="page-title">
+				文章审核
+			</h1>
+		</div>
+		<div class="row row-cards">
+			<div class="col-md-6" mp:for-from="0" mp:for-to="5">
+				<div class="card">
+					<div class="card-status bg-green"></div>
+					<div class="card-header">
+						<h3 class="card-title">Card green</h3>
+					</div>
+					<div class="card-body">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam deleniti fugit incidunt, iste, itaque minima neque pariatur perferendis sed suscipit velit vitae voluptatem. A consequuntur, deserunt eaque error nulla temporibus!
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div><!-- END container -->
+</div> <!-- END 主界面 -->
+
+<include src="__WEB_ROOT__/desktop/admin/common/footer.page" />
+<include src="__WEB_ROOT__/desktop/admin/common/foot.page" />

@@ -1,0 +1,29 @@
+{
+    "cname":"管理后台-文章审核",
+    "type": "html",
+	"data": {
+		"staff":{
+			"api":"/xpmse/xpmse/staff/getLoginInfo",
+			"query":{}
+        },
+        "menu":[
+            {   "name":"控制台", "slug":"pages", "icon":"fe fe-layout", "link":"/admin/dashboard/apps.html"},
+            {
+                "name":"头条", "slug":"pages", "icon":"fe fe-feather", "active":true,
+                "submenu": [
+                    { "name":"写文章", "slug":"editor", "icon":"fe fe-edit", "link":"/admin/pages/editor" },
+                    { "name":"文章审核", "slug":"article-audit", "icon":"fe fe-check-square", "link":"/admin/pages/article/audit", "active":true},
+                    { "name":"文章管理", "slug":"article-management", "icon":"fe fe-layers", "link":"/admin/pages/article/management" }
+                ]
+            }
+        ],
+		"page":{
+			"title":"文章审核/管理后台"
+		},
+		"__js":[]
+	},
+	"entries":[
+        {"method":"GET", "router":"/admin/pages/article/audit", "ttl":0}
+	],
+	"align": {}
+}
