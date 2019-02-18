@@ -1,27 +1,22 @@
 <include src="__WEB_ROOT__/mobile/common/head.page" />
 
 <section class="login_wrap uk-flex uk-flex-column border_box">
-      <span class="legend">账号密码登录</span>
-      <form class="login_form uk-flex uk-flex-column">
+      <span class="legend">注册账号</span>
+      <form id="signup_form" class="login_form uk-flex uk-flex-column">
             <div class="login_item">
                   <input
-                        class="input"
+                        class="mobile input"
+                        name="mobile"
                         type="text"
                         placeholder="请输入手机号"
                   >
             </div>
-            <div class="login_item">
-                  <input 
-                        class="input"
-                        type="password"
-                        placeholder="请输入密码"
-                  >
-            </div>
             <div class="login_item uk-flex uk-flex-middle">
                   <input
-                        class="input input_qr_code"
+                        class="verify_code input"
+                        name="_vcode"
                         type="text"
-                        placeholder="请输入验证码"
+                        placeholder="图形验证码"
                   >
                   <img
                         class="img_qr_code"
@@ -29,21 +24,49 @@
                         alt="img_qr_code"
                   >
             </div>
+            <div class="login_item uk-flex uk-flex-middle">
+                  <input
+                        class="input input_message_code"
+                        name="smscode"
+                        type="text"
+                        placeholder="短信验证码"
+                  >
+                  <button
+                        class="btn_get_message"
+                        type="button"
+                  >发送验证码</button>
+            </div>
+            <div class="login_item">
+                  <input
+                        class="first_password input"
+                        name="password"
+                        type="password"
+                        placeholder="请输入密码"
+                  >
+            </div>
+            <div class="login_item">
+                  <input
+                        class="second_password input"
+                        name="password"
+                        type="password"
+                        placeholder="请再次输入密码"
+                  >
+            </div>
       </form>
       <button
-            class="btn_login"
+            class="btn_signup"
             type="button"
-      >登录</button>
+      >注册</button>
       <div class="options uk-flex uk-flex-center uk-flex-middle">
             <a
                   class="link"
                   href="#"
-            >忘记密码</a>
+            >用户协议</a>
             <span class="line">|</span>
             <a
                   class="link"
                   href="#"
-            >注册账号</a>
+            >登录账号</a>
       </div>
 
 </section>

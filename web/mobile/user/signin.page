@@ -31,7 +31,7 @@
             </div>
       </form>
       <button
-            class="btn_login"
+            class="btn_signin"
             type="button"
       >登录</button>
       <div class="options uk-flex uk-flex-center uk-flex-middle">
