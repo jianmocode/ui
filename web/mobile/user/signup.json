@@ -1,0 +1,24 @@
+{
+      "cname": "用户登录页",
+      "data": {
+            "page": {
+                  "title": "用户登录"
+            }
+      },
+      "entries": [{
+                  "method": "GET",
+                  "router": "/m/user/signup",
+                  "ttl": 0
+            },
+            {
+                  "method": "GET",
+                  "router": "/m/user/signup.html",
+                  "ttl": 0
+            }
+      ],
+
+      "alias": {
+            "desktop": "/desktop/user/signup",
+            "wxapp": "/m/user/signup"
+      }
+}
