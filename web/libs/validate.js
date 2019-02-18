@@ -42,9 +42,11 @@ class Validate {
 				that.instance.showErrors(errorList[i]) ;
 			}
 
-			$('.message')
-				.removeClass('uk-hidden')
-				.find('p').html('操作失败 (' + message + ')');
+            if ( errorList.length < 1 ) {
+                $('.message')
+                    .removeClass('uk-hidden')
+                    .find('p').html('操作失败 (' + message + ')');
+            }
 
 			try { that.events.error(message, extra);} catch(e){
 				console.log('callback error error:', e, this.events.error);

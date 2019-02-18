@@ -32,7 +32,8 @@ Page({
 	 * @return {[type]} [description]
 	 */
 	changeVcode: function( event ){
+        console.log( $('.toast').toast );
         var api = '/_api/xpmse/xpmse/staff/vcode?width=120&height=38&size=20&t=' + Date.parse(new Date()); 
-		$(event.target).attr('src', api);
+        $(event.target).attr('src', api);
 	},
 })
