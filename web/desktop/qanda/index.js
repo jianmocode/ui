@@ -117,7 +117,7 @@ Page({
                         .parent()
                         .remove()
 
-                  let tagsNum = $('.topic_items').children('.topic_item').length;
+                  let tagsNum = $('.topic_items').children('.topic_item').length
                   $('.btn_add_topic').text(`添加话题 (${tagsNum}/5)`)
 
                   if (tagsNum < 5) {

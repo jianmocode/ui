@@ -45,8 +45,32 @@
       </form>
 </div>
 
+<div class="ask_tag_wrap">
+      <div class="bar uk-flex uk-flex-between uk-flex-middle border_box">
+            <div class="left uk-flex uk-flex-middle">
+                  <a class="btn_back"></a>
+                  <span class="title">添加话题</span>
+            </div>
+            <div class="right uk-flex uk-flex-middle">
+                  <a class="btn_publish"></a>
+            </div>
+      </div>
+      <div class="tag_wrap uk-flex uk-flex-column border_box">
+            <div class="row uk-flex uk-flex-between">
+                  <input
+                        class="input_tag border_box"
+                        type="text"
+                        placeholder="添加话题（至少添加一个话题）"
+                  >
+                  <span class="tag_nums">（0/5）</span>
+                  <button class="btn_add_topic">添加</button>
+            </div>
+            <div class="topic_items uk-flex uk-flex-wrap"></div>
+      </div>
+</div>
+
 <div class="uk-switcher border_box">
-      <div class="recommend_page switch_item">Hello!</div>
+      <div class="recommend_page switch_item">Hello!123</div>
       <div class="focus_page switch_item">Hello again!</div>
       <div class="hot_questions_page switch_item">
             <div class="question_items">
@@ -55,12 +79,18 @@
                         mp:for="{{questions.data}}"
                         data-rippleria
                   >
-                        <a class="title">{{item.title}}</a>
+                        <a class="title" href="/m/qanda/detail/{{item.question_id}}">{{item.title}}</a>
                   </div>
             </div>
       </div>
       <div class="hot_answers_page switch_item">Bazinga!</div>
 </div>
+
+<section class="mask_wrap border_box">
+      <div class="message_wrap uk-flex uk-flex-center uk-flex-middle border_box">
+            <span class="text"></span>
+      </div>
+</section>
 
 <include src="__WEB_ROOT__/mobile/common/footer.page" />
 <include src="__WEB_ROOT__/mobile/common/foot.page" />

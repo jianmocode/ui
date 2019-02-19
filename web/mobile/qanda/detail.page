@@ -1,0 +1,41 @@
+<include src="__WEB_ROOT__/mobile/common/head.page" />
+<include src="__WEB_ROOT__/desktop/components/uploader/image.page" /> <!-- 引入部件 文件上传组件-->
+<include src="__WEB_ROOT__/desktop/components/editor/html.page" /> <!-- 引入部件 HTML编辑器 -->
+
+<button class="btn_asnwer"></button>
+
+<section class="question_wrap">
+      <div class="question">
+            <div
+                  class="question_tags"
+                  mp:if="{{question.tags}}"
+            >
+                  <button
+                        class="tag"
+                        mp:for="{{question.tags}}"
+                  >{{item}}</button>
+            </div>
+            <div class="question_text">
+                  <span class="question_summary">
+                        {{question.summary}}
+                  </span>
+                  <span class="question_detail none">
+                        {{question.content}}
+                  </span>
+                  <button class="btn_show_all_question">
+                        展开问题描述
+                        <img
+                              class="icon_arrow_down"
+                              src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_arrow_down.svg"
+                              alt="icon_arrow_down"
+                        >
+                  </button>
+            </div>
+            <div class="options">
+                  <span class="view_nums">{{(question.view_cnt===null)?'0':question.view_cnt}}人浏览</span>
+            </div>
+      </div>
+</section>
+
+<include src="__WEB_ROOT__/mobile/common/footer.page" />
+<include src="__WEB_ROOT__/mobile/common/foot.page" />

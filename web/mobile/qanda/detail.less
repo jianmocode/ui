@@ -1,0 +1,81 @@
+@charset "utf-8";
+@import '/mobile/common/m.less';
+
+// 引入组件
+@import '/desktop/components/uploader/image.less';
+@import '/desktop/components/editor/html.less';
+
+::-webkit-input-placeholder {
+      color: #bdc3cf;
+      font-size: 16px;
+}
+
+:-moz-placeholder {
+      color: #bdc3cf;
+      font-size: 16px;
+}
+
+::-moz-placeholder {
+      color: #bdc3cf;
+      font-size: 16px;
+}
+
+:-ms-input-placeholder {
+      color: #bdc3cf;
+      font-size: 16px;
+}
+
+body {
+      font-size: 15px;
+      color: #1A1A1A;
+      background-color: #f6f6f6;
+}
+
+// 设定工具栏样式
+.jm-editor-html {
+      border: none;
+
+      trix-toolbar {
+            border-bottom: none;
+            background-color: @backgroundMutedColor;
+      }
+
+      trix-editor {
+            padding: 10px 20px !important;
+            min-height: 140px !important;
+      }
+
+      trix-editor:empty:not(:focus)::before {
+            color: @textMutedColor;
+      }
+}
+
+.btn_asnwer {
+      position: fixed;
+      right: 1.5rem;
+      bottom: 3rem;
+      width: 3.6rem;
+      height: 3.6rem;
+      text-align: center;
+      line-height: 3.6rem;
+      background: url({{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_answer.svg) no-repeat center center #1e87f0;
+      background-size: 36% 36%; 
+      color: white;
+      border-radius: 10rem;
+      border: none;
+      box-shadow: 0 0 1rem rgba(30, 135, 240, 0.4);
+      z-index: 9999;
+      outline: none;
+}
+
+.question_wrap{
+      width: 100%;
+      padding: 0.4rem 0.8rem;
+      .question{
+            .question_tags{
+
+            }
+      }
+}
+
+

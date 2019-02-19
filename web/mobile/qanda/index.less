@@ -13,7 +13,7 @@ body {
       display: none;
 }
 
-.trix-button--icon-strike{
+.trix-button--icon-strike {
       display: none;
 }
 
@@ -39,17 +39,21 @@ body {
             padding: 0;
             width: 100vw;
             position: fixed !important;
-            top:3.5rem  !important;
+            top: 3.5rem !important;
             left: 0;
             background-color: white;
             box-sizing: border-box;
             padding: 0 1rem;
+
+            .trix-dialog__attach-fields {
+                  flex-direction: column;
+            }
       }
 
       trix-editor {
             font-size: 0.8rem;
             color: #333;
-            padding:0.4rem;
+            padding: 0.4rem;
             max-height: 60vh !important;
             overflow-y: scroll !important;
             padding-top: 0.4rem !important;
@@ -110,9 +114,11 @@ body {
       border: none;
       box-shadow: 0 0 1rem rgba(30, 135, 240, 0.4);
       z-index: 9999;
+      outline: none;
 }
 
 .ask_wrap {
+      display: none;
       position: fixed;
       top: 0;
       left: 0;
@@ -122,7 +128,7 @@ body {
       background-color: white;
 
       .bar {
-            padding: 1rem;
+            padding: 1rem 1.4rem;
             box-shadow: 0 0.1rem 0.4rem #eee;
 
             .left {
@@ -171,6 +177,131 @@ body {
                   outline: none;
                   border-radius: 10rem;
                   margin-top: 2rem;
+            }
+      }
+}
+
+.ask_tag_wrap {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 99999;
+      width: 100vw;
+      height: 100vh;
+      background-color: white;
+
+      .bar {
+            padding: 1rem 1.4rem;
+            box-shadow: 0 0.1rem 0.4rem #eee;
+
+            .left {
+                  .btn_back {
+                        display: inline-block;
+                        width: 1.2rem;
+                        height: 1.2rem;
+                        background: url({{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/back.svg) no-repeat center center white;
+                        background-size: 100% 100%;
+                        border: none;
+                        outline: none;
+                        margin-right: 2rem;
+                  }
+
+                  .title {
+                        font-size: 1rem;
+                        color: #333;
+                        font-weight: bold;
+                  }
+            }
+
+            .right {
+                  .btn_publish {
+                        display: inline-block;
+                        width: 1.2rem;
+                        height: 1.2rem;
+                        background: url({{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/publish.svg) no-repeat center center white;
+                        background-size: 100% 100%;
+                        border: none;
+                        outline: none;
+                  }
+            }
+      }
+
+      .tag_wrap {
+            width: 100%;
+            padding: 1rem;
+
+            .row {
+                  width: 100%;
+                  position: relative;
+
+                  .input_tag {
+                        width: 78%;
+                        height: 2.4rem;
+                        line-height: 2.4rem;
+                        font-size: 1rem;
+                        font-weight: bold;
+                        color: #333;
+                        border: none;
+                        background-color: whitesmoke;
+                        outline: none;
+                        border-radius: 100rem;
+                        padding: 0 1rem;
+                        transition: all ease 0.3s;
+                  }
+
+                  .tag_nums{
+                        position: absolute;
+                        right: 24%;
+                        top: 50%;
+                        margin-top: -0.25rem;
+                        height: 0.6rem;
+                        line-height: 0.6rem;
+                        font-size: 0.6rem;
+                        color: #888;
+                        transition: all ease 0.3s;
+                  }
+
+                  .btn_add_topic {
+                        width: 20%;
+                        height: 2.4rem;
+                        font-size: 1rem;
+                        background-color: #1e87f0;
+                        border-radius: 100rem;
+                        outline: none;
+                        border: none;
+                        color: white;
+                  }
+            }
+
+            .topic_items {
+                  width: 100%;
+                  padding: 1rem 0;
+                  padding-bottom: 0.6rem;
+                  border-bottom: 0.05rem solid #eee;
+
+                  .topic_item { 
+                        padding: 0.4rem 0.8rem;
+                        border-radius: 100rem;
+                        box-shadow: 0 0 1rem #eee;
+                        margin-right: 0.4rem;
+                        margin-bottom: 0.4rem;
+
+                        .text {
+                              font-size: 0.8rem;
+                              font-weight: bold;
+                              color: #888;
+                              margin-right: 0.3rem;
+                        }
+
+                        .btn_delete_topic {
+                              display: inline-block;
+                              width: 1rem;
+                              height: 1rem;
+                              background: url({{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_delete_gray.png) no-repeat center center transparent;
+                              background-size: 100% 100%;
+                        }
+                  }
             }
       }
 }
