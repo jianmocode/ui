@@ -1,0 +1,71 @@
+<include src="__WEB_ROOT__/mobile/common/head.page" />
+
+<div class="answer_header">
+      <div class="bar uk-flex uk-flex-between uk-flex-middle border_box">
+            <div class="left uk-flex uk-flex-middle">
+                  <a class="btn_back"></a>
+                  <span class="title">回答详情</span>
+            </div>
+      </div>
+      <div class="question_title">{{question.title}}</div>
+</div>
+
+<section class="answer_content_wrap">
+      <div class="answer_content">
+            <div class="author_wrap uk-flex uk-flex-between">
+                  <div class="author uk-flex uk-flex-middle">
+                        <img
+                              class="avatar_author"
+                              src="{{(question.answer.user_headimgurl)?question.answer.user_headimgurl.url:'/static-file/default/desktop/assets/images/elephant.svg'}}"
+                              alt="avatar_author"
+                        >
+                        <div class="info uk-flex uk-flex-column">
+                              <span class="nickname line_clamp_1">{{(question.answer.user_nickname)?question.answer.user_nickname:question.answer.user_mobile}}</span>
+                              <span class="intro line_clamp_1">{{(question.answer.user_bio)?question.answer.user_bio:'TA还没有简介哦'}}</span>
+                        </div>
+                  </div>
+                  <button class="btn_follow">关注</button>
+            </div>
+            <div class="content">{{question.answer.content}}</div>
+      </div>
+</section>
+
+<section class="options_wrap">
+      <div class="options uk-flex">
+            <button
+                  class="btn btn_agree uk-flex uk-flex-middle"
+                  data-id="{{question.answer.user_id}}"
+                  style="display:{(item.has_agreed)?'none':'flex'}}"
+            >
+                  <img
+                        class="img_agree"
+                        src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_agree.png"
+                        alt="icon_agree"
+                  >
+                  <span class="text">赞同</span>
+                  <span class="count">{{agree_cnt}}</span>
+            </button>
+            <button
+                  class="btn btn_agree_clicked uk-flex uk-flex-middle"
+                  data-id="{{question.answer.user_id}}"
+                  style="display:{(item.has_agreed)?'flex':'none'}}"
+            >
+                  <img
+                        class="img_agree"
+                        src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_agree_clicked.png"
+                        alt="icon_agree"
+                  >
+                  <span class="text">赞同</span>
+                  <span class="count">{{agree_cnt}}</span>
+            </button>
+      </div>
+</section>
+
+<section class="mask_wrap border_box">
+      <div class="message_wrap uk-flex uk-flex-center uk-flex-middle border_box">
+            <span class="text"></span>
+      </div>
+</section>
+
+<include src="__WEB_ROOT__/mobile/common/footer.page" />
+<include src="__WEB_ROOT__/mobile/common/foot.page" />

@@ -1,0 +1,157 @@
+@charset "utf-8";
+@import '/mobile/common/m.less';
+
+// 引入组件
+@import '/desktop/components/uploader/image.less';
+@import '/desktop/components/editor/html.less';
+
+::-webkit-input-placeholder {
+      color: #bdc3cf;
+      font-size: 16px;
+}
+
+:-moz-placeholder {
+      color: #bdc3cf;
+      font-size: 16px;
+}
+
+::-moz-placeholder {
+      color: #bdc3cf;
+      font-size: 16px;
+}
+
+:-ms-input-placeholder {
+      color: #bdc3cf;
+      font-size: 16px;
+}
+
+.answer_header {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      background-color: white;
+
+      .bar {
+            width: 100%;
+
+            padding: 1rem 0.8rem;
+            box-shadow: 0 0.1rem 0.4rem #eee;
+
+            .left {
+                  .btn_back {
+                        display: inline-block;
+                        width: 1.2rem;
+                        height: 1.2rem;
+                        background: url({{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/back.svg) no-repeat center center white;
+                        background-size: 100% 100%;
+                        border: none;
+                        outline: none;
+                        margin-right: 2rem;
+                  }
+
+                  .title {
+                        font-size: 1rem;
+                        color: #333;
+                        font-weight: bold;
+                  }
+            }
+      }
+
+      .question_title {
+            width: 100%;
+            padding: 0.4rem 0.8rem;
+            font-size: 1rem;
+            color: #888;
+            background-color: whitesmoke;
+      }
+}
+
+.answer_content_wrap {
+      width: 100%;
+      padding: 0.8rem;
+
+      .answer_content {
+            .author {
+                  margin-bottom: 0.6rem;
+
+                  .avatar_author {
+                        width: 2rem;
+                        height: 2rem;
+                        border-radius: 100rem;
+                        margin-right: 0.6rem;
+                  }
+
+                  .nickname {
+                        font-size: 0.8rem;
+                        color: #333;
+                        font-weight: bold;
+                  }
+
+                  .intro {
+                        font-size: 0.6rem;
+                        color: #888;
+                  }
+            }
+
+            .btn_follow {
+                  width: 3rem;
+                  height: 1.6rem;
+                  line-height: 1.6rem;
+                  font-size: 0.8rem;
+                  background-color: #1e87f0;
+                  border-radius: 100rem;
+                  color: white;
+                  border: none;
+                  outline: none;
+            }
+
+            .content {
+                  font-size: 0.8rem;
+                  color: #333;
+                  text-align: justify;
+                  margin-bottom: 3rem;
+            }
+      }
+}
+
+.options_wrap {
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      padding: 0.4rem 0.8rem;
+      background-color: white;
+      border-top: 0.05rem solid whitesmoke;
+
+      .options {
+            .btn {
+                  padding: 0.4rem 0.6rem;
+                  outline: none;
+                  border: none;
+                  border-radius: 0.2rem;
+                  background-color: whitesmoke;
+
+                  .img_agree {
+                        width: 1rem;
+                        margin-right: 0.4rem
+                  }
+
+                  .text {
+                        font-size: 0.8rem;
+                        font-weight: bold;
+                  }
+            }
+
+            .btn_agree {
+                  .text {
+                        color: #888;
+                  }
+            }
+
+            .btn_agree_clicked {
+                  display: none;
+                  .text {
+                        color: #1e87f0;
+                  }
+            }
+      }
+}

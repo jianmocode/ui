@@ -1,11 +1,11 @@
 <include src="__WEB_ROOT__/mobile/common/head.page" />
-<include src="__WEB_ROOT__/desktop/components/uploader/image.page" /> <!-- 引入部件 文件上传组件-->
-<include src="__WEB_ROOT__/desktop/components/editor/html.page" /> <!-- 引入部件 HTML编辑器 -->
+<include src="__WEB_ROOT__/desktop/components/uploader/image.page" />
+<include src="__WEB_ROOT__/desktop/components/editor/html.page" />
 
 <button class="btn_asnwer"></button>
 
 <section class="question_wrap">
-      <div class="question">
+      <div class="question uk-flex uk-flex-column">
             <div
                   class="question_tags"
                   mp:if="{{question.tags}}"
@@ -16,8 +16,11 @@
                   >{{item}}</button>
             </div>
             <div class="question_text">
+                  <div class="question_title">
+                        {{question.title}}
+                  </div>
                   <span class="question_summary">
-                        {{question.summary}}
+                        {{question.summary}}...
                   </span>
                   <span class="question_detail none">
                         {{question.content}}
@@ -26,14 +29,132 @@
                         展开问题描述
                         <img
                               class="icon_arrow_down"
-                              src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_arrow_down.svg"
+                              src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_arrow_down.svg"
                               alt="icon_arrow_down"
                         >
                   </button>
             </div>
             <div class="options">
-                  <span class="view_nums">{{(question.view_cnt===null)?'0':question.view_cnt}}人浏览</span>
+                  <div class="view_nums">
+                        <span class="nums">{{(question.view_cnt===null)?'0':question.view_cnt}}</span>
+                        人浏览
+                  </div>
             </div>
+      </div>
+</section>
+
+<section class="filter_wrap">
+      <div class="filter uk-flex uk-flex-between uk-flex-middle">
+            <div class="left">
+                  <span class="answers_nums">{{(question.answer_cnt===null)?'0':question.answer_cnt}} 个回答</span>
+            </div>
+            <div class="right">
+                  <button
+                        class="btn_rank uk-button uk-button-default"
+                        type="button"
+                  >按质量排序
+                        <img
+                              class="icon_arrow_down"
+                              src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_arrow_down.svg"
+                              alt="icon_arrow_down"
+                        >
+                  </button>
+                  <div
+                        class="rank_rules"
+                        uk-dropdown="mode:click"
+                  >
+                        <div class="rule_items uk-flex uk-flex-column">
+                              <button
+                                    class="rule_item btn_rank_as"
+                                    data-type="default"
+                              >按质量排序</button>
+                              <button
+                                    class="rule_item btn_rank_as"
+                                    data-type="time"
+                              >按时间排序</button>
+                        </div>
+                  </div>
+            </div>
+      </div>
+</section>
+
+<section class="answer_wrap">
+      <div
+            class="empty_wrap uk-flex uk-flex-column uk-flex-center uk-flex-middle"
+            mp:if="{{question.answers.total===0}}"
+      >
+            <span class="title_empty">这里还什么都没有~</span>
+            <img
+                  class="img_empty"
+                  src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/empty.svg"
+                  alt="img_empty"
+            >
+      </div>
+      <div class="answer_items">
+            <div
+                  class="answer_item uk-flex uk-flex-column"
+                  mp:for="{{question.answers.data}}"
+                  data-id="{{item.answer_id}}"
+            >
+                  <a
+                        class="author uk-flex uk-flex-middle"
+                        href="#"
+                  >
+                        <img
+                              class="avatar_author"
+                              src="{{(item.user_headimgurl)?item.user_headimgurl.url:'/static-file/default/desktop/assets/images/elephant.svg'}}"
+                              alt="avatar_author"
+                        >
+                        <span class="nickname line_clamp_1">{{(item.user_nickname)?item.user_nickname:item.user_mobile}}</span>
+                  </a>
+                  <div
+                        class="answer_summary"
+                        data-questionid="{{question_id}}"
+                        data-answerid="{{item.answer_id}}"
+                  >{{item.content}}</div>
+            </div>
+      </div>
+</section>
+
+<section class="go_answer_wrap">
+      <div class="go_answer">
+            <div class="bar uk-flex uk-flex-between uk-flex-middle border_box">
+                  <div class="left uk-flex uk-flex-middle">
+                        <a class="btn_del"></a>
+                        <span class="title line_clamp_1">{{question.title}}</span>
+                  </div>
+                  <div class="right uk-flex uk-flex-middle">
+                        <a class="btn_publish"></a>
+                  </div>
+            </div>
+            <form
+                  id="answer_form"
+                  class="answer_form uk-flex uk-flex-column border_box"
+            >
+                  <input
+                        class="question_id"
+                        name="question_id"
+                        type="text"
+                        value="{{question_id}}"
+                  >
+                  <editor
+                        name="content"
+                        type="html"
+                        rows="20"
+                        autofocus
+                        fetch-image="false"
+                        toolbar-sticky="top:60;"
+                        url="/_api/xpmsns/user/user/upload"
+                        placeholder="写回答..."
+                        maxChunkSize="1024"
+                  ></editor>
+            </form>
+      </div>
+</section>
+
+<section class="mask_wrap border_box">
+      <div class="message_wrap uk-flex uk-flex-center uk-flex-middle border_box">
+            <span class="text"></span>
       </div>
 </section>
 

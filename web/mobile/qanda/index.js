@@ -22,7 +22,7 @@ Page({
             const _that = this
 
             _that.loadEditor()
-            _that.handleClickDeleteAsk()
+            _that.handleClickCloseAsk()
             _that.handleClickAsk()
             _that.handleClickAddTopic()
             _that.handleClickDeleteTopic()
@@ -49,7 +49,7 @@ Page({
                   _el.fadeOut()
             }, 2000)
       },
-      handleClickDeleteAsk: function () {
+      handleClickCloseAsk: function () {
             const _that = this
 
             $('.btn_del').on('click', function () {

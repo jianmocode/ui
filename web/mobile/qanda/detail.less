@@ -25,10 +25,25 @@
       font-size: 16px;
 }
 
-body {
-      font-size: 15px;
-      color: #1A1A1A;
-      background-color: #f6f6f6;
+// 设定工具栏样式
+.trix-button--icon-italic {
+      display: none;
+}
+
+.trix-button--icon-strike {
+      display: none;
+}
+
+.trix-button--icon-decrease-nesting-level {
+      display: none;
+}
+
+.trix-button--icon-increase-nesting-level {
+      display: none;
+}
+
+.trix-button-group-alignment {
+      display: none !important;
 }
 
 // 设定工具栏样式
@@ -37,12 +52,27 @@ body {
 
       trix-toolbar {
             border-bottom: none;
-            background-color: @backgroundMutedColor;
+            padding: 0;
+            width: 100vw;
+            position: fixed !important;
+            top: 3.5rem !important;
+            left: 0;
+            background-color: white;
+            box-sizing: border-box;
+            padding: 0 1rem;
+
+            .trix-dialog__attach-fields {
+                  flex-direction: column;
+            }
       }
 
       trix-editor {
-            padding: 10px 20px !important;
-            min-height: 140px !important;
+            font-size: 0.8rem;
+            color: #333;
+            padding: 0.4rem;
+            max-height: 60vh !important;
+            overflow-y: scroll !important;
+            padding-top: 0.4rem !important;
       }
 
       trix-editor:empty:not(:focus)::before {
@@ -51,6 +81,7 @@ body {
 }
 
 .btn_asnwer {
+      display: inline-block;
       position: fixed;
       right: 1.5rem;
       bottom: 3rem;
@@ -59,7 +90,7 @@ body {
       text-align: center;
       line-height: 3.6rem;
       background: url({{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_answer.svg) no-repeat center center #1e87f0;
-      background-size: 36% 36%; 
+      background-size: 36% 36%;
       color: white;
       border-radius: 10rem;
       border: none;
@@ -68,14 +99,232 @@ body {
       outline: none;
 }
 
-.question_wrap{
+.question_wrap {
       width: 100%;
       padding: 0.4rem 0.8rem;
-      .question{
-            .question_tags{
 
+      .question {
+            .question_tags {
+                  padding-top: 0.4rem;
+
+                  .tag {
+                        padding: 0.3rem 0.8rem;
+                        margin-right: 0.6rem;
+                        margin-bottom: 0.6rem;
+                        border-radius: 100rem;
+                        font-size: 0.6rem;
+                        color: #888;
+                        background-color: whitesmoke;
+                        border: none;
+                        outline: none;
+                  }
+            }
+
+            .question_text {
+                  .question_title {
+                        font-size: 1rem;
+                        line-height: 1.6;
+                        color: #333;
+                        font-weight: bold;
+                        margin-bottom: 0.4rem;
+                  }
+
+                  .question_summary {
+                        font-size: 0.8rem;
+                        color: #333;
+                        line-height: 1.6;
+                        text-align: justify;
+                  }
+
+                  .question_detail {
+                        font-size: 0.8rem;
+                        color: #333;
+                        line-height: 1.6;
+                        text-align: justify;
+                  }
+
+                  .btn_show_all_question {
+                        background-color: transparent;
+                        border: none;
+                        outline: none;
+                        padding-left: 0.6rem;
+                        color: #888;
+
+                        .icon_arrow_down {
+                              width: 0.6rem;
+                        }
+                  }
+            }
+
+            .options {
+                  margin-top: 1rem;
+
+                  .view_nums {
+                        font-size: 0.7rem;
+                        color: #333;
+
+                        .nums {
+                              font-weight: bold;
+                        }
+                  }
             }
       }
 }
 
+.filter_wrap {
+      width: 100%;
+      padding: 0.4rem 0.8rem;
+      background-color: whitesmoke;
 
+      .filter {
+            .left {
+                  .answers_nums {
+                        height: 1rem;
+                        line-height: 1rem;
+                        font-size: 0.7rem;
+                        color: #888;
+                  }
+            }
+
+            .right {
+                  .btn_rank {
+                        height: 1rem;
+                        line-height: 1rem;
+                        font-size: 0.7rem;
+                        color: #666;
+                        padding: 0;
+                        border: none;
+                        background-color: transparent;
+                        outline: none;
+
+                        .icon_arrow_down {
+                              width: 0.6rem;
+                              margin-left: 0.2rem;
+                        }
+                  }
+
+                  .rank_rules {
+                        .rule_items {
+                              .btn_rank_as {
+                                    padding: 0;
+                              }
+                        }
+                  }
+            }
+      }
+}
+
+.answer_wrap {
+      width: 100%;
+      padding: 0 0.8rem;
+
+      .answer_items {
+            width: 100%;
+
+            .answer_item:last-child {
+                  border-bottom: none;
+            }
+
+            .answer_item {
+                  width: 100%;
+                  border-bottom: 0.05rem solid whitesmoke;
+                  overflow-x: hidden;
+                  padding-bottom: 1rem;
+
+                  .author {
+                        margin: 0.6rem 0;
+
+                        .avatar_author {
+                              width: 1.6rem;
+                              height: 1.6rem;
+                              border-radius: 100rem;
+                              margin-right: 0.8rem;
+                        }
+
+                        .nickname {
+                              font-size: 0.8rem;
+                              color: #888;
+                        }
+                  }
+
+                  .answer_summary {
+                        width: 100%;
+                        font-size: 0.8rem;
+                        color: #333;
+                        line-height: 1.6;
+                        text-align: justify;
+                        max-height: 6rem;
+                        overflow-y: hidden;
+                        cursor: pointer;
+                  }
+            }
+      }
+}
+
+.go_answer_wrap {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      width: 100vw;
+      height: 100vh;
+      background-color: white;
+
+      .go_answer {
+            width: 100%;
+
+            .bar {
+                  position: fixed;
+                  top: 0;
+                  width: 100%;
+                  padding: 1rem 1.4rem;
+                  box-shadow: 0 0.1rem 0.4rem #eee;
+
+                  .left {
+                        width: 80%;
+
+                        .btn_del {
+                              display: inline-block;
+                              width: 0.8rem;
+                              height: 0.8rem;
+                              background: url({{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/delete.svg) no-repeat center center white;
+                              background-size: 100% 100%;
+                              border: none;
+                              outline: none;
+                              margin-right: 2rem;
+                              cursor: pointer;
+                        }
+
+                        .title {
+                              width: 80%;
+                              font-size: 1rem;
+                              color: #333;
+                              font-weight: bold;
+                        }
+                  }
+
+                  .right {
+                        .btn_publish {
+                              display: inline-block;
+                              width: 1.2rem;
+                              height: 1.2rem;
+                              background: url({{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/publish.svg) no-repeat center center white;
+                              background-size: 100% 100%;
+                              border: none;
+                              outline: none;
+                        }
+                  }
+            }
+
+            .answer_form {
+                  width: 100%;
+                  padding: 1rem;
+                  margin-top: 4.8rem;
+
+                  .question_id {
+                        display: none;
+                  }
+            }
+      }
+}

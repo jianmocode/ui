@@ -12,7 +12,7 @@
                   "api": "/xpmsns/qanda/question/search",
                   "query": {
                         "page": "1",
-                        "perpage": "12",
+                        "perpage": "20",
                         "select": "question_id,question.title,question.summary,question.content,user.name,category.name,tags,user.user_id",
                         "publish_desc": "1"
                   }

@@ -1,3 +1,7 @@
+import {
+      setCookie
+} from '../../services/service'
+
 let web = getWeb();
 
 Page({
@@ -19,7 +23,7 @@ Page({
                         $('.sundry').css('display', 'flex')
                   }
             })
-      }, 
+      },
       showMessage: function (text) {
             const _that = this
             const _el = $('.mask_wrap')
@@ -59,7 +63,11 @@ Page({
                               if (response.user_id) {
                                     _that.showMessage('登录成功')
 
-                                    // setCookie('client_token', response.client_token, 2);
+                                    setCookie('__client_token', response.client_token, 2);
+
+                                    setTimeout(function () {
+                                          window.location.href='/m/qanda/index'
+                                    },300)
                               } else {
                                     _that.showMessage(response.message)
                               }

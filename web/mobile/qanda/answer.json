@@ -1,7 +1,8 @@
 {
       "cname": "问答详情(移动端)",
       "data": {
-            "question_id": "{{__var.id}}",
+            "question_id": "{{__var.question_id}}",
+            "answer_id": "{{__var.answer_id}}",
             "user": {
                   "api": "/xpmsns/user/user/getUserInfo",
                   "query": {}
@@ -9,50 +10,39 @@
             "question": {
                   "api": "/xpmsns/qanda/question/get",
                   "query": {
-                        "question_id": "{{__var.id}}",
+                        "question_id": "{{__var.question_id}}",
+                        "answer_id":"{{__var.answer_id}}",
                         "withanswer": "1",
                         "withagree": "1",
                         "withrelation": "1",
                         "page": "1",
-                        "perpage": "6",
+                        "perpage": "0",
                         "answer_select": "answer.user_id,answer.answer_id,answer.summary,answer.content,answer.agree_cnt,answer.publish_time,user.headimgurl,user.user_id,user.name,user.nickname,user.mobile,user.bio,user.answer_cnt,user.question_cnt,user.follower_cnt",
                         "agree_desc": "1"
                   }
             },
             "page":{
                   "title":"{{question.title}} - 知否"
-            }, 
-            "__css": [
-                  "/js/trix/trix.css"
-            ],
-            "__js": [
-                  "/js/trix/trix.js",
-                  "/js/jquery-validation-1.17.0/jquery.validate.min.js",
-                  "/js/jquery.ui.widget.js",
-                  "/js/jquery.iframe-transport.js",
-                  "/js/jquery.fileupload.js",
-                  "/js/jquery.form.min.js",
-                  "/js/mustache.min.js"
-            ]
+            }
       },
       "entries": [{
                   "method": "GET",
-                  "router": "/m/qanda/detail/{id:[0-9a-zA-Z]+}",
+                  "router": "/m/qanda/detail/{question_id:[0-9a-zA-Z]+}/answer/{answer_id:[0-9a-zA-Z]+}",
                   "ttl": 3600
             },
             {
                   "method": "GET",
-                  "router": "/m/qanda/detail/{id:[0-9a-zA-Z]+}",
+                  "router": "/m/qanda/detail/{question_id:[0-9a-zA-Z]+}/answer/{answer_id:[0-9a-zA-Z]+}",
                   "ttl": 0
             },
             {
                   "method": "GET",
-                  "router": "/m/qanda/detail/{id:[0-9a-zA-Z]+}.html",
+                  "router": "/m/qanda/detail/{question_id:[0-9a-zA-Z]+}/answer/{answer_id:[0-9a-zA-Z]+}.html",
                   "ttl": 0
             }
       ],
       "alias": {
-            "desktop": "/desktop/qanda/detail",
-            "wxapp": "/m/qanda/detail"
+            "desktop": "/desktop/qanda/answer",
+            "wxapp": "/m/qanda/answer"
       }
 }

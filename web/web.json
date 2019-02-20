@@ -32,6 +32,7 @@
             "/mobile/user/signup",
             "/mobile/qanda/index",
             "/mobile/qanda/detail",
+            "/mobile/qanda/answer",
             "/mobile/article/index",
             "/mobile/article/list",
             "/mobile/article/detail",
