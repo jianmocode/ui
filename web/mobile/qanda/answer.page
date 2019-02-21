@@ -24,7 +24,39 @@
                               <span class="intro line_clamp_1">{{(question.answer.user_bio)?question.answer.user_bio:'TA还没有简介哦'}}</span>
                         </div>
                   </div>
-                  <button class="btn_follow">关注</button>
+                  <div
+                        class="options uk-flex"
+                        mp:if="{{question.answer.user_user_id!==user.user_id}}"
+                  >
+                        <button
+                              class="btn_follow btn_follow_real"
+                              data-id="{{question.answer.user_user_id}}"
+                              style="display:{{(question.answer.relation==='no-relation')?'block'}}"
+                        >
+                              关注
+                        </button>
+                        <button
+                              class="btn_follow"
+                              data-id="{{question.answer.user_user_id}}"
+                              style="display:{{(question.answer.relation==='follower')?'block'}}"
+                        >
+                              关注
+                        </button>
+                        <button
+                              class="btn_unfollow btn_unfollow_real"
+                              data-id="{{question.answer.user_user_id}}"
+                              style="display:{{(question.answer.relation==='following')?'block'}}"
+                        >
+                              已关注
+                        </button>
+                        <button
+                              class="btn_unfollow"
+                              data-id="{{question.answer.user_user_id}}"
+                              style="display:{{(question.answer.relation==='friend')?'block'}}"
+                        >
+                              互相关注
+                        </button>
+                  </div>
             </div>
             <div class="content">{{question.answer.content}}</div>
       </div>
@@ -34,8 +66,8 @@
       <div class="options uk-flex">
             <button
                   class="btn btn_agree uk-flex uk-flex-middle"
-                  data-id="{{question.answer.user_id}}"
-                  style="display:{(item.has_agreed)?'none':'flex'}}"
+                  data-id="{{question.answer.answer_id}}"
+                  style="display:{{(question.answer.has_agreed)?'none':'flex'}}"
             >
                   <img
                         class="img_agree"
@@ -43,12 +75,12 @@
                         alt="icon_agree"
                   >
                   <span class="text">赞同</span>
-                  <span class="count">{{agree_cnt}}</span>
+                  <span class="count">{{question.answer.agree_cnt}}</span>
             </button>
             <button
                   class="btn btn_agree_clicked uk-flex uk-flex-middle"
-                  data-id="{{question.answer.user_id}}"
-                  style="display:{(item.has_agreed)?'flex':'none'}}"
+                  data-id="{{question.answer.answer_id}}"
+                  style="display:{{(question.answer.has_agreed)?'flex':'none'}}"
             >
                   <img
                         class="img_agree"
@@ -56,7 +88,7 @@
                         alt="icon_agree"
                   >
                   <span class="text">赞同</span>
-                  <span class="count">{{agree_cnt}}</span>
+                  <span class="count">{{question.answer.agree_cnt}}</span>
             </button>
       </div>
 </section>

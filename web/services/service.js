@@ -56,6 +56,63 @@ function unfollow(user_id) {
       })
 }
 
+function showMessage(text) {
+      const _el = $('.mask_wrap')
+
+      _el
+            .find('.text')
+            .text(text)
+
+      _el.stop()
+      _el.fadeIn()
+
+      setTimeout(function () {
+            _el.fadeOut()
+      }, 2000)
+}
+
+function mobileFollow(user_id) {
+      $.ajax({
+            type: "post",
+            url: "/_api/xpmsns/user/follow/follow",
+            dataType: "json",
+            data: {
+                  user_id: user_id
+            },
+            success: function (response) {
+                  if (response._id) {
+                        showMessage('关注成功')
+                  } else {
+                        showMessage(response.message)
+                  }
+            },
+            error: function (err) {
+                  console.log(err)
+            }
+      })
+}
+
+function mobileUnfollow(user_id) {
+      $.ajax({
+            type: "post",
+            url: "/_api/xpmsns/user/follow/unfollow",
+            dataType: "json",
+            data: {
+                  user_id: user_id
+            },
+            success: function (response) {
+                  if (response.code === 0) {
+                        showMessage('取消关注成功')
+                  } else {
+                        showMessage(response.message)
+                  }
+            },
+            error: function (err) {
+                  console.log(err);
+            }
+      })
+}
+
 //触底检测函数
 function isScrollToBottom() {
       //获取滑动的高度
@@ -85,6 +142,37 @@ function isScrollToBottom() {
 
       return getScrollTop() + getClientHeight() + 250 >= getScrollHeight()
 }
+
+//移动端触底检测函数
+function isMobileScrollToBottom() {
+      //获取滑动的高度
+      function getScrollTop() {
+            var scrollTop = 0;
+            if (document.documentElement && document.documentElement.scrollTop) {
+                  scrollTop = document.documentElement.scrollTop;
+            } else if (document.body) {
+                  scrollTop = document.body.scrollTop;
+            }
+            return scrollTop;
+      }
+      //获取当前可视范围的高度
+      function getClientHeight() {
+            var clientHeight = 0;
+            if (document.body.clientHeight && document.documentElement.clientHeight) {
+                  clientHeight = Math.min(document.body.clientHeight, document.documentElement.clientHeight);
+            } else {
+                  clientHeight = Math.max(document.body.clientHeight, document.documentElement.clientHeight);
+            }
+            return clientHeight;
+      }
+      //获取文档完整的高度 
+      function getScrollHeight() {
+            return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+      }
+
+      return getScrollTop() + getClientHeight() + 100 >= getScrollHeight()
+}
+
 
 //防抖函数
 function debounce(method, delay) {
@@ -125,15 +213,14 @@ function getCookie(cookie_name) {
       return ""
 }
 
-module.exports = {
-      setCookie,
-      getCookie
-}
-
 export {
       follow,
       unfollow,
+      mobileFollow,
+      mobileUnfollow,
+      showMessage,
       isScrollToBottom,
+      isMobileScrollToBottom,
       debounce,
       setCookie,
       getCookie

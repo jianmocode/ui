@@ -4,6 +4,15 @@
 
 <button class="btn_asnwer"></button>
 
+<div class="answer_header">
+      <div class="bar uk-flex uk-flex-between uk-flex-middle border_box">
+            <div class="left uk-flex uk-flex-middle">
+                  <a class="btn_back"></a>
+                  <span class="title">回答列表</span>
+            </div>
+      </div>
+</div>
+
 <section class="question_wrap">
       <div class="question uk-flex uk-flex-column">
             <div
@@ -20,12 +29,15 @@
                         {{question.title}}
                   </div>
                   <span class="question_summary">
-                        {{question.summary}}...
+                        {{question.summary}}<span mp:if="{{question.summary}}">...</span>
                   </span>
                   <span class="question_detail none">
                         {{question.content}}
                   </span>
-                  <button class="btn_show_all_question">
+                  <button
+                        class="btn_show_all_question"
+                        mp:if="{{question.summary}}"
+                  >
                         展开问题描述
                         <img
                               class="icon_arrow_down"
@@ -52,17 +64,15 @@
                   <button
                         class="btn_rank uk-button uk-button-default"
                         type="button"
-                  >按质量排序
+                  >
+                        <span class="text">按质量排序</span>
                         <img
                               class="icon_arrow_down"
                               src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_arrow_down.svg"
                               alt="icon_arrow_down"
                         >
                   </button>
-                  <div
-                        class="rank_rules"
-                        uk-dropdown="mode:click"
-                  >
+                  <div class="rank_rules none">
                         <div class="rule_items uk-flex uk-flex-column">
                               <button
                                     class="rule_item btn_rank_as"
@@ -90,11 +100,12 @@
                   alt="img_empty"
             >
       </div>
-      <div class="answer_items">
+      <div class="answer_items uk-flex uk-flex-column">
             <div
                   class="answer_item uk-flex uk-flex-column"
                   mp:for="{{question.answers.data}}"
                   data-id="{{item.answer_id}}"
+                  data-rippleria
             >
                   <a
                         class="author uk-flex uk-flex-middle"

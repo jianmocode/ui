@@ -1,3 +1,8 @@
+import {
+      mobileFollow,
+      mobileUnfollow
+} from '../../services/service'
+
 let web = getWeb();
 
 Page({
@@ -8,23 +13,20 @@ Page({
             _that.listenHeaderHeight()
             _that.handleClickBtnBack()
             _that.handleClickAnswerAgree()
+            _that.handleClickFollowAnswerPerson()
+            _that.handleClickUnfollowAnswerPerson()
       },
       showMessage: function (text) {
-            const _that = this
             const _el = $('.mask_wrap')
 
             _el
                   .find('.text')
                   .text(text)
 
-            if (_that.timer) {
-                  clearTimeout(_that.timer)
-            }
-
             _el.stop()
             _el.fadeIn()
 
-            _that.timer = setTimeout(function () {
+            setTimeout(function () {
                   _el.fadeOut()
             }, 2000)
       },
@@ -38,14 +40,14 @@ Page({
       },
       createAgree: function (data) {
             const _that = this
-            
+
             $.ajax({
                   type: "post",
                   url: "/_api/xpmsns/comment/agree/create",
                   dataType: "json",
                   data: data,
                   success: function (response) {
-                        if (response._id) { } else {
+                        if (response._id) {} else {
                               _that.showMessage(response.message)
                         }
                   },
@@ -101,4 +103,29 @@ Page({
                   })
             })
       },
+      handleClickFollowAnswerPerson: function () {
+            $('.author_wrap').on('click', '.btn_follow', function () {
+                  mobileFollow($(this).data('id'))
+
+                  $(this).hide()
+
+                  $(this)
+                        .parents('.author_wrap')
+                        .find('.btn_unfollow_real')
+                        .show()
+            })
+      },
+      handleClickUnfollowAnswerPerson: function () {
+            $('.author_wrap').on('click', '.btn_unfollow', function () {
+                  mobileUnfollow($(this).data('id'))
+
+                  $(this).hide()
+
+                  $(this)
+                        .parents('.author_wrap')
+                        .find('.btn_follow_real')
+                        .show()
+            })
+      },
+   
 })

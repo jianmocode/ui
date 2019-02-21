@@ -5,7 +5,7 @@
 @import '/desktop/components/editor/html.less';
 
 body {
-      background-color: white;
+      background-color: whitesmoke;
 }
 
 // 设定工具栏样式
@@ -97,7 +97,7 @@ body {
 
 .uk-switcher {
       width: 100vw;
-      padding: 0 1rem;
+      padding: 0;
       margin-top: 3rem;
 }
 
@@ -251,7 +251,7 @@ body {
                         transition: all ease 0.3s;
                   }
 
-                  .tag_nums{
+                  .tag_nums {
                         position: absolute;
                         right: 24%;
                         top: 50%;
@@ -281,7 +281,7 @@ body {
                   padding-bottom: 0.6rem;
                   border-bottom: 0.05rem solid #eee;
 
-                  .topic_item { 
+                  .topic_item {
                         padding: 0.4rem 0.8rem;
                         border-radius: 100rem;
                         box-shadow: 0 0 1rem #eee;
@@ -309,20 +309,19 @@ body {
 
 .hot_questions_page {
       width: 100%;
-
+      padding-top: 0.2rem;
       .question_items {
             width: 100%;
 
             .question_item {
                   width: 100%;
-                  border-bottom: 0.05rem solid rgba(238, 238, 238, 0.5);
-                  padding: 1rem 0;
-
-                  .title {
-                        font-size: 1rem;
-                        color: #333;
-                        font-weight: bold;
-                  }
+                  background-color: white;
+                  padding:1.6rem 1rem;
+                  margin-bottom: 0.4rem;
+                  // box-shadow: 0 0.2rem 0.2rem #eee;
+                  font-size: 1rem;
+                  color: #333;
+                  font-weight: bold;
             }
       }
 }

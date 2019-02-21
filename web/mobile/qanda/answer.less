@@ -93,16 +93,32 @@
                   }
             }
 
-            .btn_follow {
-                  width: 3rem;
-                  height: 1.6rem;
-                  line-height: 1.6rem;
-                  font-size: 0.8rem;
-                  background-color: #1e87f0;
-                  border-radius: 100rem;
-                  color: white;
-                  border: none;
-                  outline: none;
+            .options {
+                  .btn_follow {
+                        display: none;
+                        width: 3rem;
+                        height: 1.6rem;
+                        line-height: 1.6rem;
+                        font-size: 0.8rem;
+                        background-color: #1e87f0;
+                        border-radius: 100rem;
+                        color: white;
+                        border: none; 
+                        outline: none;
+                  }
+                  
+                  .btn_unfollow {
+                        display: none;
+                        width: 4rem;
+                        height: 1.6rem;
+                        line-height: 1.6rem;
+                        font-size: 0.8rem;
+                        background-color: whitesmoke;
+                        border-radius: 100rem;
+                        color: #888;
+                        border: none;
+                        outline: none;
+                  }
             }
 
             .content {
@@ -110,6 +126,9 @@
                   color: #333;
                   text-align: justify;
                   margin-bottom: 3rem;
+                  p{
+                        margin-bottom: 1rem;
+                  }
             }
       }
 }
@@ -138,6 +157,7 @@
                   .text {
                         font-size: 0.8rem;
                         font-weight: bold;
+                        margin-right: 0.4rem;
                   }
             }
 
@@ -145,11 +165,18 @@
                   .text {
                         color: #888;
                   }
+                  .count {
+                        color: #888;
+                  }
             }
 
             .btn_agree_clicked {
                   display: none;
+
                   .text {
+                        color: #1e87f0;
+                  }
+                  .count {
                         color: #1e87f0;
                   }
             }

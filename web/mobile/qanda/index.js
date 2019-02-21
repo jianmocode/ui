@@ -1,4 +1,9 @@
 import {
+      debounce,
+      isMobileScrollToBottom
+} from '../../services/service'
+
+import {
       $$
 } from '../../libs/component'
 
@@ -11,6 +16,8 @@ let web = getWeb();
 
 Page({
       data: {},
+      current_page: 1,
+      has_load_all: false,
       loadEditor: function () {
             try {
                   $$('editor[type=html]').HtmlEditor({})
@@ -29,6 +36,7 @@ Page({
             _that.handleClickNext()
             _that.handleClickBack()
             _that.handleClickPublish()
+            _that.listenScroll()
       },
       showMessage: function (text) {
             const _that = this
@@ -137,12 +145,13 @@ Page({
             let tags_array = []
 
             for (let i = 0; i < $('.topic_item .text').length; i++) {
-                  tags_array[i] = $('.topic_item_text').eq(i).text()
+                  tags_array[i] = $('.topic_item .text').eq(i).text()
             }
 
             tags = tags_array.join()
 
             let ask_form_data = tags ? `${$('#ask_form').serialize()}&tags=${tags}` : `${$('#ask_form').serialize()}`
+
             $.ajax({
                   type: "post",
                   url: "/_api/xpmsns/qanda/question/create",
@@ -152,9 +161,9 @@ Page({
                         if (response._id) {
                               _that.showMessage('提问成功')
 
-                              // setTimeout(() => {
-                              //       window.location.href = `/qanda/detail/${response.question_id}`;
-                              // }, 300);
+                              setTimeout(() => {
+                                    window.location.href = `/qanda/detail/${response.question_id}`;
+                              }, 300);
                         } else {
                               _that.showMessage(response.message)
                         }
@@ -162,7 +171,7 @@ Page({
                   error: function (err) {
                         console.log(err);
                   }
-            });
+            })
       },
       handleClickPublish: function () {
             const _that = this;
@@ -170,5 +179,55 @@ Page({
             $('.btn_publish').on('click', function () {
                   _that.submitAskForm();
             })
-      }
+      },
+      loadMoreQuestions: function () {
+            const _that = this
+
+            function updateQuestionsItems(data) {
+                  for (let i = 0; i < data.length; i++) {
+                        let nodes = `
+                              <a
+                                    class="question_item border_box"
+                                    data-rippleria
+                                    href="/m/qanda/detail/${data[i].question_id}"
+                              >${data[i].title}</a>
+                        `
+
+                        $('.question_items').append(nodes)
+                  }
+            }
+
+            $.ajax({
+                  type: "post",
+                  url: "/_api/xpmsns/qanda/question/search",
+                  dataType: "json",
+                  data: {
+                        page: _that.current_page + 1,
+                        perpage: "20",
+                        select: "question_id,question.title,question.summary,question.content,user.name,category.name,tags,user.user_id",
+                        publish_desc: "1"
+                  },
+                  success: function (response) {
+                        if (response.data.length !== 0) {
+                              updateQuestionsItems(response.data)
+                              _that.current_page = _that.current_page + 1
+                        } else {
+                              _that.has_load_all = true
+                              _that.showMessage('没有更多了')
+                        }
+                  },
+                  error: function (err) {
+                        console.log(err);
+                  }
+            })
+      },
+      listenScroll: function () {
+            const _that = this
+
+            window.onscroll = debounce(function () {
+                  if (isMobileScrollToBottom() && !_that.has_load_all) {
+                        _that.loadMoreQuestions()
+                  }
+            }, 200)
+      },
 })

@@ -73,14 +73,13 @@
       <div class="recommend_page switch_item">Hello!123</div>
       <div class="focus_page switch_item">Hello again!</div>
       <div class="hot_questions_page switch_item">
-            <div class="question_items">
-                  <div
+            <div class="question_items uk-flex uk-flex-column">
+                  <a
                         class="question_item border_box"
                         mp:for="{{questions.data}}"
                         data-rippleria
-                  >
-                        <a class="title" href="/m/qanda/detail/{{item.question_id}}">{{item.title}}</a>
-                  </div>
+                        href="/m/qanda/detail/{{item.question_id}}"
+                  >{{item.title}}</a>
             </div>
       </div>
       <div class="hot_answers_page switch_item">Bazinga!</div>
