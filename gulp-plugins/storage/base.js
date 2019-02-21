@@ -11,8 +11,7 @@ class Base {
 		options = options || {};
 		options['ignore'] = options['ignore'] || /^\./;
 		options['cache'] =  options['cache'] || path.resolve(__dirname, '../../.cache');
-		this.options = options;
-
+        this.options = options;
 	}
 
 	needUpdate( src, dst ) {
@@ -30,7 +29,7 @@ class Base {
 	 */
 	post (  api,  options ) {
 		
-		let that = this;
+        let that = this;
 		options = options || {};
 		options['type'] = options['type'] || 'json'
 		options['datatype'] = options['datatype'] || 'form'
@@ -51,12 +50,13 @@ class Base {
 
 				httpResponse = httpResponse || {};
 
-				if ( that.options['debug'] === true ) {
-					gutil.log( '========== DEBUG HTTP RESPONSE CODE: ' , httpResponse.statusCode ,  "==============");
-					gutil.log( '========== DEBUG HTTP RESPONSE BODY:  ==================\n' , body, "\n===================================================================");
-				}
-
 				if ( err  || httpResponse.statusCode !== 200) {
+
+                    if ( that.options['debug'] === true ) {
+                        gutil.log( '========== DEBUG HTTP RESPONSE CODE: ' , httpResponse.statusCode ,  "==============");
+                        gutil.log( '========== DEBUG HTTP RESPONSE BODY:  ==================\n' , body, "\n===================================================================");
+                    }
+
 					if ( err == null ) {
 						reject({
 							code:httpResponse.statusCode, 
@@ -136,7 +136,8 @@ class Base {
 	};
 
 	eachUpdate(src, dst, callback=function(){} ) {
-		let that = this;
+        let that = this;
+        let tasks = [];
 		let leaves = fs.readdirSync( src );
 		leaves.forEach( function( leaf ) {
 			if ( that.isIgnored(  src, leaf ) ) {
@@ -152,46 +153,66 @@ class Base {
 			if ( statSrc.isFile() ) {
 
 				if ( !existsCache ) {
-					
-					that.remoteUpload(  leafSrc, leafDst )
 
-						.then( function( resp ) {
-							
-							fs.copySync( leafSrc, cacheSrc, { force: true } ); // 创建文件
-							callback(leafSrc, leafDst, 'created' );
-						})
-						.catch(function(error) {
-							callback(leafSrc, leafDst, 'error', error );
-						});
+                    tasks.push(() => {
+                        return new Promise( (resolve, reject ) => {
+                        
+                            that.remoteUpload(  leafSrc, leafDst )
+
+                                .then( function( resp ) {
+                                    fs.copySync( leafSrc, cacheSrc, { force: true } ); // 创建文件
+                                    callback(leafSrc, leafDst, 'created' );
+                                    resolve( resp );
+                                })
+                                .catch(function(error) {
+                                    callback(leafSrc, leafDst, 'error', error );
+                                    reject( error );
+                                });
+                            })
+                    });
 
 				} else {
-					
+                    
+                    
 					let statCache = fs.statSync( cacheSrc );
 
-					if ( statCache.isDirectory() ) {  // 原为文件夹, 删除原文件夹
+                    if ( statCache.isDirectory() ) {  // 原为文件夹, 删除原文件夹
+                        tasks.push( ()=>{
+                        
+                            return  new Promise( ( resolve, reject ) => {
 						
-						that.remoteDelete( leafDst )
+                                that.remoteDelete( leafDst )
 
-							.then(function(){
-								fs.removeSync( cacheSrc );		
-							})
-							.catch(function(error) {
-								callback(leafSrc, leafDst, 'error', error );
-							});
+                                    .then(function(){
+                                        fs.removeSync( cacheSrc );		
+                                        resolve( cacheSrc );
+                                    })
+                                    .catch(function(error) {
+                                        callback(leafSrc, leafDst, 'error', error );
+                                        reject( error );
+                                    });
+                            });
+                        });
 
 					} else if ( statCache.isFile() ) {   // 原来为文件
 						if ( that.needUpdate( leafSrc, cacheSrc ) ) {  // 检查是否需要更新
-							
-							that.remoteUpload(  leafSrc, leafDst )
+                            
+                            tasks.push( ()=>{
+                                return new Promise( ( resolve, reject ) => {
+                                    
+                                    that.remoteUpload(  leafSrc, leafDst )
 
-								.then( function( resp ) {
-
-									fs.copySync( leafSrc, cacheSrc, { force: true } );   // 更新文件
-									callback(leafSrc, leafDst, 'updated' );
-								})
-								.catch(function(error) {
-									callback(leafSrc, leafDst, 'error', error );
-								});
+                                        .then( function( resp ) {
+                                            fs.copySync( leafSrc, cacheSrc, { force: true } );   // 更新文件
+                                            callback(leafSrc, leafDst, 'updated' );
+                                            resolve( resp );
+                                        })
+                                        .catch(function(error) {
+                                            callback(leafSrc, leafDst, 'error', error );
+                                            reject( error );
+                                        });
+                                });
+                            });
 							
 						} else {
 							callback(leafSrc, leafDst, 'notchange' );
@@ -209,10 +230,44 @@ class Base {
 				},ts);
 
 			}
-		});
-	};
+        });
+
+        // 同步运行任务
+        that.runTaskAsync(0, tasks);
+    };
+    
+
+    /**
+     * 执行任务同步执行
+     * @param {int} idx  当前任务ID 
+     * @param {array} tasks  任务总量
+     */
+    runTaskAsync(idx, tasks) {
+
+        idx = parseInt(idx);
+
+        let that = this;
+        let results = [];
+        tasks = tasks || [];
+        if (tasks.length <= idx) {
+            return;
+        }
+        
+        let task = tasks[idx] || null;
+        task()
+            .then( (response) =>{ 
+                results[idx]= response;
+                that.runTaskAsync( idx + 1, tasks );
+            })
+            .catch( (error)=>{ 
+                results[idx] = error;
+                that.runTaskAsync( idx + 1, tasks);
+            })
+    };
 
 	eachRemove(src, dst, callback=function(){} ) {
+
+        let tasks = [];
 		let that = this;
 		let cacheSrc =  path.join( that.options['cache'] , dst );
 		let existsCache = fs.existsSync( cacheSrc );
@@ -232,41 +287,52 @@ class Base {
 			let existsCache = fs.existsSync( cacheSrc );
 
 			if ( !fs.existsSync( leafSrc ) ) {
-				
-				that.remoteDelete( leafDst ) // exists in dst but not src - remove it
+                
+                tasks.push( ()=>{
+                    return new Promise( ( resolve, reject ) => {
+                        that.remoteDelete( leafDst ) // exists in dst but not src - remove it
 
-					.then(function(){
-						fs.removeSync( cacheSrc ); 	
-						callback(leafSrc, leafDst, 'removed' );
-					})
-					.catch(function(error) {
-						callback(leafSrc, leafDst, 'error', error );
-					});
+                            .then(function(){
+                                fs.removeSync( cacheSrc ); 	
+                                callback(leafSrc, leafDst, 'removed' );
+                            })
+                            .catch(function(error) {
+                                callback(leafSrc, leafDst, 'error', error );
+                            });
+                    });
+                });
 
 			} else {
 				let statSrc = fs.statSync( leafSrc );
 				let statCache = fs.statSync( cacheSrc );
 				if ( statSrc.isFile() !== statCache.isFile() || statSrc.isDirectory() !== statCache.isDirectory() ) {
-					fs.removeSync( leafDst ); // make sure they are the same type, else remove it
-					that.remoteDelete( leafDst ) // exists in dst but not src - remove it
+                    tasks.push( ()=>{
+                        return new Promise( ( resolve, reject ) => {
+                            fs.removeSync( leafDst ); // make sure they are the same type, else remove it
+                            that.remoteDelete( leafDst ) // exists in dst but not src - remove it
 
-						.then(function(){
-							fs.removeSync( cacheSrc ); 	
-						})
+                                .then(function(){
+                                    fs.removeSync( cacheSrc ); 	
+                                })
 
-						.catch(function(error) {
-							callback(leafSrc, leafDst, 'error', error );
-						});
+                                .catch(function(error) {
+                                    callback(leafSrc, leafDst, 'error', error );
+                                });
+                        });
+                    });
 
 				} else if ( statCache.isDirectory() ) {
 					
-
 					setTimeout(function(){
 						that.eachRemove(  leafSrc, leafDst, callback );
 					},ts);
 				}
 			}
-		});
+        });
+        
+        // 同步运行任务
+        that.runTaskAsync(0, tasks);
+
 	};
 
 	remoteUpload( src, dst ) {

@@ -3,14 +3,19 @@
 	"pages":[
 		"/desktop/home/index",
         "/desktop/home/forms/articles",
-        "/desktop/home/editor/article"
+        "/desktop/home/editor/article",
+        "/desktop/admin/staff/login",
+        "/desktop/admin/staff/logout",
+        "/desktop/admin/dashboard/apps",
+        "/desktop/admin/pages/article/audit"
 	],
 	"common":[
 		"/libs",
 		"/mobile/common",
 		"/mobile/widget/recommend",
 		"/mobile/widget/category",
-		"/desktop/common",
+        "/desktop/common",
+        "/desktop/admin/common",
 		"/desktop/widget/recommend",
 		"/desktop/widget/category",
 		"/desktop/components/uploader",

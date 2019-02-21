@@ -961,7 +961,7 @@ gulp.task('web-sync-static', function() {
 					nodelete:false		
 				})).on('error', reject).on('end', resolve)
 		}));
-	});
+    });
 
 	return  Promise.all(tasks).then( function(){
 		gutil.log('web-sync-static 完成');

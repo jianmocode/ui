@@ -8,6 +8,7 @@ Page({
      * @param {event} event 
      */
     openArticle: function(event) {
+        console.log( "openArticle=", event );
         let $elm = $(event.target)
         let id = $elm.attr("data-id");
         $('#articleDetail').modal({
@@ -20,7 +21,7 @@ Page({
      * @param {event} event 
      */
     resolve: function( event ) {
-        console.log( event );
+        console.log( "resolve=",  event );
     },
 
     /**
@@ -28,7 +29,7 @@ Page({
      * @param {Event} event 
      */
     reject: function( event ) {
-        console.log( event );
+        console.log( "reject=", event );
     }
 
 })

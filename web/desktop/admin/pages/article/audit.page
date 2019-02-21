@@ -55,11 +55,11 @@
 							<div class="avatar avatar-md mr-3" style="background-image: url(https://preview.tabler.io/demo/faces/male/16.jpg)"></div>
 							<div>
 								<a href="./profile.html" class="text-default">Peter Richards</a>
-								<small class="d-block text-muted">3 days ago</small>
+								<small class="d-block text-muted">4天前</small>
 							</div>
 							<div class="ml-auto text-muted"> <!-- bindtap bug -->
-								<button type="button" data-id="1023833" class="btn btn-primary mr-2 btn-sm">通过</button>
-								<button type="button" data-id="1023833" class="btn btn-secondary btn-sm">驳回</button>		 
+								<button type="button" bindtap="resolve" data-id="1023833" class="btn btn-primary mr-2 btn-sm">通过</button>
+								<button type="button" bindtap="reject" data-id="1023833" class="btn btn-secondary btn-sm">驳回</button>		 
 							</div>
 						</div>
 					</div>
