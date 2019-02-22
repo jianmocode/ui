@@ -1,0 +1,126 @@
+<include src="__WEB_ROOT__/mobile/common/head.page" />
+
+<section class="decoration_wrap">
+      <div class="decoration"></div>
+</section>
+
+<section class="content_wrap">
+      <div class="content uk-flex uk-flex-column">
+            <div class="person uk-flex uk-flex-column uk-flex-middle">
+                  <img
+                        class="img_avatar"
+                        src="{{(user.headimgurl)?user.headimgurl.url:'/static-file/default/desktop/assets/images/elephant.svg'}}"
+                        alt="img_avatar"
+                  >
+                  <span class="name">{{(user.nickname)?user.nickname:'jianmoer'}}</span>
+                  <span class="intro">{{(user.bio)?user.bio:'TA还没有简介哦'}}</span>
+            </div>
+            <div class="achievements_wrap border_box">
+                  <div class="achievements uk-flex uk-flex-between uk-flex-middle uk-flex-center">
+                        <div class="achievement_item uk-flex uk-flex-column uk-flex-middle">
+                              <span class="value">{{(user.question_cnt)?user.question_cnt:'0'}}</span>
+                              <span class="name">提问</span>
+                        </div>
+                        <div class="line">|</div>
+                        <div class="achievement_item uk-flex uk-flex-column uk-flex-middle">
+                              <span class="value">{{(user.answer_cnt)?user.answer_cnt:'0'}}</span>
+                              <span class="name">回答</span>
+                        </div>
+                        <div class="line">|</div>
+                        <div class="achievement_item uk-flex uk-flex-column uk-flex-middle">
+                              <span class="value">{{(user.follower_cnt)?user.follower_cnt:'0'}}</span>
+                              <span class="name">粉丝</span>
+                        </div>
+                        <div class="line">|</div>
+                        <div class="achievement_item uk-flex uk-flex-column uk-flex-middle">
+                              <span class="value">{{(user.following_cnt)?user.following_cnt:'0'}}</span>
+                              <span class="name">关注</span>
+                        </div>
+                  </div>
+            </div>
+            <div class="links_wrap">
+                  <div class="links uk-flex uk-flex-column">
+                        <a
+                              class="link_item uk-flex uk-flex-between uk-flex-middle"
+                              href="/m/home/profile"
+                              data-rippleria
+                        >
+                              <span class="text">个人资料</span>
+                              <img
+                                    class="img_goto"
+                                    src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_goto.svg"
+                                    alt="img_goto"
+                              >
+                        </a>
+                        <a
+                              class="link_item uk-flex uk-flex-between uk-flex-middle"
+                              data-rippleria
+                        >
+                              <span class="text">隐私设置</span>
+                              <img
+                                    class="img_goto"
+                                    src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_goto.svg"
+                                    alt="img_goto"
+                              >
+                        </a>
+                  </div>
+            </div>
+            <div class="links_wrap">
+                  <div class="links uk-flex uk-flex-column">
+                        <a
+                              class="link_item uk-flex uk-flex-between uk-flex-middle"
+                              data-rippleria
+                        >
+                              <span class="text">我的提问</span>
+                              <img
+                                    class="img_goto"
+                                    src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_goto.svg"
+                                    alt="img_goto"
+                              >
+                        </a>
+                        <a
+                              class="link_item uk-flex uk-flex-between uk-flex-middle"
+                              data-rippleria
+                        >
+                              <span class="text">我的回答</span>
+                              <img
+                                    class="img_goto"
+                                    src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_goto.svg"
+                                    alt="img_goto"
+                              >
+                        </a>
+                        <a
+                              class="link_item uk-flex uk-flex-between uk-flex-middle"
+                              data-rippleria
+                        >
+                              <span class="text">我的粉丝</span>
+                              <img
+                                    class="img_goto"
+                                    src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_goto.svg"
+                                    alt="img_goto"
+                              >
+                        </a> 
+                        <a 
+                              class="link_item uk-flex uk-flex-between uk-flex-middle"
+                              data-rippleria
+                        >
+                              <span class="text">我的关注</span>
+                              <img
+                                    class="img_goto"
+                                    src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_goto.svg"
+                                    alt="img_goto"
+                              >
+                        </a>
+                  </div>
+            </div>
+      </div>
+</section>
+
+<section class="mask_wrap border_box">
+      <div class="message_wrap uk-flex uk-flex-center uk-flex-middle border_box">
+            <span class="text"></span>
+      </div>
+</section>
+
+<include src="__WEB_ROOT__/mobile/common/footer.page" />
+<include src="__WEB_ROOT__/mobile/common/foot.page" />

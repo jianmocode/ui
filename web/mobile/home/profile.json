@@ -1,0 +1,32 @@
+{
+      "cname": "个人中心（移动端）",
+      "data": {
+            "page": {
+                  "title": "个人资料"
+            },
+            "user": {
+                  "api": "/xpmsns/user/user/getUserInfo",
+                  "query": {}
+            }
+      },
+      "entries": [{
+                  "method": "GET",
+                  "router": "/m/home/profile",
+                  "ttl": 3600
+            },
+            {
+                  "method": "GET",
+                  "router": "/m/home/profile",
+                  "ttl": 0
+            },
+            {
+                  "method": "GET",
+                  "router": "/m/home/profile",
+                  "ttl": 0
+            }
+      ],
+      "alias": {
+            "desktop": "/desktop/home/profile",
+            "wxapp": "/m/home/profile"
+      }
+}

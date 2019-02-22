@@ -1,0 +1,115 @@
+<include src="__WEB_ROOT__/mobile/common/head.page" />
+
+<div class="header">
+      <div class="bar uk-flex uk-flex-between uk-flex-middle border_box">
+            <div class="left uk-flex uk-flex-middle">
+                  <a class="btn_back"></a>
+                  <span class="title">个人资料</span>
+            </div>
+      </div>
+</div>
+
+<section class="profile_wrap">
+      <div
+            class="headimg uk-flex uk-flex-between uk-flex-middle"
+            data-type="headimg"
+      >
+            <div class="left">
+                  <span class="name">头像</span>
+            </div>
+            <div class="right uk-flex uk-flex-middle">
+                  <img
+                        class="img_avatar"
+                        src="{{(user.headimgurl)?user.headimgurl.url:'/static-file/default/desktop/assets/images/elephant.svg'}}"
+                        alt="img_avatar"
+                  >
+                  <img
+                        class="img_goto"
+                        src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_goto.svg"
+                        alt="img_goto"
+                  >
+            </div>
+      </div>
+
+      <div class="profile">
+            <div
+                  class="profile_item uk-flex uk-flex-between uk-flex-middle"
+                  data-type="nickname"
+            >
+                  <div class="left">
+                        <span class="name">昵称</span>
+                  </div>
+                  <div class="right uk-flex uk-flex-middle">
+                        <span class="text">{{(user.nickname)?user.nickname:'jianmoer'}}</span>
+                        <img
+                              class="img_goto"
+                              src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_goto.svg"
+                              alt="img_goto"
+                        >
+                  </div>
+            </div>
+            <div
+                  class="profile_item uk-flex uk-flex-between uk-flex-middle"
+                  data-type="intro"
+            >
+                  <div class="left">
+                        <span class="name">简介</span>
+                  </div>
+                  <div class="right uk-flex uk-flex-middle">
+                        <span class="text">{{(user.bio)?user.bio:'还没有简介哦'}}</span>
+                        <img
+                              class="img_goto"
+                              src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_goto.svg"
+                              alt="img_goto"
+                        >
+                  </div>
+            </div>
+            <div
+                  class="profile_item uk-flex uk-flex-between uk-flex-middle"
+                  data-type="sex"
+            >
+                  <div class="left">
+                        <span class="name">性别</span>
+                  </div>
+                  <div class="right uk-flex uk-flex-middle">
+                        <span class="text">{{(user.sex===1)?'男':'女'}}</span>
+                        <img
+                              class="img_goto"
+                              src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_goto.svg"
+                              alt="img_goto"
+                        >
+                  </div>
+            </div>
+      </div>
+</section>
+
+<section class="edit_wrap">
+      <div class="edit uk-flex uk-flex-column">
+            <div class="options uk-flex uk-flex-between uk-flex-middle">
+                  <button class="btn btn_cancel">取消</button>
+                  <span class="title">昵称</span>
+                  <button
+                        class="btn btn_complete"
+                        data-currenttype=""
+                  >完成</button>
+            </div>
+            <form
+                  id="user_form"
+                  class="user_form"
+            >
+                  <textarea
+                        class="editor"
+                        name=""
+                  ></textarea>
+            </form>
+      </div>
+</section>
+
+<section class="mask_wrap border_box">
+      <div class="message_wrap uk-flex uk-flex-center uk-flex-middle border_box">
+            <span class="text"></span>
+      </div>
+</section>
+
+<include src="__WEB_ROOT__/mobile/common/footer.page" />
+<include src="__WEB_ROOT__/mobile/common/foot.page" />

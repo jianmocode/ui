@@ -1,0 +1,12 @@
+<include src="__WEB_ROOT__/mobile/common/head.page" />
+
+
+
+<section class="mask_wrap border_box">
+      <div class="message_wrap uk-flex uk-flex-center uk-flex-middle border_box">
+            <span class="text"></span>
+      </div>
+</section>
+
+<include src="__WEB_ROOT__/mobile/common/footer.page" />
+<include src="__WEB_ROOT__/mobile/common/foot.page" />

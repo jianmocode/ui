@@ -1,0 +1,113 @@
+@charset "utf-8";
+@import '/mobile/common/m.less';
+
+html {
+      background-color: transparent;
+}
+
+body {
+      background-color: whitesmoke;
+}
+
+.decoration_wrap {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      z-index: -1;
+
+      .decoration {
+            position: absolute;
+            top: -185vw;
+            left: -70vw;
+            width: 240vw;
+            height: 240vw;
+            border-radius: 100rem;
+            background-color: #1e87f0;
+      }
+}
+
+.content_wrap {
+      width: 100%;
+      padding-bottom: 4rem;
+
+      .content {
+            width: 100%;
+
+            .person {
+                  width: 100%;
+                  color: white;
+                  padding: 2rem 0;
+
+                  .img_avatar {
+                        width: 2.8rem;
+                        height: 2.8rem;
+                        border-radius: 100rem;
+                        border: 0.1rem solid white;
+                  }
+
+                  .name {
+                        font-size: 0.8rem;
+                        margin: 0.6rem 0;
+                  }
+
+                  .intro {
+                        font-size: 0.6rem;
+                  }
+            }
+
+            .achievements_wrap {
+                  width: 100%;
+                  padding: 0 1.2rem;
+                  margin-bottom: 1rem;
+
+                  .achievements {
+                        width: 100%;
+                        padding: 1.6rem 2rem;
+                        background-color: rgba(255, 255, 255, 0.98);
+                        border-radius: 1rem;
+
+                        .achievement_item {
+                              .value {
+                                    color: #333;
+                                    font-size: 1rem;
+                                    font-weight: bold;
+                                    margin-bottom: 0.4rem;
+                              }
+
+                              .name {
+                                    color: #888;
+                                    font-size: 0.6rem;
+                              }
+                        }
+
+                        .line {
+                              font-size: 0.6rem;
+                              color: #888;
+                        }
+                  }
+            }
+
+            .links_wrap {
+                  width: 100%;
+                  padding: 0 1.2rem;
+
+                  .links {
+                        background-color: white;
+                        border-radius: 1rem;
+                        margin-bottom: 1rem;
+                        padding: 0.6rem 0;
+
+                        .link_item {
+                              padding: 0.6rem 1.6rem;
+                              color: #333;
+                              font-size: 0.8rem;
+                              .img_goto{
+                                    width: 0.6rem; 
+                              }
+                        }
+                  }
+            }
+      }
+}

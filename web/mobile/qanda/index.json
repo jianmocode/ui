@@ -2,7 +2,9 @@
       "cname": "知否问答(移动端)",
       "data": {
             "page": {
-                  "title": "知否"
+                  "title": "知否",
+                  "router": "index",
+                  "footer":"true"
             },
             "user": {
                   "api": "/xpmsns/user/user/getUserInfo",

@@ -33,6 +33,8 @@
             "/mobile/qanda/index",
             "/mobile/qanda/detail",
             "/mobile/qanda/answer",
+            "/mobile/home/index",
+            "/mobile/home/profile",
             "/mobile/article/index",
             "/mobile/article/list",
             "/mobile/article/detail",

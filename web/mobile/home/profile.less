@@ -1,0 +1,173 @@
+@charset "utf-8";
+@import '/mobile/common/m.less';
+
+html {
+      background-color: transparent;
+}
+
+body {
+      background-color: whitesmoke;
+}
+
+.header {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      background-color: white;
+
+      .bar {
+            width: 100%;
+            padding: 1rem 0.8rem;
+            box-shadow: 0 0.1rem 0.4rem #eee;
+
+            .left {
+                  .btn_back {
+                        display: inline-block;
+                        width: 1.2rem;
+                        height: 1.2rem;
+                        background: url({{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/back.svg) no-repeat center center white;
+                        background-size: 100% 100%;
+                        border: none;
+                        outline: none;
+                        margin-right: 2rem;
+                  }
+
+                  .title {
+                        font-size: 1rem;
+                        color: #333;
+                        font-weight: bold;
+                  }
+            }
+      }
+}
+
+.profile_wrap {
+      width: 100%;
+      margin-top: 4.8rem;
+      padding: 0 1.2rem;
+
+      .headimg {
+            width: 100%;
+            height: 5rem;
+            padding: 0 0.8rem;
+            border-bottom: 0.05rem solid whitesmoke;
+            background-color: white;
+            margin-bottom: 0.8rem;
+            border-radius: 1rem;
+
+            .left {
+                  .name {
+                        font-size: 0.8rem;
+                        color: #333;
+                  }
+            }
+
+            .right {
+                  .img_avatar {
+                        width: 3rem;
+                        height: 3rem;
+                        border-radius: 100rem;
+                        margin-right: 1rem;
+                        box-shadow: 0 0 1rem #ccc;
+                        border: 0.1rem solid white;
+                  }
+
+                  .img_goto {
+                        width: 0.6rem;
+                  }
+            }
+      }
+
+      .profile {
+            width: 100%;
+            border-radius: 1rem;
+            background-color: white;
+
+            .profile_item {
+                  width: 100%;
+                  height: 3.6rem;
+                  padding: 0 0.8rem;
+
+                  .left {
+                        .name {
+                              font-size: 0.8rem;
+                              color: #333;
+                        }
+                  }
+
+                  .right {
+                        .img_avatar {
+                              width: 2rem;
+                              height: 2rem;
+                              border-radius: 100rem;
+                              margin-right: 1rem;
+                              box-shadow: 0 0 1rem #ccc;
+                        }
+
+                        .text {
+                              color: #888;
+                              font-size: 0.6rem;
+                              margin-right: 1rem;
+                        }
+
+                        .img_goto {
+                              width: 0.6rem;
+                        }
+                  }
+            }
+      }
+}
+
+.edit_wrap {
+      position: fixed;
+      bottom: -100vh;
+      z-index: 9;
+      width: 100vw;
+      height: 100vh;
+      background-color: white;
+      transition: all ease 0.3s;
+
+      .edit {
+            width: 100%;
+
+            .options {
+                  width: 100%;
+                  padding: 1rem 0.8rem;
+                  box-shadow: 0 0.1rem 0.4rem #eee;
+
+                  .btn {
+                        font-size: 0.8rem;
+                        color: #888;
+                        background-color: transparent;
+                        border: none;
+                        outline: none;
+                  }
+
+                  .title {
+                        font-size: 1rem;
+                        color: #333;
+                        font-weight: bold;
+                  }
+            }
+
+            .user_form {
+                  width: 100%;
+                  padding: 0 0.8rem;
+                  margin-top: 1.2rem;
+
+                  .editor {
+                        width: 100%;
+                        padding: 1rem;
+                        height: 10rem;
+                        resize: none;
+                        outline: none;
+                        border: 0.05rem solid whitesmoke;
+                        border-radius: 1rem;
+                        box-shadow: 0 0 3rem #eee inset;
+                        font-size: 0.8rem;
+                        color: #333;
+                        line-height: 2;
+                  }
+            }
+      }
+}
