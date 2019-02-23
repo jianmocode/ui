@@ -1,0 +1,72 @@
+.mask {
+      position: fixed;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999999;
+}
+
+.color_main {
+      color: var(--color_sub);
+      font-weight: bold;
+}
+
+.content_wrap {
+      position: relative;
+      width: 80vw;
+      background: white;
+      border-radius: 20rpx;
+}
+
+.btn_close {
+      position: absolute;
+      top: 20rpx;
+      right: 20rpx;
+      width: 40rpx;
+      height: 40rpx;
+}
+
+.btn_goto {
+      width: 80%;
+      height: 72rpx;
+      background: rgba(228, 155, 174, 0.3);
+      border-radius: 72rpx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28rpx;
+      color: var(--color_main);
+      box-sizing: border-box;
+      margin: 20rpx auto 30rpx;
+}
+
+.title {
+      width: 100%;
+      font-size: 32rpx;
+      font-weight: bold;
+      text-align: center;
+      padding: 40rpx 0;
+      border-bottom: 2rpx solid #eee;
+      color: #333;
+}
+
+.slot_wrap {
+      width: 100%;
+      padding: 0 30rpx;
+      box-sizing: border-box;
+}
+
+.instruction {
+      width: 100%;
+      text-align: justify;
+      font-size: 20rpx;
+      color: #888;
+      line-height: 1.5;
+      margin: 30rpx 0;
+      padding: 0 30rpx;
+      box-sizing: border-box;
+}

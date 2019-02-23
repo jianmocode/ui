@@ -1,0 +1,144 @@
+<page-show-wrap>
+      <view class="wrap_tab border_box bg_white fixed w_100">
+            <view class="tab flex w_100 relative">
+                  <text
+                        class="text {{active_category==='推荐'?'active':''}}"
+                        catchtap="getRecommend"
+                  >推荐</text>
+                  <text
+                        class="text {{active_category===item.name?'active':''}}"
+                        wx:for="{{category}}"
+                        wx:key="{{item._id}}"
+                        data-type="{{item.name}}"
+                        data-slug="{{item.slug}}"
+                        catchtap="handleTapCategory"
+                  >{{item.name}}</text>
+            </view>
+      </view>
+      <view class="more fixed flex justify_center align_center">
+            <text class="arrow_pulldown inline_block"></text>
+      </view>
+      <scroll-view 
+            scroll-y="true"
+            class="container_page flex flex_column"
+            style="height:{{height}}px"
+            bindscrolltolower="showMore"
+      >
+            <view class="container_main flex flex_column">
+                  <view class="artical_items bg_white">
+                        <view
+                              class="artical_item flex justify_between"
+                              wx:for="{{artical_items}}"
+                              wx:key="{{item.article_id}}"
+                        >
+                              <image
+                                    class="artical_img"
+                                    src="{{item.cover.url}}"
+                                    mode="aspectFill"
+                                    catchtap="handleTapArtical"
+                                    data-id="{{item.article_id}}"
+                              ></image>
+                              <view class="content flex flex_column justify_between">
+                                    <text
+                                          class="title"
+                                          catchtap="handleTapArtical"
+                                          data-id="{{item.article_id}}"
+                                    >{{item.title}}</text>
+                                    <view class="sundry flex justify_between align_center">
+                                          <view class="sundry_left flex">
+                                                <text>{{item.publish_date}}</text>
+                                                <text wx:if="{{item.tag[0].name}}">{{item.tag[0].name}}</text>
+                                                <text wx:if="{{item.tag[1].name}}">{{item.tag[1].name}}</text>
+                                          </view>
+                                          <view class="sundry_right flex">
+                                                <button
+                                                      class="btn_share flex align_center bg_white"
+                                                      data-id="{{item.article_id}}"
+                                                      data-title="{{item.title}}"
+                                                      data-coverurl="{{item.cover.url}}"
+                                                      catchtap="openShareWindow"
+                                                >
+                                                      <image
+                                                            src="../../images/icon_share.png"
+                                                            mode="widthFix"
+                                                            data-status="{{btn_clicked}}"
+                                                      >
+                                                      </image>
+                                                </button>
+                                                <view
+                                                      class="btn_collect flex align_center"
+                                                      data-favoriteid="{{item.favorite.favorite_id}}"
+                                                      data-id="{{item.article_id}}"
+                                                      data-title="{{item.title}}"
+                                                      data-index="{{index}}"
+                                                      catchtap="handleTapCollect"
+                                                >
+                                                      <image
+                                                            src="../../images/icon_collect{{item.favorite.favorite_id?'_active':''}}.png"
+                                                            mode="widthFix"
+                                                      >
+                                                      </image>
+                                                </view>
+                                          </view>
+                                    </view>
+                              </view>
+                        </view>
+                  </view>
+                  <view class="tips_nomore flex justify_center align_center smalltitle">
+                        <text class="line"></text>
+                        <text class="text_tips">我是有底线的</text>
+                        <text class="line"></text>
+                  </view>
+            </view>
+      </scroll-view>
+      <nav index_active="true"></nav>
+</page-show-wrap>
+
+<view
+      class="auth_wrap fixed flex w_100vw h_100vh justify_center align_center relative"
+      catchtouchmove="preventTouchMove"
+      wx:if="{{is_login_show}}"
+>
+      <view
+            class="btn_wrap flex w_100 justify_between align_center bg_white"
+            catchtap="preventBubble"
+      >
+            <button
+                  class="btn btn_login text_center color_333 font_bold border_box"
+                  open-type="getUserInfo"
+                  bindgetuserinfo="bindGetUserInfo"
+            >
+                  授权登录
+            </button>
+            <button
+                  class="btn btn_login text_center color_888 font_bold border_box"
+                  catchtap="closeApp"
+            >
+                  取消
+            </button>
+      </view>
+</view>
+
+<view
+      class="share_wrap auth_wrap fixed flex w_100vw h_100vh justify_center relative"
+      catchtouchmove="preventTouchMove"
+      wx:if="{{is_sharing}}"
+>
+      <view
+            class="btn_wrap flex w_100 justify_between align_center bg_white"
+            catchtap="preventBubble"
+      >
+            <button
+                  class="btn btn_login text_center color_333 font_bold border_box"
+                  open-type="share"
+            >
+                  确认分享
+            </button>
+            <button
+                  class="btn btn_login text_center color_888 font_bold border_box"
+                  catchtap="closeShareWindow"
+            >
+                  取消
+            </button>
+      </view>
+</view>

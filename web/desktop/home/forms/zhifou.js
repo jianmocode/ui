@@ -11,7 +11,7 @@ Page({
       current_page_answer: 1,
       onReady: function () {
             const _that = this;
-
+ 
             _that.getTarget();
             _that.handleClickTabLick();
             _that.handleHoverCancelFollow();

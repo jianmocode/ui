@@ -1,0 +1,42 @@
+{
+      "cname": "个人中心（移动端）",
+      "data": {
+            "page": {
+                  "title": "我的回答"
+            },
+            "user": {
+                  "api": "/xpmsns/user/user/getUserInfo",
+                  "query": {}
+            },
+            "answers": {
+                  "api": "/xpmsns/qanda/answer/search",
+                  "query": {
+                        "page": "1",
+                        "perpage": "12",
+                        "user_id": "{{user.user_id}}",
+                        "select": "question.question_id,question.title,user_id,summary,content,publish_time",
+                        "publish_desc": "1"
+                  }
+            }
+      },
+      "entries": [{
+                  "method": "GET",
+                  "router": "/m/home/answers",
+                  "ttl": 3600
+            },
+            {
+                  "method": "GET",
+                  "router": "/m/home/answers",
+                  "ttl": 0
+            },
+            {
+                  "method": "GET",
+                  "router": "/m/home/answers",
+                  "ttl": 0
+            }
+      ],
+      "alias": {
+            "desktop": "/desktop/home/answers",
+            "wxapp": "/m/home/answers"
+      }
+}

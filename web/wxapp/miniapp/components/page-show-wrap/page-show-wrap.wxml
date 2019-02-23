@@ -1,0 +1,3 @@
+<view class="page-show-wrap">
+      <slot></slot>
+</view>

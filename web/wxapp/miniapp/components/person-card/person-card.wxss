@@ -1,0 +1,82 @@
+.card_person_wrap {
+      padding: 30rpx 16rpx;
+      padding-bottom: 16rpx;
+      box-sizing: border-box;
+}
+
+.card_person {
+      width: 100%;
+      height: 30vh;
+      position: relative;
+      border-radius: 10rpx;
+}
+
+.card_person .image_inner_box {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 24rpx;
+      z-index: 9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40rpx;
+      box-sizing: border-box;
+}
+ 
+.card_person .image_inner_box .avatar_wrap{
+      width: 100rpx;
+      height: 100rpx;
+      border: 4rpx solid white;
+      border-radius: 100rpx;
+      overflow: hidden;
+      box-shadow: 0 0 40rpx rgba(0, 0, 0, 0.1);
+}
+
+.card_person .image_inner_box .avatar {
+      width: 100%;
+      height: 100%;
+}
+
+.card_person .image_inner_box .name {
+      font-size: 28rpx;
+      margin: 12rpx 0;
+}
+
+.card_person .image_inner_box .credit_wrap {
+      display: flex;
+      align-items: center;
+}
+
+.card_person .image_inner_box .credit_wrap image {
+      width: 30rpx;
+      height: 30rpx;
+      margin-right: 10rpx;
+}
+
+.card_person .image_inner_box .credit {
+      font-size: 24rpx;
+      color: var(--color_main);
+}
+
+.card_person .image_inner_box .btn_getcredit {
+      font-size: 24rpx;
+      margin-top: 40rpx;
+      letter-spacing: 2rpx;
+}
+
+.btn_main {
+      padding: 12rpx 30rpx;
+      border-radius: 100rpx;
+      color: var(--color_main);
+      font-size: 32rpx;
+      background: white;
+      border: 2rpx solid #eee;
+      box-shadow: 0 0 10rpx #eee;
+}
+
+.subtitle {
+      color: var(--font_color_subtitle);
+      letter-spacing: 2rpx;
+      text-align: justify;
+}

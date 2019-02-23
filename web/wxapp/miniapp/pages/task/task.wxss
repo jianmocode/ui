@@ -1,0 +1,112 @@
+page {
+      background: var(--bg_color_lower);
+      font-size: 24rpx;
+}
+
+.tab {
+      font-size: 28rpx;
+      padding: 20rpx 28vw 0rpx;
+}
+
+.tab .tab_item .text {
+      padding: 0 20rpx;
+      padding-bottom: 10rpx;
+}
+
+.tab .tab_item .active {
+      color: var(--color_main);
+      border-bottom: 4rpx solid var(--color_main);
+}
+
+.task_items {
+      margin-top: 20rpx;
+}
+
+.task_items .task_item {
+      padding: 30rpx;
+}
+
+.task_items .task_item .done {
+      color: #ccc;
+      background: #f7f7f7 !important;
+      border: 2rpx solid #eee;
+}
+
+.task_item .left .icon {
+      width: 72rpx;
+      height: 72rpx;
+}
+
+.invite_task .task_item .left .icon {
+      width: 30rpx;
+      height: 30rpx;
+      padding: 20rpx;
+      border-radius: 100rpx;
+      background: var(--color_sub);
+}
+
+.task_item .left .left_info {
+      font-size: 28rpx;
+      color: #333;
+      margin-left: 20rpx;
+}
+
+.task_item .left .left_info text:last-child {
+      color: #888;
+      font-size: 24rpx;
+      margin-top: 10rpx;
+}
+
+.btn_main {
+      margin: 0;
+      box-shadow: none;
+      border: none;
+      height: 60rpx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28rpx;
+      background: white;
+      border-radius: 60rpx;
+      border: 2rpx solid var(--color_main);
+}
+
+.btn_nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 60rpx;
+      font-size: 28rpx;
+      background: white;
+      border-radius: 60rpx;
+      border: 2rpx solid var(--color_main);
+      color: var(--color_main);
+      padding: 0 30rpx;
+      box-sizing: border-box;
+}
+
+.invite_item {
+      padding: 30rpx 0;
+      border-bottom: 2rpx solid #eee;
+}
+
+.invite_item .img_artical {
+      width: 72rpx;
+      height: 72rpx;
+}
+
+.invite_item .title {
+      width: 60%;
+      padding: 0 20rpx;
+      line-height: 1.5;
+}
+
+.invite_item .btn_normal {
+      width: calc(100% - 80rpx - 60%);
+      margin-top: 6rpx;
+}
+
+.content .icon_collect {
+      width: 80rpx;
+      margin: 30rpx 0 20rpx;
+}

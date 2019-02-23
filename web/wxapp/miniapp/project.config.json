@@ -1,0 +1,136 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"nodeModules": false,
+		"autoAudits": false,
+		"uglifyFileName": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.4.3",
+	"appid": "wx671a14fe272173d1",
+	"projectname": "%E7%9F%A5%E5%90%A6",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"scripts": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 5,
+			"list": [
+				{
+					"id": 0,
+					"name": "index_page",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": "1044",
+					"shareInfo": {
+						"groupName": "测试模拟群1",
+						"shareName": "w88jSezrHJI6EKEZ1zNGDVAXkJT35gnO_wRzkqI6XWs@cr4dev",
+						"shareKey": "mkwM5kDJPtdZs6JAnnIODVo-8SEp0-a2iX8zrgU8viazJqwSPfJSRFN-gTOeJM_EszOqUc3pr5-RbQnIs7B0_g~~"
+					}
+				},
+				{
+					"id": -1,
+					"name": "person_page",
+					"pathName": "pages/person/person",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "terms_page",
+					"pathName": "pages/terms/terms",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "info_page",
+					"pathName": "pages/info/info",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "artical_page",
+					"pathName": "pages/artical/artical",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "guide_page",
+					"pathName": "pages/guide/guide",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "mall_page",
+					"pathName": "pages/mall/mall",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "goods_page",
+					"pathName": "pages/goods/goods",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "task_page",
+					"pathName": "pages/task/task",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "checkstand_page",
+					"pathName": "pages/checkstand/checkstand",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "order_list_page",
+					"pathName": "pages/order_list/order_list",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "test_page",
+					"pathName": "pages/test/test",
+					"query": ""
+				},
+				{
+					"id": 12,
+					"name": "collection_page",
+					"pathName": "pages/collection/collection",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "message_page",
+					"pathName": "pages/message/message",
+					"query": ""
+				}
+			]
+		}
+	}
+}

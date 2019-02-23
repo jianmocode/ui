@@ -1,0 +1,22 @@
+page {
+      background: white;
+}
+
+.container_page {
+      background: white;
+      padding: 0 40rpx;
+}
+
+.title {
+      margin: 40rpx 0;
+      font-size: 32rpx;
+}
+
+.text {
+      font-size: 24rpx;
+      text-align: justify;
+      line-height: 2;
+      letter-spacing: 2rpx;
+      color: var(--font_color_title);
+      margin-bottom: 40rpx;
+}

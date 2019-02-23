@@ -1,0 +1,32 @@
+{
+      "pages": [
+            "pages/guide/guide",
+            "pages/index/index",
+            "pages/artical/artical",
+            "pages/mall/mall",
+            "pages/goods/goods",
+            "pages/checkstand/checkstand",
+            "pages/orderlist/orderlist",
+            "pages/task/task",
+            "pages/person/person",
+            "pages/info/info",
+            "pages/collection/collection",
+            "pages/terms/terms",
+            "pages/message/message"
+      ],
+      "window": {
+            "backgroundTextStyle": "light",
+            "navigationBarBackgroundColor": "#fff",
+            "navigationBarTitleText": "知否",
+            "navigationBarTextStyle": "black"
+      },
+      "usingComponents": {
+            "nav": "/components/nav/nav",
+            "tips": "/components/tips/tips",
+            "person-card": "/components/person-card/person-card",
+            "goods-card": "/components/goods-card/goods-card",
+            "checkin-card": "/components/checkin-card/checkin-card",
+            "normal-card": "/components/normal-card/normal-card",
+            "page-show-wrap": "/components/page-show-wrap/page-show-wrap"
+      }
+}

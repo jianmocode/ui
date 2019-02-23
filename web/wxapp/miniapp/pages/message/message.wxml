@@ -1,0 +1,32 @@
+<page-show-wrap>
+      <scroll-view
+            class="container_page w_100"
+            scroll-y="true"
+            style="height:{{height}}px"
+            bindscrolltolower="showMore"
+      >
+            <view class="coin_items flex flex_column w_100 border_box">
+                  <view
+                        class="coin_item bg_white flex flex_column"
+                        wx:for="{{coin_items}}"
+                        wx:key="{{coin_id}}"
+                  >
+                        <view class="row name" wx:if="{{item.task}}">
+                              <text>{{item.task.name}}</text>
+                        </view>
+                        <view class="row name" wx:if="{{item.snapshot}}">
+                              <text>兑换{{item.snapshot.data.snapshot[0].goods_detail.slug}}</text>
+                        </view>
+                        <view class="row detail flex justify_between align_center">
+                              <view class="left flex align_center">
+                                    <text class="symbol white flex justify_center {{item.type==='increase'?'bg_increase':'bg_red'}}">{{item.type==='increase'?'+':'-'}}</text>
+                                    <view class="nums font_bold">{{item.quantity}}</view>
+                              </view>
+                              <view class="right">
+                                    <view class="time">{{item.created_at}}</view>
+                              </view>
+                        </view>
+                  </view>
+            </view>
+      </scroll-view>
+</page-show-wrap>

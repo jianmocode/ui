@@ -1,0 +1,24 @@
+<page-show-wrap>
+      <image
+            src="{{artical_item.cover.url}}"
+            class="banner w_100"
+            mode="aspectFill"
+      ></image>
+      <view class="container_page flex flex_column align_center">
+            <text class="title font_bold text_justify w_100">{{artical_item.title}}</text>
+            <text class="sundry color_888 w_100 text_left">{{artical_item.author}} {{artical_item.publish_date}}</text>
+            <video
+                  class="video w_100"
+                  src="{{artical_item.videos[0].url}}"
+                  wx:if="{{artical_item.videos[0].url}}"
+            ></video>
+            <view class="paragraph_items w_100">
+                  <rich-text nodes="{{artical_item.ap_content}}"></rich-text>
+            </view>
+      </view>
+      <navigator
+            class="btn_back_index fixed bg_white black color_333"
+            url="/pages/guide/guide"
+            wx:if="{{from==='share'}}"
+      >回到首页</navigator>
+</page-show-wrap>

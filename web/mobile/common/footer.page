@@ -30,7 +30,7 @@
                   <span class="text">问答</span>
             </a>
       </div>
-      <div class="footer_item_wrap">
+      <div class="footer_item_wrap uk-flex">
             <a
                   class="my_item footer_item uk-flex uk-flex-column uk-flex-middle"
                   mp:if="{{page.router!=='home'}}"

@@ -1,0 +1,42 @@
+<page-show-wrap>
+      <view
+            class="container_page flex flex_column align_center"
+            wx:if="{{!is_login}}"
+      >
+            <view class="title font_bold">我目前的状态</view>
+            <view class="options flex flex_column">
+                  <view
+                        class="btn_ready_pregnancy btn_main flex justify_center align_center"
+                        data-type="我在备孕中"
+                        catchtap="handleTapUserStatus"
+                  >我在备孕中</view>
+                  <picker
+                        mode="date"
+                        value="{{date_pregnancy}}"
+                        start="{{time()}}"
+                        data-type="怀孕中"
+                        bindchange="handleTapUserStatus"
+                  >
+                        <view class="btn_pregnancy btn_main flex justify_center align_center">怀孕中(选择预产期)</view>
+                  </picker>
+                  <picker
+                        mode="date"
+                        value="{{date}}"
+                        start="{{time()}}"
+                        data-type="宝宝已出生"
+                        bindchange="handleTapUserStatus"
+                  >
+                        <view class="btn_havebaby btn_main flex justify_center align_center">宝宝已出生(选择宝宝的生日)</view>
+                  </picker>
+            </view>
+            <image
+                  src="../../images/picture_guide.png"
+                  class="picture_guide"
+                  mode="widthFix"
+            ></image>
+            <view
+                  class="btn_skip white flex justify_center align_center"
+                  catchtap="handleTapSkip"
+            >跳过</view>
+      </view>
+</page-show-wrap>

@@ -1,0 +1,105 @@
+<page-show-wrap>
+      <view class="container_page flex flex_column align_center">
+            <view class="tab flex justify_between color_333 bg_white border_box w_100 fixed">
+                  <view class="tab_item">
+                        <view
+                              class="text {{is_goods_wait?'active':''}}"
+                              catchtap="toggleTab"
+                              data-type="goodswait"
+                        >未完成</view>
+                  </view>
+                  <view class="tab_item">
+                        <view
+                              class="text {{is_goods_done?'active':''}}"
+                              catchtap="toggleTab"
+                              data-type="goodsdone"
+                        >已完成</view>
+                  </view>
+            </view>
+            <scroll-view
+                  scroll-y="true"
+                  class="goods_wait_items goods_items flex flex_column w_100"
+                  wx:if="{{is_goods_wait}}"
+                  style="height:{{height}}px"
+                  bindscrolltolower="showMoreUncomplete"
+            >
+                  <view
+                        class="goods_item"
+                        wx:for="{{order_list_uncomplete}}"
+                        wx:key="{{item.order_id}}"
+                        wx:if="{{item._status.name!=='完成'&&item._status.name!=='待支付'}}"
+                  >
+                        <view class="goods_title w_100 bg_white color_333 border_box flex justify_between">
+                              <text class="detail_goods">订单详情</text>
+                              <text class="state_goods orange font_bold">{{item._status.name}}</text>
+                        </view>
+                        <view class="good_info color_333 w_100 border_box flex bg_white">
+                              <image
+                                    src="{{goods[item.goods_ids[0]].cover.url}}"
+                                    class="img_goods"
+                                    mode="aspectFill"
+                              ></image>
+                              <view class="right flex flex_column justify_between border_box">
+                                    <text class="goods_name text_nomore_2 text_justify">{{goods[item.goods_ids[0]].name}}</text>
+                                    <view class="row color_888">
+                                          <view class="number_order">订单编号：{{item.order_id}}</view>
+                                          <text class="date_exchange">兑换日期：{{item.created_at}}</text>
+                                    </view>
+                              </view>
+                        </view>
+                        <view class="flow w_100 bg_white text_right border_box flex justify_between align_center">
+                              <view class="left flex flex_column align_start color_888">
+                                    <text
+                                          class="number_flow color_333"
+                                          wx:if="{{item.shipping_name}}"
+                                    >{{item.shipping_name}} | 单号:{{item.tracking_no}}</text>
+                                    <text class="tips">兑换日期14天自动确认收货</text>
+                              </view>
+                              <button
+                                    class="btn_main flex justify_center align_center"
+                                    data-id="{{item.order_id}}"
+                                    catchtap="handleTapComplete"
+                              >确认收货</button>
+                        </view>
+                  </view>
+            </scroll-view>
+            <scroll-view
+                  scroll-y="true"
+                  class="goods_done_items goods_items flex flex_column w_100"
+                  wx:if="{{is_goods_done}}"
+                  style="height:{{height}}px"
+                  bindscrolltolower="showMoreComplete"
+            >
+                  <view
+                        class="goods_item"
+                        wx:for="{{order_list_complete}}"
+                        wx:key="{{item.order_id}}"
+                        wx:if="{{item._status.name==='完成'}}"
+                  >
+                        <view class="goods_title w_100 bg_white color_333 border_box flex justify_between">
+                              <text class="detail_goods">订单详情</text>
+                              <text class="state_goods orange font_bold">{{item._status.name}}</text>
+                        </view>
+                        <view class="good_info color_333 w_100 border_box flex bg_white">
+                              <image
+                                    src="{{goods[item.goods_ids[0]].cover.url}}"
+                                    class="img_goods"
+                                    mode="aspectFill"
+                              ></image>
+                              <view class="right flex flex_column justify_between border_box">
+                                    <text class="goods_name text_nomore_2 text_justify">{{goods[item.goods_ids[0]].name}}</text>
+                                    <view class="row color_888">
+                                          <view class="number_order">订单编号：{{item.order_id}}</view>
+                                          <text class="date_exchange">兑换日期：{{item.created_at}}</text>
+                                    </view>
+                              </view>
+                        </view>
+                        <view class="flow w_100 bg_white text_right border_box flex justify_between align_center">
+                              <view class="flex flex_column align_end color_333 w_100">
+                                    完成日期：{{item.updated_at}}
+                              </view>
+                        </view>
+                  </view>
+            </scroll-view>
+      </view>
+</page-show-wrap>

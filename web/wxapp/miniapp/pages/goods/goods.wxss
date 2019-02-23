@@ -1,0 +1,129 @@
+page {
+      background: var(--bg_color_lower);
+}
+
+.swiper {
+      height: 56vh;
+}
+
+.swiper .slide_img {
+      height: 48vh;
+      margin-top: 40rpx;
+}
+
+.info_goods {
+      padding: 0 40rpx;
+      font-size: 24rpx;
+      letter-spacing: 2rpx;
+      margin-bottom: 20rpx;
+}
+
+.info_goods .deadline {
+      margin-top: 40rpx;
+}
+
+.info_goods .deadline .var_date {
+      padding: 6rpx 8rpx;
+      background: var(--color_main);
+      color: white;
+      border-radius: 8rpx;
+      margin: 0 8rpx;
+}
+
+.info_goods .goods_name {
+      margin: 20rpx 0 20rpx;
+      font-size: 32rpx;
+}
+
+.info_goods .sundry {
+      margin-bottom: 20rpx;
+}
+
+.info_goods .sundry .price {
+      margin-right: 20rpx;
+}
+
+.options {
+      height: 108rpx;
+      border-top: 2rpx solid var(--bg_color_lower);
+      bottom: 0;
+}
+
+.options .btn_goto {
+      font-size: 20rpx;
+      width: 16vw;
+}
+
+.options .btn_goto image {
+      width: 50rpx;
+      margin-bottom: 10rpx;
+}
+
+.options .exchange {
+      width: 68vw;
+      font-size: 28rpx;
+      background: var(--color_main);
+      letter-spacing: 4rpx;
+      border-radius: 0;
+}
+
+.detail_goods {
+      margin-bottom: 120rpx;
+}
+
+.detail_goods .title {
+      font-size: 28rpx;
+      padding: 30rpx 0;
+      border-bottom: 2rpx solid var(--bg_color_lower);
+}
+
+.detail_goods .detail_artical image {
+      height: 500rpx;
+}
+
+.detail_goods .paragraph_items {
+      padding: 0rpx 40rpx 80rpx;
+      font-size: 24rpx;
+      color: #333;
+      letter-spacing: 2rpx;
+      line-height: 1.5;
+}
+
+.goods_info .pic_goods {
+      width: 120rpx;
+      height: 200rpx;
+}
+
+.goods_info .title {
+      font-size: 32rpx;
+      margin: 40rpx 0 10rpx;
+}
+
+.goods_info .sundry {
+      padding: 0 50rpx;
+      font-size: 20rpx;
+}
+
+.goods_info .sundry_items {
+      padding: 20rpx 0;
+}
+
+.goods_info .sundry_item {
+      margin: 6rpx 0;
+}
+
+.goods_info .goods_name {
+      width: 200rpx;
+}
+
+.goods_info .address {
+      font-size: 20rpx;
+      padding: 0 40rpx;
+}
+
+.detail_goods .detail_item text {
+      padding: 20rpx 40rpx;
+      font-size: 24rpx;
+      line-height: 1.5;
+      color: #bbb;
+}

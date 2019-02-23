@@ -1,0 +1,151 @@
+.wrap_tab {
+      overflow-x: hidden;
+      top: 0;
+      height: 78rpx;
+      z-index: 999999;
+      box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.08);
+}
+
+.tab {
+      overflow-x: scroll;
+}
+
+.tab .text {
+      white-space: nowrap;
+      margin-top: 32rpx;
+      height: 24rpx;
+      line-height: 24rpx;
+      padding: 0 60rpx;
+      padding-bottom: 20rpx;
+      font-size: 24rpx;
+      color: #888;
+      border-bottom: 4rpx solid transparent;
+      letter-spacing: 2rpx;
+}
+
+.tab .active {
+      color: #333;
+      border-bottom: 4rpx solid black;
+}
+
+.more {
+      top: 0;
+      right: 0;
+      width: 80rpx;
+      height: 78rpx;
+      z-index: 9999999;
+      background-color: white;
+}
+
+.more .arrow_pulldown {
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid black;
+      margin-top: 10rpx;
+}
+
+.artical_items {
+      padding: 0 20rpx;
+      margin-top: 92rpx;
+}
+
+.artical_items .artical_item {
+      font-size: 24rpx;
+      padding: 30rpx 0;
+      border-bottom: 2rpx solid #eee;
+}
+
+.artical_item .artical_img {
+      width: 36%;
+      height: 200rpx;
+      border-radius: 10rpx;
+}
+
+.artical_item .content {
+      width: 60%;
+      height: 200rpx;
+}
+
+.artical_item .content .title {
+      font-size: 28rpx;
+      line-height: 1.5;
+      letter-spacing: 2rpx;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      color: #333;
+}
+
+.artical_item .content .sundry {
+      color: rgba(136, 136, 136, 0.5);
+}
+
+.artical_item .content .sundry_left text {
+      margin-right: 10rpx;
+      font-size: 20rpx;
+}
+
+.artical_item .content .sundry_right image {
+      width: 36rpx;
+      height: 36rpx;
+      padding-left: 30rpx;
+      padding-right: 0;
+}
+
+.artical_item .content .sundry_right text {
+      font-size: 20rpx;
+      margin-left: 40rpx;
+}
+
+.artical_item .content .sundry_right .btn_share {
+      font-size: 20rpx;
+      padding: 0;
+}
+
+.tips_nomore {
+      padding: 40rpx 0;
+      font-size: 20rpx;
+}
+
+.tips_nomore .line {
+      width: 30%;
+      height: 2rpx;
+      background: #ddd;
+}
+
+.tips_nomore .text_tips {
+      margin: 0 20rpx;
+      margin-bottom: 110rpx;
+}
+
+.auth_wrap {
+      top: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 9999999999;
+      align-items: center;
+}
+
+.auth_wrap .btn_wrap {
+      width: 100vw;
+      height: 30vh;
+}
+
+.auth_wrap .btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40vw;
+      height: 80rpx;
+      border-radius: 80rpx;
+      line-height: 80rpx;
+      font-size: 32rpx;
+      border: 4rpx solid black;
+}
+
+.share_wrap {
+      align-items: flex-end;
+}

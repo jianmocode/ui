@@ -1,0 +1,122 @@
+.person_items {
+      /* padding: 0 36rpx; */
+      background: #eee;
+}
+
+.person_item {
+      padding: 20rpx 56rpx;
+      font-size: 24rpx;
+      border-bottom: 2rpx solid #eee;
+      background: white;
+}
+
+.person_item:last-child {
+      border-bottom: none;
+}
+
+.person_item .left {
+      color: var(--font_color_title);
+      font-weight: bold;
+}
+
+.person_item .left image {
+      width: 40rpx;
+      padding-right: 24rpx;
+}
+
+.person_item .input {
+      width: 56vw;
+      overflow: hidden;
+      margin-left: 20rpx;
+      color: var(--font_color_title);
+      box-sizing: border-box;
+      padding: 0 20rpx;
+      font-size: 24rpx;
+}
+
+.person_item .input_active {
+      color: var(--font_color_subtitle);
+      border: 2rpx solid var(--bg_color_lower);
+      border-radius: 8rpx;
+      background: white;
+      box-shadow: 0 0 30rpx #eee inset;
+}
+
+.btn_wrap {
+      padding: 40rpx;
+      margin-bottom: 100rpx;
+}
+
+.btn_wrap .btn_edit {
+      height: 80rpx;
+      letter-spacing: 4rpx;
+}
+
+.status_items {
+      padding: 40rpx 0;
+}
+
+.status_items .options .btn_main {
+      width: 400rpx;
+      height: 50rpx;
+      margin: 16rpx;
+      font-size: 24rpx;
+      letter-spacing: 2rpx;
+      box-shadow: none;
+      border: 4rpx solid black;
+      color: black;
+}
+
+.sex_items {
+      padding: 40rpx 0;
+      font-size: 24rpx;
+}
+
+.sex_items .radio-group .radio {
+      margin: 0 40rpx;
+}
+
+.sex_items radio .wx-radio-input {
+      height: 30rpx;
+      width: 30rpx;
+      margin-top: -4rpx;
+      border-radius: 50%;
+      border: 4rpx solid black;
+      background: transparent;
+}
+
+.address_items{
+      font-size: 24rpx;
+      padding: 40rpx 0;
+}
+
+.address_items .section .section__title{
+      margin-bottom: 40rpx;
+}
+
+.address_items .section .picker{
+      padding: 20rpx 40rpx;
+      border-radius: 20rpx;
+      border: 4rpx solid black;
+}
+
+.address_items textarea{
+      width: 100%;
+      height: 300rpx;
+      border: 4rpx solid black;
+      border-radius: 20rpx;
+      padding: 40rpx;
+      line-height: 1.5;
+      color: #333;
+      box-sizing: border-box;
+      margin-top: 40rpx;
+      font-size: 24rpx;
+}
+
+.address_items .btn_address{
+      height: 80rpx;
+      box-shadow: none;
+      background: rgba(228, 155, 174, 0.3);
+      color: var(--color_main);
+      margin-top: 60rpx;
+}

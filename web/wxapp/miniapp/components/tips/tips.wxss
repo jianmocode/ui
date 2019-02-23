@@ -1,0 +1,98 @@
+.mask {
+      position: fixed;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 98;
+}
+
+.tips_bg_wrap {
+      width: 80vw;
+      height: 600rpx;
+      position: relative;
+      z-index: 99;
+      border-radius: 20rpx;
+      background: var(--color_main);
+}
+
+.tips_wrap {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      padding: 80rpx 30rpx 30rpx;
+      box-sizing: border-box;
+}
+
+.tips_wrap .text {
+      position: relative;
+      width: 100%;
+      height: 400rpx;
+      border-radius: 10rpx;
+      background: white;
+      border: 2rpx solid var(--color_main);
+      padding: 8rpx;
+      font-size: 28rpx;
+      color: #333;
+      letter-spacing: 2rpx;
+      font-weight: bold;
+      box-sizing: border-box;
+}
+
+.tips_wrap .text .icon {
+      position: absolute;
+      left: 50%;
+      width: 80rpx;
+      transform: translate(-40rpx, -40rpx);
+}
+
+.text_wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      border: 2rpx solid var(--color_main);
+      border-radius: 10rpx;
+      padding: 4rpx;
+      box-sizing: border-box;
+}
+
+.text_wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      border: 2rpx solid var(--color_main);
+      border-radius: 10rpx;
+      padding: 4rpx;
+      box-sizing: border-box;
+}
+
+.options {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30rpx;
+}
+
+.w_100 {
+      width: 100% !important;
+}
+
+.btn_nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 46%;
+      height: 60rpx;
+      font-size: 24rpx;
+      border-radius: 60rpx;
+      color: #333;
+      letter-spacing: 2rpx;
+      background: white;
+}

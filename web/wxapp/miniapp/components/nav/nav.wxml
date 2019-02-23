@@ -1,0 +1,133 @@
+<view class="nav">
+      <view class="nav_item_wrap">
+            <navigator
+                  url="/pages/index/index"
+                  open-type="redirect"
+                  class="nav_item nav_index"
+                  wx:if="{{!index_active}}"
+            >
+                  <image
+                        src="../../images/icon_index.png"
+                        class="nav_img"
+                        mode="widthFix"
+                  ></image>
+                  <view class="nav_title">
+                        首页
+                  </view>
+            </navigator>
+            <navigator
+                  url="/pages/idnex/idnex"
+                  open-type="redirect"
+                  class="nav_item nav_index active"
+                  wx:if="{{index_active}}"
+            >
+                  <image
+                        src="../../images/icon_index_active.png"
+                        class="nav_img"
+                        mode="widthFix"
+                  ></image>
+                  <view class="nav_title">
+                        首页
+                  </view>
+            </navigator>
+      </view>
+
+      <view class="nav_item_wrap">
+            <navigator
+                  url="/pages/mall/mall"
+                  open-type="redirect"
+                  class="nav_item nav_welfare"
+                  wx:if="{{!welfare_active}}"
+            >
+                  <image
+                        src="../../images/icon_welfare.png"
+                        class="nav_img"
+                        mode="widthFix"
+                  ></image>
+                  <view class="nav_title">
+                        福利
+                  </view>
+            </navigator>
+            <navigator
+                  url="/pages/mall/mall"
+                  open-type="redirect"
+                  class="nav_item nav_welfare active"
+                  wx:if="{{welfare_active}}"
+            >
+                  <image
+                        src="../../images/icon_welfare_active.png"
+                        class="nav_img"
+                        mode="widthFix"
+                  ></image>
+                  <view class="nav_title">
+                        福利
+                  </view>
+            </navigator>
+      </view>
+
+      <view class="nav_item_wrap">
+            <navigator
+                  url="/pages/task/task"
+                  open-type="redirect"
+                  class="nav_item nav_task"
+                  wx:if="{{!task_active}}"
+            >
+                  <image
+                        src="../../images/icon_task.png"
+                        class="nav_img"
+                        mode="widthFix"
+                  ></image>
+                  <view class="nav_title">
+                        任务
+                  </view>
+            </navigator>
+            <navigator
+                  url="/pages/task/task"
+                  open-type="redirect"
+                  class="nav_item nav_task active"
+                  wx:if="{{task_active}}"
+            >
+                  <image
+                        src="../../images/icon_task_active.png"
+                        class="nav_img"
+                        mode="widthFix"
+                  ></image>
+                  <view class="nav_title">
+                        任务
+                  </view>
+            </navigator>
+      </view>
+
+      <view class="nav_item_wrap">
+            <navigator
+                  url="/pages/person/person"
+                  open-type="redirect"
+                  class="nav_item nav_person"
+                  wx:if="{{!person_active}}"
+            >
+                  <image
+                        src="../../images/icon_person.png"
+                        class="nav_img"
+                        mode="widthFix"
+                  ></image>
+                  <view class="nav_title">
+                        我的
+                  </view>
+            </navigator>
+            <navigator
+                  url="/pages/person/person"
+                  open-type="redirect"
+                  class="nav_item nav_person active"
+                  wx:if="{{person_active}}"
+            >
+                  <image
+                        src="../../images/icon_person_active.png"
+                        class="nav_img"
+                        mode="widthFix"
+                  ></image>
+                  <view class="nav_title">
+                        我的
+                  </view>
+            </navigator>
+      </view>
+</view>

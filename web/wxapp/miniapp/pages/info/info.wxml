@@ -1,0 +1,198 @@
+<page-show-wrap>
+      <view class="container_page flex flex_column">
+            <person-card></person-card>
+            <form
+                  class="person_items flex flex_column bg_white"
+                  bindsubmit="formSubmit"
+            >
+                  <view class="person_item flex justify_between align_center">
+                        <view class="left flex align_center">
+                              <image
+                                    src="../../images/icon_status.png"
+                                    mode="widthFix"
+                              ></image>
+                              <text>状态：</text>
+                        </view>
+                        <view class="input {{input_active?'input_active':''}}">
+                              <input
+                                    type="text"
+                                    name="user_status"
+                                    value="{{user_status}}"
+                                    disabled="true"
+                                    catchtap="handleTapStatus"
+                              />
+                        </view>
+                  </view>
+                  <view class="person_item flex justify_between align_center">
+                        <view class="left flex align_center">
+                              <image
+                                    src="../../images/icon_name.png"
+                                    mode="widthFix"
+                              ></image>
+                              <text>姓名：</text>
+                        </view>
+                        <view class="input {{input_active?'input_active':''}}">
+                              <input
+                                    type="text"
+                                    name="nickname"
+                                    value="{{nickname}}"
+                                    disabled="{{!input_active}}"
+                              />
+                        </view>
+                  </view>
+                  <view class="person_item flex justify_between align_center">
+                        <view class="left flex align_center">
+                              <image
+                                    src="../../images/icon_sex.png"
+                                    mode="widthFix"
+                              ></image>
+                              <text>性别：</text>
+                        </view>
+                        <view class="input {{input_active?'input_active':''}}">
+                              <input
+                                    type="text"
+                                    name="sex"
+                                    value="{{sex==1?'男':'女'}}"
+                                    disabled="true"
+                                    catchtap="handleTapSex"
+                              />
+                        </view>
+                  </view>
+                  <view class="person_item flex justify_between align_center">
+                        <view class="left flex align_center">
+                              <image
+                                    src="../../images/icon_mobile.png"
+                                    mode="widthFix"
+                              ></image>
+                              <text>电话：</text>
+                        </view>
+                        <view class="input {{input_active?'input_active':''}}">
+                              <input
+                                    type="text"
+                                    name="mobile"
+                                    value="{{mobile}}"
+                                    disabled="{{!input_active}}"
+                              />
+                        </view>
+                  </view>
+                  <view class="person_item flex justify_between align_center">
+                        <view class="left flex align_center">
+                              <image
+                                    src="../../images/icon_address.png"
+                                    mode="widthFix"
+                              ></image>
+                              <text>收货地址：</text>
+                        </view>
+                        <view class="input {{input_active?'input_active':''}}">
+                              <input
+                                    type="text"
+                                    name="address"
+                                    value="{{address}}"
+                                    disabled="true"
+                                    catchtap="handleTapAddress"
+                              />
+                        </view>
+                  </view>
+                  <view class="btn_wrap border_box">
+                        <button
+                              form-type="submit"
+                              class="btn_edit btn_sub flex justify_center align_center white font_bold"
+                        >{{btn_edit_innertext}}</button>
+                  </view>
+            </form>
+      </view>
+      <nav person_active="true"></nav>
+      <normal-card
+            is_show="{{is_show_input_status}}"
+            title="选择状态"
+            instruction=""
+            goto=""
+            goto_url=""
+      >
+            <view class="status_items">
+                  <view class="options flex flex_column align_center">
+                        <view
+                              class="btn_ready_pregnancy btn_main flex justify_center align_center"
+                              data-type="我在备孕中"
+                              catchtap="handleTapUserStatus"
+                        >我在备孕中</view>
+                        <picker
+                              mode="date"
+                              value="{{date_pregnancy}}"
+                              start="{{time()}}"
+                              data-type="怀孕中"
+                              bindchange="handleTapUserStatus"
+                        >
+                              <view class="btn_pregnancy btn_main flex justify_center align_center">怀孕中(选择预产期)</view>
+                        </picker>
+                        <picker
+                              mode="date"
+                              value="{{date}}"
+                              start="{{time()}}"
+                              data-type="宝宝已出生"
+                              bindchange="handleTapUserStatus"
+                        >
+                              <view class="btn_havebaby btn_main flex justify_center align_center">宝宝已出生(选择宝宝的生日)</view>
+                        </picker>
+                  </view>
+            </view>
+      </normal-card>
+      <normal-card
+            is_show="{{is_show_input_sex}}"
+            title="选择性别"
+            instruction=""
+            goto=""
+            goto_url=""
+      >
+            <view class="sex_items flex justify_center">
+                  <radio-group
+                        class="radio-group flex align_center"
+                        bindchange="radioSexChange"
+                  >
+                        <label
+                              class="radio"
+                              wx:for="{{sex_items}}"
+                              wx:key="{{item.name}}"
+                        >
+                              <radio
+                                    value="{{item.value}}"
+                                    checked="{{item.checked}}"
+                              />
+                              {{item.name}}
+                        </label>
+                  </radio-group>
+            </view>
+      </normal-card>
+      <normal-card
+            is_show="{{is_show_input_address}}"
+            title="输入地址"
+            instruction="请输入准确地址，该地址将被用作收货地址"
+            goto=""
+            goto_url=""
+      >
+            <view class="address_items flex flex_column align_center w_100 border_box">
+                  <view class="section w_100">
+                        <view class="section__title w_100 text_center color_888">点击下方输入框选择省市区</view>
+                        <picker
+                              mode="region"
+                              bindchange="bindRegionChange"
+                              value="{{region}}"
+                              custom-item="{{customItem}}"
+                        >
+                              <view class="picker w_100 border_box">
+                                    当前选择：{{region[0]}} {{region[1]}} {{region[2]}}
+                              </view>
+                        </picker>
+                  </view>
+                  <textarea
+                        placeholder="请输入详细地址"
+                        placeholder-style="color:#888;"
+                        bindblur="bindTextAreaBlur"
+                  ></textarea>
+                  <button
+                        class="btn_main btn_address w_100 flex align_center justify_center"
+                        catchtap="handleTapAddressConfirm"
+                  >确认</button>
+            </view>
+      </normal-card>
+</page-show-wrap>
