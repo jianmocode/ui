@@ -1,0 +1,34 @@
+.nav {
+      width: 100vw;
+      position: fixed;
+      bottom: 0;
+      display: flex;
+      justify-content: space-between;
+      background: white;
+      font-size: 20rpx;
+      color: #888;
+      padding: 12rpx 40rpx;
+      border-top: 2rpx solid #eee;
+      box-sizing: border-box;
+}
+
+.nav .nav_item {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 50rpx;
+      padding: 0 40rpx;
+}
+
+.nav .nav_item .nav_img {
+      width: 50rpx;
+      height: 50rpx;
+}
+
+.nav .nav_item .nav_title {
+      margin-top: 10rpx;
+}
+
+.nav .active .nav_title {
+      color: #e49bae;
+}

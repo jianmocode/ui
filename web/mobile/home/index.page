@@ -69,6 +69,7 @@
                   <div class="links uk-flex uk-flex-column">
                         <a
                               class="link_item uk-flex uk-flex-between uk-flex-middle"
+                              href="/m/home/questions"
                               data-rippleria
                         >
                               <span class="text">我的提问</span>
@@ -80,6 +81,7 @@
                         </a>
                         <a
                               class="link_item uk-flex uk-flex-between uk-flex-middle"
+                              href="/m/home/answers"
                               data-rippleria
                         >
                               <span class="text">我的回答</span>
@@ -91,6 +93,7 @@
                         </a>
                         <a
                               class="link_item uk-flex uk-flex-between uk-flex-middle"
+                              href="/m/home/followers"
                               data-rippleria
                         >
                               <span class="text">我的粉丝</span>
@@ -99,9 +102,10 @@
                                     src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_goto.svg"
                                     alt="img_goto"
                               >
-                        </a> 
-                        <a 
+                        </a>
+                        <a
                               class="link_item uk-flex uk-flex-between uk-flex-middle"
+                              href="/m/home/followings"
                               data-rippleria
                         >
                               <span class="text">我的关注</span>

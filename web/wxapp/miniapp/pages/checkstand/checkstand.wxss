@@ -1,0 +1,82 @@
+page {
+      background: #eee;
+}
+
+.btn_deal {
+      bottom: 0;
+      border-radius: 0;
+      letter-spacing: 4rpx;
+      background: var(--color_sub);
+}
+
+.deal_info {
+      padding: 40rpx 30rpx;
+      font-size: 24rpx;
+      margin-bottom: 20rpx;
+      letter-spacing: 2rpx;
+}
+
+.deal_info .icon_address {
+      width: 10%;
+      height: 100rpx;
+}
+
+.deal_info .icon_arrow {
+      width: 2%;
+      height: 30rpx;
+}
+
+.deal_info .person_info {
+      width: 80%;
+      padding-right: 2%;
+      margin: 0 30rpx;
+      line-height: 1.5;
+}
+
+.deal_info .person_info .row {
+      font-size: 32rpx;
+}
+
+.deal_info .person_info .address {
+      margin: 20rpx 0;
+}
+
+.deal_info .person_info .tips {
+      color: #fcbe4c;
+}
+
+.goods_title {
+      padding: 40rpx 30rpx;
+      font-size: 28rpx;
+}
+
+.good_info {
+      font-size: 24rpx;
+      padding: 10rpx 20rpx;
+      border-top: 2rpx solid #eee;
+      border-bottom: 2rpx solid #eee;
+}
+
+.good_info .img_goods {
+      width: 200rpx;
+      height: 200rpx;
+}
+
+.good_info .right {
+      width: calc(100% - 40rpx - 200rpx);
+      height: 200rpx;
+      padding: 20rpx;
+}
+
+.good_info .row .price {
+      margin-bottom: 6rpx;
+}
+
+.price_credit {
+      padding: 40rpx 30rpx;
+      font-size: 24rpx;
+}
+
+.price_credit .orange {
+      font-size: 28rpx;
+}

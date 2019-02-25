@@ -1,0 +1,37 @@
+.coin_items {
+      padding: 20rpx;
+}
+
+.coin_item {
+      border-radius: 12rpx;
+      padding: 40rpx 40rpx 30rpx;
+      margin-bottom: 18rpx;
+      font-size: 24rpx;
+      line-height: 24rpx;
+}
+
+.coin_item .left .bg_increase {
+      background: #18c418;
+}
+
+.coin_item .left .symbol {
+      height: 36rpx;
+      width: 36rpx;
+      line-height: 36rpx;
+      border-radius: 8rpx;
+      margin-right: 20rpx;
+}
+
+.coin_item .name{
+      margin-bottom: 40rpx;
+      font-size: 24rpx;
+      color: #333;
+}
+
+.coin_item .left .nums {
+      font-size: 32rpx;
+}
+
+.coin_item .right .time {
+      color: #bbb;
+}

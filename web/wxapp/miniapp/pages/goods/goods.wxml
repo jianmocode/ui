@@ -1,0 +1,118 @@
+<page-show-wrap>
+      <view class="container_page flex flex_column">
+            <view class="info_goods flex flex_column bg_white color_333">
+                  <swiper
+                        class="swiper"
+                        indicator-dots="true"
+                        circular="true"
+                  >
+                        <block
+                              wx:for="{{goods_data.images}}"
+                              wx:key="{{item.url}}"
+                        >
+                              <swiper-item>
+                                    <image
+                                          src="{{item.url}}"
+                                          class="slide_img w_100"
+                                          mode="aspectFill"
+                                    />
+                              </swiper-item>
+                        </block>
+                  </swiper>
+                  <view
+                        class="deadline text_left"
+                        wx:if="{{has_begin===false}}"
+                  >距离活动开始还有
+                        <text class="var_date">{{open_date.left_days}}</text>
+                        天
+                        <text class="var_date">{{open_date.left_hours}}</text>
+                        小时
+                        <text class="var_date">{{open_date.left_minutes}}</text>
+                        分
+                        <text class="var_date">{{open_date.left_seconds}}</text>
+                        秒
+                  </view>
+                  <view
+                        class="deadline text_left"
+                        wx:if="{{has_begin===true&&has_close===false}}"
+                  >距离活动结束还有
+                        <text class="var_date">{{close_date.left_days}}</text>
+                        天
+                        <text class="var_date">{{close_date.left_hours}}</text>
+                        小时
+                        <text class="var_date">{{close_date.left_minutes}}</text>
+                        分
+                        <text class="var_date">{{close_date.left_seconds}}</text>
+                        秒
+                  </view>
+                  <view
+                        class="deadline text_left"
+                        wx:if="{{has_close===true}}"
+                  >
+                        活动已结束
+                  </view>
+                  <view class="goods_name font_bold">{{goods_data.slug}}</view>
+                  <view class="sundry smalltitle">
+                        <view class="price left">价格：￥<text class="line_through">{{goods_data.params[0].price}}</text></view>
+                        <text class="remaining left">剩余：{{goods_data.available_sum}}份</text>
+                        <text class="price_credit right">宝贝需要：{{goods_data.lower_coin}}积分</text>
+                  </view>
+            </view>
+            <view class="detail_goods bg_white w_100">
+                  <view class="title flex justify_center w_100">商品详情</view>
+                  <view
+                        class="detail_item w_100 border_box"
+                        wx:for="{{goods_data.ap_content}}"
+                        wx:key="{{goods_data.ap_content}}"
+                  >
+                        <image
+                              class="w_100"
+                              src="{{item.children[0].type==='node'?item.children[0].attrs.src:''}}"
+                              mode="widthFix"
+                              wx:if="{{item.children[0].name==='img'}}"
+                        ></image>
+                        <text
+                              class="w_100 text_justify inline_block border_box letter_spacing_1"
+                              wx:if="{{item.children[0].type==='text'}}"
+                        >{{item.children[0].text}}</text>
+                  </view>
+            </view>
+            <view class="options flex bg_white fixed w_100 flex align_center color_333">
+                  <navigator
+                        class="btn_goto_index btn_goto flex flex_column align_center"
+                        url="/pages/mall/mall"
+                  >
+                        <image
+                              src="../../images/icon_index.png"
+                              mode="widthFix"
+                        ></image>
+                        <text class="smalltitle">去逛逛</text>
+                  </navigator>
+                  <navigator
+                        class="btn_goto_task btn_goto flex flex_column align_center"
+                        url="/pages/task/task"
+                  >
+                        <image
+                              src="../../images/icon_task.png"
+                              mode="widthFix"
+                        ></image>
+                        <text class="smalltitle">赚积分</text>
+                  </navigator>
+                  <button
+                        class="exchange h_100 white flex justify_center align_center"
+                        catchtap="handleTapGoods"
+                        data-id="{{goods_data.goods_id}}"
+                        disabled="{{has_begin===false||has_close===true?true:false}}"
+                  >免费兑换
+                  </button>
+            </view>
+      </view>
+      <tips
+            is_show_tips="false"
+            text="积分不足了"
+            btn_left_text="去逛逛"
+            btn_left_url="/pages/mall/mall"
+            btn_right_text="赚积分"
+            btn_left_url="/pages/task/task"
+      ></tips>
+</page-show-wrap>

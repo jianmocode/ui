@@ -1,62 +1,131 @@
-<section class="jm-topnav  uk-background-muted uk-hidden " ><div class="uk-container uk-clearfix">
-	<div class="uk-float-right"> 
-		<a class="uk-link-muted" href="mailto:{{site.email}}?subject=投稿:&lt;请填写文章标题-作者&gt;&body=此处填写文章正文和你的联系方式">我要投稿</a> 
-		<a class="uk-link-muted uk-hidden uk-margin-small-left" href="/article/contact">联系我们</a> 
-		<a class="uk-link-muted uk-hidden uk-margin-small-left" href="/article/faq">常见问题</a> 
-	</div>
-	<div class="uk-float-left">
-		{{site.site_slogen}}
-	</div>
-</div></section> <!-- END jm-topnav -->
+<section class="jm-topnav  uk-background-muted uk-hidden ">
+      <div class="uk-container uk-clearfix">
+            <div class="uk-float-right">
+                  <a
+                        class="uk-link-muted"
+                        href="mailto:{{site.email}}?subject=投稿:&lt;请填写文章标题-作者&gt;&body=此处填写文章正文和你的联系方式"
+                  >我要投稿</a>
+                  <a
+                        class="uk-link-muted uk-hidden uk-margin-small-left"
+                        href="/article/contact"
+                  >联系我们</a>
+                  <a
+                        class="uk-link-muted uk-hidden uk-margin-small-left"
+                        href="/article/faq"
+                  >常见问题</a>
+            </div>
+            <div class="uk-float-left">
+                  {{site.site_slogen}}
+            </div>
+      </div>
+</section> <!-- END jm-topnav -->
 
-<section class="jm-navbar"  ><div class="uk-container">
-	<nav class="uk-navbar-container  uk-navbar-transparent uk-dark" uk-navbar  >
-		<div class="uk-navbar-left">
-			<a class="uk-navbar-item uk-logo uk-padding-remove-horizontal" href="/">
-				<img data-src="{{site.site_logo.url}}"  alt="{{site.site_name}}" uk-img>
-			</a>
-			<ul class="uk-navbar-nav uk-margin-left">
-				<li class="{{ (active.nav == '') ? 'uk-active' }}" ><a href="/">首页</a></li>
-				<li class="{{ (active.nav == nav.category_id) ? 'uk-active' }}" mp:for="{{navs}}" mp:for-item="{{nav}}" >
-					<a mp:if="{{nav.link}}" href="{{nav.link}}"  target="{{ (nav.isblank) ? '_blank' }}"  class="{{ (nav.highlight) ? 'uk-text-danger'}}">{{nav.name}}</a>
-					<a mp:else href="/article/list/{{nav.category_id}}.html"  target="{{ (nav.isblank) ? '_blank' }}"  class="{{ (nav.highlight) ? 'uk-text-danger'}}">{{nav.name}}</a>
-				</li>
-			</ul> 
-		</div><!-- END uk-navbar-left -->
+<section class="jm-navbar card">
+      <div class="uk-container">
+            <nav
+                  class="uk-navbar-container  uk-navbar-transparent uk-dark"
+                  uk-navbar
+            >
+                  <div class="uk-navbar-left">
+                        <a
+                              class="uk-navbar-item uk-logo uk-padding-remove-horizontal"
+                              href="/"
+                        >
+                              <img
+                                    data-src="{{site.site_logo.url}}"
+                                    alt="{{site.site_name}}"
+                                    uk-img
+                              >
+                        </a>
+                        <ul class="uk-navbar-nav uk-margin-left">
+                              <li class="{{ (active.nav == '') ? 'uk-active' }}"><a href="/">首页</a></li>
+                              <li
+                                    class="{{ (active.nav == nav.category_id) ? 'uk-active' }}"
+                                    mp:for="{{navs}}"
+                                    mp:for-item="{{nav}}"
+                              >
+                                    <a
+                                          mp:if="{{nav.link}}"
+                                          href="{{nav.link}}"
+                                          target="{{ (nav.isblank) ? '_blank' }}"
+                                          class="{{ (nav.highlight) ? 'uk-text-danger'}}"
+                                    >{{nav.name}}</a>
+                                    <a
+                                          mp:else
+                                          href="/article/list/{{nav.category_id}}.html"
+                                          target="{{ (nav.isblank) ? '_blank' }}"
+                                          class="{{ (nav.highlight) ? 'uk-text-danger'}}"
+                                    >{{nav.name}}</a>
+                              </li>
+                        </ul>
+                  </div><!-- END uk-navbar-left -->
 
-		<div class="uk-navbar-right">
-			<ul class="uk-navbar-nav">
-				<li mp:if="{{site.qr_wxapp}}">
-					<a href="javascript:void(0)" >小程序</a>
-					<div uk-dropdown="offset:-20; pos:bottom-justify">
-						<img data-src="{{site.qr_wxapp.url}}"  alt="{{site.site_name}}" uk-img>
-					</div>
-				</li>
-				<li mp:if="{{site.qr_wxpub}}">
-					<a href="javascript:void(0)">公众号</a>
-					<div uk-dropdown="offset:-20; pos:bottom-justify">
-						<img data-src="{{site.qr_wxpub.url}}"  alt="{{site.site_name}}" width="200" class="uk-margin" uk-img>
-						<div mp:if="{{site.name_wxpub}}" class="uk-text-center uk-text-bold">
-							{{site.name_wxpub}}
-						</div>
-					</div>
-				</li>
-				<li class="before-login {{(user.user_id) ? 'uk-hidden'}} "><a href="/user/signup"  data-width="468" data-height="600" uk-iframe-modal >注册</a></li>
-				<li class="before-login {{(user.user_id) ? 'uk-hidden'}} "><a href="/user/signin/mobile" data-width="468" data-height="600" uk-iframe-modal>登录</a></li>
-				<li class="after-login  {{(user.user_id == '') ? 'uk-hidden'}}  {{ (active.nav == '__user') ? 'uk-active' }} ">
-					<a href="#"> 
-						<span class="nick-name" user-nickname>{{ PRINTNAME(user) }}</span>
-						<span class="uk-icon" uk-icon="icon:triangle-down"></span>
-					</a>
-					<div uk-dropdown="offset:-20; pos:bottom-justify" class="menu">
-						<ul class="uk-nav uk-navbar-dropdown-nav">
-							<li class="{{ (active.subnav == '__home') ? 'uk-active' }}"><a href="/home/index.html" >我的主页</a></li>
-							<!-- <li><a href="#">投稿</a></li> -->
-							<li><a href="/user/logout.html"> 退出登录</a></li>
-						</ul>
-					</div>
-				</li>
-			</ul>
-		</div>
-	</nav>
-</div></section> <!-- END jm-navbar -->
+                  <div class="uk-navbar-right">
+                        <ul class="uk-navbar-nav">
+                              <li mp:if="{{site.qr_wxapp}}">
+                                    <a href="javascript:void(0)">小程序</a>
+                                    <div uk-dropdown="offset:-20; pos:bottom-justify">
+                                          <img
+                                                data-src="{{site.qr_wxapp.url}}"
+                                                alt="{{site.site_name}}"
+                                                uk-img
+                                          >
+                                    </div>
+                              </li>
+                              <li mp:if="{{site.qr_wxpub}}">
+                                    <a href="javascript:void(0)">公众号</a>
+                                    <div uk-dropdown="offset:-20; pos:bottom-justify">
+                                          <img
+                                                data-src="{{site.qr_wxpub.url}}"
+                                                alt="{{site.site_name}}"
+                                                width="200"
+                                                class="uk-margin"
+                                                uk-img
+                                          >
+                                          <div
+                                                mp:if="{{site.name_wxpub}}"
+                                                class="uk-text-center uk-text-bold"
+                                          >
+                                                {{site.name_wxpub}}
+                                          </div>
+                                    </div>
+                              </li>
+                              <li class="before-login {{(user.user_id) ? 'uk-hidden'}} "><a
+                                          href="/user/signup"
+                                          data-width="468"
+                                          data-height="600"
+                                          uk-iframe-modal
+                                    >注册</a></li>
+                              <li class="before-login {{(user.user_id) ? 'uk-hidden'}} "><a
+                                          href="/user/signin/mobile"
+                                          data-width="468"
+                                          data-height="600"
+                                          uk-iframe-modal
+                                    >登录</a></li>
+                              <li class="after-login  {{(user.user_id == '') ? 'uk-hidden'}}  {{ (active.nav == '__user') ? 'uk-active' }} ">
+                                    <a href="#">
+                                          <span
+                                                class="nick-name"
+                                                user-nickname
+                                          >{{ PRINTNAME(user) }}</span>
+                                          <span
+                                                class="uk-icon"
+                                                uk-icon="icon:triangle-down"
+                                          ></span>
+                                    </a>
+                                    <div
+                                          uk-dropdown="offset:-20; pos:bottom-justify"
+                                          class="menu"
+                                    >
+                                          <ul class="uk-nav uk-navbar-dropdown-nav">
+                                                <li class="{{ (active.subnav == '__home') ? 'uk-active' }}"><a href="/home/index.html">我的主页</a></li>
+                                                <!-- <li><a href="#">投稿</a></li> -->
+                                                <li><a href="/user/logout.html"> 退出登录</a></li>
+                                          </ul>
+                                    </div>
+                              </li>
+                        </ul>
+                  </div>
+            </nav>
+      </div>
+</section> <!-- END jm-navbar -->

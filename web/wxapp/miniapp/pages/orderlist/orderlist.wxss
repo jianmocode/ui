@@ -1,0 +1,79 @@
+page {
+      background: #eee;
+}
+
+.tab {
+      font-size: 28rpx;
+      padding: 20rpx 30vw 0rpx;
+      margin-bottom: 20rpx;
+      top: 0;
+      z-index: 999;
+}
+
+.tab .tab_item .text {
+      padding: 0 30rpx;
+      padding-bottom: 10rpx;
+}
+
+.tab .tab_item .active {
+      color: var(--color_main);
+      border-bottom: 4rpx solid var(--color_main);
+}
+
+.goods_item {
+      margin-bottom: 20rpx;
+}
+
+.goods_items .goods_item:first-child {
+      margin-top: 90rpx;
+}
+
+.goods_done_items .flow {
+      padding: 40rpx 30rpx;
+}
+
+.goods_title {
+      padding: 40rpx 30rpx;
+      font-size: 28rpx;
+}
+
+.good_info {
+      font-size: 24rpx;
+      padding: 10rpx 20rpx;
+      border-top: 2rpx solid #eee;
+      border-bottom: 2rpx solid #eee;
+}
+
+.good_info .img_goods {
+      width: 200rpx;
+      height: 200rpx;
+}
+
+.good_info .right {
+      width: calc(100% - 40rpx - 200rpx);
+      height: 200rpx;
+      padding: 20rpx;
+}
+
+.good_info .row .number_order {
+      margin-bottom: 6rpx;
+}
+
+.flow {
+      padding: 40rpx 30rpx;
+      font-size: 24rpx;
+      letter-spacing: 2rpx;
+}
+
+.flow .number_flow {
+      margin-bottom: 10rpx;
+}
+
+.btn_main {
+      height: 60rpx;
+      box-shadow: none;
+      margin: 0;
+      font-size: 24rpx;
+      background: white;
+      border: 2rpx solid var(--color_main);
+}

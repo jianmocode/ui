@@ -1,0 +1,49 @@
+<include src="__WEB_ROOT__/mobile/common/head.page" />
+
+<div class="header">
+      <div class="bar uk-flex uk-flex-between uk-flex-middle border_box">
+            <div class="left uk-flex uk-flex-middle">
+                  <a class="btn_back"></a>
+                  <span class="title">我的提问</span>
+            </div>
+      </div>
+</div>
+
+<section class="questions_wrap">
+      <div
+            class="empty_wrap uk-flex uk-flex-column uk-flex-center uk-flex-middle"
+            mp:if="{{questions.total===0}}"
+      >
+            <span class="title_empty">这里还什么都没有~</span>
+            <img
+                  class="img_empty"
+                  src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/empty.svg"
+                  alt="img_empty"
+            >
+      </div>
+      <div class="question_items uk-flex uk-flex-column">
+            <div
+                  class="question_item uk-flex uk-flex-column border_box"
+                  mp:for="{{questions.data}}"
+            >
+                  <a
+                        class="question_title"
+                        href="/qanda/detail/{{item.question_id}}"
+                        target="_blank"
+                  >{{item.title}}</a>
+                  <div class="question_options uk-flex">
+                        <span class="option_item">{{item.publish_time}}</span>
+                        <span class="option_item">{{(item.answer_cnt)?item.answer_cnt:'0'}} 个回答</span>
+                  </div>
+            </div>
+      </div>
+</section>
+
+<section class="mask_wrap border_box">
+      <div class="message_wrap uk-flex uk-flex-center uk-flex-middle border_box">
+            <span class="text"></span>
+      </div>
+</section>
+
+<include src="__WEB_ROOT__/mobile/common/footer.page" />
+<include src="__WEB_ROOT__/mobile/common/foot.page" />

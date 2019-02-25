@@ -52,7 +52,7 @@
                                           <span class="dot">·</span>
                                           <span class="option_item">{{item.answer_cnt}} 个回答</span>
                                     </div>
-                              </div>
+                              </div> 
                         </div>
                         <div
                               class="btn_loadmore"

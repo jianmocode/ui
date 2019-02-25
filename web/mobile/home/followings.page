@@ -1,0 +1,72 @@
+<include src="__WEB_ROOT__/mobile/common/head.page" />
+
+<div class="header">
+      <div class="bar uk-flex uk-flex-between uk-flex-middle border_box">
+            <div class="left uk-flex uk-flex-middle">
+                  <a class="btn_back"></a>
+                  <span class="title">我关注的人</span>
+            </div>
+      </div>
+</div>
+
+<section class="followers_wrap">
+      <div
+            class="empty_wrap uk-flex uk-flex-column uk-flex-center uk-flex-middle"
+            mp:if="{{followings.total===0}}"
+      >
+            <span class="title_empty">这里还什么都没有~</span>
+            <img
+                  class="img_empty"
+                  src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/empty.svg"
+                  alt="img_empty"
+            >
+      </div>
+      <div class="follower_items uk-flex uk-flex-column border_box">
+            <div
+                  class="follower_item uk-flex uk-flex-between"
+                  mp:for="{{followings.data}}"
+            >
+                  <a href="#">
+                        <img
+                              class="img_avatar"
+                              src="{{(item.following_headimgurl)?item.following_headimgurl.url:'/static-file/default/desktop/assets/images/elephant.svg'}}"
+                              alt="img_avatar"
+                        >
+                  </a>
+                  <div class="options uk-flex uk-flex-between uk-flex-middle">
+                        <div class="left uk-flex uk-flex-column">
+                              <div class="user_info uk-flex uk-flex-middle">
+                                    <a class="nickname">{{(item.following_nickname)?item.following_nickname:item.following_id}}</a>
+                                    <span class="line">|</span>
+                                    <span class="intro line_clamp_1">{{(item.following_bio)?item.following_bio:'TA还没有简介哦'}}</span>
+                              </div>
+                              <div class="user_success uk-flex">
+                                    <span class="success_item">{{(item.following_answer_cnt)?item.following_answer_cnt:'0'}}
+                                          回答</span>
+                                    <span class="dot">·</span>
+                                    <span class="success_item">{{(item.following_question_cnt)?item.following_question_cnt:'0'}}
+                                          文章</span>
+                                    <span class="dot">·</span>
+                                    <span class="success_item">{{(item.following_follower_cnt)?item.following_follower_cnt:'0'}}
+                                          关注者</span>
+                              </div>
+                        </div>
+                        <div class="right">
+                              <button
+                                    class="btn btn_cancel"
+                                    data-id="{{item.following_id}}"
+                              >取消关注</button>
+                        </div>
+                  </div>
+            </div>
+      </div>
+</section>
+
+<section class="mask_wrap border_box">
+      <div class="message_wrap uk-flex uk-flex-center uk-flex-middle border_box">
+            <span class="text"></span>
+      </div>
+</section>
+
+<include src="__WEB_ROOT__/mobile/common/footer.page" />
+<include src="__WEB_ROOT__/mobile/common/foot.page" />

@@ -1,0 +1,23 @@
+.person_items {
+      padding: 0 36rpx;
+}
+
+.person_item {
+      padding: 30rpx 20rpx;
+      font-size: 24rpx;
+      border-bottom: 2rpx solid #eee;
+}
+
+.person_item:last-child {
+      border-bottom: none;
+}
+
+.person_item .left image {
+      width: 40rpx;
+      height: 40rpx;
+      padding-right: 24rpx;
+}
+
+.person_item .right image {
+      width: 16rpx;
+}

@@ -1,0 +1,116 @@
+<view
+      class="mask"
+      catchtouchmove="preventTouchMove"
+      catchtap="closeCard"
+      wx:if="{{is_show==='true'}}"
+> 
+      <card_animate_wrap>
+            <view
+                  class="checkin_wrap"
+                  catchtap="preventBubble"
+            >
+                  <image
+                        src="../../images/icon_close.png"
+                        class="btn_close"
+                        mode="aspectFill"
+                        catchtap="closeCard"
+                  ></image>
+                  <image
+                        src="../../images/bar_checkin.png"
+                        class="img_decoration"
+                        mode="widthFix"
+                  ></image>
+                  <view class="title color_333">—— 已经连续签到
+                        <text class="color_main"> {{checkin_days}} </text>天 ——
+                  </view>
+                  <view class="checkin_items">
+                        <view class="checkin_item">
+                              <text class="smalltitle">第一天</text>
+                              <image
+                                    src="../../images/icon_star{{checkin_days>=1?'_active':''}}{{is_one_active?'_active':''}}.png"
+                                    class="icon_star"
+                                    mode="widthFix"
+                                    catchtap="handleTapStar"
+                                    data-type="1"
+                              ></image>
+                              <text class="credit">{{checkin_credits[0]}}积分</text>
+                        </view>
+                        <view class="icon_next"></view>
+                        <view class="checkin_item">
+                              <text class="smalltitle">第二天</text>
+                              <image
+                                    src="../../images/icon_star{{checkin_days>=2?'_active':''}}{{is_two_active?'_active':''}}.png"
+                                    class="icon_star"
+                                    mode="widthFix"
+                                    catchtap="handleTapStar"
+                                    data-type="2"
+                              ></image>
+                              <text class="credit">{{checkin_credits[1]}}积分</text>
+                        </view>
+                        <view class="icon_next"></view>
+                        <view class="checkin_item">
+                              <text class="smalltitle">第三天</text>
+                              <image
+                                    src="../../images/icon_star{{checkin_days>=3?'_active':''}}{{is_three_active?'_active':''}}.png"
+                                    class="icon_star"
+                                    mode="widthFix"
+                                    catchtap="handleTapStar"
+                                    data-type="3"
+                              ></image>
+                              <text class="credit">{{checkin_credits[2]}}积分</text>
+                        </view>
+                        <view class="icon_next"></view>
+                        <view class="checkin_item">
+                              <text class="smalltitle">第四天</text>
+                              <image
+                                    src="../../images/icon_star{{checkin_days>=4?'_active':''}}{{is_four_active?'_active':''}}.png"
+                                    class="icon_star"
+                                    mode="widthFix"
+                                    catchtap="handleTapStar"
+                                    data-type="4"
+                              ></image>
+                              <text class="credit">{{checkin_credits[3]}}积分</text>
+                        </view>
+                        <view class="checkin_item">
+                              <text class="smalltitle">第五天</text>
+                              <image
+                                    src="../../images/icon_star{{checkin_days>=5?'_active':''}}{{is_five_active?'_active':''}}.png"
+                                    class="icon_star"
+                                    mode="widthFix"
+                                    catchtap="handleTapStar"
+                                    data-type="5"
+                              ></image>
+                              <text class="credit">{{checkin_credits[4]}}积分</text>
+                        </view>
+                        <view class="icon_next"></view>
+                        <view class="checkin_item">
+                              <text class="smalltitle">第六天</text>
+                              <image
+                                    src="../../images/icon_star{{checkin_days>=6?'_active':''}}{{is_six_active?'_active':''}}.png"
+                                    class="icon_star"
+                                    mode="widthFix"
+                                    catchtap="handleTapStar"
+                                    data-type="6"
+                              ></image>
+                              <text class="credit">{{checkin_credits[5]}}积分</text>
+                        </view>
+                        <view class="icon_next"></view>
+                        <view class="checkin_item">
+                              <text class="smalltitle">第七天</text>
+                              <image
+                                    src="../../images/icon_star{{checkin_days>=7?'_active':''}}{{is_seven_active?'_active':''}}.png"
+                                    class="icon_star"
+                                    mode="widthFix"
+                                    catchtap="handleTapStar"
+                                    data-type="7"
+                              ></image>
+                              <text class="credit">{{checkin_credits[6]}}积分</text>
+                        </view>
+                  </view>
+                  <navigator
+                        url="/pages/mall/mall"
+                        class="btn_goto_index"
+                  >去逛逛</navigator>
+            </view>
+      </card_animate_wrap>
+</view>

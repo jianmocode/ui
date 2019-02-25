@@ -1,0 +1,40 @@
+<page-show-wrap>
+      <scroll-view
+            class="container_page w_100"
+            scroll-y="true"
+            style="height:{{height}}px"
+            bindscrolltolower="showMore"
+      >
+            <view class="collection_items flex flex_column w_100 border_box">
+                  <view
+                        class="collection_item bg_white border_box"
+                        wx:for="{{collection_items}}"
+                        wx:key="{{item.favorite_id}}"
+                        catchtap="handleTapArtical"
+                        data-id="{{item.article_id}}"
+                  >
+                        <view class="row flex">
+                              <image
+                                    class="img_artical"
+                                    src="{{item.cover.url}}"
+                                    mode="aspectFill"
+                              ></image>
+                              <text class="title text_nomore_2 text_justify flex align_center">{{item.title}}</text>
+                        </view>
+                        <view class="row flex options flex justify_between">
+                              <view class="left">
+                                    <text class="about">{{item.user_nickname}}</text>
+                                    <text class="about">{{item.created_at}}</text>
+                              </view>
+                              <view class="right">
+                                    <text
+                                          class="about cancel"
+                                          catchtap="handleTapCancel"
+                                          data-id="{{item.favorite_id}}"
+                                    >取消收藏</text>
+                              </view>
+                        </view>
+                  </view>
+            </view>
+      </scroll-view>
+</page-show-wrap>

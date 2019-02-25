@@ -1,0 +1,282 @@
+<page-show-wrap>
+      <view class="container_page">
+            <view class="tab flex justify_between color_333 bg_white">
+                  <view class="tab_item">
+                        <view
+                              class="text {{is_show_dailytask?'active':''}}"
+                              catchtap="toggleTab"
+                              data-type="dailytask"
+                        >日常任务</view>
+                  </view>
+                  <view class="tab_item">
+                        <view
+                              class="text {{is_show_invitetask?'active':''}}"
+                              catchtap="toggleTab"
+                              data-type="invitetask"
+                        >邀请任务</view>
+                  </view>
+            </view>
+            <view
+                  class="daily_task task_items flex flex_column bg_white"
+                  wx:if="{{is_show_dailytask}}"
+            >
+                  <view class="task_item flex justify_between align_center">
+                        <view class="left flex align_center">
+                              <image
+                                    src="../../images/icon_task_checkin.png"
+                                    class="icon"
+                                    mode="widthFix"
+                              ></image>
+                              <view class="left_info flex flex_column">
+                                    <text>签到</text>
+                                    <text>{{show_credits_checkin}}积分</text>
+                              </view>
+                        </view>
+                        <button
+                              class="btn_state btn_main {{is_checkin_done==='true'?'done':''}}"
+                              catchtap="handleTapComplete"
+                              data-type="checkin"
+                        >完成任务</button>
+                  </view>
+                  <view class="task_item flex justify_between align_center">
+                        <view class="left flex align_center">
+                              <image
+                                    src="../../images/icon_task_read.png"
+                                    class="icon"
+                                    mode="widthFix"
+                              ></image>
+                              <view class="left_info flex flex_column">
+                                    <text>阅读文章（{{reading_process}}/5）</text>
+                                    <text>{{show_credits_read}}积分</text>
+                              </view>
+                        </view>
+                        <button
+                              class="btn_state btn_main {{reading_process===5?'done':''}}"
+                              catchtap="handleTapComplete"
+                              data-type="read"
+                              disabled="{{reading_process===5?true:false}}"
+                        >领取任务</button>
+                  </view>
+                  <view class="task_item flex justify_between align_center">
+                        <view class="left flex align_center">
+                              <image
+                                    src="../../images/icon_task_invite.png"
+                                    class="icon"
+                                    mode="widthFix"
+                              ></image>
+                              <view class="left_info flex flex_column">
+                                    <text>邀请好友看文章（{{invite_reading_process}}/5）</text>
+                                    <text>{{show_credits_invite_read}}积分</text>
+                              </view>
+                        </view>
+                        <button
+                              class="btn_state btn_main {{invite_reading_process===5?'done':''}}"
+                              catchtap="handleTapComplete"
+                              data-type="invite"
+                              disabled="{{invite_reading_process===5?true:false}}"
+                        >领取任务</button>
+                  </view>
+                  <view class="task_item flex justify_between align_center">
+                        <view class="left flex align_center">
+                              <image
+                                    src="../../images/icon_task_collect.png"
+                                    class="icon"
+                                    mode="widthFix"
+                              ></image>
+                              <view class="left_info flex flex_column">
+                                    <text>收藏（{{collect_process}}/3）</text>
+                                    <text>{{show_credits_collect}}积分</text>
+                              </view>
+                        </view>
+                        <button
+                              class="btn_state btn_main {{collect_process===3?'done':''}}"
+                              catchtap="handleTapComplete"
+                              data-type="collect"
+                              disabled="{{collect_process===3?'true':''}}"
+                        >领取任务</button>
+                  </view>
+                  <view class="task_item flex justify_between align_center">
+                        <view class="left flex align_center">
+                              <image
+                                    src="../../images/icon_task_info.png"
+                                    class="icon"
+                                    mode="widthFix"
+                              ></image>
+                              <view class="left_info flex flex_column">
+                                    <text>完善信息（{{info_process}}/5）</text>
+                                    <text>{{show_credits_person_info}}积分</text>
+                              </view>
+                        </view>
+                        <navigator
+                              class="btn_state btn_nav {{info_process===5?'done':''}}"
+                              url="{{info_process===5?'':'/pages/info/info'}}"
+                        >领取任务</navigator>
+                  </view>
+            </view>
+            <view
+                  class="invite_task task_items flex flex_column bg_white"
+                  wx:if="{{is_show_invitetask}}"
+            >
+                  <view class="task_item flex justify_between align_center">
+                        <view class="left flex align_center">
+                              <image
+                                    src="../../images/icon_person_white.png"
+                                    class="icon"
+                                    mode="widthFix"
+                              ></image>
+                              <view class="left_info flex flex_column">
+                                    <text>邀请第1个新用户</text>
+                                    <text>{{show_credits_invite_person[0]}}积分</text>
+                              </view>
+                        </view>
+                        <button
+                              class="btn_state btn_main {{invite_friend_process>=1?'done':''}}"
+                              open-type="share"
+                              data-type="invite_signup"
+                              disabled="{{invite_friend_process>=1?true:false}}"
+                        >完成任务</button>
+                  </view>
+                  <view class="task_item flex justify_between align_center">
+                        <view class="left flex align_center">
+                              <image
+                                    src="../../images/icon_person_white.png"
+                                    class="icon"
+                                    mode="widthFix"
+                              ></image>
+                              <view class="left_info flex flex_column">
+                                    <text>邀请第2个新用户</text>
+                                    <text>{{show_credits_invite_person[0]}}积分</text>
+                              </view>
+                        </view>
+                        <button
+                              class="btn_state btn_main {{invite_friend_process>=2?'done':''}}"
+                              open-type="share"
+                              data-type="invite_signup"
+                              disabled="{{invite_friend_process>=2?true:false}}"
+                        >完成任务</button>
+                  </view>
+                  <view class="task_item flex justify_between align_center">
+                        <view class="left flex align_center">
+                              <image
+                                    src="../../images/icon_person_white.png"
+                                    class="icon"
+                                    mode="widthFix"
+                              ></image>
+                              <view class="left_info flex flex_column">
+                                    <text>邀请第3个新用户</text>
+                                    <text>{{show_credits_invite_person[0]}}积分</text>
+                              </view>
+                        </view>
+                        <button
+                              class="btn_state btn_main {{invite_friend_process>=3?'done':''}}"
+                              open-type="share"
+                              data-type="invite_signup"
+                              disabled="{{invite_friend_process>=3?true:false}}"
+                        >完成任务</button>
+                  </view>
+                  <view class="task_item flex justify_between align_center">
+                        <view class="left flex align_center">
+                              <image
+                                    src="../../images/icon_person_white.png"
+                                    class="icon"
+                                    mode="widthFix"
+                              ></image>
+                              <view class="left_info flex flex_column">
+                                    <text>邀请第4个新用户</text>
+                                    <text>{{show_credits_invite_person[0]}}积分</text>
+                              </view>
+                        </view>
+                        <button
+                              class="btn_state btn_main {{invite_friend_process>=4?'done':''}}"
+                              open-type="share"
+                              data-type="invite_signup"
+                              disabled="{{invite_friend_process>=4?true:false}}"
+                        >完成任务</button>
+                  </view>
+            </view>
+      </view>
+      <nav task_active="true"></nav>
+      <checkin-card
+            is_show="{{is_show_checkin}}"
+            checkin_days="{{checkin_process}}"
+            checkin_credits="{{checkin_credits}}"
+      ></checkin-card>
+      <normal-card
+            is_show="{{is_show_invite}}"
+            title="邀请好友看文章"
+            instruction="转发给未阅读过此文章的好友，需其至少阅读4秒并返回首页即可完成任务。"
+            goto="更多精彩文章"
+            goto_url="/pages/index/index"
+            animation="{{animation_data}}"
+      >
+            <view class="invite_items flex flex_column">
+                  <view
+                        class="invite_item flex"
+                        wx:for="{{artical_items}}"
+                        wx:key="{{item.artical_id}}"
+                        wx:if="{{index<=4}}"
+                  >
+                        <image
+                              src="{{item.cover.url}}"
+                              class="img_artical"
+                              mode="aspectFill"
+                        ></image>
+                        <view class="title border_box color_333 text_justify text_nomore_2">{{item.title}}</view>
+                        <button
+                              class="btn_normal"
+                              open-type="share"
+                              data-id="{{item.article_id}}"
+                              data-title="{{item.title}}"
+                              data-coverurl="{{item.cover.url}}"
+                              data-type="invite_article"
+                        >去邀请</button>
+                  </view>
+            </view>
+      </normal-card>
+      <normal-card
+            is_show="{{is_show_read}}"
+            title="阅读文章"
+            instruction="需至少阅读4秒钟"
+            goto="更多精彩文章"
+            goto_url="/pages/index/index"
+            animation="{{animation_data}}"
+      >
+            <view class="invite_items flex flex_column">
+                  <view
+                        class="invite_item flex"
+                        wx:for="{{artical_items}}"
+                        wx:key="{{item.artical_id}}"
+                        wx:if="{{index<=4}}"
+                  >
+                        <image
+                              src="{{item.cover.url}}"
+                              class="img_artical"
+                              mode="aspectFill"
+                        ></image>
+                        <view class="title border_box color_333 text_justify text_nomore_2">{{item.title}}</view>
+                        <button
+                              class="btn_normal"
+                              data-articleid="{{item.article_id}}"
+                              catchtap="handleTapArticle"
+                        >去阅读</button>
+                  </view>
+            </view>
+      </normal-card>
+      <normal-card
+            is_show="{{is_show_collect}}"
+            title="收藏"
+            instruction="收藏了的文章不一定想看，不收藏的文章也许会去翻一番。"
+            goto="去收藏"
+            goto_url="/pages/index/index"
+            animation="{{animation_data}}"
+      >
+            <view class="content flex flex_column w_100 align_center">
+                  <image
+                        src="../../images/icon_task_collect.png"
+                        class="icon_collect"
+                        mode="widthFix"
+                  ></image>
+                  <text class="credit color_888">5积分</text>
+            </view>
+      </normal-card>
+</page-show-wrap>

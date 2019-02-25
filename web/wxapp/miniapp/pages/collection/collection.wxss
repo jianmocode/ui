@@ -1,0 +1,36 @@
+.collection_items {
+      padding: 20rpx;
+}
+
+.collection_item {
+      border-radius: 12rpx;
+      padding: 40rpx 40rpx 30rpx;
+      margin-bottom: 18rpx;
+}
+
+.collection_item .row .img_artical {
+      width: 100rpx;
+      height: 100rpx;
+      margin-right: 30rpx;
+}
+
+.collection_item .row .title {
+      width: calc(100% - 100rpx - 30rpx);
+      height: 100rpx;
+      font-size: 32rpx;
+      line-height: 1.5;
+}
+
+.collection_item .options {
+      margin-top: 10rpx;
+}
+
+.collection_item .options .about {
+      font-size: 24rpx;
+      margin-right: 20rpx;
+      color: #bbb;
+}
+
+.collection_item .options .cancel {
+      margin-right: 0;
+}

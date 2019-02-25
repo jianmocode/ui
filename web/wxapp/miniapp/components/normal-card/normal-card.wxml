@@ -1,0 +1,29 @@
+<view
+      class="mask"
+      catchtouchmove="preventTouchMove"
+      catchtap="closeCard"
+      wx:if="{{is_show==='true'}}"
+>
+      <view
+            class="content_wrap"
+            catchtap="preventBubble"
+      >
+            <image
+                  src="../../images/icon_close_black.png"
+                  class="btn_close"
+                  mode="aspectFill"
+                  catchtap="closeCard"
+            ></image>
+
+            <view class="title">{{title}}</view>
+            <view class="slot_wrap">
+                  <slot></slot>
+            </view>
+            <view class="instruction">{{instruction}}</view>
+            <navigator
+                  url="{{goto_url}}"
+                  class="btn_goto"
+                  wx:if="{{goto}}"
+            >{{goto}}</navigator>
+      </view>
+</view>

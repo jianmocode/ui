@@ -1,0 +1,103 @@
+<page-show-wrap>
+      <view class="container_page flex flex_column">
+            <person-card></person-card>
+            <view class="person_items flex flex_column bg_white">
+                  <view
+                        class="person_item flex justify_between align_center"
+                        catchtap="handleTapPersonItem"
+                        data-type="news"
+                  >
+                        <view class="left flex align_center">
+                              <image
+                                    src="../../images/icon_news.png"
+                                    mode="widthFix"
+                              ></image>
+                              <text>积分记录</text>
+                        </view>
+                        <view class="right">
+                              <image
+                                    src="../../images/icon_arrow.png"
+                                    mode="widthFix"
+                              ></image>
+                        </view>
+                  </view>
+                  <view
+                        class="person_item flex justify_between align_center"
+                        catchtap="handleTapPersonItem"
+                        data-type="collection"
+                  >
+                        <view class="left flex align_center">
+                              <image
+                                    src="../../images/icon_collect_person.png"
+                                    mode="widthFix"
+                              ></image>
+                              <text>我的收藏</text>
+                        </view>
+                        <view class="right">
+                              <image
+                                    src="../../images/icon_arrow.png"
+                                    mode="widthFix"
+                              ></image>
+                        </view>
+                  </view>
+                  <view
+                        class="person_item flex justify_between align_center"
+                        catchtap="handleTapPersonItem"
+                        data-type="info"
+                  >
+                        <view class="left flex align_center">
+                              <image
+                                    src="../../images/icon_info.png"
+                                    mode="widthFix"
+                              ></image>
+                              <text>个人资料</text>
+                        </view>
+                        <view class="right">
+                              <image
+                                    src="../../images/icon_arrow.png"
+                                    mode="widthFix"
+                              ></image>
+                        </view>
+                  </view>
+                  <view
+                        class="person_item flex justify_between align_center"
+                        catchtap="handleTapPersonItem"
+                        data-type="order"
+                  >
+                        <view class="left flex align_center">
+                              <image
+                                    src="../../images/icon_order.png"
+                                    mode="widthFix"
+                              ></image>
+                              <text>我的订单</text>
+                        </view>
+                        <view class="right">
+                              <image
+                                    src="../../images/icon_arrow.png"
+                                    mode="widthFix"
+                              ></image>
+                        </view>
+                  </view>
+                  <view
+                        class="person_item flex justify_between align_center"
+                        catchtap="handleTapPersonItem"
+                        data-type="terms"
+                  >
+                        <view class="left flex align_center">
+                              <image
+                                    src="../../images/icon_terms.png"
+                                    mode="widthFix"
+                              ></image>
+                              <text>隐私条款及服务声明</text>
+                        </view>
+                        <view class="right">
+                              <image
+                                    src="../../images/icon_arrow.png"
+                                    mode="widthFix"
+                              ></image>
+                        </view>
+                  </view>
+            </view>
+      </view>
+      <nav person_active="true"></nav>
+</page-show-wrap>

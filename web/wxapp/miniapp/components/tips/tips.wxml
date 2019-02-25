@@ -1,0 +1,38 @@
+<view
+      class="mask"
+      wx:if="{{is_show_tips==='true'}}"
+      catchtouchmove="preventTouchMove"
+      catchtap="closeCard"
+>
+      <image
+            src="../../images/bg_tips.png"
+            class="tips_bg_wrap"
+            catchtap="preventBubble"
+      >
+            <view class="tips_wrap">
+                  <view class="text">
+                        <image
+                              src="../../images/icon_tips.png"
+                              class="icon"
+                              mode="widthFix"
+                        ></image>
+                        <view class="text_wrap">
+                              <view class="text_wrap">{{text}}
+                                    <slot></slot>
+                              </view>
+                        </view>
+                  </view>
+                  <view class="options">
+                        <navigator
+                              url="{{btn_left_url}}"
+                              class="btn_left btn_nav {{btn_right_text===''?'w_100':''}}"
+                        >{{btn_left_text}}</navigator>
+                        <navigator
+                              url="{{btn_right_url}}"
+                              class="btn_right btn_nav"
+                              wx:if="{{btn_right_text}}"
+                        >{{btn_right_text}}</navigator>
+                  </view>
+            </view>
+      </image>
+</view>

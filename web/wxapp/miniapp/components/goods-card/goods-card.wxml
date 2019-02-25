@@ -1,0 +1,13 @@
+<view class="goods_item">
+      <image
+            src="{{img_goods_src}}"
+            class="img_goods"
+            mode="aspectFill"
+      ></image>
+      <text class="name_goods">{{name_goods}}</text>
+      <view class="sundry">
+            <text class="price">价格：￥{{price}}</text>
+            <text class="remaining">剩余：{{remaining}}</text>
+      </view>
+      <text class="price_credit">参与条件：{{price_credit}}积分</text>
+</view>

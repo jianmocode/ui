@@ -1,0 +1,67 @@
+<include src="__WEB_ROOT__/mobile/common/head.page" />
+
+<div class="header">
+      <div class="bar uk-flex uk-flex-between uk-flex-middle border_box">
+            <div class="left uk-flex uk-flex-middle">
+                  <a class="btn_back"></a>
+                  <span class="title">我的回答</span>
+            </div>
+      </div>
+</div>
+
+<section class="answers_wrap">
+      <div
+            class="empty_wrap uk-flex uk-flex-column uk-flex-center uk-flex-middle"
+            mp:if="{{questions.total===0}}"
+      >
+            <span class="title_empty">这里还什么都没有~</span>
+            <img
+                  class="img_empty"
+                  src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/empty.svg"
+                  alt="img_empty"
+            >
+      </div>
+      <div class="answers_items uk-flex uk-flex-column">
+            <div
+                  class="answer_item uk-flex uk-flex-column border_box"
+                  mp:for="{{answers.data}}"
+            >
+                  <a
+                        class="question_title"
+                        href="/qanda/detail/{{item.question_question_id}}"
+                  >{{item.question_title}}</a>
+                  <div class="answer_content">
+                        <span class="summary answer_text">{{item.summary}}</span>
+                        <span class="content answer_text none">{{item.content}}</span>
+                        <button class="btn_show_all">
+                              <span class="text">显示全部</span> 
+                              <img
+                                    class="icon_arrow_down"
+                                    src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_arrow_down.svg"
+                                    alt="icon_arrow_down"
+                              >
+                        </button>
+                  </div>
+                  <div class="answer_options uk-flex uk-flex-between">
+                        <span class="option_item">{{item.publish_time}}</span>
+                        <button class="btn_collapse_answer uk-flex uk-flex-middle">
+                              <span class="text">收起</span>
+                              <img
+                                    class="img_collapse"
+                                    src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/icon_arrow_up.png"
+                                    alt="icon_collapse"
+                              >
+                        </button>
+                  </div>
+            </div>
+      </div>
+</section>
+
+<section class="mask_wrap border_box">
+      <div class="message_wrap uk-flex uk-flex-center uk-flex-middle border_box">
+            <span class="text"></span>
+      </div>
+</section>
+
+<include src="__WEB_ROOT__/mobile/common/footer.page" />
+<include src="__WEB_ROOT__/mobile/common/foot.page" />

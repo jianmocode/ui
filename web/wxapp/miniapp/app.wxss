@@ -1,0 +1,107 @@
+@import 'common/atom.wxss';
+
+/* 全局css变量 */
+page {
+      --color_main: #e49bae;
+      --color_sub: #f15e86;
+      --font_color_title: #333;
+      --font_color_subtitle: #666;
+      --font_color_smalltitle: #888;
+      --bg_color_higher: white;
+      --bg_color_lower: #eee;
+      background: var(--bg_color_lower);
+}
+
+::-webkit-scrollbar {
+      width: 0px;
+}
+
+button::after {
+      border: none;
+}
+
+.color_main {
+      color: var(--color_main);
+}
+
+.title {
+      color: var(--font_color_title);
+      letter-spacing: 2rpx;
+      text-align: justify;
+}
+
+.subtitle {
+      color: var(--font_color_subtitle);
+      letter-spacing: 2rpx;
+      text-align: justify;
+}
+
+.smalltitle {
+      color: var(--font_color_smalltitle);
+      letter-spacing: 2rpx;
+      text-align: justify;
+}
+
+.btn_main {
+      padding: 12rpx 30rpx;
+      border-radius: 100rpx;
+      color: var(--color_main);
+      font-size: 32rpx;
+      box-shadow: 0 0 10rpx var(--color_main);
+}
+
+.btn_normal {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0rpx 30rpx;
+      height: 60rpx;
+      border-radius: 100rpx;
+      color: var(--color_main);
+      font-size: 24rpx;
+      border: 2rpx solid var(--color_main);
+      background: white;
+}
+
+.btn_sub {
+      padding: 12rpx 30rpx;
+      border-radius: 100rpx;
+      color: white;
+      background: var(--color_main);
+      font-size: 32rpx;
+}
+
+.text_nomore {
+      display: inline-block;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+}
+
+.text_nomore_2 {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+}
+
+.text_nomore_3 {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+}
+
+.container_page {
+      background: var(--bg_color_lower);
+}
+
+.line_through {
+      text-decoration: line-through;
+}
+
+.orange {
+      color: orange;
+}

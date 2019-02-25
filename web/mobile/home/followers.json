@@ -1,0 +1,39 @@
+{
+      "cname": "个人中心（移动端）",
+      "data": {
+            "page": {
+                  "title": "我的粉丝"
+            },
+            "user": {
+                  "api": "/xpmsns/user/user/getUserInfo",
+                  "query": {}
+            },
+            "followers": {
+                  "api": "/xpmsns/user/follow/getFollowers",
+                  "query": {
+                        "page": "1",
+                        "perpage": "12"
+                  }
+            }
+      },
+      "entries": [{
+                  "method": "GET",
+                  "router": "/m/home/followers",
+                  "ttl": 3600
+            },
+            {
+                  "method": "GET",
+                  "router": "/m/home/followers",
+                  "ttl": 0
+            },
+            {
+                  "method": "GET",
+                  "router": "/m/home/followers",
+                  "ttl": 0
+            }
+      ],
+      "alias": {
+            "desktop": "/desktop/home/followers",
+            "wxapp": "/m/home/followers"
+      }
+}

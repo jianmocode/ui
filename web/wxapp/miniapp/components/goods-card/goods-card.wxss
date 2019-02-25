@@ -1,0 +1,39 @@
+.goods_item {
+      width: 46vw;
+      border-radius: 20rpx;
+      padding: 30rpx 20rpx;
+      font-size: 24rpx;
+      border-radius: 10rpx;
+      margin-bottom: 2vw;
+      background: white;
+      box-sizing: border-box;
+      overflow: hidden;
+}
+
+.goods_item .img_goods {
+      width: 100%;
+      height: 320rpx;
+      margin-bottom: 20rpx;
+}
+
+.goods_item .name_goods {
+      width: 100%;
+      display: inline-block;
+      font-size: 32rpx;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      font-weight: bold;
+}
+
+.goods_item .sundry {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      color: #888;
+      margin: 16rpx 0 20rpx;
+}
+
+.goods_item .price_credit {
+      color: var(--color_main);
+}
