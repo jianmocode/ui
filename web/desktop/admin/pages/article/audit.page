@@ -46,10 +46,10 @@
 			<div class="col-lg-9">
 				
 				<!-- 文章卡片 -->
-				<div class="card card-aside"   mp:for-from="0" mp:for-to="10">
-					<a mp:if="{{index!=1}}" bindtap="openArticle" data-id="1023833" class="card-aside-column" href="javacript:void(0);"  style="background-image: url(https://preview.tabler.io/demo/photos/david-marcu-114194-500.jpg)"></a>
+				<div class="card card-aside"  bindtap="openArticle" data-id="1023833"   mp:for-from="0" mp:for-to="10">
+					<a mp:if="{{index!=1}}" class="card-aside-column" href="javacript:void(0);"  style="background-image: url(https://preview.tabler.io/demo/photos/david-marcu-114194-500.jpg)"></a>
 					<div class="card-body d-flex flex-column">
-						<h4><a href="javacript:void(0);" bindtap="openArticle" data-id="1023833" >Well, I didn't vote for you.</a></h4>
+						<h4><a href="javacript:void(0);" >Well, I didn't vote for you.</a></h4>
 						<div class="text-muted">Well, we did do the nose. Why? Shut up! Will you shut up?! You don't frighten us, English pig-dog...</div>
 						<div class="d-flex align-items-center pt-5 mt-auto">
 							<div class="avatar avatar-md mr-3" style="background-image: url(https://preview.tabler.io/demo/faces/male/16.jpg)"></div>

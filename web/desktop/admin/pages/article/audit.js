@@ -22,6 +22,9 @@ Page({
      */
     resolve: function( event ) {
         console.log( "resolve=",  event );
+
+        // 阻止事件冒泡
+        return false; 
     },
 
     /**
@@ -30,6 +33,9 @@ Page({
      */
     reject: function( event ) {
         console.log( "reject=", event );
+
+        // 阻止事件冒泡
+        return false; 
     }
 
 })
