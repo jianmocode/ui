@@ -8,11 +8,8 @@
         <div class="uk-navbar-left">
             <a class="uk-navbar-item uk-logo" href="#">
                 
-                <img mp:if="{{special.status == 'on'}}" data-src="{{special.logo.url}}" width="42" uk-img >
-                <img mp:elif="{{site.icon}}" data-src="{{site.icon.url}}" width="42" uk-img >
-                
-                <a mp:if="{{special.status == 'on'}}" href="/{{special.path}}" class="uk-text-large">{{special.name}}</a>
-                <a mp:else href="/" class="uk-text-large">{{site.site_name}}</a>
+                <img data-src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/defaults/brand/icon.svg" width="42" uk-img >
+                <a href="javascript:void(0);" class="uk-text-large">简墨</a>
             </a>
             <ul class="uk-navbar-nav">
              
@@ -24,14 +21,14 @@
 				<li class="before-login {{(user.user_id) ? 'uk-hidden'}} "><a href="/user/signin/mobile" data-width="468" data-height="600" uk-iframe-modal>登录</a></li>
 				<li class="after-login  {{(user.user_id == '') ? 'uk-hidden'}}  {{ (active.nav == '__user') ? 'uk-active' }} ">
 					<a href="#"> 
-						<span class="nick-name" user-nickname>{{ PRINTNAME(user) }}</span>
+						<span class="nick-name" user-nickname>{{staff.name}} ({{(staff.isAdmin) ? '管理员' : '编辑'}})</span>
 						<span class="uk-icon" uk-icon="icon:triangle-down"></span>
 					</a>
 					<div uk-dropdown="offset:-20; pos:bottom-justify" class="menu">
 						<ul class="uk-nav uk-navbar-dropdown-nav">
-							<li class="{{ (active.subnav == '__home') ? 'uk-active' }}"><a href="/home/index.html" >我的主页</a></li>
-							<!-- <li><a href="#">投稿</a></li> -->
-							<li><a href="/user/logout.html"> 退出登录</a></li>
+                            <li><a class="dropdown-item" href="https://www.jianmo.ink/docs/index.html?from={{__var.__home}}" target="_blank"> 帮助文档</a></li>
+                            <li><a href="https://www.jianmo.ink/docs/index.html?from={{__var.__home}}" target="_blank"> 简墨官网</a></li>
+                            <li><a href="/admin/logout.html"> 退出登录</a></li>
 						</ul>
 					</div>
                 </li>
@@ -53,17 +50,13 @@
 <div class="uk-flex uk-flex-center uk-background-muted uk-height-1-1">
 
 <!-- 图文发布器-->
-<div class="uk-card uk-card-default uk-card-body uk-padding-remove uk-margin-top uk-margin-large-bottom" mp:if="{{user.user_id}}">
+<div class="uk-card uk-card-default uk-card-body uk-padding-remove uk-margin-top uk-margin-large-bottom" mp:if="{{staff.name}}">
 
     <!-- 图文发布表单 -->
     <form id="article-edit" class="uk-form-horizontal iframe-form uk-width-xxlarge" mp:if="{{article.code == ''}}"
         method="POST" 
-        action="/_api/xpmsns/pages/article/save" 
+        action="/_api/xpmsns/pages/article/staffSave" 
         success="function(data) {
-            // var $user = $validate.utils.user;
-            // $validate.utils.parentNotification('<span uk-icon=\'icon: check;ratio:1.3\'></span>  个人资料更新成功', 'success', 'top-right');
-            // $user.login(data);
-
             
             // 更新文章ID数据
             var article_id = data['article_id'];
@@ -377,7 +370,7 @@
 <!-- 用户未登录界面 -->
 <div class="container" mp:else >
     <script type="text/javascript" >
-        window.location="/user/signin/mobile?then=/home/editor/article?article_id={{__get.article_id}}";
+        window.location="/admin/login.html?then=/admin/pages/editor?article_id={{__get.article_id}}";
     </script>
 </div> <!-- END  Container -->
 

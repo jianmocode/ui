@@ -1,6 +1,10 @@
 {
       "cname": "图文发布器",
       "data": {
+            "staff":{
+                "api":"/xpmse/xpmse/staff/getLoginInfo",
+                "query":{}
+            },
             "site": {
                   "api": "/xpmsns/pages/siteconf/get",
                   "query": {
@@ -35,7 +39,7 @@
                   }
             },
             "article": {
-                  "api": "/xpmsns/pages/article/userArticleDetail",
+                  "api": "/xpmsns/pages/article/staffArticleDetail",
                   "query": {
                         "article_id": "{{__get.article_id}}",
                         "select": "*"
