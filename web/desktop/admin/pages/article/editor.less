@@ -1,0 +1,75 @@
+@charset "utf-8";
+@import '/desktop/common/d.less';
+
+// 引入组件
+@import '/desktop/components/uploader/image.less';  
+@import '/desktop/components/editor/html.less';  
+
+.iframe-form {
+    padding: 0px;
+    min-height: 300px;
+}
+
+// 设定工具栏样式
+.jm-editor-html {
+    border: none;
+    trix-toolbar {
+        border-bottom: none;
+        background-color: @backgroundMutedColor;
+
+       
+
+    }
+    trix-editor {
+        padding: 30px 40px 30px 40px;
+    }
+    trix-editor:empty:not(:focus)::before {
+        color: @textMutedColor;       
+    }
+}
+
+textarea.uk-form-large.title {
+    resize:none;
+    font-size: 1.85rem;
+    background: transparent;
+    border: none;
+    height: 80px;
+    line-height: 40px;
+}
+
+textarea.uk-form-large.summary {
+    resize:none;
+    font-size: 0.875rem;
+    border-radius: 0;
+    padding: 15px;
+}
+
+.action-panel {
+    border-top: 2px solid @primaryColor;
+    background: @lightColor;
+
+    .action-method {
+        display: none;
+    }
+
+    .action-active {
+        display: inline-block !important;
+    }
+}
+
+.status-label {
+    top: -1px;
+    right: 40px;
+    height: 35px;
+    line-height: 35px;
+    width:50px;
+    text-align: center;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.quick-link {
+    line-height:30px;
+}

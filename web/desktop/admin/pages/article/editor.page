@@ -1,0 +1,434 @@
+<include src="__WEB_ROOT__/desktop/common/head.page" />
+<include src="__WEB_ROOT__/desktop/components/uploader/image.page" /> <!-- 引入部件 文件上传组件-->
+<include src="__WEB_ROOT__/desktop/components/editor/html.page" /> <!-- 引入部件 HTML编辑器 -->
+
+<!-- 头部导航 -->
+<div class="uk-section-secondary">
+    <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+        <div class="uk-navbar-left">
+            <a class="uk-navbar-item uk-logo" href="#">
+                
+                <img mp:if="{{special.status == 'on'}}" data-src="{{special.logo.url}}" width="42" uk-img >
+                <img mp:elif="{{site.icon}}" data-src="{{site.icon.url}}" width="42" uk-img >
+                
+                <a mp:if="{{special.status == 'on'}}" href="/{{special.path}}" class="uk-text-large">{{special.name}}</a>
+                <a mp:else href="/" class="uk-text-large">{{site.site_name}}</a>
+            </a>
+            <ul class="uk-navbar-nav">
+             
+            </ul>
+        </div>
+        <div class="uk-navbar-right">
+			<ul class="uk-navbar-nav">
+				<li class="before-login {{(user.user_id) ? 'uk-hidden'}} "><a href="/user/signup"  data-width="468" data-height="600" uk-iframe-modal >注册</a></li>
+				<li class="before-login {{(user.user_id) ? 'uk-hidden'}} "><a href="/user/signin/mobile" data-width="468" data-height="600" uk-iframe-modal>登录</a></li>
+				<li class="after-login  {{(user.user_id == '') ? 'uk-hidden'}}  {{ (active.nav == '__user') ? 'uk-active' }} ">
+					<a href="#"> 
+						<span class="nick-name" user-nickname>{{ PRINTNAME(user) }}</span>
+						<span class="uk-icon" uk-icon="icon:triangle-down"></span>
+					</a>
+					<div uk-dropdown="offset:-20; pos:bottom-justify" class="menu">
+						<ul class="uk-nav uk-navbar-dropdown-nav">
+							<li class="{{ (active.subnav == '__home') ? 'uk-active' }}"><a href="/home/index.html" >我的主页</a></li>
+							<!-- <li><a href="#">投稿</a></li> -->
+							<li><a href="/user/logout.html"> 退出登录</a></li>
+						</ul>
+					</div>
+                </li>
+                <li class="uk-hidden"><a href="#" uk-icon="icon:cog" uk-toggle="target: #offcanvas-reveal"></a></li>
+			</ul>
+		</div>
+    </nav>
+</div> <!-- END 头部导航 -->
+
+<!-- 推出侧边栏 -->
+<div id="offcanvas-reveal" uk-offcanvas="mode:push; flip:true; overlay:true">
+    <div class="uk-offcanvas-bar ">
+        <button class="uk-offcanvas-close" type="button" uk-close></button>
+        <h3 class="uk-hidden">Title</h3>
+        <p  class="uk-hidden">HELLO WORLD</p>
+    </div>
+</div> <!-- END 推出侧边栏 -->
+
+<div class="uk-flex uk-flex-center uk-background-muted uk-height-1-1">
+
+<!-- 图文发布器-->
+<div class="uk-card uk-card-default uk-card-body uk-padding-remove uk-margin-top uk-margin-large-bottom" mp:if="{{user.user_id}}">
+
+    <!-- 图文发布表单 -->
+    <form id="article-edit" class="uk-form-horizontal iframe-form uk-width-xxlarge" mp:if="{{article.code == ''}}"
+        method="POST" 
+        action="/_api/xpmsns/pages/article/save" 
+        success="function(data) {
+            // var $user = $validate.utils.user;
+            // $validate.utils.parentNotification('<span uk-icon=\'icon: check;ratio:1.3\'></span>  个人资料更新成功', 'success', 'top-right');
+            // $user.login(data);
+
+            
+            // 更新文章ID数据
+            var article_id = data['article_id'];
+            $('[name=article_id]').val( article_id);
+            if (history.pushState) {
+                var newurl = window.location.pathname + '?article_id=' + article_id;
+                window.history.pushState({path:newurl},'',newurl);
+            }
+
+            // 更新文章状态
+            if ( data.status ) {
+                window.page.updateStatus( data.status, data.draft_status );
+            }
+            
+        }" 
+        >
+
+        <!-- 文章标题 -->
+	    <div class="uk-form-group uk-padding uk-padding-remove-bottom" >
+            <textarea name="title" type="text" class="title uk-input uk-form-large" rows="2" maxlength="32"
+                placeholder="请输入标题" 
+                validate="{
+                        required:true, 
+                        messages: {
+                         required:'请填写文章标题'
+                        }
+                    }
+            ">{{article.title}}</textarea>
+            <span class="status-label uk-label uk-label-danger uk-position-top-right uk-hidden" >草稿</span>
+        </div> <!-- END 文章标题 -->
+
+        <!-- 文章摘要/导读 -->
+	    <div class="uk-form-group uk-margin uk-padding uk-padding-remove-top uk-padding-remove-bottom" >
+            <textarea name="summary" type="text" rows="4" class="summary uk-textarea uk-form-large" rows="1" maxlength="44"
+               placeholder="导语(选填)" 
+               validate="{
+                       required:false, 
+                       messages: {
+                        required:'请填写文章导读/摘要'
+                       }
+                   }
+            ">{{article.summary}}</textarea>
+            <div class="uk-helper uk-helper-danger"></div>
+        </div> <!-- END 文章摘要/导读 -->
+
+
+        <!-- 文章正文 -->
+	    <div class="uk-form-group uk-margin" >
+            <editor name="content"  type="html" rows="20" 
+                autofocus
+                fetch-image="false"
+                toolbar-sticky="top:0;"
+                url="/_api/xpmsns/user/user/upload"
+                placeholder="在这里输入文章正文"
+                maxChunkSize="1024"
+                onUploadSuccess="function(data) {
+                        console.log('onUploadSuccess', data);
+                    }
+                "
+                validate="{
+                       required:false, 
+                       messages: {
+                            required:'请填写文章正文'
+                       }
+                }
+            ">{{article.content}}</editor>
+            <div class="uk-helper uk-helper-danger"></div>
+        </div> <!-- END 文章正文-->
+
+        <hr class="uk-divider-icon">
+
+        <div  id="publish-setting"  class="uk-form-group uk-padding uk-padding-remove-top uk-padding-remove-bottom" >
+            <h3>发布设置</h3>
+        </div>
+
+        <!-- 文章封面 -->
+        <div class="uk-form-group uk-padding  uk-padding-remove-top uk-padding-remove-bottom" >
+            <label class="uk-form-label uk-form-large">文章封面: </label>
+            <div class="uk-form-controls jm-uploader-image-large">
+                <uploader type="image"
+                    name="cover"
+                    url="/_api/xpmsns/user/user/upload"
+                    allow="/(\.|\/)(gif|jpe?g|png)$/i" accept=".gif,.jpg,.jpeg,.png"
+                    crop="ratio:1"
+                    ratio="900/500"
+                    maxFileSize="2048"
+                    maxChunkSize="1024"
+                    value='{{JSON(article.cover, true)}}'
+                    titleClass="uk-hidden"
+                    class="jm-form-large">上传文章封面</uploader>
+            </div>
+        </div> <!-- 文章封面 -->
+
+        <!-- 文章作者 -->
+        <div class="uk-form-group uk-padding  uk-padding-remove-top uk-padding-remove-bottom" >
+            <label class="uk-form-label uk-form-large">文章作者: </label>
+            <div class="uk-form-controls">
+                <input name="author" type="text" class="uk-input uk-form-large" 
+                    placeholder="请填写本文作者" 
+                    value="{{article.author}}" 
+                    validate="{
+                            required:false, 
+                            messages: {
+                                required:'请填写作者'
+                            }
+                        }
+                    ">
+                <div class="uk-helper uk-helper-danger"></div>
+            </div>
+        </div> <!-- END 文章作者 -->
+
+         <!-- 文章来源 -->
+         <div class="uk-form-group uk-padding" >
+            <label class="uk-form-label uk-form-large">文章来源: </label>
+            <div class="uk-form-controls">
+                <div class="uk-flex">
+                    <input name="origin" type="text" class="uk-input uk-form-large uk-margin-small-right uk-width-1-3" 
+                        placeholder="来源名称" 
+                        value="{{article.origin}}" 
+                        validate="{
+                                required:false, 
+                                messages: {
+                                    required:'请填写来源名称'
+                                }
+                            }
+                        ">
+                    
+                        <input name="origin_url" type="text" class="uk-input uk-form-large uk-uk-width-2-3" 
+                        placeholder="来源地址" 
+                        value="{{article.origin_url}}" 
+                        validate="{
+                                required:false, 
+                                messages: {
+                                required:'请填写来源地址'
+                                }
+                            }
+                    ">
+                    
+                </div>
+                <div class="uk-helper uk-helper-danger"></div>
+            </div>
+        </div> <!-- END 文章来源 -->    
+
+        <!-- 内容类目 -->
+        <div class="uk-form-group uk-padding  uk-padding-remove-top uk-padding-remove-bottom" >
+            <label class="uk-form-label uk-form-large">文章类目: </label>
+            <div class="uk-form-controls uk-form-controls-text">
+                <div class="uk-margin-small-top uk-margin-small-bottom uk-flex-wrap uk-flex" >
+                    <label class="uk-margin-right uk-checkbox-label uk-form-large " mp:for="{{cates}}" mp:for-item="{{ca}}" >
+                        <input mp:if="{{InArray(ca.category_id,article.category_ids)}}" checked class="uk-checkbox " type="checkbox" name="category[]" value="{{ca.category_id}}"  > 
+                        <input mp:else class="uk-checkbox" type="checkbox" name="category[]" value="{{ca.category_id}}"  > 
+                        {{ca.name}} 
+                    </label>
+                </div>
+            </div>
+            <div class="uk-helper uk-helper-danger"></div>
+        </div> <!-- END 内容类目 -->
+        
+        <!-- 文章标签 -->
+        <div class="uk-form-group uk-padding  uk-padding-remove-top" >
+            <label class="uk-form-label uk-form-large">标签: </label>
+            <div class="uk-form-controls">
+                <input name="tag" type="text" class="uk-input uk-form-large" 
+                    placeholder="文章标签, 多个用 &quot;,&quot; 分割" 
+                    value="{{IMPLODE(',',article.tags)}}" 
+                    validate="{
+                            required:false, 
+                            messages: {
+                                required:'请填写标签'
+                            }
+                        }
+                    ">
+                <div class="uk-helper uk-helper-danger"></div>
+            </div>
+        </div> <!-- END 文章标签 -->
+
+        <!-- 阅读权限:粉丝可见 -->
+        <div class="uk-form-group uk-padding  uk-padding-remove-top uk-padding-remove-bottom" >
+            <label class="uk-form-label uk-form-large">阅读设置: </label>
+            <div class="uk-form-controls uk-form-controls-text">
+                <div class="uk-margin-small-top uk-margin-small-bottom uk-flex-wrap uk-flex" >
+                    <label class="uk-margin-right uk-checkbox-label uk-form-large" >
+                        <input mp:if="{{article.policies == 'follower-only'}}" checked class="uk-checkbox " type="checkbox" name="policies" value="follower-only"  > 
+                        <input mp:else class="uk-checkbox" type="checkbox" name="policies" value="follower-only"  > 
+                        仅粉丝可见
+                    </label>
+
+                    <label class="uk-margin-right uk-checkbox-label uk-form-large" >
+                        <input mp:if="{{article.stick == '1'}}" checked class="uk-checkbox " type="checkbox" name="stick" value="1"  > 
+                        <input mp:else class="uk-checkbox" type="checkbox" name="stick" value="1"  > 
+                        文章置顶
+                    </label>
+                </div>
+            </div>
+            <div class="uk-helper uk-helper-danger"></div>
+        </div> <!-- END  阅读权限:粉丝可见  -->
+
+        <!-- 互动权限 -->
+        <div class="uk-form-group uk-padding  uk-padding-remove-top uk-padding-remove-bottom" >
+            <label class="uk-form-label uk-form-large">互动设置: </label>
+            <div class="uk-form-controls uk-form-controls-text">
+                
+                <div class="uk-margin-small-top uk-margin-small-bottom uk-flex-wrap uk-flex" >
+                    <!-- 打赏 -->
+                    <label class="uk-margin-right uk-checkbox-label uk-form-large" >
+                        <input mp:if="{{article.policies_reward == 'opened'}}" checked class="uk-checkbox " type="checkbox" name="policies_reward" value="opened"  > 
+                        <input mp:else class="uk-checkbox" type="checkbox" name="policies_reward" value="opened"  > 
+                        开启打赏
+                    </label>
+                </div>
+
+                <div class="uk-margin-small-top uk-margin-small-bottom uk-flex-wrap uk-flex" >
+                    <!-- 开启评论 -->
+                    <label class="uk-margin-right uk-checkbox-label uk-form-large" >
+                        <input mp:if="{{article.policies_comment == 'opened'}}" checked class="uk-radio " type="radio" name="policies_comment" value="opened"  > 
+                        <input mp:else class="uk-radio" type="radio" name="policies_comment" value="opened"  > 
+                        开启评论
+                    </label>
+
+                    <!-- 禁止评论 -->
+                    <label class="uk-margin-right uk-checkbox-label uk-form-large" >
+                        <input mp:if="{{article.policies_comment == 'closed'}}" checked class="uk-radio " type="radio" name="policies_comment" value="closed"  > 
+                        <input mp:else class="uk-radio" type="radio" name="policies_comment" value="closed"  > 
+                        禁止评论
+                    </label>
+                        
+                    <!-- 允许粉丝评论 -->
+                    <label class="uk-margin-right uk-checkbox-label uk-form-large" >
+                        <input mp:if="{{article.policies_comment == 'follower-only'}}" checked class="uk-radio " type="radio" name="policies_comment" value="follower-only"  > 
+                        <input mp:else class="uk-radio" type="radio" name="policies_comment" value="follower-only"  > 
+                        允许粉丝评论
+                    </label>
+                </div>
+            </div>
+            <div class="uk-helper uk-helper-danger"></div>
+        </div> <!-- END  互动权限  -->
+
+        <!-- 付费阅读:设置金额 -->
+        <div class="uk-form-group uk-padding uk-padding-remove-top uk-padding-remove-bottom" >
+            <label class="uk-form-label uk-form-large">付费阅读: </label>
+            <div class="uk-form-controls">
+                    <input name="money_view" type="text" class="uk-input uk-form-large uk-width-2-3 uk-margin-small-right" 
+                        placeholder="阅读全文需支付金额" 
+                        value="{{article.money_view}}" 
+                        validate="{
+                                required:false, 
+                                messages: {
+                                    required:'请填写阅读全文需支付金额'
+                                }
+                            }
+                        "> 
+                    <span>元</span>
+            </div>
+            <div class="uk-helper uk-helper-danger"></div>
+        </div> <!-- END  付费阅读:设置金额  -->
+
+        <!-- 付费阅读:设置金币 -->
+        <div class="uk-form-group uk-padding uk-padding-remove-top uk-margin-small-top" >
+            <label class="uk-form-label uk-form-large"> </label>
+            <div class="uk-form-controls">
+                    <input name="coin_view" type="text" class="uk-input uk-form-large uk-width-2-3 uk-margin-small-right" 
+                        placeholder="阅读全文需支付积分数量" 
+                        value="{{article.coin_view}}" 
+                        validate="{
+                                required:false, 
+                                messages: {
+                                    required:'请填写阅读全文需支付积分数量'
+                                }
+                            }
+                        "> 
+                    <span>积分</span>
+            </div>
+            <div class="uk-helper uk-helper-danger"></div>
+        </div> <!-- END  付费阅读:设置金额  -->
+
+        <!-- 文章标签 -->
+        <div class="uk-form-group uk-padding  uk-padding-remove-top" >
+            <label class="uk-form-label uk-form-large">手动排序: </label>
+            <div class="uk-form-controls">
+                <input name="priority" type="text" class="uk-input uk-form-large uk-width-2-3" 
+                    placeholder="手动排序, 数值越小越靠前" 
+                    value="{{article.priority}}" 
+                    validate="{
+                            required:false, 
+                            messages: {
+                                required:'请填写手动排序数值'
+                            }
+                        }
+                    ">
+                <div class="uk-helper uk-helper-danger"></div>
+            </div>
+        </div> <!-- END 文章标签 -->
+
+        <input name="article_id" type="hidden" value="{{article.article_id}}" />
+        <input name="status" type="hidden" value="{{article.status}}" />
+        
+    </form>  <!-- END 图文发布表单 -->
+
+    <form id="article-edit" class="uk-form-horizontal iframe-form uk-width-xxlarge" mp:else>
+        <div class="uk-form-group uk-padding" >
+            <div class="uk-alert-danger" uk-alert>
+                <p>{{article.message}}</p>
+            </div>
+            <a href="/home/index.html#articles" class="uk-button uk-button-primary uk-button-small uk-margin-small-right" >返回列表</a>
+            <a href="/home/editor/article" class="uk-button uk-button-primary uk-button-small" >新建文章</a>
+        </div>
+    </form>
+
+</div><!-- END 图文发布器-->
+
+<!-- 用户未登录界面 -->
+<div class="container" mp:else >
+    <script type="text/javascript" >
+        window.location="/user/signin/mobile?then=/home/editor/article?article_id={{__get.article_id}}";
+    </script>
+</div> <!-- END  Container -->
+
+</div> <!-- END uk-flex uk-flex-center -->
+
+
+<!-- 操作面板 -->
+<div class="uk-flex uk-flex-center action-panel" style="position:fixed;bottom:0;width:100%;">
+    <div class="uk-card uk-card-body uk-width-xxlarge uk-padding-small uk-clearfix">
+        <div class="uk-float-right">
+            <a href="javascript:void(0);" 
+                onclick="
+                    var $form = $('form');
+                    $('[name=\'status\']').val('');
+                        $form.trigger('submit');
+                "
+                class="uk-margin-right  uk-action action-method action-save"> 保存 </a>
+            
+            <a href="#" bindtap="test" class="uk-margin-right action-method action-preview"> 预览 </a>
+            
+            <button 
+                onclick="
+                    var $form = $('form');
+                        $('[name=\'status\']').val('published');
+                    $form.trigger('submit');
+                "
+                class="uk-button uk-button-primary uk-button-small uk-action action-method action-publish" >立即发布</button>
+            
+            <button 
+                onclick="
+                    var $form = $('form');
+                        $('[name=\'status\']').val('published');
+                    $form.trigger('submit');
+                "
+                class="uk-button uk-button-primary uk-button-small uk-action action-method action-update" >发布更新</button>
+            
+            <button 
+                onclick="
+                    var $form = $('form');
+                        $('[name=\'status\']').val('unpublished');
+                    $form.trigger('submit');
+                "
+                class="uk-button uk-button-primary uk-button-small uk-action action-method action-cancel" >取消发布</button>
+        </div>
+
+        <div class="uk-float-left">
+            <a id="quick-link-btn" href="#publish-setting"  class="quick-link" uk-scroll="offset:100;duration:200;"> 
+                <span uk-icon="icon: chevron-down;"></span> 发布设置  
+            </a>
+        </div>
+
+    </div>
+</div> <!-- END 操作面板 -->
+<include src="__WEB_ROOT__/desktop/common/foot.page" />
