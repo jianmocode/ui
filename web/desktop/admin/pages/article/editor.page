@@ -153,8 +153,27 @@
             </div>
         </div> <!-- 文章封面 -->
 
-        <!-- 文章作者 -->
+        <!-- 发布时间 -->
         <div class="uk-form-group uk-padding  uk-padding-remove-top uk-padding-remove-bottom" >
+            <label class="uk-form-label uk-form-large">发布时间: </label>
+            <div class="uk-form-controls">
+                <input name="dateformat" type="hidden" value="Y-m-d H:i" />
+                <input name="publish_datetime" type="text" class="uk-input uk-form-large datetime-picker" 
+                    placeholder="请填写发布时间" 
+                    value="{{HmDateTime(article.publish_datetime, 'Y-m-d H:i')}}" 
+                    validate="{
+                            required:false, 
+                            messages: {
+                                required:'请填写发布时间'
+                            }
+                        }
+                    ">
+                <div class="uk-helper uk-helper-danger"></div>
+            </div>
+        </div> <!-- END 发布时间 -->
+
+        <!-- 文章作者 -->
+        <div class="uk-form-group uk-padding uk-padding-remove-bottom" >
             <label class="uk-form-label uk-form-large">文章作者: </label>
             <div class="uk-form-controls">
                 <input name="author" type="text" class="uk-input uk-form-large" 

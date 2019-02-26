@@ -49,7 +49,8 @@
                   "title": "编辑文章"
             },
             "__css": [
-                  "/js/trix/trix.css"
+                  "/js/trix/trix.css",
+                  "/js/datetimepicker/jquery.datetimepicker.min.css"
             ],
             "__js": [
                   "/js/trix/trix.js",
@@ -58,7 +59,8 @@
                   "/js/jquery.iframe-transport.js",
                   "/js/jquery.fileupload.js",
                   "/js/jquery.form.min.js",
-                  "/js/mustache.min.js"
+                  "/js/mustache.min.js",
+                  "/js/datetimepicker/jquery.datetimepicker.full.min.js"
             ]
       },
       "entries": [{

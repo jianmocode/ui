@@ -14,6 +14,14 @@ Page({
 	onReady: function( get ) {
         var that = this;
 
+        // SET 日期插件
+        jQuery.datetimepicker.setLocale('zh');
+        jQuery('.datetime-picker').datetimepicker({
+            format: 'Y-m-d H:i'
+            // format:'Y年m月d日 H:i',
+            // value:'1983年01月17日 19:20'
+        });
+
         // 加载组件
 		try {
 			// ImageUploader
