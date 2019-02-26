@@ -15,10 +15,10 @@
                   >{{item.name}}</text>
             </view>
       </view>
-      <view class="more fixed flex justify_center align_center">
+      <!-- <view class="more fixed flex justify_center align_center">
             <text class="arrow_pulldown inline_block"></text>
-      </view>
-      <scroll-view 
+      </view> -->
+      <scroll-view
             scroll-y="true"
             class="container_page flex flex_column"
             style="height:{{height}}px"
@@ -27,28 +27,31 @@
             <view class="container_main flex flex_column">
                   <view class="artical_items bg_white">
                         <view
-                              class="artical_item flex justify_between"
+                              class="artical_item flex justify_between border_box"
                               wx:for="{{artical_items}}"
                               wx:key="{{item.article_id}}"
                         >
                               <image
-                                    class="artical_img"
+                                    class="artical_img border_box"
                                     src="{{item.cover.url}}"
                                     mode="aspectFill"
                                     catchtap="handleTapArtical"
                                     data-id="{{item.article_id}}"
                               ></image>
-                              <view class="content flex flex_column justify_between">
+                              <view class="content flex flex_column justify_between border_box">
                                     <text
-                                          class="title"
+                                          class="title text_nomore_2"
                                           catchtap="handleTapArtical"
                                           data-id="{{item.article_id}}"
                                     >{{item.title}}</text>
-                                    <view class="sundry flex justify_between align_center">
-                                          <view class="sundry_left flex">
+                                    <view class="sundry flex justify_between align_end">
+                                          <view class="sundry_left flex flex_column">
+                                                <view class="tags flex">
+                                                      <text wx:if="{{item.tag[0].name}}">{{item.tag[0].name}}</text>
+                                                      <text wx:if="{{item.tag[1].name}}">{{item.tag[1].name}}</text>
+                                                      <text wx:if="{{item.tag[2].name}}">{{item.tag[2].name}}</text>
+                                                </view>
                                                 <text>{{item.publish_date}}</text>
-                                                <text wx:if="{{item.tag[0].name}}">{{item.tag[0].name}}</text>
-                                                <text wx:if="{{item.tag[1].name}}">{{item.tag[1].name}}</text>
                                           </view>
                                           <view class="sundry_right flex">
                                                 <button
@@ -85,9 +88,7 @@
                         </view>
                   </view>
                   <view class="tips_nomore flex justify_center align_center smalltitle">
-                        <text class="line"></text>
-                        <text class="text_tips">我是有底线的</text>
-                        <text class="line"></text>
+                        <text class="text_tips">没有更多啦 O(∩_∩)O</text>
                   </view>
             </view>
       </scroll-view>

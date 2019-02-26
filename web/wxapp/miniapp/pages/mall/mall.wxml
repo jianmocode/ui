@@ -5,13 +5,6 @@
             style="height:{{height}}px"
             bindscrolltolower="showMore"
       >
-            <image
-                  src="{{goods_items[0].cover.url}}"
-                  class="banner w_100"
-                  mode="aspectFill"
-                  data-id="{{goods_items[0].goods_id}}"
-                  catchtap="handleTapGoods"
-            ></image>
             <view class="container_page">
                   <view class="goods_items flex flex_wrap justify_between">
                         <goods-card
@@ -24,7 +17,7 @@
                               price_credit="{{item.lower_coin}}"
                               data-id="{{item.goods_id}}"
                               catchtap="handleTapGoods"
-                              wx:if="{{index>=1&&item.status!=='offline'}}"
+                              wx:if="{{index>=0&&item.status!=='offline'}}"
                         ></goods-card>
                   </view>
             </view>

@@ -1,9 +1,12 @@
 .wrap_tab {
       overflow-x: hidden;
       top: 0;
-      height: 78rpx;
       z-index: 999999;
-      box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.08);
+      height: 76rpx;
+      padding-top: 0rpx;
+      padding-left: 10rpx;
+      padding-right: 20rpx;
+      background-color: whitesmoke;
 }
 
 .tab {
@@ -12,20 +15,18 @@
 
 .tab .text {
       white-space: nowrap;
-      margin-top: 32rpx;
-      height: 24rpx;
-      line-height: 24rpx;
-      padding: 0 60rpx;
-      padding-bottom: 20rpx;
+      padding: 10rpx 20rpx;
       font-size: 24rpx;
-      color: #888;
-      border-bottom: 4rpx solid transparent;
+      color: #333;
+      border-bottom: 6rpx solid transparent;
       letter-spacing: 2rpx;
+      margin: 0 10rpx;
+      border-radius: 100rpx;
+      background-color: white;
 }
 
 .tab .active {
-      color: #333;
-      border-bottom: 4rpx solid black;
+      font-weight: bold;
 }
 
 .more {
@@ -47,25 +48,29 @@
 }
 
 .artical_items {
-      padding: 0 20rpx;
-      margin-top: 92rpx;
+      padding: 20rpx 20rpx;
+      margin-top: 60rpx;
+      background-color: whitesmoke;
 }
 
 .artical_items .artical_item {
       font-size: 24rpx;
-      padding: 30rpx 0;
-      border-bottom: 2rpx solid #eee;
+      background-color: white;
+      margin-bottom: 20rpx;
+      border-radius: 20rpx;
+      padding: 20rpx;
+      box-shadow: 0 4rpx 20rpx #eee;
 }
 
 .artical_item .artical_img {
       width: 36%;
-      height: 200rpx;
+      height: 160rpx;
       border-radius: 10rpx;
 }
 
 .artical_item .content {
       width: 60%;
-      height: 200rpx;
+      height: 160rpx;
 }
 
 .artical_item .content .title {
@@ -78,6 +83,7 @@
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       color: #333;
+      font-weight: bold;
 }
 
 .artical_item .content .sundry {
@@ -87,6 +93,10 @@
 .artical_item .content .sundry_left text {
       margin-right: 10rpx;
       font-size: 20rpx;
+}
+
+.artical_item .content .sundry_left .tags {
+      margin-bottom: 10rpx;
 }
 
 .artical_item .content .sundry_right image {
@@ -108,13 +118,9 @@
 
 .tips_nomore {
       padding: 40rpx 0;
+      padding-top: 0;
       font-size: 20rpx;
-}
-
-.tips_nomore .line {
-      width: 30%;
-      height: 2rpx;
-      background: #ddd;
+      background-color: whitesmoke;
 }
 
 .tips_nomore .text_tips {
