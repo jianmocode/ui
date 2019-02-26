@@ -4,11 +4,10 @@
       bottom: 0;
       display: flex;
       justify-content: space-between;
-      background: white;
+      background-color: whitesmoke;
       font-size: 20rpx;
       color: #888;
       padding: 12rpx 40rpx;
-      border-top: 2rpx solid #eee;
       box-sizing: border-box;
 }
 

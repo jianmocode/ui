@@ -120,13 +120,12 @@ Page({
                         _that.setData({
                               active_category: '推荐',
                               active_category_recommend: 'index_recommend',
-                              artical_items: data.weekly_hotnews.contents.data
+                              artical_items: data.data
                         })
                   })
                   .catch(function (error) {
                         console.log(error);
                   });
-
       },
       getBannerRecommend: function () {
             const _that = this;
