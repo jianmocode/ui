@@ -81,9 +81,9 @@ Page({
         
         // 审核中
         if ( status == "auditing" ) {
-            this.lockAction();
+            this.unlockAction();
             this.setStatus("warning", "审核中");
-            this.showAction(["cancel"]);
+            this.showAction([ "save", "preview", "resolve", "reject"]);
         
         // 已发布, 但更新文稿未发布
         } else if ( status == "published" && draft_status == "unapplied" ) {
@@ -143,10 +143,28 @@ Page({
         }
     },
 
+    showLoading: function( message ) {
+        $('.uk-loading').html( message );
+        $('.uk-loading')
+            .removeClass('uk-hidden');
+
+        $('.quick-link')
+            .addClass('uk-hidden');
+    },
+
+    hideLoading: function() {
+        $('.uk-loading')
+            .addClass('uk-hidden');
+
+        $('.quick-link')
+            .removeClass('uk-hidden');
+    },
+
     /**
      * 锁定所有操作
      */
     lockAction: function(){
+
         $('.uk-action')
             .addClass('uk-disabled')
             .attr('disabled', 'disabled')
@@ -161,6 +179,10 @@ Page({
      * 解锁所有操作
      */
     unlockAction: function(){
+
+        $('.uk-loading').addClass('uk-hidden');
+        $('.quick-link').removeClass('uk-hidden');
+
         $('.uk-action')
             .removeClass('uk-disabled')
             .removeAttr('disabled')

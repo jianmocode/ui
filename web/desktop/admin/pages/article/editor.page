@@ -71,6 +71,9 @@
                 window.page.updateStatus( data.status, data.draft_status );
             }
             
+            // 显示状态信息
+            window.page.hideLoading();
+
         }" 
         >
 
@@ -413,6 +416,7 @@
                 onclick="
                     var $form = $('form');
                         $form.trigger('submit');
+                        window.page.showLoading('正在保存...');
                 "
                 class="uk-margin-right  uk-action action-method action-save"> 保存 </a>
             
@@ -423,6 +427,7 @@
                     var $form = $('form');
                         $('[name=\'status\']').val('published');
                     $form.trigger('submit');
+                    window.page.showLoading('正在发布...');
                 "
                 class="uk-button uk-button-primary uk-button-small uk-action action-method action-publish" >立即发布</button>
             
@@ -431,6 +436,7 @@
                     var $form = $('form');
                         $('[name=\'status\']').val('published');
                     $form.trigger('submit');
+                    window.page.showLoading('正在发布更新...');
                 "
                 class="uk-button uk-button-primary uk-button-small uk-action action-method action-update" >发布更新</button>
             
@@ -439,11 +445,31 @@
                     var $form = $('form');
                         $('[name=\'status\']').val('unpublished');
                     $form.trigger('submit');
+                    window.page.showLoading('正在取消发布...');
                 "
                 class="uk-button uk-button-danger uk-button-small uk-action action-method action-cancel" >取消发布</button>
+
+            <button 
+                onclick="
+                    var $form = $('form');
+                        $('[name=\'status\']').val('published');
+                    $form.trigger('submit');
+                    window.page.showLoading('正在发布...');
+                "
+                class="uk-button uk-button-primary uk-button-small uk-action action-method action-resolve uk-margin-small-right" >同意发布</button>
+
+            <button 
+                onclick="
+                    var $form = $('form');
+                        $('[name=\'status\']').val('unpublished');
+                    $form.trigger('submit');
+                    window.page.showLoading('正在驳回申请...');
+                "
+                class="uk-button uk-button-danger uk-button-small uk-action action-method action-reject" >驳回申请</button>
         </div>
 
         <div class="uk-float-left">
+            <span class="uk-text-muted uk-loading uk-hidden">正在保存...</span>
             <a id="quick-link-btn" href="#publish-setting"  class="quick-link" uk-scroll="offset:100;duration:200;"> 
                 <span uk-icon="icon: chevron-down;"></span> 发布设置  
             </a>
