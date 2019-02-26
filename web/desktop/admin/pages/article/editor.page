@@ -17,9 +17,9 @@
         </div>
         <div class="uk-navbar-right">
 			<ul class="uk-navbar-nav">
-				<li class="before-login {{(user.user_id) ? 'uk-hidden'}} "><a href="/user/signup"  data-width="468" data-height="600" uk-iframe-modal >注册</a></li>
-				<li class="before-login {{(user.user_id) ? 'uk-hidden'}} "><a href="/user/signin/mobile" data-width="468" data-height="600" uk-iframe-modal>登录</a></li>
-				<li class="after-login  {{(user.user_id == '') ? 'uk-hidden'}}  {{ (active.nav == '__user') ? 'uk-active' }} ">
+				<li class="before-login {{(staff.name) ? 'uk-hidden'}} "><a href="/user/signup"  data-width="468" data-height="600" uk-iframe-modal >注册</a></li>
+				<li class="before-login {{(staff.name) ? 'uk-hidden'}} "><a href="/user/signin/mobile" data-width="468" data-height="600" uk-iframe-modal>登录</a></li>
+				<li class="after-login  {{(staff.name == '') ? 'uk-hidden'}}  {{ (active.nav == '__user') ? 'uk-active' }} ">
 					<a href="#"> 
 						<span class="nick-name" user-nickname>{{staff.name}} ({{(staff.isAdmin) ? '管理员' : '编辑'}})</span>
 						<span class="uk-icon" uk-icon="icon:triangle-down"></span>
@@ -76,7 +76,7 @@
 
         <!-- 文章标题 -->
 	    <div class="uk-form-group uk-padding uk-padding-remove-bottom" >
-            <textarea name="title" type="text" class="title uk-input uk-form-large" rows="2" maxlength="32"
+            <textarea name="title" type="text" class="title uk-input uk-form-large" rows="2" maxlength="128"
                 placeholder="请输入标题" 
                 validate="{
                         required:true, 
@@ -90,7 +90,7 @@
 
         <!-- 文章摘要/导读 -->
 	    <div class="uk-form-group uk-margin uk-padding uk-padding-remove-top uk-padding-remove-bottom" >
-            <textarea name="summary" type="text" rows="4" class="summary uk-textarea uk-form-large" rows="1" maxlength="44"
+            <textarea name="summary" type="text" rows="3" class="summary uk-textarea uk-form-large"  maxlength="144"
                placeholder="导语(选填)" 
                validate="{
                        required:false, 
@@ -138,7 +138,7 @@
             <div class="uk-form-controls jm-uploader-image-large">
                 <uploader type="image"
                     name="cover"
-                    url="/_api/xpmsns/user/user/upload"
+                    url="/_api/xpmse/xpmse/staff/upload" 
                     allow="/(\.|\/)(gif|jpe?g|png)$/i" accept=".gif,.jpg,.jpeg,.png"
                     crop="ratio:1"
                     ratio="900/500"
@@ -332,7 +332,7 @@
             <div class="uk-helper uk-helper-danger"></div>
         </div> <!-- END  付费阅读:设置金额  -->
 
-        <!-- 文章标签 -->
+        <!-- 手动排序 -->
         <div class="uk-form-group uk-padding  uk-padding-remove-top" >
             <label class="uk-form-label uk-form-large">手动排序: </label>
             <div class="uk-form-controls">
@@ -348,8 +348,36 @@
                     ">
                 <div class="uk-helper uk-helper-danger"></div>
             </div>
-        </div> <!-- END 文章标签 -->
+        </div> <!-- END 手动排序 -->
 
+
+        <div class="uk-form-group uk-padding  uk-padding-remove-top uk-padding-remove-bottom" >
+            <hr />
+        </div>
+
+        <!-- 删除文章 -->
+        <div class="uk-form-group uk-padding  uk-padding-remove-top" >
+            <dl class="uk-description-list">
+                <dd class="uk-clearfix"> 
+                    删除文章
+                    <a href="javascript:void(0);" class="uk-text-danger  uk-float-right"> 删除本文 </a>
+                    <div class="remove-drop" uk-drop="mode:click;pos:top-center;delay-hide:0">
+                        <div class="uk-card uk-card-body uk-card-default uk-padding-small">
+                            <div class="uk-text-danger"> 文章删除操作可能无法恢复，是否继续？ </div>
+                            <div class="uk-inline uk-margin-small-top uk-text-center">
+                                <a href="javascript:void(0);"  
+                                   bindtap="remove"
+                                   class="uk-button uk-button-small uk-button-primary uk-margin-small-right  uk-action action-method action-remove">确定</a>
+                                <a onclick="UIkit.drop($(this).parents('.remove-drop')).hide();" class="uk-button uk-button-small uk-button-default" type="button">取消</a>
+                            </div>
+                        </div>
+                    </div>
+                </dd>
+                <dd class="uk-text-muted">文章删除操作可能无法恢复，请谨慎操作。</dd>
+            </dl>
+        </div> <!-- END 删除文章 -->
+
+        <!-- 隐藏域 -->
         <input name="article_id" type="hidden" value="{{article.article_id}}" />
         <input name="status" type="hidden" value="{{article.status}}" />
         
@@ -360,8 +388,8 @@
             <div class="uk-alert-danger" uk-alert>
                 <p>{{article.message}}</p>
             </div>
-            <a href="/home/index.html#articles" class="uk-button uk-button-primary uk-button-small uk-margin-small-right" >返回列表</a>
-            <a href="/home/editor/article" class="uk-button uk-button-primary uk-button-small" >新建文章</a>
+            <a href="/home/index.html#articles" class="uk-button uk-button-primary uk-button-small uk-margin-small-right uk-hidden" >返回列表</a>
+            <a href="/admin/pages/editor" class="uk-button uk-button-primary uk-button-small" >新建文章</a>
         </div>
     </form>
 
@@ -384,7 +412,6 @@
             <a href="javascript:void(0);" 
                 onclick="
                     var $form = $('form');
-                    $('[name=\'status\']').val('');
                         $form.trigger('submit');
                 "
                 class="uk-margin-right  uk-action action-method action-save"> 保存 </a>
@@ -413,7 +440,7 @@
                         $('[name=\'status\']').val('unpublished');
                     $form.trigger('submit');
                 "
-                class="uk-button uk-button-primary uk-button-small uk-action action-method action-cancel" >取消发布</button>
+                class="uk-button uk-button-danger uk-button-small uk-action action-method action-cancel" >取消发布</button>
         </div>
 
         <div class="uk-float-left">

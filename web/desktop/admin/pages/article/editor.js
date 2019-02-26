@@ -92,7 +92,8 @@ Page({
             this.showAction(["update", "save", "preview"]);
 
         // 已发布, 且草稿未更新
-        } else if ( status == "published" && draft_status =="applied" ) {
+        } else if ( status == "published" && (draft_status =="applied" || draft_status == undefined) ) {
+
             this.unlockAction();
             this.setStatus("success", "已发布");
             this.showAction(["cancel", "save", "preview"]);
@@ -208,8 +209,38 @@ Page({
         });
     },
     
-    test: function( event ) {
-        let that = this;
-        console.log( 'bindtap', that );
+    remove: function( event ) {
+        let $elm = $(event.target);
+        let article_id = $('input[name=article_id]').val();
+        let url = '/_api/xpmsns/pages/article/staffRemove';
+
+        if ( article_id == "" ) {
+            UIkit.notification({message: `删除失败(文章尚未保存)`, status: 'danger', pos: 'top-right'});
+            UIkit.drop($elm.parents('.remove-drop')).hide();
+            return;
+        }
+
+        window.page.lockAction();
+        UIkit.drop($elm.parents('.remove-drop')).hide();
+        
+        $.post( url, {article_id:article_id}, (data)=>{
+
+            if( data.code != 0  && data.message ) {
+                UIkit.notification({message: `删除失败(${data.message})`, status: 'danger', pos: 'top-right'});
+                window.page.unlockAction();
+                return;
+            }
+
+            // 转向到列表页
+            UIkit.notification({message: `删除成功`, status: 'success', pos: 'top-right'});
+            setTimeout(() => {
+                window.location = '/_a/i/xpmsns/pages/article/index';    
+            }, 500);
+
+        }, 'json')
+        .error( ( xhr, status, error )=>{
+            UIkit.notification({message: '删除失败', status: 'danger', pos: 'top-right'});
+            window.page.unlockAction();
+        });
     }
 })
