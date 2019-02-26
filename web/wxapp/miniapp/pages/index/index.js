@@ -19,14 +19,12 @@ Page({
                   cover: ''
             }
       },
-      onLoad: function (option) {
+      onLoad: function () {
             const _that = this;
 
             _that.justLogin();
 
             _that.timerHideToptips();
-
-            _that.setStatus(option);
 
             _that.getHeight();
 
@@ -79,13 +77,6 @@ Page({
             this.setData({
                   is_toptips_show: false
             })
-      },
-      setStatus: function (option) {
-            if (option.status) {
-                  this.setData({
-                        user_status: option.status
-                  })
-            }
       },
       getHeight: function () {
             //获取页面高度
