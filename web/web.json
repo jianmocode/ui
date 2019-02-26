@@ -5,6 +5,7 @@
             "/desktop/admin/staff/logout",
             "/desktop/admin/dashboard/apps",
             "/desktop/admin/pages/article/audit",
+            "/desktop/admin/pages/article/editor",
             "/desktop/qanda/index",
             "/desktop/qanda/detail",
             "/desktop/qanda/tag",
