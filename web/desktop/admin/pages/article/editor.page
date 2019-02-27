@@ -112,7 +112,7 @@
                 autofocus
                 fetch-image="false"
                 toolbar-sticky="top:0;"
-                url="/_api/xpmsns/user/user/upload"
+                url="/_api/xpmse/xpmse/staff/upload"
                 placeholder="在这里输入文章正文"
                 maxChunkSize="1024"
                 onUploadSuccess="function(data) {
