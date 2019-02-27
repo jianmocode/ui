@@ -8,7 +8,8 @@
         "/desktop/admin/staff/logout",
         "/desktop/admin/dashboard/apps",
         "/desktop/admin/pages/article/audit",
-        "/desktop/admin/pages/article/editor"
+        "/desktop/admin/pages/article/editor",
+        "/desktop/admin/pages/article/preview"
 	],
 	"common":[
 		"/libs",

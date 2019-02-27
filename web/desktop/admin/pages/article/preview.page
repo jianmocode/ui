@@ -1,0 +1,188 @@
+<include src="__WEB_ROOT__/desktop/common/head.page" />
+<include src="__WEB_ROOT__/desktop/components/uploader/image.page" /> <!-- 引入部件 文件上传组件-->
+<include src="__WEB_ROOT__/desktop/components/editor/html.page" /> <!-- 引入部件 HTML编辑器 -->
+
+<!-- 头部导航 -->
+<div class="uk-section-secondary">
+    <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+        <div class="uk-navbar-left">
+            <a class="uk-navbar-item uk-logo" href="#">
+                
+                <img data-src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/defaults/brand/icon.svg" width="42" uk-img >
+                <a href="javascript:void(0);" class="uk-text-large">简墨</a>
+            </a>
+            <ul class="uk-navbar-nav">
+             
+            </ul>
+        </div>
+        <div class="uk-navbar-right">
+			<ul class="uk-navbar-nav">
+				<li class="before-login {{(staff.name) ? 'uk-hidden'}} "><a href="/user/signup"  data-width="468" data-height="600" uk-iframe-modal >注册</a></li>
+				<li class="before-login {{(staff.name) ? 'uk-hidden'}} "><a href="/user/signin/mobile" data-width="468" data-height="600" uk-iframe-modal>登录</a></li>
+				<li class="after-login  {{(staff.name == '') ? 'uk-hidden'}}  {{ (active.nav == '__user') ? 'uk-active' }} ">
+					<a href="#"> 
+						<span class="nick-name" user-nickname>{{staff.name}} ({{(staff.isAdmin) ? '管理员' : '编辑'}})</span>
+						<span class="uk-icon" uk-icon="icon:triangle-down"></span>
+					</a>
+					<div uk-dropdown="offset:-20; pos:bottom-justify" class="menu">
+						<ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li><a class="dropdown-item" href="https://www.jianmo.ink/docs/index.html?from={{__var.__home}}" target="_blank"> 帮助文档</a></li>
+                            <li><a href="https://www.jianmo.ink/docs/index.html?from={{__var.__home}}" target="_blank"> 简墨官网</a></li>
+                            <li><a href="/admin/logout.html"> 退出登录</a></li>
+						</ul>
+					</div>
+                </li>
+                <li class="uk-hidden"><a href="#" uk-icon="icon:cog" uk-toggle="target: #offcanvas-reveal"></a></li>
+			</ul>
+		</div>
+    </nav>
+</div> <!-- END 头部导航 -->
+
+<!-- 推出侧边栏 -->
+<div id="offcanvas-reveal" uk-offcanvas="mode:push; flip:true; overlay:true">
+    <div class="uk-offcanvas-bar ">
+        <button class="uk-offcanvas-close" type="button" uk-close></button>
+        <h3 class="uk-hidden">Title</h3>
+        <p  class="uk-hidden">HELLO WORLD</p>
+    </div>
+</div> <!-- END 推出侧边栏 -->
+
+<div class="uk-flex uk-flex-center uk-background-muted uk-height-1-1">
+
+<!-- 图文发布器-->
+<div class=" uk-padding-remove uk-margin-top uk-margin-large-bottom" mp:if="{{staff.name}}">
+
+    <div class="article-preview" uk-grid>
+        <div class="uk-width-auto@m">
+            <ul class="uk-tab-left" uk-tab="connect: #component-tab-left; animation: uk-animation-fade">
+                <li><a href="#">  网页浏览器 </a></li>
+                <li><a href="#">  微信浏览器 </a></li>
+                <li><a href="#">  微信小程序 </a></li>
+                <li><a href="#">  手机客户端 </a></li>
+            </ul>
+        </div>
+        <div class="uk-width-xxlarge uk-card uk-card-default uk-card-body uk-padding-remove">
+            <ul id="component-tab-left" class="uk-switcher">
+                <li>
+                    <article class="jm-article">
+                        <h1 class="jm-article-title">{{article.title}}</h1>
+                        <p class="jm-article-meta">
+                            <span mp:if="{{article.author}}">作者: {{article.author}} </span>
+                            <span mp:if="{{article.publish_datetime}}">发布于: {{HmDatetime(article.publish_datetime, 'Y年m月d日')}} </span>
+                            <span mp:if="{{article.origin}}">来源: 
+                                <a mp:if="{{article.origin_url}}" href="{{article.origin_url}}" target="_blank" >{{article.origin}}</a>
+                                <text mp:else>{{article.origin}}</text>
+                            </span>
+                        </p>
+
+                        <p class="jm-article-summary" mp:if="{{article.summary}}">
+                            {{article.summary}}
+                        </p>
+
+                        <content 
+                            class="jm-article-content"
+                            policies="{{article.policies}}"
+                            reward="{{article.policies_reward}}"
+                            comment="{{article.policies_comment}}"
+                            money="{{article.money_view}}"
+                            coin="{{article.coin}}"
+                        >
+                            {{article.content}}
+                        </content>
+                    </article>
+                </li>
+                <li>
+                    微信浏览器
+                </li>
+                <li>
+                    微信小程序
+                </li>
+                <li>
+                    手机客户端
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+</div><!-- END 图文发布器-->
+
+<!-- 用户未登录界面 -->
+<div class="container" mp:else >
+    <script type="text/javascript" >
+        window.location="/admin/login.html?then=/admin/pages/editor?article_id={{__get.article_id}}";
+    </script>
+</div> <!-- END  Container -->
+
+</div> <!-- END uk-flex uk-flex-center -->
+
+
+<!-- 操作面板 -->
+<div class="uk-flex uk-flex-center action-panel" style="position:fixed;bottom:0;width:100%;">
+    <div class="uk-card uk-card-body uk-width-xxlarge uk-padding-small uk-clearfix">
+        <div class="uk-float-right">
+            <a href="javascript:void(0);" 
+                onclick="
+                    var $form = $('form');
+                        $form.trigger('submit');
+                        window.page.showLoading('正在保存...');
+                "
+                class="uk-margin-right  uk-action action-method action-save"> 保存 </a>
+            
+            <a href="#" bindtap="test" class="uk-margin-right action-method action-preview"> 预览 </a>
+            
+            <button 
+                onclick="
+                    var $form = $('form');
+                        $('[name=\'status\']').val('published');
+                    $form.trigger('submit');
+                    window.page.showLoading('正在发布...');
+                "
+                class="uk-button uk-button-primary uk-button-small uk-action action-method action-publish" >立即发布</button>
+            
+            <button 
+                onclick="
+                    var $form = $('form');
+                        $('[name=\'status\']').val('published');
+                    $form.trigger('submit');
+                    window.page.showLoading('正在发布更新...');
+                "
+                class="uk-button uk-button-primary uk-button-small uk-action action-method action-update" >发布更新</button>
+            
+            <button 
+                onclick="
+                    var $form = $('form');
+                        $('[name=\'status\']').val('unpublished');
+                    $form.trigger('submit');
+                    window.page.showLoading('正在取消发布...');
+                "
+                class="uk-button uk-button-danger uk-button-small uk-action action-method action-cancel" >取消发布</button>
+
+            <button 
+                onclick="
+                    var $form = $('form');
+                        $('[name=\'status\']').val('published');
+                    $form.trigger('submit');
+                    window.page.showLoading('正在发布...');
+                "
+                class="uk-button uk-button-primary uk-button-small uk-action action-method action-resolve uk-margin-small-right" >同意发布</button>
+
+            <button 
+                onclick="
+                    var $form = $('form');
+                        $('[name=\'status\']').val('unpublished');
+                    $form.trigger('submit');
+                    window.page.showLoading('正在驳回申请...');
+                "
+                class="uk-button uk-button-danger uk-button-small uk-action action-method action-reject" >驳回申请</button>
+        </div>
+
+        <div class="uk-float-left">
+            <span class="uk-text-muted uk-loading uk-hidden">正在保存...</span>
+            <a id="quick-link-btn" href="#publish-setting"  class="quick-link" uk-scroll="offset:100;duration:200;"> 
+                <span uk-icon="icon: chevron-down;"></span> 发布设置  
+            </a>
+        </div>
+
+    </div>
+</div> <!-- END 操作面板 -->
+<include src="__WEB_ROOT__/desktop/common/foot.page" />

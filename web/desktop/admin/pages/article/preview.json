@@ -1,0 +1,72 @@
+{
+      "cname": "图文预览器",
+      "data": {
+            "staff":{
+                "api":"/xpmse/xpmse/staff/getLoginInfo",
+                "query":{}
+            },
+            "site": {
+                  "api": "/xpmsns/pages/siteconf/get",
+                  "query": {
+                        "site_slug": "global",
+                        "select": "*"
+                  }
+            },
+            "categories": {
+                  "api": "/xpmsns/pages/category/search",
+                  "query": {
+                        "select": "category_id,name,highlight,link,isblank,slug",
+                        "order": "priority asc",
+                        "noParentId": "1",
+                        "children": false,
+                        "isnav": 1
+                  }
+            },
+            "cates": "{{categories.data}}",
+            "option": {
+                  "api": "/xpmsns/user/user/option",
+                  "query": {}
+            },
+            "user": {
+                  "api": "/xpmsns/user/user/getUserInfo",
+                  "query": {}
+            },
+            "special": {
+                  "api": "/xpmsns/pages/special/get",
+                  "query": {
+                        "user_id": "{{user.user_id}}",
+                        "select": "special.name,special.path,special.type,special.status,special.logo,special.category_ids,special.summary"
+                  }
+            },
+            "article": {
+                  "api": "/xpmsns/pages/article/staffArticleDetail",
+                  "query": {
+                        "article_id": "{{__var.article_id}}",
+                        "select": "*"
+                  }
+            },
+            "page": {
+                  "title": "文章预览"
+            },
+            "__css": [
+                  "/js/trix/trix.css",
+                  "/js/datetimepicker/jquery.datetimepicker.min.css"
+            ],
+            "__js": [
+                  "/js/trix/trix.js",
+                  "/js/jquery-validation-1.17.0/jquery.validate.min.js",
+                  "/js/jquery.ui.widget.js",
+                  "/js/jquery.iframe-transport.js",
+                  "/js/jquery.fileupload.js",
+                  "/js/jquery.form.min.js",
+                  "/js/mustache.min.js",
+                  "/js/datetimepicker/jquery.datetimepicker.full.min.js"
+            ]
+      },
+      "entries": [{
+            "method": "GET",
+            "router": "/admin/pages/preview/{article_id:[0-9a-zA-Z_]+}",
+            "ttl": 0
+      }],
+      "align": {}
+}

@@ -1,0 +1,57 @@
+@charset "utf-8";
+@import '/desktop/common/d.less';
+
+// 引入组件
+@import '/desktop/components/uploader/image.less';  
+@import '/desktop/components/editor/html.less';  
+
+.article-preview  {
+    min-height: 300px;
+
+    .uk-tab-left, #component-tab-left, #component-tab-left li {
+        height: 100%;
+    }
+
+    .uk-tab .uk-active a {
+        border: none;
+    }
+
+    .uk-tab a {
+        font-size: 1rem;
+        padding: .2em 1em .5em 1em;
+    }
+
+    .uk-tab-left::before {
+        border: none;
+    }
+}
+
+.action-panel {
+    border-top: 2px solid @primaryColor;
+    background: @lightColor;
+
+    .action-method {
+        display: none;
+    }
+
+    .action-active {
+        display: inline-block !important;
+    }
+}
+
+.status-label {
+    top: -1px;
+    right: 40px;
+    height: 35px;
+    line-height: 35px;
+    width:50px;
+    text-align: center;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.quick-link {
+    line-height:30px;
+}

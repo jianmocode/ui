@@ -74,6 +74,8 @@
             // 显示状态信息
             window.page.hideLoading();
 
+            // 更新预览链接
+            $('.action-preview').attr('href', '/admin/pages/preview/' +  article_id);
         }" 
         >
 
@@ -439,7 +441,7 @@
                 "
                 class="uk-margin-right  uk-action action-method action-save"> 保存 </a>
             
-            <a href="#" bindtap="test" class="uk-margin-right action-method action-preview"> 预览 </a>
+            <a href="/admin/pages/preview/{{article.article_id}}"  target="_blank"  class="uk-margin-right action-method action-preview"> 预览 </a>
             
             <button 
                 onclick="

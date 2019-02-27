@@ -6,6 +6,7 @@
             "/desktop/admin/dashboard/apps",
             "/desktop/admin/pages/article/audit",
             "/desktop/admin/pages/article/editor",
+            "/desktop/admin/pages/article/preview",
             "/desktop/qanda/index",
             "/desktop/qanda/detail",
             "/desktop/qanda/tag",
