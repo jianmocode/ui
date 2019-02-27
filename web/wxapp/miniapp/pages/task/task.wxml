@@ -1,6 +1,6 @@
 <page-show-wrap>
       <view class="container_page">
-            <view class="tab flex justify_between color_333 bg_white">
+            <view class="tab flex justify_between color_333 border_box">
                   <view class="tab_item">
                         <view
                               class="text {{is_show_dailytask?'active':''}}"
@@ -17,7 +17,7 @@
                   </view>
             </view>
             <view
-                  class="daily_task task_items flex flex_column bg_white"
+                  class="daily_task task_items flex flex_column"
                   wx:if="{{is_show_dailytask}}"
             >
                   <view class="task_item flex justify_between align_center">
@@ -114,7 +114,7 @@
                   </view>
             </view>
             <view
-                  class="invite_task task_items flex flex_column bg_white"
+                  class="invite_task task_items flex flex_column"
                   wx:if="{{is_show_invitetask}}"
             >
                   <view class="task_item flex justify_between align_center">
@@ -274,7 +274,7 @@
                   <image
                         src="../../images/icon_task_collect.png"
                         class="icon_collect"
-                        mode="widthFix"
+                        mode="widthFix" 
                   ></image>
                   <text class="credit color_888">5积分</text>
             </view>

@@ -7,27 +7,35 @@
       background-color: whitesmoke;
       font-size: 20rpx;
       color: #888;
-      padding: 12rpx 40rpx;
       box-sizing: border-box;
+      border-top-left-radius: 30rpx;
+      border-top-right-radius: 30rpx;
+}
+
+.nav_item_wrap{
+      width: 100%;
 }
 
 .nav .nav_item {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      width: 50rpx;
-      padding: 0 40rpx;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      padding: 16rpx 20rpx;
+      border-radius: 10rpx;
 }
 
 .nav .nav_item .nav_img {
-      width: 50rpx;
-      height: 50rpx;
+      width: 30rpx;
+      height: 30rpx;
 }
 
 .nav .nav_item .nav_title {
-      margin-top: 10rpx;
+      margin-top: 6rpx;
+      font-size: 16rpx;
+      font-weight: bold;
 }
 
 .nav .active .nav_title {
-      color: #e49bae;
+      color: #1e87f0;
 }

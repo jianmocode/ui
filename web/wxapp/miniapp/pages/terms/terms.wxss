@@ -1,9 +1,4 @@
-page {
-      background: white;
-}
-
 .container_page {
-      background: white;
       padding: 0 40rpx;
 }
 

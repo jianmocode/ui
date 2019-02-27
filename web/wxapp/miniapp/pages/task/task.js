@@ -46,7 +46,7 @@ Page({
                   })
                   .then((data) => {
                         _that.setData({
-                              artical_items: data.weekly_hotnews.contents.data
+                              artical_items: data.data
                         })
                   })
                   .catch(function (error) {

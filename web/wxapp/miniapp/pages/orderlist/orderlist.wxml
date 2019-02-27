@@ -1,6 +1,6 @@
 <page-show-wrap>
       <view class="container_page flex flex_column align_center">
-            <view class="tab flex justify_between color_333 bg_white border_box w_100 fixed">
+            <view class="tab flex color_333 border_box w_100 fixed">
                   <view class="tab_item">
                         <view
                               class="text {{is_goods_wait?'active':''}}"

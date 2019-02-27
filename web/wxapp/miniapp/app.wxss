@@ -2,8 +2,8 @@
 
 /* 全局css变量 */
 page {
-      --color_main: #e49bae;
-      --color_sub: #f15e86;
+      --color_main: #1e87f0;
+      --color_sub: #58a7f7;
       --font_color_title: #333;
       --font_color_subtitle: #666;
       --font_color_smalltitle: #888;

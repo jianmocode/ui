@@ -1,32 +1,24 @@
 <view class="card_person_wrap">
-      <image
-            src="../../images/bg_card_person.png"
-            class="card_person"
-            mode="widthFix"
-      >
-            <view class="image_inner_box">
-                  <view class="avatar_wrap">
-                        <open-data
-                              class="avatar"
-                              type="userAvatarUrl"
-                        ></open-data>
-                  </view>
+      <div class="row">
+            <view class="avatar_wrap left">
+                  <open-data
+                        class="avatar"
+                        type="userAvatarUrl"
+                  ></open-data>
+            </view>
+            <view class="right">
                   <open-data
                         class="name title"
                         type="userNickName"
                         lang="zh_CN"
                   ></open-data>
                   <view class="credit_wrap">
-                        <image
-                              src="../../images/icon_credit.png"
-                              mode="widthFix"
-                        ></image>
                         <text class="credit subtitle">{{credit}} 积分</text>
                   </view>
-                  <navigator
-                        url="/pages/task/task"
-                        class="btn_getcredit btn_main"
-                  >赚积分</navigator>
             </view>
-      </image>
+            <navigator
+                  url="/pages/task/task"
+                  class="btn_getcredit btn_main"
+            >赚积分</navigator>
+      </div>
 </view>

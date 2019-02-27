@@ -20,7 +20,7 @@
             "navigationBarTextStyle": "black"
       },
       "usingComponents": {
-            "nav": "/components/nav/nav",
+            "nav":"/components/nav/nav",
             "tips": "/components/tips/tips",
             "person-card": "/components/person-card/person-card",
             "goods-card": "/components/goods-card/goods-card",

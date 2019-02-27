@@ -125,7 +125,7 @@
 
 .tips_nomore .text_tips {
       margin: 0 20rpx;
-      margin-bottom: 110rpx;
+      margin-bottom: 60rpx;
 }
 
 .auth_wrap {

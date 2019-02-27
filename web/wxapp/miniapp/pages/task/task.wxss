@@ -1,29 +1,48 @@
-page {
-      background: var(--bg_color_lower);
-      font-size: 24rpx;
-}
-
 .tab {
       font-size: 28rpx;
-      padding: 20rpx 28vw 0rpx;
+      padding: 0 20rpx;
+      margin-top: 10rpx;
+}
+
+.tab .tab_item {
+      width: 50%;
+      overflow: hidden;
+}
+
+.tab .tab_item:nth-of-type(1) {
+      border-top-left-radius: 20rpx;
+      border-bottom-left-radius: 20rpx;
+}
+
+.tab .tab_item:nth-of-type(2) {
+      border-top-right-radius: 20rpx;
+      border-bottom-right-radius: 20rpx;
 }
 
 .tab .tab_item .text {
-      padding: 0 20rpx;
-      padding-bottom: 10rpx;
+      width: 100%;
+      text-align: center;
+      padding: 20rpx 0;
+      font-weight: bold;
+      color: #333;
+      font-size: 28rpx;
+      background-color: white;
 }
 
 .tab .tab_item .active {
       color: var(--color_main);
-      border-bottom: 4rpx solid var(--color_main);
 }
 
 .task_items {
       margin-top: 20rpx;
+      padding: 0 20rpx;
 }
 
 .task_items .task_item {
       padding: 30rpx;
+      background-color: white;
+      border-radius: 20rpx;
+      margin-bottom: 20rpx;
 }
 
 .task_items .task_item .done {
@@ -33,16 +52,16 @@ page {
 }
 
 .task_item .left .icon {
-      width: 72rpx;
-      height: 72rpx;
+      width: 90rpx;
+      height: 90rpx;
 }
 
 .invite_task .task_item .left .icon {
-      width: 30rpx;
-      height: 30rpx;
+      width: 50rpx;
+      height: 50rpx;
       padding: 20rpx;
       border-radius: 100rpx;
-      background: var(--color_sub);
+      background: var(--color_main);
 }
 
 .task_item .left .left_info {
@@ -66,9 +85,9 @@ page {
       justify-content: center;
       align-items: center;
       font-size: 28rpx;
-      background: white;
+      background-color: var(--color_main);
+      color: white;
       border-radius: 60rpx;
-      border: 2rpx solid var(--color_main);
 }
 
 .btn_nav {
@@ -77,11 +96,10 @@ page {
       align-items: center;
       height: 60rpx;
       font-size: 28rpx;
-      background: white;
       border-radius: 60rpx;
-      border: 2rpx solid var(--color_main);
-      color: var(--color_main);
       padding: 0 30rpx;
+      background-color: var(--color_main);
+      color: white;
       box-sizing: border-box;
 }
 
@@ -93,12 +111,14 @@ page {
 .invite_item .img_artical {
       width: 72rpx;
       height: 72rpx;
+      border-radius: 10rpx;
 }
 
 .invite_item .title {
       width: 60%;
       padding: 0 20rpx;
       line-height: 1.5;
+      font-size: 24rpx;
 }
 
 .invite_item .btn_normal {
@@ -109,4 +129,8 @@ page {
 .content .icon_collect {
       width: 80rpx;
       margin: 30rpx 0 20rpx;
+}
+
+.content .credit{
+      font-size: 24rpx;
 }

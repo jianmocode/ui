@@ -38,7 +38,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 10,
 			"list": [
 				{
 					"id": 0,
@@ -107,10 +107,11 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 10,
 					"name": "order_list_page",
-					"pathName": "pages/order_list/order_list",
-					"query": ""
+					"pathName": "pages/orderlist/orderlist",
+					"query": "",
+					"scene": null
 				},
 				{
 					"id": -1,
