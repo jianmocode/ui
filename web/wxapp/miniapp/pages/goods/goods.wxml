@@ -62,44 +62,42 @@
                   <view class="title flex justify_center w_100">商品详情</view>
                   <view
                         class="detail_item w_100 border_box"
-                        wx:for="{{goods_data.ap_content}}"
-                        wx:key="{{goods_data.ap_content}}"
+                        wx:for="{{goods_data.ap_content[0].children}}"
+                        wx:key="{{item.name}}"
                   >
                         <image
                               class="w_100"
-                              src="{{item.children[0].type==='node'?item.children[0].attrs.src:''}}"
+                              src="{{item.attrs.src}}"
                               mode="widthFix"
-                              wx:if="{{item.children[0].name==='img'}}"
+                              wx:if="{{item.name==='img'}}"
                         ></image>
-                        <text
-                              class="w_100 text_justify inline_block border_box letter_spacing_1"
-                              wx:if="{{item.children[0].type==='text'}}"
-                        >{{item.children[0].text}}</text>
                   </view>
             </view>
-            <view class="options flex bg_white fixed w_100 flex align_center color_333">
-                  <navigator
-                        class="btn_goto_index btn_goto flex flex_column align_center"
-                        url="/pages/mall/mall"
-                  >
-                        <image
-                              src="../../images/icon_index.png"
-                              mode="widthFix"
-                        ></image>
-                        <text class="smalltitle">去逛逛</text>
-                  </navigator>
-                  <navigator
-                        class="btn_goto_task btn_goto flex flex_column align_center"
-                        url="/pages/task/task"
-                  >
-                        <image
-                              src="../../images/icon_task.png"
-                              mode="widthFix"
-                        ></image>
-                        <text class="smalltitle">赚积分</text>
-                  </navigator>
+            <view class="options flex bg_white fixed w_100 flex justify_between align_center color_333 border_box">
+                  <view class="left flex align_center">
+                        <navigator
+                              class="btn_goto_index btn_goto flex flex_column align_center"
+                              url="/pages/mall/mall"
+                        >
+                              <image
+                                    src="../../images/icon_index.png"
+                                    mode="widthFix"
+                              ></image>
+                              <text class="smalltitle">去逛逛</text>
+                        </navigator>
+                        <navigator
+                              class="btn_goto_task btn_goto flex flex_column align_center"
+                              url="/pages/task/task"
+                        >
+                              <image
+                                    src="../../images/icon_task.png"
+                                    mode="widthFix"
+                              ></image>
+                              <text class="smalltitle">赚积分</text>
+                        </navigator>
+                  </view>
                   <button
-                        class="exchange h_100 white flex justify_center align_center"
+                        class="exchange white flex justify_center align_center"
                         catchtap="handleTapGoods"
                         data-id="{{goods_data.goods_id}}"
                         disabled="{{has_begin===false||has_close===true?true:false}}"

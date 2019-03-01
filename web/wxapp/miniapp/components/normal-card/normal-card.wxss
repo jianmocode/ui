@@ -33,13 +33,13 @@
 .btn_goto {
       width: 80%;
       height: 72rpx;
-      background: rgba(228, 155, 174, 0.3);
+      background: var(--color_main);
       border-radius: 72rpx;
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 28rpx;
-      color: var(--color_main);
+      color: white;
       box-sizing: border-box;
       margin: 20rpx auto 30rpx;
 }

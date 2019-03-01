@@ -12,7 +12,7 @@
                         wx:key="{{item.favorite_id}}"
                         catchtap="handleTapArtical"
                         data-id="{{item.article_id}}"
-                  >
+                  > 
                         <view class="row flex">
                               <image
                                     class="img_artical"

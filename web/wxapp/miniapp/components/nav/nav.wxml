@@ -11,9 +11,7 @@
                         class="nav_img"
                         mode="widthFix"
                   ></image>
-                  <view class="nav_title">
-                        首页
-                  </view>
+                  <view class="nav_title">首页</view>
             </navigator>
             <navigator
                   url="/pages/idnex/idnex"
@@ -26,9 +24,7 @@
                         class="nav_img"
                         mode="widthFix"
                   ></image>
-                  <view class="nav_title">
-                        首页
-                  </view>
+                  <view class="nav_title">首页</view>
             </navigator>
       </view>
 
@@ -44,9 +40,7 @@
                         class="nav_img"
                         mode="widthFix"
                   ></image>
-                  <view class="nav_title">
-                        福利
-                  </view>
+                  <view class="nav_title">福利</view>
             </navigator>
             <navigator
                   url="/pages/mall/mall"
@@ -59,9 +53,7 @@
                         class="nav_img"
                         mode="widthFix"
                   ></image>
-                  <view class="nav_title">
-                        福利
-                  </view>
+                  <view class="nav_title">福利</view>
             </navigator>
       </view>
 
@@ -77,9 +69,7 @@
                         class="nav_img"
                         mode="widthFix"
                   ></image>
-                  <view class="nav_title">
-                        任务
-                  </view>
+                  <view class="nav_title">任务</view>
             </navigator>
             <navigator
                   url="/pages/task/task"
@@ -92,9 +82,7 @@
                         class="nav_img"
                         mode="widthFix"
                   ></image>
-                  <view class="nav_title">
-                        任务
-                  </view>
+                  <view class="nav_title">任务</view>
             </navigator>
       </view>
 
@@ -110,9 +98,7 @@
                         class="nav_img"
                         mode="widthFix"
                   ></image>
-                  <view class="nav_title">
-                        我的
-                  </view>
+                  <view class="nav_title">我的</view>
             </navigator>
             <navigator
                   url="/pages/person/person"
@@ -125,9 +111,7 @@
                         class="nav_img"
                         mode="widthFix"
                   ></image>
-                  <view class="nav_title">
-                        我的
-                  </view>
+                  <view class="nav_title">我的</view>
             </navigator>
       </view>
 </view>

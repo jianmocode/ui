@@ -1,65 +1,71 @@
 .card_person_wrap {
-      padding: 30rpx 16rpx;
-      padding-bottom: 16rpx;
-      box-sizing: border-box;
-}
-
-.card_person {
-      width: 100%;
-      height: 30vh;
-      position: relative;
-      border-radius: 10rpx;
-}
-
-.card_person .image_inner_box {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 24rpx;
-      z-index: 9;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 40rpx;
       box-sizing: border-box;
-}
- 
-.card_person .image_inner_box .avatar_wrap{
-      width: 100rpx;
-      height: 100rpx;
-      border: 4rpx solid white;
-      border-radius: 100rpx;
-      overflow: hidden;
-      box-shadow: 0 0 40rpx rgba(0, 0, 0, 0.1);
+      padding: 20rpx;
 }
 
-.card_person .image_inner_box .avatar {
+.row{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      background-color: white;
+      box-sizing: border-box;
+      padding:40rpx;
+      border-radius: 20rpx;
+      position: relative;
+}
+
+.row .right{
+      height: 160rpx;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+      padding: 20rpx 0;
+}
+
+.avatar_wrap {
+      width: 160rpx;
+      height: 160rpx;
+      border: 4rpx solid white;
+      border-radius: 200rpx;
+      overflow: hidden;
+      box-shadow: 0 0 40rpx rgba(0, 0, 0, 0.1);
+      margin-right: 40rpx;
+}
+
+.avatar {
       width: 100%;
       height: 100%;
 }
 
-.card_person .image_inner_box .name {
-      font-size: 28rpx;
-      margin: 12rpx 0;
+.name {
+      font-size: 40rpx;
+      color: #333;
+      font-weight: bold;
 }
 
-.card_person .image_inner_box .credit_wrap {
+.credit_wrap {
       display: flex;
       align-items: center;
 }
 
-.card_person .image_inner_box .credit_wrap image {
-      width: 30rpx;
-      height: 30rpx;
-      margin-right: 10rpx;
-}
-
-.card_person .image_inner_box .credit {
+.credit {
       font-size: 24rpx;
       color: var(--color_main);
+      background-color: white;
+      padding: 10rpx 20rpx;
+      border-radius: 100rpx;
+      font-weight: bold;
+      box-shadow: 0 0 10rpx #eee;
 }
 
-.card_person .image_inner_box .btn_getcredit {
+.btn_getcredit {
+      position: absolute;
+      top: 0;
+      right: 0;
       font-size: 24rpx;
       margin-top: 40rpx;
       letter-spacing: 2rpx;
@@ -67,16 +73,11 @@
 
 .btn_main {
       padding: 12rpx 30rpx;
-      border-radius: 100rpx;
-      color: var(--color_main);
-      font-size: 32rpx;
-      background: white;
-      border: 2rpx solid #eee;
-      box-shadow: 0 0 10rpx #eee;
-}
-
-.subtitle {
-      color: var(--font_color_subtitle);
-      letter-spacing: 2rpx;
-      text-align: justify;
+      padding-right: 20rpx;
+      color: white;
+      font-size: 24rpx;
+      font-weight: bold;
+      background: var(--color_main);
+      border-top-left-radius: 100rpx;
+      border-bottom-left-radius: 100rpx;
 }

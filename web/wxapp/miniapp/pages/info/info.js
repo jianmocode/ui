@@ -4,7 +4,6 @@ Page({
       data: {
             input_active: false,
             btn_edit_innertext: '完善资料',
-            user_status: '',
             nickname: '',
             sex: '',
             mobile: '',
@@ -40,7 +39,6 @@ Page({
             this.setTaskAccept('profile');
 
             _that.setData({
-                  user_status: app.global_data.user_info.extra !== null ? _that.filterUserStatus(app.global_data.user_info.extra).user_status : '',
                   nickname: app.global_data.user_info.nickname,
                   sex: app.global_data.user_info.sex,
                   mobile: app.global_data.user_info.mobile,
@@ -88,16 +86,7 @@ Page({
 
             if (_that.data.is_validated) {
                   wx.showLoading();
-                  if (typeof app.global_data.user_info.extra !== 'string') {
-                        app.global_data.user_info.extra = {
-                              user_status: e.detail.value.user_status
-                        };
-                  } else {
-                        app.global_data.user_info.extra = JSON.parse(app.global_data.user_info.extra);
-                        app.global_data.user_info.extra.user_status = e.detail.value.user_status;
-                  }
-
-                  app.global_data.user_info.extra = JSON.stringify(app.global_data.user_info.extra);
+               
                   app.global_data.user_info.nickname = e.detail.value.nickname;
                   app.global_data.user_info.sex = e.detail.value.sex === '男' ? 1 : 0;
                   app.global_data.user_info.mobile = e.detail.value.mobile;
@@ -115,7 +104,7 @@ Page({
                                     btn_edit_innertext: '完善资料'
                               });
 
-                              for ( var field in user_info) {
+                              for (var field in user_info) {
                                     app.xpm.require('user').set(field, user_info[field]);
                               }
                         })
@@ -131,30 +120,6 @@ Page({
                   _that.setData({
                         is_show_input_status: true
                   })
-            }
-      },
-      handleTapUserStatus: function (e) {
-            const _that = this;
-
-            switch (e.target.dataset.type) {
-                  case '我在备孕中':
-                        _that.setData({
-                              user_status: '备孕中',
-                              is_show_input_status: false
-                        });
-                        break;
-                  case '怀孕中':
-                        _that.setData({
-                              user_status: `预产期：${e.detail.value}`,
-                              is_show_input_status: false
-                        });
-                        break;
-                  case '宝宝已出生':
-                        _that.setData({
-                              user_status: `宝宝生日：${e.detail.value}`,
-                              is_show_input_status: false
-                        });
-                        break;
             }
       },
       handleTapSex: function () {

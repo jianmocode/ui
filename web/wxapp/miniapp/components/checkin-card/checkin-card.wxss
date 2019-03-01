@@ -43,13 +43,13 @@
 .btn_goto_index {
       width: 240rpx;
       height: 72rpx;
-      background: rgba(228, 155, 174, 0.3);
+      background: var(--color_main);
       border-radius: 72rpx;
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 28rpx;
-      color: var(--color_main);
+      color:white;
       box-sizing: border-box;
       margin: 20rpx auto 30rpx;
 }
@@ -57,6 +57,7 @@
 .title {
       text-align: center;
       margin: 40rpx;
+      font-size: 24rpx;
 }
 
 .checkin_items {
@@ -87,7 +88,7 @@
 }
 
 .checkin_item .credit {
-      font-size: 18rpx;
+      font-size: 14rpx;
       color: #888;
 }
 

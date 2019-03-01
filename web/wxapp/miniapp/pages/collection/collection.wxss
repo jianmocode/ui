@@ -3,15 +3,16 @@
 }
 
 .collection_item {
-      border-radius: 12rpx;
+      border-radius: 20rpx;
       padding: 40rpx 40rpx 30rpx;
-      margin-bottom: 18rpx;
+      margin-bottom: 20rpx;
 }
 
 .collection_item .row .img_artical {
       width: 100rpx;
       height: 100rpx;
       margin-right: 30rpx;
+      border-radius: 10rpx;
 }
 
 .collection_item .row .title {

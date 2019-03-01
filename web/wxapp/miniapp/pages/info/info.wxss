@@ -1,17 +1,21 @@
-.person_items {
-      /* padding: 0 36rpx; */
-      background: #eee;
+.person_items_wrap{
+      padding: 0 20rpx;
 }
 
 .person_item {
-      padding: 20rpx 56rpx;
+      padding:40rpx 30rpx;
       font-size: 24rpx;
-      border-bottom: 2rpx solid #eee;
-      background: white;
+      background-color: white;
 }
 
-.person_item:last-child {
-      border-bottom: none;
+.person_item:nth-of-type(1) {
+      border-top-left-radius: 20rpx;
+      border-top-right-radius: 20rpx;
+}
+
+.person_item:nth-of-type(4) {
+      border-bottom-left-radius: 20rpx;
+      border-bottom-right-radius: 20rpx;
 }
 
 .person_item .left {
@@ -43,8 +47,8 @@
 }
 
 .btn_wrap {
-      padding: 40rpx;
-      margin-bottom: 100rpx;
+      margin-top: 40rpx;
+      margin-bottom: 60rpx;
 }
 
 .btn_wrap .btn_edit {
@@ -85,22 +89,22 @@
       background: transparent;
 }
 
-.address_items{
+.address_items {
       font-size: 24rpx;
       padding: 40rpx 0;
 }
 
-.address_items .section .section__title{
+.address_items .section .section__title {
       margin-bottom: 40rpx;
 }
 
-.address_items .section .picker{
+.address_items .section .picker {
       padding: 20rpx 40rpx;
       border-radius: 20rpx;
       border: 4rpx solid black;
 }
 
-.address_items textarea{
+.address_items textarea {
       width: 100%;
       height: 300rpx;
       border: 4rpx solid black;
@@ -113,10 +117,10 @@
       font-size: 24rpx;
 }
 
-.address_items .btn_address{
+.address_items .btn_address {
       height: 80rpx;
       box-shadow: none;
-      background: rgba(228, 155, 174, 0.3);
-      color: var(--color_main);
+      background-color: var(--color_main);
+      color: white;
       margin-top: 60rpx;
 }

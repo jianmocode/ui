@@ -1,11 +1,16 @@
+.person_items_wrap{
+      padding: 0 20rpx;
+}
+
 .person_items {
-      padding: 0 36rpx;
+      border-radius: 20rpx;
+      overflow: hidden;
 }
 
 .person_item {
-      padding: 30rpx 20rpx;
+      padding:40rpx 30rpx;
       font-size: 24rpx;
-      border-bottom: 2rpx solid #eee;
+      background-color: white;
 }
 
 .person_item:last-child {
@@ -19,5 +24,5 @@
 }
 
 .person_item .right image {
-      width: 16rpx;
+      width: 12rpx;
 }

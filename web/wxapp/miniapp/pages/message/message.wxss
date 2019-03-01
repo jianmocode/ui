@@ -3,9 +3,9 @@
 }
 
 .coin_item {
-      border-radius: 12rpx;
+      border-radius: 20rpx;
       padding: 40rpx 40rpx 30rpx;
-      margin-bottom: 18rpx;
+      margin-bottom: 20rpx;
       font-size: 24rpx;
       line-height: 24rpx;
 }
@@ -26,6 +26,7 @@
       margin-bottom: 40rpx;
       font-size: 24rpx;
       color: #333;
+      line-height: 1.6;
 }
 
 .coin_item .left .nums {

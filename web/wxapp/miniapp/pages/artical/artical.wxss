@@ -1,24 +1,27 @@
-page {
-      background: white;
-}
-
 .container_page {
-      background: white;
-      padding: 0 40rpx;
+      background: whitesmoke;
+      padding: 0 30rpx;
 }
 
 .banner {
       width: 100%;
-      height: 400rpx;
+      height: 360rpx;
+      margin: 20rpx 0;
+      border-radius: 20rpx;
+      margin-top: 30rpx;
 }
 
 .title {
-      font-size: 40rpx;
+      font-size: 60rpx;
+      font-weight: bold;
       margin: 20rpx 0;
 }
 
 .sundry {
+      display: flex;
+      justify-content: space-between;
       font-size: 24rpx;
+      color: #888
 }
 
 .video {
@@ -26,20 +29,15 @@ page {
 }
 
 .paragraph_items {
-      font-size: 28rpx;
+      font-size: 26rpx;
       letter-spacing: 2rpx;
-      line-height: 1.5;
-      margin-top: 20rpx;
-      padding-bottom: 120rpx;
-}
-
-.paragraph_items .paragraph_item {
-      margin: 20rpx 0;
       line-height: 1.8;
-      font-size: 30rpx;
+      padding-bottom: 80rpx;
+      color: #333;
+      text-align: justify;
 }
 
-.btn_back_index{
+.btn_back_index {
       right: 40rpx;
       bottom: 40rpx;
       font-size: 28rpx;

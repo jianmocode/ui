@@ -9,6 +9,7 @@ page {
 .swiper .slide_img {
       height: 48vh;
       margin-top: 40rpx;
+      border-radius: 20rpx;
 }
 
 .info_goods {
@@ -44,27 +45,34 @@ page {
 }
 
 .options {
-      height: 108rpx;
-      border-top: 2rpx solid var(--bg_color_lower);
       bottom: 0;
+      padding: 16rpx 0rpx;
+      border-top-left-radius: 20rpx;
+      border-top-right-radius: 20rpx;
+}
+
+.options .left{
+      width: 30%;
 }
 
 .options .btn_goto {
       font-size: 20rpx;
-      width: 16vw;
+      width: 50%;
 }
 
 .options .btn_goto image {
-      width: 50rpx;
+      width: 30rpx;
       margin-bottom: 10rpx;
 }
 
 .options .exchange {
-      width: 68vw;
+      width: 64%;
       font-size: 28rpx;
       background: var(--color_main);
       letter-spacing: 4rpx;
-      border-radius: 0;
+      border-radius: 100rpx;
+      margin: 0;
+      margin-right: 4%;
 }
 
 .detail_goods {
