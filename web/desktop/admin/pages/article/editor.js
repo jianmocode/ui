@@ -78,6 +78,24 @@ Page({
         // 设置QuickLink按钮
         this.setQuickLink();
 
+        // 快捷键
+        $(window).keydown( (event) => {
+            if (!(event.which == 83 && (event.ctrlKey || event.metaKey)) && !(event.which == 19)) return true;
+            var $form = $('form');
+            $form.trigger('submit');
+            this.showLoading('正在保存...');
+            event.preventDefault();
+            return false;
+        });
+
+        // 自动保存
+        setInterval( ()=>{
+            var $form = $('form');
+            $form.trigger('submit');
+            this.showLoading('自动保存中...');
+        }, 60000);
+
+
     
     },
 

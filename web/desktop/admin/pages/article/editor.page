@@ -77,6 +77,10 @@
             // 更新预览链接
             $('.action-preview').attr('href', '/admin/pages/preview/' +  article_id);
         }" 
+
+        error="function(error){
+            console.log(error);
+        }"
         >
 
         <!-- 文章标题 -->

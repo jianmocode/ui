@@ -158,6 +158,10 @@ class Validate {
 					$helper.fadeIn();
 					try { that.events.change(error, element);} catch(e){
 						console.log('callback change error:', e, this.events.change);
+                    }
+                    
+                    try { that.events.error(error, element);} catch(e){
+						console.log('callback  error:', e, this.events.change);
 					}
 				}, 10);
 			},
