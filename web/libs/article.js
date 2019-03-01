@@ -11,8 +11,47 @@ class Article {
 
 	init() {
 
+        let maxw = this.maxw;
+
+        // 载入图片
+        this.article.find('.jm-content-image').each( (idx,elm )=>{
+            $(elm).load(function(){
+
+                // 小图居中对齐
+                let parent = $(this).parent();
+                if ( parent && !parent.hasClass("jm-article-content")) {
+                    parent.css("text-align", "center");
+
+                }
+
+                let naturalWidth =  this.naturalWidth ?  this.naturalWidth : 1;
+                let ratio = this.naturalHeight / naturalWidth;
+                if ( naturalWidth > maxw ) {
+                    $(this).attr('width', maxw);
+                    $(this).attr('height',maxw * ratio );
+                }
+
+
+            });
+            let src = $(elm).attr("data-src");
+            $(elm).attr('src', src );
+        });
+
+
+
+        // 下载链接
+        this.article.find('.jm-content-attachment').each( (idx,elm )=>{
+            $(elm).click(function(){
+                let url = $(this).children(".attachment").attr("data-url");
+                if ( url ) {
+                    window.location = url;
+                }
+            })
+        });
+
+
 		// fix cvideo 
-		this.article.find('.mp-cvideo').each( (idx, elm ) => {
+		this.article.find('.jm-content-video').each( (idx, elm ) => {
 			
 			let w = this.maxw;
 			// let h = $(elm).innerHeight();

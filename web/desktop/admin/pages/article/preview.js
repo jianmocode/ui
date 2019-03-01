@@ -1,6 +1,7 @@
 import {Utils} from '../../../../libs/utils.js';
 import {$$} from '../../../../libs/component.js';
 import {Validate} from '../../../../libs/validate.js';
+import {Article} from '../../../../libs/article.js';
 
 $$.import(
 	'uploader/image',
@@ -13,6 +14,7 @@ Page({
 	data:{},
 	onReady: function( get ) {
         var that = this;
+        
 
         // SET 日期插件
         jQuery.datetimepicker.setLocale('zh');
@@ -21,6 +23,13 @@ Page({
             // format:'Y年m月d日 H:i',
             // value:'1983年01月17日 19:20'
         });
+
+        // 文章日期
+        try {
+			( new Article( 'article' ) ).init();
+		} catch( e ) {
+			console.log( 'Error @ArticleView init', e);
+        }
 
         // 加载组件
 		try {

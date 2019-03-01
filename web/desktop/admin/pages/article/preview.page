@@ -56,9 +56,7 @@
         <div class="uk-width-auto@m">
             <ul class="uk-tab-left" uk-tab="connect: #component-tab-left; animation: uk-animation-fade">
                 <li><a href="#">  网页浏览器 </a></li>
-                <li><a href="#">  微信浏览器 </a></li>
-                <li><a href="#">  微信小程序 </a></li>
-                <li><a href="#">  手机客户端 </a></li>
+                <li><a href="#">  用手机查看 </a></li>
             </ul>
         </div>
         <div class="uk-width-xxlarge uk-card uk-card-default uk-card-body uk-padding-remove">
@@ -92,13 +90,7 @@
                     </article>
                 </li>
                 <li>
-                    微信浏览器
-                </li>
-                <li>
-                    微信小程序
-                </li>
-                <li>
-                    手机客户端
+                    用手机查看各种链接的二维码
                 </li>
             </ul>
         </div>
