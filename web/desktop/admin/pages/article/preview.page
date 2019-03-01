@@ -87,7 +87,7 @@
                             money="{{article.money_view}}"
                             coin="{{article.coin}}"
                         >
-                            {{article.content}}
+                            {{article.desktop}}
                         </content>
                     </article>
                 </li>
