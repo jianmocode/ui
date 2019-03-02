@@ -1,7 +1,9 @@
 <include src="__WEB_ROOT__/desktop/common/head.page" />
 <include src="__WEB_ROOT__/desktop/common/header.page" />
-<include src="__WEB_ROOT__/desktop/components/uploader/image.page" /> <!-- 引入部件 文件上传组件-->
-<include src="__WEB_ROOT__/desktop/components/editor/html.page" /> <!-- 引入部件 HTML编辑器 -->
+<include src="__WEB_ROOT__/desktop/components/uploader/image.page" />
+<!-- 引入部件 文件上传组件 -->
+<include src="__WEB_ROOT__/desktop/components/editor/html.page" />
+<!-- 引入部件 HTML编辑器 -->
 
 <section class="content_wrap uk-flex uk-flex-center">
       <div class="content uk-flex uk-flex-between">
@@ -94,7 +96,7 @@
                   </aside>
                   <aside class="hot Card uk-flex uk-flex-column">
                         <div class="title">
-                              <span class="title_text">热门标签</span>
+                              <span class="title_text">热门标签123</span>
                         </div>
                         <div class="hot_items uk-flex uk-flex-wrap border_box">
                               <a
