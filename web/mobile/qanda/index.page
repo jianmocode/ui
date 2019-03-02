@@ -3,10 +3,18 @@
 <include src="__WEB_ROOT__/desktop/components/editor/html.page" />
 
 <ul uk-tab="animation: uk-animation-fade">
-      <li><a href="#">推荐</a></li>
-      <li><a href="#">关注</a></li>
-      <li class="uk-active"><a href="#">热榜</a></li>
-      <li><a href="#">热评</a></li>
+      <li>
+            <a
+                  class="tab_link"
+                  data-type="recommend"
+            >推荐</a>
+      </li>
+      <li class="uk-active">
+            <a
+                  class="tab_link"
+                  data-type="ranked"
+            > 热榜</a>
+      </li>
 </ul>
 
 <button class="btn_ask">提问</button>
@@ -70,9 +78,17 @@
 </div>
 
 <div class="uk-switcher border_box">
-      <div class="recommend_page switch_item">Hello!123</div>
-      <div class="focus_page switch_item">Hello again!</div>
-      <div class="hot_questions_page switch_item">
+      <div class="recommend_page questions_page switch_item">
+            <div class="question_items uk-flex uk-flex-column">
+                  <a
+                        class="question_item border_box"
+                        mp:for="{{recommend.data}}"
+                        data-rippleria
+                        href="/m/qanda/detail/{{item.question_id}}"
+                  >{{item.title}}</a>
+            </div>
+      </div>
+      <div class="hot_questions_page questions_page switch_item">
             <div class="question_items uk-flex uk-flex-column">
                   <a
                         class="question_item border_box"
@@ -82,7 +98,6 @@
                   >{{item.title}}</a>
             </div>
       </div>
-      <div class="hot_answers_page switch_item">Bazinga!</div>
 </div>
 
 <section class="mask_wrap border_box">

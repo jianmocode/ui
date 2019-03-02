@@ -16,8 +16,10 @@ let web = getWeb();
 
 Page({
       data: {},
-      current_page: 1,
+      current_page_ranked: 1,
+      current_page_recommend: 1,
       has_load_all: false,
+      current_type: 'ranked',
       loadEditor: function () {
             try {
                   $$('editor[type=html]').HtmlEditor({})
@@ -35,6 +37,7 @@ Page({
             _that.handleClickDeleteTopic()
             _that.handleClickNext()
             _that.handleClickBack()
+            _that.handleClickToggleTab()
             _that.handleClickPublish()
             _that.listenScroll()
       },
@@ -180,6 +183,26 @@ Page({
                   _that.submitAskForm();
             })
       },
+      handleClickToggleTab: function () {
+            const _that = this
+
+            $('.tab_link').on('click', function () {
+                  function reset() {
+                        _that.has_load_all = false
+                  }
+
+                  switch ($(this).data('type')) {
+                        case 'recommend':
+                              reset()
+                              _that.current_type = 'recommend'
+                              break;
+                        case 'ranked':
+                              reset()
+                              _that.current_type = 'ranked'
+                              break;
+                  }
+            })
+      },
       loadMoreQuestions: function () {
             const _that = this
 
@@ -192,34 +215,62 @@ Page({
                                     href="/m/qanda/detail/${data[i].question_id}"
                               >${data[i].title}</a>
                         `
-
-                        $('.question_items').append(nodes)
+                        if (_that.current_type === 'ranked') {
+                              $('.hot_questions_page .question_items').append(nodes)
+                        } else {
+                              $('.recommend_page .question_items').append(nodes)
+                        }
                   }
             }
 
-            $.ajax({
-                  type: "post",
-                  url: "/_api/xpmsns/qanda/question/search",
-                  dataType: "json",
-                  data: {
-                        page: _that.current_page + 1,
-                        perpage: "20",
-                        select: "question_id,question.title,question.summary,question.content,user.name,category.name,tags,user.user_id",
-                        publish_desc: "1"
-                  },
-                  success: function (response) {
-                        if (response.data.length !== 0) {
-                              updateQuestionsItems(response.data)
-                              _that.current_page = _that.current_page + 1
-                        } else {
-                              _that.has_load_all = true
-                              _that.showMessage('没有更多了')
+            if (_that.current_type === 'ranked') {
+                  $.ajax({
+                        type: "post",
+                        url: "/_api/xpmsns/qanda/question/search",
+                        dataType: "json",
+                        data: {
+                              page: _that.current_page_ranked + 1,
+                              perpage: "12",
+                              select: "question_id,question.title,question.summary,question.content,user.name,category.name,tags,user.user_id",
+                              publish_desc: "1"
+                        },
+                        success: function (response) {
+                              if (response.data.length !== 0) {
+                                    updateQuestionsItems(response.data)
+                                    _that.current_page_ranked = _that.current_page_ranked + 1
+                              } else {
+                                    _that.has_load_all = true
+                                    _that.showMessage('没有更多了')
+                              }
+                        },
+                        error: function (err) {
+                              console.log(err);
                         }
-                  },
-                  error: function (err) {
-                        console.log(err);
-                  }
-            })
+                  })
+            } else {
+                  $.ajax({
+                        type: "post",
+                        url: "/_api/xpmsns/pages/recommend/getContents",
+                        dataType: "json",
+                        data: {
+                              page: _that.current_page_recommend + 1,
+                              perpage: "12",
+                              slugs: "qanda_recommend"
+                        },
+                        success: function (response) {
+                              if (response.data.length !== 0) {
+                                    updateQuestionsItems(response.data)
+                                    _that.current_page_recommend = _that.current_page_recommend + 1
+                              } else {
+                                    _that.has_load_all = true
+                                    _that.showMessage('没有更多了')
+                              }
+                        },
+                        error: function (err) {
+                              console.log(err);
+                        }
+                  })
+            }
       },
       listenScroll: function () {
             const _that = this

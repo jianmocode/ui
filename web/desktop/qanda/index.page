@@ -10,43 +10,76 @@
                         <span class="tab_item">
                               <a
                                     class="tab_link"
-                                    href=""
+                                    data-type="recommend"
                               >推荐</a>
                         </span>
                         <span class="tab_item">
                               <a
                                     class="tab_link is_active"
-                                    href=""
+                                    data-type="ranked"
                               >热榜</a>
                         </span>
                   </div>
-                  <div
-                        class="empty_wrap uk-flex uk-flex-column uk-flex-center uk-flex-middle"
-                        mp:if="{{questions.total===0}}"
-                  >
-                        <span class="title_empty">这里还什么都没有~</span>
-                        <img
-                              class="img_empty"
-                              src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/empty.svg"
-                              alt="img_empty"
-                        >
-                  </div>
-                  <div class="question_items">
+                  <div class="questions_recommend questions_wrap none">
                         <div
-                              class="question_item uk-flex uk-flex-column"
-                              mp:for="{{questions.data}}"
-                              mp:key="{{item.question_id}}"
-                              data-id="{{item.question_id}}"
+                              class="empty_wrap uk-flex uk-flex-column uk-flex-center uk-flex-middle"
+                              mp:if="{{recommend.total===0}}"
                         >
-                              <a
-                                    href="/qanda/detail/{{item.question_id}}"
-                                    class="question_content"
-                              >{{item.title}}</a>
-                              <span
-                                    class="best_answer answer_summary"
-                                    mp:if="{{item.summary}}"
-                              >{{item.summary}}</span> 
-                              <!-- <span class="best_answer answer_content">{{item.content}}</span> -->
+                              <span class="title_empty">这里还什么都没有~</span>
+                              <img
+                                    class="img_empty"
+                                    src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/empty.svg"
+                                    alt="img_empty"
+                              >
+                        </div>
+                        <div class="question_items">
+                              <div
+                                    class="question_item uk-flex uk-flex-column"
+                                    mp:for="{{recommend.data}}"
+                                    mp:key="{{item.question_id}}"
+                                    data-id="{{item.question_id}}"
+                              >
+                                    <a
+                                          href="/qanda/detail/{{item.question_id}}"
+                                          class="question_content"
+                                    >{{item.title}}</a>
+                                    <span
+                                          class="best_answer answer_summary"
+                                          mp:if="{{item.summary}}"
+                                    >{{item.summary}}</span>
+                                    <!-- <span class="best_answer answer_content">{{item.content}}</span> -->
+                              </div>
+                        </div>
+                  </div>
+                  <div class="questions_ranked questions_wrap">
+                        <div
+                              class="empty_wrap uk-flex uk-flex-column uk-flex-center uk-flex-middle"
+                              mp:if="{{questions.total===0}}"
+                        >
+                              <span class="title_empty">这里还什么都没有~</span>
+                              <img
+                                    class="img_empty"
+                                    src="{{__STOR__::/__PROJECT_NAME/desktop/assets}}/images/empty.svg"
+                                    alt="img_empty"
+                              >
+                        </div>
+                        <div class="question_items">
+                              <div
+                                    class="question_item uk-flex uk-flex-column"
+                                    mp:for="{{questions.data}}"
+                                    mp:key="{{item.question_id}}"
+                                    data-id="{{item.question_id}}"
+                              >
+                                    <a
+                                          href="/qanda/detail/{{item.question_id}}"
+                                          class="question_content"
+                                    >{{item.title}}</a>
+                                    <span
+                                          class="best_answer answer_summary"
+                                          mp:if="{{item.summary}}"
+                                    >{{item.summary}}</span>
+                                    <!-- <span class="best_answer answer_content">{{item.content}}</span> -->
+                              </div>
                         </div>
                   </div>
                   <div class="loadmore_wrap border_box">

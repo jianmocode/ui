@@ -46,6 +46,14 @@
                         "publish_desc": "1"
                   }
             },
+            "recommend": {
+                  "api": "/xpmsns/pages/recommend/getContents",
+                  "query": {
+                        "page": "1",
+                        "perpage": "12",
+                        "slugs": "qanda_recommend"
+                  }
+            },
             "hot_tags":{
                   "api": "/xpmsns/pages/tag/search",
                   "query": {
