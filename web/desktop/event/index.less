@@ -1,0 +1,148 @@
+@charset "utf-8";
+@import '/desktop/common/d.less';
+@import '/desktop/widget/recommend/list.less'; 
+@import '/vars.less';
+
+// 引入组件
+@import '/desktop/components/uploader/image.less';
+@import '/desktop/components/editor/html.less';
+
+::-webkit-input-placeholder {
+      color: #bdc3cf;
+      font-size: 16px;
+}
+
+:-moz-placeholder {
+      color: #bdc3cf;
+      font-size: 16px;
+}
+
+::-moz-placeholder {
+      color: #bdc3cf;
+      font-size: 16px;
+}
+
+:-ms-input-placeholder {
+      color: #bdc3cf;
+      font-size: 16px;
+}
+
+.Card {
+      background-color: white;
+      overflow: hidden;
+      border-radius: 2px;
+      box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);
+      box-sizing: border-box;
+      margin-bottom: 10px;
+}
+
+body {
+      font-size: 15px;
+      color: #1A1A1A;
+      background-color: #f6f6f6;
+}
+
+.iframe-form {
+      padding: 0px;
+      min-height: 500px;
+}
+
+// 设定工具栏样式
+.trix-button--icon-decrease-nesting-level {
+      display: none;
+}
+
+.trix-button--icon-increase-nesting-level {
+      display: none;
+}
+
+.trix-button-group-alignment {
+      display: none !important;
+}
+
+.jm-editor-html {
+      border: none;
+
+      trix-toolbar {
+            border-bottom: none;
+            background-color: @backgroundMutedColor;
+      }
+
+      trix-editor {
+            padding: 10px !important;
+            min-height: 300px !important;
+            max-height: 300px !important;
+            overflow-y: scroll !important;
+      }
+
+      trix-editor:empty:not(:focus)::before {
+            color: @textMutedColor;
+      }
+}
+
+.jm-focus {
+      padding-top: 25px;
+      padding-bottom: 25px;
+}
+
+.jm-recommends {
+      padding-top: 25px;
+      padding-bottom: 25px;
+
+      .jm-recommends-header {
+            background: rgba(255, 255, 255, .95);
+
+            a {
+                  font-size: 1rem;
+            }
+      }
+
+      .jm-recommends-header-active {
+            padding-top: 25px;
+      }
+}
+
+.wrap {
+    min-height: 900px;
+    width: 1000px;    
+    padding-top: 40px;
+    margin: 0 auto;
+}
+
+.event-item {
+    .cover {
+        min-width: 260px;
+        width: 260px;
+        height: 160px;
+    }
+
+    .content {
+        padding: 15px 20px 15px 20px;
+        .title {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 5px;
+        }
+
+        .media {
+            font-size: 0.875rem;
+            color: @textMutedColor;
+            line-height: 1.6;
+        }
+
+        .time {
+            margin-top: 15px;
+            line-height: 1.6;
+            color: @textDangerColor;
+        }
+    }
+
+    .action {
+       min-width: 160px;
+       text-align: center;
+       padding: 30px 0px 20px 0px;
+       div {
+           margin-bottom: 15px;
+       }
+    }
+}

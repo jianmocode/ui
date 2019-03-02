@@ -1,0 +1,56 @@
+<include src="__WEB_ROOT__/desktop/common/head.page" />
+<include src="__WEB_ROOT__/desktop/common/header.page" />
+<include src="__WEB_ROOT__/desktop/components/uploader/image.page" />
+<!-- 引入部件 文件上传组件 -->
+<include src="__WEB_ROOT__/desktop/components/editor/html.page" />
+<!-- 引入部件 HTML编辑器 -->
+
+<div class="wrap">
+    <ul class="uk-breadcrumb">
+       <li><a href="">首页</a></li>
+       <li><a href="">赛事</a></li>
+       <li><span>文化传承—汉字书法多场景识别</span></li>
+    </ul>
+ 
+    <!-- 活动摘要 -->
+    <div class="card uk-card  event-head uk-flex uk-card-default uk-card-body uk-margin uk-padding-remove" >
+        <div class="uk-cover-container cover">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551557285918&di=32738e515ce48af32393eea85cd8c28f&imgtype=0&src=http%3A%2F%2Fscimg.jb51.net%2Fallimg%2F141220%2F11-141220094TS59.jpg" alt="" uk-cover>
+        </div>
+        <div class="content">
+            <div class="title"><a  href="/event/detail/1.html"> 文化传承—汉字书法多场景识别</a> </div>
+            <div class="media">主办方：福建省数字福建建设领导小组办公室 & 福建省工业和信息化厅 & 福州市人民政府 & 中国电子信息产业发展研究院 & 数字中国研究院</div>
+            <div class="time">报名截止: 2018年3月27日</div>
+        </div>
+        <div class="action">
+            <div><button class="uk-button uk-button-primary">立即报名</button></div>
+        </div>
+    </div><!-- END 活动摘要 -->
+
+
+    <!-- 活动详情-->
+    <div class="card uk-card  event-body uk-flex uk-card-default uk-card-body uk-margin uk-padding-remove" >
+        <div class="uk-flex">
+            <div class="catalog">
+                <ul class="uk-list uk-list-divider">
+                    <li> <a href="#">赛制介绍</a> </li>
+                    <li> <a href="#">数据下载</a> </li>
+                    <li> <a href="#">相关问题</a> </li>
+                    <li> <a href="#">排行榜</a> </li>
+                    <li> <a href="#">参赛队伍</a> </li>
+                </ul>
+            </div>
+    
+            <div class="content">
+                <div mp:for-from="0" mp:for-to="6">
+                    <h2>大赛介绍</h2>
+                    <p>2019数字中国创新大赛（Digital China Innovation Contest, DCIC 2019）由福建省数字福建建设领导小组办公室、福建省工业和信息化厅、福州市人民政府、中国电子信息产业发展研究院和数字中国研究院联合主办，第十二届全国政协副主席王钦敏担任大赛总顾问。作为第二届数字中国建设峰会的重要组成部分，本届赛事分为大数据、人工智能、工业互联网三大类算法题，旨在解决数字经济建设发展中的痛点、难点，推动新一代信息技术和传统产业的深入融合，助力数字中国建设。</p>
+                </div>
+            </div>
+        </div>
+    </div><!-- 活动详情-->
+</div>
+
+<include src="__WEB_ROOT__/desktop/common/quickbar.page" />
+<include src="__WEB_ROOT__/desktop/common/footer.page" />
+<include src="__WEB_ROOT__/desktop/common/foot.page" />

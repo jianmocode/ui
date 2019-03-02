@@ -1,0 +1,33 @@
+<include src="__WEB_ROOT__/desktop/common/head.page" />
+<include src="__WEB_ROOT__/desktop/common/header.page" />
+<include src="__WEB_ROOT__/desktop/components/uploader/image.page" />
+<!-- 引入部件 文件上传组件 -->
+<include src="__WEB_ROOT__/desktop/components/editor/html.page" />
+<!-- 引入部件 HTML编辑器 -->
+
+<div class="wrap">
+    <ul class="uk-breadcrumb">
+       <li><a href="">首页</a></li>
+       <li><a href="">赛事</a></li>
+       <li><span>推荐</span></li>
+    </ul>
+ 
+    <div class="card event-item uk-card uk-card-default uk-card-body uk-flex  uk-margin uk-padding-remove" mp:for-from="0" mp:for-to="3" >
+        <div class="uk-cover-container cover">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551557285918&di=32738e515ce48af32393eea85cd8c28f&imgtype=0&src=http%3A%2F%2Fscimg.jb51.net%2Fallimg%2F141220%2F11-141220094TS59.jpg" alt="" uk-cover>
+        </div>
+        <div class="content">
+            <div class="title"><a  href="/event/detail/1.html"> 文化传承—汉字书法多场景识别</a> </div>
+            <div class="media">主办方：福建省数字福建建设领导小组办公室 & 福建省工业和信息化厅 & 福州市人民政府 & 中国电子信息产业发展研究院 & 数字中国研究院</div>
+            <div class="time">报名截止: 2018年3月27日</div>
+        </div>
+        <div class="action">
+            <div><button class="uk-button uk-button-primary">立即报名</button></div>
+            <div><a  href="/event/detail/1.html"> 查看详情</a> </div>
+        </div>
+    </div>
+</div>
+
+<include src="__WEB_ROOT__/desktop/common/quickbar.page" />
+<include src="__WEB_ROOT__/desktop/common/footer.page" />
+<include src="__WEB_ROOT__/desktop/common/foot.page" />
