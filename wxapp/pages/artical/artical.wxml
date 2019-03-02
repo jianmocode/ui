@@ -1,22 +1,23 @@
 <page-show-wrap>
       <view class="container_page flex flex_column align_center">
-            <text class="title font_bold text_justify w_100">{{artical_item.title}}</text>
-            <view class="sundry color_888 w_100 text_left">
-                  <text class="author">{{artical_item.author}}</text>
-                  <text class="publish_date">{{artical_item.publish_date}}</text>
-            </view>
+            <text class="title font_bold text_left w_100">{{artical_item.title}}</text>
             <image
                   src="{{artical_item.cover.url}}"
                   class="banner w_100"
                   mode="aspectFill"
             ></image>
+            <view class="summary">{{artical_item.summary}}</view>
             <video
                   class="video w_100"
                   src="{{artical_item.videos[0].url}}"
                   wx:if="{{artical_item.videos[0].url}}"
             ></video>
+            <view class="sundry flex flex_column color_888 w_100 text_left">
+                  <text class="author">作者 | {{artical_item.author}}</text>
+                  <text class="publish_date">时间 | {{artical_item.publish_time}}</text>
+            </view>
             <view class="paragraph_items w_100">
-                  <rich-text nodes="{{artical_item.ap_content}}"></rich-text>
+                  <rich-text nodes="{{artical_item.wxapp.children?artical_item.wxapp.children:artical_item.content}}"></rich-text>
             </view>
       </view>
       <navigator

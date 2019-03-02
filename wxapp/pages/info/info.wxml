@@ -85,7 +85,6 @@
                   </form>
             </view>
       </view>
-      <nav person_active="true"></nav>
       <normal-card
             is_show="{{is_show_input_sex}}"
             title="选择性别"

@@ -48,9 +48,19 @@
                         "agree_desc": "1"
                   }
             },
-            "page":{
-                  "title":"{{question.title}} - 知否"
-            }, 
+            "recommend": {
+                  "api": "/xpmsns/pages/recommend/getContents",
+                  "query": {
+                        "page": "1",
+                        "perpage": "5",
+                        "slugs": "question_recommend",
+                        "select": "question.question_id,question.title,question.answer_cnt",
+                        "question_id": "{{__var.id}}"
+                  }
+            },
+            "page": {
+                  "title": "{{question.title}} - 知否"
+            },
             "__css": [
                   "/js/trix/trix.css"
             ],

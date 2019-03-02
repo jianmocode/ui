@@ -14,7 +14,11 @@
                               class="topic_item uk-flex uk-flex-middle"
                               mp:for="{{question.tags}}"
                         >
-                              <a class="topic_item_text" href="/qanda/tag/{{item}}" target="_blank">{{item}}</a>
+                              <a
+                                    class="topic_item_text"
+                                    href="/qanda/tag/{{item}}"
+                                    target="_blank"
+                              >{{item}}</a>
                         </div>
                   </div>
                   <div class="question_item">
@@ -341,25 +345,16 @@
                               <span class="title_text">相关问题</span>
                         </div>
                         <div class="question_items">
-                              <div class="question_item">
-                                    <a class="question_text">你曾坚持背诵过哪些令你获益匪浅的英文文章？</a>
-                                    <span class="answer_count">213个回答</span>
-                              </div>
-                              <div class="question_item">
-                                    <a class="question_text">如何更有效地阅读原版英文书籍？为了能够更体会得到其中句法的妙处，该做什么样的功夫？</a>
-                                    <span class="answer_count">20个回答</span>
-                              </div>
-                              <div class="question_item">
-                                    <a class="question_text">读英文书籍不求甚解，是否可以提高英语水平？</a>
-                                    <span class="answer_count">3498个回答</span>
-                              </div>
-                              <div class="question_item">
-                                    <a class="question_text">这句英文中的「of」做什么成分，怎么解释？</a>
-                                    <span class="answer_count">10个回答</span>
-                              </div>
-                              <div class="question_item">
-                                    <a class="question_text">有什么语言本身就特别美的英文句子？</a>
-                                    <span class="answer_count">12个回答</span>
+                              <div
+                                    class="question_item"
+                                    mp:for="{{recommend.data}}"
+                              >
+                                    <a
+                                          class="question_text"
+                                          href="/qanda/detail/{{item.question_id}}"
+                                          target="_blank"
+                                    >{{item.title}}</a>
+                                    <span class="answer_count">{{item.answer_cnt}}个回答</span>
                               </div>
                         </div>
                   </aside>
