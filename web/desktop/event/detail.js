@@ -16,12 +16,14 @@ let web = getWeb()
 
 Page({
     data: {},
-    onReady: function ( data ) {
 
-        let content = this.data.event.content || '';
-        this.loadContent( content );
-      
+    onReady: function ( data ) {
+        this.loadContent();
     },
+
+    /**
+     * 解析团队内容
+     */
     loadContent: function() {
         
         let $dom = $('.event-content .content').children();
@@ -51,12 +53,30 @@ Page({
                         `<li><a href="#${c.id}"  uk-scroll="duration:200">${c.name}</a></li>`
                     );
                 }
+
+                // 呈现目录
                 $('.event-content .catalog').removeClass('uk-hidden');
             }
         }
 
-        $('.event-content .content').removeClass('uk-hidden');
-        console.log( $dom.length );
+        // 替换 #{{USER_LIST}}
+        let html = $('.event-content .content').html();
+        if ( html.includes('#{{USER_LIST}}') ) {
+            let team_list_html = this.getUserList();
+            html = html.replace("#{{USER_LIST}}", team_list_html );
+            $('.event-content .content').html(html);
+        }
 
+        // 呈现内容
+        $('.event-content .content').removeClass('uk-hidden');
+    },
+
+
+    /**
+     * 读取团队列表
+     */
+    getUserList: function(){
+        return $('.event-content .user-list').html()
     }
+
 })

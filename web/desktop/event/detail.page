@@ -52,6 +52,16 @@
             <div class="content uk-hidden">
                 {{event.content}}
             </div>
+
+            <!--已报名用户清单 -->
+            <div class="user-list uk-hidden">
+                <ul class="items uk-list uk-hidden" >
+                    <li>李明博</li>
+                    <li>李明博</li>
+                </ul>
+                <div>暂时还没有报名</div>
+            </div> <!--已报名用户清单 -->
+
         </div>
     </div><!-- 活动详情-->
 </div>
