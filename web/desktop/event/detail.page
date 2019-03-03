@@ -8,7 +8,7 @@
 <div class="wrap">
     <ul class="uk-breadcrumb">
        <li><a href="/">首页</a></li>
-       <li><a href="/event/index">赛事</a></li>
+       <li><a href="{{ (curr.link) ? curr.link : '/event/index'}}">{{curr.name}}</a></li>
        <li><span>{{event.title}}</span></li>
     </ul>
  
