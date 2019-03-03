@@ -38,9 +38,9 @@
                               >
                         </a>
                         <ul class="uk-navbar-nav uk-margin-left">
-                              <li class="{{ (active.nav == '') ? 'uk-active' }}"><a href="/">首页</a></li>
+                              <li class="{{(active.nav == '') ? 'uk-active' }}"><a href="/">首页</a></li>
                               <li
-                                    class="{{ (active.nav == nav.category_id) ? 'uk-active' }}"
+                                    class="{{ (active.nav == nav.category_id) ? 'uk-active' }} {{(active.nav == nav.slug) ? 'uk-active' }}"
                                     mp:for="{{navs}}"
                                     mp:for-item="{{nav}}"
                               >
