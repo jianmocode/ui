@@ -29,7 +29,16 @@
                   }
             },
             "navs": "{{categories.data}}",
-            "nav": "null",
+            "curr": {
+                "api": "/xpmsns/pages/category/get",
+                "query": {
+                    "slug": "event",
+                    "select": "name,slug,link,isfootnav,isnav"
+                }
+            },
+            "active":{
+                "nav": "{{curr.slug}}"
+            },
             "site": {
                   "api": "/xpmsns/pages/siteconf/get",
                   "query": {
@@ -37,29 +46,13 @@
                         "select": "*"
                   }
             },
-            "questions": {
-                  "api": "/xpmsns/qanda/question/search",
+            "events": {
+                  "api": "/xpmsns/pages/event/search",
                   "query": {
                         "page": "1",
                         "perpage": "12",
-                        "select": "question_id,question.title,question.summary,question.content,user.name,category.name,tags,user.user_id",
-                        "publish_desc": "1"
-                  }
-            },
-            "recommend": {
-                  "api": "/xpmsns/pages/recommend/getContents",
-                  "query": {
-                        "page": "1",
-                        "perpage": "12",
-                        "slugs": "qanda_recommend"
-                  }
-            },
-            "hot_tags":{
-                  "api": "/xpmsns/pages/tag/search",
-                  "query": {
-                        "page": "1",
-                        "perpage": "8",
-                        "question_desc": "1"
+                        "select": "event_id,title,slug,cover,hosts,organizers,begin,end,quota,user_cnt",
+                        "order": "begin"
                   }
             },
             "__css": [
