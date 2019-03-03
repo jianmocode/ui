@@ -47,7 +47,7 @@
                 "api": "/xpmsns/pages/event/get",
                 "query": {
                     "slug": "{{__var.slug}}",
-                    "select": "*"
+                    "select": "event.*,series.name,series.slug,series.series_id"
                 }
             },
             "page":{

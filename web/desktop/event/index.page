@@ -20,7 +20,11 @@
         <div class="content">
                 <div class="title">
                     <a  href="/event/detail/{{event.slug}}.html"> {{event.title}}</a> 
+                    <small mp:for="{{events.series}}" mp:for-item="{{series}}" mp:if="{{event.series.0 == series.slug}}" >
+                        ({{series.name}})
+                    </small>
                     <small><a href="{{event.link}}" target="_blank">官方网站</a> </small>
+                    
                 </div>
                 <div class="media">
                     主办方：
@@ -31,7 +35,7 @@
                     <span mp:for="{{event.organizers}}" mp:for-item="{{organizer}}">{{organizer.title}}</span>
                 </div>
                 <div class="media-highlight">
-                    <span class="time">报名截止: {{HmDateTime(event.begin)}}</span>
+                    <span class="time">报名截止: {{HmDateTime(event.deadline)}}</span>
                 </div>
             </div>
         <div class="action">
