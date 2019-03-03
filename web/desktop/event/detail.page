@@ -23,7 +23,7 @@
                 <small mp:for="{{event._map_series}}" mp:for-item="{{series}}" >
                     ({{series.name}})
                 </small>
-                <small><a href="{{event.link}}" target="_blank">官方网站</a> </small>
+                <small mp:if="{{event.link}}"><a href="{{event.link}}" target="_blank">官方网站</a> </small>
             </div>
             <div class="media">
                 主办方：

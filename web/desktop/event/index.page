@@ -23,7 +23,7 @@
                     <small mp:for="{{events.series}}" mp:for-item="{{series}}" mp:if="{{event.series.0 == series.slug}}" >
                         ({{series.name}})
                     </small>
-                    <small><a href="{{event.link}}" target="_blank">官方网站</a> </small>
+                    <small mp:if="{{event.link}}" ><a href="{{event.link}}" target="_blank">官方网站</a> </small>
                     
                 </div>
                 <div class="media">
