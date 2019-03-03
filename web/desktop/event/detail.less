@@ -118,22 +118,62 @@ body {
 
     .content {
         padding: 15px 20px 15px 20px;
+        width: 600px;
         .title {
             font-size: 1.5rem;
             line-height: 1.6;
             margin-bottom: 5px;
+
+            small {
+                font-size: 0.875rem;
+                a {
+                    color: @textMutedColor;
+                }
+
+                a:hover {
+                    color: @linkHoverColor;
+                }
+            }
         }
 
         .media {
             font-size: 0.875rem;
             color: @textMutedColor;
             line-height: 1.6;
+
+            span {
+                cursor: default;
+                display: inline-block;
+            }
+
+            span::after {
+                content: ",";
+                margin-left: .2rem;
+                margin-right: 1em;
+            }
+
+            span:last-child::after{
+                content: '';
+                margin-left: 0px;
+                margin-right: 0px;   
+            }
         }
 
-        .time {
+        .media-highlight {
             margin-top: 15px;
             line-height: 1.6;
-            color: @textDangerColor;
+
+            .time {  
+                color: @textDangerColor;
+            }
+
+            a,span {
+                margin-right: .5em;
+            }
+
+            span {
+                cursor: default;
+            }
         }
     }
 

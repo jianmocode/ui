@@ -7,23 +7,37 @@
 
 <div class="wrap">
     <ul class="uk-breadcrumb">
-       <li><a href="">首页</a></li>
-       <li><a href="">赛事</a></li>
-       <li><span>文化传承—汉字书法多场景识别</span></li>
+       <li><a href="/">首页</a></li>
+       <li><a href="/event/index">赛事</a></li>
+       <li><span>{{event.title}}</span></li>
     </ul>
  
     <!-- 活动摘要 -->
     <div class="card uk-card  event-head uk-flex uk-card-default uk-card-body uk-margin uk-padding-remove" >
         <div class="uk-cover-container cover">
-            <img src="https://wid.s3.cn-north-1.amazonaws.com.cn/uploads/images/2019-01-22/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_201901221545501-265628.jpg" alt="" uk-cover>
+            <img src="{{event.cover.url}}" alt="" uk-cover>
         </div>
         <div class="content">
-            <div class="title"><a  href="/event/detail/1.html"> 文化传承—汉字书法多场景识别</a> </div>
-            <div class="media">主办方：福建省数字福建建设领导小组办公室 & 福建省工业和信息化厅 & 福州市人民政府 & 中国电子信息产业发展研究院 & 数字中国研究院</div>
-            <div class="time">报名截止: 2018年3月27日</div>
+            <div class="title">
+                <a  href="javacript:void(0);"> {{event.title}}</a> 
+                <small><a href="{{event.link}}" target="_blank">官方网站</a> </small>
+            </div>
+            <div class="media">
+                主办方：
+                <span mp:for="{{event.hosts}}" mp:for-item="{{host}}">{{host.title}}</span>
+            </div>
+            <div class="media">
+                承办方：
+                <span mp:for="{{event.organizers}}" mp:for-item="{{organizer}}">{{organizer.title}}</span>
+            </div>
+            <div class="media-highlight">
+                <span class="time">报名截止: {{HmDateTime(event.begin)}}</span>
+            </div>
         </div>
         <div class="action">
             <div><button class="uk-button uk-button-primary">立即报名</button></div>
+            <div class="uk-text-muted" mp:if="{{event.quota > 0}}">已报名 {{IntVal(event.user_cnt)}}/{{event.quota}}</div>
+            <div class="uk-text-muted" mp:else>已报名{{IntVal(event.user_cnt)}}人</div>
         </div>
     </div><!-- END 活动摘要 -->
 

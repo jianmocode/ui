@@ -1,9 +1,6 @@
 {
       "cname": "活动首页",
       "data": {
-            "page":{
-                  "title":"活动"
-            },
             "user": {
                   "api": "/xpmsns/user/user/getUserInfo",
                   "query": {}
@@ -39,12 +36,22 @@
                         "select": "*"
                   }
             },
+            "event": {
+                "api": "/xpmsns/pages/event/get",
+                "query": {
+                    "slug": "{{__var.slug}}",
+                    "select": "*"
+                }
+            },
+            "page":{
+                "title":"{{event.title}}"
+            },
             "__css": [],
             "__js": []
       },
       "entries": [
-            {"method":"GET", "router":"/event/detail/{id:[0-9a-zA-Z_]+}.html", "ttl":0},
-	        {"method":"GET", "router":"/event/detail/{id:[0-9a-zA-Z_]+}", "ttl":0}
+            {"method":"GET", "router":"/event/detail/{slug:[0-9a-zA-Z_\\-]+}.html", "ttl":0},
+	        {"method":"GET", "router":"/event/detail/{slug:[0-9a-zA-Z_\\-]+}", "ttl":0}
       ],
       "alias": {
             "mobile": "/mobile/event/index",
