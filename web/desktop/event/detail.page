@@ -39,7 +39,6 @@
         </div>
         <div class="action">
             <div>
-                {{event.enter.entered}}
                 <button class="uk-button uk-button-primary action-enter {{(event.entered) ? 'uk-hidden' : ''}}" bindtap="enter" data-id="{{event.event_id}}" >立即报名</button>
                 <a href="javascript:void(0);" class="uk-button uk-button-default action-cancel {{(event.entered) ? '' : 'uk-hidden'}}"> 您已报名 </a>
                 <div class="remove-drop" uk-drop="mode:click;pos:bottom-center;delay-hide:0">

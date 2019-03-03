@@ -39,9 +39,24 @@
                 </div>
             </div>
         <div class="action">
-            <div><button class="uk-button uk-button-primary">立即报名</button></div>
-            <div class="uk-text-muted" mp:if="{{event.quota > 0}}">已报名 {{IntVal(event.user_cnt)}}/{{event.quota}}</div>
-            <div class="uk-text-muted" mp:else>已报名{{IntVal(event.user_cnt)}}人</div>
+            <div>
+                <button class="uk-button uk-button-primary action-enter {{(event.entered) ? 'uk-hidden' : ''}}" bindtap="enter" data-id="{{event.event_id}}" >立即报名</button>
+                <a href="javascript:void(0);" class="uk-button uk-button-default action-cancel {{(event.entered) ? '' : 'uk-hidden'}}" data-id="{{event.event_id}}"> 您已报名 </a>
+                <div class="remove-drop" uk-drop="mode:click;pos:bottom-center;delay-hide:0">
+                    <div class="uk-card uk-card-body uk-card-default uk-padding-small">
+                        <div class="uk-text-danger">请确认是否取消报名？ </div>
+                        <div class="uk-inline uk-margin-small-top uk-text-center">
+                            <a href="javascript:void(0);"  
+                            bindtap="cancel"
+                            data-id="{{event.event_id}}" 
+                            class="uk-button uk-button-small uk-button-primary uk-margin-small-right  uk-action action-method action-remove">确定</a>
+                            <a onclick="UIkit.drop($(this).parents('.remove-drop')).hide();" class="uk-button uk-button-small uk-button-default" type="button">关闭</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-text-muted" mp:if="{{event.quota > 0}}">已报名 <span class="user-cnt" data-id="{{event.event_id}}">{{IntVal(event.user_cnt)}}</span>/{{event.quota}}</div>
+            <div class="uk-text-muted" mp:else>已报名<span class="user-cnt" data-id="{{event.event_id}}">{{IntVal(event.user_cnt)}}</span>人</div>
         </div>
     </div>
 </div>

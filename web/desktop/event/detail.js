@@ -88,13 +88,6 @@ Page({
      */
     enter: function( e ){
 
-        // 校验用户登录信息
-        // let user_id = window.page.data.user.user_id || null;
-        // if (user_id == null ) {
-        //     $('a[href="/user/signin/mobile"]').trigger('click');
-        //     return;
-        // }
-
         let event_id = $(e.target).attr('data-id') ||  null;
         if (event_id == null ) {
 
