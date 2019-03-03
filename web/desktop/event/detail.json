@@ -50,6 +50,13 @@
                     "select": "event.*,series.name,series.slug,series.series_id"
                 }
             },
+            "users" : {
+                "api": "/xpmsns/pages/event/getEnteredUsers",
+                "query": {
+                    "event_id": "{{event.event_id}}",
+                    "perpage": 50
+                }
+            },
             "page":{
                 "title":"{{event.title}}"
             },

@@ -82,12 +82,17 @@
         
             <!--已报名用户清单 -->
             <div class="user-list uk-hidden">
-                <ul class="items uk-list uk-hidden" >
-                    <li>李明博</li>
-                    <li>李明博</li>
+                <ul class="uk-list uk-list-striped"  mp:if="{{users.total > 0}}" >
+                    <li mp:for="{{users.data}}" mp:for-item="{{u}}" >
+                        <span>{{HmDateTime(signin_at)}}</span>
+                        <span>{{(u.user_name) ? u.user_name : u.user_nickname}}</span>
+                        <span>{{(u.user_company) ? u.user_company}}</span>
+                    </li>
                 </ul>
-                <div>暂时还没有报名</div>
+    
+                <div mp:else>暂时还没有报名</div>
             </div> <!--已报名用户清单 -->
+
         </div>
         <div class="uk-flex event-content" mp:else><!-- 活动报名 -->
             <div class="catalog uk-hidden" >
@@ -100,11 +105,15 @@
 
             <!--已报名用户清单 -->
             <div class="user-list uk-hidden">
-                <ul class="items uk-list uk-hidden" >
-                    <li>李明博</li>
-                    <li>李明博</li>
+                <ul class="uk-list  uk-list-striped"  mp:if="{{users.total > 0}}" >
+                    <li mp:for="{{users.data}}" mp:for-item="{{u}}" >
+                        <span>{{HmDateTime(signin_at)}}</span>
+                        <span>{{(u.user_name) ? u.user_name : u.user_nickname}}</span>
+                        <span>{{(u.user_company) ? u.user_company}}</span>
+                    </li>
                 </ul>
-                <div>暂时还没有报名</div>
+
+                <div mp:else>暂时还没有报名</div>
             </div> <!--已报名用户清单 -->
 
         </div>
