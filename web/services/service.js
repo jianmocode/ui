@@ -1,3 +1,10 @@
+/**
+ * @俊杰 代码优化:
+ *   1. 本页函数需要填写注释
+ *   2. 建议增加 callback 函数，处理 Ajax 结果反馈
+ *   3. 合并 follow & mobileFollow  等...
+ * 
+ */
 function follow(user_id) {
       $.ajax({
             type: "post",

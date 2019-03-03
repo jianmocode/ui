@@ -64,6 +64,7 @@
       ],
       "common": [
             "/libs",
+            "/services",
             "/mobile/common",
             "/mobile/widget/recommend",
             "/mobile/widget/category",
