@@ -51,7 +51,7 @@
                   "query": {
                         "page": "1",
                         "perpage": "12",
-                        "select": "event_id,title,slug,deadline,cover,hosts,organizers,begin,end,quota,user_cnt,series.name,series.slug,series.series_id",
+                        "select": "event_id,title,slug,link,deadline,cover,hosts,organizers,begin,end,quota,user_cnt,series.name,series.slug,series.series_id",
                         "series": "{{__get.series}}",
                         "order": "begin"
                   }
