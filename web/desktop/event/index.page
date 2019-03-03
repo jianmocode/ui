@@ -38,8 +38,8 @@
                     <span class="time">报名截止: {{HmDateTime(event.deadline)}}</span>
                 </div>
             </div>
-        <div class="action">
-            <div>
+        <div class="action"> 
+            <div mp:if="{{event.status == 'open'}}"> <!-- 可以报名 -->
                 <button class="uk-button uk-button-primary action-enter {{(event.entered) ? 'uk-hidden' : ''}}" bindtap="enter" data-id="{{event.event_id}}" >立即报名</button>
                 <a href="javascript:void(0);" class="uk-button uk-button-default action-cancel {{(event.entered) ? '' : 'uk-hidden'}}" data-id="{{event.event_id}}"> 您已报名 </a>
                 <div class="remove-drop" uk-drop="mode:click;pos:bottom-center;delay-hide:0">
@@ -54,6 +54,15 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div mp:if="{{event.status == 'preparing'}}"> <!-- 筹备中 -->
+                <button class="uk-button uk-button-default  uk-disabled"  data-id="{{event.event_id}}" disabled >筹备中</button>
+            </div>
+            <div mp:if="{{event.status == 'close'}}"> <!-- 报名截止 -->
+                <button class="uk-button uk-button-default  uk-disabled"  data-id="{{event.event_id}}" disabled >报名已截止</button>
+            </div>
+            <div mp:if="{{event.status == 'off'}}"> <!-- 活动结束 -->
+                <button class="uk-button uk-button-default  uk-disabled"  data-id="{{event.event_id}}" disabled >活动已结束</button>
             </div>
             <div class="uk-text-muted" mp:if="{{event.quota > 0}}">已报名 <span class="user-cnt" data-id="{{event.event_id}}">{{IntVal(event.user_cnt)}}</span>/{{event.quota}}</div>
             <div class="uk-text-muted" mp:else>已报名<span class="user-cnt" data-id="{{event.event_id}}">{{IntVal(event.user_cnt)}}</span>人</div>

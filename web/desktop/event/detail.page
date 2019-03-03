@@ -38,7 +38,7 @@
             </div>
         </div>
         <div class="action">
-            <div>
+            <div mp:if="{{event.status == 'open'}}"> <!-- 可以报名 -->
                 <button class="uk-button uk-button-primary action-enter {{(event.entered) ? 'uk-hidden' : ''}}" bindtap="enter" data-id="{{event.event_id}}" >立即报名</button>
                 <a href="javascript:void(0);" class="uk-button uk-button-default action-cancel {{(event.entered) ? '' : 'uk-hidden'}}"> 您已报名 </a>
                 <div class="remove-drop" uk-drop="mode:click;pos:bottom-center;delay-hide:0">
@@ -54,6 +54,15 @@
                     </div>
                 </div>
             </div>
+            <div mp:if="{{event.status == 'preparing'}}"> <!-- 筹备中 -->
+                <button class="uk-button uk-button-default  uk-disabled"  data-id="{{event.event_id}}" disabled >筹备中</button>
+            </div>
+            <div mp:if="{{event.status == 'close'}}"> <!-- 报名截止 -->
+                <button class="uk-button uk-button-default  uk-disabled"  data-id="{{event.event_id}}" disabled >报名已截止</button>
+            </div>
+            <div mp:if="{{event.status == 'off'}}"> <!-- 活动结束 -->
+                <button class="uk-button uk-button-default  uk-disabled"  data-id="{{event.event_id}}" disabled >活动已结束</button>
+            </div>
             <div class="uk-text-muted" mp:if="{{event.quota > 0}}">已报名<span class="user-cnt">{{IntVal(event.user_cnt)}}</span>/{{event.quota}}</div>
             <div class="uk-text-muted" mp:else>已报名<span class="user-cnt">{{IntVal(event.user_cnt)}}</span>人</div>
         </div>
@@ -62,7 +71,25 @@
 
     <!-- 活动详情-->
     <div class="card uk-card  event-body uk-flex uk-card-default uk-card-body uk-margin uk-padding-remove" >
-        <div class="uk-flex event-content">
+        <div class="uk-flex event-content" mp:if="{{{event.status == 'off'}}"> <!-- 活动总结 -->
+            <div class="catalog uk-hidden" >
+                <ul class="items uk-list uk-list-divider" uk-sticky="top: 0">
+                </ul>
+            </div>
+            <div class="content uk-hidden">
+                {{event.report}}
+            </div>
+        
+            <!--已报名用户清单 -->
+            <div class="user-list uk-hidden">
+                <ul class="items uk-list uk-hidden" >
+                    <li>李明博</li>
+                    <li>李明博</li>
+                </ul>
+                <div>暂时还没有报名</div>
+            </div> <!--已报名用户清单 -->
+        </div>
+        <div class="uk-flex event-content" mp:else><!-- 活动报名 -->
             <div class="catalog uk-hidden" >
                 <ul class="items uk-list uk-list-divider" uk-sticky="top: 0">
                 </ul>
