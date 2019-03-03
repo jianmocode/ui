@@ -122,7 +122,7 @@ Page({
         });
     },
 
-    
+
     /**
      * 取消报名
      */
@@ -153,7 +153,6 @@ Page({
             $('.user-cnt').html(response.user_cnt);
 
         });
-        console.log("取消绑定");
     }
 
 })
