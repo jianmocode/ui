@@ -22,7 +22,7 @@
                               >热榜</a>
                         </span>
                   </div>
-                  <div class="questions_recommend questions_wrap none">
+                  <div class="questions_recommend questions_wrap">
                         <div
                               class="empty_wrap uk-flex uk-flex-column uk-flex-center uk-flex-middle"
                               mp:if="{{recommend.total===0}}"
@@ -52,7 +52,7 @@
                                     <!-- <span class="best_answer answer_content">{{item.content}}</span> -->
                               </div>
                         </div>
-                  </div>
+                  </div> 
                   <div class="questions_ranked questions_wrap">
                         <div
                               class="empty_wrap uk-flex uk-flex-column uk-flex-center uk-flex-middle"
@@ -96,7 +96,7 @@
                   </aside>
                   <aside class="hot Card uk-flex uk-flex-column">
                         <div class="title">
-                              <span class="title_text">热门标签123</span>
+                              <span class="title_text">热门标签</span>
                         </div>
                         <div class="hot_items uk-flex uk-flex-wrap border_box">
                               <a
