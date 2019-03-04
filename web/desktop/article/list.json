@@ -38,8 +38,7 @@
 			"query":{
 				"perpage":20,
 				"order":"publish_time desc",
-				"categoryId":"{{cate.category_id}}",
-				"subcateId":"{{subcate.category_id}}",
+				"category_ids":"{{cate.category_id}}",
 				"page":"{{__get.page}}"
 			}
 		},
