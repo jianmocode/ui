@@ -15,7 +15,8 @@
 		"article":{
 			"api":"/xpmsns/pages/article/get",
 			"query":{
-				"articleId":"{{__var.id}}"
+                "article_id":"{{__var.id}}",
+                "content_type":"mobile"
 			}
 		},
 		"s":{

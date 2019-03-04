@@ -25,14 +25,15 @@
 		"article":{
 			"api":"/xpmsns/pages/article/get",
 			"query":{
-				"articleId":"{{__var.id}}"
+                "article_id": "{{__var.id}}",
+                "content_type": "desktop"
 			}
 		},
-		"s":{
+		"sidebar_section_4":{
 			"api":"/xpmsns/pages/recommend/getContents",
 			"query":{
 				"api":"/xpmsns/pages/recommend/getContents",
-				"slugs":"sidebar_section_4"
+				"slug":"sidebar_section_4"
 			}
 		},
 		"site":{
