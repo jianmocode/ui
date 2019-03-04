@@ -31,13 +31,13 @@
 	</div> <!-- END uk-width-3-4 jm-recommends-left -->
 	
 	<div class="jm-recommends-right uk-width-1-4">
-		<div class="jm-card-s5 uk-card uk-margin-top">
+		<div class="jm-card-s5 uk-card uk-margin-top" mp:if="{{sidebar_section_4.status == 'on'}}">
 			<div class="uk-card-header">
-				<h3 class="uk-card-title"> {{s.sidebar_section_4.title}} </h3>
+				<h3 class="uk-card-title"> {{sidebar_section_4.title}} </h3>
 			</div>
 			<div class="uk-card-body uk-panel" >
 				<ul class="jm-list-s5 uk-list">
-					<a class="jm-item" href="/article/{{item.article_id}}.html" mp:for="{{s.sidebar_section_4.contents.data}}" mp:for-from="0" mp:for-to="6" >
+					<a class="jm-item" href="/article/{{item.article_id}}.html" mp:for="{{sidebar_section_4.data}}" mp:if="{{item.cover.url}}" mp:for-from="0" mp:for-to="6" >
 						<div class="uk-flex">
 							<div style="min-width:100px;min-height:70px; width:100px; height:70px; overflow: hidden;" >
 								<div class="uk-cover-container">

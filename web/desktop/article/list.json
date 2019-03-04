@@ -50,11 +50,11 @@
 			}
 		},
 		"navs":"{{categories.data}}",
-		"s":{
+		"sidebar_section_4":{
 			"api":"/xpmsns/pages/recommend/getContents",
 			"query":{
 				"api":"/xpmsns/pages/recommend/getContents",
-				"slugs":"sidebar_section_4"
+				"slug":"sidebar_section_4"
 			}
 		},
 		"links":{

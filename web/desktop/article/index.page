@@ -94,7 +94,7 @@
 			</div>
 			<div class="uk-card-body uk-panel" >
 				<ul class="jm-list-s2 uk-list">
-					<a class="jm-item" href="/article/{{item.article_id}}.html" target="_blank" mp:for="{{s.sidebar_section_1.contents.data}}" mp:for-from="0" mp:for-to="6" >
+					<a class="jm-item" href="/article/{{item.article_id}}.html" target="_blank" mp:for="{{s.sidebar_section_1.data}}"  mp:if="{{item.cover.url}}"   mp:for-from="0" mp:for-to="6" >
 						<div class="uk-flex">
 							<img data-src="{{item.cover.url}}"  alt="" width="48" uk-img>
 							<div class="uk-margin-small-left">
@@ -115,7 +115,7 @@
 			<div class="uk-card-body" uk-slider="center: true">
 				<div class="uk-position-relative uk-visible-toggle">
 					<ul class="jm-list-s3 uk-slider-items uk-child-width-1@s uk-grid">
-						<a href="/article/{{item.article_id}}.html" target="_blank" mp:for="{{s.sidebar_section_2.contents.data}}" mp:for-from="0" mp:for-to="6" >
+						<a href="/article/{{item.article_id}}.html" target="_blank" mp:for="{{s.sidebar_section_2.data}}"  mp:if="{{item.cover.url}}"  mp:for-from="0" mp:for-to="6" >
 							<div class="uk-card uk-card-hover">
 								<div class="uk-card-media-top">
 									<img src="{{item.cover.url}}" width="100%" alt="" uk-img>
@@ -140,7 +140,7 @@
 			</div>
 			<div class="uk-card-body uk-panel" >
 				<ul class="jm-list-s4 uk-child-width-1@s uk-grid">
-					<a href="/article/{{item.article_id}}.html" target="_blank" mp:for="{{s.sidebar_section_3.contents.data}}" mp:for-from="0" mp:for-to="3" >
+					<a href="/article/{{item.article_id}}.html" target="_blank" mp:for="{{s.sidebar_section_3.data}}" mp:if="{{item.cover.url}}" mp:for-from="0" mp:for-to="3" >
 						<div class="uk-card ">
 							
 							<div class="uk-cover-container">
@@ -165,7 +165,7 @@
 			</div>
 			<div class="uk-card-body uk-panel" >
 				<ul class="jm-list-s5 uk-list">
-					<a class="jm-item" href="/article/{{item.article_id}}.html" target="_blank"  mp:for="{{s.sidebar_section_4.contents.data}}" mp:for-from="0" mp:for-to="6" >
+					<a class="jm-item" href="/article/{{item.article_id}}.html" target="_blank"  mp:for="{{s.sidebar_section_4.data}}" mp:if="{{item.title}}" mp:for-from="0" mp:for-to="6" >
 						<div class="uk-flex">
 							<div style="min-width:100px;min-height:70px; width:100px; height:70px; overflow: hidden;" >
 								<div class="uk-cover-container">
