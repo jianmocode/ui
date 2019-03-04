@@ -2,7 +2,7 @@
 <include src="__WEB_ROOT__/mobile/common/header.page"  />
 
 <section id="jm-recommends" class="jm-recommends">
-    <div class="uk-cover-container jm-article-cover-m">
+    <div class="uk-cover-container jm-article-cover-m" mp:if="{{article.cover.url}}">
         <img src="{{article.cover.url}}" alt="" uk-cover />
     </div>
 	<div  class="jm-recommends-body" style="min-height: 800px;" >
