@@ -68,7 +68,8 @@
         }
 	},
 	"entries":[
-		{"method":"GET", "router":"/m", "ttl":0},
+        {"method":"GET", "router":"/m", "ttl":0},
+        {"method":"GET", "router":"/m/index", "ttl":0},
 		{"method":"GET", "router":"/m/article", "ttl":0}
 	],
 	

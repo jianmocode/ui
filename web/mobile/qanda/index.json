@@ -2,9 +2,7 @@
       "cname": "知否问答(移动端)",
       "data": {
             "page": {
-                  "title": "知否",
-                  "router": "index",
-                  "footer":"true"
+                "title": "问答"
             },
             "user": {
                   "api": "/xpmsns/user/user/getUserInfo",
@@ -38,7 +36,22 @@
                   "/js/jquery.fileupload.js",
                   "/js/jquery.form.min.js",
                   "/js/mustache.min.js"
-            ]
+            ],
+            "tabBar":{
+                "color":"#555555",
+                "selectedColor": "#888888",
+                "backgroundColor": "#ffffff",
+                "borderStyle": "black",
+                "position":"bottom",
+                "list":[
+                    { "text":"推荐", "pagePath":"/m/index", "iconPath":"recommend.svg", "selectedIconPath":"recommend_active.svg"},
+                    { "text":"问答", "pagePath":"/m/qanda/index", "iconPath":"qanda.svg", "selectedIconPath":"qanda_active.svg", "selected":true},
+                    { "text":"视频", "pagePath":"/m/video/index", "iconPath":"video.svg", "selectedIconPath":"video_active.svg"},
+                    { "text":"图集", "pagePath":"/m/album/index", "iconPath":"album.svg", "selectedIconPath":"album_active.svg"},
+                    { "text":"我的", "pagePath":"/m/home/index", "iconPath":"my.svg", "selectedIconPath":"my_active.svg"}
+                ],
+                "custom":false
+            }
       },
 
       "entries": [{

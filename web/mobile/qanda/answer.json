@@ -22,7 +22,7 @@
                   }
             },
             "page":{
-                  "title":"{{question.title}} - 知否"
+                  "title":"{{question.title}} - 问答"
             }
       },
       "entries": [{
