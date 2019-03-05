@@ -6,7 +6,9 @@ Page({
 
 		$('.iframe-player').on('load', function(){
 			$('.player .loading').addClass('uk-hidden');
-		});
+        });
+        
+        console.log( this.data.video );
 	},
 
 	initShareNavbar: function() {

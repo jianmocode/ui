@@ -41,7 +41,7 @@
 
 <section class="jm-player uk-background-secondary"><div class="uk-container"><div class="uk-grid">
 	<div class="player uk-width-3-4">
-		<div class="video-player" mp:if="{{video.mimetype == 'video/mp4'}}">
+		<div class="video-player" mp:if="{{video.type == 'video/mp4'}}">
 			<video id="video-player" class="video-js" controls preload="auto" 
 				width="100%" style="height: 500px;" 
 				poster="{{video.cover}}" 

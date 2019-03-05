@@ -2,7 +2,7 @@
 <include src="__WEB_ROOT__/mobile/common/header_detail.page"  />
 
 <section class="jm-player uk-background-secondary">
-	<div class="video-player" mp:if="{{video.mimetype == 'video/mp4'}}">
+	<div class="video-player" mp:if="{{video.type == 'video/mp4'}}">
 		<video id="video-player" class="video-js" controls preload="auto" 
 			width="100%" 
 			poster="{{video.cover}}" 
