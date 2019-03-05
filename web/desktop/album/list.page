@@ -5,7 +5,7 @@
 	<div class="jm-focus-slideshow" >
 		<div class="uk-position-relative uk-visible-toggle" uk-slideshow="animation: push; min-height:510; max-height:510;">
 			<ul class="uk-slideshow-items" >
-				<a  href="/album/{{item.album_id}}.html" target="_blank" mp:for="{{focus.contents.data}}" mp:for-from="0" mp:for-to="3" >
+				<a  href="/album/{{item.album_id}}.html" target="_blank" mp:for="{{focus.data}}" mp:for-from="0" mp:for-to="3" >
 					<div class="uk-cover-container">
 						<canvas style="height: 510px;"></canvas>
 						<img src="{{ (item.cover.url) ? item.cover.url : item.images.0.url }}"  alt="" uk-cover>

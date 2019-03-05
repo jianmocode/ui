@@ -1,5 +1,5 @@
-<div class="videos uk-grid" mp:if="{{section.contents.total > 0}}">
-	<a class="item uk-width-1-3" href="/video/{{item.article_id}}.html" target="_blank" mp:for="{{section.contents.data}}">
+<div class="videos uk-grid" mp:if="{{section.total > 0}}">
+	<a class="item uk-width-1-3" href="/video/{{item.article_id}}.html" target="_blank" mp:for="{{section.data}}">
 		<div class="uk-card">
 			<div class="uk-cover-container">
 				<canvas  style="height:210px;"></canvas>

@@ -32,7 +32,8 @@
 		"r": {
 			"api":"/xpmsns/pages/recommend/getContents",
 			"query":{
-				"slugs":"album_focus,{{sections.data.0.slug}}",
+                "slugs":"album_focus,{{sections.data.0.slug}}",
+                "select":"title,author,cover,publish_time,status,series,categories,images",
 				"perpage":18
 			}
 		},
@@ -46,19 +47,19 @@
 			}
 		},
 		"navs":"{{categories.data}}",
-		"s":{
-			"api":"/xpmsns/pages/recommend/getContents",
-			"query":{
-				"api":"/xpmsns/pages/recommend/getContents",
-				"slugs":"sidebar_section_4"
-			}
-		},
 		"links":{
 			"api":"/xpmsns/pages/links/search",
 			"query":{
 				"select":"name,link"
 			}
-		},
+        },
+        "curr": {
+            "api": "/xpmsns/pages/category/get",
+            "query": {
+                "slug": "album",
+                "select": "name,slug,link,isfootnav,isnav"
+            }
+        },
 		"page":{
 			"title":"首页",
 			"logo":"{{site.site_logo}}"
@@ -69,13 +70,15 @@
 			"description":"{{site.site_intro}}"
 		},
 		"active": {
-			"nav": "{{__var.cid}}",
+			"nav": "{{curr.slug}}",
 			"subnav": "{{__get.subcid}}"
 		}
 	},
 	"entries":[
 		{"method":"GET", "router":"/album/list/{cid:.+}.html", "ttl":0},
-		{"method":"GET", "router":"/album/list/{cid:.+}", "ttl":0}
+        {"method":"GET", "router":"/album/list/{cid:.+}", "ttl":0},
+        {"method":"GET", "router":"/album/index.html", "ttl":0},
+        {"method":"GET", "router":"/album/index", "ttl":0}
 	],
 	
 	"alias": {

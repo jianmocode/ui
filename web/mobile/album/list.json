@@ -83,7 +83,9 @@
 	},
 	"entries":[
 		{"method":"GET", "router":"/m/album/list/{cid:.+}.html", "ttl":0},
-		{"method":"GET", "router":"/m/album/list/{cid:.+}", "ttl":0}
+        {"method":"GET", "router":"/m/album/list/{cid:.+}", "ttl":0},
+        {"method":"GET", "router":"/m/album/index.html", "ttl":0},
+        {"method":"GET", "router":"/m/album/index", "ttl":0}
 	],
 	
 	"alias": {
