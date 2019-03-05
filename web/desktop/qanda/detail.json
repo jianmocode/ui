@@ -28,6 +28,16 @@
             },
             "navs": "{{categories.data}}",
             "nav": "null",
+            "curr": {
+                "api": "/xpmsns/pages/category/get",
+                "query": {
+                    "slug": "qanda",
+                    "select": "name,slug,link,isfootnav,isnav"
+                }
+            },
+            "active":{
+                "nav": "{{curr.slug}}"
+            },
             "site": {
                   "api": "/xpmsns/pages/siteconf/get",
                   "query": {
