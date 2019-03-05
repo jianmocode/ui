@@ -37,31 +37,32 @@
       mp:if="{{tabBar}}"
 >
     <div class="footer_item_wrap uk-flex" mp:for="{{tabBar.list}}" mp:for-item="{{tab}}">
-        <a
-            class="qanda_item footer_item uk-flex uk-flex-column uk-flex-middle"
-            mp:if="{{tab.selected}}"
-            href="/m/qanda/index"
-            data-rippleria
-        >
-            <img
-                    class="img_footer"
-                    src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_footer_qanda.svg"
-                    alt="img_footer"
-            >
-            <span class="text">问答</span>
-        </a>
+        
         <a
             class="qanda_item footer_item uk-flex uk-flex-column uk-flex-middle active"
-            mp:if="{{page.router==='index'}}"
-            href="/m/qanda/index"
+            mp:if="{{tab.selected}}"
+            href="{{tab.pagePath}}"
             data-rippleria
         >
             <img
-                    class="img_footer"
-                    src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_footer_qanda_active.svg"
-                    alt="img_footer"
+                class="img_footer"
+                src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/tabbar/{{tab.selectedIconPath}}"
+                alt="img_footer"
             >
-            <span class="text">问答</span>
+            <span class="text">{{tab.text}}</span>
+        </a>
+        <a
+            class="qanda_item footer_item uk-flex uk-flex-column uk-flex-middle"
+            mp:else
+            href="{{tab.pagePath}}"
+            data-rippleria
+        >
+            <img
+                class="img_footer"
+                src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/tabbar/{{tab.iconPath}}"
+                alt="img_footer"
+            >
+            <span class="text">{{tab.text}}</span>
         </a>
     </div>
 

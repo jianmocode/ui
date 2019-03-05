@@ -58,11 +58,11 @@
             "borderStyle": "black",
             "position":"bottom",
             "list":[
-                { "text":"资讯", "pagePath":"/m/home/index", "iconPath":"{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_footer_my.svg", "selectedIconPath":"{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_footer_my_active.svg", "selected":true},
-                { "text":"问答", "pagePath":"/m/home/index", "iconPath":"{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_footer_my.svg", "selectedIconPath":"{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_footer_my_active.svg"},
-                { "text":"视频", "pagePath":"/m/home/index", "iconPath":"{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_footer_my.svg", "selectedIconPath":"{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_footer_my_active.svg"},
-                { "text":"图集", "pagePath":"/m/home/index", "iconPath":"{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_footer_my.svg", "selectedIconPath":"{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_footer_my_active.svg"},
-                { "text":"我的", "pagePath":"/m/home/index", "iconPath":"{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_footer_my.svg", "selectedIconPath":"{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_footer_my_active.svg"}
+                { "text":"推荐", "pagePath":"/m/index", "iconPath":"recommend.svg", "selectedIconPath":"recommend_active.svg", "selected":true},
+                { "text":"问答", "pagePath":"/m/qanda/index", "iconPath":"qanda.svg", "selectedIconPath":"qanda_active.svg"},
+                { "text":"视频", "pagePath":"/m/video/index", "iconPath":"video.svg", "selectedIconPath":"video_active.svg"},
+                { "text":"图集", "pagePath":"/m/album/index", "iconPath":"album.svg", "selectedIconPath":"album_active.svg"},
+                { "text":"我的", "pagePath":"/m/home/index", "iconPath":"my.svg", "selectedIconPath":"my_active.svg"}
             ],
             "custom":false
         }
