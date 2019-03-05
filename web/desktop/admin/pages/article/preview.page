@@ -51,6 +51,24 @@
 
 <!-- 图文发布器-->
 <div class=" uk-padding-remove uk-margin-top uk-margin-large-bottom" mp:if="{{staff.name}}">
+    
+    <div class="uk-alert-warning" uk-alert>
+        <div class="uk-clearfix">
+            <span >本文地址: <span id="article-location">{{__var.__home}}/article/{{article.article_id}}.html</span>  </span>
+            <a  bindtap="copyToClipboard" class="uk-float-right"  >复制</a>
+            <a href="javascript:void(0);" class="uk-float-right uk-margin-right" > 二维码 </a>
+            <div class="qrcode-drop" style="width:auto" uk-drop="mode:click;pos:bottom-center;delay-hide:0">
+                <div class="uk-card uk-card-body uk-card-default uk-padding-small">
+                    <img data-src="/_api/xpmsns/pages/article/qrcode?width=200&amp;text={{__var.__home}}/article/{{article.article_id}}.html" alt="360金融更新IPO招股书 前三季度实现盈利6100万元" width="200" uk-img=""></img>
+                    <div class="uk-text-center uk-margin-small-top uk-text-bold">
+                        <a target="_blank" href="/_api/xpmsns/pages/article/qrcode?width=600&name={{article.title}}&text={{__var.__home}}/article/{{article.article_id}}.html" class="uk-button uk-button-small uk-button-primary">
+                            高清下载
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="article-preview" uk-grid>
         <div class="uk-width-auto@m">
