@@ -30,7 +30,7 @@
 <section id="jm-recommends" class="jm-recommends">
 
 	<div  class="jm-recommends-body" style="min-height: 800px;" >
-		<article class="jm-article uk-article">
+		<article class="jm-article-m uk-article">
 			<h1 class="jm-article-title uk-article-title">{{article.title}}1</h1>
 			<div class="jm-article-meta uk-article-meta"> 
 				<a class="author" href="#"> {{ (article.author) ? article.author : site.site_name }} </a> <span>•</span>
