@@ -12,7 +12,8 @@
 		"section":{
 			"api":"/xpmsns/pages/recommend/getContents",
 			"query":{
-				"slug":"{{__var.slug}}",
+                "slug":"{{__var.slug}}",
+                "select":"title,author,cover,publish_time,status,series,categories,images",
 				"page":"{{__get.page}}",
 				"perpage":18
 			}

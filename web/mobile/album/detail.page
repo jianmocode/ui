@@ -1,5 +1,5 @@
 <include src="__WEB_ROOT__/mobile/common/head.page"  />
-<include src="__WEB_ROOT__/mobile/common/header.page"  />
+<include src="__WEB_ROOT__/mobile/common/header_detail.page"  />
 
 <section class="uk-background-secondary uk-height-1-1" >
 	<div class="uk-position-relative uk-visible-toggle jm-album-player uk-height-1-1" uk-slideshow="animation: slide;">

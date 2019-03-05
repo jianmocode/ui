@@ -1,14 +1,29 @@
 <section class="jm-navbar uk-background-primary uk-light">
 	<nav class="uk-navbar uk-navbar-container uk-navbar-transparent ">
 		<div class="uk-navbar-left">
-			<a class="uk-navbar-item uk-logo uk-padding-remove-horizontal uk-margin-left" href="/">
-				<img src="{{(site.site_logo_light.url) ? site.site_logo_light.url : site.site_logo.url}}" style="height:24px;" alt="" uk-img>
-			</a>
+            <ul class="uk-iconnav">
+                <li>
+                    <a href="{{(page.back) ? page.back : '/'}}" class="uk-margin-left" >
+                        <img src="{{(site.site_logo_light.url) ? site.site_logo_light.url : site.site_logo.url}}" style="height:24px;" alt="" uk-img>
+                    </a>
+                </li>
+            </ul>
 		</div>
 	    <div class="uk-navbar-right">
-	        <a class="uk-navbar-toggle" uk-toggle="target: #side-menu" type="button" >
-	            <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left"></span>
-	        </a>
+            <!-- <ul class="uk-navbar-nav">
+                <li>
+                    <a class="uk-navbar-toggle" uk-toggle="target: #side-menu" type="button" >
+                        <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left"></span>
+                    </a>
+                </li>
+            </ul> -->
+            <ul class="uk-iconnav">
+                <li>
+                    <a uk-toggle="target: #side-menu" type="button" class="uk-margin-right" >
+                        <span uk-navbar-toggle-icon></span> 
+                    </a>
+                </li>
+            </ul>
 	    </div>
 	</nav>
 	<div id="side-menu" class="side-menu" uk-offcanvas="mode:reveal;overlay:true;flip:true">

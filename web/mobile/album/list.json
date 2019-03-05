@@ -32,7 +32,8 @@
 		"r": {
 			"api":"/xpmsns/pages/recommend/getContents",
 			"query":{
-				"slugs":"album_focus,{{sections.data.0.slug}}",
+                "slugs":"album_focus,{{sections.data.0.slug}}",
+                "select":"title,author,cover,publish_time,status,series,categories,images",                
 				"perpage":18
 			}
 		},

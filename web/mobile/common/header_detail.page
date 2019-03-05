@@ -1,0 +1,10 @@
+<section class="jm-navbar uk-background-primary uk-light">
+    <nav class="uk-navbar uk-navbar-container uk-navbar-transparent ">
+        <div class="uk-navbar-left">
+            <ul class="uk-iconnav">
+                <li><a href="{{(page.back) ? page.back : '/'}}" uk-icon="icon: chevron-left;ratio:1.2" class="uk-margin-small-left" ></a></li>
+                <li>{{page.title}}</li>
+            </ul>
+        </div>
+    </nav>
+</section> <!-- END jm-navbar -->
