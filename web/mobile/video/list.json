@@ -91,7 +91,9 @@
 	},
 	"entries":[
 		{"method":"GET", "router":"/m/video/list/{cid:.+}.html", "ttl":0},
-		{"method":"GET", "router":"/m/video/list/{cid:.+}", "ttl":0}
+        {"method":"GET", "router":"/m/video/list/{cid:.+}", "ttl":0},
+        {"method":"GET", "router":"/m/video/index.html", "ttl":0},
+        {"method":"GET", "router":"/m/video/index", "ttl":0}
 	],
 	
 	"alias": {

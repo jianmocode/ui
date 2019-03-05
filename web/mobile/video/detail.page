@@ -1,5 +1,5 @@
 <include src="__WEB_ROOT__/mobile/common/head.page"  />
-<include src="__WEB_ROOT__/mobile/common/header.page"  />
+<include src="__WEB_ROOT__/mobile/common/header_detail.page"  />
 
 <section class="jm-player uk-background-secondary">
 	<div class="video-player" mp:if="{{video.mimetype == 'video/mp4'}}">

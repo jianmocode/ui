@@ -68,14 +68,14 @@
 	</div> <!-- END  uk-width-3-4-->
 	
 
-	<div class="playlist uk-width-1-4" mp:if="{{series.contents.data}}">
+	<div class="playlist uk-width-1-4" mp:if="{{series.total > 0}}">
 		<div class="jm-card-s5 jm-dark uk-card">
 			<div class="uk-card-header">
 				<h3 class="uk-card-title"> {{series.title}} </h3>
 			</div>
 			<div class="uk-card-body uk-panel" data-toggle="slimscroll"  style="height:468px;">
 				<ul class="jm-list-s5 uk-list">
-					<a class="jm-item" href="/video/{{item.article_id}}.html"  mp:for="{{series.contents.data}}" class="{{ (article.article_id == item.article_id) ? 'active' }}" >
+					<a class="jm-item" href="/video/{{item.article_id}}.html"  mp:for="{{series.data}}" class="{{ (article.article_id == item.article_id) ? 'active' }}" >
 						<div class="uk-flex">
 							<div style="min-width:100px;min-height:70px; width:100px; height:70px; overflow: hidden;" >
 								<div class="uk-cover-container">
@@ -100,7 +100,7 @@
 			</div>
 			<div class="uk-card-body uk-panel" data-toggle="slimscroll"  style="height:468px;">
 				<ul class="jm-list-s5 uk-list">
-					<a class="jm-item" href="/video/{{item.article_id}}.html"  mp:for="{{latest.contents.data}}" >
+					<a class="jm-item" href="/video/{{item.article_id}}.html"  mp:for="{{latest.data}}" >
 						<div class="uk-flex">
 							<div style="min-width:100px;min-height:70px; width:100px; height:70px; overflow: hidden;" >
 								<div class="uk-cover-container">
@@ -138,7 +138,7 @@
 			</div> <!-- END uk-card-header -->
 			<div class="uk-card-body uk-panel" >
 				<ul class="jm-list-s7 uk-grid">
-					<a class="jm-item uk-width-1-6" href="/video/{{item.article_id}}.html"  mp:for="{{relation.contents.data}}" >
+					<a class="jm-item uk-width-1-6" href="/video/{{item.article_id}}.html"  mp:for="{{relation.data}}" >
 						<div class="uk-card">
 							<div class="uk-cover-container">
 								<canvas  style="height:120px;"></canvas>

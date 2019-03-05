@@ -67,15 +67,24 @@
 			"title":"{{site.site_name}}",
 			"keywords":"{{site.site_name}}",
 			"description":"{{site.site_intro}}"
-		},
+        },
+        "curr": {
+            "api": "/xpmsns/pages/category/get",
+            "query": {
+                "slug": "video",
+                "select": "name,slug,link,isfootnav,isnav"
+            }
+        },
 		"active": {
-			"nav": "{{__var.cid}}",
+			"nav": "{{curr.slug}}",
 			"subnav": "{{__get.subcid}}"
 		}
 	},
 	"entries":[
 		{"method":"GET", "router":"/video/list/{cid:.+}.html", "ttl":0},
-		{"method":"GET", "router":"/video/list/{cid:.+}", "ttl":0}
+        {"method":"GET", "router":"/video/list/{cid:.+}", "ttl":0},
+        {"method":"GET", "router":"/video/index.html", "ttl":0},
+        {"method":"GET", "router":"/video/index", "ttl":0}
 	],
 	
 	"alias": {
