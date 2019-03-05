@@ -93,7 +93,7 @@
 			</div> <!-- END uk-card-header -->
 			<div class="uk-card-body uk-panel" >
 				<ul class="jm-list-s7 uk-grid">
-					<a class="jm-item uk-width-1-6" href="/album/{{item.album_id}}.html"  mp:for="{{relation.contents.data}}" >
+					<a class="jm-item uk-width-1-6" href="/album/{{item.album_id}}.html"  mp:for="{{relation.data}}" >
 						<div class="uk-card">
 							<div class="uk-cover-container">
 								<canvas  style="height:120px;"></canvas>
