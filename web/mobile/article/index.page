@@ -4,7 +4,7 @@
 <section class="jm-focus">
 	<div class="uk-position-relative uk-visible-toggle" uk-slideshow="animation: push">
 		<ul class="uk-slideshow-items" >
-			<a  href="/m/article/{{item.article_id}}.html" mp:for="{{r.focus.contents.data}}" mp:for-from="0" mp:for-to="6" >
+			<a  href="/m/article/{{item.article_id}}.html" mp:for="{{r.focus.data}}" mp:for-from="0" mp:for-to="6" >
 				<img src="{{item.cover.url}}"  alt="" uk-cover>
 				<div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-left uk-padding-small">
 					<p class="uk-margin-remove">{{item.title}}</p>
