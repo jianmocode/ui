@@ -3,7 +3,7 @@
         <div class="uk-navbar-left">
             <ul class="uk-iconnav">
                 <li><a href="{{(page.back) ? page.back : '/'}}" uk-icon="icon: chevron-left;ratio:1.2" class="uk-margin-small-left" ></a></li>
-                <li>{{page.title}}</li>
+                <li><a href="{{(page.back) ? page.back : '/'}}">{{page.title}}</a></li>
             </ul>
         </div>
     </nav>

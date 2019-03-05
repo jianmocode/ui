@@ -58,7 +58,8 @@
 			"description":"{{site.site_intro}}"
 		},
 		"page":{
-			"title":"{{cate.name}}"
+            "title":"返回首页",
+            "back":"/"
 		}
 	},
 	"entries":[

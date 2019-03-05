@@ -1,5 +1,5 @@
 <include src="__WEB_ROOT__/mobile/common/head.page"  />
-<include src="__WEB_ROOT__/mobile/common/header.page"  />
+<include src="__WEB_ROOT__/mobile/common/header_detail.page"  />
 
 <section id="jm-recommends" class="jm-recommends uk-margin-small-top">
 	<div class="jm-recommends-header" uk-sticky="cls-active:jm-recommends-header-active"  uk-slider="finite: true"  mp:if="{{subcates.total > 0}}" >

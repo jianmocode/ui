@@ -9,7 +9,7 @@
 				<div class="uk-overlay uk-overlay-primary uk-position-bottom-center uk-width-1-1 uk-padding-small">
 					<p> {{index+1}}/{{LENGTH(album.images)}} {{(item.summary)? item.summary : item.title}} </p>
 				</div>
-				<div class="title  uk-overlay uk-overlay-primary uk-position-top-right uk-padding-small uk-margin-small uk-margin-small-right">
+				<div class="title uk-overlay uk-overlay-primary uk-position-top-right uk-padding-small uk-margin-small uk-margin-small-right">
 					<p> {{album.title}}</p>
 				</div>
 			</a>

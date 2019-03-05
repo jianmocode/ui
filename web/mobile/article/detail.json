@@ -40,7 +40,8 @@
 			}
 		},
 		"page":{
-			"title":"{{article.title}}",
+            "title":"返回首页",
+            "back":"/",
 			"logo":"{{site.site_logo}}"
 		},
 		"seo": {

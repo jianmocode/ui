@@ -51,7 +51,8 @@
 			}
 		},
 		"page":{
-			"title":"{{album.title}}",
+            "title":"返回图片",
+            "back":"/m/album/index",
 			"logo":"{{site.site_logo}}"
 		},
 		"seo": {
