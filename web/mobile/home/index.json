@@ -2,9 +2,7 @@
       "cname": "个人中心（移动端）",
       "data": {
             "page": {
-                  "title": "个人中心",
-                  "router": "home",
-                  "footer":"true"
+                "title": "个人中心"
             },
             "user": {
                   "api": "/xpmsns/user/user/getUserInfo",

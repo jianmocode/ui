@@ -1,15 +1,19 @@
 <include src="__WEB_ROOT__/mobile/common/head.page" />
 
-<section class="decoration_wrap">
+<script language="javascript" type="text/javascript" mp:if="{{user.user_id == ''}}">
+    window.location="/m/user/signin";
+</script>
+
+<section class="decoration_wrap" mp:if="{{user.user_id}}">
       <div class="decoration"></div>
 </section>
 
-<section class="content_wrap">
+<section class="content_wrap" mp:if="{{user.user_id}}">
       <div class="content uk-flex uk-flex-column">
             <div class="person uk-flex uk-flex-column uk-flex-middle">
-                  <img
+                  <img mp:if="{{user.headimgurl.url}}"
                         class="img_avatar"
-                        src="{{(user.headimgurl)?user.headimgurl.url:'/static-file/default/desktop/assets/images/elephant.svg'}}"
+                        src="{{user.headimgurl.url}}"
                         alt="img_avatar"
                   >
                   <span class="name">{{(user.nickname)?user.nickname:'jianmoer'}}</span>

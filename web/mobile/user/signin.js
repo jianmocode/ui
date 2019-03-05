@@ -66,7 +66,7 @@ Page({
                                     setCookie('__client_token', response.client_token, 2);
 
                                     setTimeout(function () {
-                                          window.location.href='/m/qanda/index'
+                                          window.location.href='/m/home/index'
                                     },300)
                               } else {
                                     _that.showMessage(response.message)
