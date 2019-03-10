@@ -1,0 +1,57 @@
+{
+	"cname":"我的活动页",
+	"data": {
+		"site":{
+			"api":"/xpmsns/pages/siteconf/get",
+			"query":{
+				"site_slug":"global",
+				"select":"*"
+			}
+		},
+		"categories":{
+			"api":"/xpmsns/pages/category/search",
+			"query":{
+				"select":"category_id,name,highlight,link,isblank,slug",
+				"order":"priority asc",
+				"noParentId":"1",
+				"children":false,
+				"isnav":1
+			}
+		},
+		"cates":"{{categories.data}}",
+		"option":{
+			"api":"/xpmsns/user/user/option",
+			"query":{}
+		},
+		"user":{
+			"api":"/xpmsns/user/user/getUserInfo",
+			"query":{}
+        },
+        "articles":{
+            "api":"/xpmsns/pages/article/userArticles",
+            "query":{
+                "status":"published,unpublished,auditing,pending",
+                "order":"article.stick desc,  article.priority,  article.publish_time desc",
+                "keyword":"{{__get.keyword}}",
+                "perpage":2,
+                "page":"{{__get.page}}"
+            }
+        },
+		"rs": {},
+		"page":{
+			"title":"我的活动"
+		},
+		"__js":[
+			"/js/jquery.ui.widget.js",
+			"/js/jquery.iframe-transport.js"
+		]
+	},
+	"entries":[
+		{"method":"GET", "router":"/home/forms/events", "ttl":0}
+	],
+	"align": {
+		"mobile":"/mobile/home/forms/articles",
+		"wechat":"/mobile/home/forms/articles",
+		"wxapp": "/home/forms/articles"
+	}
+}

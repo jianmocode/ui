@@ -1,0 +1,81 @@
+<include src="__WEB_ROOT__/desktop/common/head.page" />
+
+<!-- 文章列表页-->
+<div class="container iframe-panel" mp:if="{{user.user_id}}">
+
+    <div class="uk-grid-collapse" uk-grid>
+        <div class="uk-width-2-3">
+            <form>
+                <div class="uk-flex">
+                    <input name="keyword" value="{{__get.keyword}}" class="uk-input uk-form-small  uk-width-2-3" type="text" placeholder="输入关键词">
+                    <button class="uk-button uk-form-small uk-button-primary uk-margin-left">搜索</button>
+                    <button 
+                        onclick="javascript:$([name='keyword']).val('');"
+                        class="uk-button uk-form-small uk-button-default uk-margin-small-left">重置</button>
+                </div>
+            </form> 
+        </div>
+        <div class="uk-width-1-3 uk-text-right">
+            <a class="uk-button uk-button-small uk-button-primary" target="_blank" href="/home/editor/article" type="button">新建文章</a>
+        </div>
+    </div>
+
+    <table class="uk-table uk-table-middle uk-table-divider">
+        <thead>
+            <tr>
+                <th class="uk-width-1-3">标题</th>
+                <th class="uk-width-1-6">类目</th>
+                <th class="uk-width-1-6">发布日期</th>
+                <th class="uk-width-1-6">状态</th>
+                <th class="uk-width-1-6">管理</th>
+            </tr>
+        </thead>
+        <tbody mp:if="{{articles.total > 0}}">
+            <tr mp:for="{{articles.data}}" mp:for-item="{{rs}}" >
+                <td>
+                    <img mp:if="{{rs.cover.url}}" class="uk-preserve-width uk-width-1-3 uk-margin-small-right" src="{{rs.cover.url}}"  alt="">
+                    {{rs.title}}
+                </td>
+                <td>{{rs.category_last.name}}</td>
+                <td>
+                    <div class="uk-text-meta">发布: {{HmDateTime(rs.publish_datetime)}} </div>
+                    <div class="uk-text-meta">更新: {{HmDateTime(rs.update_time)}} </div>
+                </td>
+                <td>
+                    <span class="uk-label uk-label-{{rs._status.style}}">{{rs._status.name}}</span>
+                </td>
+                <td>
+                    <a  target="_blank" href="/home/editor/article?article_id={{rs.article_id}}" class="uk-button uk-button-small uk-button-default" type="button">管理</a>
+                </td>
+            </tr>
+        </tbody>
+        <tbody mp:else>
+            <tr><td colspan="6">
+                    未找到任何文章。 <a class="uk-text-primary" target="_blank" href="/home/editor/article" type="button">新建文章</a>
+            </td></tr>
+        </tbody>
+        <tfoot>
+            <tr><td colspan="6">
+               <ul class="uk-pagination" uk-margin>
+                    <li mp:if="{{articles.prev != false}}" ><a href="?keyword={{__get.keyword}}&page={{(articles.prev != false) ? articles.prev}}"><span uk-pagination-previous></span></a></li>
+                    <li  
+                        mp:for-from="1" mp:for-to="{{articles.last + 1}}"
+                        class="{{(articles.curr == index) ? 'uk-active'}}"
+                    >
+                       <a href="?keyword={{__get.keyword}}&page={{index}}">{{index}}</a>
+                    </li>
+                   <li mp:if="{{articles.next != false}}" ><a href="?keyword={{__get.keyword}}&page={{(articles.next != false) ? articles.next}}"><span uk-pagination-next></span></a></li>
+               </ul>
+            </td></tr>
+        </tfoot>
+    </table>
+</div>
+
+<!-- 用户未登录界面 -->
+<div class="container" mp:else >
+    <script type="text/javascript" >
+        window.location="/user/signin/mobile?then=/home/forms/articles";
+    </script>
+</div> <!-- END Row Container -->
+    
+<include src="__WEB_ROOT__/desktop/common/foot.page" />

@@ -49,16 +49,16 @@
                         uk-tab
                   >
                         <li><a href="/home/forms/articles">我的文章</a></li>
-                        <!-- <li><a href="/home/forms/likes">我喜欢的</a></li>
-			<li><a href="/home/forms/follow">我关注的</a></li>
-			<li><a href="/home/forms/fans">我的粉丝</a></li> -->
                         <li><a href="/home/forms/expert">我的专栏</a></li>
                         <li><a href="/home/forms/follow">我的关注</a></li>
-                        <li><a href="/home/forms/zhifou">知否问答</a></li>
+                        <li><a href="/home/forms/zhifou">我的问答</a></li>
+                        <li><a href="/home/forms/events">我的活动</a></li>
                         <li><a href="/home/forms/profile">个人资料</a></li>
                         <li><a href="/home/forms/trust">实名认证</a></li>
-                        <!-- <li><a href="/home/forms/password">修改密码</a></li>
-			<li><a href="/home/forms/message">消息通知</a></li> -->
+                        <!-- 
+                            <li><a href="/home/forms/password">修改密码</a></li>
+                            <li><a href="/home/forms/message">消息通知</a></li> 
+                        -->
                   </ul>
             </div>
             <div id="forms">
