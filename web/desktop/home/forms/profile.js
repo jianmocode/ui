@@ -60,7 +60,6 @@ Page({
         });
         
         this.setExtraValue();
-        console.log( this.data.option );
 	},
 
 

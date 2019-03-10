@@ -78,6 +78,7 @@
                               >
                                     <a
                                           class="question_title"
+                                          target="_blank"
                                           href="/qanda/detail/{{item.question_question_id}}"
                                     >{{item.question_title}}</a>
                                     <div class="answer_content">
