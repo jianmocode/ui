@@ -45,7 +45,14 @@
 		"user":{
 			"api":"/xpmsns/user/user/getUserInfo",
 			"query":{}
-		},
+        },
+        "event": {
+            "api": "/xpmsns/pages/category/get",
+            "query": {
+                "slug": "event",
+                "select": "name,slug,link,isfootnav,isnav"
+            }
+        },
 		"page":{
 			"title":"用户中心",
 			"background": "uk-background-muted"

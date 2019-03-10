@@ -26,7 +26,8 @@
                 <span mp:for="{{event.organizers}}" mp:for-item="{{organizer}}">{{organizer.title}}</span>
             </div>
             <div class="media-highlight">
-                <span class="time">报名截止: {{HmDateTime(event.deadline)}}</span>
+                <div class="uk-text-muted" mp:if="{{event.quota > 0}}">已报名 <span class="user-cnt" data-id="{{event.event_id}}">{{IntVal(event.user_cnt)}}</span>/{{event.quota}}</div>
+                <div class="uk-text-muted" mp:else>已报名<span class="user-cnt" data-id="{{event.event_id}}">{{IntVal(event.user_cnt)}}</span>人</div>
             </div>
         </div>
         <div class="action"> 
@@ -55,8 +56,9 @@
             <div mp:if="{{event.status == 'off'}}"> <!-- 活动结束 -->
                 <button class="uk-button uk-button-default  uk-disabled"  data-id="{{event.event_id}}" disabled >活动已结束</button>
             </div>
-            <div class="uk-text-muted" mp:if="{{event.quota > 0}}">已报名 <span class="user-cnt" data-id="{{event.event_id}}">{{IntVal(event.user_cnt)}}</span>/{{event.quota}}</div>
-            <div class="uk-text-muted" mp:else>已报名<span class="user-cnt" data-id="{{event.event_id}}">{{IntVal(event.user_cnt)}}</span>人</div>
+
+            <a href="{{event.admin_link}}" class="uk-button uk-button-primary action-enter" mp:if="{{event.admin_link}}">{{event.admin_name}}</a>
+            
         </div>
     </div>
 

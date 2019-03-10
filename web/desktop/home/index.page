@@ -52,7 +52,7 @@
                         <li><a href="/home/forms/expert">我的专栏</a></li>
                         <li><a href="/home/forms/follow">我的关注</a></li>
                         <li><a href="/home/forms/zhifou">我的问答</a></li>
-                        <li><a href="/home/forms/events">我的活动</a></li>
+                        <li><a href="/home/forms/events">我的{{(event.name) ? event.name : '活动'}}</a></li>
                         <li><a href="/home/forms/profile">个人资料</a></li>
                         <li><a href="/home/forms/trust">实名认证</a></li>
                         <!-- 

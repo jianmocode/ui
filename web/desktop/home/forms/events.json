@@ -32,11 +32,11 @@
                 "query": {
                     "page": "1",
                     "perpage": "12",
-                    "select": "event_id,status,title,slug,link,deadline,cover,hosts,organizers,begin,end,quota,user_cnt,series.name,series.slug,series.series_id",
+                    "select": "event_id,status,title,slug,link,deadline,cover,hosts,organizers,begin,end,quota,user_cnt,series.name,series.slug,series.series_id,admin_link,admin_name",
                     "order": "begin"
                 }
         },
-		"rs": {},
+        "rs": {},
 		"page":{
 			"title":"我的活动"
 		},
