@@ -53,7 +53,7 @@
                         <li><a href="/home/forms/follow">我的关注</a></li>
                         <li><a href="/home/forms/zhifou">我的问答</a></li>
                         <li><a href="/home/forms/events">我的{{(event.name) ? event.name : '活动'}}</a></li>
-                        <li><a href="/home/forms/profile">个人资料</a></li>
+                        <li><a href="/home/forms/profile">我的资料</a></li>
                         <li><a href="/home/forms/trust">实名认证</a></li>
                         <!-- 
                             <li><a href="/home/forms/password">修改密码</a></li>

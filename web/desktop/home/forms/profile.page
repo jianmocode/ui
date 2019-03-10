@@ -99,6 +99,23 @@
 	</div> <!-- END 手机号 -->
 
 
+    <!-- 用户自定义扩展字段 -->
+    <div class="uk-form-group uk-margin" mp:for="{{option.user_profile_extfields}}" mp:for-item="{{field}}">
+        <label class="uk-form-label uk-form-large">{{field.name}}: </label>
+		<div class="uk-form-controls">
+			<input name="{{field.field}}" type="text" class="uk-input uk-form-large" 
+				   placeholder="{{field.attrs.placeholder}}" 
+				   value=""
+				   validate="{
+				   		required:{{(field.required )? 'true' : 'false'}}, 
+				   		messages: {
+							required:'请填写昵称'
+				   		}
+				   	}
+				">
+            <div class="uk-helper uk-helper-danger"></div>
+		</div>
+    </div>
 	
 	<!-- 用户昵称 -->
 	<div class="uk-form-group uk-margin " >

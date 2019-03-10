@@ -57,7 +57,10 @@ Page({
 		// 图形验证码
 		$('.image.vcode').click(function(){
 			that.changeVcode();
-		});
+        });
+        
+        this.setExtraValue();
+        console.log( this.data.option );
 	},
 
 
@@ -68,5 +71,16 @@ Page({
 	changeVcode: function(){
 		var api = '/_api/xpmsns/user/user/vcode?width=150&height=40&size=20&t=' + Date.parse(new Date()); 
 		$('.image.vcode img').attr('src', api);
-	},
+    },
+    
+    setExtraValue: function() {
+        let extfields = this.data.option.user_profile_extfields || [];
+        let user = this.data.user || {};
+        for( var i in extfields ) {
+            let field = extfields[i];
+            if ( user[field.field] != undefined ) {
+                $(`input[name="${field.field}"]`).val( user[field.field] );
+            }
+        }
+    }
 })
