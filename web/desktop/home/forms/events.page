@@ -1,74 +1,64 @@
 <include src="__WEB_ROOT__/desktop/common/head.page" />
 
 <!-- 文章列表页-->
-<div class="container iframe-panel" mp:if="{{user.user_id}}">
+<div class="container iframe-panel uk-background-muted" mp:if="{{user.user_id}}">
 
-    <div class="uk-grid-collapse" uk-grid>
-        <div class="uk-width-2-3">
-            <form>
-                <div class="uk-flex">
-                    <input name="keyword" value="{{__get.keyword}}" class="uk-input uk-form-small  uk-width-2-3" type="text" placeholder="输入关键词">
-                    <button class="uk-button uk-form-small uk-button-primary uk-margin-left">搜索</button>
-                    <button 
-                        onclick="javascript:$([name='keyword']).val('');"
-                        class="uk-button uk-form-small uk-button-default uk-margin-small-left">重置</button>
-                </div>
-            </form> 
+    <div mp:for="{{events.data}}" mp:for-item="{{event}}" mp:if="{{events.total > 0 }}"
+        class="card event-head uk-card uk-card-default uk-card-body uk-flex  uk-margin uk-padding-remove"   >
+        <div class="uk-cover-container cover">
+            <img src="{{event.cover.url}}" alt="" uk-cover>
         </div>
-        <div class="uk-width-1-3 uk-text-right">
-            <a class="uk-button uk-button-small uk-button-primary" target="_blank" href="/home/editor/article" type="button">新建文章</a>
+        <div class="content">
+            <div class="title">
+                <a  href="/event/detail/{{event.slug}}.html" target="_blank"> {{event.title}}</a> 
+                <small mp:for="{{events.series}}" mp:for-item="{{series}}" mp:if="{{event.series.0 == series.slug}}" >
+                    {{series.name}}
+                </small>
+                <small mp:if="{{event.link}}" ><a href="{{event.link}}" target="_blank">官方网站</a> </small>
+                
+            </div>
+            <div class="media">
+                主办方：
+                <span mp:for="{{event.hosts}}" mp:for-item="{{host}}">{{host.title}}</span>
+            </div>
+            <div class="media">
+                承办方：
+                <span mp:for="{{event.organizers}}" mp:for-item="{{organizer}}">{{organizer.title}}</span>
+            </div>
+            <div class="media-highlight">
+                <span class="time">报名截止: {{HmDateTime(event.deadline)}}</span>
+            </div>
+        </div>
+        <div class="action"> 
+            <div mp:if="{{event.status == 'open'}}"> <!-- 可以报名 -->
+                <button class="uk-button uk-button-primary action-enter {{(event.entered) ? 'uk-hidden' : ''}}" bindtap="enter" data-id="{{event.event_id}}" >立即报名</button>
+                <a href="javascript:void(0);" class="uk-button uk-button-default action-cancel {{(event.entered) ? '' : 'uk-hidden'}}" data-id="{{event.event_id}}"> 您已报名 </a>
+                <div class="remove-drop" uk-drop="mode:click;pos:bottom-center;delay-hide:0">
+                    <div class="uk-card uk-card-body uk-card-default uk-padding-small">
+                        <div class="uk-text-danger">请确认是否取消报名？ </div>
+                        <div class="uk-inline uk-margin-small-top uk-text-center">
+                            <a href="javascript:void(0);"  
+                            bindtap="cancel"
+                            data-id="{{event.event_id}}" 
+                            class="uk-button uk-button-small uk-button-primary uk-margin-small-right  uk-action action-method action-remove">确定</a>
+                            <a onclick="UIkit.drop($(this).parents('.remove-drop')).hide();" class="uk-button uk-button-small uk-button-default" type="button">关闭</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div mp:if="{{event.status == 'preparing'}}"> <!-- 筹备中 -->
+                <button class="uk-button uk-button-default  uk-disabled"  data-id="{{event.event_id}}" disabled >筹备中</button>
+            </div>
+            <div mp:if="{{event.status == 'close'}}"> <!-- 报名截止 -->
+                <button class="uk-button uk-button-default  uk-disabled"  data-id="{{event.event_id}}" disabled >报名已截止</button>
+            </div>
+            <div mp:if="{{event.status == 'off'}}"> <!-- 活动结束 -->
+                <button class="uk-button uk-button-default  uk-disabled"  data-id="{{event.event_id}}" disabled >活动已结束</button>
+            </div>
+            <div class="uk-text-muted" mp:if="{{event.quota > 0}}">已报名 <span class="user-cnt" data-id="{{event.event_id}}">{{IntVal(event.user_cnt)}}</span>/{{event.quota}}</div>
+            <div class="uk-text-muted" mp:else>已报名<span class="user-cnt" data-id="{{event.event_id}}">{{IntVal(event.user_cnt)}}</span>人</div>
         </div>
     </div>
-
-    <table class="uk-table uk-table-middle uk-table-divider">
-        <thead>
-            <tr>
-                <th class="uk-width-1-3">标题</th>
-                <th class="uk-width-1-6">类目</th>
-                <th class="uk-width-1-6">发布日期</th>
-                <th class="uk-width-1-6">状态</th>
-                <th class="uk-width-1-6">管理</th>
-            </tr>
-        </thead>
-        <tbody mp:if="{{articles.total > 0}}">
-            <tr mp:for="{{articles.data}}" mp:for-item="{{rs}}" >
-                <td>
-                    <img mp:if="{{rs.cover.url}}" class="uk-preserve-width uk-width-1-3 uk-margin-small-right" src="{{rs.cover.url}}"  alt="">
-                    {{rs.title}}
-                </td>
-                <td>{{rs.category_last.name}}</td>
-                <td>
-                    <div class="uk-text-meta">发布: {{HmDateTime(rs.publish_datetime)}} </div>
-                    <div class="uk-text-meta">更新: {{HmDateTime(rs.update_time)}} </div>
-                </td>
-                <td>
-                    <span class="uk-label uk-label-{{rs._status.style}}">{{rs._status.name}}</span>
-                </td>
-                <td>
-                    <a  target="_blank" href="/home/editor/article?article_id={{rs.article_id}}" class="uk-button uk-button-small uk-button-default" type="button">管理</a>
-                </td>
-            </tr>
-        </tbody>
-        <tbody mp:else>
-            <tr><td colspan="6">
-                    未找到任何文章。 <a class="uk-text-primary" target="_blank" href="/home/editor/article" type="button">新建文章</a>
-            </td></tr>
-        </tbody>
-        <tfoot>
-            <tr><td colspan="6">
-               <ul class="uk-pagination" uk-margin>
-                    <li mp:if="{{articles.prev != false}}" ><a href="?keyword={{__get.keyword}}&page={{(articles.prev != false) ? articles.prev}}"><span uk-pagination-previous></span></a></li>
-                    <li  
-                        mp:for-from="1" mp:for-to="{{articles.last + 1}}"
-                        class="{{(articles.curr == index) ? 'uk-active'}}"
-                    >
-                       <a href="?keyword={{__get.keyword}}&page={{index}}">{{index}}</a>
-                    </li>
-                   <li mp:if="{{articles.next != false}}" ><a href="?keyword={{__get.keyword}}&page={{(articles.next != false) ? articles.next}}"><span uk-pagination-next></span></a></li>
-               </ul>
-            </td></tr>
-        </tfoot>
-    </table>
 </div>
 
 <!-- 用户未登录界面 -->

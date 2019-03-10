@@ -27,15 +27,14 @@
 			"api":"/xpmsns/user/user/getUserInfo",
 			"query":{}
         },
-        "articles":{
-            "api":"/xpmsns/pages/article/userArticles",
-            "query":{
-                "status":"published,unpublished,auditing,pending",
-                "order":"article.stick desc,  article.priority,  article.publish_time desc",
-                "keyword":"{{__get.keyword}}",
-                "perpage":2,
-                "page":"{{__get.page}}"
-            }
+        "events": {
+            "api": "/xpmsns/pages/event/userEvents",
+                "query": {
+                    "page": "1",
+                    "perpage": "12",
+                    "select": "event_id,status,title,slug,link,deadline,cover,hosts,organizers,begin,end,quota,user_cnt,series.name,series.slug,series.series_id",
+                    "order": "begin"
+                }
         },
 		"rs": {},
 		"page":{
