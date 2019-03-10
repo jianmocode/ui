@@ -59,6 +59,22 @@
             <div class="uk-text-muted" mp:else>已报名<span class="user-cnt" data-id="{{event.event_id}}">{{IntVal(event.user_cnt)}}</span>人</div>
         </div>
     </div>
+
+    <div mp:if="{{events.total == 0 }}"
+        class="" >
+        您还没有参加任何活动. <a href="/event/index.html" target="_blank">浏览活动信息</a>
+    </div>
+
+    <ul class="uk-pagination uk-margin"  mp:if="{{events.total > 0 }}">
+        <li mp:if="{{events.prev != false}}" ><a href="?page={{(events.prev != false) ? events.prev}}"><span uk-pagination-previous></span></a></li>
+        <li  
+            mp:for-from="1" mp:for-to="{{events.last + 1}}"
+            class="{{(events.curr == index) ? 'uk-active'}}"
+        >
+           <a href="?page={{index}}">{{index}}</a>
+        </li>
+        <li mp:if="{{articles.next != false}}" ><a href="?page={{(events.next != false) ? events.next}}"><span uk-pagination-next></span></a></li>
+    </ul>
 </div>
 
 <!-- 用户未登录界面 -->

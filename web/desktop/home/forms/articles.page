@@ -56,7 +56,7 @@
         </tbody>
         <tfoot>
             <tr><td colspan="6">
-               <ul class="uk-pagination" uk-margin>
+               <ul class="uk-pagination uk-margin" >
                     <li mp:if="{{articles.prev != false}}" ><a href="?keyword={{__get.keyword}}&page={{(articles.prev != false) ? articles.prev}}"><span uk-pagination-previous></span></a></li>
                     <li  
                         mp:for-from="1" mp:for-to="{{articles.last + 1}}"
