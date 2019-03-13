@@ -26,6 +26,7 @@
 			"api":"/xpmsns/pages/article/get",
 			"query":{
                 "article_id": "{{__var.id}}",
+                "select":"article_id,user_id,specials,cover,title,author,origin,origin_url,summary,seo_title,seo_keywords,seo_summary,publish_time,update_time,create_time,sync,stick,status,category,tag",
                 "content_type": "desktop"
 			}
 		},

@@ -45,6 +45,35 @@
 	</div> <!-- END uk-width-3-4 jm-recommends-left -->
 
 	<div class="jm-recommends-right uk-width-1-4">
+        <div class="jm-card-s5 uk-card uk-margin-top" mp:if="{{article.special.special_id}}">
+            <div class="uk-card-header uk-flex">
+               <div class="uk-grid-small uk-flex-top" uk-grid>
+                    <div class="uk-width-auto">
+                        <img class="uk-border-circle" width="80" height="80" src="{{article.special.logo.url}}">
+                    </div>
+                    <div class="uk-width-expand" style="margin-top:2px;" >
+                        <h3 class="uk-card-title uk-margin-remove-bottom">{{article.special.name}}</h3>
+                        <p class="uk-text-meta  uk-margin-remove-top">
+                            {{Substr(article.special.summary,0,40, "...")}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-card-body uk-panel uk-margin-top uk-margin-small-bottom uk-text-primary"  >
+                <h3 class="uk-card-title uk-margin-remove-bottom">专栏文章</h3>
+                <ul class="jm-list-s1 uk-list uk-margin-small-top">
+                    <li mp:for="{{article.special_articles}}" mp:for-to="3"  >
+                        <div class="jm-item uk-flex">
+                            <!-- <div class="icon" uk-icon="icon:triangle-right"></div> -->
+                            <div>
+                                <div class="title"> <a href="/article/{{item.article_id}}.html" target="_blank" >{{item.title}}</a> </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div> <!-- END uk-card-body -->
+        </div>
+
 		<div class="jm-card-s5 uk-card uk-margin-top" mp:if="{{sidebar_section_4.status == 'on'}}">
 			<div class="uk-card-header">
 				<h3 class="uk-card-title"> {{sidebar_section_4.title}} </h3>
