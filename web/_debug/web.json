@@ -1,7 +1,8 @@
 {
 	"cname":"简墨科技主题-DEV",
 	"pages":[
-		"/desktop/home/index",
+        "/desktop/article/detail",
+        "/desktop/home/index",
         "/desktop/home/forms/articles",
         "/desktop/home/editor/article",
         "/desktop/admin/staff/login",
