@@ -76,7 +76,7 @@
             }
       ],
       "alias": {
-            "mobile": "/mobile/qanda/tag",
-            "wechat": "/mobile/qanda/tag"
+            "mobile": "/desktop/qanda/tag",
+            "wechat": "/desktop/qanda/tag"
       }
 }

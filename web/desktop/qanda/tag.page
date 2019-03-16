@@ -33,7 +33,7 @@
                                     class="question_content"
                               >{{item.title}}</a>
                         </div>
-                  </div>
+                  </div> 
                   <div class="loadmore_wrap border_box">
                         <div class="loading_item"></div>
                         <div class="loading_item"></div>
