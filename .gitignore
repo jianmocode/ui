@@ -22,3 +22,4 @@ libs/uikit-3.0.0-rc.11/.DS_Store
 /libs/uikit-3.0.0-rc.11/.idea
 config-*.js
 config.js
+wxapp/project.config.json
