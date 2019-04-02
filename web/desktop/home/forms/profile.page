@@ -92,11 +92,47 @@
 					   		}
 					   	}
 					">
-				<button class="uk-button uk-button-primary uk-form-large uk-width-small" type="button"> 更换手机号 </button>
+				<button class="uk-button uk-button-primary uk-form-large uk-width-small uk-disabled" type="button"> 更换手机号 </button>
 			</div>
 			<div class="uk-helper uk-helper-danger"></div>
 		</div>
-	</div> <!-- END 手机号 -->
+    </div> <!-- END 手机号 -->
+    
+    <!-- 登录密码 -->
+	<div class="uk-form-group uk-margin " >
+		<label class="uk-form-label uk-form-large">登录密码: </label>
+		<div class="uk-form-controls">
+			<input name="password" type="password" class="uk-input uk-form-large" 
+				   placeholder="请输入登录密码(不想修改请留空)" 
+				   value=""
+				   validate="{
+				   		required:false, 
+				   		messages: {
+							required:'请填写密码'
+				   		}
+				   	}
+				">
+			<div class="uk-helper uk-helper-danger"></div>
+		</div>
+    </div> <!-- END 登录密码 -->
+    
+    <!-- 密码确认 -->
+	<div class="uk-form-group uk-margin " >
+		<label class="uk-form-label uk-form-large">密码确认: </label>
+		<div class="uk-form-controls">
+			<input name="repassword" type="password" class="uk-input uk-form-large" 
+				   placeholder="请再次输入登录密码(不想修改请留空)" 
+				   value=""
+				   validate="{
+				   		required:false, 
+				   		messages: {
+							required:'请填写密码'
+				   		}
+				   	}
+				">
+			<div class="uk-helper uk-helper-danger"></div>
+		</div>
+	</div> <!-- END 密码确认 -->
 
 
     <!-- 用户自定义扩展字段 -->
