@@ -166,7 +166,7 @@
                 <input name="dateformat" type="hidden" value="Y-m-d H:i" />
                 <input name="publish_datetime" type="text" class="uk-input uk-form-large datetime-picker" 
                     placeholder="请填写发布时间" 
-                    value="{{HmDateTime(article.publish_datetime, 'Y-m-d H:i')}}" 
+                    value="{{HmDateTime(article.publish_time, 'Y-m-d H:i')}}" 
                     validate="{
                             required:false, 
                             messages: {
