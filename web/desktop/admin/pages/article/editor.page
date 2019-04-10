@@ -378,6 +378,29 @@
             </div>
         </div> <!-- END 手动排序 -->
 
+        <!-- 呈现样式 -->
+        <div class="uk-form-group uk-padding  uk-padding-remove-top" >
+            <label class="uk-form-label uk-form-large">呈现样式: </label>
+            <div class="uk-form-controls uk-form-controls-text">
+                <div class="uk-margin-small-top uk-margin-small-bottom uk-flex-wrap uk-flex" >
+                    <!-- 小图 -->
+                    <label class="uk-margin-right uk-checkbox-label uk-form-large" >
+                        <input mp:if="{{article.style == 'default'}}" checked class="uk-radio " type="radio" name="style" value="default"  > 
+                        <input mp:else class="uk-radio" type="radio" name="style" value="default"  > 
+                        小图模式
+                    </label>
+
+                    <!-- 大图 -->
+                    <label class="uk-margin-right uk-checkbox-label uk-form-large" >
+                        <input mp:if="{{article.style == 'big-pic'}}" checked class="uk-radio " type="radio" name="style" value="big-pic"  > 
+                        <input mp:else class="uk-radio" type="radio" name="style" value="big-pic"  > 
+                        大图模式
+                    </label>
+                        
+                </div>
+            </div>
+        </div> <!-- END 呈现样式 -->
+
 
         <div class="uk-form-group uk-padding  uk-padding-remove-top uk-padding-remove-bottom" >
             <hr />
