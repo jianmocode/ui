@@ -6,18 +6,26 @@
                   class="banner w_100"
                   mode="aspectFill"
             ></image>
-            <view class="summary">{{artical_item.summary}}</view>
+            <view
+                  class="summary"
+                  wx:if="{{artical_item.summary}}"
+            >{{artical_item.summary}}</view>
+            <view class="sundry flex flex_column color_888 w_100 text_left">
+                  <text class="author">作者 | {{artical_item.author}}</text>
+                  <text class="publish_date">时间 | {{artical_item.publish_time}}</text>
+            </view>
             <video
                   class="video w_100"
                   src="{{artical_item.videos[0].url}}"
                   wx:if="{{artical_item.videos[0].url}}"
             ></video>
-            <view class="sundry flex flex_column color_888 w_100 text_left">
-                  <text class="author">作者 | {{artical_item.author}}</text>
-                  <text class="publish_date">时间 | {{artical_item.publish_time}}</text>
-            </view>
+            <video
+                  class="video w_100"
+                  src="{{artical_item.audios[0].url}}"
+                  wx:if="{{artical_item.audios[0].url}}"
+            ></video>
             <view class="paragraph_items w_100">
-                  <rich-text nodes="{{artical_item.wxapp.children?artical_item.wxapp.children:artical_item.content}}"></rich-text>
+                  <rich-text nodes="{{artical_item.wxapp.children}}"></rich-text>
             </view>
       </view>
       <navigator

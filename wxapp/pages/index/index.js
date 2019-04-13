@@ -161,7 +161,7 @@ Page({
                         })
                         .catch(function (error) {
                               console.log(error);
-                        }); 
+                        });
             }
       },
       handleTapCategory: function (e) {
@@ -174,8 +174,9 @@ Page({
 
             app.xpm.api('/xpmsns/pages/Article/search')()
                   .get({
-                        perpage: 6,
-                        category: e.currentTarget.dataset.type
+                        perpage: 12,
+                        categories: e.currentTarget.dataset.type,
+                        withfavorite: 1
                   })
                   .then((data) => {
                         _that.setData({
@@ -192,7 +193,7 @@ Page({
             wx.navigateTo({
                   url: '/pages/collection/collection'
             })
-      }, 
+      },
       handleTapCollect: function (e) {
             const _that = this;
 
@@ -294,7 +295,7 @@ Page({
                               duration: 5000
                         })
                   }, 1000);
-            }); 
+            });
       },
       navTo: function (e) {
             switch (e.currentTarget.dataset.type) {
@@ -360,9 +361,10 @@ Page({
             function getMoreCategory(type) {
                   app.xpm.api('/xpmsns/pages/Article/search')()
                         .get({
-                              perpage: 6,
+                              perpage: 12,
                               page: _that.data.curr_page + 1,
-                              category: type
+                              categories: type,
+                              withfavorite: 1
                         })
                         .then((data) => {
                               setTimeout(() => {
