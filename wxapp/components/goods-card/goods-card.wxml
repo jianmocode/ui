@@ -7,7 +7,7 @@
       <text class="name_goods">{{name_goods}}</text>
       <view class="sundry">
             <text class="price">价格：￥{{price}}</text>
-            <text class="remaining">剩余：{{remaining}}</text>
+            <text class="remaining">剩余：{{remaining<0?'0':remaining}}</text>
       </view>
       <text class="price_credit">{{price_credit}}积分</text>
 </view>

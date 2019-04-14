@@ -19,7 +19,7 @@
 }
 
 .summary {
-      width: 99.4%;
+      width: 100%;
       box-sizing: border-box;
       padding: 20rpx;
       background-color: #eee;

@@ -1,16 +1,16 @@
-var host="alpha.jianmoapp.com"
+var host = "tars.jianmoapp.cn"
 
 config = {
       mina: {
             target: false,
             priority: 0,
-            server:"https://"+host,
+            server: "https://" + host,
             domain: host,
-            project: "default",
-            appid: '154986709417809',
-            secret: 'ad899eb233e03779176feb2c62ce6b70',
+            project: "tech",
+            appid: '155250244611146',
+            secret: 'ef44a1c156fce6b90f08d074ed30d6f9',
             instance: "root",
-      }, 
+      },
       wxapp: {
             "cli": "/Applications/wechatwebdevtools.app/Contents/Resources/app.nw/bin/cli",
             "appdid": "wx0550a96041cf486c",

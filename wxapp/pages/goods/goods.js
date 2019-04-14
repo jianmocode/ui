@@ -20,6 +20,7 @@ Page({
             },
             has_begin: false,
             has_close: false,
+            disable_exchange: true
       },
       onLoad: function (option) {
             const _that = this;
@@ -37,6 +38,7 @@ Page({
                   .catch(function (error) {
                         console.log(error);
                   });
+
             //设定一个timer，用来计算和显示时分秒
             setInterval(() => {
                   //先根据截止日期计算出与现在相比的时间跨度 
@@ -62,6 +64,7 @@ Page({
                               has_close: false
                         })
                   }
+
                   _that.setData({
                         open_date: {
                               left_days: open_time[0],
@@ -76,6 +79,12 @@ Page({
                               left_seconds: close_time[3]
                         }
                   })
+
+                  if (_that.data.goods_data.available_sum > 0) {
+                        _that.setData({
+                              disable_exchange: _that.data.has_begin === false || _that.data.has_close === true ? true : false
+                        })
+                  }
             }, 1000)
       },
       handleTapGoods: function (e) {
@@ -84,7 +93,7 @@ Page({
             if (_that.data.goods_data.hasbuy) {
                   wx.showToast({
                         title: '您已经兑换过了，不能再兑换了哦',
-                        icon:'none'
+                        icon: 'none'
                   })
             } else {
                   wx.redirectTo({
