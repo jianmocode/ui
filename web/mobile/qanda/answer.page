@@ -20,8 +20,10 @@
                               alt="avatar_author"
                         >
                         <div class="info uk-flex uk-flex-column">
-                              <span class="nickname line_clamp_1">{{(question.answer.user_nickname)?question.answer.user_nickname:question.answer.user_mobile}}</span>
-                              <span class="intro line_clamp_1">{{(question.answer.user_bio)?question.answer.user_bio:'TA还没有简介哦'}}</span>
+                              <span
+                                    class="nickname line_clamp_1">{{(question.answer.user_nickname)?question.answer.user_nickname:question.answer.user_mobile}}</span>
+                              <span
+                                    class="intro line_clamp_1">{{(question.answer.user_bio)?question.answer.user_bio:'TA还没有简介哦'}}</span>
                         </div>
                   </div>
                   <div
@@ -63,33 +65,80 @@
 </section>
 
 <section class="options_wrap">
-      <div class="options uk-flex">
-            <button
-                  class="btn btn_agree uk-flex uk-flex-middle"
-                  data-id="{{question.answer.answer_id}}"
-                  style="display:{{(question.answer.has_agreed)?'none':'flex'}}"
-            >
-                  <img
-                        class="img_agree"
-                        src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_agree.png"
-                        alt="icon_agree"
+      <div class="options uk-flex uk-flex-between">
+            <div class="left uk-flex">
+                  <button
+                        class="btn btn_agree uk-flex uk-flex-middle"
+                        data-id="{{question.answer.answer_id}}"
+                        style="display:{{(question.answer.has_agreed)?'none':'flex'}}"
                   >
-                  <span class="text">赞同</span>
-                  <span class="count">{{question.answer.agree_cnt}}</span>
-            </button>
-            <button
-                  class="btn btn_agree_clicked uk-flex uk-flex-middle"
-                  data-id="{{question.answer.answer_id}}"
-                  style="display:{{(question.answer.has_agreed)?'flex':'none'}}"
-            >
-                  <img
-                        class="img_agree"
-                        src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_agree_clicked.png"
-                        alt="icon_agree"
+                        <img
+                              class="img_agree"
+                              src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_agree.png"
+                              alt="icon_agree"
+                        >
+                        <span class="text">赞同</span>
+                        <span class="count">{{question.answer.agree_cnt}}</span>
+                  </button>
+                  <button
+                        class="btn btn_agree_clicked uk-flex uk-flex-middle"
+                        data-id="{{question.answer.answer_id}}"
+                        style="display:{{(question.answer.has_agreed)?'flex':'none'}}"
                   >
-                  <span class="text">赞同</span>
-                  <span class="count">{{question.answer.agree_cnt}}</span>
-            </button>
+                        <img
+                              class="img_agree"
+                              src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_agree_clicked.png"
+                              alt="icon_agree"
+                        >
+                        <span class="text">赞同</span>
+                        <span class="count">{{question.answer.agree_cnt}}</span>
+                  </button>
+            </div>
+            <div class="right uk-flex">
+                  <button
+                        class="btn_comment uk-flex-column uk-flex-center"
+                  >
+                        <img
+                              class="img_comment"
+                              src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_comment.svg"
+                              alt="img_comment"
+                        >
+                        <div class="row uk-flex uk-flex-middle">
+                              <span class="text">评论</span>
+                              <span class="count">44</span>
+                        </div>
+                  </button>
+            </div>
+      </div>
+</section>
+
+<section class="comment_wrap border_box">
+      <div class="comment uk-flex uk-flex-column border_box">
+            <div class="comment_header uk-flex uk-flex-between">
+                  <div class="left uk-flex uk-flex-middle">
+                        <img
+                              class="img_close"
+                              src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/delete.svg"
+                              alt="img_close"
+                        >
+                        <div class="text uk-flex">
+                              <span class="title">评论</span>
+                              <span class="count">(5535)</span>
+                        </div>
+                  </div>
+                  <div class="right"></div>
+            </div>
+            <div class="comment_footer uk-flex uk-flex-between">
+                  <textarea
+                        class="input_comment"
+                        name=""
+                        id="textarea_comment"
+                        placeholder="请输入评论"
+                  ></textarea>
+                  <div class="right">
+                        <button class="btn_publish_comment">发布</button>
+                  </div>
+            </div>
       </div>
 </section>
 

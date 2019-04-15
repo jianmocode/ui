@@ -1,7 +1,14 @@
 import {
       mobileFollow,
-      mobileUnfollow
+      mobileUnfollow,
+      autoTextarea,
+      publishComment,
+      searchComment
 } from '../../services/service'
+
+import {
+      message
+} from '../../services/kit'
 
 let web = getWeb();
 
@@ -15,6 +22,10 @@ Page({
             _that.handleClickAnswerAgree()
             _that.handleClickFollowAnswerPerson()
             _that.handleClickUnfollowAnswerPerson()
+            _that.setTextArea()
+            _that.handleClickBtnComment()
+            _that.handleClickBtnCloseComment()
+            _that.handleClickBtnSubmitComment()
       },
       showMessage: function (text) {
             const _el = $('.mask_wrap')
@@ -127,5 +138,45 @@ Page({
                         .show()
             })
       },
-   
+      setTextArea: function () {
+            autoTextarea(document.getElementById("textarea_comment"))
+      },
+      handleClickBtnComment: function () {
+            const _that = this
+
+            $('.btn_comment').on('click', function () {
+                  let data = {
+                        outer_id: _that.data.answer_id
+                  }
+
+                  searchComment(data, function (response) {
+                        console.log(response);
+                  })
+
+                  $('.comment_wrap').css('transform', 'translateY(0)')
+            })
+      },
+      handleClickBtnCloseComment: function () {
+            const _that = this
+
+            $('.comment_wrap .img_close').on('click', function () {
+                  $('.comment_wrap').css('transform', 'translateY(100vh)')
+            })
+      },
+      handleClickBtnSubmitComment: function () {
+            const _that = this
+
+            $('.comment_wrap .btn_publish_comment').on('click', function () {
+                  if ($('#textarea_comment').val()) {
+                        let data = {
+                              outer_id: _that.data.answer_id,
+                              content: $('#textarea_comment').val()
+                        }
+
+                        publishComment(data)
+                  } else {
+                        message.error('评论不能为空')
+                  }
+            })
+      }
 })

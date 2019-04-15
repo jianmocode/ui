@@ -1,4 +1,4 @@
-var host = "tars.jianmoapp.cn"
+var host = "demo.jianmoapp.cn"
 
 config = {
       mina: {
@@ -7,14 +7,14 @@ config = {
             server: "https://" + host,
             domain: host,
             project: "tech",
-            appid: '155250244611146',
-            secret: 'ef44a1c156fce6b90f08d074ed30d6f9',
+            appid: '155190147649899',
+            secret: '53a9bfa587c50de2ddaae35f490b2af6',
             instance: "root",
       },
       wxapp: {
             "cli": "/Applications/wechatwebdevtools.app/Contents/Resources/app.nw/bin/cli",
-            "appdid": "wx0550a96041cf486c",
-            "secret": "f2e5c4aee55269f427dabc07057d2113"
+            "appdid": "wx671a14fe272173d1",
+            "secret": "e22fa0aae8304350fe4fa1e0c443b382"
       }
 };
 module.exports = config

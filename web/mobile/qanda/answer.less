@@ -103,10 +103,10 @@
                         background-color: #1e87f0;
                         border-radius: 100rem;
                         color: white;
-                        border: none; 
+                        border: none;
                         outline: none;
                   }
-                  
+
                   .btn_unfollow {
                         display: none;
                         width: 4rem;
@@ -126,7 +126,8 @@
                   color: #333;
                   text-align: justify;
                   margin-bottom: 3rem;
-                  p{
+
+                  p {
                         margin-bottom: 1rem;
                   }
             }
@@ -151,7 +152,7 @@
 
                   .img_agree {
                         width: 1rem;
-                        margin-right: 0.4rem
+                        margin-right: 0.4rem;
                   }
 
                   .text {
@@ -165,6 +166,7 @@
                   .text {
                         color: #888;
                   }
+
                   .count {
                         color: #888;
                   }
@@ -176,8 +178,110 @@
                   .text {
                         color: #1e87f0;
                   }
+
                   .count {
                         color: #1e87f0;
+                  }
+            }
+
+            .btn_comment {
+                  border: none;
+                  outline: none;
+                  background-color: transparent;
+                  font-size: 12px;
+                  font-weight: bold;
+
+                  .img_comment {
+                        width: 1.6rem;
+                        margin-bottom: 0.2rem;
+                  }
+
+                  .text {
+                        color: #666;
+                        line-height: 1;
+                        margin-right: 0.2rem;
+                  }
+
+                  .count {
+                        color: #666;
+                        line-height: 1;
+                  }
+            }
+      }
+}
+
+.comment_wrap {
+      transform: translateY(100vh);
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      transition: all ease 0.3s;
+
+      .comment {
+            width: 100%;
+            height: 100%;
+            overflow-y: scroll;
+            background-color: white;
+            position: relative;
+
+            .comment_header {
+                  width: 100%;
+                  padding: 0.8rem 1rem;
+                  position: fixed;
+                  top: 0;
+                  border-bottom: 0.08rem solid #eee;
+
+                  .left {
+                        .img_close {
+                              width: 0.8rem;
+                              height: 0.8rem;
+                              margin-right: 1.2rem;
+                        }
+
+                        .text {
+                              font-size: 1rem;
+                              font-weight: 500;
+                              color: #333;
+                        }
+                  }
+
+                  .right {}
+            }
+
+            .comment_footer {
+                  width: 100%;
+                  padding: 0.8rem 1rem;
+                  position: fixed;
+                  bottom: 0;
+                  border-top: 0.08rem solid #eee;
+
+                  .input_comment {
+                        width: 86%;
+                        height:0.8rem;
+                        border: none;
+                        font-size: 0.8rem;
+                        color: #555;
+                        letter-spacing: 0.1rem;
+                        line-height: 1.6;
+                        outline: none;
+                        background-color: none;
+                        white-space: normal;
+                        word-wrap: break-word;
+                        word-break: break-all;
+                  }
+
+                  .right {
+                        width: 10%;
+
+                        .btn_publish_comment {
+                              background-color: transparent;
+                              border: none;
+                              outline: none;
+                              color: #1e87f0;
+                              font-size: 1rem;
+                        }
                   }
             }
       }
