@@ -6,7 +6,7 @@ config = {
             priority: 0,
             server: "https://" + host,
             domain: host,
-            project: "tech",
+            project: "default",
             appid: '155190147649899',
             secret: '53a9bfa587c50de2ddaae35f490b2af6',
             instance: "root",
