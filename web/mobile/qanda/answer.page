@@ -95,9 +95,7 @@
                   </button>
             </div>
             <div class="right uk-flex">
-                  <button
-                        class="btn_comment uk-flex-column uk-flex-center"
-                  >
+                  <button class="btn_comment uk-flex-column uk-flex-center">
                         <img
                               class="img_comment"
                               src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/icon_comment.svg"
@@ -105,7 +103,6 @@
                         >
                         <div class="row uk-flex uk-flex-middle">
                               <span class="text">评论</span>
-                              <span class="count">44</span>
                         </div>
                   </button>
             </div>
@@ -123,17 +120,55 @@
                         >
                         <div class="text uk-flex">
                               <span class="title">评论</span>
-                              <span class="count">(5535)</span>
+                              <span class="count comment_count"></span>
                         </div>
                   </div>
                   <div class="right"></div>
             </div>
+            <div class="comment_content uk-flex uk-flex-column border_box"></div>
+            <button class="btn_loadmore_comment btn_loadmore">加载更多</button>
             <div class="comment_footer uk-flex uk-flex-between">
                   <textarea
                         class="input_comment"
                         name=""
                         id="textarea_comment"
                         placeholder="请输入评论"
+                  ></textarea>
+                  <div class="right">
+                        <button class="btn_publish_comment">发布</button>
+                  </div>
+            </div>
+      </div>
+</section>
+
+<section class="comment_detail_wrap border_box">
+      <div class="comment uk-flex uk-flex-column border_box">
+            <div class="comment_header uk-flex uk-flex-between">
+                  <div class="left uk-flex uk-flex-middle">
+                        <img
+                              class="img_close"
+                              src="{{__STOR__::/__PROJECT_NAME/mobile/assets}}/images/delete.svg"
+                              alt="img_close"
+                        >
+                        <div class="text uk-flex">
+                              <span class="title">评论详情</span>
+                        </div>
+                  </div>
+                  <div class="right"></div>
+            </div>
+            <div class="subject"></div>
+            <div class="divide"></div>
+            <div class="reply_count border_box">
+                  <span class="count"></span>
+            </div>
+            <div class="comment_content uk-flex uk-flex-column border_box"></div>
+            <button class="btn_loadmore_reply btn_loadmore">加载更多</button>
+            <div class="comment_footer uk-flex uk-flex-between">
+                  <textarea
+                        class="input_comment"
+                        name=""
+                        id="textarea_comment_second"
+                        placeholder="请输入回复"
                   ></textarea>
                   <div class="right">
                         <button class="btn_publish_comment">发布</button>
