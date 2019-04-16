@@ -18,7 +18,7 @@
                         "select": "category_id,name,highlight,link,isblank,slug",
                         "order": "priority asc",
                         "noParentId": "1",
-                        "children": false,
+                        "children": true,
                         "isnav": 1
                   }
             },

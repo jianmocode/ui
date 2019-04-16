@@ -232,12 +232,19 @@
         <div class="uk-form-group uk-padding  uk-padding-remove-top uk-padding-remove-bottom" >
             <label class="uk-form-label uk-form-large">文章类目: </label>
             <div class="uk-form-controls uk-form-controls-text">
-                <div class="uk-margin-small-top uk-margin-small-bottom uk-flex-wrap uk-flex" >
-                    <label class="uk-margin-right uk-checkbox-label uk-form-large " mp:for="{{cates}}" mp:for-item="{{ca}}" >
-                        <input mp:if="{{InArray(ca.category_id,article.category_ids)}}" checked class="uk-checkbox " type="checkbox" name="category[]" value="{{ca.category_id}}"  > 
-                        <input mp:else class="uk-checkbox" type="checkbox" name="category[]" value="{{ca.category_id}}"  > 
-                        {{ca.name}} 
-                    </label>
+                <div class="uk-margin-small-top uk-margin-small-bottom uk-flex-wrap uk-flex-inline" >
+                    <div  mp:for="{{cates}}" mp:for-item="{{ca}}" class="uk-flex-wrap uk-flex">
+                        <label class="uk-margin-small-right uk-checkbox-label uk-form-large" >
+                            <input mp:if="{{InArray(ca.category_id,article.category_ids)}}" checked class="uk-checkbox " type="checkbox" name="category[]" value="{{ca.category_id}}"  > 
+                            <input mp:else class="uk-checkbox" type="checkbox" name="category[]" value="{{ca.category_id}}"  > 
+                            {{ca.name}} 
+                        </label>
+                        <label class="uk-margin-small-right uk-checkbox-label uk-form-large" mp:for="{{ca.children}}" mp:for-item="{{sub}}" >
+                            <input mp:if="{{InArray(sub.category_id,article.category_ids)}}" checked class="uk-checkbox " type="checkbox" name="category[]" value="{{sub.category_id}}"  > 
+                            <input mp:else class="uk-checkbox" type="checkbox" name="category[]" value="{{sub.category_id}}"  > 
+                            {{ca.name}}<span uk-icon="chevron-right"></span>{{sub.name}} 
+                        </label>
+                    </div>
                 </div>
             </div>
             <div class="uk-helper uk-helper-danger"></div>
