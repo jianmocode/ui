@@ -13,8 +13,8 @@
             <div class="person uk-flex uk-flex-column uk-flex-middle">
                   <img mp:if="{{user.headimgurl.url}}"
                         class="img_avatar"
-                        src="{{user.headimgurl.url}}"
-                        alt="img_avatar"
+                        src="{{user.headimgurl.url}}" 
+                        alt="img_avatar" 
                   >
                   <span class="name">{{(user.nickname)?user.nickname:'jianmoer'}}</span>
                   <span class="intro">{{(user.bio)?user.bio:'TA还没有简介哦'}}</span>

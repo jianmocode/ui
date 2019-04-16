@@ -1,10 +1,7 @@
-/**
- * @俊杰 代码优化:
- *   1. 本页函数需要填写注释
- *   2. 建议增加 callback 函数，处理 Ajax 结果反馈
- *   3. 合并 follow & mobileFollow  等...
- * 
- */
+import {
+      message
+} from './kit'
+
 function follow(user_id) {
       $.ajax({
             type: "post",
@@ -220,6 +217,114 @@ function getCookie(cookie_name) {
       return ""
 }
 
+//textarea高度自适应
+function autoTextarea(elem, extra, maxHeight) {
+      extra = extra || 0;
+      var isFirefox = !!document.getBoxObjectFor || 'mozInnerScreenX' in window,
+            isOpera = !!window.opera && !!window.opera.toString().indexOf('Opera'),
+            addEvent = function (type, callback) {
+                  elem.addEventListener ?
+                        elem.addEventListener(type, callback, false) :
+                        elem.attachEvent('on' + type, callback);
+            },
+            getStyle = elem.currentStyle ? function (name) {
+                  var val = elem.currentStyle[name];
+
+                  if (name === 'height' && val.search(/px/i) !== 1) {
+                        var rect = elem.getBoundingClientRect();
+                        return rect.bottom - rect.top -
+                              parseFloat(getStyle('paddingTop')) -
+                              parseFloat(getStyle('paddingBottom')) + 'px';
+                  };
+
+                  return val;
+            } : function (name) {
+                  return getComputedStyle(elem, null)[name];
+            },
+            minHeight = parseFloat(getStyle('height'));
+
+      elem.style.resize = 'none';
+
+      var change = function () {
+            var scrollTop, height,
+                  padding = 0,
+                  style = elem.style;
+
+            if (elem._length === elem.value.length) return;
+            elem._length = elem.value.length;
+
+            if (!isFirefox && !isOpera) {
+                  padding = parseInt(getStyle('paddingTop')) + parseInt(getStyle('paddingBottom'));
+            };
+            scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+
+            elem.style.height = minHeight + 'px';
+            if (elem.scrollHeight > minHeight) {
+                  if (maxHeight && elem.scrollHeight > maxHeight) {
+                        height = maxHeight - padding;
+                        style.overflowY = 'auto';
+                  } else {
+                        height = elem.scrollHeight - padding;
+                        style.overflowY = 'hidden';
+                  };
+                  style.height = height + extra + 'px';
+                  scrollTop += parseInt(style.height) - elem.currHeight;
+                  document.body.scrollTop = scrollTop;
+                  document.documentElement.scrollTop = scrollTop;
+                  elem.currHeight = parseInt(style.height);
+            };
+      };
+
+      addEvent('propertychange', change);
+      addEvent('input', change);
+      addEvent('focus', change);
+      change();
+}
+
+//发布 评论
+function publishComment(data, successCallback, errorCallback) {
+      $.ajax({
+            method: 'post',
+            url: '/_api/xpmsns/comment/comment/create',
+            dataType: 'json',
+            data: data,
+            success: function (response) {
+                  if(response.code===400){
+                        message.error(response.message)
+                  } else {
+                        message.success('发布成功')
+                  }
+            },
+            error: function (err) {
+                  if (errorCallback) {
+                        errorCallback()
+                  } else {
+                        message.success('发布成功')
+                  }
+            }
+      })
+}
+
+//查询 评论
+function searchComment(data, successCallback, errorCallback) {
+      $.ajax({
+            method: 'get',
+            url: '/_api/xpmsns/comment/comment/query',
+            dataType: 'json',
+            data: data,
+            success: function (response) {
+                  successCallback(response)
+            },
+            error: function (err) {
+                  if (errorCallback) {
+                        errorCallback()
+                  } else {
+                        message.error(err)
+                  }
+            }
+      })
+}
+
 export {
       follow,
       unfollow,
@@ -230,5 +335,8 @@ export {
       isMobileScrollToBottom,
       debounce,
       setCookie,
-      getCookie
+      getCookie,
+      autoTextarea,
+      publishComment,
+      searchComment
 }
