@@ -179,7 +179,6 @@ Page({
                                                 class="comment_item uk-flex uk-flex-between"
                                                 data-id="${item.comment_id}"
                                                 data-uid="${item.user_id}"
-                                                data-rid="${item.reply_id}"
                                           >
                                                 <div class="left">
                                                       <img
@@ -195,12 +194,13 @@ Page({
                                                             <div class="the_left">
                                                                   <span class="publish_time">${item.created_at}</span>
                                                             </div>
-                                                            <div class="the_right">
+                                                            <div class="the_right uk-flex uk-flex-middle">
                                                                   <img
                                                                         class="icon_comment"
                                                                         src="${assets_path}/images/icon_comment_line.svg"
                                                                         alt="icon_comment"
                                                                   >
+                                                                  <span class="reply_count">${item.replies_cnt}</span>
                                                             </div>
                                                       </div>
                                                 </div>
@@ -220,8 +220,9 @@ Page({
       handleClickBtnCloseComment: function () {
             const _that = this
 
-
             $('.comment_wrap .img_close').on('click', function () {
+                  _that.has_load_all_comment = false
+                  _that.current_comment_page = 1
                   $('.comment_wrap').css('transform', 'translateY(100vh)')
             })
       },
@@ -248,7 +249,6 @@ Page({
                   let parent = $(this).parents('.comment_item')
                   let cid = parent.data('id')
                   let uid = parent.data('uid')
-                  let rid = parent.data('rid')
                   let avatar = parent.find('.img_avatar').attr('src')
                   let name = parent.find('.name').text()
                   let content = parent.find('.content_text').html()
@@ -259,7 +259,6 @@ Page({
                               class="comment_item uk-flex uk-flex-between" 
                               data-cid="${cid}"
                               data-uid="${uid}"
-                              data-rid="${rid}"
                         >
                               <div class="left">
                                     <img
@@ -284,15 +283,21 @@ Page({
 
                   let data = {
                         comment_id: cid,
-                        reply_id: rid
+                        reply_perpage: 4
                   }
 
                   $('.comment_detail_wrap .reply_count .count').text('0条回复')
                   $('.comment_detail_wrap .comment_content').html('')
+                  $('.btn_loadmore_reply').show()
 
                   searchComment(data, function (response) {
-                        if (response.data[0].replies) {
-                              $('.comment_detail_wrap .reply_count .count').text(`${response.data[0].replies.length}条回复`)
+                        if (response.data[0].replies_cnt) {
+
+                              if (response.data[0].replies_cnt < 5) {
+                                    $('.btn_loadmore_reply').hide()
+                              }
+
+                              $('.comment_detail_wrap .reply_count .count').text(`${response.data[0].replies_cnt}条回复`)
 
                               response.data[0].replies.map(function (item) {
                                     let _name = item.nickname ? item.nickname : '佚名'
@@ -336,12 +341,12 @@ Page({
                         if (!_that.has_load_all_reply) {
                               let data = {
                                     comment_id: cid,
-                                    reply_id: rid,
-                                    page: _that.current_reply_page + 1
+                                    reply_perpage: 4,
+                                    reply_page: _that.current_reply_page + 1
                               }
 
                               searchComment(data, function (response) {
-                                    if (response.data.length) {
+                                    if (response.data[0].replies.length) {
                                           _that.current_reply_page = _that.current_reply_page + 1
 
                                           response.data[0].replies.map(function (item) {
@@ -388,6 +393,8 @@ Page({
             const _that = this
 
             $('.comment_detail_wrap .img_close').on('click', function () {
+                  _that.has_load_all_reply = false
+                  _that.current_reply_page = 1
                   $('.comment_detail_wrap').css('transform', 'translateY(100vh)')
             })
       },
