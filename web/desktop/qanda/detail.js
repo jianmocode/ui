@@ -155,18 +155,22 @@ Page({
             const _that = this;
 
             $('.btn_write').on('click', function () {
-                  if (_that.is_answer_input_show) {
-                        $('.answer_input').slideUp();
-                        $(this)
-                              .find('.text')
-                              .text('写回答');
-                        _that.is_answer_input_show = false;
+                  if (_that.data.user.user_id) {
+                        if (_that.is_answer_input_show) {
+                              $('.answer_input').slideUp();
+                              $(this)
+                                    .find('.text')
+                                    .text('写回答');
+                              _that.is_answer_input_show = false;
+                        } else {
+                              $('.answer_input').slideDown();
+                              $(this)
+                                    .find('.text')
+                                    .text('不写了');
+                              _that.is_answer_input_show = true;
+                        }
                   } else {
-                        $('.answer_input').slideDown();
-                        $(this)
-                              .find('.text')
-                              .text('不写了');
-                        _that.is_answer_input_show = true;
+                        window.location.href = '/user/signin/mobile'
                   }
             })
       },

@@ -60,7 +60,11 @@ Page({
             const _that = this;
 
             $('.ask').on('click', function () {
-                  _that.showAskModal();
+                  if (_that.data.user.user_id) {
+                        _that.showAskModal();
+                  } else {
+                        window.location.href='/user/signin/mobile'
+                  }
             })
       },
       handleClickHideAsk: function () {

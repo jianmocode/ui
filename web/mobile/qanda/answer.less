@@ -221,7 +221,6 @@
       .comment {
             width: 100%;
             height: 100%;
-            overflow-y: scroll;
             background-color: white;
             position: relative;
 
@@ -248,60 +247,66 @@
                   }
             }
 
-            .comment_content {
+            .comment_main {
                   width: 100%;
-                  margin-top: 3rem;
+                  overflow-y: scroll;
+                  margin: 3rem 0;
 
-                  .comment_item {
+                  .comment_content {
                         width: 100%;
-                        padding: 1rem 0.6rem;
-                        border-bottom: 0.05rem solid #eee;
 
-                        .left {
-                              width: 8%;
+                        .comment_item {
+                              width: 100%;
+                              display: flex;
+                              padding: 1rem 0.6rem;
+                              border-bottom: 0.05rem solid #eee;
 
-                              .img_avatar {
-                                    width: 100%;
-                                    border-radius: 100rem;
-                              }
-                        }
+                              .left {
+                                    width: 8%;
 
-                        .right {
-                              width: 89%;
-                              font-size: 0.8rem;
-
-                              .name {
-                                    color: #333;
-                                    font-weight: bold;
-                                    margin-bottom: 0.2rem;
-                              }
-
-                              .content_text {
-                                    white-space: pre-wrap;
-                                    word-break: break-all;
-                                    margin-bottom: 1rem;
-                                    color: #333;
-
-                                    p {
-                                          margin: 0;
+                                    .img_avatar {
+                                          width: 100%;
+                                          border-radius: 100rem;
                                     }
                               }
 
-                              .options {
-                                    .the_left {
-                                          .publish_time {
-                                                font-size: #666;
-                                                font-size: 0.6rem;
+                              .right {
+                                    width: 89%;
+                                    font-size: 0.8rem;
+
+                                    .name {
+                                          color: #333;
+                                          font-weight: bold;
+                                          margin-bottom: 0.2rem;
+                                    }
+
+                                    .content_text {
+                                          white-space: pre-wrap;
+                                          word-break: break-all;
+                                          margin-bottom: 1rem;
+                                          color: #333;
+
+                                          p {
+                                                margin: 0;
                                           }
                                     }
 
-                                    .the_right {
-                                          font-size: 0.6rem;
-                                          color: #666;
+                                    .options {
+                                          .the_left {
+                                                .publish_time {
+                                                      font-size: #666;
+                                                      font-size: 0.6rem;
+                                                }
+                                          }
 
-                                          .icon_comment {
-                                                width: 1rem;
-                                                margin-right: 0.4rem;
+                                          .the_right {
+                                                font-size: 0.6rem;
+                                                color: #666;
+
+                                                .icon_comment {
+                                                      width: 1rem;
+                                                      margin-right: 0.4rem;
+                                                }
                                           }
                                     }
                               }
@@ -386,115 +391,121 @@
                   }
             }
 
-            .subject {
+            .comment_main {
                   width: 100%;
-                  margin-top: 3rem;
+                  height: 100%;
+                  overflow-y: scroll;
+                  margin: 3rem 0;
 
-                  .comment_item {
+                  .subject {
                         width: 100%;
-                        padding: 1rem 0.6rem;
-                        border-bottom: 0.05rem solid #eee;
 
-                        .left {
-                              width: 8%;
+                        .comment_item {
+                              width: 100%;
+                              padding: 1rem 0.6rem;
+                              border-bottom: 0.05rem solid #eee;
 
-                              .img_avatar {
-                                    width: 100%;
-                                    border-radius: 100rem;
-                              }
-                        }
+                              .left {
+                                    width: 8%;
 
-                        .right {
-                              width: 89%;
-                              font-size: 0.8rem;
-
-                              .name {
-                                    color: #333;
-                                    font-weight: bold;
-                                    margin-bottom: 0.2rem;
-                              }
-
-                              .content_text {
-                                    white-space: pre-wrap;
-                                    word-break: break-all;
-                                    margin-bottom: 1rem;
-                                    color: #333;
-
-                                    p {
-                                          margin: 0;
+                                    .img_avatar {
+                                          width: 100%;
+                                          border-radius: 100rem;
                                     }
                               }
 
-                              .options {
-                                    .the_left {
-                                          .publish_time {
-                                                font-size: #666;
-                                                font-size: 0.6rem;
+                              .right {
+                                    width: 89%;
+                                    font-size: 0.8rem;
+
+                                    .name {
+                                          color: #333;
+                                          font-weight: bold;
+                                          margin-bottom: 0.2rem;
+                                    }
+
+                                    .content_text {
+                                          white-space: pre-wrap;
+                                          word-break: break-all;
+                                          margin-bottom: 1rem;
+                                          color: #333;
+
+                                          p {
+                                                margin: 0;
+                                          }
+                                    }
+
+                                    .options {
+                                          .the_left {
+                                                .publish_time {
+                                                      font-size: #666;
+                                                      font-size: 0.6rem;
+                                                }
                                           }
                                     }
                               }
                         }
                   }
-            }
 
-            .divide {
-                  width: 100%;
-                  padding: 0.2rem 0;
-                  background-color: whitesmoke;
-            }
-
-            .reply_count {
-                  width: 100%;
-                  padding: 0.6rem;
-                  font-size: 0.6rem;
-                  color: #333;
-                  font-weight: bold;
-                  border-bottom: 0.05rem solid #eee;
-            }
-
-            .comment_content {
-                  width: 100%;
-
-                  .comment_item {
+                  .divide {
                         width: 100%;
-                        padding: 1rem 0.6rem;
+                        padding: 0.2rem 0;
+                        background-color: whitesmoke;
+                  }
+
+                  .reply_count {
+                        width: 100%;
+                        padding: 0.6rem;
+                        font-size: 0.6rem;
+                        color: #333;
+                        font-weight: bold;
                         border-bottom: 0.05rem solid #eee;
+                  }
 
-                        .left {
-                              width: 8%;
+                  .comment_content {
+                        width: 100%;
 
-                              .img_avatar {
-                                    width: 100%;
-                                    border-radius: 100rem;
-                              }
-                        }
+                        .comment_item {
+                              width: 100%;
+                              padding: 1rem 0.6rem;
+                              border-bottom: 0.05rem solid #eee;
 
-                        .right {
-                              width: 89%;
-                              font-size: 0.8rem;
+                              .left {
+                                    width: 8%;
 
-                              .name {
-                                    color: #333;
-                                    font-weight: bold;
-                                    margin-bottom: 0.2rem;
-                              }
-
-                              .content_text {
-                                    white-space: pre-wrap;
-                                    word-break: break-all;
-                                    margin-bottom: 1rem;
-                                    color: #333;
-
-                                    p {
-                                          margin: 0;
+                                    .img_avatar {
+                                          width: 100%;
+                                          border-radius: 100rem;
                                     }
                               }
 
-                              .options {
-                                    .the_left {
-                                          .publish_time {
-                                                font-size: #666;
-                                                font-size: 0.6rem;
+                              .right {
+                                    width: 89%;
+                                    font-size: 0.8rem;
+
+                                    .name {
+                                          color: #333;
+                                          font-weight: bold;
+                                          margin-bottom: 0.2rem;
+                                    }
+
+                                    .content_text {
+                                          white-space: pre-wrap;
+                                          word-break: break-all;
+                                          margin-bottom: 1rem;
+                                          color: #333;
+
+                                          p {
+                                                margin: 0;
+                                          }
+                                    }
+
+                                    .options {
+                                          .the_left {
+                                                .publish_time {
+                                                      font-size: #666;
+                                                      font-size: 0.6rem;
+                                                }
                                           }
                                     }
                               }
@@ -550,7 +561,6 @@
       text-align: center;
       height: 3rem;
       line-height: 3rem;
-      margin-bottom: 3rem;
       border: none;
       outline: none;
 }

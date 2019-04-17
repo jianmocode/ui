@@ -289,17 +289,17 @@ function publishComment(data, successCallback, errorCallback) {
             dataType: 'json',
             data: data,
             success: function (response) {
-                  if(response.code===400){
-                        message.error(response.message)
-                  } else {
+                  if (response.comment_id) {
                         message.success('发布成功')
+                  } else {
+                        message.error(response.message)
                   }
             },
             error: function (err) {
                   if (errorCallback) {
                         errorCallback()
                   } else {
-                        message.success('发布成功')
+                        message.error(err.message)
                   }
             }
       })

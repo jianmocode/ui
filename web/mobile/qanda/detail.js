@@ -75,8 +75,14 @@ Page({
             })
       },
       handleClickBtnAnswer: function () {
+            const _that = this
+
             $('.btn_asnwer').on('click', function () {
-                  $('.go_answer_wrap').fadeIn()
+                  if (_that.data.user.user_id) {
+                        $('.go_answer_wrap').fadeIn()
+                  } else {
+                        window.location.href = '/m/user/signin'
+                  }
             })
       },
       submitAnswerForm: function () {

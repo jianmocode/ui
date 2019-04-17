@@ -73,8 +73,12 @@ Page({
             const _that = this
 
             $('.btn_ask').on('click', function () {
-                  $('.ask_wrap')
-                        .fadeIn()
+                  if (_that.data.user.user_id) {
+                        $('.ask_wrap')
+                              .fadeIn()
+                  } else {
+                        window.location.href = '/m/user/signin'
+                  }
             })
       },
       handleClickAddTopic: function () {

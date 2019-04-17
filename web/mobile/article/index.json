@@ -1,79 +1,115 @@
-{	
-	"cname":"首页-手机版",
-	"data": {
-		"categories":{
-			"api":"/xpmsns/pages/category/search",
-			"query":{
-				"select":"category_id,name,highlight,link,isblank,slug",
-				"order":"priority asc",
-				"children":false,
-				"noParentId":"1",
-				"isnav":1
-			}
-		},
-		"wechat":{
-			"api":"/xpmsns/pages/article/wechat",
-			"query":{}
-		},
-		"site":{
-			"api":"/xpmsns/pages/siteconf/get",
-			"query":{
-				"site_slug":"global",
-				"select":"*"
-			}
-		},
-		"navs":"{{categories.data}}",
-		"r": {
-			"api":"/xpmsns/pages/recommend/getContents",
-			"query":{
-				"slugs":"focus,latest,section_1"
-			}
-		},
-		"section":"{{r.section_1}}",
-		"sections":{
-			"api":"/xpmsns/pages/recommend/search",
-			"query":{
-				"select":"title,slug",
-				"pos":"index"
-			}
-		},
-		"links":{
-			"api":"/xpmsns/pages/links/search",
-			"query":{
-				"select":"name,link"
-			}
-		},
-		"seo": {
-			"title":"{{site.site_name}}",
-			"keywords":"{{site.site_name}}",
-			"description":"{{site.site_intro}}"
-		},
-		"page":{
-            "title":"首页"
-        },
-        "tabBar":{
-            "color":"#555555",
-            "selectedColor": "#888888",
-            "backgroundColor": "#ffffff",
-            "borderStyle": "black",
-            "position":"bottom",
-            "list":[
-                { "text":"推荐", "pagePath":"/m/index", "iconPath":"recommend.svg", "selectedIconPath":"recommend_active.svg", "selected":true},
-                { "text":"问答", "pagePath":"/m/qanda/index", "iconPath":"qanda.svg", "selectedIconPath":"qanda_active.svg"},
-                { "text":"视频", "pagePath":"/m/video/index", "iconPath":"video.svg", "selectedIconPath":"video_active.svg"},
-                { "text":"图集", "pagePath":"/m/album/index", "iconPath":"album.svg", "selectedIconPath":"album_active.svg"},
-                { "text":"我的", "pagePath":"/m/home/index", "iconPath":"my.svg", "selectedIconPath":"my_active.svg"}
-            ],
-            "custom":false
-        }
-	},
-	"entries":[
-        {"method":"GET", "router":"/m/index", "ttl":0},
-		{"method":"GET", "router":"/m/article", "ttl":0}
-	],
-	
-	"alias": {
-		"desktop":"/desktop/article/index",
-		"wxapp":"/article/index"
-	}
+{
+      "cname": "首页-手机版",
+      "data": {
+            "categories": {
+                  "api": "/xpmsns/pages/category/search",
+                  "query": {
+                        "select": "category_id,name,highlight,link,isblank,slug",
+                        "order": "priority asc",
+                        "children": false,
+                        "noParentId": "1",
+                        "isnav": 1
+                  }
+            },
+            "wechat": {
+                  "api": "/xpmsns/pages/article/wechat",
+                  "query": {}
+            },
+            "site": {
+                  "api": "/xpmsns/pages/siteconf/get",
+                  "query": {
+                        "site_slug": "global",
+                        "select": "*"
+                  }
+            },
+            "navs": "{{categories.data}}",
+            "r": {
+                  "api": "/xpmsns/pages/recommend/getContents",
+                  "query": {
+                        "slugs": "focus,latest,section_1"
+                  }
+            },
+            "section": "{{r.section_1}}",
+            "sections": {
+                  "api": "/xpmsns/pages/recommend/search",
+                  "query": {
+                        "select": "title,slug",
+                        "pos": "index"
+                  }
+            },
+            "links": {
+                  "api": "/xpmsns/pages/links/search",
+                  "query": {
+                        "select": "name,link"
+                  }
+            },
+            "seo": {
+                  "title": "{{site.site_name}}",
+                  "keywords": "{{site.site_name}}",
+                  "description": "{{site.site_intro}}"
+            },
+            "page": {
+                  "title": "首页"
+            },
+            "tabBar": {
+                  "color": "#555555",
+                  "selectedColor": "#888888",
+                  "backgroundColor": "#ffffff",
+                  "borderStyle": "black",
+                  "position": "bottom",
+                  "list": [{
+                              "text": "推荐",
+                              "pagePath": "/m/index",
+                              "iconPath": "recommend.svg",
+                              "selectedIconPath": "recommend_active.svg",
+                              "selected": true
+                        },
+                        {
+                              "text": "问答",
+                              "pagePath": "/m/qanda/index",
+                              "iconPath": "qanda.svg",
+                              "selectedIconPath": "qanda_active.svg"
+                        },
+                        {
+                              "text": "视频",
+                              "pagePath": "/m/video/index",
+                              "iconPath": "video.svg",
+                              "selectedIconPath": "video_active.svg"
+                        },
+                        {
+                              "text": "图集",
+                              "pagePath": "/m/album/index",
+                              "iconPath": "album.svg",
+                              "selectedIconPath": "album_active.svg"
+                        },
+                        {
+                              "text": "我的",
+                              "pagePath": "/m/home/index",
+                              "iconPath": "my.svg",
+                              "selectedIconPath": "my_active.svg"
+                        }
+                  ],
+                  "custom": false
+            }
+      },
+      "entries": [{
+                  "method": "GET",
+                  "router": "/",
+                  "ttl": 0
+            }, {
+                  "method": "GET",
+                  "router": "/m/index",
+                  "ttl": 0
+            },
+            {
+                  "method": "GET",
+                  "router": "/m/article",
+                  "ttl": 0
+            }
+      ],
+
+      "alias": {
+            "desktop": "/desktop/article/index",
+            "wxapp": "/article/index"
+      }
 }

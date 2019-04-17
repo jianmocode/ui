@@ -39,6 +39,7 @@ Page({
             _that.handleClickBtnCloseCommentSecondFloor()
             _that.handleClickBtnSubmitCommentSecondFloor()
             _that.handleClickBtnLoadMoreComment()
+            _that.handleFocusInputCheckUserLogin()
       },
       showMessage: function (text) {
             const _el = $('.mask_wrap')
@@ -160,7 +161,7 @@ Page({
 
             $('.btn_comment').on('click', function () {
                   let data = {
-                        outer_id: _that.data.answer_id
+                        outer_id: 'qanda_' + _that.data.answer_id
                   }
 
                   $('.comment_wrap .comment_content').html('')
@@ -170,7 +171,6 @@ Page({
                         $('.comment_wrap .comment_count').html(`(${response.total})`)
 
                         if (response.data.length) {
-
                               if (response.data.length < 5) {
                                     $('.btn_loadmore_comment').hide()
                               }
@@ -410,7 +410,7 @@ Page({
             $('.comment_detail_wrap .btn_publish_comment').on('click', function () {
                   if ($('#textarea_comment_second').val()) {
                         let data = {
-                              outer_id: _that.data.answer_id,
+                              outer_id: 'qanda_' + _that.data.answer_id,
                               reply_id: $(this).parents('.comment_detail_wrap').find('.subject .comment_item').data('cid'),
                               reply_user_id: $(this).parents('.comment_detail_wrap').find('.subject .comment_item').data('uid'),
                               content: $('#textarea_comment_second').val()
@@ -428,7 +428,7 @@ Page({
             $('.btn_loadmore_comment').on('click', function () {
                   if (!_that.has_load_all_comment) {
                         let data = {
-                              outer_id: _that.data.answer_id,
+                              outer_id: 'qanda_' + _that.data.answer_id,
                               page: _that.current_comment_page + 1
                         }
 
@@ -481,6 +481,15 @@ Page({
                                     message.warn('没有更多了')
                               }
                         })
+                  }
+            })
+      },
+      handleFocusInputCheckUserLogin: function () {
+            const _that = this
+
+            $('#textarea_comment,#textarea_comment_second').on('focus', function () {
+                  if (_that.data.user.user_id) {} else {
+                        window.location.href = '/m/user/signin'
                   }
             })
       }
