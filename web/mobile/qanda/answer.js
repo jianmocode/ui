@@ -164,11 +164,17 @@ Page({
                   }
 
                   $('.comment_wrap .comment_content').html('')
+                  $('.btn_loadmore_comment').show()
 
                   searchComment(data, function (response) {
                         $('.comment_wrap .comment_count').html(`(${response.total})`)
 
                         if (response.data.length) {
+
+                              if (response.data.length < 5) {
+                                    $('.btn_loadmore_comment').hide()
+                              }
+
                               response.data.map(function (item) {
                                     let name = item.user_nickname ? item.user_nickname : '佚名'
                                     let assets_path = '/static-file/default/mobile/assets'
