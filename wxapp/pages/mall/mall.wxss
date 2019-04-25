@@ -1,7 +1,3 @@
-page {
-      background: #eee;
-}
-
 .container_page {
       padding: 20rpx 3vw;
 }

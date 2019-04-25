@@ -51,7 +51,7 @@ page {
       border-top-right-radius: 20rpx;
 }
 
-.options .left{
+.options .left {
       width: 30%;
 }
 
@@ -129,9 +129,6 @@ page {
       padding: 0 40rpx;
 }
 
-.detail_goods .detail_item text {
+.detail_goods .detail_wrap {
       padding: 20rpx 40rpx;
-      font-size: 24rpx;
-      line-height: 1.5;
-      color: #bbb;
 }

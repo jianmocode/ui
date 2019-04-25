@@ -61,10 +61,12 @@
             </view>
             <view class="detail_goods bg_white w_100">
                   <view class="title flex justify_center w_100">商品详情</view>
-                  <rich-text
-                        class="detail_item w_100 border_box"
-                        nodes="{{goods_data.ap_content}}"
-                  ></rich-text>
+                  <view class="detail_wrap w_100 border_box">
+                        <rich-text
+                              class="detail_item w_100 border_box"
+                              nodes="{{goods_data.ap_content.children}}"
+                        ></rich-text>
+                  </view>
             </view>
             <view class="options flex bg_white fixed w_100 flex justify_between align_center color_333 border_box">
                   <view class="left flex align_center">

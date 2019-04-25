@@ -103,13 +103,13 @@
                                     mode="widthFix"
                               ></image>
                               <view class="left_info flex flex_column">
-                                    <text>完善信息（{{info_process}}/5）</text>
+                                    <text>完善信息（{{info_process}}/4）</text>
                                     <text>{{show_credits_person_info}}积分</text>
                               </view>
                         </view>
                         <navigator
-                              class="btn_state btn_nav {{info_process===5?'done':''}}"
-                              url="{{info_process===5?'':'/pages/info/info'}}"
+                              class="btn_state btn_nav {{info_process===4?'done':''}}"
+                              url="{{info_process===4?'':'/pages/info/info'}}"
                         >领取任务</navigator>
                   </view>
             </view>

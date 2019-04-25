@@ -16,7 +16,7 @@
       "window": {
             "backgroundTextStyle": "light",
             "navigationBarBackgroundColor": "#f5f5f5",
-            "navigationBarTitleText": "简墨",
+            "navigationBarTitleText": "大数据评测",
             "navigationBarTextStyle": "black"
       },
       "usingComponents": {

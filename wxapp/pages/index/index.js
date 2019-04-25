@@ -7,7 +7,6 @@ Page({
             category: '',
             active_category: '',
             active_category_recommend: '',
-            banner_recommend: {},
             is_login_show: false,
             height: '',
             curr_page: 1,
@@ -31,7 +30,7 @@ Page({
             _that.getUserStatus();
 
             //获取顶部导航类目
-            _that.getCategory(_that.getBannerRecommend);
+            _that.getCategory();
       },
       justLogin: function () {
             wx.getSetting({
@@ -92,12 +91,14 @@ Page({
             const _that = this;
 
             app.xpm.api('/xpmsns/pages/Category/search')()
-                  .get()
+                  .get({
+                        iswxappnav: 1,
+                        order:'priority asc'
+                  }) 
                   .then((data) => {
                         _that.setData({
                               category: data.data
                         });
-                        successCallback();
                   })
                   .catch(function (error) {
                         console.log(error);
@@ -126,43 +127,6 @@ Page({
                   .catch(function (error) {
                         console.log(error);
                   });
-      },
-      getBannerRecommend: function () {
-            const _that = this;
-
-            app.xpm.api('/xpmsns/pages/recommend/getContents')()
-                  .get({
-                        slugs: `index_recommend`,
-                        withfavorite: 1
-                  })
-                  .then((data) => {
-                        _that.data.banner_recommend[`index_recommend`] = data[`index_recommend`];
-                        _that.setData({
-                              banner_recommend: _that.data.banner_recommend
-                        })
-
-                  })
-                  .catch(function (error) {
-                        console.log(error);
-                  });
-
-            for (let item of _that.data.category) {
-                  app.xpm.api('/xpmsns/pages/recommend/getContents')()
-                        .get({
-                              slugs: `${item.slug}_recommend`,
-                              withfavorite: 1
-                        })
-                        .then((data) => {
-                              _that.data.banner_recommend[`${item.slug}_recommend`] = data[`${item.slug}_recommend`];
-                              _that.setData({
-                                    banner_recommend: _that.data.banner_recommend
-                              })
-
-                        })
-                        .catch(function (error) {
-                              console.log(error);
-                        });
-            }
       },
       handleTapCategory: function (e) {
             const _that = this;
