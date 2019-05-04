@@ -15,12 +15,14 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.4.3",
-	"appid": "wx8a641ec8cbf19c32",
+	"appid": "wxd14118cb60a0686f",
 	"projectname": "%E7%AE%80%E5%A2%A8",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
 	"scripts": {},
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
