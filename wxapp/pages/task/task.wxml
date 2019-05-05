@@ -1,3 +1,5 @@
+<navigation-bar my-property="{{navigate_data}}"></navigation-bar>
+
 <page-show-wrap>
       <view class="container_page">
             <view class="tab flex justify_between color_333 border_box">

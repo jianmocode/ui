@@ -1,3 +1,5 @@
+<navigation-bar my-property="{{navigate_data}}"></navigation-bar>
+
 <page-show-wrap>
       <scroll-view
             class="w_100"

@@ -1,3 +1,5 @@
+<navigation-bar my-property="{{navigate_data}}"></navigation-bar>
+
 <page-show-wrap>
       <view class="container_page flex flex_column">
             <view class="info_goods flex flex_column bg_white color_333">

@@ -2,6 +2,9 @@ const app = getApp();
 
 Page({
       data: {
+            navigate_data: {
+                  name: "个人资料"
+              },
             input_active: false,
             btn_edit_innertext: '完善资料',
             nickname: '',

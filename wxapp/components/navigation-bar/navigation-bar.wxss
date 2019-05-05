@@ -1,5 +1,63 @@
-.header_wrap{
-      position:fixed;
-      top:0;
-      display:flex;
+.header_wrap {
+    position: fixed;
+    background-color: whitesmoke;
+    z-index: 9999999;
+    display: flex;
+    width: 100%;
+}
+
+.header {
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 20rpx;
+    bottom: 16rpx;
+    height: 64rpx;
+    display: flex;
+    align-items: center;
+    font-size: 30rpx;
+}
+
+.header_content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.header_content .options {
+    position: absolute;
+    left: 0;
+    height:100%;
+    display: flex;
+    align-items: center;
+}
+
+.header_content .options .btn_back{
+      width: 60rpx;
+      height: 60rpx;
+      padding-right: 16rpx;
+      margin-left:-12rpx;
+}
+
+.header_content .options .btn_home{
+      width: 48rpx;
+      height: 48rpx;
+}
+
+.header_content .title_wrap {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 4rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.header_content .title_wrap .title {
+    width: 100%;
 }

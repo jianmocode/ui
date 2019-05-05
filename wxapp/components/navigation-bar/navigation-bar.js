@@ -3,12 +3,10 @@ Component({
         myProperty: {
             type: Object,
             value: {
-                "bg_color": "whitesmoke",
-                "color": "#333",
-                "name": "我是标题"
+                "name": "title"
             }
         },
-        commonHeadHeight: {
+        headerHeight: {
             type: Object,
             value: {}
         }
@@ -40,8 +38,8 @@ Component({
                 console.log(res.statusBarHeight)
 
                 that.setData({
-                    "commonHeadHeight.statusBarHeight": (34 * 2),
-                    "commonHeadHeight.titleHeight": res.statusBarHeight + 46
+                    "headerHeight.statusBarHeight": (34 * 2),
+                    "headerHeight.titleHeight": res.statusBarHeight + 46
                 });
 
             }

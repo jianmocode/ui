@@ -1,3 +1,5 @@
+<navigation-bar my-property="{{navigate_data}}"></navigation-bar>
+
 <page-show-wrap>
       <view class="container_page flex flex_column align_center">
             <text class="title font_bold text_left w_100">{{artical_item.title}}</text>

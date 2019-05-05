@@ -3,10 +3,7 @@ const app = getApp()
 Page({
     data: {
         navigate_data: {
-            bg_color: "orange",
-            color: "#000",
-            flag: 2,
-            name: "我是标题独一无二天下无敌我是标题独一无二天下无敌"
+            name: "测试标题"
         },
         is_toptips_show: true,
         artical_items: {},
@@ -56,6 +53,8 @@ Page({
         })
     },
     getAppTitle: function() {
+        const _that = this
+
         const app_title = wx.getStorage({
             key: 'app_title'
         })
@@ -72,16 +71,16 @@ Page({
                         data: data.site_slogen
                     })
 
-                    wx.setNavigationBarTitle({
-                        title: data.site_slogen
+                    _that.setData({
+                        'navigate_data.name': data.site_slogen
                     })
                 })
                 .catch(function(error) {
                     console.log(error);
                 })
         } else {
-            wx.setNavigationBarTitle({
-                title: app_title
+            _that.setData({
+                'navigate_data.name': data.site_slogen
             })
         }
     },
@@ -348,6 +347,13 @@ Page({
                 is_sharing: false
             })
         }, 1000);
+
+          if (e.from === 'menu') {
+                return {
+                      title:_that.data.navigate_data.name ,
+                      path: '/page/index/index'
+                }
+          }
 
         return {
             title: _that.data.share_info.title !== '' ? _that.data.share_info.title : '看好文，获积分，换奖品',

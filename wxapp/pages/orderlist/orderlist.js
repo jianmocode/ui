@@ -2,6 +2,9 @@ const app = getApp()
 
 Page({
       data: {
+            navigate_data: {
+                  name: "我的订单"
+              },
             is_goods_wait: true,
             is_goods_done: false,
             order_list_uncomplete: {},

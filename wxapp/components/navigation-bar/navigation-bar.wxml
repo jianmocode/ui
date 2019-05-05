@@ -1,13 +1,16 @@
 <custom-component>
-    <view class="header_wrap" style='color:{{myProperty.color?myProperty.color:"#000"}};background-color:{{myProperty.bg_color?myProperty.bg_color:"white"}};height:{{commonHeadHeight.titleHeight}}px;'>
+    <view class="header_wrap" style="height:{{headerHeight.titleHeight}}px">
         <view class="header">
-            <view class="options">
-                <view class="btn_back" bindtap="back"></view>
-                <view class="btn_home" bindtap="home"></view>
-            </view>
-            <view class="title_wrap">
-                <view class="ttile">{{myProperty.name?myProperty.name:"title"}}</view>
+            <view class="header_content">
+                <view class="options">
+                    <image class="btn_back" src="../../images/icon_back.png" mode="aspectFill" catchtap="back"></image>
+                    <image class="btn_home" src="../../images/icon_home.png" mode="aspectFill" catchtap="home"></image>
+                </view>
+                <view class="title_wrap">
+                    <text class="ttile">{{myProperty.name?myProperty.name:"title"}}</text>
+                </view>
             </view>
         </view>
     </view>
+    <view class="placeholder" style="height:{{headerHeight.titleHeight}}px"></view>
 </custom-component>

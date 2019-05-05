@@ -1,6 +1,6 @@
 <navigation-bar my-property="{{navigate_data}}"></navigation-bar>
 <page-show-wrap>
-      <view class="wrap_tab border_box bg_white fixed w_100">
+      <view class="wrap_tab border_box bg_white w_100">
             <view class="tab flex w_100 relative">
                   <text
                         class="text {{active_category==='推荐'?'active':''}}"

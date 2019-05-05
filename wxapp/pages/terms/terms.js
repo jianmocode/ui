@@ -1,9 +1,12 @@
 const app = getApp()
 
 Page({
-      data: {
-      },
-      onLoad: function () {
+    data: {
+        navigate_data: {
+            name: "隐私条款"
+        },
+    },
+    onLoad: function() {
 
-      }
+    }
 })
