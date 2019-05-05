@@ -1,0 +1,13 @@
+<custom-component>
+    <view class="header_wrap" style='color:{{myProperty.color?myProperty.color:"#000"}};background-color:{{myProperty.bg_color?myProperty.bg_color:"white"}};height:{{commonHeadHeight.titleHeight}}px;'>
+        <view class="header">
+            <view class="options">
+                <view class="btn_back" bindtap="back"></view>
+                <view class="btn_home" bindtap="home"></view>
+            </view>
+            <view class="title_wrap">
+                <view class="ttile">{{myProperty.name?myProperty.name:"title"}}</view>
+            </view>
+        </view>
+    </view>
+</custom-component>

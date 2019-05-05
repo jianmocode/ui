@@ -19,8 +19,6 @@ App({
             this.utils = this.xpm.require('utils'); // 工具
             this.user = this.xpm.require('user'); // 工具
             this.pay = this.xpm.require('pay'); // 信道
-
-            this.getAppTitle()
       },
       stor: null,
       xpm: null,
@@ -43,35 +41,4 @@ App({
                         console.log(error);
                   })
       },
-      getAppTitle: function () {
-            const app_title = wx.getStorage({
-                  key: 'app_title'
-            })
-
-            if (!app_title) {
-                  this.xpm.api('/xpmsns/pages/Siteconf/get')()
-                        .get({
-                              site_slug: 'global',
-                              select: 'site_slogen'
-                        })
-                        .then((data) => {
-                              wx.setStorage({
-                                    key: 'app_title',
-                                    data: data.site_slogen
-                              })
-
-                              wx.setNavigationBarTitle({
-                                    title: data.site_slogen
-                              })
-                        })
-                        .catch(function (error) {
-                              console.log(error);
-                        })
-            } else {
-                  wx.setNavigationBarTitle({
-                        title: app_title
-                  })
-            }
-
-      }
 })

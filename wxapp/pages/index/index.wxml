@@ -1,3 +1,4 @@
+<navigation-bar my-property="{{navigate_data}}"></navigation-bar>
 <page-show-wrap>
       <view class="wrap_tab border_box bg_white fixed w_100">
             <view class="tab flex w_100 relative">
@@ -15,9 +16,6 @@
                   >{{item.name}}</text>
             </view>
       </view>
-      <!-- <view class="more fixed flex justify_center align_center">
-            <text class="arrow_pulldown inline_block"></text>
-      </view> -->
       <scroll-view
             scroll-y="true"
             class="container_page flex flex_column"
