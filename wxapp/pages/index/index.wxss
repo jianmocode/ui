@@ -3,7 +3,7 @@
       overflow-y: hidden;
       position:fixed;
       z-index: 999999;
-      height: 76rpx;
+      height: 72rpx;
       padding-top: 0rpx;
       padding-left: 10rpx;
       padding-right: 20rpx;

@@ -3,7 +3,7 @@ const app = getApp()
 Page({
     data: {
         navigate_data: {
-            name: "测试标题"
+            name: "title"
         },
         is_toptips_show: true,
         artical_items: {},

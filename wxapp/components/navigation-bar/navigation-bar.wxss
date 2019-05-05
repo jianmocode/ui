@@ -39,12 +39,13 @@
       width: 60rpx;
       height: 60rpx;
       padding-right: 16rpx;
-      margin-left:-12rpx;
+      margin-left:-16rpx;
 }
 
 .header_content .options .btn_home{
       width: 48rpx;
       height: 48rpx;
+      margin-top: -4rpx;
 }
 
 .header_content .title_wrap {
