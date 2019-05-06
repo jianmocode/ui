@@ -351,7 +351,7 @@ Page({
             if (e.from === 'menu') {
                   return {
                         title: _that.data.navigate_data.name,
-                        path: '/page/index/index'
+                        path: '/pages/index/index'
                   }
             }
 
