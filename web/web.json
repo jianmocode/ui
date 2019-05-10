@@ -8,6 +8,7 @@
             "/desktop/admin/pages/article/editor",
             "/desktop/admin/pages/article/preview",
             "/desktop/event/index",
+            "/desktop/event/signup",
             "/desktop/event/detail",
             "/desktop/qanda/index",
             "/desktop/qanda/detail",
