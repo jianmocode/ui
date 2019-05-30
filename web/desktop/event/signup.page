@@ -4,7 +4,7 @@
 <!-- 用户注册表单 -->
 <form	class="iframe-form uk-width-xxlarge"  mp:if="{{option.user_mobile_signup_on == 1}}"
 		method="POST" 
-		action="/_api/xpmsns/user/user/create" 
+		action="/_api/xpmsns/pages/event/signup" 
 		success="(data) => {
 			// 打开登录成功面板
 			$('.iframe-form').addClass('uk-hidden');
@@ -15,17 +15,59 @@
 
 			// 计时器读秒后转向登录页面
 			$validate.utils.timer('.timer', function(){
-				window.location = '/user/signin/mobile';
+				window.location = '/';
 			}, 5 );
 		}" 
-	>
+    >
+    
+
+    <input name="event_id" type="hidden" value="{{event.event_id}}" >
 
 	<div class="uk-margin">
-		<h3>注册{{site.site_name}} <span uk-loading="ratio:0.8" class="uk-margin-small-left"></span></h3>
-	</div>
+		<h3>{{event.title}}报名<span uk-loading="ratio:0.8" class="uk-margin-small-left"></span></h3>
+    </div>
+    
+    <div class="uk-margin">
+        <img src="{{event.cover.url}}" uk-image />
+    </div>
 	
 	<!-- 呈现错误信息 -->
-	<div class="message uk-alert-danger uk-hidden" uk-alert> <p></p></div>
+    <div class="message uk-alert-danger uk-hidden" uk-alert> <p></p></div>
+    
+    <!-- 真实姓名 -->
+	<div class="uk-form-group uk-margin">
+		<div class="uk-inline">
+			<span class="uk-form-icon" uk-icon="icon: info"></span>
+			<input name="name" type="text" class="uk-input uk-form-large" 
+				   placeholder="请输入真实姓名" 
+				   validate="{
+				   		required:true, 
+				   		messages: {
+							required:'请输入真实姓名'
+				   		}
+				   	}
+				   ">
+		</div>
+		<div class="uk-helper uk-helper-danger"></div>
+    </div> <!-- END 真实姓名 -->
+    
+    <!-- 公司名称 -->
+	<div class="uk-form-group uk-margin">
+		<div class="uk-inline">
+			<span class="uk-form-icon" uk-icon="icon: info"></span>
+			<input name="company" type="text" class="uk-input uk-form-large" 
+				   placeholder="请输入所在公司名称" 
+				   validate="{
+				   		required:true, 
+				   		messages: {
+							required:'请输入公司名称'
+				   		}
+				   	}
+				   ">
+		</div>
+		<div class="uk-helper uk-helper-danger"></div>
+    </div> <!-- END 公司名称 -->
+    
 
 	<!-- 手机号 -->
 	<div class="uk-form-group uk-margin" id="testit">
@@ -134,18 +176,17 @@
 	
 	<!-- 注册按钮 -->
 	<div class="uk-margin">
-		<button class="uk-button uk-button-primary uk-form-large uk-action" style="width:100%;" type="submit">注册</button>
+		<button class="uk-button uk-button-primary uk-form-large uk-action" style="width:100%;" type="submit">立即报名</button>
 	</div><!-- END 注册按钮 -->
 	
 	<!-- 登录提醒 -->
 	<div class="uk-margin">
-		<a href="/user/signin/wechat" class="wechat text-wechat push-15-r" mp:if="{{option.user_wechat_on == 1}}"  > 
+		<!-- <a href="/user/signin/wechat" class="wechat text-wechat push-15-r" mp:if="{{option.user_wechat_on == 1}}"  > 
 			<span uk-icon="icon: weixin"></span> 使用微信登录
-		</a>
-
-		<a href="/user/signin/mobile" class="default" mp:if="{{option.user_mobile_on == 1}}" > 
+		</a> -->
+		<!-- <a href="/user/signin/mobile" class="default" mp:if="{{option.user_mobile_on == 1}}" > 
 			已有账号？直接登录
-		</a>
+		</a> -->
 	</div>
 
 </form> <!-- END 用户注册表单 -->
@@ -177,14 +218,14 @@
 <!-- 注册成功面板 -->
 <form class="iframe-form success uk-hidden" >
 	<div class="uk-margin">
-		<h3>注册{{site.site_name}}</h3>
+		<h3>{{event.title}}报名</h3>
 	</div>
 	<div class="uk-alert-success" uk-alert> 
-		<p> <span uk-icon="icon: check"></span> 注册成功!  <spacn class="timer">5</spacn> 秒后转向登录 </p> 
+		<p> <span uk-icon="icon: check"></span> 报名成功!  <spacn class="timer">5</spacn> 秒后返回首页 </p> 
 	</div>
 	<!-- 登录按钮 -->
 	<div class="uk-margin">
-		<a href="/user/signin/mobile" class="uk-button uk-button-primary uk-form-large uk-action" style="width:100%;" >立即登录</a>
+		<a href="/" class="uk-button uk-button-primary uk-form-large uk-action" style="width:100%;" >立即返回首页</a>
 	</div><!-- END 登录按钮 -->
 </form>
 
