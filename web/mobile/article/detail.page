@@ -10,7 +10,7 @@
 			<h1 class="jm-article-title uk-article-title">{{article.title}}</h1>
 			<div class="jm-article-meta uk-article-meta"> 
 				<a class="author" href="#"> {{ (article.author) ? article.author : site.site_name }} </a> <span>•</span>
-				<span class="publictime"> {{HMDATETIME(article.publish_datetime)}} </span> <span>•</span>
+				<span class="publictime"> {{HMDATETIME(article.publish_time)}} </span> <span>•</span>
 				<a class="category" href="/list/{{article.category_last.category_id}}"> {{article.category_last.name}} </a>
 			</div>
 
