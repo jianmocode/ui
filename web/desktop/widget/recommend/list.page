@@ -19,7 +19,7 @@
 				</p>
 			</div>
 			<div class="attrs ">
-				<span class="attr uk-text-muted">{{ (item.author) ? item.author : site.site_name }} · {{HMDATETIME(item.publish_datetime)}} </span>
+				<span class="attr uk-text-muted">{{ (item.author) ? item.author : site.site_name }} · {{HMDATETIME(item.publish_time)}} </span>
 				<span class="attr uk-text-muted"> 
 					<span uk-icon="tag"></span> 
 					<span mp:for="{{item.category}}" mp:for-item="{{citem}}" class="uk-margin-small-left">{{citem.name}} </span>

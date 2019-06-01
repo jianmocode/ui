@@ -47,7 +47,7 @@
 							</div>
 							<div class="uk-margin-small-left uk-flex uk-flex-column uk-flex-between">
 								<div class="title"> {{item.title}}  </div>
-								<div class="summary uk-text-muted">{{HMDATETIME(item.publish_datetime)}}</div>
+								<div class="summary uk-text-muted">{{HMDATETIME(item.publish_time)}}</div>
 							</div>
 						</div>
 					</a>

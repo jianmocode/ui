@@ -57,7 +57,7 @@
 							<div class="icon" uk-icon="icon:triangle-right"></div>
 							<div>
 								<div class="title"> <a href="/article/{{item.article_id}}.html" target="_blank" >{{item.title}}</a> </div>
-								<div class="summary">{{HMDATETIME(item.publish_datetime)}}</div>
+								<div class="summary">{{HMDATETIME(item.publish_time)}}</div>
 							</div>
 						</div>
 					</li>
@@ -175,7 +175,7 @@
 							</div>
 							<div class="uk-margin-small-left uk-flex uk-flex-column uk-flex-between">
 								<div class="title"> {{item.title}}  </div>
-								<div class="summary uk-text-muted">{{HMDATETIME(item.publish_datetime)}}</div>
+								<div class="summary uk-text-muted">{{HMDATETIME(item.publish_time)}}</div>
 							</div>
 						</div>
 					</a>

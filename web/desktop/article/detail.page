@@ -8,7 +8,7 @@
 			<h1 class="jm-article-title uk-article-title" >{{article.title}}</h1>
 			<div class="jm-article-meta uk-article-meta"> 
 				<a class="author" href="#"> {{ (article.author) ? article.author : site.site_name }} </a> <span>•</span>
-				<span class="publictime"> {{HMDATETIME(article.publish_datetime)}} </span> <span>•</span>
+				<span class="publictime">{{HmDatetime(article.publish_time)}}</span> <span>•</span>
 				<a mp:if="{{article.category_last.parent_id}}" class="category" href="/article/list/{{article.category_last.parent_id}}.html?subcate={{article.category_last.category_id}}"> {{article.category_last.name}} </a>
 				<a mp:else class="category" href="/article/list/{{article.category_last.category_id}}.html}}"> {{article.category_last.name}} </a>
 			</div>
@@ -90,7 +90,7 @@
 							</div>
 							<div class="uk-margin-small-left uk-flex uk-flex-column uk-flex-between">
 								<div class="title"> {{item.title}}  </div>
-								<div class="summary uk-text-muted">{{HMDATETIME(item.publish_datetime)}}</div>
+								<div class="summary uk-text-muted">{{HMDATETIME(item.publish_time)}}</div>
 							</div>
 						</div>
 					</a>
