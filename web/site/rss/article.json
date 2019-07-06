@@ -1,0 +1,38 @@
+{
+	"cname":"RSS正文页",
+	"type":"xml",
+	"data": {
+        "site":{
+			"api":"/xpmsns/pages/siteconf/get",
+			"query":{
+				"site_slug":"global",
+				"select":"*"
+			}
+		},
+        "categories":{
+			"api":"/xpmsns/pages/category/search",
+			"query":{
+				"select":"category_id,name,highlight,link,isblank,slug",
+				"order":"priority asc",
+				"noParentId":"1",
+				"children":false,
+				"isnav":1
+			}
+        },
+        "cate":"{{categories.map.__var.cid}}",
+        "articles":{
+			"api":"/xpmsns/pages/article/search",
+			"query":{
+				"perpage":500,
+                "order":"publish_time desc",
+                "category_ids":"{{cate.category_id}}",
+                "subcategory_ids":"{{__get.subcate}}",
+				"page":"{{__get.page}}"
+			}
+		}
+	},
+	"entries":[
+		{"method":"GET", "router":"/rss/article/{cid:.+}.rss", "ttl":0}
+	],
+	"alias": {}
+}

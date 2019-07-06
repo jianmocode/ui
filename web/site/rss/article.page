@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+   <channel>
+      <title>{{cate.name}}</title>
+      <link>{{__var.__home}}/article/list/{{cate._cid}}.html</link>
+      <description>{{site.site_slogen}}</description>
+      <language>zh-cn</language>
+      <copyright>{{site.site_name}}</copyright>
+      <pubDate>{{articles.data.0.publish_time}}</pubDate>
+      <lastBuildDate>{{articles.data.0.publish_time}}</lastBuildDate>
+      <docs>{{__var.__home}}/rss/article/{{cate._cid}}.rss</docs>
+      <generator>Jianmo.ink</generator>
+      <managingEditor>www.jianmo.ink</managingEditor>
+      <webMaster>jianmo@diancloud.com</webMaster>
+      <item mp:for="{{articles.data}}" mp:for-item="{{rs}}">
+         <title>{{rs.title}}</title>
+         <author>{{rs.author}}</author>
+         <link>{{__var.__home}}/article/{{rs.article_id}}.html</link>
+         <description>{{rs.summary}}</description>
+         <pubDate>{{rs.publish_time}}</pubDate>
+         <guid>{{__var.__home}}/article/{{rs.article_id}}.html</guid>
+         <enclosure url="{{rs.cover.url}}" type="image/jpeg" />
+      </item>
+   </channel>
+</rss>

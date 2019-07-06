@@ -62,7 +62,8 @@
             "/mobile/widget/recommend/album",
             "/site/sitemap/index",
             "/site/sitemap/detail",
-            "/site/robots"
+            "/site/robots",
+            "/site/rss/article"
       ],
       "common": [
             "/libs",
