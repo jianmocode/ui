@@ -32,7 +32,8 @@
 		}
 	},
 	"entries":[
-		{"method":"GET", "router":"/rss/article/{cid:.+}.rss", "ttl":0}
+        {"method":"GET", "router":"/rss/article/{cid:.+}.rss", "ttl":0},
+        {"method":"GET", "router":"/article/list/{cid:.+}.rss", "ttl":0}
 	],
 	"alias": {}
 }
