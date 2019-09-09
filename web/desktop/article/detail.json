@@ -69,8 +69,9 @@
 		}
 	},
 	"entries":[
-		{"method":"GET", "router":"/article/{id:[0-9a-zA-Z_]+}.html", "ttl":0},
-		{"method":"GET", "router":"/article/{id:[0-9a-zA-Z_]+}", "ttl":0}
+        {"method":"GET", "router":"/article/{id:[0-9a-zA-Z_]+}.html", "ttl":0},
+        {"method":"GET", "router":"/article/{dy:[0-9]+}/{mo:[0-9]+}/{yr:[0-9]+}/{id:[0-9a-zA-Z_]+}.html", "ttl":0},
+        {"method":"GET", "router":"/article/{id:[0-9a-zA-Z_]+}", "ttl":0}
 	],
 	
 	"alias": {
