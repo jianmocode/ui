@@ -8,7 +8,7 @@
 		<div class="jm-focus-left-top uk-flex">
 
 			<div class="jm-focus-slideshow uk-width-2-3" >
-				<div class="uk-position-relative uk-visible-toggle" uk-slideshow="animation: push">
+				<div class="uk-position-relative uk-visible-toggle" uk-slideshow="animation: push; autoplay:true; autoplay-interval:5000">
 					<ul class="uk-slideshow-items" >
 						<a  href="/article/{{item.article_id}}.html" target="_blank" mp:for="{{r.focus.data}}" mp:for-from="0" mp:for-to="3" >
 							<img src="{{item.cover.url}}"  alt="" uk-cover>
