@@ -21,7 +21,8 @@
                     { "text":"图集", "pagePath":"/m/album/index", "iconPath":"album.svg", "selectedIconPath":"album_active.svg"},
                     { "text":"我的", "pagePath":"/m/home/index", "iconPath":"my.svg", "selectedIconPath":"my_active.svg","selected":true}
                 ],
-                "custom":false
+                "custom":false,
+                "hidden":"{{site.tabar.hidden}}"
             }
       },
       "entries": [{

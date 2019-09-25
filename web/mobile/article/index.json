@@ -89,7 +89,8 @@
                               "selectedIconPath": "my_active.svg"
                         }
                   ],
-                  "custom": false
+                  "custom": false,
+                  "hidden":"{{site.tabar}}"
             }
       },
       "entries": [{

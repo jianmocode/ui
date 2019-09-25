@@ -1,7 +1,7 @@
 
 <footer
 class="footer_mobile uk-flex uk-flex-between uk-flex-middle"
-mp:if="{{tabBar}}"
+mp:if="{{ tabBar.hidden == false }}"
 >
     <div class="footer_item_wrap uk-flex" mp:for="{{tabBar.list}}" mp:for-item="{{tab}}">
     
