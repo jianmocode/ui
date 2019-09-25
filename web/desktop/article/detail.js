@@ -13,8 +13,8 @@ Page({
 		} catch( e ) {
 			console.log( 'Error @Article init', e);
         }
-	},
-
+    },
+    
 	initShareNavbar: function() {
 		let pos = $('.share-navbar').offset();
 		let width = $('.share-navbar').outerWidth();

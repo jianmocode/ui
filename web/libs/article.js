@@ -20,8 +20,7 @@ class Article {
                 // 小图居中对齐
                 let parent = $(this).parent();
                 if ( parent && !parent.hasClass("jm-article-content")) {
-                    parent.css("text-align", "center");
-
+                    parent.css("text-align", "left");
                 }
 
                 let naturalWidth =  this.naturalWidth ?  this.naturalWidth : 1;

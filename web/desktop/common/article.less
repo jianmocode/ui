@@ -37,6 +37,7 @@
 		line-height: 1.857rem;
         min-height: 600px;
         color: @textColor;
+        text-align: left;
 
         br {
             content: "";
@@ -97,7 +98,10 @@
         .jm-content-image {
             margin-top: 1rem;
             margin-bottom: 1rem;
-            display: inline-block;
+            display: block;
+            object-fit: cover;
+            width: 100%;
+            height: auto;
         }
 
 		.jm-content-audio,.jm-content-video {
