@@ -32,6 +32,7 @@ class Article {
 
                 if ( $(this).attr("data-caption") != ""  ) {
                     let caption = $(this).attr("data-caption");
+                    caption = $('<div>' + caption +"</div>").text();
                     $(this).css("margin-bottom", "0.5rem");
                     $(this).after(`<div class="image-caption">${caption}</div>`);
                 }
