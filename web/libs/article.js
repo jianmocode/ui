@@ -25,9 +25,15 @@ class Article {
 
                 let naturalWidth =  this.naturalWidth ?  this.naturalWidth : 1;
                 let ratio = this.naturalHeight / naturalWidth;
-                if ( naturalWidth > maxw ) {
+                // if ( naturalWidth > maxw ) {
                     $(this).attr('width', maxw);
                     $(this).attr('height',maxw * ratio );
+                // }
+
+                if ( $(this).attr("data-caption") != ""  ) {
+                    let caption = $(this).attr("data-caption");
+                    $(this).css("margin-bottom", "0.5rem");
+                    $(this).after(`<div class="image-caption">${caption}</div>`);
                 }
 
 

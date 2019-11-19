@@ -25,7 +25,7 @@
 			<hr class="uk-divider-icon">
 
 			<div class="pagination">
-				<a class="more uk-button uk-button-default uk-width-1-1" href="/m" > 更多文章 </a>
+				<a class="more uk-button uk-button-default uk-width-1-1" href="/" > 更多文章 </a>
 			</div>
 		</article>
 	</div>
