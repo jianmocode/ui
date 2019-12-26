@@ -1,4 +1,4 @@
-var host = "demo.jianmoapp.cn"
+var host = "wss.xpmjs.com"
 
 config = {
       mina: {
@@ -7,8 +7,8 @@ config = {
             server: "https://" + host,
             domain: host,
             project: "default",
-            appid: '155190147649899',
-            secret: '53a9bfa587c50de2ddaae35f490b2af6',
+            appid: '153694864269198',
+            secret: '0e2930fcf9af732ce7fc417853cf3d54',
             instance: "root",
       },
       wxapp: {

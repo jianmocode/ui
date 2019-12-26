@@ -129,6 +129,10 @@ let com = Page({
             // 附件上传面板
             this.addNewBlock( event.target, "custom" ); // 添加个性化面板
             this.addAttach( event.target ); // 添加附件
+
+            // 上传视频
+            this.addVideo( event.target ); // 添加 bilibili 
+
             // this.addImage( event.target ); // 添加图片
             // this.addVideo( event.target ); // 添加视频
         });
@@ -788,19 +792,65 @@ let com = Page({
     // 添加视频 (下一版实现 )
     addVideo:function( trix ) {
 
+        let trixId = trix.trixId;
+
         let button = document.createElement("button");
             button.setAttribute("data-trix-action", "x-image");
             button.setAttribute("class", "trix-button trix-button--icon trix-button--icon-video");
             button.setAttribute("type", "button");
 
-        let toolBar = trix.toolbarElement;
-        let blockElm = toolBar.querySelector(".trix-button-group-custom");
-        let videoBtn = blockElm.appendChild(button);
+        
+        let buttonContent = `
+            <button type="button" 
+                class="trix-button trix-button--icon trix-button--icon-video" 
+                data-trix-attribute="video" 
+                data-trix-key="+" title="B站视频" tabindex="-1"></button>
+        `;
 
-        // 上传按钮点击, 选择文件并上传
-        videoBtn.addEventListener("click", ()=>{
-            console.log('选择视频并上传');
-        });
+        let dialogContent = `
+            <div class="trix-dialog trix-dialog--video" data-trix-dialog="video" data-trix-dialog-attribute="video"  >
+                <div class="trix-dialog__video-fields">
+                    <input type="text" class="trix-input trix-input--dialog"  placeholder="输入QQ视频正文页地址" >
+                    <div class="trix-button-group">
+                        <input type="button" class="trix-button trix-button--dialog"
+                            onclick="
+                                var trix = document.querySelector('trix-editor[trix-id=\\'${trixId}\\']');
+                                var inputElm = this.parentElement.parentElement.querySelector('input[type=\\'text\\']');
+                                if ( inputElm.length == 0 ) { 
+                                    console.log('nothing selected');
+                                    return;
+                                }
+                                var url = inputElm.value;
+                                if ( url == '' || url == undefined ) {
+                                    console.log('未输入视频地址');
+                                    return;
+                                }
+                                var uri = url.split('/');
+                                var id = uri[uri.length-1].split('.')[0];
+                                if ( id == '' || id == undefined ) {
+                                    console.log('地址错误');
+                                }
+
+                                var embed = '<iframe frameborder=&quot;0&quot; src=&quot;https://v.qq.com/txp/iframe/player.html?vid='+ id + '&quot;  width=&quot;100%&quot; height=&quot;400&quot; allowFullScreen=&quot;true&quot;></iframe>';
+                                var attachment = new Trix.Attachment({content: embed})
+                                trix.editor.insertAttachment(attachment);
+                                console.log(  embed );
+                            ";
+                            value="插入QQ视频" data-trix-method="removeAttribute"
+                            
+                        >
+                        <input type="button" class="trix-button trix-button--dialog" value="取消操作" data-trix-method="removeAttribute">
+                    </div>
+                </div> 
+            </div>
+        `;
+
+        let toolBar = trix.toolbarElement;
+        var dialogElm = toolBar.querySelector(".trix-dialogs");
+        let blockElm = toolBar.querySelector(".trix-button-group-custom");
+        // let videoBtn = blockElm.appendChild(button);
+        blockElm.insertAdjacentHTML("beforeend", buttonContent);
+        dialogElm.insertAdjacentHTML("beforeend", dialogContent);
     },
 
     getAttrs: function( $elm ) {
