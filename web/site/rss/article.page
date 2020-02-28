@@ -16,7 +16,7 @@
          <title>{{rs.title}}</title>
          <author>{{rs.author}}</author>
          <link>{{__var.__home}}/article/{{rs.article_id}}.html</link>
-         <description>{{rs.summary}}</description>
+         <description>{{cdata.begin}} {{rs.content}} {{cdata.end}}</description>
          <pubDate>{{rs.publish_time}}</pubDate>
          <guid>{{__var.__home}}/article/{{rs.article_id}}.html</guid>
          <enclosure url="{{rs.cover.url}}" type="image/jpeg" />

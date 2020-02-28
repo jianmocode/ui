@@ -27,9 +27,14 @@
                 "order":"publish_time desc",
                 "category_ids":"{{cate.category_id}}",
                 "subcategory_ids":"{{__get.subcate}}",
-				"page":"{{__get.page}}"
+                "page":"{{__get.page}}",
+                "select": "title,author,article_id,summary,publish_time,cover,content"
 			}
-		}
+        },
+        "cdata": {
+            "begin": "<![CDATA[",
+            "end": "]]>"
+        }
 	},
 	"entries":[
         {"method":"GET", "router":"/rss/article/{cid:.+}.rss", "ttl":0},
