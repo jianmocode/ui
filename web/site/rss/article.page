@@ -13,8 +13,8 @@
       <managingEditor>www.jianmo.ink</managingEditor>
       <webMaster>jianmo@diancloud.com</webMaster>
       <item mp:for="{{articles.data}}" mp:for-item="{{rs}}">
-         <title>{{rs.title}}</title>
-         <author>{{rs.author}}</author>
+         <title>{{cdata.begin}} {{rs.title}} {{cdata.end}}</title>
+         <author>{{cdata.begin}} {{rs.author}} {{cdata.end}}</author>
          <link>{{__var.__home}}/article/{{rs.article_id}}.html</link>
          <description>{{cdata.begin}} {{rs.content}} {{cdata.end}}</description>
          <pubDate>{{rs.publish_time}}</pubDate>
