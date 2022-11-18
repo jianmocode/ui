@@ -14,7 +14,7 @@
 		"crc": "^3.4.4",
 		"css-loader": "^0.28.4",
 		"del": "^3.0.0",
-		"extract-loader": "^0.1.0",
+		"extract-loader": "^5.1.0",
 		"extract-text-webpack-plugin": "^2.1.2",
 		"file-loader": "^0.11.2",
 		"fs-extra": "^3.0.1",
@@ -41,8 +41,8 @@
 		"vinyl-buffer": "^1.0.0",
 		"vinyl-source-stream": "^1.1.0",
 		"vinyl-transform": "^1.0.0",
-		"webpack": "^2.6.1",
-		"webpack-stream": "^3.2.0",
+		"webpack": "^5.75.0",
+		"webpack-stream": "^7.0.0",
 		"yargs": "^8.0.2"
 	},
 	"scripts": {
